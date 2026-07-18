@@ -12,7 +12,7 @@
 - Gene Ripper: machine behind a new gene ripper project after xenogerm assembly.
 - Gene Fabrication: research moves to the Genetics tab as an archogenetics capstone.
 - VQE Ancients: new archogen engineering capstone research makes the archogen injector and its 12 lab facilities buildable at archite-tier costs; recovering them from ancient labs remains the early route.
-- Alpha Genes: abandoned biotech lab quest renamed to xenogenetics lab flavour, as in Progression: Genetics.
+- Alpha Genes: abandoned biotech lab quest renamed to xenogenetics lab flavour.
 
 ## 1.0.0 (2026-07-18)
 
