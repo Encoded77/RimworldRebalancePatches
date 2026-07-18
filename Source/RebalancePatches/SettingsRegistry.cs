@@ -63,6 +63,26 @@ namespace RebalancePatches
                 new RebalanceToggle("gits.research", "Streamline the research tree",
                     "Collapses the nanite surgery researches into nanite grafting and removes the empty filler nodes."),
             }),
+
+            new RebalanceGroup("genetics", "Genetics Research Overhaul", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("genetics.core", "Genetics research tab and tree (Biotech)",
+                    "Adds a Genetics research tab rooted on a new basic genetic sampling project that unlocks the gene extractor and gene bank. Xenogermination becomes xenogerm assembly and moves there with gene processor and archogenetics, all at spacer tech with a hi-tech research bench required. The other toggles in this group do nothing without this one."),
+                new RebalanceToggle("genetics.resplice", "ReSplice: Core buildings via dedicated research",
+                    "ReSplice: Core's gene centrifuge and xenogerm duplicator move behind new genepack centrifuge and xenogerm replicator research projects on the Genetics tab and are renamed to match. Does nothing unless the tab toggle is on."),
+                new RebalanceToggle("genetics.extractortiers", "Gene Extractor Tiers vats via dedicated research",
+                    "Gene Extractor Tiers' gene extraction vat unlocks from a new research project after gene processor, and its archite vats from a new archite gene extraction project after archogenetics. Does nothing unless the tab toggle is on."),
+                new RebalanceToggle("genetics.genenodes", "Gene nodes via dedicated research, pricier archite nodes",
+                    "Gene Extractor Tiers' base gene nodes unlock from a new gene nodes project after xenogerm assembly. Archite gene nodes, including Gene Nodes - Genes for Sale's, move behind a new archite gene nodes project after archogenetics and cost more to build. Does nothing unless the tab toggle is on."),
+                new RebalanceToggle("genetics.generipper", "Gene Ripper via dedicated research",
+                    "Gene Ripper's machine unlocks from a new gene ripper research project after xenogerm assembly. Does nothing unless the tab toggle is on."),
+                new RebalanceToggle("genetics.genefab", "Gene Fabrication as an archogenetics capstone",
+                    "Gene Fabrication's research project moves to the Genetics tab and requires archogenetics instead of gene processor plus fabrication. Does nothing unless the tab toggle is on."),
+                new RebalanceToggle("genetics.vqea", "Buildable VQE Ancients archogen laboratory",
+                    "A new archogen engineering research project after archogenetics lets you build VQE Ancients' archogen injector and its linkable lab facilities at archite-tier costs. Recovering them from ancient labs remains the early route. Does nothing unless the tab toggle is on."),
+                new RebalanceToggle("genetics.alphagenes", "Alpha Genes xenogenetics lab quest names",
+                    "Renames Alpha Genes' abandoned biotech lab quest and site to xenogenetics lab flavour, as Progression: Genetics did. Works on its own."),
+            }),
         };
 
         private static RebalancePatchesSettings settings;

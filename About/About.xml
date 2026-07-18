@@ -3,7 +3,7 @@
   <packageId>encoded.rebalancepatches</packageId>
   <name>Encoded's Rebalance Patches</name>
   <author>Encoded</author>
-  <modVersion>1.0.0</modVersion>
+  <modVersion>1.1.0</modVersion>
   <url></url>
   <supportedVersions>
     <li>1.6</li>
@@ -14,11 +14,20 @@
     <li>VanillaExpanded.VAEAccessories</li>
     <li>moistestWhale.gitsCyberbrains</li>
     <li>vat.epoeforked</li>
+    <li>sarg.alphagenes</li>
+    <li>ReSplice.XOTR.Core</li>
+    <li>RedMattis.GeneExtractor</li>
+    <li>RedMattis.GeneNodes</li>
+    <li>DanielWedemeyer.GeneRipper</li>
+    <li>defi.generipper</li>
+    <li>AmCh.Eragon.HCGeneFabrication</li>
+    <li>vanillaquestsexpanded.ancients</li>
   </loadAfter>
   <description>Opinionated balance tweaks and cross-mod compatibility patches. Each patch applies only when the mod it targets is loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). No dependencies.
 
 Included:
 - RimIOT - Logistic Matrix: cheaper builds, basic components only, no power consumption.
 - Altered Carbon: disables the redundant ranged shield belt from VAE Accessories in favour of the cuirassier belt.
-- GiTS Cyberbrains: only basic cyberbrains on the market, surgeries via EPOE brain surgery, post-basic cyberization at ultratech tier, harsher extreme mental break, and a streamlined research tree.</description>
+- GiTS Cyberbrains: only basic cyberbrains on the market, surgeries via EPOE brain surgery, post-basic cyberization at ultratech tier, harsher extreme mental break, and a streamlined research tree.
+- Genetics Research Overhaul (Biotech): a dedicated Genetics research tab in the spirit of Progression: Genetics, integrating ReSplice: Core, Gene Extractor Tiers, Gene Ripper, Gene Nodes - Genes for Sale, Gene Fabrication, VQE Ancients' archogen laboratory and Alpha Genes quest flavour.</description>
 </ModMetaData>

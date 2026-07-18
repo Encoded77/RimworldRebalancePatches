@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>genetics.extractortiers</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <ResearchProjectDef>
+                  <defName>RBP_GeneExtractionVats</defName>
+                  <label>gene extraction vats</label>
+                  <description>Build gene extraction vats that sustain the subject through repeated, more efficient gene extractions.</description>
+                  <baseCost>3000</baseCost>
+                  <techLevel>Spacer</techLevel>
+                  <tab>RBP_GeneticsTab</tab>
+                  <prerequisites>
+                    <li>GeneProcessor</li>
+                  </prerequisites>
+                  <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                  <researchViewX>3</researchViewX>
+                  <researchViewY>1.40</researchViewY>
+                </ResearchProjectDef>
+                <ResearchProjectDef>
+                  <defName>RBP_ArchiteExtraction</defName>
+                  <label>archite gene extraction</label>
+                  <description>Build advanced extraction vats capable of isolating even archite genes from a living subject.</description>
+                  <baseCost>5000</baseCost>
+                  <techLevel>Spacer</techLevel>
+                  <tab>RBP_GeneticsTab</tab>
+                  <prerequisites>
+                    <li>Archogenetics</li>
+                  </prerequisites>
+                  <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                  <requiredResearchFacilities>
+                    <li>MultiAnalyzer</li>
+                  </requiredResearchFacilities>
+                  <researchViewX>4</researchViewX>
+                  <researchViewY>0.60</researchViewY>
+                </ResearchProjectDef>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="GET_GeneExtractor_II"]/researchPrerequisites</xpath>
+              <value>
+                <researchPrerequisites Inherit="False">
+                  <li>RBP_GeneExtractionVats</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="GET_GeneExtractor_III"]/researchPrerequisites</xpath>
+              <value>
+                <researchPrerequisites Inherit="False">
+                  <li>RBP_ArchiteExtraction</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="GET_GeneExtractor_IV"]/researchPrerequisites</xpath>
+              <value>
+                <researchPrerequisites Inherit="False">
+                  <li>RBP_ArchiteExtraction</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>genetics.genenodes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <ResearchProjectDef>
+                  <defName>RBP_GeneNodes</defName>
+                  <label>gene nodes</label>
+                  <description>Build gene nodes: preloaded gene libraries that link to a gene assembler and offer their genes for xenogerm assembly.</description>
+                  <baseCost>1200</baseCost>
+                  <techLevel>Spacer</techLevel>
+                  <tab>RBP_GeneticsTab</tab>
+                  <prerequisites>
+                    <li>Xenogermination</li>
+                  </prerequisites>
+                  <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                  <researchViewX>2</researchViewX>
+                  <researchViewY>3.80</researchViewY>
+                </ResearchProjectDef>
+                <ResearchProjectDef>
+                  <defName>RBP_ArchiteGeneNodes</defName>
+                  <label>archite gene nodes</label>
+                  <description>Build archite-capable gene nodes holding rare and powerful gene templates for xenogerm assembly.</description>
+                  <baseCost>4500</baseCost>
+                  <techLevel>Spacer</techLevel>
+                  <tab>RBP_GeneticsTab</tab>
+                  <prerequisites>
+                    <li>Archogenetics</li>
+                  </prerequisites>
+                  <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                  <researchViewX>4</researchViewX>
+                  <researchViewY>3.60</researchViewY>
+                </ResearchProjectDef>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="GET_GeneNodeBase"]/researchPrerequisites</xpath>
+              <value>
+                <researchPrerequisites Inherit="False">
+                  <li>RBP_GeneNodes</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="GET_GeneNodeBaseArchite"]/researchPrerequisites</xpath>
+              <value>
+                <researchPrerequisites Inherit="False">
+                  <li>RBP_ArchiteGeneNodes</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="GET_GeneNodeBaseArchite"]/costList</xpath>
+              <value>
+                <costList Inherit="False">
+                  <Steel>100</Steel>
+                  <ComponentIndustrial>4</ComponentIndustrial>
+                  <ComponentSpacer>1</ComponentSpacer>
+                  <ArchiteCapsule>2</ArchiteCapsule>
+                  <Silver>750</Silver>
+                </costList>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

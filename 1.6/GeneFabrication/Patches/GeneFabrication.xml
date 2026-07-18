@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>genetics.genefab</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="GeneFabrication"]/baseCost</xpath>
+              <value><baseCost>8000</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="GeneFabrication"]/prerequisites</xpath>
+              <value>
+                <prerequisites>
+                  <li>Archogenetics</li>
+                </prerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="GeneFabrication"]</xpath>
+              <value>
+                <tab>RBP_GeneticsTab</tab>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="GeneFabrication"]/researchViewX</xpath>
+              <value><researchViewX>4</researchViewX></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="GeneFabrication"]/researchViewY</xpath>
+              <value><researchViewY>2.60</researchViewY></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>genetics.core</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+          <ResearchTabDef>
+            <defName>RBP_GeneticsTab</defName>
+            <label>genetics</label>
+            <generalTitle>Genetics research projects</generalTitle>
+            <generalDescription>Unlock genetic technologies by researching at a hi-tech research bench. You can only have one active project at a time.</generalDescription>
+          </ResearchTabDef>
+          <ResearchProjectDef>
+            <defName>RBP_GeneticSampling</defName>
+            <label>basic genetic sampling</label>
+            <description>Begin exploring the potential in extracting genetic material. Sample genes from people for use in genetic alteration.</description>
+            <baseCost>1000</baseCost>
+            <techLevel>Spacer</techLevel>
+            <tab>RBP_GeneticsTab</tab>
+            <prerequisites>
+              <li>MicroelectronicsBasics</li>
+            </prerequisites>
+            <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+            <researchViewX>0</researchViewX>
+            <researchViewY>2.60</researchViewY>
+          </ResearchProjectDef>
+        </value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/label</xpath>
+        <value><label>xenogerm assembly</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/description</xpath>
+        <value><description>Begin producing xenotype altering xenogerms from extracted genes.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/prerequisites</xpath>
+        <value>
+          <prerequisites>
+            <li>RBP_GeneticSampling</li>
+          </prerequisites>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/techLevel</xpath>
+        <value><techLevel>Spacer</techLevel></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/baseCost</xpath>
+        <value><baseCost>1500</baseCost></value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]</xpath>
+        <value>
+          <tab>RBP_GeneticsTab</tab>
+          <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/researchViewX</xpath>
+        <value><researchViewX>1</researchViewX></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="Xenogermination"]/researchViewY</xpath>
+        <value><researchViewY>2.60</researchViewY></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="GeneProcessor"]/techLevel</xpath>
+        <value><techLevel>Spacer</techLevel></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="GeneProcessor"]/baseCost</xpath>
+        <value><baseCost>2500</baseCost></value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ResearchProjectDef[defName="GeneProcessor"]</xpath>
+        <value>
+          <tab>RBP_GeneticsTab</tab>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="GeneProcessor"]/researchViewX</xpath>
+        <value><researchViewX>2</researchViewX></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="GeneProcessor"]/researchViewY</xpath>
+        <value><researchViewY>2.60</researchViewY></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="Archogenetics"]/techLevel</xpath>
+        <value><techLevel>Spacer</techLevel></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="Archogenetics"]/baseCost</xpath>
+        <value><baseCost>4000</baseCost></value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ResearchProjectDef[defName="Archogenetics"]</xpath>
+        <value>
+          <tab>RBP_GeneticsTab</tab>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="Archogenetics"]/researchViewX</xpath>
+        <value><researchViewX>3</researchViewX></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="Archogenetics"]/researchViewY</xpath>
+        <value><researchViewY>2.60</researchViewY></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="GeneBuildingBase"]/researchPrerequisites</xpath>
+        <value>
+          <researchPrerequisites>
+            <li>RBP_GeneticSampling</li>
+          </researchPrerequisites>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="GeneAssembler"]</xpath>
+        <value>
+          <researchPrerequisites Inherit="False">
+            <li>Xenogermination</li>
+          </researchPrerequisites>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="GeneExtractor"]/researchPrerequisites</xpath>
+        <value>
+          <researchPrerequisites Inherit="False">
+            <li>RBP_GeneticSampling</li>
+          </researchPrerequisites>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

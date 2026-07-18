@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>genetics.genenodes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_ArchiteGeneNodes"]</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[@Name="GET_GeneNodeTrueArchite"]/costList</xpath>
+          <value>
+            <costList Inherit="False">
+              <Steel>100</Steel>
+              <ComponentIndustrial>2</ComponentIndustrial>
+              <ComponentSpacer>2</ComponentSpacer>
+              <ArchiteCapsule>3</ArchiteCapsule>
+              <Silver>1000</Silver>
+            </costList>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

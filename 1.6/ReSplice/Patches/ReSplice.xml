@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>genetics.resplice</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <ResearchProjectDef>
+                  <defName>RBP_GenepackCentrifuge</defName>
+                  <label>genepack centrifuge</label>
+                  <description>Build a machine that can separate genepacks, at the potential cost of losing all contained genes instead.</description>
+                  <baseCost>1400</baseCost>
+                  <techLevel>Spacer</techLevel>
+                  <tab>RBP_GeneticsTab</tab>
+                  <prerequisites>
+                    <li>Xenogermination</li>
+                  </prerequisites>
+                  <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                  <researchViewX>2</researchViewX>
+                  <researchViewY>1.40</researchViewY>
+                </ResearchProjectDef>
+                <ResearchProjectDef>
+                  <defName>RBP_XenogermReplicator</defName>
+                  <label>xenogerm replicator</label>
+                  <description>Build a machine that can duplicate xenogerms, even with archite genes given the right amount of material.</description>
+                  <baseCost>2000</baseCost>
+                  <techLevel>Spacer</techLevel>
+                  <tab>RBP_GeneticsTab</tab>
+                  <prerequisites>
+                    <li>GeneProcessor</li>
+                  </prerequisites>
+                  <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                  <researchViewX>3</researchViewX>
+                  <researchViewY>0.60</researchViewY>
+                </ResearchProjectDef>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="RS_GeneCentrifuge"]/researchPrerequisites</xpath>
+              <value>
+                <researchPrerequisites Inherit="False">
+                  <li>RBP_GenepackCentrifuge</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="RS_GeneCentrifuge"]/label</xpath>
+              <value><label>genepack centrifuge</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="RS_XenoGermDuplicator"]/researchPrerequisites</xpath>
+              <value>
+                <researchPrerequisites Inherit="False">
+                  <li>RBP_XenogermReplicator</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="RS_XenoGermDuplicator"]/label</xpath>
+              <value><label>xenogerm replicator</label></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>genetics.generipper</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="GeneRipper"]/researchPrerequisites</xpath>
+          <match Class="PatchOperationSequence">
+            <operations>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs</xpath>
+                <value>
+                  <ResearchProjectDef>
+                    <defName>RBP_GeneRipper</defName>
+                    <label>gene ripper</label>
+                    <description>A machine that can rip a selected gene directly from the host, at the cost of their life.</description>
+                    <baseCost>1200</baseCost>
+                    <techLevel>Spacer</techLevel>
+                    <tab>RBP_GeneticsTab</tab>
+                    <prerequisites>
+                      <li>Xenogermination</li>
+                    </prerequisites>
+                    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    <researchViewX>1</researchViewX>
+                    <researchViewY>3.80</researchViewY>
+                  </ResearchProjectDef>
+                </value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="GeneRipper"]/researchPrerequisites</xpath>
+                <value>
+                  <researchPrerequisites Inherit="False">
+                    <li>RBP_GeneRipper</li>
+                  </researchPrerequisites>
+                </value>
+              </li>
+            </operations>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

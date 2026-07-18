@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>genetics.vqea</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <ResearchProjectDef>
+                  <defName>RBP_ArchogenEngineering</defName>
+                  <label>archogen engineering</label>
+                  <description>Reverse-engineer the ancients' archogen laboratory equipment. Build archogen injectors and their linkable support facilities to induce archite gene mutations on demand.</description>
+                  <baseCost>10000</baseCost>
+                  <techLevel>Spacer</techLevel>
+                  <tab>RBP_GeneticsTab</tab>
+                  <prerequisites>
+                    <li>Archogenetics</li>
+                  </prerequisites>
+                  <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                  <requiredResearchFacilities>
+                    <li>MultiAnalyzer</li>
+                  </requiredResearchFacilities>
+                  <researchViewX>4</researchViewX>
+                  <researchViewY>4.60</researchViewY>
+                </ResearchProjectDef>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_ArchogenInjector"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_ArchogenInjector"]/statBases</xpath>
+              <value><WorkToBuild>12000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_ArchogenInjector"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>200</Steel>
+                  <Plasteel>40</Plasteel>
+                  <ComponentSpacer>4</ComponentSpacer>
+                  <ArchiteCapsule>1</ArchiteCapsule>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_NeurostabilizerArray"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_NeurostabilizerArray"]/statBases</xpath>
+              <value><WorkToBuild>3000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_NeurostabilizerArray"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>60</Steel>
+                  <ComponentIndustrial>2</ComponentIndustrial>
+                  <ComponentSpacer>1</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_CognitiveRecoveryArray"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_CognitiveRecoveryArray"]/statBases</xpath>
+              <value><WorkToBuild>3000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_CognitiveRecoveryArray"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>60</Steel>
+                  <ComponentIndustrial>2</ComponentIndustrial>
+                  <ComponentSpacer>1</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_RapidInfusionPump"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_RapidInfusionPump"]/statBases</xpath>
+              <value><WorkToBuild>3000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_RapidInfusionPump"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>60</Steel>
+                  <ComponentIndustrial>3</ComponentIndustrial>
+                  <ComponentSpacer>1</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_ArchiteRecycler"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_ArchiteRecycler"]/statBases</xpath>
+              <value><WorkToBuild>4000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_ArchiteRecycler"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>80</Steel>
+                  <ComponentIndustrial>3</ComponentIndustrial>
+                  <ComponentSpacer>1</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_GenomicAttenuator"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_GenomicAttenuator"]/statBases</xpath>
+              <value><WorkToBuild>5000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_GenomicAttenuator"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>100</Steel>
+                  <ComponentIndustrial>4</ComponentIndustrial>
+                  <ComponentSpacer>1</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_RejectionBufferCoil"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_RejectionBufferCoil"]/statBases</xpath>
+              <value><WorkToBuild>4000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_RejectionBufferCoil"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>80</Steel>
+                  <ComponentIndustrial>3</ComponentIndustrial>
+                  <ComponentSpacer>1</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_SpliceframeUplink"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_SpliceframeUplink"]/statBases</xpath>
+              <value><WorkToBuild>5000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_SpliceframeUplink"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>100</Steel>
+                  <ComponentIndustrial>4</ComponentIndustrial>
+                  <ComponentSpacer>2</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_MutagenInhibitorCore"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_MutagenInhibitorCore"]/statBases</xpath>
+              <value><WorkToBuild>8000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_MutagenInhibitorCore"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>150</Steel>
+                  <Plasteel>20</Plasteel>
+                  <ComponentSpacer>3</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_TraitSelectionPrism"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_TraitSelectionPrism"]/statBases</xpath>
+              <value><WorkToBuild>8000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_TraitSelectionPrism"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>150</Steel>
+                  <Plasteel>30</Plasteel>
+                  <ComponentSpacer>4</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_AberrationRedirector"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_AberrationRedirector"]/statBases</xpath>
+              <value><WorkToBuild>8000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_AberrationRedirector"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>150</Steel>
+                  <Plasteel>20</Plasteel>
+                  <ComponentSpacer>3</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_ComplexityHarmonizer"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_ComplexityHarmonizer"]/statBases</xpath>
+              <value><WorkToBuild>8000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_ComplexityHarmonizer"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>150</Steel>
+                  <Plasteel>30</Plasteel>
+                  <ComponentSpacer>4</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_ArchitePathingArray"]</xpath>
+              <value>
+                <designationCategory>Biotech</designationCategory>
+                <researchPrerequisites>
+                  <li>RBP_ArchogenEngineering</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="VQEA_ArchitePathingArray"]/statBases</xpath>
+              <value><WorkToBuild>8000</WorkToBuild></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VQEA_ArchitePathingArray"]/costList</xpath>
+              <value>
+                <costList>
+                  <Steel>150</Steel>
+                  <Plasteel>40</Plasteel>
+                  <ComponentSpacer>5</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>
