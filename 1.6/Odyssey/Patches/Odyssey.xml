@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>odyssey.shuttle</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="PassengerShuttle"]/comps/li[@Class="CompProperties_Refuelable"]/fuelCapacity</xpath>
+        <value><fuelCapacity>2000</fuelCapacity></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="PassengerShuttle"]/comps/li[@Class="CompProperties_Refuelable"]/initialConfigurableTargetFuelLevel</xpath>
+        <value><initialConfigurableTargetFuelLevel>2000</initialConfigurableTargetFuelLevel></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="PassengerShuttle"]/comps/li[@Class="CompProperties_Transporter"]/massCapacity</xpath>
+        <value><massCapacity>2000</massCapacity></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

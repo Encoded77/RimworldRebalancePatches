@@ -28,4 +28,26 @@
     </operations>
   </Operation>
 
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>altered.relayrange</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationAddFromSetting">
+        <settingKey>altered.relayrange</settingKey>
+        <xpath>Defs/ThingDef[defName="AC_CastingRelay"]</xpath>
+        <value>
+          <modExtensions>
+            <li Class="RebalancePatches.CastingRelayRangeExtension">
+              <tilesPerRelay>{value}</tilesPerRelay>
+            </li>
+          </modExtensions>
+        </value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceFromSetting">
+        <settingKey>altered.relayrange</settingKey>
+        <xpath>Defs/ThingDef[defName="AC_CastingRelay"]/description</xpath>
+        <value><description>A needlecasting range amplifier. Casting relays must be connected to a neural matrix to function. This will extend the needlecasting range by {value} world tiles allowing for operation further away from a neural matrix.</description></value>
+      </li>
+    </operations>
+  </Operation>
+
 </Patch>

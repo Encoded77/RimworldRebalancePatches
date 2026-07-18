@@ -1,8 +1,7 @@
 # Rebalance Patches — Patch Documentation
 
 > **⚠ Keep this document up to date: every time a patch is added, removed or meaningfully changed, update this file (and CHANGELOG.md) in the same commit.**
-
-This is the internal reference for every patch the mod ships. This file is for tracking what each patch does, to which mods, and why.
+> **Style: one short paragraph per feature that says what is patched and why in the same breath — written so a player can tell what the mod offers at a glance. Technical notes only where a maintainer needs them (ordering constraints, guards, C# hooks).**
 
 ---
 
@@ -12,36 +11,38 @@ This is the internal reference for every patch the mod ships. This file is for t
 
 Affects: **RimIOT - Logistic Matrix** (`CN.RimIOT`) — folder `1.6/RimIOT`.
 
-- **Cheaper builds** (`rimiot.costs`) — Rewrites the cost lists of the cable, input connector and interface: a few steel, industrial components instead of advanced ones<>
-  *Why:* RimIOT is quality-of-life logistics; advanced-component prices made passive infrastructure feel like an endgame investment.
-- **No power consumption** (`rimiot.power`) — Strips the power and flickable comps from the network buildings.
-  *Why:* removes wiring/power micromanagement from something that should just work in the background.
+- **Cheaper builds** (`rimiot.costs`) — Cable, input connector and interface cost a little steel and industrial components instead of advanced ones. Passive logistics infrastructure shouldn't be an endgame investment.
+- **No power consumption** (`rimiot.power`) — Network buildings draw no power and need no wiring: power, flickable and network-draw comps are stripped, and the building descriptions are rewritten without the power notes. Storage logistics just works in the background.
 
 ### Altered Carbon
 
 Affects: **Altered Carbon** (`hlx.UltratechAlteredCarbon`) + **Vanilla Apparel Expanded — Accessories** (`VanillaExpanded.VAEAccessories`) — folder `1.6/AlteredCarbon`.
 
-- **Disable VAE ranged shield belt** (`altered.shieldbelt`) — Makes the VAE Accessories ranged shield belt uncraftable, untradeable and unspawnable. The def is kept so saves are unaffected. Guarded: does nothing if VAE Accessories isn't loaded.
-  *Why:* it's a cheaper duplicate of Altered Carbon's cuirassier belt; removing it keeps the harder-to-get AC version meaningful.
+- **Disable VAE ranged shield belt** (`altered.shieldbelt`) — The VAE Accessories ranged shield belt is a cheaper duplicate of Altered Carbon's cuirassier belt, so it becomes uncraftable, untradeable and unspawnable; the harder-to-get AC version stays meaningful. The def is kept, so saves are unaffected. Guarded: no-op without VAE Accessories.
+- **Casting relay range slider** (`altered.relayrange`, toggle + slider 1–25, default 10) — Choose how many world tiles of needlecasting range each powered casting relay adds; AC's fixed 5 is too short to matter on a real world map. Toggle off to keep AC's own behaviour.
+  *Maintainer note:* the range is hardcoded in `Building_NeuralMatrix.NeedleCastRange()`. The slider value is injected into `AC_CastingRelay` as a `RebalancePatches.CastingRelayRangeExtension` (plus rewritten description) by the `FromSetting` ops, and read by an error-safe, reflection-based Harmony postfix in `Source/RebalancePatches/Mods/AlteredCarbon/AlteredCarbonPatches.cs`. No extension → 5/relay, so custom relay defs (e.g. a malfunctioning range-1 scenario relay) can carry their own value.
 
 ### GiTS Cyberbrains
 
 Affects: **GiTS: Cyberbrains** (`moistestWhale.gitsCyberbrains`) + optionally **EPOE-Forked** (`vat.epoeforked`) and **VE Achievements** (`vanillaexpanded.achievements`) — folder `1.6/GiTS`.
 
-- **Only basic cyberbrains sold** (`gits.merchant`) — Empties the trade tags of the enhanced/specialized/advanced/extreme cyberbrain tiers. They stay craftable and can spawn on raiders.
-  *Why:* buying top-tier brains off a trader skips the whole progression.
-- **Harsher extreme mental break** (`gits.mentalbreak`) — PX-7 and HADES mental break threshold offset +20% → +40% (descriptions updated to match).
-  *Why:* the ultimate cyberbrains had a downside too small to matter.
-- **Streamlined research tree** (`gits.research`) — Collapses the three nanite surgery researches into nanite grafting and deletes the empty filler nodes, rewiring prerequisites.
-  *Why:* the GiTS tree was padded with one-recipe and zero-content nodes.
-- **Surgeries via EPOE, ultratech tiers** (`gits.surgeries`) — Requires EPOE-Forked (guarded on its BrainSurgery research). Cyberbrain install/removal surgeries unlock with EPOE brain surgery, post-basic cyberization researches become ultratech, and the now-redundant GiTS brain cyberization node is removed (a VE Achievements tracker is retargeted if that mod is present). **Must stay after `gits.research` in the file** (it deletes a node the other feature still edits).
-  *Why:* integrates GiTS into the EPOE surgery progression instead of a parallel tree, and pushes the crazy tiers to endgame.
+- **Only basic cyberbrains sold** (`gits.merchant`) — Traders no longer stock the enhanced/specialized/advanced/extreme tiers, so buying a top-tier brain can't skip the progression. They stay craftable and can spawn on raiders.
+- **Harsher extreme mental break** (`gits.mentalbreak`) — PX-7 and HADES mental break threshold offset +20% → +40% (descriptions updated); the ultimate cyberbrains get a downside that actually matters.
+- **Streamlined research tree** (`gits.research`) — The three nanite surgery researches collapse into nanite grafting and the empty filler nodes are deleted, prerequisites rewired; no more one-recipe padding nodes.
+- **Surgeries via EPOE, ultratech tiers** (`gits.surgeries`) — Cyberbrain install/removal surgeries unlock with EPOE-Forked's brain surgery and post-basic cyberization researches move to ultratech, integrating GiTS into the EPOE surgery progression and pushing the crazy tiers to endgame. Requires EPOE-Forked (guarded on its BrainSurgery research); a VE Achievements tracker is retargeted if present.
+  *Maintainer note:* **must stay after `gits.research` in the file** — it deletes a node the other feature still edits.
+
+### Odyssey
+
+Affects: **Odyssey** (`Ludeon.RimWorld.Odyssey`) — folder `1.6/Odyssey`.
+
+- **Long-range passenger shuttle** (`odyssey.shuttle`) — Chemfuel capacity 400 → 2000 (default target fuel raised to match) and cargo mass capacity 500 → 2000. At 3 fuel per tile the stock shuttle barely leaves the neighbourhood; now it has a ~666-tile reach and a hold worth loading.
 
 ---
 
 ## Genetics Research Overhaul
 
-A cohesive rework of genetics research, inspired by **Progression: Genetics** (`ferny.progressiongenetics`) but rebuilt from scratch without the Vanilla Genetics Expanded dependency, and extended with late-game genetics mods. Requires **Biotech**. Group toggle `genetics`; every module below has its own toggle and silently no-ops if the core module or its target mod is missing.
+A cohesive rework of genetics research, inspired by **Progression: Genetics** (`ferny.progressiongenetics`) but rebuilt from scratch without the Vanilla Genetics Expanded dependency, and extended with late-game genetics mods. Vanilla puts a full gene-editing empire behind two cheap industrial researches; this stages it and gives every genetics mod a common backbone to hook into. Requires **Biotech**. Group toggle `genetics`; every module below has its own toggle and silently no-ops if the core module or its target mod is missing.
 
 ### The tree
 
@@ -67,57 +68,49 @@ graph LR
 
 Affects: **Biotech** (`Ludeon.RimWorld.Biotech`) — folder `1.6/Biotech`.
 
-Injects the Genetics tab and the *basic genetic sampling* root project, then restructures vanilla: Xenogermination is renamed *xenogerm assembly* and re-rooted on sampling; gene processor and archogenetics move to the tab with raised costs. Gene extractor and gene bank unlock at sampling, the gene assembler at xenogerm assembly. The `GeneBuildingBase` prerequisite is replaced (not removed) so third-party gene buildings inheriting it default to sampling.
-*Why:* vanilla puts a full gene-editing empire behind two cheap industrial researches; this stages it and gives every genetics mod a common backbone to hook into.
+Injects the Genetics tab rooted on a new *basic genetic sampling* project (gene extractor and gene bank unlock there), renames Xenogermination to *xenogerm assembly* (gene assembler), and moves gene processor and archogenetics onto the tab with raised costs. The `GeneBuildingBase` prerequisite is replaced (not removed) so third-party gene buildings inheriting it default to sampling.
 
 ### ReSplice: Core (`genetics.resplice`)
 
 Affects: **ReSplice: Core** (`ReSplice.XOTR.Core`) — folder `1.6/ReSplice`.
 
-New *genepack centrifuge* (after xenogerm assembly) and *xenogerm replicator* (after gene processor) projects; the two buildings move behind them and are renamed to match their research.
-*Why:* both buildings piggybacked on gene processor; splitting them makes each a deliberate unlock.
+The gene centrifuge and xenogerm duplicator no longer piggyback on gene processor: each becomes a deliberate unlock behind new *genepack centrifuge* (after xenogerm assembly) and *xenogerm replicator* (after gene processor) projects, renamed to match.
 
 ### Gene Extractor Tiers (`genetics.extractortiers`)
 
 Affects: **Gene Extractor Tiers** (`RedMattis.GeneExtractor`) — folder `1.6/GeneExtractorTiers`.
 
-The gene extraction vat moves behind a new *gene extraction vats* project (after gene processor); the two archite vats behind *archite gene extraction* (after archogenetics, multianalyzer).
-*Why:* the vats trivialised extraction the moment xenogenetics finished; now they are mid- and late-tree upgrades.
+The vats trivialised extraction the moment xenogenetics finished; now the gene extraction vat is a mid-tree unlock (*gene extraction vats*, after gene processor) and the two archite vats a late one (*archite gene extraction*, after archogenetics, multianalyzer).
 
 ### Gene nodes (`genetics.genenodes`)
 
 Affects: **Gene Extractor Tiers** (`RedMattis.GeneExtractor`) + **Gene Nodes - Genes for Sale** (`RedMattis.GeneNodes`) — folders `1.6/GeneExtractorTiers` and `1.6/GeneNodes`.
 
-Base gene nodes get their own *gene nodes* project (after xenogerm assembly); all archite nodes — including the premium Ageless/Sanguophage tier — move behind *archite gene nodes* (after archogenetics) with raised build costs (more components, archite capsules and silver). Patched via the abstract bases so every node from both mods inherits the change.
-*Why:* early access to bought genes is fine, but archite node libraries are effectively free archite genes and belong at the end of the tree with real prices.
+Base gene nodes get their own *gene nodes* project (after xenogerm assembly); archite node libraries are effectively free archite genes, so all archite nodes — including the premium Ageless/Sanguophage tier — move behind *archite gene nodes* (after archogenetics) with real prices (more components, archite capsules, silver). Patched via the abstract bases so every node from both mods inherits the change.
 
 ### Gene Ripper (`genetics.generipper`)
 
 Affects: **Gene Ripper** (`defi.generipper`, legacy `DanielWedemeyer.GeneRipper`) — folder `1.6/GeneRipper`.
 
-New *gene ripper* project (after xenogerm assembly) gating the machine. Wording taken from Progression: Genetics.
-*Why:* a kill-to-extract machine shouldn't share the plain extractor's unlock.
+A kill-to-extract machine shouldn't share the plain extractor's unlock: it moves behind a new *gene ripper* project (after xenogerm assembly). Wording taken from Progression: Genetics.
 
 ### Gene Fabrication (`genetics.genefab`)
 
 Affects: **Gene Fabrication** (`AmCh.Eragon.HCGeneFabrication`) — folder `1.6/GeneFabrication`.
 
-Its research moves to the Genetics tab as an archogenetics capstone (cost raised to 8000). Note: the mod itself C#-generates one genepack recipe per gene and hardcodes archite recipes to require archogenetics — the ~50 recipes listed under archogenetics come from it.
-*Why:* fabricating genes from neutroamine is an end-of-tree power, not a gene-processor side grab.
+Fabricating genes from neutroamine is an end-of-tree power, not a gene-processor side grab: the research moves to the Genetics tab as an archogenetics capstone (cost 8000). Note: the mod C#-generates one genepack recipe per gene and hardcodes archite recipes to archogenetics — the ~50 recipes under archogenetics come from it.
 
 ### VQE Ancients archogen lab (`genetics.vqea`)
 
 Affects: **Vanilla Quests Expanded - Ancients** (`vanillaquestsexpanded.ancients`) — folder `1.6/VQEAncients`.
 
-New *archogen engineering* capstone (10000, multianalyzer) that makes the archogen injector and its 12 linkable lab facilities buildable, with real archite-tier build costs and work amounts.
-*Why:* gives the ancient lab a permanent place in the genetics endgame — raiding vaults stays the shortcut, research the long road.
+A new *archogen engineering* capstone (10000, multianalyzer) makes the archogen injector and its 12 linkable lab facilities buildable at archite-tier costs and work amounts — raiding ancient vaults stays the shortcut, research the long road.
 
 ### Alpha Genes quest flavour (`genetics.alphagenes`)
 
 Affects: **Alpha Genes** (`sarg.alphagenes`) — folder `1.6/AlphaGenes`.
 
-Renames the abandoned biotech lab quest/site to xenogenetics-lab flavour (rules copied from Progression: Genetics). Works without `genetics.core`.
-*Why:* location naming that matches the overhauled genetics theme.
+Renames the abandoned biotech lab quest/site to xenogenetics-lab flavour matching the overhauled genetics theme (rules copied from Progression: Genetics). Works without `genetics.core`.
 
 ---
 
@@ -132,12 +125,16 @@ Read the `rebalance-patches` skill before editing; short version:
 5. **Inheritance.** Child list nodes MERGE with an abstract parent's list; when re-gating something that inherits, write the replacement with `Inherit="False"`. Patching an abstract base (by `@Name`) reaches every child from every mod.
 6. **`PatchOperationSequence` aborts on first failure** — only use it inside a guard that proves all targets exist.
 7. Settings are registered in `Source/RebalancePatches/SettingsRegistry.cs` (group + child toggles, all default on). Rebuild with `dotnet build Source/RebalancePatches/RebalancePatches.csproj -c Release`.
+8. **XML-declared defaults.** `PatchOperationIfEnabled` accepts an optional `<defaultOn>false</defaultOn>`; it registers via `SettingsRegistry.RegisterXmlDefault` and wins over the C# default for both the effective value and the UI checkbox. This is how future big overhauls ship off by default without touching C#.
+9. **Numeric settings.** A `RebalanceSlider` on a group declares an int setting with its own on/off toggle sharing the same key (checkbox on the slider row). `RebalancePatches.PatchOperationAddFromSetting` / `...ReplaceFromSetting` (fields `settingKey`/`xpath`/`value`) substitute `{value}` in the value's text nodes with the effective int before applying. Wrap them in a `PatchOperationIfEnabled` keyed to the slider key so toggling it off skips the patch entirely. Values are stored only when ≠ default (revert arrow in the UI).
+10. **Harmony (since 1.2.0).** The mod depends on `brrainz.harmony` (Lib.Harmony nuget with `ExcludeAssets="runtime"`, DLL not shipped). Root `HarmonyInit.cs` calls one `TryApply(harmony)` per target mod; mod-specific C# lives under `Source/RebalancePatches/Mods/<Mod>/` (namespace `RebalancePatches.Mods.<Mod>`, but DefModExtensions referenced from XML stay in the flat `RebalancePatches` namespace). Every apply is gated on `ModsConfig.IsActive`, uses reflection instead of compile-time refs to the target mod, and wraps both the apply and the patch body in try/catch so failure degrades to the target mod's own behaviour.
 
 ### Checklist for adding a new patch
 
-1. Add the toggle (or group) in `SettingsRegistry.cs`; rebuild the DLL.
+1. Add the toggle, slider or group in `SettingsRegistry.cs`; rebuild the DLL.
 2. Create `1.6/<Mod>/Patches/<Mod>.xml` with `PatchOperationIfEnabled` + guards; unique file name.
 3. Add the `IfModActive` entry in `LoadFolders.xml` — mind the reverse ordering rule.
 4. Add the packageId to `loadAfter` in `About.xml`; update its description if user-facing.
-5. Verify in-game: clean log with the mod present, absent, and with the toggle off.
-6. **Update this document, CHANGELOG.md and the workshop description.**
+5. Any C# for the mod goes in `Source/RebalancePatches/Mods/<Mod>/`; Harmony patches follow rule 10.
+6. Verify in-game: clean log with the mod present, absent, and with the toggle off.
+7. **Update this document, CHANGELOG.md and the workshop description.**

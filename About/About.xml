@@ -3,12 +3,21 @@
   <packageId>encoded.rebalancepatches</packageId>
   <name>Encoded's Rebalance Patches</name>
   <author>Encoded</author>
-  <modVersion>1.1.0</modVersion>
+  <modVersion>1.2.0</modVersion>
   <url></url>
   <supportedVersions>
     <li>1.6</li>
   </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
   <loadAfter>
+    <li>brrainz.harmony</li>
     <li>CN.RimIOT</li>
     <li>hlx.UltratechAlteredCarbon</li>
     <li>VanillaExpanded.VAEAccessories</li>
@@ -23,11 +32,12 @@
     <li>AmCh.Eragon.HCGeneFabrication</li>
     <li>vanillaquestsexpanded.ancients</li>
   </loadAfter>
-  <description>Opinionated balance tweaks and cross-mod compatibility patches. Each patch applies only when the mod it targets is loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). No dependencies.
+  <description>Opinionated balance tweaks and cross-mod compatibility patches. Each patch applies only when the mod it targets is loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). Requires Harmony.
 
 Included:
 - RimIOT - Logistic Matrix: cheaper builds, basic components only, no power consumption.
-- Altered Carbon: disables the redundant ranged shield belt from VAE Accessories in favour of the cuirassier belt.
+- Altered Carbon: disables the redundant ranged shield belt from VAE Accessories in favour of the cuirassier belt, and a slider for the casting relay's needlecasting range.
 - GiTS Cyberbrains: only basic cyberbrains on the market, surgeries via EPOE brain surgery, post-basic cyberization at ultratech tier, harsher extreme mental break, and a streamlined research tree.
-- Genetics Research Overhaul (Biotech): a dedicated Genetics research tab in the spirit of Progression: Genetics, integrating ReSplice: Core, Gene Extractor Tiers, Gene Ripper, Gene Nodes - Genes for Sale, Gene Fabrication, VQE Ancients' archogen laboratory and Alpha Genes quest flavour.</description>
+- Genetics Research Overhaul (Biotech): a dedicated Genetics research tab in the spirit of Progression: Genetics, integrating ReSplice: Core, Gene Extractor Tiers, Gene Ripper, Gene Nodes - Genes for Sale, Gene Fabrication, VQE Ancients' archogen laboratory and Alpha Genes quest flavour.
+- Odyssey: long-range passenger shuttle with bigger fuel and cargo capacity.</description>
 </ModMetaData>

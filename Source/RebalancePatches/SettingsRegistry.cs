@@ -18,19 +18,45 @@ namespace RebalancePatches
         }
     }
 
+    public class RebalanceSlider
+    {
+        public readonly string key;
+        public readonly string label;
+        public readonly string description;
+        public readonly int defaultValue;
+        public readonly int min;
+        public readonly int max;
+        public readonly bool defaultOn;
+
+        public RebalanceSlider(string key, string label, string description, int defaultValue, int min, int max,
+            bool defaultOn = true)
+        {
+            this.key = key;
+            this.label = label;
+            this.description = description;
+            this.defaultValue = defaultValue;
+            this.min = min;
+            this.max = max;
+            this.defaultOn = defaultOn;
+        }
+    }
+
     public class RebalanceGroup
     {
         public readonly string key;
         public readonly string label;
         public readonly bool defaultOn;
         public readonly List<RebalanceToggle> children;
+        public readonly List<RebalanceSlider> sliders;
 
-        public RebalanceGroup(string key, string label, List<RebalanceToggle> children, bool defaultOn = true)
+        public RebalanceGroup(string key, string label, List<RebalanceToggle> children, bool defaultOn = true,
+            List<RebalanceSlider> sliders = null)
         {
             this.key = key;
             this.label = label;
             this.children = children;
             this.defaultOn = defaultOn;
+            this.sliders = sliders ?? new List<RebalanceSlider>();
         }
     }
 
@@ -43,13 +69,18 @@ namespace RebalancePatches
                 new RebalanceToggle("rimiot.costs", "Reduce build costs",
                     "Cheaper cable, connector and interface, with advanced components replaced by basic ones."),
                 new RebalanceToggle("rimiot.power", "Remove power consumption",
-                    "Network buildings draw no power and need no wiring."),
+                    "Network buildings draw no power and need no wiring, and their descriptions drop the power notes."),
             }),
 
             new RebalanceGroup("altered", "Altered Carbon", new List<RebalanceToggle>
             {
                 new RebalanceToggle("altered.shieldbelt", "Disable the ranged shield belt from VAE Accessories",
                     "Makes Vanilla Apparel Expanded - Accessories' ranged shield belt unobtainable in favour of Altered Carbon's cuirassier belt. Needs both mods. The def is kept, so saves are unaffected."),
+            }, sliders: new List<RebalanceSlider>
+            {
+                new RebalanceSlider("altered.relayrange", "Casting relay range per relay",
+                    "World tiles of needlecasting range each powered casting relay adds to a neural matrix. Altered Carbon's own value is 5; toggling this off keeps it.",
+                    10, 1, 25),
             }),
 
             new RebalanceGroup("gits", "GiTS Cyberbrains", new List<RebalanceToggle>
@@ -83,11 +114,20 @@ namespace RebalancePatches
                 new RebalanceToggle("genetics.alphagenes", "Alpha Genes xenogenetics lab quest names",
                     "Renames Alpha Genes' abandoned biotech lab quest and site to xenogenetics lab flavour, as Progression: Genetics did. Works on its own."),
             }),
+
+            new RebalanceGroup("odyssey", "Odyssey", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("odyssey.shuttle", "Long-range passenger shuttle",
+                    "Raises the passenger shuttle's chemfuel capacity from 400 to 2000 and its cargo mass capacity from 500 to 2000."),
+            }),
         };
 
         private static RebalancePatchesSettings settings;
+        private static readonly Dictionary<string, bool> xmlDefaults = new Dictionary<string, bool>();
 
         public static void Bind(RebalancePatchesSettings boundSettings) => settings = boundSettings;
+
+        public static void RegisterXmlDefault(string key, bool defaultOn) => xmlDefaults[key] = defaultOn;
 
         public static bool GetEffective(string key)
         {
@@ -108,6 +148,8 @@ namespace RebalancePatches
 
         public static bool DefaultOf(string key)
         {
+            if (xmlDefaults.TryGetValue(key, out bool xmlDefault))
+                return xmlDefault;
             foreach (RebalanceGroup g in Groups)
             {
                 if (g.key == key)
@@ -115,8 +157,52 @@ namespace RebalancePatches
                 foreach (RebalanceToggle c in g.children)
                     if (c.key == key)
                         return c.defaultOn;
+                foreach (RebalanceSlider s in g.sliders)
+                    if (s.key == key)
+                        return s.defaultOn;
             }
             return false;
+        }
+
+        public static int GetEffectiveValue(string key)
+        {
+            RebalanceSlider slider = SliderOf(key);
+            if (slider == null)
+                return 0;
+            if (!GetEffective(key))
+                return slider.defaultValue;
+            return OwnValue(key);
+        }
+
+        public static int OwnValue(string key)
+        {
+            if (settings != null && settings.TryGetInt(key, out int v))
+                return v;
+            return SliderOf(key)?.defaultValue ?? 0;
+        }
+
+        public static bool IsValueOverridden(string key) => settings != null && settings.TryGetInt(key, out _);
+
+        public static void SetValue(string key, int value)
+        {
+            RebalanceSlider slider = SliderOf(key);
+            if (slider == null || settings == null)
+                return;
+            if (value == slider.defaultValue)
+                settings.RemoveInt(key);
+            else
+                settings.SetInt(key, value);
+        }
+
+        public static void ClearValue(string key) => settings?.RemoveInt(key);
+
+        public static RebalanceSlider SliderOf(string key)
+        {
+            foreach (RebalanceGroup g in Groups)
+                foreach (RebalanceSlider s in g.sliders)
+                    if (s.key == key)
+                        return s;
+            return null;
         }
 
         public static RebalanceGroup GroupOf(string key)
@@ -127,6 +213,9 @@ namespace RebalancePatches
                     return g;
                 foreach (RebalanceToggle c in g.children)
                     if (c.key == key)
+                        return g;
+                foreach (RebalanceSlider s in g.sliders)
+                    if (s.key == key)
                         return g;
             }
             return null;

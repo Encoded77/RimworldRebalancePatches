@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.6" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup>

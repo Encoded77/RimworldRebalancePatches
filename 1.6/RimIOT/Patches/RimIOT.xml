@@ -34,6 +34,24 @@
       <li Class="PatchOperationRemove">
         <xpath>Defs/ThingDef[defName="RimIOT_Interface"]/comps/li[@Class="CompProperties_Flickable"]</xpath>
       </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="RimIOT_InputConnector"]/comps/li[@Class="RimIOT.CompProperties_InterfacePower"]</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="RimIOT_Interface"]/comps/li[@Class="RimIOT.CompProperties_InterfacePower"]</xpath>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="RimIOT_Cable"]/description</xpath>
+        <value><description>An invisible data cable used to connect IOT network buildings.\n\n"Through classical mechanics, quantum mechanics, general relativity, macro-reality editing, aetheric particle theory, and theories there simply isn't room to write down here... anyway, items can now be transmitted through it just like electricity."</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="RimIOT_InputConnector"]/description</xpath>
+        <value><description>A floor-level connector that registers the storage container (like a shelf) or stockpile zone above it and connects it to the IOT network.\n\nOnly one input connector is allowed within a 1-tile radius, and a single container can only be linked to one input connector within a network.\n\n"Setting up multiple networks within the same container may lead to negative effects including, but not limited to, the Big Rip, Heat Death, and Vacuum Decay. In severe cases, it might even cause lines of red text to appear on your screen."</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="RimIOT_Interface"]/description</xpath>
+        <value><description>A wall-mounted terminal interface that allows colonists to deposit and withdraw items from the IOT storage network. Items deposited here are rapidly transferred to the best available container in the network.\n\n"Properly arrange their locations and network assignments, and you can grab your breakfast from hundreds of meters away without leaving your bed. But if you just wire every network together, you might have to search the armory for your morning meal."</description></value>
+      </li>
     </operations>
   </Operation>
 

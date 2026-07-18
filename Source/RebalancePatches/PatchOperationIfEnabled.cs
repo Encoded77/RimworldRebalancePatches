@@ -8,11 +8,15 @@ namespace RebalancePatches
     public class PatchOperationIfEnabled : PatchOperation
     {
         public string settingKey;
+        public bool defaultOn = true;
         public List<PatchOperation> operations;
 
         protected override bool ApplyWorker(XmlDocument xml)
         {
-            if (string.IsNullOrEmpty(settingKey) || !SettingsRegistry.GetEffective(settingKey) || operations == null)
+            if (string.IsNullOrEmpty(settingKey))
+                return true;
+            SettingsRegistry.RegisterXmlDefault(settingKey, defaultOn);
+            if (!SettingsRegistry.GetEffective(settingKey) || operations == null)
                 return true;
 
             foreach (PatchOperation op in operations)

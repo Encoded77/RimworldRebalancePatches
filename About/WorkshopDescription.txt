@@ -1,5 +1,5 @@
 [h1]Rebalance Patches[/h1]
-Opinionated balance tweaks and cross-mod compatibility patches. Each patch applies only when the mods it targets are loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). No dependencies.
+Opinionated balance tweaks and cross-mod compatibility patches. Each patch applies only when the mods it targets are loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). Requires Harmony.
 I will add more to the feature list over time.
 
 [h2]Genetics Research Overhaul[/h2]
@@ -20,8 +20,9 @@ Each integration has its own toggle; missing mods are simply skipped.
 [h2]Other features[/h2]
 [list]
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3723972815]RimIOT - Logistic Matrix[/url]: cheaper builds, basic components only, no power consumption.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2196278117]Altered Carbon[/url]: disables the redundant ranged shield belt from VAE Accessories in favour of the harder to get cuirassier belt.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2196278117]Altered Carbon[/url]: disables the redundant ranged shield belt from VAE Accessories in favour of the harder to get cuirassier belt, and a slider for the casting relay's needlecasting range (default 10 tiles per relay instead of 5).
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3272114598]GiTS Cyberbrains[/url]: only basic cyberbrains on the market, surgeries via EPOE brain surgery, post-basic cyberization at ultratech tier, harsher extreme mental break, and a streamlined research tree.
+[*]Odyssey: long-range passenger shuttle — 2000 chemfuel and 2000 kg cargo capacity.
 [/list]
 
 [hr][/hr]

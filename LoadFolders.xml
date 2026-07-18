@@ -5,6 +5,7 @@
     <li IfModActive="CN.RimIOT">1.6/RimIOT</li>
     <li IfModActive="hlx.UltratechAlteredCarbon">1.6/AlteredCarbon</li>
     <li IfModActive="moistestWhale.gitsCyberbrains">1.6/GiTS</li>
+    <li IfModActive="Ludeon.RimWorld.Odyssey">1.6/Odyssey</li>
     <!-- Patch files apply in REVERSE of this listing (foldersToLoadDescendingOrder),
          so 1.6/Biotech must be listed LAST to patch first (it creates the Genetics tab
          the folders above test for), and GeneNodes before GeneExtractorTiers. -->
