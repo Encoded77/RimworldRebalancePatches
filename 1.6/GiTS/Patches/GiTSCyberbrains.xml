@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>gits.merchant</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainEnhancedBase"]/tradeTags</xpath>
+        <value><tradeTags /></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainSpecializedBase"]/tradeTags</xpath>
+        <value><tradeTags /></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainAdvancedBase"]/tradeTags</xpath>
+        <value><tradeTags /></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainExtremeBase"]/tradeTags</xpath>
+        <value><tradeTags /></value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>gits.mentalbreak</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsPX7Hediff"]/stages/li[statOffsets/MentalBreakThreshold]/statOffsets/MentalBreakThreshold</xpath>
+        <value><MentalBreakThreshold>0.40</MentalBreakThreshold></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsHADESHediff"]/stages/li[statOffsets/MentalBreakThreshold]/statOffsets/MentalBreakThreshold</xpath>
+        <value><MentalBreakThreshold>0.40</MentalBreakThreshold></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsPX7Cyberbrain"]/description</xpath>
+        <value>
+          <description><![CDATA[This prototype Poseidon PX-7 cyberbrain is an extreme upgrade that enhances a user's ability to work on just about anything.
+
+The cyberization method has micromachines inserted into the brain, integrating with larger-scale microcircuitry and creating interfaces with the brain. The resulting tissue is a hybridization of organic nervous tissue and cybernetic components and is superior to the original in all aspects.
+
+With less than 5% of original brain matter remaining for ghost retention, drawbacks have begun to present themselves due to cyberization. The user has started to present perversely heightened emotions as their brain is less capable of dampening such, showing signs of possible psychological disorders.
+
+
+<color=#e6e6e6ff><size=11.8>Poseidon PX-7 modifiers:</size><size=10.2>
+
+   Part Efficiency: +50%
+   Consciousness: +50%
+   Manipulation: +25%
+   Moving: +10%
+   Sight: +25%
+   Hearing: +25%
+   Learning Speed: +100%
+   General Labor Speed: +50%
+   Construction Speed: +65%
+   Mining Speed: +50%
+   Cooking Speed: +65%
+   Smoothing Speed: +90%
+   Drug Production Speed: +65%
+   Smelting Speed: +60%
+   Butcher Speed: +100%
+   Butcher Efficiency: +80%
+   Plant Work Speed: +50%
+   Plant Harvest Yield: +80%
+   Drug Harvest Yield: +80%
+   Pruning Speed: +50%
+   Food Poison Chance: -25%
+   Tending Speed: +20%
+   Operation Speed: +35%
+   Tending Quality: +10%
+   Surgery Success Chance: +20%
+   Reading Speed: +35%
+   Research Speed: +50%
+   Social Impact: +18%
+   Negotiation Ability: +35%
+   Trade Price Improvement: +18%
+   Arrest Success Chance: +10%
+   Hacking Speed: +200%
+   Move Speed: +10%
+
+   Mental Break Threshold: +40%
+   Social Fight Chance: +400%
+</size></color>]]></description>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsHADESCyberbrain"]/description</xpath>
+        <value>
+          <description><![CDATA[This Locus-Solus HADES cyberbrain is an extreme upgrade that can be considered to be the ultimate cyberbrain for enhancing a user's combat abilities.
+
+The cyberization method has micromachines inserted into the brain, integrating with larger-scale microcircuitry and creating interfaces with the brain. The resulting tissue is a hybridization of organic nervous tissue and cybernetic components and is superior to the original in all aspects.
+
+With less than 5% of original brain matter remaining for ghost retention, drawbacks have begun to present themselves due to cyberization. The user has started to present perversely heightened emotions as their brain is less capable of dampening such, showing signs of possible psychological disorders.
+
+
+<color=#e6e6e6ff><size=11.8>Locus-Solus HADES modifiers:</size><size=10.2>
+
+   Part Efficiency: +50%
+   Consciousness: +50%
+   Manipulation: +25%
+   Moving: +10%
+   Sight: +25%
+   Hearing: +25%
+   Learning Speed: +100%
+   Research Speed: +20%
+   Shooting Accuracy: +12
+   Aiming Delay: -65%
+   Ranged Cooldown: -65%
+   Mortar Miss Radius: -20%
+   Melee Hit Chance: +12
+   Melee Dodge Chance: +18
+   Hacking Speed: +120%
+   Move Speed: +50%
+   Melee Cooldown: -25%
+   Melee Damage: +35%
+
+   Mental Break Threshold: +40%
+   Social Fight Chance: +400%
+</size></color>]]></description>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>gits.research</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="gitsResearchNaniteGrafting"]/baseCost</xpath>
+        <value><baseCost>800</baseCost></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/RecipeDef[@Name="gitsSurgeryImmunityNanitesBase"]/researchPrerequisite</xpath>
+        <value><researchPrerequisites><li>gitsResearchNaniteGrafting</li></researchPrerequisites></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/RecipeDef[@Name="gitsSurgeryRepairNanitesBase"]/researchPrerequisite</xpath>
+        <value><researchPrerequisites><li>gitsResearchNaniteGrafting</li></researchPrerequisites></value>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/RecipeDef[@Name="gitsSurgeryRemoveOrganDecayBase"]/researchPrerequisite</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ResearchProjectDef[defName="gitsResearchImmunityNanites"]</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ResearchProjectDef[defName="gitsToxinRepairNanites"]</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ResearchProjectDef[defName="gitsOrganDecayNanites"]</xpath>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="gitsResearchCyberNetIntegration"]/prerequisites</xpath>
+        <value>
+          <prerequisites>
+            <li>gitsResearchMicromachines</li>
+            <li>MicroelectronicsBasics</li>
+          </prerequisites>
+        </value>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ResearchProjectDef[defName="gitsResearchBrainCyberization"]/prerequisites/li[text()="gitsResearchCyberInterface"]</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ResearchProjectDef[defName="gitsResearchCyberInterface"]</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ResearchProjectDef[defName="gitsResearchNet"]</xpath>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>gits.surgeries</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="BrainSurgery"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[@Name="gitsSurgeryInstallCyberbrainBase"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>BrainSurgery</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[@Name="gitsSurgeryRemoveCyberbrainBase"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>BrainSurgery</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="gitsResearchEnhancedCyberization"]</xpath>
+              <value><techLevel>Ultra</techLevel></value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="gitsResearchSpecializedCyberization"]</xpath>
+              <value><techLevel>Ultra</techLevel></value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="gitsResearchExtremeCyberization"]</xpath>
+              <value><techLevel>Ultra</techLevel></value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="gitsResearchAdvSpecializedCyberization"]</xpath>
+              <value><techLevel>Ultra</techLevel></value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="gitsResearchCombatCyberization"]</xpath>
+              <value><techLevel>Ultra</techLevel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="gitsResearchBasicCyberization"]/prerequisites/li[text()="gitsResearchBrainCyberization"]</xpath>
+              <value><li>BrainSurgery</li></value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="gitsResearchBasicCyberization"]/prerequisites</xpath>
+              <value><li>gitsResearchNaniteGrafting</li></value>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/AchievementsExpanded.AchievementDef[defName="gitsAchieveManMeetsMachine"]</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/AchievementsExpanded.AchievementDef[defName="gitsAchieveManMeetsMachine"]/tracker/def</xpath>
+                <value><def>gitsResearchBasicCyberization</def></value>
+              </match>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ResearchProjectDef[defName="gitsResearchBrainCyberization"]</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

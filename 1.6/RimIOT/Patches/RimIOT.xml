@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>rimiot.costs</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="RimIOT_Cable"]/costList</xpath>
+        <value><costList><Steel>3</Steel></costList></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="RimIOT_InputConnector"]/costList</xpath>
+        <value><costList><Steel>20</Steel><ComponentIndustrial>2</ComponentIndustrial></costList></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="RimIOT_Interface"]/costList</xpath>
+        <value><costList><Steel>20</Steel><ComponentIndustrial>2</ComponentIndustrial></costList></value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>rimiot.power</settingKey>
+    <operations>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="RimIOT_InputConnector"]/comps/li[@Class="CompProperties_Power"]</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="RimIOT_Interface"]/comps/li[@Class="CompProperties_Power"]</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="RimIOT_InputConnector"]/comps/li[@Class="CompProperties_Flickable"]</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="RimIOT_Interface"]/comps/li[@Class="CompProperties_Flickable"]</xpath>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

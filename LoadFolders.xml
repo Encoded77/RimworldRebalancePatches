@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<loadFolders>
+  <v1.6>
+    <li>1.6</li>
+    <li IfModActive="CN.RimIOT">1.6/RimIOT</li>
+    <li IfModActive="hlx.UltratechAlteredCarbon">1.6/AlteredCarbon</li>
+    <li IfModActive="moistestWhale.gitsCyberbrains">1.6/GiTS</li>
+  </v1.6>
+</loadFolders>

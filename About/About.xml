@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <packageId>encoded.rebalancepatches</packageId>
+  <name>Encoded's Rebalance Patches</name>
+  <author>Encoded</author>
+  <modVersion>1.0.0</modVersion>
+  <url></url>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <loadAfter>
+    <li>CN.RimIOT</li>
+    <li>hlx.UltratechAlteredCarbon</li>
+    <li>VanillaExpanded.VAEAccessories</li>
+    <li>moistestWhale.gitsCyberbrains</li>
+    <li>vat.epoeforked</li>
+  </loadAfter>
+  <description>Opinionated balance tweaks and cross-mod compatibility patches. Each patch applies only when the mod it targets is loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). No dependencies.
+
+Included:
+- RimIOT - Logistic Matrix: cheaper builds, basic components only, no power consumption.
+- Altered Carbon: disables the redundant ranged shield belt from VAE Accessories in favour of the cuirassier belt.
+- GiTS Cyberbrains: only basic cyberbrains on the market, surgeries via EPOE brain surgery, post-basic cyberization at ultratech tier, harsher extreme mental break, and a streamlined research tree.</description>
+</ModMetaData>
