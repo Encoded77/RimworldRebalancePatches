@@ -2,7 +2,7 @@
 
 > **⚠ Keep this document up to date: every time a patch is added, removed or meaningfully changed, update this file (and CHANGELOG.md) in the same commit.**
 
-This is the internal reference for every patch the mod ships. Steam-facing text lives in About.xml and the workshop description; this file is for tracking what each patch does, to which mods, and why.
+This is the internal reference for every patch the mod ships. This file is for tracking what each patch does, to which mods, and why.
 
 ---
 
@@ -12,7 +12,7 @@ This is the internal reference for every patch the mod ships. Steam-facing text 
 
 Affects: **RimIOT - Logistic Matrix** (`CN.RimIOT`) — folder `1.6/RimIOT`.
 
-- **Cheaper builds** (`rimiot.costs`) — Rewrites the cost lists of the cable, input connector and interface: a few steel, industrial components instead of advanced ones.
+- **Cheaper builds** (`rimiot.costs`) — Rewrites the cost lists of the cable, input connector and interface: a few steel, industrial components instead of advanced ones<>
   *Why:* RimIOT is quality-of-life logistics; advanced-component prices made passive infrastructure feel like an endgame investment.
 - **No power consumption** (`rimiot.power`) — Strips the power and flickable comps from the network buildings.
   *Why:* removes wiring/power micromanagement from something that should just work in the background.
@@ -102,14 +102,14 @@ New *gene ripper* project (after xenogerm assembly) gating the machine. Wording 
 
 Affects: **Gene Fabrication** (`AmCh.Eragon.HCGeneFabrication`) — folder `1.6/GeneFabrication`.
 
-Its research moves to the Genetics tab as an archogenetics capstone (cost raised to 8000). Note: the mod itself C#-generates one genepack recipe per gene and hardcodes archite recipes to require archogenetics — the ~50 recipes listed under archogenetics come from it, not from us.
+Its research moves to the Genetics tab as an archogenetics capstone (cost raised to 8000). Note: the mod itself C#-generates one genepack recipe per gene and hardcodes archite recipes to require archogenetics — the ~50 recipes listed under archogenetics come from it.
 *Why:* fabricating genes from neutroamine is an end-of-tree power, not a gene-processor side grab.
 
 ### VQE Ancients archogen lab (`genetics.vqea`)
 
 Affects: **Vanilla Quests Expanded - Ancients** (`vanillaquestsexpanded.ancients`) — folder `1.6/VQEAncients`.
 
-New *archogen engineering* capstone (10000, multianalyzer) that makes the archogen injector and its 12 linkable lab facilities buildable, with real archite-tier build costs and work amounts (they are loot-only by default).
+New *archogen engineering* capstone (10000, multianalyzer) that makes the archogen injector and its 12 linkable lab facilities buildable, with real archite-tier build costs and work amounts.
 *Why:* gives the ancient lab a permanent place in the genetics endgame — raiding vaults stays the shortcut, research the long road.
 
 ### Alpha Genes quest flavour (`genetics.alphagenes`)

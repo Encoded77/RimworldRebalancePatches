@@ -1,0 +1,28 @@
+[h1]Rebalance Patches[/h1]
+Opinionated balance tweaks and cross-mod compatibility patches. Each patch applies only when the mods it targets are loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). No dependencies.
+I will add more to the feature list over time.
+
+[h2]Genetics Research Overhaul[/h2]
+Inspired by [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3239506998]Progression: Genetics[/url], but without Vanilla Genetics Expanded because I don't like playing with that mod. Push the genetics tier to spacer tier and rework the full progression from basic genetic sampling to archogenetics. Requires Biotech.
+
+Integrated mods:
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3236303965]ReSplice: Core[/url]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3016454783]Gene Extractor Tiers[/url]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3264344552]Gene Nodes - Genes for Sale[/url]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3352773112]Gene Fabrication[/url]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3524806362]Gene Ripper[/url]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3618306875]Vanilla Quests Expanded - Ancients[/url]: a new archogen engineering capstone research lets you build the archogen injector and its lab facilities yourself, at archite-tier costs — recovering them from ancient vaults remains the early route.
+[/list]
+
+Each integration has its own toggle; missing mods are simply skipped.
+
+[h2]Other features[/h2]
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3723972815]RimIOT - Logistic Matrix[/url]: cheaper builds, basic components only, no power consumption.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2196278117]Altered Carbon[/url]: disables the redundant ranged shield belt from VAE Accessories in favour of the harder to get cuirassier belt.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3272114598]GiTS Cyberbrains[/url]: only basic cyberbrains on the market, surgeries via EPOE brain surgery, post-basic cyberization at ultratech tier, harsher extreme mental break, and a streamlined research tree.
+[/list]
+
+[hr][/hr]
+Source code available here: https://github.com/Encoded77/RimworldRebalancePatches
