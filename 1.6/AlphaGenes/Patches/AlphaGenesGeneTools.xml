@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>genetics.agtools</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <ResearchProjectDef>
+                  <defName>RBP_GeneToolkits</defName>
+                  <label>gene toolkits</label>
+                  <description>Craft single-use genetic toolkits that remove, convert or mutate genes on living subjects and edit genepacks. The archotech-grade targeted variants additionally require archite capsules.</description>
+                  <baseCost>2500</baseCost>
+                  <techLevel>Spacer</techLevel>
+                  <tab>RBP_GeneticsTab</tab>
+                  <prerequisites>
+                    <li>GeneProcessor</li>
+                  </prerequisites>
+                  <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                  <researchViewX>3</researchViewX>
+                  <researchViewY>3.80</researchViewY>
+                </ResearchProjectDef>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="AG_GenepackTweaker" or defName="AG_GenepackDisruptor"]</xpath>
+              <value>
+                <recipeMaker>
+                  <researchPrerequisite>RBP_GeneToolkits</researchPrerequisite>
+                  <recipeUsers>
+                    <li>FabricationBench</li>
+                  </recipeUsers>
+                  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                  <workSkill>Crafting</workSkill>
+                  <effectWorking>Smith</effectWorking>
+                  <soundWorking>Recipe_Machining</soundWorking>
+                  <skillRequirements>
+                    <Crafting>6</Crafting>
+                  </skillRequirements>
+                </recipeMaker>
+                <costList>
+                  <Neutroamine>4</Neutroamine>
+                  <ComponentIndustrial>1</ComponentIndustrial>
+                </costList>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="AG_GenepackTweaker" or defName="AG_GenepackDisruptor"]/statBases</xpath>
+              <value>
+                <WorkToMake>6000</WorkToMake>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="AG_GeneRemover" or defName="AG_Endogenefier" or defName="AG_Xenogenefier" or defName="AG_GermlineMutator"]</xpath>
+              <value>
+                <recipeMaker>
+                  <researchPrerequisite>RBP_GeneToolkits</researchPrerequisite>
+                  <recipeUsers>
+                    <li>FabricationBench</li>
+                  </recipeUsers>
+                  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                  <workSkill>Crafting</workSkill>
+                  <effectWorking>Smith</effectWorking>
+                  <soundWorking>Recipe_Machining</soundWorking>
+                  <skillRequirements>
+                    <Crafting>6</Crafting>
+                  </skillRequirements>
+                </recipeMaker>
+                <costList>
+                  <Neutroamine>8</Neutroamine>
+                  <ComponentIndustrial>2</ComponentIndustrial>
+                </costList>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="AG_GeneRemover" or defName="AG_Endogenefier" or defName="AG_Xenogenefier" or defName="AG_GermlineMutator"]/statBases</xpath>
+              <value>
+                <WorkToMake>9000</WorkToMake>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="AG_XenotypeNullifier" or defName="AG_XenotypeInjector"]</xpath>
+              <value>
+                <recipeMaker>
+                  <researchPrerequisite>RBP_GeneToolkits</researchPrerequisite>
+                  <recipeUsers>
+                    <li>FabricationBench</li>
+                  </recipeUsers>
+                  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                  <workSkill>Crafting</workSkill>
+                  <effectWorking>Smith</effectWorking>
+                  <soundWorking>Recipe_Machining</soundWorking>
+                  <skillRequirements>
+                    <Crafting>6</Crafting>
+                  </skillRequirements>
+                </recipeMaker>
+                <costList>
+                  <Neutroamine>12</Neutroamine>
+                  <ComponentSpacer>1</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="AG_XenotypeNullifier" or defName="AG_XenotypeInjector"]/statBases</xpath>
+              <value>
+                <WorkToMake>12000</WorkToMake>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="AG_ArchoGeneRemover" or defName="AG_ArchoEndogenefier" or defName="AG_ArchoXenogenefier"]</xpath>
+              <value>
+                <recipeMaker>
+                  <researchPrerequisite>RBP_GeneToolkits</researchPrerequisite>
+                  <recipeUsers>
+                    <li>FabricationBench</li>
+                  </recipeUsers>
+                  <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                  <workSkill>Crafting</workSkill>
+                  <effectWorking>Smith</effectWorking>
+                  <soundWorking>Recipe_Machining</soundWorking>
+                  <skillRequirements>
+                    <Crafting>8</Crafting>
+                  </skillRequirements>
+                </recipeMaker>
+                <costList>
+                  <Neutroamine>12</Neutroamine>
+                  <ComponentSpacer>2</ComponentSpacer>
+                  <ArchiteCapsule>1</ArchiteCapsule>
+                </costList>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="AG_ArchoGeneRemover" or defName="AG_ArchoEndogenefier" or defName="AG_ArchoXenogenefier"]/statBases</xpath>
+              <value>
+                <WorkToMake>18000</WorkToMake>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AG_ArchoXenogenefier"]/statBases/MarketValue</xpath>
+              <value><MarketValue>500</MarketValue></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

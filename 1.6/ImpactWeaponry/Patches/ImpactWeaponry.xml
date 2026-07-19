@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>impactweaponry.bolterprereq</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>oskarpotocki.vfe.pirates</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="DV_Box_ImpactBolter"]/researchPrerequisites</xpath>
+          <value>
+            <researchPrerequisites Inherit="False">
+              <li>VFEP_SpacerWarcasketWeaponry</li>
+              <li>DV_ImpactShot</li>
+            </researchPrerequisites>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>odyssey.vacuumtrims</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.gravship</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="DV_ApparelArmorHelmetCrusaderBase"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.67</VacuumResistance></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="DV_ApparelArmorHelmetCrusaderBase"]/statBases/ArmorRating_Sharp</xpath>
+              <value><ArmorRating_Sharp>1.10</ArmorRating_Sharp></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

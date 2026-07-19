@@ -19,6 +19,48 @@
           </value>
         </match>
       </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_ArchiteGeneNodes"]</xpath>
+        <match Class="PatchOperationRemove">
+          <xpath>Defs/ThingDef[defName="GET_Ageless" or defName="GET_Sanguophage"]/costList</xpath>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_ArchiteGeneNodes"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="GET_BudgetDeathless"]</xpath>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ThingDef[defName="GET_BudgetDeathless" or defName="GET_SoulPower" or defName="GET_SoulStealer"]/costList</xpath>
+          </match>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_ArchiteGeneNodes"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="GET_AG_Helixien"]</xpath>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ThingDef[defName="GET_AG_Helixien"]/costList</xpath>
+          </match>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_ArchiteGeneNodes"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="GET_AG_Beauty"]</xpath>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="GET_AG_Beauty"]/costList</xpath>
+            <value>
+              <costList Inherit="False">
+                <Steel>100</Steel>
+                <ComponentIndustrial>2</ComponentIndustrial>
+                <ComponentSpacer>2</ComponentSpacer>
+                <ArchiteCapsule>3</ArchiteCapsule>
+                <Silver>1000</Silver>
+              </costList>
+            </value>
+          </match>
+        </match>
+      </li>
     </operations>
   </Operation>
 

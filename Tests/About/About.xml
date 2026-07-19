@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <packageId>encoded.rebalancepatches.tests</packageId>
+  <name>Rebalance Patches - Tests (dev only)</name>
+  <author>Encoded</author>
+  <supportedVersions>
+    <li>1.6</li>
+  </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>ilyvion.rimtestredux</packageId>
+      <displayName>RimTest Redux</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/3762405308</steamWorkshopUrl>
+      <downloadUrl>https://github.com/ilyvion/rimtest-redux/releases/latest</downloadUrl>
+    </li>
+    <li>
+      <packageId>encoded.rebalancepatches</packageId>
+      <displayName>Encoded's Rebalance Patches</displayName>
+      <downloadUrl>https://github.com/dupth/RimworldRebalancePatches</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>ilyvion.rimtestredux</li>
+    <li>encoded.rebalancepatches</li>
+  </loadAfter>
+  <description>In-game RimTest Redux suites for Encoded's Rebalance Patches, mirroring Verification.md. Dev modlist only - never publish or ship this mod.</description>
+</ModMetaData>

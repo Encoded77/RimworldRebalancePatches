@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.dodge</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="DV_DodgeChance_High"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="DV_DodgeChance_High"]/exclusionTags</xpath>
+          <value><li>MeleeDodge</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="DV_DodgeChance_High"]</xpath>
+          <value><exclusionTags><li>MeleeDodge</li></exclusionTags></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="DV_DodgeChance_Low"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="DV_DodgeChance_Low"]/exclusionTags</xpath>
+          <value><li>MeleeDodge</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="DV_DodgeChance_Low"]</xpath>
+          <value><exclusionTags><li>MeleeDodge</li></exclusionTags></value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

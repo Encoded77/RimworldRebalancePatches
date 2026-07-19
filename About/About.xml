@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ModMetaData>
   <packageId>encoded.rebalancepatches</packageId>
   <name>Encoded's Rebalance Patches</name>
   <author>Encoded</author>
-  <modVersion>1.2.0</modVersion>
+  <modVersion>1.3.0</modVersion>
   <url></url>
   <supportedVersions>
     <li>1.6</li>
@@ -18,26 +18,46 @@
   </modDependencies>
   <loadAfter>
     <li>brrainz.harmony</li>
-    <li>CN.RimIOT</li>
-    <li>hlx.UltratechAlteredCarbon</li>
-    <li>VanillaExpanded.VAEAccessories</li>
-    <li>moistestWhale.gitsCyberbrains</li>
+    <li>cn.rimiot</li>
+    <li>hlx.ultratechalteredcarbon</li>
+    <li>vanillaexpanded.vaeaccessories</li>
+    <li>moistestwhale.gitscyberbrains</li>
     <li>vat.epoeforked</li>
     <li>sarg.alphagenes</li>
-    <li>ReSplice.XOTR.Core</li>
-    <li>RedMattis.GeneExtractor</li>
-    <li>RedMattis.GeneNodes</li>
-    <li>DanielWedemeyer.GeneRipper</li>
+    <li>resplice.xotr.core</li>
+    <li>redmattis.geneextractor</li>
+    <li>redmattis.genenodes</li>
+    <li>danielwedemeyer.generipper</li>
     <li>defi.generipper</li>
-    <li>AmCh.Eragon.HCGeneFabrication</li>
+    <li>amch.eragon.hcgenefabrication</li>
     <li>vanillaquestsexpanded.ancients</li>
+    <li>redmattis.bigsmall.core</li>
+    <li>wvc.sergkart.races.biotech</li>
+    <li>vanillaracesexpanded.highmate</li>
+    <li>vanillaracesexpanded.archon</li>
+    <li>vanillaracesexpanded.sanguophage</li>
+    <li>vanillaracesexpanded.lycanthrope</li>
+    <li>rimsenal.harana</li>
+    <li>rimsenal.askbarn</li>
+    <li>det.keshig</li>
+    <li>elsov.highborn</li>
+    <li>oskarpotocki.vfe.pirates</li>
+    <li>rimsenal.spacer</li>
+    <li>lts.i</li>
+    <li>sarg.alphamechs</li>
+    <li>rimsenal.core</li>
+    <li>vanillaracesexpanded.insector</li>
+    <li>vanillaexpanded.skills</li>
+    <li>detvisor.impactweaponryreloaded</li>
+    <li>det.spacerarsenal</li>
+    <li>oskarpotocki.vfe.empire</li>
+    <li>sarg.alphamemes</li>
+    <li>rimsenal.federation</li>
+    <li>vanillaexpanded.vaewaste</li>
+    <li>zal.eltexweaponry</li>
+    <li>vanillaexpanded.vanillasocialinteractionsexpanded</li>
+    <li>vanillaexpanded.vmemese</li>
+    <li>danzinagri.warcasketweaponquality</li>
   </loadAfter>
-  <description>Opinionated balance tweaks and cross-mod compatibility patches. Each patch applies only when the mod it targets is loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). Requires Harmony.
-
-Included:
-- RimIOT - Logistic Matrix: cheaper builds, basic components only, no power consumption.
-- Altered Carbon: disables the redundant ranged shield belt from VAE Accessories in favour of the cuirassier belt, and a slider for the casting relay's needlecasting range.
-- GiTS Cyberbrains: only basic cyberbrains on the market, surgeries via EPOE brain surgery, post-basic cyberization at ultratech tier, harsher extreme mental break, and a streamlined research tree.
-- Genetics Research Overhaul (Biotech): a dedicated Genetics research tab in the spirit of Progression: Genetics, integrating ReSplice: Core, Gene Extractor Tiers, Gene Ripper, Gene Nodes - Genes for Sale, Gene Fabrication, VQE Ancients' archogen laboratory and Alpha Genes quest flavour.
-- Odyssey: long-range passenger shuttle with bigger fuel and cargo capacity.</description>
+  <description>Opinionated balance tweaks and cross-mod compatibility patches. Each patch applies only when the mod it targets is loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). Requires Harmony.</description>
 </ModMetaData>

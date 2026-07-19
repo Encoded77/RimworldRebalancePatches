@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vanilla.genecomplexityprocessor</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationReplaceFromSetting">
+        <settingKey>vanilla.genecomplexityprocessor</settingKey>
+        <xpath>Defs/ThingDef[defName="GeneProcessor"]/statBases/GeneticComplexityIncrease</xpath>
+        <value><GeneticComplexityIncrease>{value}</GeneticComplexityIncrease></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

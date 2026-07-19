@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>spacerarsenal.prereqs</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.vwe</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="DV_Weapon_GrenadeThump" or defName="DV_Gun_BruteRifle" or defName="DV_Gun_ClashHMG" or defName="DV_Gun_ClashRifle" or defName="DV_Weapon_GrenadeContact"]/recipeMaker/researchPrerequisite</xpath>
+          <value>
+            <researchPrerequisite></researchPrerequisite>
+            <researchPrerequisites Inherit="False">
+              <li>Fabrication</li>
+              <li>VWE_HeavyWeapons</li>
+            </researchPrerequisites>
+          </value>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.vwec</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="DV_Gun_CoilgunLance" or defName="DV_MeleeWeapon_SparkSabre"]/recipeMaker/researchPrerequisite</xpath>
+          <value>
+            <researchPrerequisite>VWE_MassDrivers</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>odyssey.vacuumtrims</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.gravship</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="DV_Apparel_EnsignHelmet"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.65</VacuumResistance></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="DV_Apparel_EnsignHelmet"]/statBases/ArmorRating_Sharp</xpath>
+              <value><ArmorRating_Sharp>0.80</ArmorRating_Sharp></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net481</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <RootNamespace>RebalancePatches.Tests</RootNamespace>
+    <AssemblyName>RebalancePatchesTests</AssemblyName>
+    <Deterministic>true</Deterministic>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath>..\..\Tests\Assemblies\</OutputPath>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+
+    <RimWorldInstallDir Condition="'$(RimWorldInstallDir)' == '' AND Exists('C:\Program Files (x86)\Steam\steamapps\common\RimWorld')">C:\Program Files (x86)\Steam\steamapps\common\RimWorld</RimWorldInstallDir>
+    <RimWorldInstallDir Condition="'$(RimWorldInstallDir)' == '' AND Exists('C:\Program Files\Steam\steamapps\common\RimWorld')">C:\Program Files\Steam\steamapps\common\RimWorld</RimWorldInstallDir>
+    <RimWorldManagedDir>$(RimWorldInstallDir)\RimWorldWin64_Data\Managed</RimWorldManagedDir>
+    <RimTestReduxDll Condition="'$(RimTestReduxDll)' == '' AND Exists('C:\Program Files (x86)\Steam\steamapps\workshop\content\294100\3762405308\1.6\Assemblies\RimTestRedux.dll')">C:\Program Files (x86)\Steam\steamapps\workshop\content\294100\3762405308\1.6\Assemblies\RimTestRedux.dll</RimTestReduxDll>
+    <RimTestReduxDll Condition="'$(RimTestReduxDll)' == '' AND Exists('C:\Program Files\Steam\steamapps\workshop\content\294100\3762405308\1.6\Assemblies\RimTestRedux.dll')">C:\Program Files\Steam\steamapps\workshop\content\294100\3762405308\1.6\Assemblies\RimTestRedux.dll</RimTestReduxDll>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
+    <PackageReference Include="Lib.Harmony" Version="2.3.6" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RebalancePatches\RebalancePatches.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>$(RimWorldManagedDir)\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>$(RimWorldManagedDir)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="RimTestRedux">
+      <HintPath>$(RimTestReduxDll)</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <Target Name="EnsureReferencesFound" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="'$(RimWorldInstallDir)' == '' OR !Exists('$(RimWorldManagedDir)\Assembly-CSharp.dll')"
+           Text="RimWorld install not found. Pass -p:RimWorldInstallDir=&quot;&lt;path to RimWorld folder&gt;&quot; to dotnet build." />
+    <Error Condition="'$(RimTestReduxDll)' == '' OR !Exists('$(RimTestReduxDll)')"
+           Text="RimTest Redux not found. Subscribe to workshop item 3762405308 or pass -p:RimTestReduxDll=&quot;&lt;path to RimTestRedux.dll&gt;&quot;." />
+  </Target>
+
+</Project>

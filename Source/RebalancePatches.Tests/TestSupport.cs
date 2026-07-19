@@ -1,0 +1,259 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Reflection;
+using RimWorld;
+using Verse;
+
+namespace RebalancePatches.Tests
+{
+    internal static class Ids
+    {
+        public const string Royalty = "ludeon.rimworld.royalty";
+        public const string Ideology = "ludeon.rimworld.ideology";
+        public const string Biotech = "ludeon.rimworld.biotech";
+        public const string Anomaly = "ludeon.rimworld.anomaly";
+        public const string Odyssey = "ludeon.rimworld.odyssey";
+
+        public const string AlteredCarbon = "hlx.ultratechalteredcarbon";
+        public const string BigSmallCore = "redmattis.bigsmall.core";
+        public const string BigSmallSlimes = "redmattis.bsslimes";
+        public const string WVC = "wvc.sergkart.races.biotech";
+        public const string VREHighmate = "vanillaracesexpanded.highmate";
+        public const string VREArchon = "vanillaracesexpanded.archon";
+        public const string VREInsector = "vanillaracesexpanded.insector";
+        public const string RimsenalCore = "rimsenal.core";
+        public const string RimsenalSpacer = "rimsenal.spacer";
+        public const string RimsenalFederation = "rimsenal.federation";
+        public const string RimsenalHarana = "rimsenal.harana";
+        public const string RimsenalAskbarn = "rimsenal.askbarn";
+        public const string RimsenalZohar = "rimsenal.zohar";
+        public const string Keshig = "det.keshig";
+        public const string Venators = "det.venators";
+        public const string Highborn = "elsov.highborn";
+        public const string VFEPirates = "oskarpotocki.vfe.pirates";
+        public const string VFEEmpire = "oskarpotocki.vfe.empire";
+        public const string VFEInsectoids2 = "oskarpotocki.vfe.insectoid2";
+        public const string VWE = "vanillaexpanded.vwe";
+        public const string VWECoilguns = "vanillaexpanded.vwec";
+        public const string VSE = "vanillaexpanded.skills";
+        public const string VPE = "vanillaexpanded.vpsycastse";
+        public const string VIEMemes = "vanillaexpanded.vmemese";
+        public const string VFECore = "vanillaexpanded.vfecore";
+        public const string VAEWaste = "vanillaexpanded.vaewaste";
+        public const string AlphaGenes = "sarg.alphagenes";
+        public const string AlphaMemes = "sarg.alphamemes";
+        public const string AlphaMechs = "sarg.alphamechs";
+        public const string IntegratedImplants = "lts.i";
+        public const string ImpactWeaponry = "detvisor.impactweaponryreloaded";
+        public const string SpacerArsenal = "det.spacerarsenal";
+        public const string EltexWeaponry = "zal.eltexweaponry";
+        public const string HautsTraits = "hautarche.hautstraits";
+        public const string VQEAncients = "vanillaquestsexpanded.ancients";
+        public const string RimIOT = "cn.rimiot";
+        public const string GiTS = "moistestwhale.gitscyberbrains";
+        public const string EPOEForked = "vat.epoeforked";
+        public const string ReSplice = "resplice.xotr.core";
+        public const string GeneExtractorTiers = "redmattis.geneextractor";
+        public const string GeneNodes = "redmattis.genenodes";
+        public const string GeneRipperDefi = "defi.generipper";
+        public const string GeneRipperDW = "danielwedemeyer.generipper";
+        public const string GeneFabrication = "amch.eragon.hcgenefabrication";
+        public const string VAEAccessories = "vanillaexpanded.vaeaccessories";
+        public const string VGravshipC1 = "vanillaexpanded.gravship";
+        public const string VSIE = "vanillaexpanded.vanillasocialinteractionsexpanded";
+        public const string WarcasketQuality = "danzinagri.warcasketweaponquality";
+    }
+
+    internal static class Check
+    {
+        public static bool Ready(string settingKey, params string[] modIds)
+        {
+            foreach (string id in modIds)
+            {
+                if (!ModsConfig.IsActive(id))
+                {
+                    Log.Message($"[RBP Tests] SKIP {settingKey}: mod '{id}' not active");
+                    return false;
+                }
+            }
+            if (!SettingsRegistry.GetEffective(settingKey))
+            {
+                Log.Message($"[RBP Tests] SKIP {settingKey}: toggle disabled");
+                return false;
+            }
+            return true;
+        }
+
+        public static bool GeneticsTabLoaded(string settingKey)
+        {
+            if (DefDatabase<ResearchTabDef>.GetNamedSilentFail("RBP_GeneticsTab") != null)
+                return true;
+            Log.Message($"[RBP Tests] SKIP {settingKey}: RBP_GeneticsTab not present (genetics.core off or Biotech absent)");
+            return false;
+        }
+
+        public static T Def<T>(string defName) where T : Def
+        {
+            T def = DefDatabase<T>.GetNamedSilentFail(defName);
+            if (def == null)
+                throw new Exception($"{typeof(T).Name} '{defName}' not found - target mod renamed or removed it");
+            return def;
+        }
+
+        public static T Optional<T>(string defName, string settingKey) where T : Def
+        {
+            T def = DefDatabase<T>.GetNamedSilentFail(defName);
+            if (def == null)
+                Log.Message($"[RBP Tests] SKIP {settingKey}: optional def {typeof(T).Name} '{defName}' not present");
+            return def;
+        }
+
+        public static Def DefOfType(string typeName, string defName)
+        {
+            Type type = GenTypes.GetTypeInAnyAssembly(typeName);
+            if (type == null)
+                throw new Exception($"Def type '{typeName}' not found in any loaded assembly");
+            Def def = GenDefDatabase.GetDefSilentFail(type, defName);
+            if (def == null)
+                throw new Exception($"{typeName} '{defName}' not found - target mod renamed or removed it");
+            return def;
+        }
+
+        public static void True(bool condition, string because)
+        {
+            if (!condition)
+                throw new Exception("FAILED: " + because);
+        }
+
+        public static void Eq(object actual, object expected, string what)
+        {
+            if (!Equals(actual, expected))
+                throw new Exception($"FAILED: {what}: expected '{expected ?? "null"}', got '{actual ?? "null"}'");
+        }
+
+        public static object Field(object obj, string name)
+        {
+            FieldInfo f = obj.GetType().GetField(name, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+            if (f == null)
+                throw new Exception($"Field '{name}' not found on {obj.GetType().FullName}");
+            return f.GetValue(obj);
+        }
+
+        public static bool HasTag(GeneDef gene, string tag) =>
+            gene.exclusionTags != null && gene.exclusionTags.Contains(tag);
+
+        public static void GeneTag(GeneDef gene, string tag) =>
+            True(HasTag(gene, tag), $"gene {gene.defName} lacks exclusion tag {tag} (has: {(gene.exclusionTags == null ? "none" : string.Join(", ", gene.exclusionTags))})");
+
+        public static float? StatBase(BuildableDef def, string statDefName)
+        {
+            if (def.statBases == null)
+                return null;
+            foreach (StatModifier m in def.statBases)
+                if (m.stat != null && m.stat.defName == statDefName)
+                    return m.value;
+            return null;
+        }
+
+        public static float? StatModifierValue(List<StatModifier> list, string statDefName)
+        {
+            if (list == null)
+                return null;
+            foreach (StatModifier m in list)
+                if (m.stat != null && m.stat.defName == statDefName)
+                    return m.value;
+            return null;
+        }
+
+        public static ResearchProjectDef RecipePrereq(ThingDef def) => def.recipeMaker?.researchPrerequisite;
+
+        public static List<ResearchProjectDef> RecipePrereqs(ThingDef def) => def.recipeMaker?.researchPrerequisites;
+
+        public static void PrereqsAre(List<ResearchProjectDef> actual, string what, params string[] expectedDefNames)
+        {
+            True(actual != null, $"{what}: research prerequisite list is null");
+            var actualNames = new List<string>();
+            foreach (ResearchProjectDef p in actual)
+                actualNames.Add(p.defName);
+            actualNames.Sort();
+            var expected = new List<string>(expectedDefNames);
+            expected.Sort();
+            Eq(string.Join(", ", actualNames), string.Join(", ", expected), what);
+        }
+
+        public static bool ContainsResearch(List<ResearchProjectDef> list, string defName)
+        {
+            if (list == null)
+                return false;
+            foreach (ResearchProjectDef p in list)
+                if (p.defName == defName)
+                    return true;
+            return false;
+        }
+
+        public static int? CostOf(BuildableDef def, string thingDefName)
+        {
+            if (def.costList == null)
+                return null;
+            foreach (ThingDefCountClass c in def.costList)
+                if (c.thingDef != null && c.thingDef.defName == thingDefName)
+                    return c.count;
+            return null;
+        }
+
+        public static bool HasXenotype(FactionDef faction, string xenotypeDefName)
+        {
+            XenotypeSet set = faction.xenotypeSet;
+            if (set == null)
+                return false;
+            for (int i = 0; i < set.Count; i++)
+                if (set[i].xenotype != null && set[i].xenotype.defName == xenotypeDefName)
+                    return true;
+            return false;
+        }
+
+        public static bool HasForcedTrait(GeneDef gene, string traitDefName)
+        {
+            if (gene.forcedTraits == null)
+                return false;
+            foreach (GeneticTraitData t in gene.forcedTraits)
+                if (t.def != null && t.def.defName == traitDefName)
+                    return true;
+            return false;
+        }
+
+        public static void HarmonyPatched(MethodBase method, string what)
+        {
+            // Startup tests run before [StaticConstructorOnStartup]; force our patches on first.
+            HarmonyBootstrap.EnsureApplied();
+            True(method != null, $"{what}: patch target method not found");
+            HarmonyLib.Patches info = HarmonyLib.Harmony.GetPatchInfo(method);
+            bool ours = false;
+            if (info != null)
+            {
+                foreach (HarmonyLib.Patch p in info.Postfixes)
+                    if (p.owner == "encoded.rebalancepatches")
+                        ours = true;
+                foreach (HarmonyLib.Patch p in info.Prefixes)
+                    if (p.owner == "encoded.rebalancepatches")
+                        ours = true;
+            }
+            True(ours, $"{what}: no RebalancePatches Harmony patch on {method.DeclaringType?.Name}.{method.Name}");
+        }
+
+        public static bool AnyDefNamed(IEnumerable defs, string defName)
+        {
+            if (defs == null)
+                return false;
+            foreach (object o in defs)
+            {
+                if (o is Def d && d.defName == defName)
+                    return true;
+                if (o is string s && s == defName)
+                    return true;
+            }
+            return false;
+        }
+    }
+}

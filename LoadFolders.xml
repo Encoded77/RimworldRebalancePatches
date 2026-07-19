@@ -1,22 +1,47 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <loadFolders>
   <v1.6>
     <li>1.6</li>
-    <li IfModActive="CN.RimIOT">1.6/RimIOT</li>
-    <li IfModActive="hlx.UltratechAlteredCarbon">1.6/AlteredCarbon</li>
-    <li IfModActive="moistestWhale.gitsCyberbrains">1.6/GiTS</li>
-    <li IfModActive="Ludeon.RimWorld.Odyssey">1.6/Odyssey</li>
+    <li>1.6/Core</li>
+    <li IfModActive="vanillaexpanded.vanillasocialinteractionsexpanded">1.6/VSIE</li>
+    <li IfModActive="cn.rimiot">1.6/RimIOT</li>
+    <li IfModActive="hlx.ultratechalteredcarbon">1.6/AlteredCarbon</li>
+    <li IfModActive="moistestwhale.gitscyberbrains">1.6/GiTS</li>
+    <li IfModActive="ludeon.rimworld.odyssey">1.6/Odyssey</li>
+    <li IfModActive="redmattis.bigsmall.core">1.6/BigAndSmall</li>
+    <li IfModActive="wvc.sergkart.races.biotech">1.6/WVC</li>
+    <li IfModActive="vanillaracesexpanded.highmate">1.6/VREHighmate</li>
+    <li IfModActive="vanillaracesexpanded.archon">1.6/VREArchon</li>
+    <li IfModActive="rimsenal.harana">1.6/RimsenalHarana</li>
+    <li IfModActive="rimsenal.askbarn">1.6/RimsenalAskbarn</li>
+    <li IfModActive="det.keshig">1.6/Keshig</li>
+    <li IfModActive="elsov.highborn">1.6/Highborn</li>
+    <li IfModActive="oskarpotocki.vfe.pirates">1.6/VFEPirates</li>
+    <li IfModActive="rimsenal.spacer">1.6/RimsenalSpacer</li>
+    <li IfModActive="ludeon.rimworld.royalty">1.6/Royalty</li>
+    <li IfModActive="lts.i">1.6/IntegratedImplants</li>
+    <li IfModActive="rimsenal.core">1.6/RimsenalCore</li>
+    <li IfModActive="ludeon.rimworld.anomaly">1.6/Anomaly</li>
+    <li IfModActive="vanillaracesexpanded.insector">1.6/VREInsector</li>
+    <li IfModActive="vanillaexpanded.skills">1.6/VanillaSkillsExpanded</li>
+    <li IfModActive="detvisor.impactweaponryreloaded">1.6/ImpactWeaponry</li>
+    <li IfModActive="det.spacerarsenal">1.6/SpacerArsenal</li>
+    <li IfModActive="oskarpotocki.vfe.empire">1.6/VFEEmpire</li>
+    <li IfModActive="sarg.alphamemes">1.6/AlphaMemes</li>
+    <li IfModActive="rimsenal.federation">1.6/RimsenalFederation</li>
+    <li IfModActive="vanillaexpanded.vaewaste">1.6/VAEWaste</li>
+    <li IfModActive="zal.eltexweaponry">1.6/EltexWeaponry</li>
     <!-- Patch files apply in REVERSE of this listing (foldersToLoadDescendingOrder),
          so 1.6/Biotech must be listed LAST to patch first (it creates the Genetics tab
          the folders above test for), and GeneNodes before GeneExtractorTiers. -->
     <li IfModActive="sarg.alphagenes">1.6/AlphaGenes</li>
     <li IfModActive="vanillaquestsexpanded.ancients">1.6/VQEAncients</li>
-    <li IfModActive="AmCh.Eragon.HCGeneFabrication">1.6/GeneFabrication</li>
+    <li IfModActive="amch.eragon.hcgenefabrication">1.6/GeneFabrication</li>
     <li IfModActive="defi.generipper">1.6/GeneRipper</li>
-    <li IfModActive="DanielWedemeyer.GeneRipper">1.6/GeneRipper</li>
-    <li IfModActive="RedMattis.GeneNodes">1.6/GeneNodes</li>
-    <li IfModActive="RedMattis.GeneExtractor">1.6/GeneExtractorTiers</li>
-    <li IfModActive="ReSplice.XOTR.Core">1.6/ReSplice</li>
-    <li IfModActive="Ludeon.RimWorld.Biotech">1.6/Biotech</li>
+    <li IfModActive="danielwedemeyer.generipper">1.6/GeneRipper</li>
+    <li IfModActive="redmattis.genenodes">1.6/GeneNodes</li>
+    <li IfModActive="redmattis.geneextractor">1.6/GeneExtractorTiers</li>
+    <li IfModActive="resplice.xotr.core">1.6/ReSplice</li>
+    <li IfModActive="ludeon.rimworld.biotech">1.6/Biotech</li>
   </v1.6>
 </loadFolders>

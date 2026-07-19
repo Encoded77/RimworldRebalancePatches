@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>memes.inspirations</settingKey>
+    <operations>
+      <li Class="PatchOperationAddModExtension">
+        <xpath>Defs/InspirationDef[defName="Frenzy_Shoot"]</xpath>
+        <value>
+          <li Class="RebalancePatches.InspirationNullifyingExtension">
+            <nullifyingPrecepts>
+              <li MayRequire="Sarg.AlphaMemes">AM_CombatProwess_Melee</li>
+              <li MayRequire="VanillaExpanded.VMemesE,Sarg.AlphaMemes">AM_Violence_Abhorrent_Strict</li>
+              <li MayRequire="VanillaExpanded.VMemesE">VME_Violence_Abhorrent</li>
+              <li MayRequire="VanillaExpanded.VMemesE">VME_Violence_Disapproved</li>
+            </nullifyingPrecepts>
+          </li>
+        </value>
+      </li>
+      <li Class="PatchOperationAddModExtension">
+        <xpath>Defs/InspirationDef[defName="Inspired_Taming"]</xpath>
+        <value>
+          <li Class="RebalancePatches.InspirationNullifyingExtension">
+            <nullifyingPrecepts>
+              <li MayRequire="VanillaExpanded.VMemesE">VME_Ranching_Disliked</li>
+              <li MayRequire="VanillaExpanded.VMemesE,VanillaExpanded.VCEF">VME_Ranching_Discouraged</li>
+              <li MayRequire="Sarg.AlphaMemes">AM_Bonding_Abhorrent</li>
+            </nullifyingPrecepts>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

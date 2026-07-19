@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vanilla.creepjoinersurgery</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/RecipeDef/recipeUsers[li="Human"][not(li="CreepJoiner")]</xpath>
+        <value>
+          <li>CreepJoiner</li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>memes.anomalytraits</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.ideology</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/MemeDef[defName="Inhuman"]/agreeableTraits</xpath>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/MemeDef[defName="Inhuman"]</xpath>
+                <value>
+                  <agreeableTraits>
+                    <li>Occultist</li>
+                    <li>VoidFascination</li>
+                  </agreeableTraits>
+                </value>
+              </nomatch>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/MemeDef[defName="Inhuman"]/agreeableTraits</xpath>
+                <value>
+                  <li>Occultist</li>
+                  <li>VoidFascination</li>
+                </value>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/MemeDef[defName="Ritualist"]/agreeableTraits</xpath>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/MemeDef[defName="Ritualist"]</xpath>
+                <value>
+                  <agreeableTraits>
+                    <li>Occultist</li>
+                    <li>VoidFascination</li>
+                  </agreeableTraits>
+                </value>
+              </nomatch>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/MemeDef[defName="Ritualist"]/agreeableTraits</xpath>
+                <value>
+                  <li>Occultist</li>
+                  <li>VoidFascination</li>
+                </value>
+              </match>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

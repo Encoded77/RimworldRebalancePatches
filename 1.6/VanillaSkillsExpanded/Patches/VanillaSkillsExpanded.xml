@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vse.reloadingstat</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/VSE.Expertise.ExpertiseDef[defName="Gunner"]/statOffsets/VEF_VerbCooldownFactor</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/VSE.Expertise.ExpertiseDef[defName="Gunner"]/statOffsets/VEF_VerbCooldownFactor</xpath>
+          <value><RangedCooldownFactor>-0.025</RangedCooldownFactor></value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

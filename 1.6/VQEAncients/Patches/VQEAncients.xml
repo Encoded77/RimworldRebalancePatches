@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
-
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
     <settingKey>genetics.vqea</settingKey>
     <operations>
@@ -30,7 +29,6 @@
                 </ResearchProjectDef>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_ArchogenInjector"]</xpath>
               <value>
@@ -42,7 +40,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_ArchogenInjector"]/statBases</xpath>
-              <value><WorkToBuild>12000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>12000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_ArchogenInjector"]/costList</xpath>
@@ -55,7 +55,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_NeurostabilizerArray"]</xpath>
               <value>
@@ -67,7 +66,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_NeurostabilizerArray"]/statBases</xpath>
-              <value><WorkToBuild>3000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>3000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_NeurostabilizerArray"]/costList</xpath>
@@ -79,7 +80,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_CognitiveRecoveryArray"]</xpath>
               <value>
@@ -91,7 +91,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_CognitiveRecoveryArray"]/statBases</xpath>
-              <value><WorkToBuild>3000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>3000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_CognitiveRecoveryArray"]/costList</xpath>
@@ -103,7 +105,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_RapidInfusionPump"]</xpath>
               <value>
@@ -115,7 +116,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_RapidInfusionPump"]/statBases</xpath>
-              <value><WorkToBuild>3000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>3000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_RapidInfusionPump"]/costList</xpath>
@@ -127,7 +130,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_ArchiteRecycler"]</xpath>
               <value>
@@ -139,7 +141,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_ArchiteRecycler"]/statBases</xpath>
-              <value><WorkToBuild>4000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>4000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_ArchiteRecycler"]/costList</xpath>
@@ -151,7 +155,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_GenomicAttenuator"]</xpath>
               <value>
@@ -163,7 +166,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_GenomicAttenuator"]/statBases</xpath>
-              <value><WorkToBuild>5000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>5000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_GenomicAttenuator"]/costList</xpath>
@@ -175,7 +180,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_RejectionBufferCoil"]</xpath>
               <value>
@@ -187,7 +191,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_RejectionBufferCoil"]/statBases</xpath>
-              <value><WorkToBuild>4000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>4000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_RejectionBufferCoil"]/costList</xpath>
@@ -199,7 +205,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_SpliceframeUplink"]</xpath>
               <value>
@@ -211,7 +216,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_SpliceframeUplink"]/statBases</xpath>
-              <value><WorkToBuild>5000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>5000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_SpliceframeUplink"]/costList</xpath>
@@ -223,7 +230,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_MutagenInhibitorCore"]</xpath>
               <value>
@@ -235,7 +241,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_MutagenInhibitorCore"]/statBases</xpath>
-              <value><WorkToBuild>8000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>8000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_MutagenInhibitorCore"]/costList</xpath>
@@ -247,7 +255,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_TraitSelectionPrism"]</xpath>
               <value>
@@ -259,7 +266,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_TraitSelectionPrism"]/statBases</xpath>
-              <value><WorkToBuild>8000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>8000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_TraitSelectionPrism"]/costList</xpath>
@@ -271,7 +280,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_AberrationRedirector"]</xpath>
               <value>
@@ -283,7 +291,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_AberrationRedirector"]/statBases</xpath>
-              <value><WorkToBuild>8000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>8000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_AberrationRedirector"]/costList</xpath>
@@ -295,7 +305,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_ComplexityHarmonizer"]</xpath>
               <value>
@@ -307,7 +316,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_ComplexityHarmonizer"]/statBases</xpath>
-              <value><WorkToBuild>8000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>8000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_ComplexityHarmonizer"]/costList</xpath>
@@ -319,7 +330,6 @@
                 </costList>
               </value>
             </li>
-
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_ArchitePathingArray"]</xpath>
               <value>
@@ -331,7 +341,9 @@
             </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="VQEA_ArchitePathingArray"]/statBases</xpath>
-              <value><WorkToBuild>8000</WorkToBuild></value>
+              <value>
+                <WorkToBuild>8000</WorkToBuild>
+              </value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="VQEA_ArchitePathingArray"]/costList</xpath>
@@ -348,5 +360,88 @@
       </li>
     </operations>
   </Operation>
-
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vqea.sittable</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQEA_AncientHospitalArmchair"]/building</xpath>
+        <value>
+          <isSittable>true</isSittable>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQEA_AncientHospitalBench"]/building</xpath>
+        <value>
+          <isSittable>true</isSittable>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vqea.giantweapons</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>redmattis.bigsmall.core</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/GeneDef[defName="VQEA_Herculean"]</xpath>
+              <value>
+                <forcedTraits>
+                  <li>
+                    <def>BS_Giant</def>
+                  </li>
+                </forcedTraits>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/GeneDef[defName="VQEA_Enormous"]</xpath>
+              <value>
+                <forcedTraits>
+                  <li>
+                    <def>BS_Giant</def>
+                  </li>
+                </forcedTraits>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vqea.patientgown</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="VQEA_Apparel_PatientGown"]/statBases/ArmorRating_Blunt</xpath>
+        <value>
+          <ArmorRating_Blunt>0.1</ArmorRating_Blunt>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.dodge</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="VQEA_Prowess"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="VQEA_Prowess"]/exclusionTags</xpath>
+          <value>
+            <li>MeleeDodge</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="VQEA_Prowess"]</xpath>
+          <value>
+            <exclusionTags>
+              <li>MeleeDodge</li>
+            </exclusionTags>
+          </value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
 </Patch>

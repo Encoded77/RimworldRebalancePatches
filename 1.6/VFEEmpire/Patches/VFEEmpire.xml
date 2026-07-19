@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vfeempire.qol</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/RoyalTitleDef[favorCost=308]/throneRoomRequirements/li[position()=14]/things</xpath>
+        <value>
+          <li MayRequire="VanillaExpanded.VFECore">Seat_RoyalArmchair</li>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/RoyalTitleDef[defName="VFEE_HighStellarch"]/throneRoomRequirements/li[position()=14]/things</xpath>
+        <value>
+          <li MayRequire="VanillaExpanded.VFECore">Seat_RoyalArmchair</li>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VFEE_Candelabra"]</xpath>
+        <value>
+          <placeWorkers>
+            <li>PlaceWorker_GlowRadius</li>
+          </placeWorkers>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

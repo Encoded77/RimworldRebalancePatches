@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vanilla.mechraidgroups</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>/Defs/FactionDef[defName = "Mechanoid"]/pawnGroupMakers</xpath>
+        <value>
+          <li>
+            <kindDef>Combat</kindDef>
+            <commonality>100</commonality>
+            <options>
+              <Mech_Scyther>7</Mech_Scyther>
+              <Mech_Tunneler>2</Mech_Tunneler>
+              <Mech_Skutaton MayRequire="Rimsenal.Spacer">4</Mech_Skutaton>
+              <AM_Aura MayRequire="sarg.alphamechs">7</AM_Aura>
+              <AM_Daggersnout MayRequire="sarg.alphamechs">7</AM_Daggersnout>
+            </options>
+          </li>
+          <li>
+            <kindDef>Combat</kindDef>
+            <commonality>100</commonality>
+            <options>
+              <Mech_Pikeman>7</Mech_Pikeman>
+              <Mech_Lancer>7</Mech_Lancer>
+              <Mech_Scyther>7</Mech_Scyther>
+              <Mech_Tunneler>2</Mech_Tunneler>
+              <Mech_Militor MayRequire="Ludeon.RimWorld.Biotech">12</Mech_Militor>
+              <Mech_Scorcher MayRequire="Ludeon.RimWorld.Biotech">5</Mech_Scorcher>
+              <Mech_Tesseron MayRequire="Ludeon.RimWorld.Biotech">3</Mech_Tesseron>
+              <Mech_Tagmaton MayRequire="Rimsenal.Spacer">4</Mech_Tagmaton>
+              <Mech_Skutaton MayRequire="Rimsenal.Spacer">4</Mech_Skutaton>
+              <AM_Aura MayRequire="sarg.alphamechs">7</AM_Aura>
+              <AM_Daggersnout MayRequire="sarg.alphamechs">7</AM_Daggersnout>
+              <AM_Mech_Lux MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">7</AM_Mech_Lux>
+              <AM_Mech_Munifex MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">7</AM_Mech_Munifex>
+              <AM_Mech_Sagittarius MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">5</AM_Mech_Sagittarius>
+              <AM_Mech_Bellicor MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">7</AM_Mech_Bellicor>
+              <AM_Mech_Polychoron MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">5</AM_Mech_Polychoron>
+            </options>
+          </li>
+          <li>
+            <kindDef>Combat</kindDef>
+            <commonality>100</commonality>
+            <options>
+              <Mech_CentipedeBlaster>5</Mech_CentipedeBlaster>
+              <Mech_CentipedeGunner>5</Mech_CentipedeGunner>
+              <Mech_CentipedeBurner>5</Mech_CentipedeBurner>
+              <Mech_Termite_Breach>5</Mech_Termite_Breach>
+              <Mech_Centurion MayRequire="Ludeon.RimWorld.Biotech">5</Mech_Centurion>
+              <Mech_Diabolus MayRequire="Ludeon.RimWorld.Biotech">1</Mech_Diabolus>
+              <Mech_Warqueen MayRequire="Ludeon.RimWorld.Biotech">1</Mech_Warqueen>
+              <Mech_Apocriton MayRequire="Ludeon.RimWorld.Biotech">1</Mech_Apocriton>
+              <AM_Phalanx MayRequire="sarg.alphamechs">7</AM_Phalanx>
+              <AM_Fireworm MayRequire="sarg.alphamechs">7</AM_Fireworm>
+              <AM_Goliath MayRequire="sarg.alphamechs">5</AM_Goliath>
+              <AM_Siegebreaker MayRequire="sarg.alphamechs">7</AM_Siegebreaker>
+              <AM_Siegemelter MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">4</AM_Siegemelter>
+              <AM_Starfire MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">4</AM_Starfire>
+              <AM_Mech_Legate MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">4</AM_Mech_Legate>
+              <AM_Mech_Optio MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">4</AM_Mech_Optio>
+            </options>
+          </li>
+          <li>
+            <kindDef>Combat</kindDef>
+            <commonality>100</commonality>
+            <options>
+              <Mech_Pikeman>5</Mech_Pikeman>
+              <Mech_Lancer>5</Mech_Lancer>
+              <Mech_Scyther>5</Mech_Scyther>
+              <Mech_Termite_Breach>5</Mech_Termite_Breach>
+              <Mech_CentipedeBlaster>5</Mech_CentipedeBlaster>
+              <Mech_CentipedeGunner>2</Mech_CentipedeGunner>
+              <Mech_CentipedeBurner>2</Mech_CentipedeBurner>
+              <Mech_Centurion MayRequire="Ludeon.RimWorld.Biotech">5</Mech_Centurion>
+              <Mech_Militor MayRequire="Ludeon.RimWorld.Biotech">12</Mech_Militor>
+              <Mech_Scorcher MayRequire="Ludeon.RimWorld.Biotech">5</Mech_Scorcher>
+              <Mech_Tesseron MayRequire="Ludeon.RimWorld.Biotech">3</Mech_Tesseron>
+              <Mech_Legionary MayRequire="Ludeon.RimWorld.Biotech">2</Mech_Legionary>
+              <Mech_Diabolus MayRequire="Ludeon.RimWorld.Biotech">1</Mech_Diabolus>
+              <Mech_Warqueen MayRequire="Ludeon.RimWorld.Biotech">1</Mech_Warqueen>
+              <Mech_Apocriton MayRequire="Ludeon.RimWorld.Biotech">1</Mech_Apocriton>
+              <Mech_Tagmaton MayRequire="Rimsenal.Spacer">4</Mech_Tagmaton>
+              <Mech_Skutaton MayRequire="Rimsenal.Spacer">4</Mech_Skutaton>
+              <Mech_Bombito MayRequire="Rimsenal.Spacer">4</Mech_Bombito>
+              <AM_Aura MayRequire="sarg.alphamechs">7</AM_Aura>
+              <AM_Daggersnout MayRequire="sarg.alphamechs">7</AM_Daggersnout>
+              <AM_Mech_Lux MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">7</AM_Mech_Lux>
+              <AM_Mech_Munifex MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">7</AM_Mech_Munifex>
+              <AM_Mech_Sagittarius MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">5</AM_Mech_Sagittarius>
+              <AM_Mech_Bellicor MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">7</AM_Mech_Bellicor>
+              <AM_Mech_Polychoron MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">5</AM_Mech_Polychoron>
+              <AM_Blitzkrieg MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">7</AM_Blitzkrieg>
+              <AM_Phalanx MayRequire="sarg.alphamechs">7</AM_Phalanx>
+              <AM_Fireworm MayRequire="sarg.alphamechs">7</AM_Fireworm>
+              <AM_Goliath MayRequire="sarg.alphamechs">5</AM_Goliath>
+              <AM_Siegebreaker MayRequire="sarg.alphamechs">7</AM_Siegebreaker>
+              <AM_Siegemelter MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">4</AM_Siegemelter>
+              <AM_Starfire MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">4</AM_Starfire>
+              <AM_Mech_Legate MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">4</AM_Mech_Legate>
+              <AM_Mech_Optio MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">4</AM_Mech_Optio>
+            </options>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vanilla.mechraidgroups</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>sarg.alphamechs</li>
+        </mods>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods>
+            <li>rimsenal.spacer</li>
+          </mods>
+          <match Class="PatchOperationSequence">
+            <operations>
+              <li Class="PatchOperationAdd">
+                <xpath>/Defs/FactionDef[defName = "Mechanoid"]/pawnGroupMakers</xpath>
+                <value>
+                  <li>
+                    <kindDef>Combat</kindDef>
+                    <commonality>30</commonality>
+                    <options>
+                      <Mech_Bombito MayRequire="Rimsenal.Spacer">10</Mech_Bombito>
+                      <AM_Blitzkrieg MayRequire="sarg.alphamechs,Ludeon.RimWorld.Biotech">10</AM_Blitzkrieg>
+                    </options>
+                  </li>
+                </value>
+              </li>
+            </operations>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

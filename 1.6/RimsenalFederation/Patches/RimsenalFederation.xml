@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>memes.factions</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.vmemese</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/FactionDef[defName="FPC"]/disallowedMemes</xpath>
+          <value>
+            <li MayRequire="Sarg.AlphaMemes">AM_NonViolence</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>odyssey.vacuumtrims</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.gravship</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="Apparel_MarksmanGearH"]/equippedStatOffsets/VacuumResistance</xpath>
+          <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.59</VacuumResistance></value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

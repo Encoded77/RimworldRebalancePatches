@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.bloodlust</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="VRE_Distressed"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="VRE_Distressed"]/exclusionTags</xpath>
+          <value><li>RBP_BloodlustDistressed</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="VRE_Distressed"]</xpath>
+          <value><exclusionTags><li>RBP_BloodlustDistressed</li></exclusionTags></value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

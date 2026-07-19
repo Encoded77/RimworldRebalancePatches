@@ -37,4 +37,21 @@
     </operations>
   </Operation>
 
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.firefoam</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="AG_FireObsession"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="AG_FireObsession"]/exclusionTags</xpath>
+          <value><li>RBP_FirefoamPyromaniac</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="AG_FireObsession"]</xpath>
+          <value><exclusionTags><li>RBP_FirefoamPyromaniac</li></exclusionTags></value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+
 </Patch>

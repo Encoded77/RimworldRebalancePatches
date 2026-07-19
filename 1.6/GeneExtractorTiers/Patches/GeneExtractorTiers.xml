@@ -142,6 +142,24 @@
                 </costList>
               </value>
             </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="GET_GN_ViperSpecial"]/costList</xpath>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="GET_GN_Experimental"]</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="GET_GN_Experimental"]/costList</xpath>
+                <value>
+                  <costList Inherit="False">
+                    <Steel>100</Steel>
+                    <ComponentIndustrial>4</ComponentIndustrial>
+                    <ComponentSpacer>1</ComponentSpacer>
+                    <ArchiteCapsule>2</ArchiteCapsule>
+                    <Silver>750</Silver>
+                  </costList>
+                </value>
+              </match>
+            </li>
           </operations>
         </match>
       </li>

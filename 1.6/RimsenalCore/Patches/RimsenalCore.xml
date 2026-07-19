@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>rimsenal.corpcost</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ResearchProjectDef[defName="KineticTech" or defName="MoltenTech" or defName="ShardTech"]/baseCost</xpath>
+        <value><baseCost>3000</baseCost></value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>rimsenal.armortechs</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="Apparel_Strikesuit" or defName="Apparel_Dropsuit"]/recipeMaker/researchPrerequisites</xpath>
+        <value>
+          <researchPrerequisites>
+            <li>ShardTech</li>
+          </researchPrerequisites>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="Apparel_StrikesuitH" or defName="Apparel_DropsuitH"]/recipeMaker/researchPrerequisite</xpath>
+        <value><researchPrerequisite>ShardTech</researchPrerequisite></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="Apparel_HazardCarapace" or defName="Apparel_ReflactorArmor" or defName="Apparel_HazardCarapaceH" or defName="Apparel_ReflactorArmorH"]/recipeMaker/researchPrerequisite</xpath>
+        <value><researchPrerequisite>KineticTech</researchPrerequisite></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="Apparel_FSArmor" or defName="Apparel_AssaultArmor" or defName="Apparel_FSArmorH" or defName="Apparel_AssaultArmorH"]/recipeMaker/researchPrerequisite</xpath>
+        <value><researchPrerequisite>MoltenTech</researchPrerequisite></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="Apparel_SecurityArmor" or defName="Apparel_SecurityHelmet"]/recipeMaker/researchPrerequisite</xpath>
+        <value><researchPrerequisite>DefenceTech</researchPrerequisite></value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Apparel_MedicArmor" or defName="Apparel_PioneerArmor" or defName="Apparel_NomadArmor" or defName="Apparel_MedicH" or defName="Apparel_PioneerH" or defName="Apparel_NomadH"]/recipeMaker</xpath>
+        <value><researchPrerequisite>DefenceTech</researchPrerequisite></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="Apparel_Korp"]/recipeMaker/researchPrerequisite</xpath>
+        <value><researchPrerequisite>SiegeTech</researchPrerequisite></value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>rimsenal.modularweapons</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="GD_ModularCarbine"]/recipeMaker/researchPrerequisite</xpath>
+        <value><researchPrerequisite>DefenceTech</researchPrerequisite></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/thingDef[defName="MRSKitR" or defName="MBPSKit"]/recipeMaker/researchPrerequisite</xpath>
+        <value><researchPrerequisite>DefenceTech</researchPrerequisite></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="GD_GrenadeLauncher"]/recipeMaker/researchPrerequisite</xpath>
+        <value>
+          <researchPrerequisites>
+            <li>Mortars</li>
+            <li>DefenceTech</li>
+          </researchPrerequisites>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>odyssey.vacuumtrims</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.gravship</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_StrikesuitH" or defName="Apparel_AssaultArmorH" or defName="Apparel_FSArmorH" or defName="Apparel_CloseCombatHelmet" or defName="Apparel_DropsuitH"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.61</VacuumResistance></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_Strikesuit" or defName="Apparel_Dropsuit"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.31</VacuumResistance></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_ReflactorArmorH"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.65</VacuumResistance></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_DropsuitH"]/description</xpath>
+              <value><description>A cutting-edge helmet loaded with flashy gadgets — most of which are completely useless planetside. Fortunately, the targeting-assist pseudo-AI still works.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_HazardCarapaceH"]/description</xpath>
+              <value><description>Part of the Alecto Hazard Carapace set, this helmet offers superior protection against extreme heat, cold, vacuum and radiation.</description></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

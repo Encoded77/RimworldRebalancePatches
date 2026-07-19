@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>eltex.spawns</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.royalty</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="EW_BasePersonaEltexGun"]/weaponTags</xpath>
+              <value>
+                <weaponTags Inherit="False">
+                  <li>PsychicGun</li>
+                  <li>Bladelink</li>
+                </weaponTags>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="EW_BaseEltexGun"]/weaponTags</xpath>
+              <value>
+                <weaponTags Inherit="False">
+                  <li>PsychicGun</li>
+                </weaponTags>
+              </value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="EW_Gun_EltexRifle" or defName="EW_Gun_PersonaEltexRifle"]/weaponTags</xpath>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="EW_Melee_EltexWarmace"]/weaponTags</xpath>
+              <value>
+                <weaponTags Inherit="False">
+                  <li>PsychicMelee</li>
+                </weaponTags>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/PawnKindDef[defName="Empire_Fighter_Cataphract"]/weaponTags</xpath>
+              <value>
+                <li>PsychicGun</li>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.vpsycastse</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/PawnKindDef[defName="Empire_Caster_Conflagrator" or defName="Empire_Caster_Archotechist" or defName="Empire_Caster_Warlord_Ranged" or defName="Empire_Caster_Protector"]/weaponTags</xpath>
+              <value>
+                <li>PsychicGun</li>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>oskarpotocki.vfe.empire</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/PawnKindDef[defName="VFEE_Deserter"]/weaponTags</xpath>
+              <value>
+                <li>PsychicGun</li>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>oskarpotocki.vfe.empire</li>
+        </mods>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods>
+            <li>vanillaexpanded.vpsycastse</li>
+          </mods>
+          <match Class="PatchOperationSequence">
+            <operations>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/PawnKindDef[defName="VFEE_Deserter_Conflagator" or defName="VFEE_Deserter_Warlord" or defName="VFEE_Deserter_Protector" or defName="VFEE_Deserter_Nightstalker" or defName="VFEE_Deserter_Harmonist"]/weaponTags</xpath>
+                <value>
+                  <li>PsychicGun</li>
+                </value>
+              </li>
+            </operations>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

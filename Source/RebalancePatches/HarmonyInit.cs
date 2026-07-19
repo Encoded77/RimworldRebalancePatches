@@ -1,5 +1,9 @@
 using HarmonyLib;
 using RebalancePatches.Mods.AlteredCarbon;
+using RebalancePatches.Mods.Biotech;
+using RebalancePatches.Mods.Inspirations;
+using RebalancePatches.Mods.IntegratedImplants;
+using RebalancePatches.Mods.VQEAncients;
 using Verse;
 
 namespace RebalancePatches
@@ -7,10 +11,24 @@ namespace RebalancePatches
     [StaticConstructorOnStartup]
     internal static class HarmonyInit
     {
-        static HarmonyInit()
+        static HarmonyInit() => HarmonyBootstrap.EnsureApplied();
+    }
+
+    public static class HarmonyBootstrap
+    {
+        private static bool applied;
+
+        public static void EnsureApplied()
         {
+            if (applied)
+                return;
+            applied = true;
             var harmony = new Harmony("encoded.rebalancepatches");
             AlteredCarbonPatches.TryApply(harmony);
+            IntegratedImplantsPatches.TryApply(harmony);
+            ArchogenWhitelistPatches.TryApply(harmony);
+            InspirationNullifyPatches.TryApply(harmony);
+            GeneComplexityPatches.TryApply(harmony);
         }
     }
 }

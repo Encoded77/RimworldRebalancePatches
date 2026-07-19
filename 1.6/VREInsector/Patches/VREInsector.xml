@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vreinsector.colossalweapons</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>oskarpotocki.vfe.insectoid2</li>
+        </mods>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods>
+            <li>redmattis.bigsmall.core</li>
+          </mods>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/VanillaRacesExpandedInsector.GenelineGeneDef[defName="VRE_Colossal"]</xpath>
+            <value>
+              <forcedTraits>
+                <li>
+                  <def>BS_Giant</def>
+                </li>
+              </forcedTraits>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

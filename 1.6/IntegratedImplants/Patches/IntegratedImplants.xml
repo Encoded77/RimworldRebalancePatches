@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>implants.chipbad</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/HediffDef[@Name="LTS_BaseSkillChipHediff"]</xpath>
+        <value>
+          <isBad>false</isBad>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>implants.chiptiers</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>sarg.alphamechs</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="MechhiveSatelliteUplink"]/costList/PowerfocusChip</xpath>
+              <value>
+                <AM_HyperLinkageChip>1</AM_HyperLinkageChip>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Mechwomb"]/costList/PowerfocusChip</xpath>
+              <value>
+                <AM_StellarProcessingChip>1</AM_StellarProcessingChip>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="WarprogrammerInterface"]/costList/NanostructuringChip</xpath>
+              <value>
+                <AM_QuantumMatrixChip>1</AM_QuantumMatrixChip>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="RemoteDominator"]/costList/NanostructuringChip</xpath>
+              <value>
+                <AM_QuantumMatrixChip>1</AM_QuantumMatrixChip>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>implants.voicelockmasochist</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThoughtDef[defName="LTS_ActiveVoicelock"]</xpath>
+        <value>
+          <nullifyingTraits>
+            <li>Masochist</li>
+          </nullifyingTraits>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+          <ThoughtDef>
+            <defName>RBP_MasochistVoicelocked</defName>
+            <workerClass>ThoughtWorker_Hediff</workerClass>
+            <hediff>LTS_ActiveVoicelock</hediff>
+            <validWhileDespawned>true</validWhileDespawned>
+            <developmentalStageFilter>Child, Adult</developmentalStageFilter>
+            <requiredTraits>
+              <li>Masochist</li>
+            </requiredTraits>
+            <stages>
+              <li>
+                <label>voicelocked</label>
+                <description>Silenced at the push of a button, whenever they please. I shouldn't enjoy this... but I do.</description>
+                <baseMoodEffect>8</baseMoodEffect>
+              </li>
+            </stages>
+          </ThoughtDef>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>implants.shoulderslimes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>redmattis.bsslimes</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/AbilityDef[defName="LTS_ToggleShoulderTurret" or defName="LTS_ToggleShoulderChargeTurret"]/comps/li[@Class="LTS_Implants.LTS_CompProperties_ToggleHediff"]/location</xpath>
+          <value>
+            <location>Shoulder</location>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

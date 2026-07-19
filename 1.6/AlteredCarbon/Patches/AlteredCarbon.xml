@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
@@ -46,6 +46,80 @@
         <settingKey>altered.relayrange</settingKey>
         <xpath>Defs/ThingDef[defName="AC_CastingRelay"]/description</xpath>
         <value><description>A needlecasting range amplifier. Casting relays must be connected to a neural matrix to function. This will extend the needlecasting range by {value} world tiles allowing for operation further away from a neural matrix.</description></value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>altered.cuirassier</settingKey>
+    <operations>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ThingDef[defName="AC_CuirassierBelt"]/comps/li[@Class="VEF.Apparels.CompProperties_ShieldBubble"]</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="AC_CuirassierBelt"]/statBases</xpath>
+        <value>
+          <EnergyShieldRechargeRate>0.13</EnergyShieldRechargeRate>
+          <EnergyShieldEnergyMax>1.2</EnergyShieldEnergyMax>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="AC_CuirassierBelt"]/comps</xpath>
+        <value>
+          <li Class="CompProperties_Shield">
+            <blocksRangedWeapons>false</blocksRangedWeapons>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>altered.shieldsfab</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="AC_AdvancedShieldBelt"]/prerequisites[not(li="Fabrication")]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ResearchProjectDef[defName="AC_AdvancedShieldBelt"]/prerequisites</xpath>
+          <value><li>Fabrication</li></value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>altered.sleevecancer</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/GeneDef[defName="AC_SleeveQuality_Good"]/statFactors/CancerRate</xpath>
+        <value><CancerRate>0.9</CancerRate></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/GeneDef[defName="AC_SleeveQuality_Excellent"]/statFactors/CancerRate</xpath>
+        <value><CancerRate>0.8</CancerRate></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/GeneDef[defName="AC_SleeveQuality_Masterwork"]/statFactors/CancerRate</xpath>
+        <value><CancerRate>0.7</CancerRate></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/GeneDef[defName="AC_SleeveQuality_Legendary"]/statFactors/CancerRate</xpath>
+        <value><CancerRate>0.5</CancerRate></value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>odyssey.vacuumtrims</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.gravship</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[@Name="AC_ApparelArmorHelmetChrysalisMakeableBase"]/equippedStatOffsets/VacuumResistance</xpath>
+          <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.62</VacuumResistance></value>
+        </match>
       </li>
     </operations>
   </Operation>

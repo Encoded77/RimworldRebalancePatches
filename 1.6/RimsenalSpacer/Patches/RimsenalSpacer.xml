@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>rimsenalspacer.smartweapons</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Gun_SmartChargeRifle" or defName="Gun_SmartChargeLance"]/recipeMaker</xpath>
+        <value>
+          <researchPrerequisite></researchPrerequisite>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Gun_SmartMinigun"]/recipeMaker</xpath>
+        <value>
+          <researchPrerequisite Inherit="False"></researchPrerequisite>
+        </value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.royalty</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_SmartVisor"]/recipeMaker/researchPrerequisite</xpath>
+              <value>
+                <researchPrerequisite>Gunlink</researchPrerequisite>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Gunlink"]/label</xpath>
+              <value>
+                <label>smart targeting systems</label>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>memes.factions</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.vmemese</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/FactionDef[@Name="SpacerFactionBase"]/disallowedMemes</xpath>
+          <value>
+            <li MayRequire="Sarg.AlphaMemes">AM_NonViolence</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>xenotypes.factions</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>wvc.sergkart.races.biotech</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="OutlanderRough"]/xenotypeSet/xenotypeChances/WVC_Meca</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="OutlanderRough"]/xenotypeSet/xenotypeChances/WVC_Meca</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="OutlanderRough"]/xenotypeSet/xenotypeChances/WVC_RogueFormer</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="OutlanderRough"]/xenotypeSet/xenotypeChances/WVC_RogueFormer</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/WVC_RogueFormer</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/WVC_RogueFormer</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="OutlanderCivil"]/xenotypeSet/xenotypeChances/WVC_GeneThrower</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="OutlanderCivil"]/xenotypeSet/xenotypeChances/WVC_GeneThrower</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/FactionDef[@Name="SpacerFactionBase"]/xenotypeSet/xenotypeChances</xpath>
+              <value>
+                <WVC_GeneThrower>0.01</WVC_GeneThrower>
+                <WVC_Meca>0.005</WVC_Meca>
+                <WVC_RogueFormer>0.04</WVC_RogueFormer>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>rimsenalspacer.caravanmechs</settingKey>
+    <operations>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="SpacerCivil" or @Name="SpacerRoughBase"]/pawnGroupMakers/li[kindDef="Trader"]/guards/Mech_Tagmaton</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="SpacerCivil" or @Name="SpacerRoughBase"]/pawnGroupMakers/li[kindDef="Trader"]/guards/Mech_Skutaton</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="SpacerCivil" or @Name="SpacerRoughBase"]/pawnGroupMakers/li[kindDef="Trader"]/guards/Mech_Psiloid</xpath>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

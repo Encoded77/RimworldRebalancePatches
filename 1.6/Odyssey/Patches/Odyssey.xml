@@ -19,4 +19,28 @@
     </operations>
   </Operation>
 
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>xenotypes.factions</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/FactionDef[defName="Salvagers"]/xenotypeSet/xenotypeChances</xpath>
+        <value>
+          <Zohar MayRequire="Rimsenal.Zohar">0.05</Zohar>
+          <Askbarn MayRequire="Rimsenal.Askbarn">0.05</Askbarn>
+          <Uredd MayRequire="Rimsenal.Askbarn">0.05</Uredd>
+          <Harana MayRequire="Rimsenal.Harana">0.05</Harana>
+          <DV_Venator MayRequire="det.venators">0.05</DV_Venator>
+          <DV_Keshig MayRequire="det.keshig">0.05</DV_Keshig>
+          <AG_Fleetkind MayRequire="sarg.alphagenes">0.05</AG_Fleetkind>
+        </value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/FactionDef[defName="TradersGuild"]/xenotypeSet/xenotypeChances</xpath>
+        <value>
+          <AG_Fleetkind MayRequire="sarg.alphagenes">0.05</AG_Fleetkind>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
 </Patch>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.psychic</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="PsychicAbility_Dull"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="PsychicAbility_Dull"]/exclusionTags</xpath>
+          <value>
+            <li>WVC_PsychicSunSensitivityDeaf</li>
+            <li>WVC_PsychicMoonSensitivityDeaf</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="PsychicAbility_Dull"]</xpath>
+          <value>
+            <exclusionTags>
+              <li>WVC_PsychicSunSensitivityDeaf</li>
+              <li>WVC_PsychicMoonSensitivityDeaf</li>
+            </exclusionTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="PsychicAbility_Deaf"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="PsychicAbility_Deaf"]/exclusionTags</xpath>
+          <value>
+            <li>WVC_PsychicSunSensitivityDeaf</li>
+            <li>WVC_PsychicMoonSensitivityDeaf</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="PsychicAbility_Deaf"]</xpath>
+          <value>
+            <exclusionTags>
+              <li>WVC_PsychicSunSensitivityDeaf</li>
+              <li>WVC_PsychicMoonSensitivityDeaf</li>
+            </exclusionTags>
+          </value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.firefoam</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="WVC_FirefoampopMech"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_FirefoampopMech"]/exclusionTags</xpath>
+          <value>
+            <li>RBP_FirefoamPyromaniac</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_FirefoampopMech"]</xpath>
+          <value>
+            <exclusionTags>
+              <li>RBP_FirefoamPyromaniac</li>
+            </exclusionTags>
+          </value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.hemogen</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="WVC_HemogenGain"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_HemogenGain"]/exclusionTags</xpath>
+          <value>
+            <li>HemogenDrain</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_HemogenGain"]</xpath>
+          <value>
+            <exclusionTags>
+              <li>HemogenDrain</li>
+            </exclusionTags>
+          </value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.deathless</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="WVC_Undead"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_Undead"]/exclusionTags</xpath>
+          <value>
+            <li>RBP_Deathless</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_Undead"]</xpath>
+          <value>
+            <exclusionTags>
+              <li>RBP_Deathless</li>
+            </exclusionTags>
+          </value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="WVC_NeverDead"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_NeverDead"]/exclusionTags</xpath>
+          <value>
+            <li>RBP_Deathless</li>
+          </value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_NeverDead"]</xpath>
+          <value>
+            <exclusionTags>
+              <li>RBP_Deathless</li>
+            </exclusionTags>
+          </value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>xenotypes.wvcchances</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/FactionDef[defName="PirateYttakin"]/xenotypeSet/xenotypeChances/WVC_Featherdust</xpath>
+        <match Class="PatchOperationRemove">
+          <xpath>Defs/FactionDef[defName="PirateYttakin"]/xenotypeSet/xenotypeChances/WVC_Featherdust</xpath>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/FactionDef[defName="Beggars"]/xenotypeSet/xenotypeChances/WVC_CatDeity</xpath>
+        <match Class="PatchOperationRemove">
+          <xpath>Defs/FactionDef[defName="Beggars"]/xenotypeSet/xenotypeChances/WVC_CatDeity</xpath>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/FactionDef[defName="Beggars"]/xenotypeSet/xenotypeChances/WVC_Blank</xpath>
+        <match Class="PatchOperationRemove">
+          <xpath>Defs/FactionDef[defName="Beggars"]/xenotypeSet/xenotypeChances/WVC_Blank</xpath>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.anomaly</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="OutlanderCivil"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="OutlanderCivil"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="TribeRough"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="TribeRough"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="TribeCivil"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="TribeCivil"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="PirateWaster"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="PirateWaster"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="Beggars"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="Beggars"]/xenotypeSet/xenotypeChances/WVC_Undead</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="HoraxCult"]/xenotypeSet</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/FactionDef[defName="HoraxCult"]/xenotypeSet/xenotypeChances</xpath>
+                <value>
+                  <WVC_Undead>0.2</WVC_Undead>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/FactionDef[defName="HoraxCult"]</xpath>
+                <value>
+                  <xenotypeSet Inherit="False">
+                    <xenotypeChances>
+                      <WVC_Undead>0.2</WVC_Undead>
+                    </xenotypeChances>
+                  </xenotypeSet>
+                </value>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="TribeSavageImpid"]/xenotypeSet/xenotypeChances/WVC_Sandycat</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="TribeSavageImpid"]/xenotypeSet/xenotypeChances/WVC_Sandycat</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="PirateYttakin"]/xenotypeSet/xenotypeChances/WVC_Sandycat</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/FactionDef[defName="PirateYttakin"]/xenotypeSet/xenotypeChances/WVC_Sandycat</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/FactionDef[defName="HoraxCult"]/xenotypeSet</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/FactionDef[defName="HoraxCult"]/xenotypeSet/xenotypeChances</xpath>
+                <value>
+                  <WVC_Sandycat>0.02</WVC_Sandycat>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/FactionDef[defName="HoraxCult"]</xpath>
+                <value>
+                  <xenotypeSet Inherit="False">
+                    <xenotypeChances>
+                      <WVC_Sandycat>0.02</WVC_Sandycat>
+                    </xenotypeChances>
+                  </xenotypeSet>
+                </value>
+              </nomatch>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

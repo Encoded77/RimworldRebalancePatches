@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>alphagenes.genepacks</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.anomaly</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/GeneDef[defName="AG_DeadlifeProducer" or defName="AG_TwistedFlesh" or defName="AG_PseudoDeadlife" or defName="AG_MeatBurst" or defName="AG_GreyPocketPlane" or defName="AG_FleshSpitter" or defName="AG_FleshBulb" or defName="AG_FleshSack" or defName="AG_GreaterToughspikes" or defName="AG_GreaterFleshWhip"]/selectionWeight</xpath>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/GeneDef[defName="AG_TwitchingToughspikes" or defName="AG_TwitchingTrispikes" or defName="AG_TwitchingFingerspike" or defName="AG_TentacleHorns"]/selectionWeight</xpath>
+              <value>
+                <selectionWeight>0.02</selectionWeight>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.royalty</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/GeneDef[defName="AG_Invisibility" or defName="AG_PsychicSight" or defName="AG_PsychicInsanity" or defName="AG_SelfSkip"]/selectionWeight</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="PatchOperationSequence">
+        <operations>
+          <li Class="PatchOperationRemove">
+            <xpath>Defs/ThingDef[defName="AG_Alphapack" or defName="AG_Mixedpack"]/thingSetMakerTags</xpath>
+          </li>
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="AG_Alphapack" or defName="AG_Mixedpack"]</xpath>
+            <value>
+              <tradeability>None</tradeability>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/AlphaGenes.AnimalGeneTemplateDef[@Name="AG_GeneAnimalSummonBase"]/selectionWeight</xpath>
+            <value>
+              <selectionWeight>0.05</selectionWeight>
+            </value>
+          </li>
+          <li Class="PatchOperationRemove">
+            <xpath>Defs/GeneDef[defName="AG_UnstableMutation" or defName="AG_ReactiveArmour" or defName="AG_MineralShock" or defName="AG_MineralOverdrive" or defName="AG_Zap" or defName="AG_GreaterFireSpew" or defName="AG_GreaterAcidicVomit" or defName="AG_PetrifyingGaze" or defName="AG_Spinnerets" or defName="AG_InsectRally" or defName="AG_AcidicDetonation" or defName="AG_InsanityBlast" or defName="AG_UnstableMind" or defName="AG_DevourBrains" or defName="AG_GeneSyphon" or defName="AG_InsectStinger" or defName="AG_ParasiticStinger" or defName="AG_InsectStingerEndogenes" or defName="AG_ParasiticStingerEndogenes" or defName="AG_FasterAging" or defName="AG_SlowerAging" or defName="AG_MiningYield_High" or defName="AG_MiningYield_Low" or defName="AG_Foodless" or defName="AG_AsexualFission" or defName="AG_Regeneration" or defName="AG_FungalSkin" or defName="AG_FrailSkin" or defName="AG_ArmourMinor" or defName="AG_ArmourMedium" or defName="AG_ArmourMajor" or defName="AG_Beauty_VeryVeryUgly" or defName="AG_Beauty_Angelic" or defName="AG_UnsettlingAppearance" or defName="AG_EldritchVisage" or defName="AG_Teratophilia" or defName="AG_ChemfuelBlood" or defName="AG_SlimeBlood" or defName="AG_AcidicBlood" or defName="AG_TarBlood" or defName="AG_InsectBlood" or defName="AG_FirefoamBlood" or defName="AG_PebbleBlood" or defName="AG_WaterBlood" or defName="AG_CryoBlood" or defName="AG_ScalyBody" or defName="AG_Digitigrade" or defName="AG_BoomNodules" or defName="AG_TetraCoils" or defName="AG_InsectJellyProduction" or defName="AG_Polluter" or defName="AG_FrailStomach" or defName="AG_CorpseFeeding" or defName="AG_LightSustenance" or defName="AG_EfficientMandibles" or defName="AG_UnderdevelopedTeeth" or defName="AG_SurvivalInstinct_High" or defName="AG_SurvivalInstinct_Low" or defName="AG_TableResistance" or defName="AG_SmokeProducer" or defName="AG_RotStinkProducer" or defName="AG_ToxGasProducer" or defName="AG_ClawedHands" or defName="AG_LungRotImmunity" or defName="AG_LungRotStrength" or defName="AG_RegenerationMinor" or defName="AG_PassiveRegenerator" or defName="AG_UnstableMutationMajor" or defName="AG_UnstableMutationCatastrophic" or defName="AG_Deaf" or defName="AG_ToxicEnvironmentResistance_Frail" or defName="AG_ToxResist_Vulnerability" or defName="AG_FrostbiteResistance" or defName="AG_FrostbiteVulnerability" or defName="AG_Clean" or defName="AG_Gene_VeryWeakImmunity" or defName="AG_PackMule" or defName="AG_FrailBack" or defName="AG_AcidImmunity" or defName="AG_AcidWeakness" or defName="AG_Instability_Lethal" or defName="AG_PlainLeather" or defName="AG_WoolLeather" or defName="G_WoodLeather" or defName="AG_ClothLeather" or defName="AG_JellyFlesh" or defName="AG_ChocolateFlesh" or defName="AG_Thalassophobia" or defName="AG_FireObsession" or defName="AG_VolatileMood" or defName="AG_Painless" or defName="AG_BrittleBones" or defName="AG_PsychicAbility_Masterful" or defName="AG_PsychicRemapping" or defName="AG_ReducedFertile" or defName="AG_NightOwl" or defName="AG_MetalEater" or defName="AG_ArmouredSpeed" or defName="AG_SpeedByTemperature" or defName="AG_WaterStriding" or defName="AG_LightStriding" or defName="AG_NightStriding" or defName="AG_PollutionStriding" or defName="AG_HeatSlowness" or defName="AG_HeatSpeed" or defName="AG_ColdSlowness" or defName="AG_ColdSpeed" or defName="AG_HeatRadiating" or defName="AG_ColdRadiating" or defName="AG_UVSensitivity_Minor" or defName="AG_Sensitivity_Vicious" or defName="AG_Sensitivity_Lethal" or defName="AG_UVPowered_Mild" or defName="AG_UVPowered_Major" or defName="AG_InnerPeace" or defName="AG_Rowdy" or defName="AG_Enforcer" or defName="AG_ArrestAvoidance" or defName="AG_ChemfuelVomit" or defName="AG_BloodVomit" or defName="AG_RatVomit" or defName="AG_PukeWater" or defName="AG_PukeBile" or defName="AG_PukeCryo" or defName="AG_NoWings" or defName="AG_ChameleonVision" or defName="AG_NoxiousBreath" or defName="AG_SterilizingBreath" or defName="AG_FreezingBreath" or defName="AG_BansheeScream" or defName="AG_ExtraordinaryLifespan" or defName="AG_ForsakenKnowledge" or defName="AG_AdaptiveBiology"]/selectionWeight</xpath>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/GeneDef[defName="AG_MechConversion" or defName="AG_BandwidthIncrease" or defName="AG_BandwidthIncreaseMajor" or defName="AG_BandwidthDecrease" or defName="AG_SummonTempBandwidth" or defName="AG_BandwidthLoop" or defName="AG_IncreasedCommandRange" or defName="AG_DecreasedCommandRange" or defName="AG_IncreasedMechRepair" or defName="AG_DecreasedMechRepair" or defName="AG_ExpertMechRepair" or defName="AlphaGenes_Animal_SummonMilitor" or defName="AlphaGenes_Animal_SummonTesseron" or defName="AlphaGenes_Animal_SummonCentipede" or defName="AG_FertilityDarkness" or defName="AG_FertilityLight" or defName="AG_FertilityOutdoors" or defName="AG_FertilityIndoors" or defName="AG_FoxTail" or defName="AG_DemonTail" or defName="AG_Drakonori_Tail" or defName="AG_Fogger" or defName="AG_RainMaker" or defName="AG_FoggyRainMaker" or defName="AG_RainyThunderstormMaker" or defName="AG_DryThunderstormMaker" or defName="AG_SnowMaker" or defName="AG_VenomFangs" or defName="AG_AcidFangs" or defName="AG_ScytherHands" or defName="AG_CrabClaw" or defName="AG_BodyTentacles" or defName="AG_FeraliskEyes" or defName="AG_ThirdEye" or defName="AG_NearBlindness"]/selectionWeight</xpath>
+            <value>
+              <selectionWeight>0.5</selectionWeight>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/GeneDef[defName="AG_RainbowWings" or defName="AG_BatWings" or defName="AG_PegasusWings" or defName="AG_MothWings" or defName="AG_BumbledroneWings" or defName="AG_WaspWings" or defName="AG_DrainerWings" or defName="AG_FeatheredWings" or defName="AG_DemonWings" or defName="AG_GasBags" or defName="AG_DrakonoriWings" or defName="AG_SingleWing" or defName="AG_ForsakenBodyEmblem" or defName="AG_ForsakenHeadEmblem" or defName="AG_ForsakenBodyEmblem"]/selectionWeight</xpath>
+            <value>
+              <selectionWeight>0.2</selectionWeight>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/GeneDef[defName="AG_MothAntennae" or defName="AG_OutwardsAntennas" or defName="AG_DownwardsAntennas" or defName="AG_FormicAntennas" or defName="AG_LowerAntennas" or defName="AG_SlimeBody" or defName="AG_SlugBody" or defName="AG_RockyBody" or defName="AG_CancerousBody" or defName="AG_GauntBody" or defName="AG_DrakonoriBody" or defName="AG_SlugVoice" or defName="AG_RockVoice" or defName="AG_FrogVoice" or defName="AG_GutturalVoice" or defName="AG_GrowlingVoice" or defName="AG_HivelingVoice" or defName="AG_Tusks" or defName="AG_PincerMandibles" or defName="AG_FaceTentacles" or defName="AG_BeetleMandibles" or defName="AG_BeeMandibles" or defName="AG_HeavilyScarred" or defName="AG_ChainsawHands" or defName="AG_Proboscis" or defName="AG_FungalClumps" or defName="AG_FungalSprout" or defName="AG_FungalTentacles" or defName="AG_EyeOfShubNiggurath" or defName="AG_DevilEyes" or defName="AG_RadYakEars" or defName="AG_AnimusEars" or defName="AG_SingleEar" or defName="AG_LongEars" or defName="AG_EarWings"]/selectionWeight</xpath>
+            <value>
+              <selectionWeight>0.02</selectionWeight>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/GeneDef[defName="AG_Teratogenesis" or defName="AG_TeratogenicHealing" or defName="AG_HealingTouch" or defName="AG_TeratogenicManipulation" or defName="AG_TeratogenicSwiftness" or defName="AG_TeratogenicStamina" or defName="AG_TeratogenicBurst" or defName="AG_MineralEfficencyPoor" or defName="AG_MineralEfficencyGood"]/selectionWeight</xpath>
+            <value>
+              <selectionWeight>0.02</selectionWeight>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="AG_RandomGenepack"]/comps/li[@Class="AlphaGenes.CompProperties_RandomItemSpawner"]/items</xpath>
+            <value>
+              <items>
+                <li>
+                  <item>Genepack</item>
+                  <weight>1</weight>
+                </li>
+              </items>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="AG_GenepackTweaker"]/description</xpath>
+            <value>
+              <description>A genetic toolkit capable of acting upon an existing genepack and adding a new, random gene to it. The targetted genepack must have 3 or less genes inside it, and this process won't add new archite genes to it.</description>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="AG_GenepackDisruptor"]/description</xpath>
+            <value>
+              <description>A genetic toolkit capable of acting upon an existing genepack, deleting a random gene present on it. The targetted genepack must have 2 or more genes inside it.</description>
+            </value>
+          </li>
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

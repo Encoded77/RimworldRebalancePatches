@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>memes.inspirations</settingKey>
+    <operations>
+      <li Class="PatchOperationAddModExtension">
+        <xpath>Defs/InspirationDef[defName="VSIE_Melee_Frenzy"]</xpath>
+        <value>
+          <li Class="RebalancePatches.InspirationNullifyingExtension">
+            <nullifyingPrecepts>
+              <li MayRequire="Sarg.AlphaMemes">AM_CombatProwess_Increased</li>
+              <li MayRequire="VanillaExpanded.VMemesE,Sarg.AlphaMemes">AM_Violence_Abhorrent_Strict</li>
+              <li MayRequire="VanillaExpanded.VMemesE">VME_Violence_Abhorrent</li>
+              <li MayRequire="VanillaExpanded.VMemesE">VME_Violence_Disapproved</li>
+            </nullifyingPrecepts>
+          </li>
+        </value>
+      </li>
+      <li Class="PatchOperationAddModExtension">
+        <xpath>Defs/InspirationDef[defName="VSIE_Inspired_Planting"]</xpath>
+        <value>
+          <li Class="RebalancePatches.InspirationNullifyingExtension">
+            <nullifyingPrecepts>
+              <li MayRequire="Ludeon.RimWorld.Ideology">Ranching_Central</li>
+            </nullifyingPrecepts>
+          </li>
+        </value>
+      </li>
+      <li Class="PatchOperationAddModExtension">
+        <xpath>Defs/InspirationDef[defName="VSIE_Inspired_Research"]</xpath>
+        <value>
+          <li Class="RebalancePatches.InspirationNullifyingExtension">
+            <nullifyingPrecepts>
+              <li MayRequire="Ludeon.RimWorld.Ideology">Research_None</li>
+            </nullifyingPrecepts>
+          </li>
+        </value>
+      </li>
+      <li Class="PatchOperationAddModExtension">
+        <xpath>Defs/InspirationDef[defName="VSIE_Inspired_Mining"]</xpath>
+        <value>
+          <li Class="RebalancePatches.InspirationNullifyingExtension">
+            <nullifyingPrecepts>
+              <li MayRequire="Ludeon.RimWorld.Ideology">Mining_Prohibited</li>
+              <li MayRequire="Ludeon.RimWorld.Ideology">Mining_Horrible</li>
+              <li MayRequire="Ludeon.RimWorld.Ideology">Mining_Disapproved</li>
+            </nullifyingPrecepts>
+          </li>
+        </value>
+      </li>
+      <li Class="PatchOperationAddModExtension">
+        <xpath>Defs/InspirationDef[defName="VSIE_Party_Frenzy"]</xpath>
+        <value>
+          <li Class="RebalancePatches.InspirationNullifyingExtension">
+            <nullifyingPrecepts>
+              <li MayRequire="VanillaExpanded.VMemesE">VME_Recreation_Disapproved</li>
+              <li MayRequire="VanillaExpanded.VMemesE,Sarg.AlphaMemes">AM_Recreation_Abhorrent</li>
+            </nullifyingPrecepts>
+          </li>
+        </value>
+      </li>
+      <li Class="PatchOperationAddModExtension">
+        <xpath>Defs/InspirationDef[defName="VSIE_Flirting_Frenzy"]</xpath>
+        <value>
+          <li Class="RebalancePatches.InspirationNullifyingExtension">
+            <nullifyingPrecepts>
+              <li MayRequire="VanillaExpanded.VMemesE">VME_SocialInteractions_Disallowed</li>
+            </nullifyingPrecepts>
+          </li>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>
