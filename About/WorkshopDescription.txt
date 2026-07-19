@@ -1,5 +1,5 @@
 [h1]Rebalance Patches[/h1]
-Opinionated balance tweaks and cross-mod compatibility patches, this is my attempt to make a cohesive whole out of my modlist. Each patch applies only when the mods it targets are loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). Requires Harmony.
+Opinionated balance tweaks and cross-mod compatibility patches, this is my attempt to make a cohesive whole out of my modlist. Each patch applies only when the mods it targets are loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart).
 
 Heavily influenced by mods like TooManyMods - Compat and the Progression series of mods that rework research trees.
 I really liked some of TMM's Patches but since the mod is tailored for his mod list I found myself disagreeing with quite a few tweaks. So I've reimplemented some of his ideas and patches with everything behind toggleable settings, if you don't like some of my design choices, turn them off.
@@ -36,7 +36,7 @@ A curated batch of cross-mod fixes and tweaks, each with its own toggle:
 [*]Ideology: inspirations respect precepts, warlike factions can't roll pacifist vows, some modded xenotypes spawn in fitting factions.
 [*]Vanilla & DLC: mixed modded mechanoid raid groups, creep joiners accept all human surgeries, gene complexity sliders, curated VQEA archogen injector genes, vacuum resistance nerfs on modded armors (with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3609835606]Vanilla Gravship Expanded[/url]).
 [/list]
-Full details per toggle in the mod settings and the changelog.
+Full details per toggle in the mod settings and in the documentation on github.
 
 [hr][/hr]
 Source code available here: https://github.com/Encoded77/RimworldRebalancePatches

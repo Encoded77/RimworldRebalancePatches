@@ -6,6 +6,7 @@
 # See: https://github.com/github/gitignore/tree/main/Global
 #
 .utmp/
+tmp/**
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -107,6 +108,9 @@ InitTestScene*.unity*
 .claude/
 Plan.md
 Todos.md
+Analysis/out/
+Analysis/**/bin/
+Analysis/**/obj/
 
 # C# build output (compiled dll is generated into <version>/Assemblies/ by AdaptivePriorities.csproj)
 Source/**/bin/

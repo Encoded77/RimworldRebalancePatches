@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.1 (2026-07-19)
+
+- Added tooling to dump loaded genes, xenotypes and genes acquisition method at runtime into a comprehensive json log.
+- Added analyzer to aggregate dumped data into usable info.
+
 ## 1.3.0 (2026-07-19)
 
 **Compat & rebalance batch** — re-implements a curated selection of ideas from "Too Many Mods - Compats and Rebalances" alongside our own fixes and features. Every feature has its own settings toggle and an automated test.
