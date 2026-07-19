@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_VREHighmate_Dedup_BGI</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>redmattis.bettergeneinheritance</li>
+    </requiredMods>
+    <genes>
+      <li>VRE_DominantGenome</li>
+      <li>VRE_RecessiveGenome</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+</Defs>

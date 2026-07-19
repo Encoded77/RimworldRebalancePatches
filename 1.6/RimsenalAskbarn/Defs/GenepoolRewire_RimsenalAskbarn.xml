@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_RimsenalAskbarn_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <xenotypes>
+      <li>
+        <xenotype>Askbarn</xenotype>
+        <genes>
+          <li>AG_ReducedFertile</li>
+        </genes>
+      </li>
+      <li>
+        <xenotype>Uredd</xenotype>
+        <genes>
+          <li>AG_ReducedFertile</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_RimsenalAskbarn_Dedup_Venators</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>det.venators</li>
+    </requiredMods>
+    <xenotypes>
+      <li>
+        <xenotype>Askbarn</xenotype>
+        <genes>
+          <li>DV_Farsighted</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_RimsenalAskbarn_Dedup_Keshig</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>det.keshig</li>
+    </requiredMods>
+    <xenotypes>
+      <li>
+        <xenotype>Uredd</xenotype>
+        <genes>
+          <li>DV_DodgeChance_High</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+</Defs>

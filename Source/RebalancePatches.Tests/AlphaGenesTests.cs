@@ -83,6 +83,47 @@ namespace RebalancePatches.Tests
         }
 
         [Test]
+        public static void SummonGenesRemoved()
+        {
+            if (!Check.Ready("genepool.agsummons", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+                return;
+            foreach (string name in new[] { "AG_AnimalSummon_Randomizer", "AG_MajorAnimalSummon_Randomizer",
+                "AG_MinorAnimalSummon_Randomizer", "AG_SummonTempBandwidth" })
+                Check.True(DefDatabase<GeneDef>.GetNamedSilentFail(name) == null, $"{name} still present");
+            foreach (GeneDef def in DefDatabase<GeneDef>.AllDefsListForReading)
+                Check.True(!def.defName.StartsWith("AlphaGenes_AnimalSummon_") && !def.defName.StartsWith("AlphaGenes_Animal_Summon"),
+                    $"summon gene {def.defName} still present");
+        }
+
+        [Test]
+        public static void DedupLosersRemoved()
+        {
+            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+                return;
+            Check.GenesGone("AG_Painless", "AG_SmallerBodySize", "AG_LargerBodySize", "AG_Male", "AG_Female",
+                "AG_AcidImmunity", "AG_AcidWeakness", "AG_ToughSinews", "AG_ArmourMinor",
+                "AG_InnateMechlink", "AG_InnatePsylink", "AG_NearBlindness");
+            if (ModsConfig.IsActive(Ids.VREPigskin))
+                Check.GenesGone("AG_FasterAging", "AG_SlowerAging");
+            if (ModsConfig.IsActive(Ids.VREArchon))
+                Check.GenesGone("AG_FastGestation", "AG_SlowGestation");
+            if (ModsConfig.IsActive(Ids.VRESaurid))
+                Check.GenesGone("AG_EggLaying");
+            if (ModsConfig.IsActive(Ids.VREPhytokin))
+                Check.GenesGone("AG_LightSustenance");
+            if (ModsConfig.IsActive(Ids.VRELycanthrope))
+                Check.GenesGone("AG_NightOwl");
+            if (ModsConfig.IsActive(Ids.VREInsector))
+                Check.GenesGone("AG_VFEI_VatGrownInsectoidSkin");
+            if (ModsConfig.IsActive(Ids.VREWaster))
+                Check.GenesGone("AG_Instability_Lethal");
+            if (ModsConfig.IsActive(Ids.IntegratedImplants))
+                Check.GenesGone("AG_DecreasedCommandRange");
+            Check.True(DefDatabase<GeneDef>.GetNamedSilentFail("AG_HeatImmunity") != null, "AG_HeatImmunity (canonical) missing");
+            Check.True(DefDatabase<GeneDef>.GetNamedSilentFail("AG_ColdImmunity") != null, "AG_ColdImmunity (canonical) missing");
+        }
+
+        [Test]
         public static void RandomGenepackSpawnerYieldsVanillaOnly()
         {
             if (!Check.Ready("alphagenes.genepacks", Ids.AlphaGenes))
@@ -98,6 +139,34 @@ namespace RebalancePatches.Tests
             object item = Check.Field(items[0], "item");
             Check.True(item is ThingDef d && d.defName == "Genepack",
                 $"AG_RandomGenepack spawner item is '{(item as Def)?.defName ?? item?.ToString()}', expected 'Genepack'");
+        }
+
+        [Test]
+        public static void XenotypesRewired()
+        {
+            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+                return;
+            Check.XenoGene("AG_Malachai", "BS_LargeFrame");
+            Check.XenoGene("AG_Malachai", "BS_Pain_None");
+            // AG_RoxTouched only exists with Medieval Overhaul active (Alpha Genes conditional content).
+            if (DefDatabase<RimWorld.XenotypeDef>.GetNamedSilentFail("AG_RoxTouched") != null)
+                Check.XenoGene("AG_RoxTouched", "BS_LargeFrame");
+            Check.XenoGene("AG_Taukai", "BS_Pain_None");
+            Check.XenoGene("VRE_Ocularkin", "Body_FemaleOnly");
+            if (ModsConfig.IsActive(Ids.VRESaurid))
+                Check.XenoGene("AG_Drakonori", "VRESaurids_Oviparous");
+            if (ModsConfig.IsActive(Ids.VREArchon))
+                Check.XenoGene("AG_Lapis", "VRE_LongPregnancy");
+            if (ModsConfig.IsActive(Ids.VREFungoid))
+                Check.XenoGene("AG_Mycormorph", "WVC_NaturalTelepathy");
+        }
+
+        [Test]
+        public static void AngelicBeautyRenamed()
+        {
+            if (!Check.Ready("alphagenes.beautyrename", Ids.AlphaGenes, Ids.WVC))
+                return;
+            Check.Eq(Check.Def<GeneDef>("AG_Beauty_Angelic").label, "uncanny beauty", "AG_Beauty_Angelic label");
         }
     }
 }

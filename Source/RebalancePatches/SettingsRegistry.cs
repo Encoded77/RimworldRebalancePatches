@@ -265,6 +265,8 @@ namespace RebalancePatches
             {
                 new RebalanceToggle("alphagenes.genepacks", "Alpha Genes genes in vanilla genepacks",
                     "Alpha Genes' genes spawn in vanilla genepacks (cosmetic genes at much lower weight), the random genepack spawner in gene lab quests only yields vanilla genepacks, and alphapacks/mixedpacks become unobtainable (existing ones are untouched)."),
+                new RebalanceToggle("alphagenes.beautyrename", "Rename angelic beauty to uncanny beauty",
+                    "With WVC - Xenotypes and Genes loaded, Alpha Genes' angelic beauty gene is relabeled uncanny beauty so it can't be confused with WVC's angel beauty gene. Label only; does nothing without WVC."),
             }),
 
             new RebalanceGroup("alphamemes", "Alpha Memes", new List<RebalanceToggle>
@@ -287,6 +289,28 @@ namespace RebalancePatches
                     "Vanilla deathless, Big and Small's revenant soul and immortal return, WVC's undead and never dead, and VRE - Archon's transcendent can no longer be combined on one pawn."),
                 new RebalanceToggle("geneconflicts.dodge", "Melee dodge genes are mutually exclusive",
                     "Melee dodge genes from VQE - Ancients (prowess), Rimsenal Harana (agile fighter), Rimsenal Askbarn (lightning reflexes, born warrior), Det's Keshig (deft, lumbering) and Highborn Xenotype (fencer) share VRE - Lycanthrope's melee dodge exclusion tag, so dodge bonuses can't stack across mods."),
+                new RebalanceToggle("geneconflicts.claws", "Claw genes are mutually exclusive",
+                    "Innate claw and talon attack genes can't stack: Alpha Genes' clawed hands, crab claw and pneumatic claw, VRE - Saurid's saurid claws, VRE - Sanguophage's talons, WVC's kitty and archite claws, Big and Small's venom talons, VRE - Insector's charger claws and VQE - Ancients' plasteel claws share a mutual-exclusion tag."),
+                new RebalanceToggle("geneconflicts.bleedrate", "Slow bleeding vs hemophiliac",
+                    "Big and Small's slow bleeding gene and VRE - Genie's hemophiliac gene pull bleed rate in opposite directions; they become mutually exclusive."),
+                new RebalanceToggle("geneconflicts.flirty", "Flirty vs never flirts",
+                    "VRE - Highmate's flirty gene and Big and Small's never flirts gene contradict each other; they become mutually exclusive."),
+                new RebalanceToggle("geneconflicts.meleespeed", "No melee attack speed stacking",
+                    "Det's Brawnum's slow hitter joins the mutual-exclusion tag VRE - Archon uses for its fast and slow melee hitter genes, so melee speed genes can't stack across the two mods."),
+            }),
+
+            new RebalanceGroup("genepool", "Genepool Cleanup", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("genepool.agsummons", "Remove Alpha Genes summon genes",
+                    "Removes Alpha Genes' animal summon genes (one per supported animal, ~90 with a large modlist, plus the summon randomizers and temporary bandwidth gene). No xenotype uses them; they only dilute the gene pool. Removal runs through Cherry Picker; needs Cherry Picker plus Alpha Genes, WVC - Xenotypes and Genes and Big and Small - Genes & More all active, and a restart to apply."),
+                new RebalanceToggle("genepool.wvcdupes", "Remove WVC-internal duplicate genes",
+                    "Removes WVC - Xenotypes and Genes' genes that duplicate vanilla Biotech genes or WVC's own alternatives: psychically dull/deaf copies, extra pain, perfect immunity, non-senescent, natural ageless, never rest, the seven pattern aptitude genes, natural/super variants that have archite versions, unbreakable, invulnerable, implanter fangs, delicate and undead. WVC xenotypes that carried a removed gene get the surviving equivalent instead (vanilla or WVC's own kept version). Removal runs through Cherry Picker; needs Cherry Picker plus Alpha Genes, WVC and Big and Small - Genes & More all active, and a restart to apply."),
+                new RebalanceToggle("genepool.dedup", "Remove cross-mod duplicate genes",
+                    "One canonical gene per function: Alpha Genes keeps immunities, natural armor and bandwidth; Big and Small keeps no pain, body size, gender and healing-speed genes; specialist mods keep their specialty (VRE - Pigskin aging, VRE - Archon pregnancy, VRE - Saurid egg-laying, VRE - Waster cell instability, Det's Venators farsight and more). The losing duplicates from Alpha Genes, WVC, Big and Small, the VRE packs, Det's Xenotypes and Rimsenal xenotype packs are removed; entries whose canonical mod is missing are left alone. Every xenotype that carried a removed gene is rewired to the canonical replacement, so races keep their function through the shared gene. Removal runs through Cherry Picker; needs Cherry Picker plus Alpha Genes, WVC and Big and Small - Genes & More active, and a restart to apply."),
+                new RebalanceToggle("genepool.hussaraptitudes", "Consolidate VRE - Hussar weapon aptitudes",
+                    "VRE - Hussar generates one aptitude gene per craftable weapon (~300 with a large modlist, one gene UI entry each). This replaces the whole family with four category genes — light/heavy melee and light/heavy ranged aptitude, split at 3 kg — with the same bonus and biostats. The hussar xenotypes' random weapon aptitude now rolls among the four, and with Gene Nodes - Genes for Sale loaded a new archite gene node delivers them. Needs only VRE - Hussar; existing pawns with an old per-weapon aptitude lose it (one-time load warning)."),
+                new RebalanceToggle("genepool.bsdupes", "Remove Big and Small internal/legacy genes",
+                    "Removes Big and Small - Genes & More genes its author treats as legacy or that duplicate its own alternatives: the three gene stabilizing genes (no replacement) and the deathlike body gene (undead xenotypes get Big and Small's unstable deathlessness instead). Removal runs through Cherry Picker; needs Cherry Picker plus Alpha Genes, WVC and Big and Small - Genes & More active, and a restart to apply."),
             }),
 
             new RebalanceGroup("odyssey", "Odyssey", new List<RebalanceToggle>
@@ -295,6 +319,12 @@ namespace RebalancePatches
                     "Raises the passenger shuttle's chemfuel capacity from 400 to 2000 and its cargo mass capacity from 500 to 2000."),
                 new RebalanceToggle("odyssey.vacuumtrims", "Vacuum resistance trims on modded armor",
                     "Trims the vacuum resistance of spacer armor from Rimsenal - Core, Rimsenal - Federation, Altered Carbon 2, Spacer Arsenal and Impact Weaponry - Reloaded (each only when loaded), keeping full vacuum protection hard to reach; the Spacer Arsenal ensign and Impact Weaponry crusader helmets also lose a little sharp armor. Needs Vanilla Gravship Expanded - Chapter 1, whose balance assumes scarce vacuum resistance; does nothing without it."),
+            }),
+            new RebalanceGroup("dev", "Developer", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("dev.genedump", "Auto-refresh gene database dump",
+                    "With dev mode on, rewrites GeneDump.json at the main menu so the dump always reflects the current modlist.",
+                    defaultOn: false),
             }),
         };
 

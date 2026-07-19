@@ -48,6 +48,8 @@ namespace RebalancePatches.UI
                 bool first = true;
                 foreach (RebalanceGroup group in SettingsRegistry.Groups)
                 {
+                    if (group.key == "dev" && !Prefs.DevMode)
+                        continue;
                     if (!first)
                         listing.GapLine(SectionGap);
                     first = false;

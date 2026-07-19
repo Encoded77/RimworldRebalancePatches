@@ -31,6 +31,24 @@
     <li IfModActive="rimsenal.federation">1.6/RimsenalFederation</li>
     <li IfModActive="vanillaexpanded.vaewaste">1.6/VAEWaste</li>
     <li IfModActive="zal.eltexweaponry">1.6/EltexWeaponry</li>
+    <li IfModActive="vanillaracesexpanded.hussar">1.6/VREHussar</li>
+    <li IfModActive="vanillaracesexpanded.saurid">1.6/VRESaurid</li>
+    <li IfModActive="vanillaracesexpanded.phytokin">1.6/VREPhytokin</li>
+    <li IfModActive="vanillaracesexpanded.genie">1.6/VREGenie</li>
+    <li IfModActive="vanillaracesexpanded.fungoid">1.6/VREFungoid</li>
+    <li IfModActive="vanillaracesexpanded.pigskin">1.6/VREPigskin</li>
+    <li IfModActive="det.stoneborn">1.6/Stoneborn</li>
+    <li IfModActive="det.brawnum">1.6/Brawnum</li>
+    <li IfModActive="det.halffoot">1.6/Halffoot</li>
+    <li IfModActive="det.avaloi">1.6/Avaloi</li>
+    <li IfModActive="rimsenal.zohar">1.6/RimsenalZohar</li>
+    <li IfModActive="redmattis.bigsmall">1.6/BSRaces</li>
+    <li IfModActive="redmattis.yokai">1.6/BSYokai</li>
+    <li IfModActive="redmattis.bsslimes">1.6/BSSlimes</li>
+    <li IfModActive="redmattis.heaven">1.6/BSHeavenAndHell</li>
+    <li IfModActive="redmattis.morexenos">1.6/BSMoreXenotypes</li>
+    <li IfModActive="redmattis.lamiasandothersnakes">1.6/BSLamias</li>
+    <li IfModActive="vanillaracesexpanded.sanguophage">1.6/VRESanguophage</li>
     <!-- Patch files apply in REVERSE of this listing (foldersToLoadDescendingOrder),
          so 1.6/Biotech must be listed LAST to patch first (it creates the Genetics tab
          the folders above test for), and GeneNodes before GeneExtractorTiers. -->

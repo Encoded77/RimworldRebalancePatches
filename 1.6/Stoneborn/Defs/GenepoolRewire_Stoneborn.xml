@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_Stoneborn_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <xenotypes>
+      <li>
+        <xenotype>Stoneborn</xenotype>
+        <genes>
+          <li>Undergrounder</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+</Defs>

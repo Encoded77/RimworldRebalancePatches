@@ -121,4 +121,55 @@
     </operations>
   </Operation>
 
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.claws</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="LoS_VenomTalons"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="LoS_VenomTalons"]/exclusionTags</xpath>
+          <value><li>RBP_Claws</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="LoS_VenomTalons"]</xpath>
+          <value><exclusionTags><li>RBP_Claws</li></exclusionTags></value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.bleedrate</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="BS_SlowBleeding"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="BS_SlowBleeding"]/exclusionTags</xpath>
+          <value><li>RBP_BleedRate</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="BS_SlowBleeding"]</xpath>
+          <value><exclusionTags><li>RBP_BleedRate</li></exclusionTags></value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.flirty</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="BS_NotFlirty"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="BS_NotFlirty"]/exclusionTags</xpath>
+          <value><li>RBP_Flirt</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="BS_NotFlirty"]</xpath>
+          <value><exclusionTags><li>RBP_Flirt</li></exclusionTags></value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+
 </Patch>

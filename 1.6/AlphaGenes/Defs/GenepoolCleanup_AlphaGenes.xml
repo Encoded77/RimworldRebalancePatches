@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_AlphaGenes_Summons</defName>
+    <settingKey>genepool.agsummons</settingKey>
+    <genes>
+      <li>AG_AnimalSummon_Randomizer</li>
+      <li>AG_MajorAnimalSummon_Randomizer</li>
+      <li>AG_MinorAnimalSummon_Randomizer</li>
+      <li>AG_SummonTempBandwidth</li>
+    </genes>
+    <genePrefixes>
+      <li>AlphaGenes_AnimalSummon_</li>
+      <li>AlphaGenes_Animal_Summon</li>
+    </genePrefixes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_AlphaGenes_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>redmattis.bigsmall.core</li>
+    </requiredMods>
+    <genes>
+      <li>AG_Painless</li>
+      <li>AG_SmallerBodySize</li>
+      <li>AG_LargerBodySize</li>
+      <li>AG_Male</li>
+      <li>AG_Female</li>
+      <li>AG_AcidImmunity</li>
+      <li>AG_AcidWeakness</li>
+      <li>AG_ToughSinews</li>
+      <li>AG_ArmourMinor</li>
+      <li>AG_InnateMechlink</li>
+      <li>AG_InnatePsylink</li>
+      <li>AG_NearBlindness</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Pigskin</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.pigskin</li>
+    </requiredMods>
+    <genes>
+      <li>AG_FasterAging</li>
+      <li>AG_SlowerAging</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Archon</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.archon</li>
+    </requiredMods>
+    <genes>
+      <li>AG_FastGestation</li>
+      <li>AG_SlowGestation</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Saurid</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.saurid</li>
+    </requiredMods>
+    <genes>
+      <li>AG_EggLaying</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Phytokin</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.phytokin</li>
+    </requiredMods>
+    <genes>
+      <li>AG_LightSustenance</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Lycanthrope</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.lycanthrope</li>
+    </requiredMods>
+    <genes>
+      <li>AG_NightOwl</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Insector</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.insector</li>
+    </requiredMods>
+    <genes>
+      <li>AG_VFEI_VatGrownInsectoidSkin</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Waster</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.waster</li>
+    </requiredMods>
+    <genes>
+      <li>AG_Instability_Lethal</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_AlphaGenes_Dedup_IntegratedImplants</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>lts.i</li>
+    </requiredMods>
+    <genes>
+      <li>AG_DecreasedCommandRange</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+</Defs>

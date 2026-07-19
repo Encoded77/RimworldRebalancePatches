@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>genepool.hussaraptitudes</settingKey>
+    <operations>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/VREHussars.WeaponGeneTemplateDef[defName="VREHT_WeaponAptitude"]</xpath>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+          <GeneDef>
+            <defName>RBP_VREHT_Aptitude_LightMelee</defName>
+            <label>light melee aptitude</label>
+            <labelShortAdj>light-melee adept</labelShortAdj>
+            <description>The carrier handles light melee weapons with exceptional skill, gaining greatly increased hit chance while one is equipped. Light weapons weigh under 3 kilograms.</description>
+            <iconPath>UI/GeneIcons/Gene_Dutiful</iconPath>
+            <displayCategory>VREH_WeaponAptitudes</displayCategory>
+            <displayOrderInCategory>0</displayOrderInCategory>
+            <biostatCpx>2</biostatCpx>
+            <biostatMet>-3</biostatMet>
+            <selectionWeight>0</selectionWeight>
+            <exclusionTags>
+              <li>VREH_WeaponAptitude</li>
+            </exclusionTags>
+            <conditionalStatAffecters>
+              <li Class="RebalancePatches.ConditionalStatAffecter_WeaponClass">
+                <melee>true</melee>
+                <heavy>false</heavy>
+                <statFactors>
+                  <MeleeHitChance>1.5</MeleeHitChance>
+                </statFactors>
+              </li>
+            </conditionalStatAffecters>
+          </GeneDef>
+          <GeneDef>
+            <defName>RBP_VREHT_Aptitude_HeavyMelee</defName>
+            <label>heavy melee aptitude</label>
+            <labelShortAdj>heavy-melee adept</labelShortAdj>
+            <description>The carrier handles heavy melee weapons with exceptional skill, gaining greatly increased hit chance while one is equipped. Heavy weapons weigh 3 kilograms or more.</description>
+            <iconPath>UI/GeneIcons/Gene_Dutiful</iconPath>
+            <displayCategory>VREH_WeaponAptitudes</displayCategory>
+            <displayOrderInCategory>1</displayOrderInCategory>
+            <biostatCpx>2</biostatCpx>
+            <biostatMet>-3</biostatMet>
+            <selectionWeight>0</selectionWeight>
+            <exclusionTags>
+              <li>VREH_WeaponAptitude</li>
+            </exclusionTags>
+            <conditionalStatAffecters>
+              <li Class="RebalancePatches.ConditionalStatAffecter_WeaponClass">
+                <melee>true</melee>
+                <heavy>true</heavy>
+                <statFactors>
+                  <MeleeHitChance>1.5</MeleeHitChance>
+                </statFactors>
+              </li>
+            </conditionalStatAffecters>
+          </GeneDef>
+          <GeneDef>
+            <defName>RBP_VREHT_Aptitude_LightRanged</defName>
+            <label>light ranged aptitude</label>
+            <labelShortAdj>light-ranged adept</labelShortAdj>
+            <description>The carrier handles light ranged weapons with exceptional skill, gaining greatly increased accuracy while one is equipped. Light weapons weigh under 3 kilograms.</description>
+            <iconPath>UI/GeneIcons/Gene_Dutiful</iconPath>
+            <displayCategory>VREH_WeaponAptitudes</displayCategory>
+            <displayOrderInCategory>2</displayOrderInCategory>
+            <biostatCpx>2</biostatCpx>
+            <biostatMet>-3</biostatMet>
+            <selectionWeight>0</selectionWeight>
+            <exclusionTags>
+              <li>VREH_WeaponAptitude</li>
+            </exclusionTags>
+            <conditionalStatAffecters>
+              <li Class="RebalancePatches.ConditionalStatAffecter_WeaponClass">
+                <melee>false</melee>
+                <heavy>false</heavy>
+                <statFactors>
+                  <ShootingAccuracyPawn>1.5</ShootingAccuracyPawn>
+                </statFactors>
+              </li>
+            </conditionalStatAffecters>
+          </GeneDef>
+          <GeneDef>
+            <defName>RBP_VREHT_Aptitude_HeavyRanged</defName>
+            <label>heavy ranged aptitude</label>
+            <labelShortAdj>heavy-ranged adept</labelShortAdj>
+            <description>The carrier handles heavy ranged weapons with exceptional skill, gaining greatly increased accuracy while one is equipped. Heavy weapons weigh 3 kilograms or more.</description>
+            <iconPath>UI/GeneIcons/Gene_Dutiful</iconPath>
+            <displayCategory>VREH_WeaponAptitudes</displayCategory>
+            <displayOrderInCategory>3</displayOrderInCategory>
+            <biostatCpx>2</biostatCpx>
+            <biostatMet>-3</biostatMet>
+            <selectionWeight>0</selectionWeight>
+            <exclusionTags>
+              <li>VREH_WeaponAptitude</li>
+            </exclusionTags>
+            <conditionalStatAffecters>
+              <li Class="RebalancePatches.ConditionalStatAffecter_WeaponClass">
+                <melee>false</melee>
+                <heavy>true</heavy>
+                <statFactors>
+                  <ShootingAccuracyPawn>1.5</ShootingAccuracyPawn>
+                </statFactors>
+              </li>
+            </conditionalStatAffecters>
+          </GeneDef>
+        </value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>redmattis.genenodes</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <ThingDef ParentName="GET_GeneNodeBaseArchite">
+              <defName>RBP_GET_WeaponAptitude</defName>
+              <label>Gene Node - Weapon Aptitude</label>
+              <description>"Point it at the enemy. The genes do the rest." No refunds.</description>
+              <graphicData>
+                <texPath>GeneNodes/GET_GeneNode_Hussar</texPath>
+              </graphicData>
+              <descriptionHyperlinks>
+                <GeneDef>RBP_VREHT_Aptitude_LightMelee</GeneDef>
+                <GeneDef>RBP_VREHT_Aptitude_HeavyMelee</GeneDef>
+                <GeneDef>RBP_VREHT_Aptitude_LightRanged</GeneDef>
+                <GeneDef>RBP_VREHT_Aptitude_HeavyRanged</GeneDef>
+              </descriptionHyperlinks>
+              <comps>
+                <li Class="GeneExtractorTiers.CompProperties_GeneNode">
+                  <geneList>
+                    <li>RBP_VREHT_Aptitude_LightMelee</li>
+                    <li>RBP_VREHT_Aptitude_HeavyMelee</li>
+                    <li>RBP_VREHT_Aptitude_LightRanged</li>
+                    <li>RBP_VREHT_Aptitude_HeavyRanged</li>
+                  </geneList>
+                </li>
+              </comps>
+            </ThingDef>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

@@ -18,4 +18,21 @@
     </operations>
   </Operation>
 
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.flirty</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="VRE_Flirty"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="VRE_Flirty"]/exclusionTags</xpath>
+          <value><li>RBP_Flirt</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="VRE_Flirty"]</xpath>
+          <value><exclusionTags><li>RBP_Flirt</li></exclusionTags></value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+
 </Patch>

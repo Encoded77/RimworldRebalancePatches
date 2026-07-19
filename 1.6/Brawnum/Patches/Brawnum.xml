@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.meleespeed</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="DV_Melee_Slow"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="DV_Melee_Slow"]/exclusionTags</xpath>
+          <value><li>MeleeAttackSpeed</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="DV_Melee_Slow"]</xpath>
+          <value><exclusionTags><li>MeleeAttackSpeed</li></exclusionTags></value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

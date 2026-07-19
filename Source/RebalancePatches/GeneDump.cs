@@ -33,7 +33,7 @@ namespace RebalancePatches
         private static void DumpGeneDatabaseEntry() => DumpGeneDatabase();
 
         [DebugAction("RebalancePatches", "Dump gene database", allowedGameStates = AllowedGameStates.Playing)]
-        private static void DumpGeneDatabase()
+        internal static void DumpGeneDatabase()
         {
             try
             {

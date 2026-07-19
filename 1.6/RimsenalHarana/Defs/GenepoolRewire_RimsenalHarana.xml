@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_RimsenalHarana_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>det.stoneborn</li>
+    </requiredMods>
+    <xenotypes>
+      <li>
+        <xenotype>Harana</xenotype>
+        <genes>
+          <li>DV_Aggression_Irascible</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+</Defs>

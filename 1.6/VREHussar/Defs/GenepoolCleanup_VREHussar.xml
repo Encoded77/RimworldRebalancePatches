@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_VREHussar_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <genes>
+      <li>VREH_Giant</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+</Defs>

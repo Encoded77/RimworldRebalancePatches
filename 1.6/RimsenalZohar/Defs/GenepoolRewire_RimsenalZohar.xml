@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_RimsenalZohar_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <xenotypes>
+      <li>
+        <xenotype>Zohar</xenotype>
+        <genes>
+          <li>AG_FrailStomach</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+</Defs>

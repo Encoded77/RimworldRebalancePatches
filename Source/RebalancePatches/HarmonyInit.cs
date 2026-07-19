@@ -29,6 +29,8 @@ namespace RebalancePatches
             ArchogenWhitelistPatches.TryApply(harmony);
             InspirationNullifyPatches.TryApply(harmony);
             GeneComplexityPatches.TryApply(harmony);
+            GeneCleanup.TryApply();
+            GeneDumpAutoRun.TryApply(harmony);
         }
     }
 }

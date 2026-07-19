@@ -54,4 +54,61 @@
     </operations>
   </Operation>
 
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.claws</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="AG_ClawedHands"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="AG_ClawedHands"]/exclusionTags</xpath>
+          <value><li>RBP_Claws</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="AG_ClawedHands"]</xpath>
+          <value><exclusionTags><li>RBP_Claws</li></exclusionTags></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="AG_CrabClaw"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="AG_CrabClaw"]/exclusionTags</xpath>
+          <value><li>RBP_Claws</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="AG_CrabClaw"]</xpath>
+          <value><exclusionTags><li>RBP_Claws</li></exclusionTags></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="AG_VFEI_PneumaticClaw"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="AG_VFEI_PneumaticClaw"]/exclusionTags</xpath>
+          <value><li>RBP_Claws</li></value>
+        </match>
+        <nomatch Class="PatchOperationConditional">
+          <xpath>Defs/GeneDef[defName="AG_VFEI_PneumaticClaw"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/GeneDef[defName="AG_VFEI_PneumaticClaw"]</xpath>
+            <value><exclusionTags><li>RBP_Claws</li></exclusionTags></value>
+          </match>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>alphagenes.beautyrename</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>wvc.sergkart.races.biotech</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/GeneDef[defName="AG_Beauty_Angelic"]/label</xpath>
+          <value><label>uncanny beauty</label></value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
 </Patch>

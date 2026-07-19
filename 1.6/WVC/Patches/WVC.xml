@@ -244,4 +244,32 @@
       </li>
     </operations>
   </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.claws</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="WVC_NaturalBodyParts_Claws"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_NaturalBodyParts_Claws"]/exclusionTags</xpath>
+          <value><li>RBP_Claws</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_NaturalBodyParts_Claws"]</xpath>
+          <value><exclusionTags><li>RBP_Claws</li></exclusionTags></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="WVC_MecaBodyParts_Claws"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_MecaBodyParts_Claws"]/exclusionTags</xpath>
+          <value><li>RBP_Claws</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="WVC_MecaBodyParts_Claws"]</xpath>
+          <value><exclusionTags><li>RBP_Claws</li></exclusionTags></value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
 </Patch>

@@ -64,7 +64,10 @@ namespace RebalancePatches.Tests
             Check.GeneTag(Check.Def<GeneDef>("Deathless"), "RBP_Deathless");
             if (ModsConfig.IsActive(Ids.WVC))
             {
-                Check.GeneTag(Check.Def<GeneDef>("WVC_Undead"), "RBP_Deathless");
+                // WVC_Undead is removed by genepool.wvcdupes; only assert it when it survived.
+                GeneDef undead = Check.Optional<GeneDef>("WVC_Undead", "geneconflicts.deathless");
+                if (undead != null)
+                    Check.GeneTag(undead, "RBP_Deathless");
                 Check.GeneTag(Check.Def<GeneDef>("WVC_NeverDead"), "RBP_Deathless");
             }
             if (ModsConfig.IsActive(Ids.VREArchon))
@@ -102,7 +105,10 @@ namespace RebalancePatches.Tests
             if (!Check.Ready("geneconflicts.dodge", Ids.RimsenalAskbarn))
                 return;
             Check.GeneTag(Check.Def<GeneDef>("RSLightningReflexes"), "MeleeDodge");
-            Check.GeneTag(Check.Def<GeneDef>("RSBornWarrior"), "MeleeDodge");
+            // RSBornWarrior is removed by genepool.dedup; only assert it when it survived.
+            GeneDef bornWarrior = Check.Optional<GeneDef>("RSBornWarrior", "geneconflicts.dodge");
+            if (bornWarrior != null)
+                Check.GeneTag(bornWarrior, "MeleeDodge");
         }
 
         [Test]
@@ -120,6 +126,95 @@ namespace RebalancePatches.Tests
             if (!Check.Ready("geneconflicts.dodge", Ids.Highborn))
                 return;
             Check.GeneTag(Check.Def<GeneDef>("HBX_Fencer"), "MeleeDodge");
+        }
+
+        [Test]
+        public static void ClawsAlphaGenes()
+        {
+            if (!Check.Ready("geneconflicts.claws", Ids.AlphaGenes))
+                return;
+            Check.GeneTag(Check.Def<GeneDef>("AG_ClawedHands"), "RBP_Claws");
+            Check.GeneTag(Check.Def<GeneDef>("AG_CrabClaw"), "RBP_Claws");
+            GeneDef pneumatic = Check.Optional<GeneDef>("AG_VFEI_PneumaticClaw", "geneconflicts.claws");
+            if (pneumatic != null)
+                Check.GeneTag(pneumatic, "RBP_Claws");
+        }
+
+        [Test]
+        public static void ClawsWVC()
+        {
+            if (!Check.Ready("geneconflicts.claws", Ids.WVC))
+                return;
+            Check.GeneTag(Check.Def<GeneDef>("WVC_NaturalBodyParts_Claws"), "RBP_Claws");
+            Check.GeneTag(Check.Def<GeneDef>("WVC_MecaBodyParts_Claws"), "RBP_Claws");
+        }
+
+        [Test]
+        public static void ClawsBigSmall()
+        {
+            if (!Check.Ready("geneconflicts.claws", Ids.BigSmallCore))
+                return;
+            Check.GeneTag(Check.Def<GeneDef>("LoS_VenomTalons"), "RBP_Claws");
+        }
+
+        [Test]
+        public static void ClawsVRESaurid()
+        {
+            if (!Check.Ready("geneconflicts.claws", Ids.VRESaurid))
+                return;
+            Check.GeneTag(Check.Def<GeneDef>("VRESaurids_SauridClaws"), "RBP_Claws");
+        }
+
+        [Test]
+        public static void ClawsVRESanguophage()
+        {
+            if (!Check.Ready("geneconflicts.claws", Ids.VRESanguophage))
+                return;
+            Check.GeneTag(Check.Def<GeneDef>("VRE_Talons"), "RBP_Claws");
+        }
+
+        [Test]
+        public static void ClawsVREInsector()
+        {
+            if (!Check.Ready("geneconflicts.claws", Ids.VREInsector))
+                return;
+            Check.GeneTag(Check.Def<GeneDef>("VRE_ChargerClaws"), "RBP_Claws");
+        }
+
+        [Test]
+        public static void ClawsVQEAncients()
+        {
+            if (!Check.Ready("geneconflicts.claws", Ids.VQEAncients))
+                return;
+            Check.GeneTag(Check.Def<GeneDef>("VQEA_PlasteelClaws"), "RBP_Claws");
+        }
+
+        [Test]
+        public static void SlowBleedingVsHemophiliac()
+        {
+            if (!Check.Ready("geneconflicts.bleedrate", Ids.BigSmallCore))
+                return;
+            Check.GeneTag(Check.Def<GeneDef>("BS_SlowBleeding"), "RBP_BleedRate");
+            if (ModsConfig.IsActive(Ids.VREGenie))
+                Check.GeneTag(Check.Def<GeneDef>("VRE_Hemophiliac"), "RBP_BleedRate");
+        }
+
+        [Test]
+        public static void FlirtyVsNotFlirty()
+        {
+            if (!Check.Ready("geneconflicts.flirty", Ids.BigSmallCore))
+                return;
+            Check.GeneTag(Check.Def<GeneDef>("BS_NotFlirty"), "RBP_Flirt");
+            if (ModsConfig.IsActive(Ids.VREHighmate))
+                Check.GeneTag(Check.Def<GeneDef>("VRE_Flirty"), "RBP_Flirt");
+        }
+
+        [Test]
+        public static void MeleeSpeedBrawnum()
+        {
+            if (!Check.Ready("geneconflicts.meleespeed", Ids.Brawnum))
+                return;
+            Check.GeneTag(Check.Def<GeneDef>("DV_Melee_Slow"), "MeleeAttackSpeed");
         }
     }
 }

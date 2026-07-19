@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_Halffoot_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <xenotypes>
+      <li>
+        <xenotype>DV_Halffoot</xenotype>
+        <genes>
+          <li>AG_BandwidthIncrease</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_Halffoot_Dedup_Archon</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.archon</li>
+    </requiredMods>
+    <xenotypes>
+      <li>
+        <xenotype>DV_Halffoot</xenotype>
+        <genes>
+          <li>VRE_FastMeleeHitter</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+</Defs>

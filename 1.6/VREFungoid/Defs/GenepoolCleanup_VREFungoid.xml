@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_VREFungoid_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <genes>
+      <li>VRE_Telepathy</li>
+      <li>VRE_TotalAntirotLungs</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+</Defs>

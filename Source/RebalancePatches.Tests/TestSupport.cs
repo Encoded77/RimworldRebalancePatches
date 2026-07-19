@@ -63,6 +63,28 @@ namespace RebalancePatches.Tests
         public const string VGravshipC1 = "vanillaexpanded.gravship";
         public const string VSIE = "vanillaexpanded.vanillasocialinteractionsexpanded";
         public const string WarcasketQuality = "danzinagri.warcasketweaponquality";
+        public const string CherryPicker = "owlchemist.cherrypicker";
+        public const string VREHussar = "vanillaracesexpanded.hussar";
+        public const string VRESaurid = "vanillaracesexpanded.saurid";
+        public const string VREPhytokin = "vanillaracesexpanded.phytokin";
+        public const string VREGenie = "vanillaracesexpanded.genie";
+        public const string VREFungoid = "vanillaracesexpanded.fungoid";
+        public const string VREPigskin = "vanillaracesexpanded.pigskin";
+        public const string VREWaster = "vanillaracesexpanded.waster";
+        public const string VRELycanthrope = "vanillaracesexpanded.lycanthrope";
+        public const string VRESanguophage = "vanillaracesexpanded.sanguophage";
+        public const string Stoneborn = "det.stoneborn";
+        public const string Brawnum = "det.brawnum";
+        public const string Halffoot = "det.halffoot";
+        public const string Avaloi = "det.avaloi";
+        public const string Buzzers = "det.buzzers";
+        public const string BetterGeneInheritance = "redmattis.bettergeneinheritance";
+        public const string BSRaces = "redmattis.bigsmall";
+        public const string BSYokai = "redmattis.yokai";
+        public const string BSHeaven = "redmattis.heaven";
+        public const string BSMoreXenos = "redmattis.morexenos";
+        public const string BSLamias = "redmattis.lamiasandothersnakes";
+        public const string VREStarjack = "vanillaracesexpanded.starjack";
     }
 
     internal static class Check
@@ -83,6 +105,12 @@ namespace RebalancePatches.Tests
                 return false;
             }
             return true;
+        }
+
+        public static void GenesGone(params string[] names)
+        {
+            foreach (string name in names)
+                True(DefDatabase<GeneDef>.GetNamedSilentFail(name) == null, $"{name} still present");
         }
 
         public static bool GeneticsTabLoaded(string settingKey)
@@ -211,6 +239,19 @@ namespace RebalancePatches.Tests
                 if (set[i].xenotype != null && set[i].xenotype.defName == xenotypeDefName)
                     return true;
             return false;
+        }
+
+        public static void XenoGene(string xenotypeDefName, string geneDefName)
+        {
+            // Startup tests run before [StaticConstructorOnStartup]; force the rewires on first.
+            HarmonyBootstrap.EnsureApplied();
+            XenotypeDef xeno = Def<XenotypeDef>(xenotypeDefName);
+            bool found = false;
+            if (xeno.genes != null)
+                foreach (GeneDef g in xeno.genes)
+                    if (g.defName == geneDefName)
+                        found = true;
+            True(found, $"xenotype {xenotypeDefName} lacks gene {geneDefName}");
         }
 
         public static bool HasForcedTrait(GeneDef gene, string traitDefName)

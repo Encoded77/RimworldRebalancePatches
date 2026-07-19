@@ -444,4 +444,21 @@
       </li>
     </operations>
   </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneconflicts.claws</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="VQEA_PlasteelClaws"]/exclusionTags</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="VQEA_PlasteelClaws"]/exclusionTags</xpath>
+          <value><li>RBP_Claws</li></value>
+        </match>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/GeneDef[defName="VQEA_PlasteelClaws"]</xpath>
+          <value><exclusionTags><li>RBP_Claws</li></exclusionTags></value>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
 </Patch>

@@ -29,5 +29,16 @@ namespace RebalancePatches.Tests
             }
             Check.True(gated > 0, "no patch operations loaded for encoded.rebalancepatches");
         }
+
+        [Test]
+        public static void AllGenepoolDefSettingKeysRegistered()
+        {
+            foreach (GeneRemovalListDef def in DefDatabase<GeneRemovalListDef>.AllDefsListForReading)
+                Check.True(!string.IsNullOrEmpty(def.settingKey) && SettingsRegistry.GroupOf(def.settingKey) != null,
+                    $"GeneRemovalListDef {def.defName}: settingKey '{def.settingKey}' is not registered in SettingsRegistry");
+            foreach (XenotypeRewireDef def in DefDatabase<XenotypeRewireDef>.AllDefsListForReading)
+                Check.True(!string.IsNullOrEmpty(def.settingKey) && SettingsRegistry.GroupOf(def.settingKey) != null,
+                    $"XenotypeRewireDef {def.defName}: settingKey '{def.settingKey}' is not registered in SettingsRegistry");
+        }
     }
 }

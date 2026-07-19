@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_Avaloi_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <xenotypes>
+      <li>
+        <xenotype>DV_Avaloi</xenotype>
+        <genes>
+          <li>AG_ToxResist_Vulnerability</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+</Defs>

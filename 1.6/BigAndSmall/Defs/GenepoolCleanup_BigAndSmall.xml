@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_BigSmall_Dedup_AlphaGenes</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>sarg.alphagenes</li>
+    </requiredMods>
+    <genes>
+      <li>MinTemp_HugeDecrease</li>
+      <li>MaxTemp_HugeIncrease</li>
+      <li>FireImmunity</li>
+      <li>BS_MinTemp_HugeDecrease_Android</li>
+      <li>BS_MaxTemp_HugeIncrease_Android</li>
+      <li>BS_FireImmunity_Android</li>
+      <li>BS_NaturalArmor</li>
+      <li>BS_ToughSkin</li>
+      <li>BS_NoFood</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_BigSmall_InternalDupes</defName>
+    <settingKey>genepool.bsdupes</settingKey>
+    <genes>
+      <li>BS_GeneStabilizing_Moderate</li>
+      <li>BS_GeneStabilizing_Great</li>
+      <li>BS_GeneStabilizing_Extreme</li>
+      <li>BS_Deathlike</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_BigSmall_Dedup_Pigskin</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.pigskin</li>
+    </requiredMods>
+    <genes>
+      <li>BS_FastAging</li>
+      <li>BS_VeryFastAging</li>
+      <li>BS_SlowAging</li>
+      <li>BS_VerySlowAging</li>
+      <li>VU_UltraRapidAging</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_BigSmall_Dedup_Highmate</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.highmate</li>
+    </requiredMods>
+    <genes>
+      <li>BS_Flirty</li>
+      <li>VU_Libido_Succubus</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_BigSmall_Dedup_Archon</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.archon</li>
+    </requiredMods>
+    <genes>
+      <li>BS_ShortPregnancy</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_BigSmall_Dedup_Sanguophage</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.sanguophage</li>
+    </requiredMods>
+    <genes>
+      <li>BS_Talons</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_BigSmall_Dedup_Fungoid</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.fungoid</li>
+    </requiredMods>
+    <genes>
+      <li>BS_Learning_None</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_BigSmall_Dedup_Waster</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.waster</li>
+    </requiredMods>
+    <genes>
+      <li>BS_Instability_Catastrophic</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_BigSmall_Dedup_Hussar</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.hussar</li>
+    </requiredMods>
+    <genes>
+      <li>BS_Abrasive</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_BigSmall_Dedup_Starjack</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.starjack</li>
+    </requiredMods>
+    <genes>
+      <li>BS_EVA_Gene</li>
+      <li>BS_AndroidEVA_Gene</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_BigSmall_Dedup_Lycanthrope</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>vanillaracesexpanded.lycanthrope</li>
+    </requiredMods>
+    <genes>
+      <li>BS_NightOwl</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+</Defs>

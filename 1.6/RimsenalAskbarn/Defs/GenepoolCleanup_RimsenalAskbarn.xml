@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_RimsenalAskbarn_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <genes>
+      <li>LowFertility</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_RimsenalAskbarn_Dedup_Venators</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>det.venators</li>
+    </requiredMods>
+    <genes>
+      <li>RSLongshot</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_RimsenalAskbarn_Dedup_Keshig</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>det.keshig</li>
+    </requiredMods>
+    <genes>
+      <li>RSBornWarrior</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+</Defs>

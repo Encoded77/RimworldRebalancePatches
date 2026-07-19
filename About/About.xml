@@ -3,7 +3,7 @@
   <packageId>encoded.rebalancepatches</packageId>
   <name>Encoded's Rebalance Patches</name>
   <author>Encoded</author>
-  <modVersion>1.3.0</modVersion>
+  <modVersion>1.4.0</modVersion>
   <url></url>
   <supportedVersions>
     <li>1.6</li>
@@ -15,9 +15,15 @@
       <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
       <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
     </li>
+    <li>
+      <packageId>owlchemist.cherrypicker</packageId>
+      <displayName>Cherry Picker</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/3521312241</steamWorkshopUrl>
+    </li>
   </modDependencies>
   <loadAfter>
     <li>brrainz.harmony</li>
+    <li>owlchemist.cherrypicker</li>
     <li>cn.rimiot</li>
     <li>hlx.ultratechalteredcarbon</li>
     <li>vanillaexpanded.vaeaccessories</li>
@@ -37,6 +43,28 @@
     <li>vanillaracesexpanded.archon</li>
     <li>vanillaracesexpanded.sanguophage</li>
     <li>vanillaracesexpanded.lycanthrope</li>
+    <li>vanillaracesexpanded.hussar</li>
+    <li>vanillaracesexpanded.saurid</li>
+    <li>vanillaracesexpanded.phytokin</li>
+    <li>vanillaracesexpanded.genie</li>
+    <li>vanillaracesexpanded.fungoid</li>
+    <li>vanillaracesexpanded.pigskin</li>
+    <li>vanillaracesexpanded.waster</li>
+    <li>det.stoneborn</li>
+    <li>det.brawnum</li>
+    <li>det.halffoot</li>
+    <li>det.avaloi</li>
+    <li>det.buzzers</li>
+    <li>det.venators</li>
+    <li>rimsenal.zohar</li>
+    <li>redmattis.bettergeneinheritance</li>
+    <li>redmattis.bigsmall</li>
+    <li>redmattis.yokai</li>
+    <li>redmattis.bsslimes</li>
+    <li>redmattis.heaven</li>
+    <li>redmattis.morexenos</li>
+    <li>redmattis.lamiasandothersnakes</li>
+    <li>vanillaracesexpanded.starjack</li>
     <li>rimsenal.harana</li>
     <li>rimsenal.askbarn</li>
     <li>det.keshig</li>

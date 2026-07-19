@@ -46,5 +46,76 @@ namespace RebalancePatches.Tests
             Check.Eq(Check.CostOf(integrator, "ComponentSpacer"), 2, "BS_GeneGeneIntegrator costList[ComponentSpacer]");
             Check.Eq(Check.StatBase(integrator, "MarketValue"), 4000f, "BS_GeneGeneIntegrator MarketValue");
         }
+
+        [Test]
+        public static void DedupLosersRemoved()
+        {
+            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+                return;
+            Check.GenesGone("MinTemp_HugeDecrease", "MaxTemp_HugeIncrease", "FireImmunity",
+                "BS_MinTemp_HugeDecrease_Android", "BS_MaxTemp_HugeIncrease_Android", "BS_FireImmunity_Android",
+                "BS_NaturalArmor", "BS_ToughSkin", "BS_NoFood");
+            if (ModsConfig.IsActive(Ids.VREPigskin))
+                Check.GenesGone("BS_FastAging", "BS_VeryFastAging", "BS_SlowAging", "BS_VerySlowAging", "VU_UltraRapidAging");
+            if (ModsConfig.IsActive(Ids.VREHighmate))
+                Check.GenesGone("BS_Flirty", "VU_Libido_Succubus");
+            if (ModsConfig.IsActive(Ids.VREArchon))
+                Check.GenesGone("BS_ShortPregnancy");
+            if (ModsConfig.IsActive(Ids.VRESanguophage))
+                Check.GenesGone("BS_Talons");
+            if (ModsConfig.IsActive(Ids.VREFungoid))
+                Check.GenesGone("BS_Learning_None");
+            if (ModsConfig.IsActive(Ids.VREWaster))
+                Check.GenesGone("BS_Instability_Catastrophic");
+            if (ModsConfig.IsActive(Ids.VREHussar))
+                Check.GenesGone("BS_Abrasive");
+            if (ModsConfig.IsActive(Ids.VRELycanthrope))
+                Check.GenesGone("BS_NightOwl");
+            if (ModsConfig.IsActive(Ids.VREStarjack))
+                Check.GenesGone("BS_EVA_Gene", "BS_AndroidEVA_Gene");
+            Check.True(DefDatabase<GeneDef>.GetNamedSilentFail("BS_Pain_None") != null, "BS_Pain_None (canonical) missing");
+        }
+
+        [Test]
+        public static void InternalLegacyGenesRemoved()
+        {
+            if (!Check.Ready("genepool.bsdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+                return;
+            Check.GenesGone("BS_GeneStabilizing_Moderate", "BS_GeneStabilizing_Great",
+                "BS_GeneStabilizing_Extreme", "BS_Deathlike");
+        }
+
+        [Test]
+        public static void XenotypesRewired()
+        {
+            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+                return;
+            Check.XenoGene("BS_FrostJotunInBlue", "AG_ColdImmunity");
+            Check.XenoGene("VU_Gatekeeper", "AG_ArmourMedium");
+            Check.XenoGene("VU_Gatekeeper", "AG_HeatImmunity");
+            Check.XenoGene("VU_Hellguard", "AG_ArmourMedium");
+            Check.XenoGene("VU_Imp", "AG_HeatImmunity");
+            Check.XenoGene("VU_ReturnedSkeletal", "AG_HeatImmunity");
+            Check.XenoGene("VU_ReturnedSkeletal", "AG_ColdImmunity");
+            Check.XenoGene("VU_Succubus", "AG_ArmourMedium");
+            Check.XenoGene("VU_Succubus", "AG_HeatImmunity");
+            if (ModsConfig.IsActive(Ids.VREPigskin))
+            {
+                Check.XenoGene("BS_FrostJotunInBlue", "VRE_SlowAging");
+                Check.XenoGene("VU_Returned", "VRE_RapidAging");
+            }
+            if (ModsConfig.IsActive(Ids.VREHighmate))
+                Check.XenoGene("VU_Succubus", "VRE_Libido_VeryHigh");
+        }
+
+        [Test]
+        public static void DeathlikeReplaced()
+        {
+            if (!Check.Ready("genepool.bsdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+                return;
+            Check.XenoGene("VU_Returned", "BS_LesserDeathless");
+            Check.XenoGene("VU_Returned_Intact", "BS_LesserDeathless");
+            Check.XenoGene("VU_ReturnedSkeletal", "BS_LesserDeathless");
+        }
     }
 }

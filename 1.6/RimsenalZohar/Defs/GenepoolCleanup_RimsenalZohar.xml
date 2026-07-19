@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_RimsenalZohar_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <genes>
+      <li>Gene_SensitiveStomach</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+</Defs>

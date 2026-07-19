@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.4.0 (2026-07-19)
+
+**Genepool Cleanup** — a new settings group that deduplicates the gene ecosystem across the big gene mods. Now depends on Cherry Picker (removals are applied automatically, no Cherry Picker setup needed; toggling off restores). Active only when Alpha Genes, WVC - Xenotypes and Genes and Big and Small - Genes & More are all loaded. Full gene and xenotype details in `Docs/GeneChanges.md`.
+
+- Alpha Genes' animal summon family removed (~90 genes, one per supported animal; no xenotype used them).
+- WVC-internal duplicates removed (~50 genes duplicating vanilla or WVC's own archite versions); Big and Small's gene stabilizing and deathlike body genes removed.
+- Cross-mod deduplication: one canonical gene per function — specialist VRE packs keep their specialty, Big and Small keeps body mechanics, Alpha Genes keeps general-utility genes, Det's packs keep their signature quirks, WVC's archite uniques win over natural versions. ~300 genes removed in total across Alpha Genes, WVC, Big and Small (all race packs), the VRE packs, Det's Xenotypes and the Rimsenal xenotype packs.
+- Every affected xenotype (~110) is rewired to the canonical replacement gene, so races keep their function through shared genes.
+- VRE - Hussar's ~300 per-weapon aptitude genes consolidated into four category genes (light/heavy melee, light/heavy ranged, split at 3 kg) with the same bonus; hussars still roll a random aptitude, and a new archite gene node delivers them with Gene Nodes - Genes for Sale.
+- New gene conflicts: claw/talon genes across seven mods, slow bleeding vs hemophiliac, flirty vs never flirts, melee speed genes.
+- Alpha Genes' angelic beauty relabeled *uncanny beauty* when WVC's angel beauty is present.
+- Dev tooling: the gene database dump can refresh automatically at the main menu, via a new Developer settings toggle (off by default, shown only with dev mode on).
+
 ## 1.3.1 (2026-07-19)
 
 - Added tooling to dump loaded genes, xenotypes and genes acquisition method at runtime into a comprehensive json log.
@@ -7,7 +20,7 @@
 
 ## 1.3.0 (2026-07-19)
 
-**Compat & rebalance batch** — re-implements a curated selection of ideas from "Too Many Mods - Compats and Rebalances" alongside our own fixes and features. Every feature has its own settings toggle and an automated test.
+**Compat & rebalance batch** — a curated batch of cross-mod fixes, rebalances and new features. Every feature has its own settings toggle and an automated test.
 
 - Gene conflict fixes: mutually exclusive gene pairs that force fighting traits or stack broken effects — B&S bloodlust × VRE-Highmate distressed, WVC psychic UV/dark sensitivity × vanilla psychically dull/deaf, WVC firefoam pop × Alpha Genes fire obsession, hemogen drains (vanilla/B&S/WVC on VRE-Sanguophage's tag), deathless variants (vanilla/B&S/WVC/VRE-Archon), and melee dodge genes across VQEA/Harana/Askbarn/Keshig/Highborn on VRE-Lycanthrope's tag.
 - Alpha Genes: AG genes spawn in vanilla genepacks (cosmetics much rarer), alphapacks/mixedpacks unobtainable, gene-lab quest spawner yields vanilla genepacks; new *gene toolkits* research (Genetics tab, after gene processor) makes all 11 AG gene tools craftable at the fabrication bench, archotech variants costing an archite capsule.

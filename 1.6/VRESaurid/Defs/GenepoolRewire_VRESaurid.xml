@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_VRESaurid_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>det.buzzers</li>
+    </requiredMods>
+    <xenotypes>
+      <li>
+        <xenotype>VRESaurids_Saurid</xenotype>
+        <genes>
+          <li>DV_Pheromones</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+</Defs>

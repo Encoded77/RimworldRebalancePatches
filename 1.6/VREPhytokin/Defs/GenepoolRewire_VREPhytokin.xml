@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_VREPhytokin_Dedup</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <xenotypes>
+      <li>
+        <xenotype>VRE_Animakin</xenotype>
+        <genes>
+          <li>Body_FemaleOnly</li>
+        </genes>
+      </li>
+      <li>
+        <xenotype>VRE_Gauranlenkin</xenotype>
+        <genes>
+          <li>Body_FemaleOnly</li>
+        </genes>
+      </li>
+      <li>
+        <xenotype>VRE_Poluxkin</xenotype>
+        <genes>
+          <li>Body_FemaleOnly</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+</Defs>

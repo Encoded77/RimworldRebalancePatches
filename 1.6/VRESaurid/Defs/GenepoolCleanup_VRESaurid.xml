@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_VRESaurid_Dedup_Buzzers</defName>
+    <settingKey>genepool.dedup</settingKey>
+    <requiredMods>
+      <li>det.buzzers</li>
+    </requiredMods>
+    <genes>
+      <li>VRESaurids_Pheromones</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+</Defs>
