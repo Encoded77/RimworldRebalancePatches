@@ -9,6 +9,22 @@ namespace RebalancePatches.Tests
     public static class BigAndSmallTests
     {
         [Test]
+        public static void SciFiNames()
+        {
+            if (!Check.Ready("scifinames.bigsmall", Ids.BigSmallCore))
+                return;
+            Check.Eq(Check.Def<XenotypeDef>("VU_Succubus").label, "allurist", "VU_Succubus label");
+            Check.Eq(Check.Def<XenotypeDef>("VU_Hellguard").label, "abyssal guard", "VU_Hellguard label");
+            Check.Eq(Check.Def<XenotypeDef>("VU_Gatekeeper").label, "Gatekeeper", "VU_Gatekeeper label unchanged");
+            Check.Eq(Check.Def<XenotypeDef>("VU_Imp").label, "greater impid", "VU_Imp label");
+            Check.Eq(Check.Def<XenotypeDef>("VU_Returned").label, "decayed reanimate", "VU_Returned label");
+            Check.Eq(Check.Def<XenotypeDef>("VU_Returned_Intact").label, "reanimate", "VU_Returned_Intact label");
+            Check.Eq(Check.Def<XenotypeDef>("VU_ReturnedSkeletal").label, "skeletal reanimate", "VU_ReturnedSkeletal label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_FrostJotunInBlue").label, "cryogigant", "BS_FrostJotunInBlue label");
+            Check.Eq(Check.Def<PawnKindDef>("BS_WomanInBlue").label, "gigant adventurer", "BS_WomanInBlue label");
+        }
+
+        [Test]
         public static void MadScienceFieldTestingPrereqs()
         {
             if (!Check.Ready("bigsmall.madscience", Ids.BigSmallCore))

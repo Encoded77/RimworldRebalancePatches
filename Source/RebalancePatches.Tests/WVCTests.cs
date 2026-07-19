@@ -8,6 +8,16 @@ namespace RebalancePatches.Tests
     public static class WVCTests
     {
         [Test]
+        public static void SciFiNames()
+        {
+            if (!Check.Ready("scifinames.wvc", Ids.WVC))
+                return;
+            Check.Eq(Check.Def<XenotypeDef>("WVC_Undead").label, "necrokin", "WVC_Undead label");
+            Check.Eq(Check.Def<XenotypeDef>("WVC_Lilith").label, "psykin", "WVC_Lilith label");
+            Check.Eq(Check.Def<XenotypeDef>("WVC_CatDeity").label, "deadcat", "WVC_CatDeity label unchanged");
+        }
+
+        [Test]
         public static void WvcXenotypesLeaveGenericFactions()
         {
             if (!Check.Ready("xenotypes.wvcchances", Ids.WVC))

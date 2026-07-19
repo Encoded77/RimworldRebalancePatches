@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.6.0 (2026-07-19)
+
+**Sci-fi Renaming** — a new settings group that renames fantasy-, Norse- and religion-flavoured races and factions to gene-engineering flavour (labels, descriptions, faction names and pawn kinds). Purely cosmetic, one toggle per mod.
+
+- Big and Small - Races: jotun → gigants (cryo/pyro/half, archite primes), ogres → hulkers, dvergr → deepkin, nisse → minikin, svartalfs → umbrakin, redcaps → scrappers, trolls → regenerants, flesh golems → bioconstructs, hearthguards/hearthdolls → warden/service synths; Muspelheim → Cinderhold Dominion, Niflheim → Permafrost Clans, Dvergr Trade Union → Deepkin Trade Combine, little people union → Minikin Union, ogre tribes → Hulker Tribes.
+- Big and Small - Heaven and Hell: angels → ascendants (Satan → adversary prime, Grigori → watchers, Nephilim → halfwrought, Lilim → nightwrought), demons → abyssals (gluttons → devourers); Kingdom of Heaven → Luminal Ascendancy, Tyranny of Hell → Abyssal Dominion, Extraplanar Outcasts → Exiles.
+- Big and Small - Genes & More: succubus → allurist, hellguard → abyssal guard, imp → greater impid, the returned → reanimates.
+- Big and Small - Yokai: kitsune → vulpids, nekomata → felids, oni → hornbrutes (crimson/cobalt); Yokai Union → Chimeric Union.
+- Big and Small - Lamias: lamia → serpids, sirens → mesmer serpids, gorgons → petrifex serpids, naga → greater serpids, nagaraj → serpid primes, Tiamat → progenitor serpid.
+- Big and Small - Slimes: slimes → plasmoids, Escaped Slimes → Escaped Plasmoids.
+- Big and Small - More Xenotypes: devilspider → dreadspider.
+- WVC - Xenotypes and Genes: undead → necrokin, lilif → psykin.
+- Alpha Genes: efreet → cindrids, nereids → abyssids.
+
 ## 1.5.0 (2026-07-19)
 
 **Xenotype Gene Integration** — a new settings group adding thematic genes to individual xenotypes from the cleaned-up genepool. Each toggle needs the xenotype's mod plus the gene's mod.

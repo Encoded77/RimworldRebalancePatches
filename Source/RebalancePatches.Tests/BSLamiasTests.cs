@@ -1,4 +1,5 @@
-using RimTestRedux;
+﻿using RimTestRedux;
+using RimWorld;
 using Verse;
 
 namespace RebalancePatches.Tests
@@ -6,6 +7,21 @@ namespace RebalancePatches.Tests
     [TestSuite]
     public static class BSLamiasTests
     {
+        [Test]
+        public static void SciFiNames()
+        {
+            if (!Check.Ready("scifinames.lamias", Ids.BSLamias))
+                return;
+            Check.Eq(Check.Def<XenotypeDef>("LoS_Lamia").label, "serpid", "LoS_Lamia label");
+            Check.Eq(Check.Def<XenotypeDef>("LoS_Siren").label, "mesmer serpid", "LoS_Siren label");
+            Check.Eq(Check.Def<XenotypeDef>("LoS_Gorgon").label, "petrifex serpid", "LoS_Gorgon label");
+            Check.Eq(Check.Def<XenotypeDef>("Naga").label, "greater serpid", "Naga label");
+            Check.Eq(Check.Def<XenotypeDef>("Nagaraj").label, "serpid prime", "Nagaraj label");
+            Check.Eq(Check.Def<XenotypeDef>("LoS_ScenarioTiamat").label, "progenitor serpid", "LoS_ScenarioTiamat label");
+            Check.Eq(Check.Def<XenotypeDef>("LoS_Adderman").label, "Adderman", "LoS_Adderman label unchanged");
+            Check.Eq(Check.Def<FactionDef>("LoS_SnekFaction").label, "serpid tribal federation", "LoS_SnekFaction label");
+        }
+
         [Test]
         public static void XenotypesRewired()
         {
@@ -28,3 +44,4 @@ namespace RebalancePatches.Tests
         }
     }
 }
+

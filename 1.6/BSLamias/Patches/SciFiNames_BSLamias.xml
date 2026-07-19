@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>scifinames.lamias</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="LoS_Lamia"]/label</xpath>
+        <value><label>serpid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="LoS_Lamia"]/description</xpath>
+        <value><description>These serpentine xenohumans were originally created by a crime syndicate who used them as entertainers, bodyguards, and assassins.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="LoS_Siren"]/label</xpath>
+        <value><label>mesmer serpid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="LoS_Siren"]/description</xpath>
+        <value><description>These serpentine xenohumans were created on an urbworld to act as entertainers on stages at fancy clubs, engineered with unbelievably beautiful singing voices.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="LoS_Gorgon"]/label</xpath>
+        <value><label>petrifex serpid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="LoS_Gorgon"]/description</xpath>
+        <value><description>Heavily armored serpids with a mass of living snake-like appendages in the place of hair.\n\nAccording to the stories they are ageless and immortal, though in reality they are just incredibly tough.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="Naga"]/label</xpath>
+        <value><label>greater serpid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="Naga"]/description</xpath>
+        <value><description>Greater serpids are said to be proud, tough, and mighty warriors.\n\nSome outlander scientists state they may have originally been humans modified a long time ago in an effort to adapt them to acidic or swamp-like worlds.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="Nagaraj"]/label</xpath>
+        <value><label>serpid prime</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="Nagaraj"]/description</xpath>
+        <value><description>Serpid primes are ageless proud warriors who are sometimes believed to possess strange powers. In terms of appearance they are similar to greater serpids, but they typically have a more human-like head and torso.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="LoS_ScenarioTiamat"]/label</xpath>
+        <value><label>progenitor serpid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="LoS_SnekFaction"]/label</xpath>
+        <value><label>serpid tribal federation</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="LoS_SnekFaction"]/description</xpath>
+        <value><description>This loose federation of various serpid gene-lines, former enemies, have united against their more dangerous common foes.</description></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

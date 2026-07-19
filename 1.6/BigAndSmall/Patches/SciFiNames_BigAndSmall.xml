@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>scifinames.bigsmall</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="VU_Succubus"]/label</xpath>
+        <value><label>allurist</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="VU_Succubus"]/description</xpath>
+        <value><description>Allurists are engineered infiltrators said to seduce their victims and prey upon them and the victims' friends and family.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="VU_Hellguard"]/label</xpath>
+        <value><label>abyssal guard</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="VU_Hellguard"]/description</xpath>
+        <value><description>These large creatures are the backbone of the Abyssal Dominion's armies and industry.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="VU_Imp"]/label</xpath>
+        <value><label>greater impid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="VU_Imp"]/description</xpath>
+        <value><description>These little thieves are often found in all sorts of strange places. They are especially known for stealing technological gadgets.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="VU_Returned"]/label</xpath>
+        <value><label>decayed reanimate</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="VU_Returned_Intact"]/label</xpath>
+        <value><label>reanimate</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="VU_ReturnedSkeletal"]/label</xpath>
+        <value><label>skeletal reanimate</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FrostJotunInBlue"]/label</xpath>
+        <value><label>cryogigant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FrostJotunInBlue"]/description</xpath>
+        <value><description>A great cryogigant adventurer (or descendant thereof) from the frozen mountains of the far north.\n\nDon't believe that hogwash outlanders tell you about giant space labourers or whatever!</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_WomanInBlue"]/label</xpath>
+        <value><label>gigant adventurer</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_WomanInBlue"]/labelPlural</xpath>
+        <value><labelPlural>gigant adventurers</labelPlural></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_WomanInBlue"]/labelMale</xpath>
+        <value><labelMale>gigant adventurer</labelMale></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_WomanInBlue"]/labelFemale</xpath>
+        <value><labelFemale>gigant adventurer</labelFemale></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

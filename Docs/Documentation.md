@@ -130,6 +130,20 @@ Small thematic gene additions to individual xenotypes, drawing on the cleaned-up
 - **`xenotypes.neanderthalfrost`** — Neanderthals gain frostbite resistance (Alpha Genes): frostbite damage halved.
 - **`xenotypes.wvcspawns`** — WVC - Xenotypes and Genes' most powerful races (ferrkind, metalkin, rustkind, deadcat) no longer spawn as random wanderers, refugees, beggars or faction pawns. They remain obtainable through WVC's own events, morphs and implanters, like the rest of its top tier.
 
+## Sci-fi Renaming
+
+Renames fantasy-, Norse- and religion-flavoured races and factions to RimWorld's gene-engineering flavour: every renamed group reads as an engineered gene-line, with labels, descriptions, faction names and pawn kind names rewritten to match. Purely cosmetic — no stats, genes or spawning change, and existing saves are unaffected beyond the displayed names. One toggle per mod.
+
+- **`scifinames.bsraces`** — Big and Small - Races: jotun become **gigants** (cryogigant, pyrogigant, half-gigant; the archite heirs become gigant primes), ogres **hulkers**, dvergr **deepkin**, nisse **minikin**, svartalfs **umbrakin**, redcaps **scrappers**, trolls **regenerants**, flesh golems **bioconstructs**, hearthguards and hearthdolls **warden and service synths**. The Kingdom of Muspelheim becomes the **Cinderhold Dominion**, the Tribes of Niflheim the **Permafrost Clans**, the Dvergr Trade Union the **Deepkin Trade Combine**, the little people union the **Minikin Union** and the ogre tribes the **Hulker Tribes**, with their fighters renamed to match.
+- **`scifinames.bigsmall`** — Big and Small - Genes & More: the succubus becomes the **allurist**, the hellguard the **abyssal guard**, the imp the **greater impid**, the returned **reanimates** (decayed/skeletal variants) and the frost jotun adventurer a **cryogigant**.
+- **`scifinames.heaven`** — Big and Small - Heaven and Hell: angels become **ascendants** (the authority the ascendant prime, Satan the adversary prime, the Grigori watchers, the Nephilim the halfwrought, the Lilim the nightwrought), demons become **abyssals** (gluttons devourers). The factions become the **Luminal Ascendancy** (emissaries), the **Abyssal Dominion** (abyssals) and the **Exiles**, and every holy/demonic pawn kind follows.
+- **`scifinames.yokai`** — Big and Small - Yokai: kitsune become **vulpids**, nekomata **felids** and oni **hornbrutes** (crimson/cobalt, great and lesser); the Yokai Union becomes the **Chimeric Union**.
+- **`scifinames.lamias`** — Big and Small - Lamias: lamia become **serpids**, sirens **mesmer serpids**, gorgons **petrifex serpids**, naga **greater serpids**, nagaraj **serpid primes** and Tiamat the **progenitor serpid**; the snake tribal federation becomes the serpid tribal federation and the Greek/Hindu myth references drop from descriptions.
+- **`scifinames.slimes`** — Big and Small - Slimes: slimes become **plasmoids** across every xenotype, and the escaped slimes faction becomes the **Escaped Plasmoids** led by a plasmoid prime.
+- **`scifinames.morexenos`** — Big and Small - More Xenotypes: the devilspider becomes the **dreadspider**.
+- **`scifinames.wvc`** — WVC - Xenotypes and Genes: the undead xenotype becomes the **necrokin** and the lilif the **psykin**.
+- **`scifinames.alphagenes`** — Alpha Genes: efreet become **cindrids** and nereids **abyssids**.
+
 ## Genetics Research Overhaul
 
 A cohesive rework of genetics research: vanilla puts a full gene-editing empire behind two cheap industrial researches; this stages it from basic sampling to archogenetics and gives every genetics mod a common backbone. Requires **Biotech**; every module has its own toggle and does nothing if its target mod is missing.

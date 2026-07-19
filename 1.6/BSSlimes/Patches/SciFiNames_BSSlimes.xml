@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>scifinames.slimes</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_GreenSlime"]/label</xpath>
+        <value><label>green plasmoid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_GreenSlime"]/description</xpath>
+        <value><description>A plasmoid in a roughly humanoid shape. They are best dealt with using fire while wearing acid-protective gear. It is believed that they are some kind of escaped rapid-evolving goo that has taken on a vaguely humanoid form. Another theory is that they descend from pink plasmoids which have turned into their current form as an adaptation to a hostile environment.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_EmperorSlime"]/label</xpath>
+        <value><label>emperor plasmoid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_EmperorSlime"]/description</xpath>
+        <value><description>The emperor is probably named as such due to the tendency of being larger than the common green plasmoids, as well as the somewhat purple colour and crown-like "horns".</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_PinkSlime"]/label</xpath>
+        <value><label>pink plasmoid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_PinkSlime"]/description</xpath>
+        <value><description>The elusive pink plasmoid. These plasmoids were created for spaceship environments, especially search and rescue.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_ElixirSlime"]/label</xpath>
+        <value><label>elixir plasmoid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_ElixirSlime"]/description</xpath>
+        <value><description>The incredibly rare elixir plasmoid. These plasmoids were originally created by an archotech to act as a mobile healing vat.\n\nThey tend to fare rather poorly in non-sterile environments without climate adjustment.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FrostSlime"]/label</xpath>
+        <value><label>frost plasmoid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FrostSlime"]/description</xpath>
+        <value><description>Incredibly cold plasmoids which somehow dramatically cool their surroundings. Believed to have been created to act as part of a cooling solution for spaceships. Their sapience and somewhat humanoid form is likely an unwanted evolutionary development.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_LavaSlime"]/label</xpath>
+        <value><label>lava plasmoid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_LavaSlime"]/description</xpath>
+        <value><description>Incredibly hot plasmoids which appear to be composed of molten lava. Considered a dreadful and common pest on some volcanic worlds. It is not known why they were created, but some believe they were originally intended as mindless heaters for extremely chilly planets.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_ToxicSlduge"]/description</xpath>
+        <value><description>Repulsive pile of sludgy waste capable of taking a vaguely humanoid form. Larger specimens will sometimes attempt to swallow smaller creatures whole. They are generally believed to have originally been some other type of plasmoid, though some believe they were deliberately created as a weapon.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FrostSlimeGiant"]/label</xpath>
+        <value><label>giant frost plasmoid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FrostSlimeGiant"]/description</xpath>
+        <value><description>Huge incredibly cold plasmoids sometimes found living in societies of cryogigants.\n\nWe don't have any reports available on how they are able to grow so much larger than usual.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_LavaSlimeGiant"]/label</xpath>
+        <value><label>giant lava plasmoid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_LavaSlimeGiant"]/description</xpath>
+        <value><description>Huge incredibly hot plasmoids sometimes found living in societies of pyrogigants.\n\nWe don't have any reports available on how they are able to grow so much larger than usual.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_BananaSplitSlime"]/label</xpath>
+        <value><label>horned banana split neko cream plasmoid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_BananaSplitSlime"]/description</xpath>
+        <value><description>Title:\n"Lesser horned banana split neko cream plasmoid"\n\nDescription:\n[EXPUNGED].\n\nNote:\nThe Vanguard Institute for Progressive Evolutionary Research is no place for jokes. Stop recreating this entry you smooth-brained dimwits.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_BananaSplitSlimeGiant"]/label</xpath>
+        <value><label>greater horned banana split neko cream plasmoid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_BananaSplitSlimeGiant"]/description</xpath>
+        <value><description>Greater Horned Ba[CORRUPTED ENTRY]\n\nReportedly often seen among the cryogigants for some reason.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_SlimeFaction"]/label</xpath>
+        <value><label>plasmoid faction</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_SlimeFaction"]/description</xpath>
+        <value><description>This group of plasmoids likely originates from a crashed offworld laboratory ship.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_SlimeFaction"]/fixedName</xpath>
+        <value><fixedName>Escaped Plasmoids</fixedName></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_SlimeFaction"]/leaderTitle</xpath>
+        <value><leaderTitle>plasmoid prime</leaderTitle></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>scifinames.alphagenes</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="AG_Efreet"]/label</xpath>
+        <value><label>cindrid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="AG_Efreet"]/description</xpath>
+        <value><description>A modified strain of the impid xenotype designed as terrifying shock troopers, cindrids were created to be as intimidating as possible. Whereas impids are adept at fire-based, ranged combat, cindrids are perfectly capable of ripping their enemies to shreds in close quarters combat with their fearsome claws. Cindrids possess incredible heat resistant capabilities, and are immune to fire, being almost obsessed with it.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="AG_Nereid"]/label</xpath>
+        <value><label>abyssid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="AG_Nereid"]/description</xpath>
+        <value><description>Originally created as a xenotype adapted to living in shallow waters, abyssids evolved to thrive in the ocean's abyss. They have large, luminescent eyes, fin-like ears, and webbed hands and feet for efficient swimming, as well as bioluminescent markings on their skin that aid in communication and camouflage.\n\nAbyssids have a unique ability to access a personal pocket dimension, an ocean-abyss refuge they can retreat to or use for strategic advantage. It serves as a sanctuary, a place of learning, and a tactical refuge, allowing abyssids to evade threats or ambush predators.</description></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

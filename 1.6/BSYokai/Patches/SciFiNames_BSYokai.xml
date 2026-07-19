@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>scifinames.yokai</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Kitsune"]/label</xpath>
+        <value><label>vulpid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Kitsune"]/description</xpath>
+        <value><description>Fox-spliced xenohumans with formidable psychic talents. It is said that a vulpid grows one extra tail for every century lived, their psychic powers increasing with each.\n\nConsidering how many nine-tailed vulpids seem to be about, that seems questionable.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Nekomata"]/label</xpath>
+        <value><label>felid</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Nekomata"]/description</xpath>
+        <value><description>Cat-spliced xenohumans with a dangerous trickster streak. Some rumors even claim they have the ability to steal the psychic essence of the dead.\n\nSince there are almost no documented cases of a cat living for more than half a week on the Rim, where this gene-line came from is anyone's guess.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_RedOni"]/label</xpath>
+        <value><label>crimson hornbrute</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_RedOni"]/description</xpath>
+        <value><description>The outlanders claim that hornbrute raiders show up for one of two reasons. Either they are drunks on a rampage, or they are sober and are trying to steal alcohol.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_BlueOni"]/label</xpath>
+        <value><label>cobalt hornbrute</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_BlueOni"]/description</xpath>
+        <value><description>The outlanders claim that hornbrute raiders show up for one of two reasons. Either they are drunks on a rampage, or they are sober and are trying to steal alcohol.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_GreatRedOni"]/label</xpath>
+        <value><label>great crimson hornbrute</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_GreatRedOni"]/description</xpath>
+        <value><description>The outlanders claim that hornbrute raiders show up for one of two reasons. Either they are drunks on a rampage, or they are sober and are trying to steal alcohol. These ones are bigger, meaner, and even more trouble than the rest.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_GreatBlueOni"]/label</xpath>
+        <value><label>great cobalt hornbrute</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_GreatBlueOni"]/description</xpath>
+        <value><description>The outlanders claim that hornbrute raiders show up for one of two reasons. Either they are drunks on a rampage, or they are sober and are trying to steal alcohol. These ones are bigger, meaner, and even more trouble than the rest.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_LesserOni"]/label</xpath>
+        <value><label>lesser hornbrute</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_LesserOni"]/description</xpath>
+        <value><description>Small, ugly and highly energetic hornbrutes with a penchant for being found blackout drunk in the breweries of their enemies.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_YokaiUnion"]/label</xpath>
+        <value><label>Chimeric Union</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_YokaiUnion"]/description</xpath>
+        <value><description>A loose union of chimeric xenohumans. All gene-lines are welcome.\n\nIf you're not one of them you'd better be bringing alcohol. Lots of alcohol.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_YokaiUnion"]/pawnSingular</xpath>
+        <value><pawnSingular>chimeric</pawnSingular></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_YokaiUnion"]/pawnsPlural</xpath>
+        <value><pawnsPlural>chimerics</pawnsPlural></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

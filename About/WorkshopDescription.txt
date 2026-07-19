@@ -35,6 +35,15 @@ On top of the deduplication:
 
 The deduplication is only active when Alpha Genes, WVC and Big and Small are all loaded; each part has its own toggle, and restoring is as simple as toggling off and restarting. The full list of gene and xenotype changes is documented on github.
 
+[h2]Sci-fi Renaming[/h2]
+Renames fantasy-, Norse- and religion-flavoured races and factions to fit RimWorld's sci-fi setting: everything reads as an engineered gene-line, with labels, descriptions, faction names and pawn kinds rewritten to match. Purely cosmetic — no stats, genes or spawning change — and each mod has its own toggle:
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2894397737]Big and Small - Races[/url]: jotun become gigants, ogres hulkers, dvergr deepkin, nisse minikin, svartalfs umbrakin, redcaps scrappers, trolls regenerants, flesh golems bioconstructs; Muspelheim becomes the Cinderhold Dominion and Niflheim the Permafrost Clans.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3170117364]Heaven and Hell[/url]: angels become ascendants, demons abyssals; the factions become the Luminal Ascendancy, the Abyssal Dominion and the Exiles.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2920751126]Genes & More[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3073163708]Yokai[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2908225858]Lamias[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3027202907]Slimes[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3218636337]More Xenotypes[/url]: allurists, greater impids, reanimates, vulpids, felids and hornbrutes, the serpid family, plasmoids, dreadspiders.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2886992038]WVC[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2891845502]Alpha Genes[/url]: necrokin, psykin, cindrids and abyssids.
+[/list]
+
 [h2]Miscellaneous Patches[/h2]
 A curated batch of cross-mod fixes and tweaks, each with its own toggle:
 [list]

@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>scifinames.heaven</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Authority"]/label</xpath>
+        <value><label>ascendant prime</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Authority"]/description</xpath>
+        <value><description>Immensely powerful winged warforms most commonly seen on the battlefield. Not much is known about them beyond the fact that they rank very high in the ascendant hierarchy.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Malakim"]/label</xpath>
+        <value><label>ascendant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Malakim"]/description</xpath>
+        <value><description>Also known as emissaries, the ascendants are the most often seen of the winged warforms, and they do much of the busywork for the intelligence that made them. Contrary to what many believe, ascendants fundamentally fail to understand how humans think and are terrible at communicating anything more complex than basic messages or commands, sometimes failing at even that...\n\n"BEWARE. This city has been found wanting; on the eve of winter it faces judgement."\n\n"...and after saying so it left. So, uh, wanting how? Does it mean we must improve the homeless situation? Quickly evacuate the city? ...All of the above?"</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Satan"]/label</xpath>
+        <value><label>adversary prime</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Satan"]/description</xpath>
+        <value><description>Also known as adversaries, these warforms are said to be tasked with testing worth by means of taunting, inflicting suffering, and tempting humanity. Perhaps because of their nature as designated adversaries they are among the few of their kind that seem to understand humans. Despite their frightening appearance and sometimes even crueler acts, some claim that the adversaries generally sympathise with and ultimately wish the best for humanity, more so than any of their kin.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Grigori"]/label</xpath>
+        <value><label>watcher</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Grigori"]/description</xpath>
+        <value><description>Outcasts amongst the ascendants, considered by many to be worse than even the abyssals, the watchers were allegedly tasked with watching over and guiding humanity. It is said that they were much more capable of understanding and connecting with humans than their kin. Reportedly this more humanlike nature was their downfall, as stories speak of the watchers teaching forbidden knowledge and even coupling with humans; birthing the savage titans known as the halfwrought.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Glutton"]/label</xpath>
+        <value><label>devourer</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Glutton"]/description</xpath>
+        <value><description>Devourers are terrifying abyssals covered in teeth and mouths. They cannot even stop themselves from feasting on their foes in the midst of battle.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_LilGlutton"]/label</xpath>
+        <value><label>lesser devourer</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_LilGlutton"]/description</xpath>
+        <value><description>Lesser devourers appear to be smaller versions of devourers. They possess the same voracious appetite as their larger kin.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Nephilim"]/label</xpath>
+        <value><label>halfwrought</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Nephilim"]/description</xpath>
+        <value><description>The halfwrought are said to be the grotesquely enormous offspring of a watcher and a human. Ascendants describe them as most unnatural, foul, cannibalistic monstrosities in the shape of a mankin.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Lilim"]/label</xpath>
+        <value><label>nightwrought</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Lilim"]/description</xpath>
+        <value><description>The nightwrought are said to descend from unions between watchers and abyssals. They are said to be jealous, lustful, and dangerous, especially to the spouse and children of a person they've taken interest in.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Heaven"]/label</xpath>
+        <value><label>Luminal Ascendancy</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Heaven"]/description</xpath>
+        <value><description>When the time of judgement comes, all who are found wanting shall be cleansed in fire.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Heaven"]/fixedName</xpath>
+        <value><fixedName>The Luminal Ascendancy</fixedName></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Heaven"]/pawnSingular</xpath>
+        <value><pawnSingular>emissary</pawnSingular></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Heaven"]/pawnsPlural</xpath>
+        <value><pawnsPlural>emissaries</pawnsPlural></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Heaven"]/leaderTitle</xpath>
+        <value><leaderTitle>voice of the intelligence</leaderTitle></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Hell"]/label</xpath>
+        <value><label>Abyssal Dominion</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Hell"]/description</xpath>
+        <value><description>The dominions appear fairly independent from each other, each usually ruled by some sort of abyssal lord.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Hell"]/fixedName</xpath>
+        <value><fixedName>The Abyssal Dominion</fixedName></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Hell"]/pawnSingular</xpath>
+        <value><pawnSingular>abyssal</pawnSingular></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Hell"]/pawnsPlural</xpath>
+        <value><pawnsPlural>abyssals</pawnsPlural></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Outcasts"]/label</xpath>
+        <value><label>The Exiles</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Outcasts"]/description</xpath>
+        <value><description>A seemingly disorganized group of exiles led by fallen ascendants.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Outcasts"]/pawnSingular</xpath>
+        <value><pawnSingular>exile</pawnSingular></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Outcasts"]/pawnsPlural</xpath>
+        <value><pawnsPlural>exiles</pawnsPlural></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_ServitorBasic"]/label</xpath>
+        <value><label>ascendant servitor</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_ServitorMelee"]/label</xpath>
+        <value><label>ascendant servitor</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_ServitorRanged"]/label</xpath>
+        <value><label>ascendant archer</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Satan"]/label</xpath>
+        <value><label>adversary</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_SatanGreat"]/label</xpath>
+        <value><label>great adversary</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_AuthorityWarrior"]/label</xpath>
+        <value><label>ascendant warrior</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Authority_Single"]/label</xpath>
+        <value><label>ascendant warrior</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_AuthorityLord"]/label</xpath>
+        <value><label>high ascendant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Metatron"]/label</xpath>
+        <value><label>voice of the archotech</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_NephilimWarrior"]/label</xpath>
+        <value><label>halfwrought warrior</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_BigGlutton"]/label</xpath>
+        <value><label>devourer</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_SmallGlutton"]/label</xpath>
+        <value><label>lesser devourer</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_LordOfGluttony"]/label</xpath>
+        <value><label>devourer lord</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_DukeOfGluttony"]/label</xpath>
+        <value><label>devourer duke</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_DukeOfGluttony"]/labelFemale</xpath>
+        <value><labelFemale>devourer duchess</labelFemale></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="VU_LilimWarrior"]/label</xpath>
+        <value><label>nightwrought warrior</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="VU_DemonWarrior"]/label</xpath>
+        <value><label>abyssal guard</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="VU_DemonCommander_PL"]/label</xpath>
+        <value><label>allurist lord</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="VU_DemonPrince"]/label</xpath>
+        <value><label>abyssal prince</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="VU_DemonPrince"]/labelFemale</xpath>
+        <value><labelFemale>abyssal princess</labelFemale></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

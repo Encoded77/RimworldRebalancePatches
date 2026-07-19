@@ -9,6 +9,16 @@ namespace RebalancePatches.Tests
     public static class AlphaGenesTests
     {
         [Test]
+        public static void SciFiNames()
+        {
+            if (!Check.Ready("scifinames.alphagenes", Ids.AlphaGenes))
+                return;
+            Check.Eq(Check.Def<XenotypeDef>("AG_Efreet").label, "cindrid", "AG_Efreet label");
+            Check.Eq(Check.Def<XenotypeDef>("AG_Nereid").label, "abyssid", "AG_Nereid label");
+            Check.Eq(Check.Def<XenotypeDef>("AG_Drakonori").label, "drakonori", "AG_Drakonori label unchanged");
+        }
+
+        [Test]
         public static void AlphapacksUnobtainable()
         {
             if (!Check.Ready("alphagenes.genepacks", Ids.AlphaGenes))

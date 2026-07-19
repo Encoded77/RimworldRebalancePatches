@@ -332,6 +332,28 @@ namespace RebalancePatches
                 new RebalanceToggle("odyssey.vacuumtrims", "Vacuum resistance trims on modded armor",
                     "Trims the vacuum resistance of spacer armor from Rimsenal - Core, Rimsenal - Federation, Altered Carbon 2, Spacer Arsenal and Impact Weaponry - Reloaded (each only when loaded), keeping full vacuum protection hard to reach; the Spacer Arsenal ensign and Impact Weaponry crusader helmets also lose a little sharp armor. Needs Vanilla Gravship Expanded - Chapter 1, whose balance assumes scarce vacuum resistance; does nothing without it."),
             }),
+            new RebalanceGroup("scifinames", "Sci-fi Renaming", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("scifinames.bsraces", "Big and Small - Races",
+                    "Renames the Norse-flavoured content to gene-line flavour: jotun become gigants (cryo/pyro variants), ogres hulkers, dvergr deepkin, nisse minikin, svartalfs umbrakin, redcaps scrappers, trolls regenerants, flesh golems bioconstructs and hearthguards/hearthdolls warden/service synths. The Muspelheim, Niflheim, ogre and little people factions, their pawn kinds and all descriptions follow suit."),
+                new RebalanceToggle("scifinames.bigsmall", "Big and Small - Genes & More",
+                    "The succubus becomes the allurist, the hellguard the abyssal guard, the imp the greater impid, the returned reanimates, and the frost jotun adventurer a cryogigant."),
+                new RebalanceToggle("scifinames.heaven", "Big and Small - Heaven and Hell",
+                    "Strips the religious mythos: angels become ascendants (Satan the adversary prime, Grigori watchers, Nephilim the halfwrought, Lilim the nightwrought), demons become abyssals (gluttons devourers), and the Heaven, Hell and Outcast factions become the Luminal Ascendancy, the Abyssal Dominion and the Exiles."),
+                new RebalanceToggle("scifinames.yokai", "Big and Small - Yokai",
+                    "Kitsune become vulpids, nekomata felids and oni hornbrutes (crimson/cobalt); the Yokai Union becomes the Chimeric Union."),
+                new RebalanceToggle("scifinames.lamias", "Big and Small - Lamias",
+                    "Lamia become serpids, sirens mesmer serpids, gorgons petrifex serpids, naga greater serpids and nagaraj serpid primes; Greek and Hindu myth references drop from descriptions and the snake tribal federation becomes the serpid tribal federation."),
+                new RebalanceToggle("scifinames.slimes", "Big and Small - Slimes",
+                    "Slimes become plasmoids across all xenotypes and the escaped slimes faction."),
+                new RebalanceToggle("scifinames.morexenos", "Big and Small - More Xenotypes",
+                    "The devilspider becomes the dreadspider."),
+                new RebalanceToggle("scifinames.wvc", "WVC - Xenotypes and Genes",
+                    "The undead xenotype becomes the necrokin and the lilif the psykin."),
+                new RebalanceToggle("scifinames.alphagenes", "Alpha Genes",
+                    "Efreet become cindrids and nereids abyssids."),
+            }),
+
             new RebalanceGroup("dev", "Developer", new List<RebalanceToggle>
             {
                 new RebalanceToggle("dev.genedump", "Auto-refresh gene database dump",

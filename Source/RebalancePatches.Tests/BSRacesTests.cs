@@ -1,4 +1,5 @@
-using RimTestRedux;
+﻿using RimTestRedux;
+using RimWorld;
 using Verse;
 
 namespace RebalancePatches.Tests
@@ -59,6 +60,54 @@ namespace RebalancePatches.Tests
         }
 
         [Test]
+        public static void SciFiNames()
+        {
+            if (!Check.Ready("scifinames.bsraces", Ids.BSRaces))
+                return;
+            Check.Eq(Check.Def<XenotypeDef>("BS_Jotun").label, "gigant", "BS_Jotun label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_FrostJotun").label, "cryogigant", "BS_FrostJotun label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_FireJotun").label, "pyrogigant", "BS_FireJotun label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Surtr").label, "pyrogigant prime", "BS_Surtr label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Ymir").label, "cryogigant prime", "BS_Ymir label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Half_Jotun").label, "half-gigant", "BS_Half_Jotun label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Ogre").label, "hulker", "BS_Ogre label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_GreatOgre").label, "great hulker", "BS_GreatOgre label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Dwarf").label, "deepkin", "BS_Dwarf label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Gnome").label, "minikin", "BS_Gnome label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Svartalf").label, "umbrakin", "BS_Svartalf label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Redcap").label, "scrapper", "BS_Redcap label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Hearthguard").label, "warden synth", "BS_Hearthguard label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Hearthdoll").label, "service synth", "BS_Hearthdoll label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_PilotableFleshGolem").label, "bioconstruct", "BS_PilotableFleshGolem label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_FleshGolemServant").label, "bioconstruct servant", "BS_FleshGolemServant label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Troll").label, "juvenile regenerant", "BS_Troll label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_TrollAdult").label, "regenerant", "BS_TrollAdult label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_TrollOld").label, "elder regenerant", "BS_TrollOld label");
+            Check.True(!Check.Def<XenotypeDef>("BS_Jotun").description.Contains("Jotun"), "BS_Jotun description mentions no jotun");
+
+            FactionDef muspel = Check.Def<FactionDef>("BS_Muspelheim");
+            Check.Eq(muspel.label, "Cinderhold Dominion", "BS_Muspelheim label");
+            Check.Eq(muspel.fixedName, "The Cinderholds", "BS_Muspelheim fixedName");
+            FactionDef nifl = Check.Def<FactionDef>("BS_Niflheim");
+            Check.Eq(nifl.label, "Permafrost Clans", "BS_Niflheim label");
+            Check.Eq(nifl.fixedName, "The Permafrost Clans", "BS_Niflheim fixedName");
+            FactionDef ogres = Check.Def<FactionDef>("BS_OgreFaction");
+            Check.Eq(ogres.label, "hulker tribe", "BS_OgreFaction label");
+            Check.Eq(ogres.fixedName, "Hulker Tribes", "BS_OgreFaction fixedName");
+            FactionDef little = Check.Def<FactionDef>("BS_LittlePeople");
+            Check.Eq(little.label, "Minikin Union", "BS_LittlePeople label");
+            Check.Eq(little.pawnSingular, "minikin", "BS_LittlePeople pawnSingular");
+            Check.Eq(Check.Def<FactionDef>("BS_Dvergr_Medieval_Union").label, "Deepkin Trade Combine", "BS_Dvergr_Medieval_Union label");
+
+            Check.Eq(Check.Def<PawnKindDef>("BS_Jotun_Knight").label, "cinderhold warrior", "BS_Jotun_Knight label");
+            Check.Eq(Check.Def<PawnKindDef>("BS_Jotun_Berserker").label, "elite berserker", "BS_Jotun_Berserker label");
+            Check.Eq(Check.Def<PawnKindDef>("BS_Ogre_Chieftain").label, "hulker chef", "BS_Ogre_Chieftain label");
+            Check.Eq(Check.Def<PawnKindDef>("BS_Troll_Raider_Adult").label, "regenerant raider", "BS_Troll_Raider_Adult label");
+            Check.Eq(Check.Def<PawnKindDef>("BS_FleshGolemWarrior").label, "bioconstruct", "BS_FleshGolemWarrior label");
+            Check.Eq(Check.Def<PawnKindDef>("BS_MechaJotunRanged").label, "mecha-gigant", "BS_MechaJotunRanged label");
+        }
+
+        [Test]
         public static void DeathlikeReplaced()
         {
             if (!Check.Ready("genepool.bsdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSRaces))
@@ -68,3 +117,4 @@ namespace RebalancePatches.Tests
         }
     }
 }
+

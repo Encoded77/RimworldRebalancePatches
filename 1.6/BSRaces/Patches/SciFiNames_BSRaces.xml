@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>scifinames.bsraces</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Ogre"]/label</xpath>
+        <value><label>hulker</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Ogre"]/description</xpath>
+        <value><description>Slow lumbering brutes believed to be a rushed attempt at creating a giant workforce.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_GreatOgre"]/label</xpath>
+        <value><label>great hulker</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_GreatOgre"]/description</xpath>
+        <value><description>Slow lumbering brutes believed to be either a failed attempt at creating a giant workforce, or a poor attempt at creating gigants.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Jotun"]/label</xpath>
+        <value><label>gigant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Jotun"]/description</xpath>
+        <value><description>Towering giants engineered on a distant world to serve as labourers and soldiers.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FrostJotun"]/label</xpath>
+        <value><label>cryogigant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FrostJotun"]/description</xpath>
+        <value><description>Towering giants engineered on a distant world to serve as labourers and soldiers on frozen worlds.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FireJotun"]/label</xpath>
+        <value><label>pyrogigant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FireJotun"]/description</xpath>
+        <value><description>Towering giants engineered on a distant world to serve as labourers and soldiers on incredibly hot worlds.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Surtr"]/label</xpath>
+        <value><label>pyrogigant prime</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Surtr"]/description</xpath>
+        <value><description>Towering giants engineered on a distant world to serve as labourers and soldiers on incredibly hot worlds. This one has been enhanced with archites.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Ymir"]/label</xpath>
+        <value><label>cryogigant prime</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Ymir"]/description</xpath>
+        <value><description>Towering giants engineered on a distant world to serve as labourers and soldiers on frozen worlds. This one has been enhanced with archites.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Half_Jotun"]/label</xpath>
+        <value><label>half-gigant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Half_Jotun"]/description</xpath>
+        <value><description>Most half-gigants are believed to be the distant offspring of gigants.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Gnome"]/label</xpath>
+        <value><label>minikin</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Gnome"]/description</xpath>
+        <value><description>Some claim that they were created to do engineering duties on spaceships like the deepkin, but their unremarkable affinity for machines indicates otherwise.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Dwarf"]/label</xpath>
+        <value><label>deepkin</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Dwarf"]/description</xpath>
+        <value><description>The popular belief is that they were created to perform engineering duties on spaceships where their small frame would be advantageous. Surprisingly sturdy for their size.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Svartalf"]/label</xpath>
+        <value><label>umbrakin</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Svartalf"]/description</xpath>
+        <value><description>Most outlanders that have heard of umbrakin believe they are some relentlessly malevolent offshoot of the deepkin. Their true nature is unclear, much due to how rarely they are seen.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Redcap"]/label</xpath>
+        <value><label>scrapper</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Redcap"]/description</xpath>
+        <value><description>It is hard to say why anyone would engineer something like the scrappers, but whatever their purpose was they certainly succeeded. Luckily they can be outrun. Usually.\n\nThey are usually seen alone or with their own kind, but sometimes they band together with others when they are desperate for blood.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Hearthguard"]/label</xpath>
+        <value><label>warden synth</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Hearthguard"]/description</xpath>
+        <value><description>A slow lumbering brute usually grown in deepkin workshops to act as a small warmech. They are usually kept in cryptocaskets to be brought out in case of an attack. They are able to operate on organic food-stuff, and will attempt to process food items to provide for the pilot as well.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Hearthdoll"]/label</xpath>
+        <value><label>service synth</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Hearthdoll"]/description</xpath>
+        <value><description>A slow, somewhat clumsy creation made in deepkin workshops to compensate for the small size of some of their members. They are usually kept in cryptocaskets to be brought out on demand. They are able to operate on organic food-stuff, and will attempt to process food items to provide for the pilot as well.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_PilotableFleshGolem"]/label</xpath>
+        <value><label>bioconstruct</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_PilotableFleshGolem"]/description</xpath>
+        <value><description>A partially hollowed-out and somewhat clumsy vat-grown construct made to impersonate the appearance and abilities of a human-sized being. Only very small xenotypes are able to pilot it.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FleshGolemServant"]/label</xpath>
+        <value><label>bioconstruct servant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_FleshGolemServant"]/description</xpath>
+        <value><description>A vat-grown construct servant created by unknown means.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Troll"]/label</xpath>
+        <value><label>juvenile regenerant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Troll"]/description</xpath>
+        <value><description>Regenerants never stop growing, and old regenerants are known for being incredibly large. Some say they also grow uglier and uglier with time.\n\nThey are best known for their incredible ability to heal at a rate visible to the naked eye.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_TrollAdult"]/label</xpath>
+        <value><label>regenerant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_TrollAdult"]/description</xpath>
+        <value><description>Regenerants never stop growing, and old regenerants are known for being incredibly large. Some say they also grow uglier and uglier with time.\n\nThey are best known for their incredible ability to heal at a rate visible to the naked eye.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_TrollOld"]/label</xpath>
+        <value><label>elder regenerant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_TrollOld"]/description</xpath>
+        <value><description>Regenerants never stop growing, and old regenerants are known for being incredibly large.\n\nThis one in particular almost seems to be petrifying into wood.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_LittlePeople"]/label</xpath>
+        <value><label>Minikin Union</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_LittlePeople"]/description</xpath>
+        <value><description>A loose union mostly made up of small gene-lines. They are highly distrustful of strangers.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_LittlePeople"]/pawnSingular</xpath>
+        <value><pawnSingular>minikin</pawnSingular></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_LittlePeople"]/pawnsPlural</xpath>
+        <value><pawnsPlural>minikin</pawnsPlural></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Dvergr_Medieval_Union"]/label</xpath>
+        <value><label>Deepkin Trade Combine</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Dvergr_Medieval_Union"]/description</xpath>
+        <value><description>Most deepkin don't even like the company of their own families, but this trade combine has somehow managed to prosper remarkably. It has been known to sell its crafts to hire mercenaries from various independent groups.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Muspelheim"]/label</xpath>
+        <value><label>Cinderhold Dominion</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Muspelheim"]/description</xpath>
+        <value><description>The Empire claims that the pyrogigants of the Cinderholds keep to themselves up in their mountains aside from rare skirmishes. Reports from captured gigants indicate that their nobility has decided to try to claim this rimworld for themselves.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Muspelheim"]/fixedName</xpath>
+        <value><fixedName>The Cinderholds</fixedName></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Niflheim"]/label</xpath>
+        <value><label>Permafrost Clans</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Niflheim"]/description</xpath>
+        <value><description>The cryogigant clans have been a menace for as long as anyone can remember. Almost any time they are mentioned it is because they have been plundering, kidnapping, or seemingly just wreaking havoc on settlements for the sake of it.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_Niflheim"]/fixedName</xpath>
+        <value><fixedName>The Permafrost Clans</fixedName></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_OgreFaction"]/label</xpath>
+        <value><label>hulker tribe</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_OgreFaction"]/description</xpath>
+        <value><description>These hulkers do little more than roam around their settlements in search of fights and food.\n\nThe hulkers care so much about food and culinary skill they use the word chef and chief interchangeably. Other civilizations failing to send their best chef to represent them has long since spoiled attempts at friendly relations; the hulkers view all their neighbors as hopelessly uncivilized.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_OgreFaction"]/fixedName</xpath>
+        <value><fixedName>Hulker Tribes</fixedName></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_JotunPlayerColony"]/label</xpath>
+        <value><label>Gigant Settlement</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="BS_JotunPlayerColony"]/description</xpath>
+        <value><description>A settlement founded by a gigant exile.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_DvergrMecha"]/label</xpath>
+        <value><label>deepkin mecha</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Nisse_Mage"]/label</xpath>
+        <value><label>minikin psycaster</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_DvergrGunner"]/label</xpath>
+        <value><label>deepkin miner</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Jotun_Knight"]/label</xpath>
+        <value><label>cinderhold warrior</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Jotun_Lord"]/label</xpath>
+        <value><label>cinderhold champion</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Jotun_NiflJavelin"]/label</xpath>
+        <value><label>gigant javelineer</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Jotun_Berserker"]/label</xpath>
+        <value><label>elite berserker</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Ogre_Warrior"]/label</xpath>
+        <value><label>hulker tribe warrior</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Ogre_Berserker"]/label</xpath>
+        <value><label>hulker tribe berserker</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Ogre_Hunter"]/label</xpath>
+        <value><label>hulker tribe thrower</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Ogre_Cook"]/label</xpath>
+        <value><label>hulker tribe cook</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Ogre_Chieftain"]/label</xpath>
+        <value><label>hulker chef</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_PilotedFleshGolemWarrior"]/label</xpath>
+        <value><label>guided bioconstruct</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_FleshGolemWarrior"]/label</xpath>
+        <value><label>bioconstruct</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Troll_Simple_Young"]/label</xpath>
+        <value><label>juvenile regenerant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Troll_Archer_Young"]/label</xpath>
+        <value><label>regenerant archer</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Troll_Simple_Adult"]/label</xpath>
+        <value><label>regenerant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Troll_Ranged_Adult"]/label</xpath>
+        <value><label>regenerant archer</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Troll_Ranged_Adult2"]/label</xpath>
+        <value><label>regenerant archer</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Troll_Raider_Adult"]/label</xpath>
+        <value><label>regenerant raider</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Troll_Raider_Adult2"]/label</xpath>
+        <value><label>regenerant raider</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Troll_Simple_Old"]/label</xpath>
+        <value><label>elder regenerant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_Troll_Simple_Ancient"]/label</xpath>
+        <value><label>ancient regenerant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_MechaJotunRanged"]/label</xpath>
+        <value><label>mecha-gigant</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/PawnKindDef[defName="BS_MechaJotunMelee"]/label</xpath>
+        <value><label>mecha-gigant</label></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

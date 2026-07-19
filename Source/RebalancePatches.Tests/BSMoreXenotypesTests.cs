@@ -1,4 +1,5 @@
-using RimTestRedux;
+﻿using RimTestRedux;
+using RimWorld;
 using Verse;
 
 namespace RebalancePatches.Tests
@@ -6,6 +7,15 @@ namespace RebalancePatches.Tests
     [TestSuite]
     public static class BSMoreXenotypesTests
     {
+        [Test]
+        public static void SciFiNames()
+        {
+            if (!Check.Ready("scifinames.morexenos", Ids.BSMoreXenos))
+                return;
+            Check.Eq(Check.Def<XenotypeDef>("BS_Devilspider").label, "dreadspider", "BS_Devilspider label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Mimic").label, "mimic", "BS_Mimic label unchanged");
+        }
+
         [Test]
         public static void XenotypesRewired()
         {
@@ -37,3 +47,4 @@ namespace RebalancePatches.Tests
         }
     }
 }
+

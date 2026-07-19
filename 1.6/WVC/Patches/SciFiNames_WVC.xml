@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>scifinames.wvc</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="WVC_Undead"]/label</xpath>
+        <value><label>necrokin</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="WVC_Undead"]/description</xpath>
+        <value><description>Necrokins are partially immortal, rapidly aging xeno-humans. Their genes are quite unstable and often their health can cause death, their bodies are very fragile, which is why even a fist fight can be fatal for them. In compensation, they can reanimate the dead by turning them into their own kind, and death is not always the end for them.\n\n&lt;color=#f5ffa2&gt;Gameplay Effect (Ability):&lt;/color&gt; This xenotype can resurrect the dead and recruit them when possible.\n\n&lt;color=#f5ffa2&gt;Gameplay Effect (Genes):&lt;/color&gt; After resurrection, it can morph into one of the sub-xenotypes.</description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="WVC_Lilith"]/label</xpath>
+        <value><label>psykin</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="WVC_Lilith"]/description</xpath>
+        <value><description>Psykins are ageless, psy-gifted super-humans powered by archotech-created archites in the bloodstream. They are divinely beautiful, can communicate with the power of thought, never suffer from disease and learn the skills of exploring the memories of others. But their endless hemogen thirst, incredible fragility and genetic blindness makes them dependent. They cannot exist on their own and greatly need others, because those around them mean protection, food and knowledge.\n\n&lt;color=#f5ffa2&gt;Gameplay Effect:&lt;/color&gt; Psykins cannot learn skills on their own; they copy the skills of other colonists. Also, their dependence on hemogen is very strong, they cannot restrain their hunger and the colonists will be food for them one way or another.\n\nThey are irreversibly blind and very fragile, any stray bullet can kill them instantly. But their psionic potential is limitless, as they passively restore psyfocus.</description></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

@@ -1,4 +1,5 @@
-using RimTestRedux;
+﻿using RimTestRedux;
+using RimWorld;
 using Verse;
 
 namespace RebalancePatches.Tests
@@ -6,6 +7,23 @@ namespace RebalancePatches.Tests
     [TestSuite]
     public static class BSYokaiTests
     {
+        [Test]
+        public static void SciFiNames()
+        {
+            if (!Check.Ready("scifinames.yokai", Ids.BSYokai))
+                return;
+            Check.Eq(Check.Def<XenotypeDef>("BS_Kitsune").label, "vulpid", "BS_Kitsune label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_Nekomata").label, "felid", "BS_Nekomata label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_RedOni").label, "crimson hornbrute", "BS_RedOni label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_BlueOni").label, "cobalt hornbrute", "BS_BlueOni label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_GreatRedOni").label, "great crimson hornbrute", "BS_GreatRedOni label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_GreatBlueOni").label, "great cobalt hornbrute", "BS_GreatBlueOni label");
+            Check.Eq(Check.Def<XenotypeDef>("BS_LesserOni").label, "lesser hornbrute", "BS_LesserOni label");
+            FactionDef union = Check.Def<FactionDef>("BS_YokaiUnion");
+            Check.Eq(union.label, "Chimeric Union", "BS_YokaiUnion label");
+            Check.Eq(union.pawnSingular, "chimeric", "BS_YokaiUnion pawnSingular");
+        }
+
         [Test]
         public static void XenotypesRewired()
         {
@@ -39,3 +57,4 @@ namespace RebalancePatches.Tests
         }
     }
 }
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>scifinames.morexenos</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Devilspider"]/label</xpath>
+        <value><label>dreadspider</label></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="BS_Devilspider"]/description</xpath>
+        <value><description>Dreadspiders produce silk comparable to devilstrand. They are believed to have been bioengineered on an urbworld by a corporation displaying the rare trait of relative sanity, by making an effort to ensure their spiders are not impulsively murderous.</description></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>
