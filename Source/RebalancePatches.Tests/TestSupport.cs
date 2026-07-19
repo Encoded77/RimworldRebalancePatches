@@ -77,6 +77,7 @@ namespace RebalancePatches.Tests
         public const string Brawnum = "det.brawnum";
         public const string Halffoot = "det.halffoot";
         public const string Avaloi = "det.avaloi";
+        public const string Boglegs = "det.boglegs";
         public const string Buzzers = "det.buzzers";
         public const string BetterGeneInheritance = "redmattis.bettergeneinheritance";
         public const string BSRaces = "redmattis.bigsmall";

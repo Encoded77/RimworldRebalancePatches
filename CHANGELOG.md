@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.5.0 (2026-07-19)
+
+**Xenotype Gene Integration** — a new settings group adding thematic genes to individual xenotypes from the cleaned-up genepool. Each toggle needs the xenotype's mod plus the gene's mod.
+
+- Boglegs gain water striding (Alpha Genes).
+- Det's Stoneborn gain stoneskin (WVC - Xenotypes and Genes) — natural armor, very low flammability, stone appearance.
+- Neanderthals gain frostbite resistance (Alpha Genes).
+- WVC's apex races (ferrkind, metalkin, rustkind, deadcat) no longer spawn as wanderers, refugees, beggars or faction pawns — they must be earned through WVC's own events, morphs and implanters.
+
 ## 1.4.0 (2026-07-19)
 
 **Genepool Cleanup** — a new settings group that deduplicates the gene ecosystem across the big gene mods. Now depends on Cherry Picker (removals are applied automatically, no Cherry Picker setup needed; toggling off restores). Active only when Alpha Genes, WVC - Xenotypes and Genes and Big and Small - Genes & More are all loaded. Full gene and xenotype details in `Docs/GeneChanges.md`.

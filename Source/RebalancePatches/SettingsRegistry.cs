@@ -313,6 +313,18 @@ namespace RebalancePatches
                     "Removes Big and Small - Genes & More genes its author treats as legacy or that duplicate its own alternatives: the three gene stabilizing genes (no replacement) and the deathlike body gene (undead xenotypes get Big and Small's unstable deathlessness instead). Removal runs through Cherry Picker; needs Cherry Picker plus Alpha Genes, WVC and Big and Small - Genes & More active, and a restart to apply."),
             }),
 
+            new RebalanceGroup("xenotypes", "Xenotype Gene Integration", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("xenotypes.boglegwater", "Boglegs: water striding",
+                    "Boglegs gain Alpha Genes' water striding gene — no movement penalty in watery terrain, fitting swamp-dwellers. Needs Alpha Genes; does nothing without it."),
+                new RebalanceToggle("xenotypes.stonebornskin", "Stoneborn: stoneskin",
+                    "Det's Stoneborn gain WVC - Xenotypes and Genes' stoneskin gene — stone-covered bodies with natural armor and very low flammability, at a metabolism cost. Changes their appearance to stone-like skin. Needs WVC - Xenotypes and Genes; does nothing without it."),
+                new RebalanceToggle("xenotypes.neanderthalfrost", "Neanderthals: frostbite resistance",
+                    "Neanderthals gain Alpha Genes' frostbite resistance gene, halving frostbite damage — an ice-age adaptation. Needs Alpha Genes; does nothing without it."),
+                new RebalanceToggle("xenotypes.wvcspawns", "WVC: apex xenotypes never spawn as wanderers",
+                    "WVC - Xenotypes and Genes' most powerful races — ferrkind, metalkin, rustkind and deadcat — no longer appear as random wanderers, refugees, beggars or faction pawns. They can still be obtained through WVC's own events, morphs and implanters, like the rest of its apex tier."),
+            }),
+
             new RebalanceGroup("odyssey", "Odyssey", new List<RebalanceToggle>
             {
                 new RebalanceToggle("odyssey.shuttle", "Long-range passenger shuttle",

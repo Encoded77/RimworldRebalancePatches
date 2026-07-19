@@ -121,6 +121,15 @@ With every gene mod loaded the genepool holds hundreds of genes, dozens of which
 - **`genepool.dedup`** — The cross-mod deduplication: Alpha Genes keeps immunities, natural armor, bandwidth, pack mule and the like; Big and Small keeps body size, gender, no pain and healing speed; each specialist VRE race pack keeps its specialty; Det's packs keep their signature quirks; WVC's archite-tier uniques win over everyone's natural versions. Duplicates whose canonical mod is missing are left alone.
 - **`genepool.hussaraptitudes`** — VRE - Hussar generates one weapon-aptitude gene per craftable weapon (~300 with a large modlist). They're replaced by four category genes — light and heavy melee aptitude, light and heavy ranged aptitude (heavy = 3 kg and up) — with the same bonus and cost. The hussar xenotypes still get a random aptitude; with Gene Nodes - Genes for Sale, a new archite gene node delivers the four genes. Pawns from older saves that carried a per-weapon aptitude lose it with a one-time load warning.
 
+## Xenotype Gene Integration
+
+Small thematic gene additions to individual xenotypes, drawing on the cleaned-up genepool. Each toggle needs the xenotype's mod plus the gene's mod, and does nothing when either is missing.
+
+- **`xenotypes.boglegwater`** — Boglegs gain water striding (Alpha Genes): no movement penalty in watery terrain.
+- **`xenotypes.stonebornskin`** — Det's Stoneborn gain stoneskin (WVC - Xenotypes and Genes): stone-covered bodies with natural armor and very low flammability, at a metabolism cost. Their appearance changes to stone-like skin.
+- **`xenotypes.neanderthalfrost`** — Neanderthals gain frostbite resistance (Alpha Genes): frostbite damage halved.
+- **`xenotypes.wvcspawns`** — WVC - Xenotypes and Genes' most powerful races (ferrkind, metalkin, rustkind, deadcat) no longer spawn as random wanderers, refugees, beggars or faction pawns. They remain obtainable through WVC's own events, morphs and implanters, like the rest of its top tier.
+
 ## Genetics Research Overhaul
 
 A cohesive rework of genetics research: vanilla puts a full gene-editing empire behind two cheap industrial researches; this stages it from basic sampling to archogenetics and gives every genetics mod a common backbone. Requires **Biotech**; every module has its own toggle and does nothing if its target mod is missing.

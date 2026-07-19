@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>xenotypes.stonebornskin</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>wvc.sergkart.races.biotech</li></mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="Stoneborn"]/genes</xpath>
+          <value><li>WVC_StoneSkin</li></value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

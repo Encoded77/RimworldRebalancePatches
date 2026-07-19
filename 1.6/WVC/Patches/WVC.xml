@@ -272,4 +272,38 @@
       </li>
     </operations>
   </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>xenotypes.wvcspawns</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="WVC_Ferrkind"]/factionlessGenerationWeight</xpath>
+        <value><factionlessGenerationWeight>0</factionlessGenerationWeight></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="WVC_GeneThrower"]/factionlessGenerationWeight</xpath>
+        <value><factionlessGenerationWeight>0</factionlessGenerationWeight></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="WVC_Rustkind"]/factionlessGenerationWeight</xpath>
+        <value><factionlessGenerationWeight>0</factionlessGenerationWeight></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/XenotypeDef[defName="WVC_CatDeity"]/factionlessGenerationWeight</xpath>
+        <value><factionlessGenerationWeight>0</factionlessGenerationWeight></value>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="OutlanderCivil"]/xenotypeSet/xenotypeChances/WVC_GeneThrower</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="PirateWaster"]/xenotypeSet/xenotypeChances/WVC_CatDeity</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="OutlanderRefugee"]/xenotypeSet/xenotypeChances/WVC_CatDeity</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Beggars"]/xenotypeSet/xenotypeChances/WVC_CatDeity</xpath>
+      </li>
+    </operations>
+  </Operation>
 </Patch>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>xenotypes.neanderthalfrost</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/XenotypeDef[defName="Neanderthal"]/genes</xpath>
+        <value><li>AG_FrostbiteResistance</li></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

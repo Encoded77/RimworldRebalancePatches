@@ -238,6 +238,75 @@ foreach (var gene in cosmetics)
 }
 File.WriteAllText(Path.Combine(outDir, "cosmetics.md"), sb.ToString());
 
+// ---- xenotypes.md: per-xenotype gene loadout with biostat totals ----
+var geneLabel = new Dictionary<string, string>();
+foreach (var g in genes.EnumerateArray())
+{
+    string n = g.GetProperty("defName").GetString();
+    geneLabel[n] = g.TryGetProperty("label", out var lb) ? lb.GetString() : n;
+}
+string ShortMod(string mod)
+{
+    if (mod == null) return "?";
+    int br = mod.IndexOf(" [");
+    return br > 0 ? mod.Substring(0, br) : mod;
+}
+sb = new StringBuilder();
+sb.AppendLine("# Xenotypes — post-cleanup loadouts");
+sb.AppendLine();
+var xlist = xenotypes.EnumerateArray()
+    .OrderBy(x => ShortMod(x.TryGetProperty("mod", out var xm) ? xm.GetString() : "?"), StringComparer.Ordinal)
+    .ThenBy(x => x.GetProperty("defName").GetString(), StringComparer.Ordinal)
+    .ToList();
+sb.AppendLine("| Xenotype | Mod | Genes | Met | Cpx | Arc | Inheritable | CPF |");
+sb.AppendLine("|---|---|---|---|---|---|---|---|");
+var xrows = new List<(JsonElement x, List<string> gl, int met, int cpx, int arc)>();
+foreach (var x in xlist)
+{
+    var gl = new List<string>();
+    if (x.TryGetProperty("genes", out var xg) && xg.ValueKind == JsonValueKind.Array)
+        foreach (var g in xg.EnumerateArray()) if (g.GetString() is string gs) gl.Add(gs);
+    int met = 0, cpx = 0, arc = 0;
+    foreach (var gn in gl)
+        if (geneMeta.TryGetValue(gn, out var gm)) { met += gm.met; cpx += gm.cpx; arc += gm.arc; }
+    xrows.Add((x, gl, met, cpx, arc));
+    bool inh = x.TryGetProperty("inheritable", out var iv) && iv.ValueKind == JsonValueKind.True;
+    string cpf = x.TryGetProperty("combatPowerFactor", out var cf) ? cf.GetDouble().ToString("0.##") : "1";
+    sb.AppendLine($"| {x.GetProperty("defName").GetString()} | {ShortMod(x.TryGetProperty("mod", out var m2) ? m2.GetString() : "?")} | {gl.Count} | {met} | {cpx} | {arc} | {(inh ? "yes" : "no")} | {cpf} |");
+}
+sb.AppendLine();
+foreach (var (x, gl, met, cpx, arc) in xrows)
+{
+    string dn = x.GetProperty("defName").GetString();
+    string mod = ShortMod(x.TryGetProperty("mod", out var m3) ? m3.GetString() : "?");
+    bool inh = x.TryGetProperty("inheritable", out var iv) && iv.ValueKind == JsonValueKind.True;
+    sb.AppendLine($"## {dn} ({(x.TryGetProperty("label", out var xl) ? xl.GetString() : dn)}) — {mod}");
+    sb.AppendLine();
+    sb.Append($"Met {met}, Cpx {cpx}");
+    if (arc != 0) sb.Append($", Arc {arc}");
+    if (inh) sb.Append(" — inheritable (germline)");
+    if (x.TryGetProperty("combatPowerFactor", out var cf2)) sb.Append($" — combatPowerFactor {cf2.GetDouble():0.##}");
+    sb.AppendLine();
+    sb.AppendLine();
+    foreach (var gn in gl)
+    {
+        if (!geneMeta.TryGetValue(gn, out var gm))
+        {
+            // Runtime-generated derivative or unknown; still list it.
+            sb.AppendLine($"- {gn} (?)");
+            continue;
+        }
+        var atoms = sigs.TryGetValue(gn, out var at) ? at : null;
+        string eff = atoms == null || atoms.Count == 0
+            ? "cosmetic/none"
+            : string.Join(", ", atoms.Take(8)) + (atoms.Count > 8 ? $" +{atoms.Count - 8} more" : "");
+        string cost = $"met {gm.met}, cpx {gm.cpx}" + (gm.arc != 0 ? $", arc {gm.arc}" : "");
+        sb.AppendLine($"- **{gn}** \"{geneLabel.GetValueOrDefault(gn, gn)}\" ({ShortMod(gm.mod)}; {cost}) — {eff}");
+    }
+    sb.AppendLine();
+}
+File.WriteAllText(Path.Combine(outDir, "xenotypes.md"), sb.ToString());
+
 Console.WriteLine($"genes: {sigs.Count}, with signature: {sigs.Count(kv => kv.Value.Count > 0)}, cosmetic: {cosmetics.Count}");
 Console.WriteLine($"duplicate groups: {groups.Count} ({groups.Sum(g => g.members.Count)} genes)");
 Console.WriteLine($"reports -> {outDir}");

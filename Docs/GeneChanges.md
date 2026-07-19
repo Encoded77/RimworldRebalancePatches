@@ -180,6 +180,18 @@ Every xenotype that carried a removed gene receives the canonical replacement, s
 | WVC_Undead (WVC - Xenotypes and Genes) | WVC_NaturalFastAging, WVC_NaturalFastGrowing, WVC_ToxResist_Total, WVC_Undead | ToxResist_Total, Deathless, VRE_FastAging, BS_EarlyMaturity |
 | Zohar (Rimsenal Xenotype Pack - Zohar) | Gene_SensitiveStomach | AG_FrailStomach |
 
+## Xenotype gene integration (`xenotypes.*`)
+
+Thematic gene additions to individual xenotypes, each behind its own toggle and active only when both the xenotype's mod and the gene's mod are loaded.
+
+| Xenotype | Gene added | Effect |
+| --- | --- | --- |
+| DV_Bogleg (Det's Xenotypes - Boglegs) | AG_WaterStriding (Alpha Genes) | no movement penalty in watery terrain |
+| Stoneborn (Det's Xenotypes - Stoneborn) | WVC_StoneSkin (WVC - Xenotypes and Genes) | +22% blunt / +12% sharp / +11% heat armor, flammability ×0.2, stone appearance; met -3, cpx 4 |
+| Neanderthal (Biotech) | AG_FrostbiteResistance (Alpha Genes) | frostbite damage ×0.5; met -1 |
+
+Spawn changes (`xenotypes.wvcspawns`): WVC_Ferrkind, WVC_GeneThrower, WVC_Rustkind and WVC_CatDeity get `factionlessGenerationWeight` 0 and are removed from the faction spawn pools WVC adds them to (OutlanderCivil, PirateWaster, OutlanderRefugee, Beggars). They stay available through WVC's events, morphs and implanter chains.
+
 ## Hussar weapon aptitudes (`genepool.hussaraptitudes`)
 
 VRE - Hussar creates one weapon-aptitude gene per craftable weapon (~300 with a large modlist). The whole family is replaced by four category genes with the same bonus and cost: light and heavy melee aptitude, light and heavy ranged aptitude — heavy meaning weapons of 3 kg and up (charge lances, miniguns, giant weapons), light everything below (knives, swords, pistols, rifles under 3 kg). The Hussar and Uhlan xenotypes still receive a random aptitude at spawn, now one of the four. The new genes never roll in genepacks; with Gene Nodes - Genes for Sale loaded, a new archite gene node delivers them, and otherwise they can be extracted from hussars. Pawns from older saves that carried a per-weapon aptitude lose it with a one-time load warning.

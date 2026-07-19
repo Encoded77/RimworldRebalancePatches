@@ -1,14 +1,14 @@
 [h1]Rebalance Patches[/h1]
 Opinionated balance tweaks and cross-mod compatibility patches for my mod list, with the goal of making everything work together as a more cohesive experience. Patches only apply when their required mods are loaded, and every tweak can be enabled or disabled in the mod settings (requires a restart).
 
-Inspired by [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3250762483]TooManyMods - Compat[/url] and the Progression series of research overhauls, alongside plenty of my own patches, with everything behind optional settings.
+Heavily inspired by [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3250762483]TooManyMods - Compat[/url] and the Progression series of research overhauls, alongside plenty of my own patches, with everything behind optional settings.
 
 Warning: this mod touches a lot of things. I'll do my best to keep every change documented and toggleable, but with this many patches there's a good chance I've missed something. I'll also keep on adding to it over time as I patch or integrate other mods together.
 
 Here's a list of features:
 
 [h2]Genetics Research Overhaul[/h2]
-Inspired by [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3239506998]Progression: Genetics[/url], but without Vanilla Genetics Expanded because I don't like playing with that mod. Push the genetics tier to spacer tier and rework the full progression from basic genetic sampling to archogenetics. Requires Biotech.
+Inspired by [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3239506998]Progression: Genetics[/url], but without [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2801160906]Vanilla Genetics Expanded[/url] because I don't like playing with that mod. Push the genetics tier to spacer tier and rework the full progression from basic genetic sampling to archogenetics. Requires Biotech.
 
 Integrated mods:
 [list]
@@ -23,25 +23,26 @@ Integrated mods:
 Each integration has its own toggle; missing mods are simply skipped.
 
 [h2]Genepool Cleanup[/h2]
-With a full gene modlist, dozens of genes do the same thing under different names. This module keeps one canonical gene per function and removes the duplicates through [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3521312241]Cherry Picker[/url] — automatically, no Cherry Picker setup needed. Every xenotype that carried a removed gene is rewired to the canonical version, so races keep their identity through shared genes: Alpha Genes keeps immunities and armor, Big and Small keeps body mechanics, the specialist VRE packs keep their specialty, Det's packs keep their signature quirks.
+With a full gene modlist, dozens of genes do the same thing under different names. This module keeps one canonical gene per function and removes the duplicates through [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3521312241]Cherry Picker[/url] — automatically, no Cherry Picker setup needed. Every xenotype that carried a removed gene is rewired to the canonical version, so races keep their identity through shared genes: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2891845502]Alpha Genes[/url] keeps immunities and armor, [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2920751126]Big and Small[/url] keeps body mechanics, the specialist VRE packs keep their specialty, Det's packs keep their signature quirks.
 
 On top of the deduplication:
 [list]
-[*]Alpha Genes' ~90 animal summon genes are removed outright (no xenotype uses them).
-[*]VRE - Hussar's ~300 per-weapon aptitude genes become four aptitudes — light/heavy melee, light/heavy ranged — with the same bonus; hussars still roll a random one, and a new archite gene node sells them (Gene Nodes). This part only needs VRE - Hussar.
-[*]Gene conflict fixes: broken and overpowered gene stacks (dodge, claws, deathless, hemogen drain, melee speed, psychic sensitivity...) across [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2920751126]Big and Small[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2886992038]WVC[/url], Alpha Genes and VRE become mutually exclusive.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2891845502]Alpha Genes'[/url] ~90 animal summon genes are removed outright (no xenotype uses them).
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2893586390]VRE - Hussar[/url]'s ~300 per-weapon aptitude genes become four aptitudes — light/heavy melee, light/heavy ranged — with the same bonus; hussars still roll a random one, and a new archite gene node sells them (Gene Nodes). This part only needs VRE - Hussar.
+[*]Gene conflict fixes: broken and overpowered gene stacks (dodge, claws, deathless, hemogen drain, melee speed, psychic sensitivity...) across [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2920751126]Big and Small[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2886992038]WVC[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2891845502]Alpha Genes[/url] and [url=https://steamcommunity.com/workshop/browse/?appid=294100&browsesort=textsearch&section=readytouseitems&p=1&num_per_page=30&days=7&searchtext=Vanille+Race+Expanded]VRE[/url] become mutually exclusive.
+[*]Xenotype gene integrations: Some xenotypes get a few extra thematic genes from across the modlist to round out their identity. On the balance side, [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2886992038]WVC[/url]'s most powerful races no longer spawn as random wanderers or faction pawns — they stay obtainable through WVC's own events, morphs and implanters.
 [/list]
 
-The deduplication is only active when [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2891845502]Alpha Genes[/url], WVC and Big and Small are all loaded; each part has its own toggle, and restoring is as simple as toggling off and restarting. The full list of gene and xenotype changes is documented on github.
+The deduplication is only active when Alpha Genes, WVC and Big and Small are all loaded; each part has its own toggle, and restoring is as simple as toggling off and restarting. The full list of gene and xenotype changes is documented on github.
 
-[h2]Compat & rebalances[/h2]
+[h2]Miscellaneous Patches[/h2]
 A curated batch of cross-mod fixes and tweaks, each with its own toggle:
 [list]
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3723972815]RimIOT - Logistic Matrix[/url]: cheaper builds, basic components only, no power consumption.
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2196278117]Altered Carbon[/url]: disables the redundant ranged shield belt from VAE Accessories in favour of the harder to get cuirassier belt, and a slider for the casting relay's needlecasting range (default 10 tiles per relay instead of 5).
-[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3272114598]GiTS Cyberbrains[/url]: only basic cyberbrains on the market, surgeries via EPOE brain surgery, post-basic cyberization at ultratech tier, harsher extreme mental break, and a streamlined research tree.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2196278117]Altered Carbon[/url]: disables the redundant ranged shield belt from [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2521176396]VAE Accessories[/url] in favour of the harder to get cuirassier belt, and a slider for the casting relay's needlecasting range (default 10 tiles per relay instead of 5).
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3272114598]GiTS Cyberbrains[/url]: only basic cyberbrains on the market, surgeries via [url=https://steamcommunity.com/sharedfiles/filedetails/?id=1949064302]EPOE-Forked[/url] brain surgery, post-basic cyberization at ultratech tier, harsher extreme mental break, and a streamlined research tree.
 [*]Odyssey: long-range passenger shuttle — 2000 chemfuel and 2000 kg cargo capacity.
-[*]Alpha Genes: genes join vanilla genepacks, alphapacks/mixedpacks removed.
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2891845502]Alpha Genes'[/url]: genes join vanilla genepacks, alphapacks/mixedpacks removed.
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3223443793]Integrated Implants[/url]: slime-safe shoulder turrets, [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2973169158]Alpha Mechs[/url] chip requirements for mechanitor implant research, levitators ignore water, signal boosters stack with AG command range genes.
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=725947920]Rimsenal[/url]: armors and modular weapons gated behind the corp techs; [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3086137468]Spacer[/url] trade caravans lose their mechanoid guards.
 [*]Research prereq cleanups: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2723801948]VFE Pirates[/url] warcasket weapons (incl. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3766043780]Warcasket Weapon Quality[/url]), [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3538728067]Impact Weaponry[/url], [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3247891820]Spacer Arsenal[/url]; [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3532192464]Eltex weapons[/url] only on psycasters.

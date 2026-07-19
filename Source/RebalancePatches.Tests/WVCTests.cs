@@ -165,5 +165,20 @@ namespace RebalancePatches.Tests
             if (ModsConfig.IsActive(Ids.VREHussar))
                 Check.XenoGene("WVC_Nociokin", "VREH_Toughness");
         }
+
+        [Test]
+        public static void ApexXenotypesNeverWander()
+        {
+            if (!Check.Ready("xenotypes.wvcspawns", Ids.WVC, Ids.Biotech))
+                return;
+            foreach (string name in new[] { "WVC_Ferrkind", "WVC_GeneThrower", "WVC_Rustkind", "WVC_CatDeity" })
+                Check.Eq(Check.Def<XenotypeDef>(name).factionlessGenerationWeight, 0f, name + ".factionlessGenerationWeight");
+            Check.True(!Check.HasXenotype(Check.Def<FactionDef>("OutlanderCivil"), "WVC_GeneThrower"), "OutlanderCivil spawns WVC_GeneThrower");
+            Check.True(!Check.HasXenotype(Check.Def<FactionDef>("PirateWaster"), "WVC_CatDeity"), "PirateWaster spawns WVC_CatDeity");
+            Check.True(!Check.HasXenotype(Check.Def<FactionDef>("OutlanderRefugee"), "WVC_CatDeity"), "OutlanderRefugee spawns WVC_CatDeity");
+            FactionDef beggars = DefDatabase<FactionDef>.GetNamedSilentFail("Beggars");
+            if (beggars != null)
+                Check.True(!Check.HasXenotype(beggars, "WVC_CatDeity"), "Beggars spawns WVC_CatDeity");
+        }
     }
 }

@@ -16,6 +16,14 @@ namespace RebalancePatches.Tests
         }
 
         [Test]
+        public static void StoneSkinAdded()
+        {
+            if (!Check.Ready("xenotypes.stonebornskin", Ids.Stoneborn, Ids.WVC, Ids.Biotech))
+                return;
+            Check.XenoGene("Stoneborn", "WVC_StoneSkin");
+        }
+
+        [Test]
         public static void XenotypesRewired()
         {
             if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.Stoneborn))

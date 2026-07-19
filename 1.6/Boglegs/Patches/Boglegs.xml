@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>xenotypes.boglegwater</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>sarg.alphagenes</li></mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="DV_Bogleg"]/genes</xpath>
+          <value><li>AG_WaterStriding</li></value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

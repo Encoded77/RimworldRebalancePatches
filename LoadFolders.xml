@@ -41,6 +41,7 @@
     <li IfModActive="det.brawnum">1.6/Brawnum</li>
     <li IfModActive="det.halffoot">1.6/Halffoot</li>
     <li IfModActive="det.avaloi">1.6/Avaloi</li>
+    <li IfModActive="det.boglegs">1.6/Boglegs</li>
     <li IfModActive="rimsenal.zohar">1.6/RimsenalZohar</li>
     <li IfModActive="redmattis.bigsmall">1.6/BSRaces</li>
     <li IfModActive="redmattis.yokai">1.6/BSYokai</li>

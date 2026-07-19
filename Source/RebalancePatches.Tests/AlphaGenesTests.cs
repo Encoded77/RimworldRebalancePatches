@@ -22,6 +22,14 @@ namespace RebalancePatches.Tests
         }
 
         [Test]
+        public static void NeanderthalFrostbiteResistance()
+        {
+            if (!Check.Ready("xenotypes.neanderthalfrost", Ids.AlphaGenes, Ids.Biotech))
+                return;
+            Check.XenoGene("Neanderthal", "AG_FrostbiteResistance");
+        }
+
+        [Test]
         public static void MainlineGeneWeights()
         {
             if (!Check.Ready("alphagenes.genepacks", Ids.AlphaGenes))
