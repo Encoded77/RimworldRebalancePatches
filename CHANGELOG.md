@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.6.1 (2026-07-20)
+
+- The mod settings window is now easier to navigate and shows at a glance which patches can actually apply with the current modlist.
+- Fixed the Xenotype Spawning and Xenotype Gene Integration groups sharing one internal group key, which made a single header checkbox silently control both groups.
+
 ## 1.6.0 (2026-07-19)
 
 **Sci-fi Renaming** — a new settings group that renames fantasy-, Norse- and religion-flavoured races and factions to gene-engineering flavour (labels, descriptions, faction names and pawn kinds). Purely cosmetic, one toggle per mod.

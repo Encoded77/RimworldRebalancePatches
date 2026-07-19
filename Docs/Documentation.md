@@ -2,6 +2,8 @@
 
 What every toggle in the mod settings does, grouped the same way as the settings window. Every feature can be turned off individually (restart required), and every feature silently does nothing if the mods it targets aren't loaded.
 
+The settings window groups features by mod: groups collapse and expand, a search box filters by name and description, and settings whose required mods aren't in the modlist are greyed out with a note saying what's missing (hover for the full requirement list). Groups for mods you don't run can be hidden entirely with *Show inactive mods*.
+
 ---
 
 ## Patches

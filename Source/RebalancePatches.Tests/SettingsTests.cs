@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using RimTestRedux;
 using RimWorld;
 using Verse;
@@ -39,6 +40,38 @@ namespace RebalancePatches.Tests
             foreach (XenotypeRewireDef def in DefDatabase<XenotypeRewireDef>.AllDefsListForReading)
                 Check.True(!string.IsNullOrEmpty(def.settingKey) && SettingsRegistry.GroupOf(def.settingKey) != null,
                     $"XenotypeRewireDef {def.defName}: settingKey '{def.settingKey}' is not registered in SettingsRegistry");
+        }
+
+        [Test]
+        public static void RegistryDeclarationsConsistent()
+        {
+            var seenKeys = new HashSet<string>();
+            foreach (RebalanceGroup group in SettingsRegistry.Groups)
+            {
+                Check.True(seenKeys.Add(group.key), $"duplicate group key '{group.key}'");
+                CheckModIds(group.key, group.requiredMods);
+                foreach (RebalanceToggle child in group.children)
+                {
+                    Check.True(seenKeys.Add(child.key), $"duplicate setting key '{child.key}'");
+                    CheckModIds(child.key, child.requiredMods);
+                    CheckModIds(child.key, child.anyOfMods);
+                    if (child.dependsOn != null)
+                        Check.True(SettingsRegistry.ToggleOf(child.dependsOn) != null,
+                            $"'{child.key}' dependsOn '{child.dependsOn}' which is not a registered toggle");
+                }
+                foreach (RebalanceSlider slider in group.sliders)
+                {
+                    Check.True(seenKeys.Add(slider.key), $"duplicate setting key '{slider.key}'");
+                    CheckModIds(slider.key, slider.requiredMods);
+                }
+            }
+        }
+
+        private static void CheckModIds(string owner, string[] packageIds)
+        {
+            foreach (string id in packageIds)
+                Check.True(!string.IsNullOrEmpty(id) && id == id.ToLowerInvariant() && !id.Contains(" "),
+                    $"'{owner}' declares malformed packageId '{id}'");
         }
     }
 }
