@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_AlphaGenes_Summons</defName>
-    <settingKey>genepool.agsummons</settingKey>
+    <settingKey>genetics.agsummons</settingKey>
     <genes>
       <li>AG_AnimalSummon_Randomizer</li>
       <li>AG_MajorAnimalSummon_Randomizer</li>
@@ -17,7 +17,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_AlphaGenes_Dedup</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>redmattis.bigsmall.core</li>
     </requiredMods>
@@ -39,7 +39,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Pigskin</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.pigskin</li>
     </requiredMods>
@@ -51,7 +51,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Archon</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.archon</li>
     </requiredMods>
@@ -63,7 +63,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Saurid</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.saurid</li>
     </requiredMods>
@@ -74,7 +74,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Phytokin</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.phytokin</li>
     </requiredMods>
@@ -85,7 +85,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Lycanthrope</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.lycanthrope</li>
     </requiredMods>
@@ -96,7 +96,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Insector</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.insector</li>
     </requiredMods>
@@ -107,7 +107,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_AlphaGenes_Dedup_Waster</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.waster</li>
     </requiredMods>
@@ -118,7 +118,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_AlphaGenes_Dedup_IntegratedImplants</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>lts.i</li>
     </requiredMods>

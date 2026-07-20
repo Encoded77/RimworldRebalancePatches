@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_RimsenalHarana_Dedup_Stoneborn</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>det.stoneborn</li>
     </requiredMods>

@@ -2,15 +2,514 @@
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>vse.reloadingstat</settingKey>
+    <settingKey>vse.expertiseconsolidation</settingKey>
     <operations>
-      <li Class="PatchOperationConditional">
-        <xpath>Defs/VSE.Expertise.ExpertiseDef[defName="Gunner"]/statOffsets/VEF_VerbCooldownFactor</xpath>
-        <match Class="PatchOperationReplace">
-          <xpath>Defs/VSE.Expertise.ExpertiseDef[defName="Gunner"]/statOffsets/VEF_VerbCooldownFactor</xpath>
-          <value><RangedCooldownFactor>-0.025</RangedCooldownFactor></value>
+
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/VSE.Expertise.ExpertiseDef[not(hide)][defName="Precision" or defName="CloseQuarters" or defName="Gunner" or defName="VSE_Sniping" or defName="Sharp" or defName="Blunt" or defName="VSE_Striking" or defName="Tamer" or defName="Rancher" or defName="Hunter" or defName="Trainer" or defName="QualityExpert" or defName="QuantityExpert" or defName="Flooring" or defName="Repairman" or defName="Architect" or defName="Foreman" or defName="VSE_Smoothing" or defName="Butcher" or defName="DrugChef" or defName="IndustrialChef" or defName="MechanoidExpert" or defName="Tailor" or defName="Weaponsmith" or defName="IndustrialProcessExpert" or defName="Surgeon" or defName="BattlefieldMedic" or defName="InfectiousDiseaseExpert" or defName="VSE_Operating" or defName="Driller" or defName="OreExpert" or defName="Tunneller" or defName="Geologist" or defName="Pharmacologist" or defName="Hacker" or defName="Researcher" or defName="VSE_Writing" or defName="VSE_DarkStudy" or defName="Forager" or defName="Treespeaker" or defName="HarvesterCareful" or defName="GreenThumb" or defName="Warden" or defName="Negotiator" or defName="Proselytizer" or defName="VSE_Lovin"]</xpath>
+        <value><hide>true</hide></value>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>sarg.alphaskills</li></mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/VSE.Expertise.ExpertiseDef[not(hide)][defName="AS_Blasting" or defName="AS_Mortaring" or defName="AS_Pummeling" or defName="AS_Cleaving" or defName="AS_Evading" or defName="AS_Enduring" or defName="AS_CraftingQuality" or defName="AS_CraftingYield" or defName="AS_Smelting" or defName="AS_Panning" or defName="AS_Salvaging" or defName="AS_Trafficking" or defName="AS_Influencing" or defName="AS_Psycasting" or defName="AS_Quelling" or defName="AS_Piloting" or defName="AS_VacuumResilience" or defName="AS_RangedDodging" or defName="AS_Mindfulness"]</xpath>
+          <value><hide>true</hide></value>
         </match>
       </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>hautarche.hautsframework</li></mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/VSE.Expertise.ExpertiseDef[not(hide)][defName="Hauts_Demolisher" or defName="Hauts_Surveyor" or defName="Hauts_GauranlenExpert" or defName="Hauts_GauranlenExpert2" or defName="Hauts_Skulduggery" or defName="Hauts_Larceny" or defName="Hauts_Teacher" or defName="Hauts_Recycler"]</xpath>
+          <value><hide>true</hide></value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>vanillaexpanded.vcef</li></mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/VSE.Expertise.ExpertiseDef[not(hide)][defName="VCEF_Swiftcasting" or defName="VCEF_Catchmastery" or defName="VCEF_Aquabounty"]</xpath>
+          <value><hide>true</hide></value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>vanillaexpanded.gravship</li></mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/VSE.Expertise.ExpertiseDef[not(hide)][defName="VGE_GravshipResearch" or defName="VGE_GravshipMaintaining" or defName="VGE_GravshipTargeting"]</xpath>
+          <value><hide>true</hide></value>
+        </match>
+      </li>
+
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Marksman</defName>
+            <label>Marksman</label>
+            <skill>Shooting</skill>
+            <description>An expertise in placing a shot exactly where it needs to land, however far away that is, and in walking artillery fire onto a target.</description>
+            <statOffsets>
+              <ShootingAccuracyPawn>0.1</ShootingAccuracyPawn>
+              <VEF_VerbRangeFactor>0.004</VEF_VerbRangeFactor>
+              <AS_MortarDamageFactor MayRequire="sarg.alphaskills">0.0075</AS_MortarDamageFactor>
+            </statOffsets>
+            <statFactors>
+              <MortarMissRadiusFactor>-0.0125</MortarMissRadiusFactor>
+              <VGE_GravshipTargeting MayRequire="vanillaexpanded.gravship">0.0125</VGE_GravshipTargeting>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Gunslinger</defName>
+            <label>Gunslinger</label>
+            <skill>Shooting</skill>
+            <description>An expertise in weight of fire: snapping the weapon on target, working the action and putting the next round downrange before the enemy recovers.</description>
+            <statOffsets>
+              <VEF_RangeAttackDamageFactor>0.0075</VEF_RangeAttackDamageFactor>
+            </statOffsets>
+            <statFactors>
+              <AimingDelayFactor>-0.015</AimingDelayFactor>
+              <RangedCooldownFactor>-0.015</RangedCooldownFactor>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Warblade</defName>
+            <label>Warblade</label>
+            <skill>Melee</skill>
+            <description>An expertise in offensive melee: finding the gap in an opponent's guard and driving the blow through whatever armor sits behind it.</description>
+            <statOffsets>
+              <MeleeHitChance>0.1</MeleeHitChance>
+              <AS_FireStarter MayRequire="sarg.alphaskills">0.0075</AS_FireStarter>
+            </statOffsets>
+            <statFactors>
+              <VSE_ArmorPenetrationFactor>0.015</VSE_ArmorPenetrationFactor>
+              <MeleeDamageFactor>0.015</MeleeDamageFactor>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Skirmisher</defName>
+            <label>Skirmisher</label>
+            <skill>Melee</skill>
+            <description>An expertise in never being where the blow lands: reading an attack early, slipping it, and recovering before the next one comes.</description>
+            <statOffsets>
+              <MeleeDodgeChance>0.1</MeleeDodgeChance>
+              <VEF_RangedDodgeChance>0.004</VEF_RangedDodgeChance>
+            </statOffsets>
+            <statFactors>
+              <MeleeCooldownFactor>-0.0125</MeleeCooldownFactor>
+              <IncomingDamageFactor>-0.0075</IncomingDamageFactor>
+              <StaggerDurationFactor>-0.0125</StaggerDurationFactor>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef MayRequire="ludeon.rimworld.royalty">
+            <defName>RBP_Overchanneler</defName>
+            <label>Overchanneler (vanguard)</label>
+            <skill>Melee</skill>
+            <description>An expertise in forcing more through the mind than it was ever meant to carry, worked out at arm's length where the feedback hits hardest. The power is real and so is the price: sleep comes hard, composure comes harder, and the heat never fully leaves.</description>
+            <statOffsets>
+              <PsychicEntropyMax>0.2</PsychicEntropyMax>
+              <Hauts_PsyfocusGainOnKill MayRequire="hautarche.hautsframework">0.0075</Hauts_PsyfocusGainOnKill>
+              <Hauts_TierOnePsycastCostOffset MayRequire="hautarche.hautsframework,ludeon.rimworld.royalty">-0.0075</Hauts_TierOnePsycastCostOffset>
+              <VPE_PsychicEntropyMinimum MayRequire="vanillaexpanded.vpsycastse">0.15</VPE_PsychicEntropyMinimum>
+            </statOffsets>
+            <statFactors>
+              <PsychicSensitivity>0.0125</PsychicSensitivity>
+              <MentalBreakThreshold>0.02</MentalBreakThreshold>
+              <RestFallRateFactor>0.02</RestFallRateFactor>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef MayRequire="ludeon.rimworld.royalty">
+            <defName>RBP_OverchannelerRanged</defName>
+            <label>Overchanneler (artillerist)</label>
+            <skill>Shooting</skill>
+            <description>An expertise in forcing more through the mind than it was ever meant to carry, worked out at range where the target never sees the source. The power is real and so is the price: sleep comes hard, composure comes harder, and the heat never fully leaves.</description>
+            <statOffsets>
+              <PsychicEntropyMax>0.2</PsychicEntropyMax>
+              <Hauts_PsyfocusGainOnKill MayRequire="hautarche.hautsframework">0.0075</Hauts_PsyfocusGainOnKill>
+              <Hauts_TierOnePsycastCostOffset MayRequire="hautarche.hautsframework,ludeon.rimworld.royalty">-0.0075</Hauts_TierOnePsycastCostOffset>
+              <VPE_PsychicEntropyMinimum MayRequire="vanillaexpanded.vpsycastse">0.15</VPE_PsychicEntropyMinimum>
+            </statOffsets>
+            <statFactors>
+              <PsychicSensitivity>0.0125</PsychicSensitivity>
+              <MentalBreakThreshold>0.02</MentalBreakThreshold>
+              <RestFallRateFactor>0.02</RestFallRateFactor>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Beastmaster</defName>
+            <label>Beastmaster</label>
+            <skill>Animals</skill>
+            <description>An expertise in reading an animal's temper: winning over the wild ones, train the tame ones, and knowing when to back away.</description>
+            <statFactors>
+              <TameAnimalChance>0.015</TameAnimalChance>
+              <TrainAnimalChance>0.015</TrainAnimalChance>
+              <AnimalsLearningFactor>0.015</AnimalsLearningFactor>
+              <BondAnimalChanceFactor>0.015</BondAnimalChanceFactor>
+              <VSE_AttackOnFailChanceFactor>-0.015</VSE_AttackOnFailChanceFactor>
+              <HuntingStealth>0.015</HuntingStealth>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Steward</defName>
+            <label>Herd steward</label>
+            <skill>Animals</skill>
+            <description>An expertise in what animals and waters provide: milk, wool, eggs and a full net, gathered quickly and without waste.</description>
+            <statOffsets>
+              <VCEF_FishingLuckOffset MayRequire="vanillaexpanded.vcef">0.004</VCEF_FishingLuckOffset>
+              <AnimalProductsSellImprovement MayRequire="ludeon.rimworld.ideology">0.004</AnimalProductsSellImprovement>
+            </statOffsets>
+            <statFactors>
+              <AnimalGatherYield>0.015</AnimalGatherYield>
+              <AnimalGatherSpeed>0.015</AnimalGatherSpeed>
+              <FishingSpeed MayRequire="ludeon.rimworld.odyssey">0.015</FishingSpeed>
+              <FishingYield MayRequire="ludeon.rimworld.odyssey">0.015</FishingYield>
+              <Hauts_MaxDryadFactor MayRequire="hautarche.hautsframework,ludeon.rimworld.ideology">0.015</Hauts_MaxDryadFactor>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Cultivator</defName>
+            <label>Cultivator</label>
+            <skill>Plants</skill>
+            <description>An expertise in worked ground: sowing a field fast and bringing every last usable part of it back to the stockpile.</description>
+            <statFactors>
+              <PlantWorkSpeed>0.02</PlantWorkSpeed>
+              <PlantHarvestYield>0.02</PlantHarvestYield>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Wildwalker</defName>
+            <label>Wildwalker</label>
+            <skill>Plants</skill>
+            <description>An expertise in unworked ground: living off what grows on its own, and tending the trees that answer back.</description>
+            <statOffsets>
+              <ForagedNutritionPerDay>0.02</ForagedNutritionPerDay>
+            </statOffsets>
+            <statFactors>
+              <PruningSpeed MayRequire="ludeon.rimworld.ideology">0.02</PruningSpeed>
+              <Hauts_MaxDryadFactor MayRequire="hautarche.hautsframework,ludeon.rimworld.ideology">0.02</Hauts_MaxDryadFactor>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Virtuoso</defName>
+            <label>Virtuoso</label>
+            <skill>Artistic</skill>
+            <description>An expertise in the piece that stops people in the corridor. Nothing leaves the bench until it is right, and that takes as long as it takes.</description>
+            <statOffsets>
+              <VSE_ArtQuality>0.025</VSE_ArtQuality>
+            </statOffsets>
+            <statFactors>
+              <VSE_ArtSpeed>-0.015</VSE_ArtSpeed>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Prolific</defName>
+            <label>Prolific artisan</label>
+            <skill>Artistic</skill>
+            <description>An expertise in output. Sculptures leave the bench at a pace that keeps every wall and every trade caravan supplied.</description>
+            <statFactors>
+              <VSE_ArtSpeed>0.02</VSE_ArtSpeed>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef MayRequire="ludeon.rimworld.royalty">
+            <defName>RBP_Quietist</defName>
+            <label>Quietist</label>
+            <skill>Artistic</skill>
+            <description>An expertise in the discipline of the still mind. Heat bleeds away as fast as it gathers and focus is never quite spent, but a mind kept this quiet never learns to shout.</description>
+            <statOffsets>
+              <PsychicEntropyMax>-0.3</PsychicEntropyMax>
+              <Hauts_PsyfocusRegenRate MayRequire="hautarche.hautsframework">0.0075</Hauts_PsyfocusRegenRate>
+              <Hauts_PsyfocusFromFood MayRequire="hautarche.hautsframework">0.0075</Hauts_PsyfocusFromFood>
+              <Hauts_PsycastFocusRefund MayRequire="hautarche.hautsframework">0.0075</Hauts_PsycastFocusRefund>
+            </statOffsets>
+            <statFactors>
+              <PsychicEntropyRecoveryRate>0.015</PsychicEntropyRecoveryRate>
+              <MeditationFocusGain>0.015</MeditationFocusGain>
+              <VPE_PsyfocusCostFactor MayRequire="vanillaexpanded.vpsycastse">-0.015</VPE_PsyfocusCostFactor>
+              <PsychicSensitivity>-0.02</PsychicSensitivity>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_MasterBuilder</defName>
+            <label>Master builder</label>
+            <skill>Construction</skill>
+            <description>An expertise in building things that stand: fewer botched frames, better work, and a sure hand at fixing what breaks. None of it done in a hurry.</description>
+            <statOffsets>
+              <VSE_ConstructQuality>0.025</VSE_ConstructQuality>
+            </statOffsets>
+            <statFactors>
+              <ConstructSuccessChance>0.015</ConstructSuccessChance>
+              <FixBrokenDownBuildingSuccessChance>0.015</FixBrokenDownBuildingSuccessChance>
+              <VSE_RepairSpeed>0.015</VSE_RepairSpeed>
+              <VGE_GravshipMaintenance MayRequire="vanillaexpanded.gravship">0.015</VGE_GravshipMaintenance>
+              <ConstructionSpeed>-0.015</ConstructionSpeed>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Siteworker</defName>
+            <label>Siteworker</label>
+            <skill>Construction</skill>
+            <description>An expertise in raw throughput on site: walls up, floors down, roofs closed and rock smoothed, and a good eye for where not to step.</description>
+            <statFactors>
+              <ConstructionSpeed>0.015</ConstructionSpeed>
+              <VSE_FloorSpeed>0.015</VSE_FloorSpeed>
+              <VSE_RoofSpeed>0.015</VSE_RoofSpeed>
+              <SmoothingSpeed>0.015</SmoothingSpeed>
+              <PawnTrapSpringChance>-0.015</PawnTrapSpringChance>
+              <Hauts_BreachDamageFactor MayRequire="hautarche.hautsframework">0.015</Hauts_BreachDamageFactor>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Gastronome</defName>
+            <label>Gastronome</label>
+            <skill>Cooking</skill>
+            <description>An expertise in what goes into the pot and what comes out of it safely, whether the recipe is dinner or something rather less legal.</description>
+            <statFactors>
+              <FoodPoisonChance>-0.02</FoodPoisonChance>
+              <DrugCookingSpeed>0.02</DrugCookingSpeed>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Victualler</defName>
+            <label>Victualler</label>
+            <skill>Cooking</skill>
+            <description>An expertise in feeding a crowd: meals off the stove at speed and every carcass stripped down to the last usable scrap.</description>
+            <statFactors>
+              <CookSpeed>0.02</CookSpeed>
+              <ButcheryFleshSpeed>0.02</ButcheryFleshSpeed>
+              <ButcheryFleshEfficiency>0.02</ButcheryFleshEfficiency>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Artificer</defName>
+            <label>Artificer</label>
+            <skill>Crafting</skill>
+            <description>An expertise in the fine end of the workbench: weapons and garments finished to a standard the buyer can feel, at a pace no quartermaster enjoys.</description>
+            <statOffsets>
+              <VSE_CraftingQuality>0.025</VSE_CraftingQuality>
+            </statOffsets>
+            <statFactors>
+              <VSE_WeaponCreationSpeed>-0.015</VSE_WeaponCreationSpeed>
+              <VSE_TailoringSpeed>-0.015</VSE_TailoringSpeed>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Fabricator</defName>
+            <label>Fabricator</label>
+            <skill>Crafting</skill>
+            <description>An expertise in volume and salvage: components by the crate, slag back into ingots, and dead mechanoids stripped for everything they hold.</description>
+            <statFactors>
+              <VSE_ComponentCraftingSpeed>0.015</VSE_ComponentCraftingSpeed>
+              <SmeltingSpeed>0.015</SmeltingSpeed>
+              <ButcheryMechanoidSpeed>0.015</ButcheryMechanoidSpeed>
+              <ButcheryMechanoidEfficiency>0.015</ButcheryMechanoidEfficiency>
+              <AS_CraftingYield MayRequire="sarg.alphaskills">0.015</AS_CraftingYield>
+              <Hauts_RecyclingSpeed MayRequire="hautarche.hautsframework,ludeon.rimworld.biotech,vanillaexpanded.recycling">0.015</Hauts_RecyclingSpeed>
+              <AC_StackShreddingEfficiency MayRequire="hlx.ultratechalteredcarbon">0.015</AC_StackShreddingEfficiency>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef MayRequire="ludeon.rimworld.biotech">
+            <defName>RBP_Mechwright</defName>
+            <label>Mechwright</label>
+            <skill>Crafting</skill>
+            <description>An expertise in the upkeep of mechanoids: chassis kept running on less power, damage hammered out fast, and a fighting trim their overseer never programmed in.</description>
+            <statOffsets>
+              <WorkSpeedGlobalOffsetMech>0.0075</WorkSpeedGlobalOffsetMech>
+              <Hauts_MechEnergyUsage MayRequire="hautarche.hautsframework,ludeon.rimworld.biotech">-0.0075</Hauts_MechEnergyUsage>
+              <ShootingAccuracyPawnOffsetMech MayRequire="lts.i">0.1</ShootingAccuracyPawnOffsetMech>
+              <MeleeHitChanceOffsetMech MayRequire="lts.i">0.1</MeleeHitChanceOffsetMech>
+              <MeleeDodgeChanceOffsetMech MayRequire="lts.i">0.1</MeleeDodgeChanceOffsetMech>
+              <AimingDelayFactorOffsetMech MayRequire="lts.i">-0.0075</AimingDelayFactorOffsetMech>
+            </statOffsets>
+            <statFactors>
+              <MechRepairSpeed>0.015</MechRepairSpeed>
+              <MechEnergyUsageFactor>-0.015</MechEnergyUsageFactor>
+              <MU_UpgradeCreatingSpeed MayRequire="gogatio.mechanoidupgrades">0.015</MU_UpgradeCreatingSpeed>
+              <MU_UpgradeFabricationSpeed MayRequire="gogatio.mechanoidupgrades">0.015</MU_UpgradeFabricationSpeed>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Chirurgeon</defName>
+            <label>Chirurgeon</label>
+            <skill>Medicine</skill>
+            <description>An expertise in the operating table: a steady hand under the lamp and a patient who is closed up and breathing sooner.</description>
+            <statFactors>
+              <MedicalSurgerySuccessChance>0.02</MedicalSurgerySuccessChance>
+              <MedicalOperationSpeed>0.02</MedicalOperationSpeed>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Physician</defName>
+            <label>Physician</label>
+            <skill>Medicine</skill>
+            <description>An expertise in everything that is not surgery: wounds dressed fast and dressed well, and fevers that break on schedule.</description>
+            <statFactors>
+              <MedicalTendSpeed>0.02</MedicalTendSpeed>
+              <MedicalTendQuality>0.02</MedicalTendQuality>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Assayer</defName>
+            <label>Assayer</label>
+            <skill>Mining</skill>
+            <description>An expertise in reading the rock before striking it, so that more comes out of the seam and the odd glint is never missed.</description>
+            <statOffsets>
+              <AS_ExtraGoldYield MayRequire="sarg.alphaskills">0.005</AS_ExtraGoldYield>
+              <AS_ExtraComponentsYield MayRequire="sarg.alphaskills">0.005</AS_ExtraComponentsYield>
+            </statOffsets>
+            <statFactors>
+              <MiningYield>0.02</MiningYield>
+              <VSE_RockChunkChance>0.02</VSE_RockChunkChance>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Excavator</defName>
+            <label>Excavator</label>
+            <skill>Mining</skill>
+            <description>An expertise in moving stone. Tunnels advance, drills bite deeper, and the mountain gives way faster than it should.</description>
+            <statFactors>
+              <MiningSpeed>0.02</MiningSpeed>
+              <DeepDrillingSpeed>0.02</DeepDrillingSpeed>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Scholar</defName>
+            <label>Scholar</label>
+            <skill>Intellectual</skill>
+            <description>An expertise in learning and passing it on: research, books, sealed systems that would rather stay sealed, and students who would rather not listen.</description>
+            <statFactors>
+              <ResearchSpeed>0.015</ResearchSpeed>
+              <ReadingSpeed>0.015</ReadingSpeed>
+              <VBE_WritingSpeed MayRequire="vanillaexpanded.vbookse">0.015</VBE_WritingSpeed>
+              <HackingSpeed>0.015</HackingSpeed>
+              <HackingStealth>0.015</HackingStealth>
+              <Hauts_SurveySpeed MayRequire="hautarche.hautsframework">0.015</Hauts_SurveySpeed>
+              <Hauts_InstructiveAbility MayRequire="hautarche.hautsframework,ludeon.rimworld.biotech">0.015</Hauts_InstructiveAbility>
+              <VGE_GravshipResearch MayRequire="vanillaexpanded.gravship">0.015</VGE_GravshipResearch>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef MayRequire="ludeon.rimworld.anomaly">
+            <defName>RBP_Anomalist</defName>
+            <label>Anomalist</label>
+            <skill>Intellectual</skill>
+            <description>An expertise in the things that should not be studied: prying them open faster, learning more from what is found inside, and keeping them quiet while it happens.</description>
+            <statFactors>
+              <StudyEfficiency>0.02</StudyEfficiency>
+              <EntityStudyRate>0.02</EntityStudyRate>
+              <ActivitySuppressionRate>0.02</ActivitySuppressionRate>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Technician</defName>
+            <label>Technician</label>
+            <skill>Intellectual</skill>
+            <description>An expertise in complicated machinery and complicated chemistry, and in staying calm while operating either one.</description>
+            <statFactors>
+              <DrugSynthesisSpeed>0.02</DrugSynthesisSpeed>
+              <PilotingAbility MayRequire="ludeon.rimworld.odyssey">0.02</PilotingAbility>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef MayRequire="ludeon.rimworld.biotech">
+            <defName>RBP_Mechlord</defName>
+            <label>Mechlord</label>
+            <skill>Intellectual</skill>
+            <description>An expertise in holding more mechanoids in mind at once, reaching them further out, and growing their replacements faster than they are lost.</description>
+            <statOffsets>
+              <MechBandwidth>0.1</MechBandwidth>
+              <MechControlGroups>0.05</MechControlGroups>
+              <MechRemoteRepairDistance>0.1</MechRemoteRepairDistance>
+              <Hauts_MechCommandRange MayRequire="hautarche.hautsframework,ludeon.rimworld.biotech">0.1</Hauts_MechCommandRange>
+              <MechRemoteControlDistanceOffset MayRequire="lts.i">0.1</MechRemoteControlDistanceOffset>
+            </statOffsets>
+            <statFactors>
+              <MechFormingSpeed>0.015</MechFormingSpeed>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Diplomat</defName>
+            <label>Diplomat</label>
+            <skill>Social</skill>
+            <description>An expertise in talking other people into things: better prices, quieter borders, and the occasional change of faith.</description>
+            <statFactors>
+              <TradePriceImprovement>0.01</TradePriceImprovement>
+              <VSE_PeaceTalksChance>0.02</VSE_PeaceTalksChance>
+              <ConversionPower MayRequire="ludeon.rimworld.ideology">0.02</ConversionPower>
+              <SocialIdeoSpreadFrequencyFactor MayRequire="ludeon.rimworld.ideology">0.02</SocialIdeoSpreadFrequencyFactor>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Taskmaster</defName>
+            <label>Taskmaster</label>
+            <skill>Social</skill>
+            <description>An expertise in people who do not want to be here: taking them alive, keeping them in line, and eventually making them one of yours.</description>
+            <statFactors>
+              <ArrestSuccessChance>0.02</ArrestSuccessChance>
+              <VSE_RecruitRate>0.02</VSE_RecruitRate>
+              <SuppressionPower MayRequire="ludeon.rimworld.ideology">0.02</SuppressionPower>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Confidant</defName>
+            <label>Confidant</label>
+            <skill>Social</skill>
+            <description>An expertise in steadying the people around them, and in letting very little of what happens actually stick.</description>
+            <statFactors>
+              <SocialImpact>0.02</SocialImpact>
+              <VEF_NegativeThoughtDurationFactor>-0.02</VEF_NegativeThoughtDurationFactor>
+              <VEF_MTBLovinFactor>-0.02</VEF_MTBLovinFactor>
+              <CertaintyLossFactor MayRequire="ludeon.rimworld.ideology">-0.02</CertaintyLossFactor>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+          <VSE.Expertise.ExpertiseDef>
+            <defName>RBP_Cutpurse</defName>
+            <label>Cutpurse</label>
+            <skill>Social</skill>
+            <description>An expertise in other people's property and other people's vices, and in being somewhere else by the time either is missed.</description>
+            <statOffsets>
+              <DrugSellPriceImprovement>0.005</DrugSellPriceImprovement>
+              <Hauts_PilferingStealth MayRequire="hautarche.hautsframework">0.02</Hauts_PilferingStealth>
+            </statOffsets>
+            <statFactors>
+              <DrugHarvestYield>0.02</DrugHarvestYield>
+              <Hauts_MaxPilferingValue MayRequire="hautarche.hautsframework">0.02</Hauts_MaxPilferingValue>
+            </statFactors>
+          </VSE.Expertise.ExpertiseDef>
+
+        </value>
+      </li>
+
     </operations>
   </Operation>
 

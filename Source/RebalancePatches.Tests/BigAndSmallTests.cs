@@ -66,7 +66,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.GenesGone("MinTemp_HugeDecrease", "MaxTemp_HugeIncrease", "FireImmunity",
                 "BS_MinTemp_HugeDecrease_Android", "BS_MaxTemp_HugeIncrease_Android", "BS_FireImmunity_Android",
@@ -95,7 +95,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void InternalLegacyGenesRemoved()
         {
-            if (!Check.Ready("genepool.bsdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.bsdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.GenesGone("BS_GeneStabilizing_Moderate", "BS_GeneStabilizing_Great",
                 "BS_GeneStabilizing_Extreme", "BS_Deathlike");
@@ -104,7 +104,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.XenoGene("BS_FrostJotunInBlue", "AG_ColdImmunity");
             Check.XenoGene("VU_Gatekeeper", "AG_ArmourMedium");
@@ -127,7 +127,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DeathlikeReplaced()
         {
-            if (!Check.Ready("genepool.bsdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.bsdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.XenoGene("VU_Returned", "BS_LesserDeathless");
             Check.XenoGene("VU_Returned_Intact", "BS_LesserDeathless");

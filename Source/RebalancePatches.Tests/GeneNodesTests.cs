@@ -10,9 +10,9 @@ namespace RebalancePatches.Tests
         [Test]
         public static void TrueArchiteNodesPricier()
         {
-            if (!Check.Ready("genetics.genenodes", Ids.GeneNodes, Ids.Biotech) || !Check.GeneticsTabLoaded("genetics.genenodes"))
+            if (!Check.Ready("geneticsresearch.genenodes", Ids.GeneNodes, Ids.Biotech) || !Check.GeneticsTabLoaded("geneticsresearch.genenodes"))
                 return;
-            if (Check.Optional<ResearchProjectDef>("RBP_ArchiteGeneNodes", "genetics.genenodes") == null)
+            if (Check.Optional<ResearchProjectDef>("RBP_ArchiteGeneNodes", "geneticsresearch.genenodes") == null)
                 return;
             int trueArchiteNodes = 0;
             foreach (ThingDef def in DefDatabase<ThingDef>.AllDefsListForReading)

@@ -8,6 +8,10 @@ namespace RebalancePatches
         public Dictionary<string, bool> values = new Dictionary<string, bool>();
         public Dictionary<string, int> intValues = new Dictionary<string, int>();
 
+        public int configVersion;
+
+        public bool CameFromDisk { get; private set; }
+
         public bool TryGet(string key, out bool value) => values.TryGetValue(key, out value);
 
         public void Set(string key, bool value) => values[key] = value;
@@ -25,6 +29,9 @@ namespace RebalancePatches
             values ??= new Dictionary<string, bool>();
             Scribe_Collections.Look(ref intValues, "intValues", LookMode.Value, LookMode.Value);
             intValues ??= new Dictionary<string, int>();
+            Scribe_Values.Look(ref configVersion, "configVersion", 0);
+            if (Scribe.mode == LoadSaveMode.LoadingVars)
+                CameFromDisk = true;
         }
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Patch>
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>genetics.vqea</settingKey>
+    <settingKey>geneticsresearch.vqea</settingKey>
     <operations>
       <li Class="PatchOperationConditional">
         <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>

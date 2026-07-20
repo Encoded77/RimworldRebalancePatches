@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.Halffoot))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.Halffoot))
                 return;
             Check.GenesGone("DV_Bandwidth_High", "DV_ExtrasmallBuild");
             if (ModsConfig.IsActive(Ids.VREArchon))
@@ -20,7 +20,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.Halffoot))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.Halffoot))
                 return;
             Check.XenoGene("DV_Halffoot", "AG_BandwidthIncrease");
             if (ModsConfig.IsActive(Ids.VREArchon))

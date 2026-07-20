@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSRaces))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSRaces))
                 return;
             Check.XenoGene("BS_BrokenTitan", "AG_ColdImmunity");
             Check.XenoGene("BS_FireJotun", "AG_HeatImmunity");
@@ -104,13 +104,18 @@ namespace RebalancePatches.Tests
             Check.Eq(Check.Def<PawnKindDef>("BS_Ogre_Chieftain").label, "hulker chef", "BS_Ogre_Chieftain label");
             Check.Eq(Check.Def<PawnKindDef>("BS_Troll_Raider_Adult").label, "regenerant raider", "BS_Troll_Raider_Adult label");
             Check.Eq(Check.Def<PawnKindDef>("BS_FleshGolemWarrior").label, "bioconstruct", "BS_FleshGolemWarrior label");
-            Check.Eq(Check.Def<PawnKindDef>("BS_MechaJotunRanged").label, "mecha-gigant", "BS_MechaJotunRanged label");
+            PawnKindDef mechaRanged = Check.Optional<PawnKindDef>("BS_MechaJotunRanged", "scifinames.bsraces");
+            if (mechaRanged != null)
+                Check.Eq(mechaRanged.label, "mecha-gigant", "BS_MechaJotunRanged label");
+            PawnKindDef mechaMelee = Check.Optional<PawnKindDef>("BS_MechaJotunMelee", "scifinames.bsraces");
+            if (mechaMelee != null)
+                Check.Eq(mechaMelee.label, "mecha-gigant", "BS_MechaJotunMelee label");
         }
 
         [Test]
         public static void DeathlikeReplaced()
         {
-            if (!Check.Ready("genepool.bsdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSRaces))
+            if (!Check.Ready("genetics.bsdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSRaces))
                 return;
             Check.XenoGene("BS_FleshGolemServant", "BS_LesserDeathless");
             Check.XenoGene("BS_PilotableFleshGolem", "BS_LesserDeathless");

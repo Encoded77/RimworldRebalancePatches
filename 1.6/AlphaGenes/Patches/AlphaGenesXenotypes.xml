@@ -2,7 +2,7 @@
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>xenotypes.neanderthalfrost</settingKey>
+    <settingKey>genetics.neanderthalfrost</settingKey>
     <operations>
       <li Class="PatchOperationAdd">
         <xpath>Defs/XenotypeDef[defName="Neanderthal"]/genes</xpath>

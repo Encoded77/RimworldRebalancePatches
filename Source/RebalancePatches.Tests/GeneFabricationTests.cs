@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void ArchogeneticsCapstone()
         {
-            if (!Check.Ready("genetics.genefab", Ids.GeneFabrication, Ids.Biotech) || !Check.GeneticsTabLoaded("genetics.genefab"))
+            if (!Check.Ready("geneticsresearch.genefab", Ids.GeneFabrication, Ids.Biotech) || !Check.GeneticsTabLoaded("geneticsresearch.genefab"))
                 return;
             ResearchProjectDef genefab = Check.Def<ResearchProjectDef>("GeneFabrication");
             Check.Eq(genefab.baseCost, 8000f, "GeneFabrication.baseCost");

@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.RimsenalHarana, Ids.Stoneborn))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.RimsenalHarana, Ids.Stoneborn))
                 return;
             Check.GenesGone("Aggression_PassivelyAggressive");
         }
@@ -18,7 +18,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.RimsenalHarana, Ids.Stoneborn))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.RimsenalHarana, Ids.Stoneborn))
                 return;
             Check.XenoGene("Harana", "DV_Aggression_Irascible");
         }

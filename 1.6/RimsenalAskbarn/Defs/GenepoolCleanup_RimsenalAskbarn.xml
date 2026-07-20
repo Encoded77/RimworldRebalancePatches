@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_RimsenalAskbarn_Dedup</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <genes>
       <li>LowFertility</li>
     </genes>
@@ -10,7 +10,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_RimsenalAskbarn_Dedup_Venators</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>det.venators</li>
     </requiredMods>
@@ -21,7 +21,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_RimsenalAskbarn_Dedup_Keshig</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>det.keshig</li>
     </requiredMods>

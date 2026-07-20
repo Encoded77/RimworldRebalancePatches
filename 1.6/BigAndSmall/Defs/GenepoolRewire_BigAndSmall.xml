@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BigSmall_Dedup</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <xenotypes>
       <li>
         <xenotype>BS_FrostJotunInBlue</xenotype>
@@ -49,7 +49,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BigSmall_Dedup_Pigskin</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.pigskin</li>
     </requiredMods>
@@ -77,7 +77,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BigSmall_Dedup_Highmate</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.highmate</li>
     </requiredMods>
@@ -93,7 +93,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BigSmall_BsDupes</defName>
-    <settingKey>genepool.bsdupes</settingKey>
+    <settingKey>genetics.bsdupes</settingKey>
     <xenotypes>
       <li>
         <xenotype>VU_Returned</xenotype>

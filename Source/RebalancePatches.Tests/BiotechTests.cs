@@ -37,7 +37,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void GeneticsResearchTab()
         {
-            if (!Check.Ready("genetics.core", Ids.Biotech))
+            if (!Check.Ready("geneticsresearch.core", Ids.Biotech))
                 return;
             ResearchTabDef tab = Check.Def<ResearchTabDef>("RBP_GeneticsTab");
             ResearchProjectDef sampling = Check.Def<ResearchProjectDef>("RBP_GeneticSampling");

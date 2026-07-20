@@ -12,12 +12,12 @@ namespace RebalancePatches.Tests
         {
             if (!ModsConfig.IsActive(Ids.GeneRipperDefi) && !ModsConfig.IsActive(Ids.GeneRipperDW))
             {
-                Log.Message("[RBP Tests] SKIP genetics.generipper: no Gene Ripper mod active");
+                Log.Message("[RBP Tests] SKIP geneticsresearch.generipper: no Gene Ripper mod active");
                 return;
             }
-            if (!Check.Ready("genetics.generipper", Ids.Biotech) || !Check.GeneticsTabLoaded("genetics.generipper"))
+            if (!Check.Ready("geneticsresearch.generipper", Ids.Biotech) || !Check.GeneticsTabLoaded("geneticsresearch.generipper"))
                 return;
-            ResearchProjectDef ripperResearch = Check.Optional<ResearchProjectDef>("RBP_GeneRipper", "genetics.generipper");
+            ResearchProjectDef ripperResearch = Check.Optional<ResearchProjectDef>("RBP_GeneRipper", "geneticsresearch.generipper");
             if (ripperResearch == null)
                 return;
             Check.Eq(ripperResearch.baseCost, 1200f, "RBP_GeneRipper.baseCost");

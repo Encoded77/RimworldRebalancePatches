@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_BigSmall_Dedup_AlphaGenes</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>sarg.alphagenes</li>
     </requiredMods>
@@ -21,7 +21,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_BigSmall_InternalDupes</defName>
-    <settingKey>genepool.bsdupes</settingKey>
+    <settingKey>genetics.bsdupes</settingKey>
     <genes>
       <li>BS_GeneStabilizing_Moderate</li>
       <li>BS_GeneStabilizing_Great</li>
@@ -32,7 +32,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_BigSmall_Dedup_Pigskin</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.pigskin</li>
     </requiredMods>
@@ -47,7 +47,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_BigSmall_Dedup_Highmate</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.highmate</li>
     </requiredMods>
@@ -59,7 +59,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_BigSmall_Dedup_Archon</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.archon</li>
     </requiredMods>
@@ -70,7 +70,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_BigSmall_Dedup_Sanguophage</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.sanguophage</li>
     </requiredMods>
@@ -81,7 +81,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_BigSmall_Dedup_Fungoid</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.fungoid</li>
     </requiredMods>
@@ -92,7 +92,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_BigSmall_Dedup_Waster</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.waster</li>
     </requiredMods>
@@ -103,7 +103,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_BigSmall_Dedup_Hussar</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.hussar</li>
     </requiredMods>
@@ -114,7 +114,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_BigSmall_Dedup_Starjack</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.starjack</li>
     </requiredMods>
@@ -126,7 +126,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_BigSmall_Dedup_Lycanthrope</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.lycanthrope</li>
     </requiredMods>

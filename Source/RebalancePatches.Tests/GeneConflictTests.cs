@@ -64,7 +64,7 @@ namespace RebalancePatches.Tests
             Check.GeneTag(Check.Def<GeneDef>("Deathless"), "RBP_Deathless");
             if (ModsConfig.IsActive(Ids.WVC))
             {
-                // WVC_Undead is removed by genepool.wvcdupes; only assert it when it survived.
+                // WVC_Undead is removed by genetics.wvcdupes; only assert it when it survived.
                 GeneDef undead = Check.Optional<GeneDef>("WVC_Undead", "geneconflicts.deathless");
                 if (undead != null)
                     Check.GeneTag(undead, "RBP_Deathless");
@@ -105,7 +105,7 @@ namespace RebalancePatches.Tests
             if (!Check.Ready("geneconflicts.dodge", Ids.RimsenalAskbarn))
                 return;
             Check.GeneTag(Check.Def<GeneDef>("RSLightningReflexes"), "MeleeDodge");
-            // RSBornWarrior is removed by genepool.dedup; only assert it when it survived.
+            // RSBornWarrior is removed by genetics.dedup; only assert it when it survived.
             GeneDef bornWarrior = Check.Optional<GeneDef>("RSBornWarrior", "geneconflicts.dodge");
             if (bornWarrior != null)
                 Check.GeneTag(bornWarrior, "MeleeDodge");

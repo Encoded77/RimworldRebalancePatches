@@ -4,6 +4,10 @@ What every toggle in the mod settings does, grouped the same way as the settings
 
 The settings window groups features by mod: groups collapse and expand, a search box filters by name and description, and settings whose required mods aren't in the modlist are greyed out with a note saying what's missing (hover for the full requirement list). Groups for mods you don't run can be hidden entirely with *Show inactive mods*.
 
+**The four overhauls sit at the top of the settings window, above a divider, and are all off by default.** They are sweeping changes to how whole systems work — Genetics Overhaul, Genetics Research Overhaul, Sci-fi Renaming and Expertise Overhaul — so nothing below the divider depends on them and nothing changes until you opt in. Turning an overhaul's group on enables everything inside it; individual pieces can then be turned back off. The patches below the divider stay on by default, since each is a small self-contained fix.
+
+If you are **upgrading** from a version where an overhaul was on by default, it stays on: the mod records a config version and pins settings whose default has changed, so an ongoing colony never loses a system it was already running. Settings you chose yourself are always left alone. Only fresh installs start with the overhauls off.
+
 ---
 
 ## Patches
@@ -90,7 +94,6 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 
 ### Weapons & apparel
 
-- **`vse.reloadingstat`** — Vanilla Skills Expanded's gunner expertise modifies the vanilla ranged cooldown stat, so its bonus shows on weapon stat cards.
 - **`impactweaponry.bolterprereq`** — The warcasket impact bolter needs spacer warcasket weaponry plus impact shot, dropping a redundant extra prerequisite.
 - **`spacerarsenal.prereqs`** — Spacer Arsenal's heavy weapons unlock from Vanilla Weapons Expanded's Heavy Weapons + Fabrication; the coil weapons from Mass Drivers (Coilguns).
 - **`eltex.spawns`** — Eltex weapons stop spawning on random raiders and appear where they belong: Empire cataphracts, psycasters and deserters (Royalty).
@@ -113,38 +116,28 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 
 ---
 
-## Genepool Cleanup
+## Genetics Overhaul
 
-With every gene mod loaded the genepool holds hundreds of genes, dozens of which do the same thing under different names. This module keeps one canonical gene per function, removes the duplicates, and rewires every xenotype that carried a duplicate to the canonical version — races keep their identity through shared genes. Removals run through **Cherry Picker** (a mod dependency) automatically, with no Cherry Picker setup needed; toggling a setting off restores its genes on the next restart. Only active when Alpha Genes, WVC - Xenotypes and Genes and Big and Small - Genes & More are all loaded (except the Hussar aptitudes toggle, which needs only VRE - Hussar). The full list of removed genes, replacements and xenotype changes is in `Docs/GeneChanges.md`.
+Everything that reshapes the gene pool itself: pruning the duplicates the modlist accumulates, then handing individual xenotypes the genes that suit them. The research tree is a separate module, [Genetics Research Overhaul](#genetics-research-overhaul).
 
-- **`genepool.agsummons`** — Removes Alpha Genes' animal summon family (~90 genes, one per supported animal). No xenotype uses them; they only dilute the pool and I don't like them.
-- **`genepool.wvcdupes`** — Removes WVC genes that duplicate vanilla Biotech genes or WVC's own alternatives (~50). WVC xenotypes get the surviving equivalent instead.
-- **`genepool.bsdupes`** — Removes Big and Small's three gene stabilizing genes (balance, no replacement) and the deathlike body gene (undead xenotypes get unstable deathlessness instead).
-- **`genepool.dedup`** — The cross-mod deduplication: Alpha Genes keeps immunities, natural armor, bandwidth, pack mule and the like; Big and Small keeps body size, gender, no pain and healing speed; each specialist VRE race pack keeps its specialty; Det's packs keep their signature quirks; WVC's archite-tier uniques win over everyone's natural versions. Duplicates whose canonical mod is missing are left alone.
-- **`genepool.hussaraptitudes`** — VRE - Hussar generates one weapon-aptitude gene per craftable weapon (~300 with a large modlist). They're replaced by four category genes — light and heavy melee aptitude, light and heavy ranged aptitude (heavy = 3 kg and up) — with the same bonus and cost. The hussar xenotypes still get a random aptitude; with Gene Nodes - Genes for Sale, a new archite gene node delivers the four genes. Pawns from older saves that carried a per-weapon aptitude lose it with a one-time load warning.
+### Genepool cleanup
 
-## Xenotype Gene Integration
+With every gene mod loaded the genepool holds hundreds of genes, dozens of which do the same thing under different names. This keeps one canonical gene per function, removes the duplicates, and rewires every xenotype that carried a duplicate to the canonical version — races keep their identity through shared genes. Removals run through **Cherry Picker** (a mod dependency) automatically, with no Cherry Picker setup needed; toggling a setting off restores its genes on the next restart. Only active when Alpha Genes, WVC - Xenotypes and Genes and Big and Small - Genes & More are all loaded (except the Hussar aptitudes toggle, which needs only VRE - Hussar). The full list of removed genes, replacements and xenotype changes is in `Docs/GeneChanges.md`.
+
+- **`genetics.agsummons`** — Removes Alpha Genes' animal summon family (~90 genes, one per supported animal). No xenotype uses them; they only dilute the pool and I don't like them.
+- **`genetics.wvcdupes`** — Removes WVC genes that duplicate vanilla Biotech genes or WVC's own alternatives (~50). WVC xenotypes get the surviving equivalent instead.
+- **`genetics.bsdupes`** — Removes Big and Small's three gene stabilizing genes (balance, no replacement) and the deathlike body gene (undead xenotypes get unstable deathlessness instead).
+- **`genetics.dedup`** — The cross-mod deduplication: Alpha Genes keeps immunities, natural armor, bandwidth, pack mule and the like; Big and Small keeps body size, gender, no pain and healing speed; each specialist VRE race pack keeps its specialty; Det's packs keep their signature quirks; WVC's archite-tier uniques win over everyone's natural versions. Duplicates whose canonical mod is missing are left alone.
+- **`genetics.hussaraptitudes`** — VRE - Hussar generates one weapon-aptitude gene per craftable weapon (~300 with a large modlist). They're replaced by four category genes — light and heavy melee aptitude, light and heavy ranged aptitude (heavy = 3 kg and up) — with the same bonus and cost. The hussar xenotypes still get a random aptitude; with Gene Nodes - Genes for Sale, a new archite gene node delivers the four genes. Pawns from older saves that carried a per-weapon aptitude lose it with a one-time load warning.
+
+### Xenotype gene integration
 
 Small thematic gene additions to individual xenotypes, drawing on the cleaned-up genepool. Each toggle needs the xenotype's mod plus the gene's mod, and does nothing when either is missing.
 
-- **`xenotypes.boglegwater`** — Boglegs gain water striding (Alpha Genes): no movement penalty in watery terrain.
-- **`xenotypes.stonebornskin`** — Det's Stoneborn gain stoneskin (WVC - Xenotypes and Genes): stone-covered bodies with natural armor and very low flammability, at a metabolism cost. Their appearance changes to stone-like skin.
-- **`xenotypes.neanderthalfrost`** — Neanderthals gain frostbite resistance (Alpha Genes): frostbite damage halved.
-- **`xenotypes.wvcspawns`** — WVC - Xenotypes and Genes' most powerful races (ferrkind, metalkin, rustkind, deadcat) no longer spawn as random wanderers, refugees, beggars or faction pawns. They remain obtainable through WVC's own events, morphs and implanters, like the rest of its top tier.
-
-## Sci-fi Renaming
-
-Renames fantasy-, Norse- and religion-flavoured races and factions to RimWorld's gene-engineering flavour: every renamed group reads as an engineered gene-line, with labels, descriptions, faction names and pawn kind names rewritten to match. Purely cosmetic — no stats, genes or spawning change, and existing saves are unaffected beyond the displayed names. One toggle per mod.
-
-- **`scifinames.bsraces`** — Big and Small - Races: jotun become **gigants** (cryogigant, pyrogigant, half-gigant; the archite heirs become gigant primes), ogres **hulkers**, dvergr **deepkin**, nisse **minikin**, svartalfs **umbrakin**, redcaps **scrappers**, trolls **regenerants**, flesh golems **bioconstructs**, hearthguards and hearthdolls **warden and service synths**. The Kingdom of Muspelheim becomes the **Cinderhold Dominion**, the Tribes of Niflheim the **Permafrost Clans**, the Dvergr Trade Union the **Deepkin Trade Combine**, the little people union the **Minikin Union** and the ogre tribes the **Hulker Tribes**, with their fighters renamed to match.
-- **`scifinames.bigsmall`** — Big and Small - Genes & More: the succubus becomes the **allurist**, the hellguard the **abyssal guard**, the imp the **greater impid**, the returned **reanimates** (decayed/skeletal variants) and the frost jotun adventurer a **cryogigant**.
-- **`scifinames.heaven`** — Big and Small - Heaven and Hell: angels become **ascendants** (the authority the ascendant prime, Satan the adversary prime, the Grigori watchers, the Nephilim the halfwrought, the Lilim the nightwrought), demons become **abyssals** (gluttons devourers). The factions become the **Luminal Ascendancy** (emissaries), the **Abyssal Dominion** (abyssals) and the **Exiles**, and every holy/demonic pawn kind follows.
-- **`scifinames.yokai`** — Big and Small - Yokai: kitsune become **vulpids**, nekomata **felids** and oni **hornbrutes** (crimson/cobalt, great and lesser); the Yokai Union becomes the **Chimeric Union**.
-- **`scifinames.lamias`** — Big and Small - Lamias: lamia become **serpids**, sirens **mesmer serpids**, gorgons **petrifex serpids**, naga **greater serpids**, nagaraj **serpid primes** and Tiamat the **progenitor serpid**; the snake tribal federation becomes the serpid tribal federation and the Greek/Hindu myth references drop from descriptions.
-- **`scifinames.slimes`** — Big and Small - Slimes: slimes become **plasmoids** across every xenotype, and the escaped slimes faction becomes the **Escaped Plasmoids** led by a plasmoid prime.
-- **`scifinames.morexenos`** — Big and Small - More Xenotypes: the devilspider becomes the **dreadspider**.
-- **`scifinames.wvc`** — WVC - Xenotypes and Genes: the undead xenotype becomes the **necrokin** and the lilif the **psykin**.
-- **`scifinames.alphagenes`** — Alpha Genes: efreet become **cindrids** and nereids **abyssids**.
+- **`genetics.boglegwater`** — Boglegs gain water striding (Alpha Genes): no movement penalty in watery terrain.
+- **`genetics.stonebornskin`** — Det's Stoneborn gain stoneskin (WVC - Xenotypes and Genes): stone-covered bodies with natural armor and very low flammability, at a metabolism cost. Their appearance changes to stone-like skin.
+- **`genetics.neanderthalfrost`** — Neanderthals gain frostbite resistance (Alpha Genes): frostbite damage halved.
+- **`genetics.wvcspawns`** — WVC - Xenotypes and Genes' most powerful races (ferrkind, metalkin, rustkind, deadcat) no longer spawn as random wanderers, refugees, beggars or faction pawns. They remain obtainable through WVC's own events, morphs and implanters, like the rest of its top tier.
 
 ## Genetics Research Overhaul
 
@@ -171,38 +164,100 @@ graph LR
     A --> ARE[archogen engineering<br/>10000]
 ```
 
-### Core tree (`genetics.core`)
+### Core tree (`geneticsresearch.core`)
 
 Creates the Genetics tab rooted on a new *basic genetic sampling* project (gene extractor and gene bank unlock there), renames Xenogermination to *xenogerm assembly*, and moves the gene processor and archogenetics onto the tab with raised costs. Third-party gene buildings automatically default to the sampling unlock.
 
-### ReSplice: Core (`genetics.resplice`)
+### ReSplice: Core (`geneticsresearch.resplice`)
 
 The gene centrifuge and xenogerm duplicator become deliberate unlocks behind new *genepack centrifuge* and *xenogerm replicator* projects, renamed to match.
 
-### Gene Extractor Tiers (`genetics.extractortiers`)
+### Gene Extractor Tiers (`geneticsresearch.extractortiers`)
 
 The gene extraction vat becomes a mid-tree unlock and the two archite vats a late-tree one, so extraction stops being trivialised the moment basic xenogenetics finishes.
 
-### Gene nodes (`genetics.genenodes`)
+### Gene nodes (`geneticsresearch.genenodes`)
 
 Base gene nodes get their own project after xenogerm assembly. Archite node libraries are effectively free archite genepacks, so every archite node — including the premium Ageless and Sanguophage tiers — moves behind *archite gene nodes* with real prices (more components, archite capsules, silver); nodes that shipped their own bargain prices now use the tier prices.
 
-### Gene Ripper (`genetics.generipper`)
+### Gene Ripper (`geneticsresearch.generipper`)
 
 A kill-to-extract a specific gene machine shouldn't share the plain extractor's unlock: it moves behind its own *gene ripper* project.
 
-### Gene Fabrication (`genetics.genefab`)
+### Gene Fabrication (`geneticsresearch.genefab`)
 
 Fabricating genes from neutroamine is an end-of-tree power, not a gene-processor side grab: the research becomes an archogenetics capstone (cost 8000).
 
-### VQE Ancients archogen lab (`genetics.vqea`)
+### VQE Ancients archogen lab (`geneticsresearch.vqea`)
 
 A new *archogen engineering* capstone (10000, multianalyzer) lets you build the archogen injector and its 12 linkable lab facilities yourself at archite-tier costs — raiding ancient vaults stays the shortcut, research the long road.
 
-### Alpha Genes gene toolkits (`genetics.agtools`)
+### Alpha Genes gene toolkits (`geneticsresearch.agtools`)
 
 Alpha Genes' eleven single-use gene tools normally come from traders and quest rewards only. A new *gene toolkits* project makes them all craftable at the fabrication bench, with costs scaling from genepack tweakers up to the archotech variants (which need an archite capsule). Trade acquisition is untouched.
 
-### Alpha Genes quest flavour (`genetics.alphagenes`)
+### Alpha Genes quest flavour (`geneticsresearch.alphagenes`)
 
 The abandoned biotech lab quest is renamed to xenogenetics-lab flavour matching the overhauled genetics theme.
+## Sci-fi Renaming
+
+Renames fantasy-, Norse- and religion-flavoured races and factions to RimWorld's gene-engineering flavour: every renamed group reads as an engineered gene-line, with labels, descriptions, faction names and pawn kind names rewritten to match. Purely cosmetic — no stats, genes or spawning change, and existing saves are unaffected beyond the displayed names. One toggle per mod.
+
+- **`scifinames.bsraces`** — Big and Small - Races: jotun become **gigants** (cryogigant, pyrogigant, half-gigant; the archite heirs become gigant primes), ogres **hulkers**, dvergr **deepkin**, nisse **minikin**, svartalfs **umbrakin**, redcaps **scrappers**, trolls **regenerants**, flesh golems **bioconstructs**, hearthguards and hearthdolls **warden and service synths**. The Kingdom of Muspelheim becomes the **Cinderhold Dominion**, the Tribes of Niflheim the **Permafrost Clans**, the Dvergr Trade Union the **Deepkin Trade Combine**, the little people union the **Minikin Union** and the ogre tribes the **Hulker Tribes**, with their fighters renamed to match.
+- **`scifinames.bigsmall`** — Big and Small - Genes & More: the succubus becomes the **allurist**, the hellguard the **abyssal guard**, the imp the **greater impid**, the returned **reanimates** (decayed/skeletal variants) and the frost jotun adventurer a **cryogigant**.
+- **`scifinames.heaven`** — Big and Small - Heaven and Hell: angels become **ascendants** (the authority the ascendant prime, Satan the adversary prime, the Grigori watchers, the Nephilim the halfwrought, the Lilim the nightwrought), demons become **abyssals** (gluttons devourers). The factions become the **Luminal Ascendancy** (emissaries), the **Abyssal Dominion** (abyssals) and the **Exiles**, and every holy/demonic pawn kind follows.
+- **`scifinames.yokai`** — Big and Small - Yokai: kitsune become **vulpids**, nekomata **felids** and oni **hornbrutes** (crimson/cobalt, great and lesser); the Yokai Union becomes the **Chimeric Union**.
+- **`scifinames.lamias`** — Big and Small - Lamias: lamia become **serpids**, sirens **mesmer serpids**, gorgons **petrifex serpids**, naga **greater serpids**, nagaraj **serpid primes** and Tiamat the **progenitor serpid**; the snake tribal federation becomes the serpid tribal federation and the Greek/Hindu myth references drop from descriptions.
+- **`scifinames.slimes`** — Big and Small - Slimes: slimes become **plasmoids** across every xenotype, and the escaped slimes faction becomes the **Escaped Plasmoids** led by a plasmoid prime.
+- **`scifinames.morexenos`** — Big and Small - More Xenotypes: the devilspider becomes the **dreadspider**.
+- **`scifinames.wvc`** — WVC - Xenotypes and Genes: the undead xenotype becomes the **necrokin** and the lilif the **psykin**.
+- **`scifinames.alphagenes`** — Alpha Genes: efreet become **cindrids** and nereids **abyssids**.
+
+## Expertise Overhaul
+
+**`vse.expertiseconsolidation`** — off by default. Needs Vanilla Skills Expanded.
+
+With Vanilla Skills Expanded and its add-ons loaded, a pawn hitting level 15 is offered a list of roughly seventy expertises, most of them a single narrow stat: one for floors, another for smoothing, a third for roofs. Picking well means reading the whole list, and most entries are strictly worse than the two or three obvious ones. The bonuses are also enormous — they scale with expertise level up to 20, so a `+0.05` per level entry ends at `+1.0`, which for a chance-based stat means a hundred percentage points, and for a capped stat means most of the bonus is thrown away.
+
+This toggle retires that list and replaces it with **32 broader expertises, two to four per skill**, each bundling everything that belonged together:
+
+| Skill | Expertises |
+| --- | --- |
+| Shooting | Marksman, Gunslinger, Overchanneler (artillerist) |
+| Melee | Warblade, Skirmisher, Overchanneler (vanguard) |
+| Animals | Beastmaster, Herd steward |
+| Plants | Cultivator, Wildwalker |
+| Artistic | Virtuoso, Prolific artisan, Quietist |
+| Construction | Master builder, Siteworker |
+| Cooking | Gastronome, Victualler |
+| Crafting | Artificer, Fabricator, Mechwright |
+| Medicine | Chirurgeon, Physician |
+| Mining | Assayer, Excavator |
+| Intellectual | Scholar, Anomalist, Technician, Mechlord |
+| Social | Diplomat, Taskmaster, Confidant, Cutpurse |
+
+Every skill now offers a real trade-off — quality against throughput, offence against survivability, instead of a long list with one right answer.
+
+### Strength
+
+Bonuses are multipliers rather than flat additions wherever the stat allows it, and they top out around **+40% at expertise level 20**. Multiplying scales with the pawn instead of overwhelming them, and it stops bonuses from being silently wasted against a stat's ceiling. The handful of stats that start at zero — foraged food, art, construction and crafting quality — keep additive bonuses, tuned to the same strength.
+
+Two things pull below that ceiling. **Combat expertises** are tuned down, because a percentage of shooting accuracy or melee damage is worth far more than the same percentage of cook speed. And **expertises carrying a lot of stats** are tuned down too, since breadth is itself power — an expertise touching eight stats at full strength would dwarf one touching two.
+
+### Costs
+
+Some expertises are deliberately not pure upside:
+
+- **Virtuoso**, **Master builder** and **Artificer** raise the quality of what they produce and *lower the speed* at which they produce it. Their opposite numbers — Prolific artisan, Siteworker, Fabricator — do the reverse.
+- **Overchanneler** and **Quietist** are psycast expertises, and psycasting is already strong, so both carry genuine drawbacks. Overchanneler grants a bigger neural heat ceiling and stronger psycasts, but breaks far more easily, tires much faster, and never fully sheds its heat. Quietist sheds heat effortlessly and casts for far less focus, but has a much smaller heat ceiling and weaker psycasts. Overchanneler is offered on both Melee and Shooting — as **vanguard** and **artillerist** respectively — so a psycaster is not forced into one combat style.
+
+### Other mods
+
+Expertises from **Alpha Skills**, **Hauts' Framework**, **Vanilla Fishing Expanded** and **Vanilla Gravship Expanded** are folded in when those mods are loaded: their stats ride along on whichever expertise they thematically belong to, so nothing is lost. Stats from **Integrated Implants**, **Mechanoid Upgrades**, **Altered Carbon** and **Vanilla Psycasts Expanded** are picked up the same way. Without them the same expertises simply carry fewer stats.
+
+Two gaps in the base mods are filled: **Mechlord** and **Mechwright** cover mechanitors, Mechlord for bandwidth, control groups and reach, Mechwright for repair, running costs and combat trim. Both need Biotech. The psycast pair needs Royalty, and Anomalist needs Anomaly.
+
+Save-compatible, pawns who already chose an expertise keep it, working exactly as before — the old entries are only removed from the selection screen.
+
+---
+

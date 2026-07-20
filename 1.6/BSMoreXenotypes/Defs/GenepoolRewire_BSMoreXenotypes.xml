@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSMoreXenos_Dedup</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <xenotypes>
       <li>
         <xenotype>BS_Devilspider</xenotype>
@@ -34,7 +34,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSMoreXenos_Dedup_Pigskin</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.pigskin</li>
     </requiredMods>
@@ -56,7 +56,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSMoreXenos_Dedup_Archon</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.archon</li>
     </requiredMods>
@@ -84,7 +84,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSMoreXenos_Dedup_Insector</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.insector</li>
     </requiredMods>
@@ -100,7 +100,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSMoreXenos_Dedup_Lycanthrope</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.lycanthrope</li>
     </requiredMods>

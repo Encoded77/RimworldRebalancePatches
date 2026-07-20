@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void BuildingsViaDedicatedResearch()
         {
-            if (!Check.Ready("genetics.resplice", Ids.ReSplice, Ids.Biotech) || !Check.GeneticsTabLoaded("genetics.resplice"))
+            if (!Check.Ready("geneticsresearch.resplice", Ids.ReSplice, Ids.Biotech) || !Check.GeneticsTabLoaded("geneticsresearch.resplice"))
                 return;
             ResearchTabDef tab = Check.Def<ResearchTabDef>("RBP_GeneticsTab");
             ResearchProjectDef centrifuge = Check.Def<ResearchProjectDef>("RBP_GenepackCentrifuge");

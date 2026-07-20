@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSHeaven_Dedup</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <xenotypes>
       <li>
         <xenotype>BS_Authority</xenotype>
@@ -52,7 +52,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSHeaven_Dedup_Starjack</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.starjack</li>
     </requiredMods>
@@ -86,7 +86,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSHeaven_Dedup_Pigskin</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.pigskin</li>
     </requiredMods>
@@ -102,7 +102,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSHeaven_Dedup_Highmate</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.highmate</li>
     </requiredMods>
@@ -125,7 +125,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSHeaven_Dedup_Sanguophage</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.sanguophage</li>
     </requiredMods>
@@ -147,7 +147,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSHeaven_Dedup_Hussar</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.hussar</li>
     </requiredMods>

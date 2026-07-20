@@ -34,7 +34,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void NeanderthalFrostbiteResistance()
         {
-            if (!Check.Ready("xenotypes.neanderthalfrost", Ids.AlphaGenes, Ids.Biotech))
+            if (!Check.Ready("genetics.neanderthalfrost", Ids.AlphaGenes, Ids.Biotech))
                 return;
             Check.XenoGene("Neanderthal", "AG_FrostbiteResistance");
         }
@@ -71,7 +71,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenogeneticsLabQuestFlavour()
         {
-            if (!Check.Ready("genetics.alphagenes", Ids.AlphaGenes))
+            if (!Check.Ready("geneticsresearch.alphagenes", Ids.AlphaGenes))
                 return;
             Check.Eq(Check.Def<SitePartDef>("AG_AbandonedBiotechLab").label, "abandoned xenogenetics lab",
                 "AG_AbandonedBiotechLab.label");
@@ -80,7 +80,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void GeneToolkitsCraftable()
         {
-            if (!Check.Ready("genetics.agtools", Ids.AlphaGenes, Ids.Biotech) || !Check.GeneticsTabLoaded("genetics.agtools"))
+            if (!Check.Ready("geneticsresearch.agtools", Ids.AlphaGenes, Ids.Biotech) || !Check.GeneticsTabLoaded("geneticsresearch.agtools"))
                 return;
             ResearchProjectDef toolkits = Check.Def<ResearchProjectDef>("RBP_GeneToolkits");
             Check.Eq(toolkits.baseCost, 2500f, "RBP_GeneToolkits.baseCost");
@@ -103,7 +103,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void SummonGenesRemoved()
         {
-            if (!Check.Ready("genepool.agsummons", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.agsummons", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             foreach (string name in new[] { "AG_AnimalSummon_Randomizer", "AG_MajorAnimalSummon_Randomizer",
                 "AG_MinorAnimalSummon_Randomizer", "AG_SummonTempBandwidth" })
@@ -116,7 +116,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.GenesGone("AG_Painless", "AG_SmallerBodySize", "AG_LargerBodySize", "AG_Male", "AG_Female",
                 "AG_AcidImmunity", "AG_AcidWeakness", "AG_ToughSinews", "AG_ArmourMinor",
@@ -162,7 +162,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.XenoGene("AG_Malachai", "BS_LargeFrame");
             Check.XenoGene("AG_Malachai", "BS_Pain_None");

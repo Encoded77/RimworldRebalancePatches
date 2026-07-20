@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSRaces_Dedup</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <xenotypes>
       <li>
         <xenotype>BS_BrokenTitan</xenotype>
@@ -89,7 +89,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSRaces_Dedup_Pigskin</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.pigskin</li>
     </requiredMods>
@@ -159,7 +159,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSRaces_Dedup_Archon</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.archon</li>
     </requiredMods>
@@ -187,7 +187,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSRaces_Dedup_Waster</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.waster</li>
     </requiredMods>
@@ -209,7 +209,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSRaces_Dedup_Starjack</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.starjack</li>
     </requiredMods>
@@ -237,7 +237,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_BSRaces_BsDupes</defName>
-    <settingKey>genepool.bsdupes</settingKey>
+    <settingKey>genetics.bsdupes</settingKey>
     <xenotypes>
       <li>
         <xenotype>BS_FleshGolemServant</xenotype>

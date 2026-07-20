@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_VREArchon_Dedup</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <xenotypes>
       <li>
         <xenotype>VRE_Archon</xenotype>

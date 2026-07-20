@@ -2,7 +2,7 @@
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>xenotypes.stonebornskin</settingKey>
+    <settingKey>genetics.stonebornskin</settingKey>
     <operations>
       <li Class="RebalancePatches.PatchOperationFindModById">
         <mods><li>wvc.sergkart.races.biotech</li></mods>

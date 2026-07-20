@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void ExtractionVatsViaDedicatedResearch()
         {
-            if (!Check.Ready("genetics.extractortiers", Ids.GeneExtractorTiers, Ids.Biotech) || !Check.GeneticsTabLoaded("genetics.extractortiers"))
+            if (!Check.Ready("geneticsresearch.extractortiers", Ids.GeneExtractorTiers, Ids.Biotech) || !Check.GeneticsTabLoaded("geneticsresearch.extractortiers"))
                 return;
             ResearchProjectDef vats = Check.Def<ResearchProjectDef>("RBP_GeneExtractionVats");
             Check.Eq(vats.baseCost, 3000f, "RBP_GeneExtractionVats.baseCost");
@@ -28,7 +28,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void GeneNodesViaDedicatedResearch()
         {
-            if (!Check.Ready("genetics.genenodes", Ids.GeneExtractorTiers, Ids.Biotech) || !Check.GeneticsTabLoaded("genetics.genenodes"))
+            if (!Check.Ready("geneticsresearch.genenodes", Ids.GeneExtractorTiers, Ids.Biotech) || !Check.GeneticsTabLoaded("geneticsresearch.genenodes"))
                 return;
             ResearchProjectDef nodes = Check.Def<ResearchProjectDef>("RBP_GeneNodes");
             Check.Eq(nodes.baseCost, 1200f, "RBP_GeneNodes.baseCost");

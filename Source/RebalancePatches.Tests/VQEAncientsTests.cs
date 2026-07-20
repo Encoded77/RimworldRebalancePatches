@@ -30,7 +30,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void BuildableArchogenLaboratory()
         {
-            if (!Check.Ready("genetics.vqea", Ids.VQEAncients, Ids.Biotech) || !Check.GeneticsTabLoaded("genetics.vqea"))
+            if (!Check.Ready("geneticsresearch.vqea", Ids.VQEAncients, Ids.Biotech) || !Check.GeneticsTabLoaded("geneticsresearch.vqea"))
                 return;
             ResearchProjectDef engineering = Check.Def<ResearchProjectDef>("RBP_ArchogenEngineering");
             Check.Eq(engineering.baseCost, 10000f, "RBP_ArchogenEngineering.baseCost");

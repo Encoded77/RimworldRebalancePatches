@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void WaterStridingAdded()
         {
-            if (!Check.Ready("xenotypes.boglegwater", Ids.Boglegs, Ids.AlphaGenes, Ids.Biotech))
+            if (!Check.Ready("genetics.boglegwater", Ids.Boglegs, Ids.AlphaGenes, Ids.Biotech))
                 return;
             Check.XenoGene("DV_Bogleg", "AG_WaterStriding");
         }

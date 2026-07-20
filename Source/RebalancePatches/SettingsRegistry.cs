@@ -64,9 +64,10 @@ namespace RebalancePatches
         public readonly List<RebalanceToggle> children;
         public readonly List<RebalanceSlider> sliders;
         public readonly string[] requiredMods;
+        public readonly bool isOverhaul;
 
         public RebalanceGroup(string key, string label, List<RebalanceToggle> children, bool defaultOn = true,
-            List<RebalanceSlider> sliders = null, string[] requiredMods = null)
+            List<RebalanceSlider> sliders = null, string[] requiredMods = null, bool isOverhaul = false)
         {
             this.key = key;
             this.label = label;
@@ -74,6 +75,7 @@ namespace RebalancePatches
             this.defaultOn = defaultOn;
             this.sliders = sliders ?? new List<RebalanceSlider>();
             this.requiredMods = requiredMods ?? NoMods;
+            this.isOverhaul = isOverhaul;
         }
     }
 
@@ -81,6 +83,104 @@ namespace RebalancePatches
     {
         public static readonly List<RebalanceGroup> Groups = new List<RebalanceGroup>
         {
+            new RebalanceGroup("genetics", "Genetics Overhaul", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("genetics.agsummons", "Remove Alpha Genes summon genes",
+                    "Removes Alpha Genes' animal summon genes (one per supported animal, ~90 with a large modlist, plus the summon randomizers and temporary bandwidth gene). No xenotype uses them; they only dilute the gene pool.",
+                    requiredMods: new[] { "owlchemist.cherrypicker", "sarg.alphagenes", "wvc.sergkart.races.biotech", "redmattis.bigsmall.core" }),
+                new RebalanceToggle("genetics.wvcdupes", "Remove WVC-internal duplicate genes",
+                    "Removes WVC - Xenotypes and Genes' genes that duplicate vanilla Biotech genes or WVC's own alternatives: psychically dull/deaf copies, extra pain, perfect immunity, non-senescent, natural ageless, never rest, the seven pattern aptitude genes, natural/super variants that have archite versions, unbreakable, invulnerable, implanter fangs, delicate and undead. WVC xenotypes that carried a removed gene get the surviving equivalent instead (vanilla or WVC's own kept version).",
+                    requiredMods: new[] { "owlchemist.cherrypicker", "sarg.alphagenes", "wvc.sergkart.races.biotech", "redmattis.bigsmall.core" }),
+                new RebalanceToggle("genetics.dedup", "Remove cross-mod duplicate genes",
+                    "One canonical gene per function: Alpha Genes keeps immunities, natural armor and bandwidth; Big and Small keeps no pain, body size, gender and healing-speed genes; specialist mods keep their specialty (VRE - Pigskin aging, VRE - Archon pregnancy, VRE - Saurid egg-laying, VRE - Waster cell instability, Det's Venators farsight and more). The losing duplicates from Alpha Genes, WVC, Big and Small, the VRE packs, Det's Xenotypes and Rimsenal xenotype packs are removed; entries whose canonical mod is missing are left alone. Every xenotype that carried a removed gene is rewired to the canonical replacement, so races keep their function through the shared gene.",
+                    requiredMods: new[] { "owlchemist.cherrypicker", "sarg.alphagenes", "wvc.sergkart.races.biotech", "redmattis.bigsmall.core" }),
+                new RebalanceToggle("genetics.hussaraptitudes", "Consolidate VRE - Hussar weapon aptitudes",
+                    "VRE - Hussar generates one aptitude gene per craftable weapon (~300 with a large modlist, one gene UI entry each). This replaces the whole family with four category genes — light/heavy melee and light/heavy ranged aptitude, split at 3 kg — with the same bonus and biostats. The hussar xenotypes' random weapon aptitude now rolls among the four, and with Gene Nodes - Genes for Sale loaded a new archite gene node delivers them. Existing pawns with an old per-weapon aptitude lose it (one-time load warning).",
+                    requiredMods: new[] { "vanillaracesexpanded.hussar" }),
+                new RebalanceToggle("genetics.bsdupes", "Remove Big and Small internal/legacy genes",
+                    "Removes Big and Small - Genes & More genes its author treats as legacy or that duplicate its own alternatives: the three gene stabilizing genes (no replacement) and the deathlike body gene (undead xenotypes get Big and Small's unstable deathlessness instead).",
+                    requiredMods: new[] { "owlchemist.cherrypicker", "sarg.alphagenes", "wvc.sergkart.races.biotech", "redmattis.bigsmall.core" }),
+                new RebalanceToggle("genetics.boglegwater", "Boglegs: water striding",
+                    "Boglegs gain Alpha Genes' water striding gene — no movement penalty in watery terrain, fitting swamp-dwellers.",
+                    requiredMods: new[] { "det.boglegs", "sarg.alphagenes" }),
+                new RebalanceToggle("genetics.stonebornskin", "Stoneborn: stoneskin",
+                    "Det's Stoneborn gain WVC - Xenotypes and Genes' stoneskin gene — stone-covered bodies with natural armor and very low flammability, at a metabolism cost. Changes their appearance to stone-like skin.",
+                    requiredMods: new[] { "det.stoneborn", "wvc.sergkart.races.biotech" }),
+                new RebalanceToggle("genetics.neanderthalfrost", "Neanderthals: frostbite resistance",
+                    "Neanderthals gain Alpha Genes' frostbite resistance gene, halving frostbite damage — an ice-age adaptation.",
+                    requiredMods: new[] { "sarg.alphagenes", "ludeon.rimworld.biotech" }),
+                new RebalanceToggle("genetics.wvcspawns", "WVC: apex xenotypes never spawn as wanderers",
+                    "WVC - Xenotypes and Genes' most powerful races — ferrkind, metalkin, rustkind and deadcat — no longer appear as random wanderers, refugees, beggars or faction pawns. They can still be obtained through WVC's own events, morphs and implanters, like the rest of its apex tier.",
+                    requiredMods: new[] { "wvc.sergkart.races.biotech" }),
+            }, defaultOn: false, isOverhaul: true),
+
+            new RebalanceGroup("geneticsresearch", "Genetics Research Overhaul", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("geneticsresearch.core", "Genetics research tab and tree (Biotech)",
+                    "Adds a Genetics research tab rooted on a new basic genetic sampling project that unlocks the gene extractor and gene bank. Xenogermination becomes xenogerm assembly and moves there with gene processor and archogenetics, all at spacer tech with a hi-tech research bench required. Turn this on first; the rest of the group builds on it."),
+                new RebalanceToggle("geneticsresearch.resplice", "ReSplice: Core buildings via dedicated research",
+                    "ReSplice: Core's gene centrifuge and xenogerm duplicator move behind new genepack centrifuge and xenogerm replicator research projects on the Genetics tab and are renamed to match.",
+                    requiredMods: new[] { "resplice.xotr.core" }, dependsOn: "geneticsresearch.core"),
+                new RebalanceToggle("geneticsresearch.extractortiers", "Gene Extractor Tiers vats via dedicated research",
+                    "Gene Extractor Tiers' gene extraction vat unlocks from a new research project after gene processor, and its archite vats from a new archite gene extraction project after archogenetics.",
+                    requiredMods: new[] { "redmattis.geneextractor" }, dependsOn: "geneticsresearch.core"),
+                new RebalanceToggle("geneticsresearch.genenodes", "Gene nodes via dedicated research, pricier archite nodes",
+                    "Gene Extractor Tiers' base gene nodes unlock from a new gene nodes project after xenogerm assembly. Archite gene nodes, including Gene Nodes - Genes for Sale's, move behind a new archite gene nodes project after archogenetics and cost more to build.",
+                    requiredMods: new[] { "redmattis.geneextractor" }, dependsOn: "geneticsresearch.core"),
+                new RebalanceToggle("geneticsresearch.generipper", "Gene Ripper via dedicated research",
+                    "Gene Ripper's machine unlocks from a new gene ripper research project after xenogerm assembly.",
+                    anyOfMods: new[] { "defi.generipper", "danielwedemeyer.generipper" }, dependsOn: "geneticsresearch.core"),
+                new RebalanceToggle("geneticsresearch.genefab", "Gene Fabrication as an archogenetics capstone",
+                    "Gene Fabrication's research project moves to the Genetics tab and requires archogenetics instead of gene processor plus fabrication.",
+                    requiredMods: new[] { "amch.eragon.hcgenefabrication" }, dependsOn: "geneticsresearch.core"),
+                new RebalanceToggle("geneticsresearch.vqea", "Buildable VQE Ancients archogen laboratory",
+                    "A new archogen engineering research project after archogenetics lets you build VQE Ancients' archogen injector and its linkable lab facilities at archite-tier costs. Recovering them from ancient labs remains the early route.",
+                    requiredMods: new[] { "vanillaquestsexpanded.ancients" }, dependsOn: "geneticsresearch.core"),
+                new RebalanceToggle("geneticsresearch.agtools", "Craftable Alpha Genes gene toolkits",
+                    "A new gene toolkits research project after gene processor lets you craft Alpha Genes' single-use gene tools at the fabrication bench; the archotech variants also cost an archite capsule. Trader and quest acquisition is unchanged, and the archotech xenogenefier's market value is fixed to match its siblings.",
+                    requiredMods: new[] { "sarg.alphagenes" }, dependsOn: "geneticsresearch.core"),
+                new RebalanceToggle("geneticsresearch.alphagenes", "Alpha Genes xenogenetics lab quest names",
+                    "Renames Alpha Genes' abandoned biotech lab quest and site to xenogenetics lab flavour, as Progression: Genetics did. Works on its own.",
+                    requiredMods: new[] { "sarg.alphagenes" }),
+            }, defaultOn: false, requiredMods: new[] { "ludeon.rimworld.biotech" }, isOverhaul: true),
+
+            new RebalanceGroup("scifinames", "Sci-fi Renaming", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("scifinames.bsraces", "Big and Small - Races",
+                    "Renames the Norse-flavoured content to gene-line flavour: jotun become gigants (cryo/pyro variants), ogres hulkers, dvergr deepkin, nisse minikin, svartalfs umbrakin, redcaps scrappers, trolls regenerants, flesh golems bioconstructs and hearthguards/hearthdolls warden/service synths. The Muspelheim, Niflheim, ogre and little people factions, their pawn kinds and all descriptions follow suit.",
+                    requiredMods: new[] { "redmattis.bigsmall" }),
+                new RebalanceToggle("scifinames.bigsmall", "Big and Small - Genes & More",
+                    "The succubus becomes the allurist, the hellguard the abyssal guard, the imp the greater impid, the returned reanimates, and the frost jotun adventurer a cryogigant.",
+                    requiredMods: new[] { "redmattis.bigsmall.core" }),
+                new RebalanceToggle("scifinames.heaven", "Big and Small - Heaven and Hell",
+                    "Strips the religious mythos: angels become ascendants (Satan the adversary prime, Grigori watchers, Nephilim the halfwrought, Lilim the nightwrought), demons become abyssals (gluttons devourers), and the Heaven, Hell and Outcast factions become the Luminal Ascendancy, the Abyssal Dominion and the Exiles.",
+                    requiredMods: new[] { "redmattis.heaven" }),
+                new RebalanceToggle("scifinames.yokai", "Big and Small - Yokai",
+                    "Kitsune become vulpids, nekomata felids and oni hornbrutes (crimson/cobalt); the Yokai Union becomes the Chimeric Union.",
+                    requiredMods: new[] { "redmattis.yokai" }),
+                new RebalanceToggle("scifinames.lamias", "Big and Small - Lamias",
+                    "Lamia become serpids, sirens mesmer serpids, gorgons petrifex serpids, naga greater serpids and nagaraj serpid primes; Greek and Hindu myth references drop from descriptions and the snake tribal federation becomes the serpid tribal federation.",
+                    requiredMods: new[] { "redmattis.lamiasandothersnakes" }),
+                new RebalanceToggle("scifinames.slimes", "Big and Small - Slimes",
+                    "Slimes become plasmoids across all xenotypes and the escaped slimes faction.",
+                    requiredMods: new[] { "redmattis.bsslimes" }),
+                new RebalanceToggle("scifinames.morexenos", "Big and Small - More Xenotypes",
+                    "The devilspider becomes the dreadspider.",
+                    requiredMods: new[] { "redmattis.morexenos" }),
+                new RebalanceToggle("scifinames.wvc", "WVC - Xenotypes and Genes",
+                    "The undead xenotype becomes the necrokin and the lilif the psykin.",
+                    requiredMods: new[] { "wvc.sergkart.races.biotech" }),
+                new RebalanceToggle("scifinames.alphagenes", "Alpha Genes",
+                    "Efreet become cindrids and nereids abyssids.",
+                    requiredMods: new[] { "sarg.alphagenes" }),
+            }, defaultOn: false, isOverhaul: true),
+
+            new RebalanceGroup("vse", "Expertise Overhaul", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("vse.expertiseconsolidation", "Consolidate and retune expertises",
+                    "Replaces the long list of narrow expertises with 32 broader ones, two to four per skill, so every pick is a real choice. Bonuses become multipliers capping near +40% at expertise level 20 instead of flat offsets that reach +100% or overshoot a stat's ceiling; combat and stat-heavy expertises are tuned lower, quality expertises cost work speed, and the two psycast expertises carry real drawbacks. Adds mechanitor and psycast expertises, which the base mods lack. Folds in the expertises from Alpha Skills, Hauts' Framework, Vanilla Fishing Expanded and Vanilla Gravship Expanded, and picks up stats from Integrated Implants, Mechanoid Upgrades, Altered Carbon and Vanilla Psycasts Expanded when those are present. Off by default; existing pawns keep the expertise they already have."),
+            }, defaultOn: false, requiredMods: new[] { "vanillaexpanded.skills" }, isOverhaul: true),
+
             new RebalanceGroup("rimiot", "RimIOT - Logistic Matrix", new List<RebalanceToggle>
             {
                 new RebalanceToggle("rimiot.costs", "Reduce build costs",
@@ -199,11 +299,6 @@ namespace RebalancePatches
                     requiredMods: new[] { "oskarpotocki.vfe.insectoid2", "redmattis.bigsmall.core" }),
             }, requiredMods: new[] { "vanillaracesexpanded.insector" }),
 
-            new RebalanceGroup("vse", "Vanilla Skills Expanded", new List<RebalanceToggle>
-            {
-                new RebalanceToggle("vse.reloadingstat", "Reloading expertise uses vanilla cooldown stat",
-                    "The gunner expertise offsets the vanilla ranged cooldown factor instead of Vanilla Expanded Framework's verb cooldown stat, so the bonus shows on weapon stats."),
-            }, requiredMods: new[] { "vanillaexpanded.skills" }),
 
             new RebalanceGroup("impactweaponry", "Impact Weaponry - Reloaded", new List<RebalanceToggle>
             {
@@ -276,35 +371,6 @@ namespace RebalancePatches
                     "Collapses the nanite surgery researches into nanite grafting and removes the empty filler nodes."),
             }, requiredMods: new[] { "moistestwhale.gitscyberbrains" }),
 
-            new RebalanceGroup("genetics", "Genetics Research Overhaul", new List<RebalanceToggle>
-            {
-                new RebalanceToggle("genetics.core", "Genetics research tab and tree (Biotech)",
-                    "Adds a Genetics research tab rooted on a new basic genetic sampling project that unlocks the gene extractor and gene bank. Xenogermination becomes xenogerm assembly and moves there with gene processor and archogenetics, all at spacer tech with a hi-tech research bench required. Turn this on first; the rest of the group builds on it."),
-                new RebalanceToggle("genetics.resplice", "ReSplice: Core buildings via dedicated research",
-                    "ReSplice: Core's gene centrifuge and xenogerm duplicator move behind new genepack centrifuge and xenogerm replicator research projects on the Genetics tab and are renamed to match.",
-                    requiredMods: new[] { "resplice.xotr.core" }, dependsOn: "genetics.core"),
-                new RebalanceToggle("genetics.extractortiers", "Gene Extractor Tiers vats via dedicated research",
-                    "Gene Extractor Tiers' gene extraction vat unlocks from a new research project after gene processor, and its archite vats from a new archite gene extraction project after archogenetics.",
-                    requiredMods: new[] { "redmattis.geneextractor" }, dependsOn: "genetics.core"),
-                new RebalanceToggle("genetics.genenodes", "Gene nodes via dedicated research, pricier archite nodes",
-                    "Gene Extractor Tiers' base gene nodes unlock from a new gene nodes project after xenogerm assembly. Archite gene nodes, including Gene Nodes - Genes for Sale's, move behind a new archite gene nodes project after archogenetics and cost more to build.",
-                    requiredMods: new[] { "redmattis.geneextractor" }, dependsOn: "genetics.core"),
-                new RebalanceToggle("genetics.generipper", "Gene Ripper via dedicated research",
-                    "Gene Ripper's machine unlocks from a new gene ripper research project after xenogerm assembly.",
-                    anyOfMods: new[] { "defi.generipper", "danielwedemeyer.generipper" }, dependsOn: "genetics.core"),
-                new RebalanceToggle("genetics.genefab", "Gene Fabrication as an archogenetics capstone",
-                    "Gene Fabrication's research project moves to the Genetics tab and requires archogenetics instead of gene processor plus fabrication.",
-                    requiredMods: new[] { "amch.eragon.hcgenefabrication" }, dependsOn: "genetics.core"),
-                new RebalanceToggle("genetics.vqea", "Buildable VQE Ancients archogen laboratory",
-                    "A new archogen engineering research project after archogenetics lets you build VQE Ancients' archogen injector and its linkable lab facilities at archite-tier costs. Recovering them from ancient labs remains the early route.",
-                    requiredMods: new[] { "vanillaquestsexpanded.ancients" }, dependsOn: "genetics.core"),
-                new RebalanceToggle("genetics.agtools", "Craftable Alpha Genes gene toolkits",
-                    "A new gene toolkits research project after gene processor lets you craft Alpha Genes' single-use gene tools at the fabrication bench; the archotech variants also cost an archite capsule. Trader and quest acquisition is unchanged, and the archotech xenogenefier's market value is fixed to match its siblings.",
-                    requiredMods: new[] { "sarg.alphagenes" }, dependsOn: "genetics.core"),
-                new RebalanceToggle("genetics.alphagenes", "Alpha Genes xenogenetics lab quest names",
-                    "Renames Alpha Genes' abandoned biotech lab quest and site to xenogenetics lab flavour, as Progression: Genetics did. Works on its own.",
-                    requiredMods: new[] { "sarg.alphagenes" }),
-            }, requiredMods: new[] { "ludeon.rimworld.biotech" }),
 
             new RebalanceGroup("alphagenes", "Alpha Genes", new List<RebalanceToggle>
             {
@@ -354,40 +420,7 @@ namespace RebalancePatches
                     requiredMods: new[] { "det.brawnum", "vanillaracesexpanded.archon" }),
             }, requiredMods: new[] { "ludeon.rimworld.biotech" }),
 
-            new RebalanceGroup("genepool", "Genepool Cleanup", new List<RebalanceToggle>
-            {
-                new RebalanceToggle("genepool.agsummons", "Remove Alpha Genes summon genes",
-                    "Removes Alpha Genes' animal summon genes (one per supported animal, ~90 with a large modlist, plus the summon randomizers and temporary bandwidth gene). No xenotype uses them; they only dilute the gene pool.",
-                    requiredMods: new[] { "owlchemist.cherrypicker", "sarg.alphagenes", "wvc.sergkart.races.biotech", "redmattis.bigsmall.core" }),
-                new RebalanceToggle("genepool.wvcdupes", "Remove WVC-internal duplicate genes",
-                    "Removes WVC - Xenotypes and Genes' genes that duplicate vanilla Biotech genes or WVC's own alternatives: psychically dull/deaf copies, extra pain, perfect immunity, non-senescent, natural ageless, never rest, the seven pattern aptitude genes, natural/super variants that have archite versions, unbreakable, invulnerable, implanter fangs, delicate and undead. WVC xenotypes that carried a removed gene get the surviving equivalent instead (vanilla or WVC's own kept version).",
-                    requiredMods: new[] { "owlchemist.cherrypicker", "sarg.alphagenes", "wvc.sergkart.races.biotech", "redmattis.bigsmall.core" }),
-                new RebalanceToggle("genepool.dedup", "Remove cross-mod duplicate genes",
-                    "One canonical gene per function: Alpha Genes keeps immunities, natural armor and bandwidth; Big and Small keeps no pain, body size, gender and healing-speed genes; specialist mods keep their specialty (VRE - Pigskin aging, VRE - Archon pregnancy, VRE - Saurid egg-laying, VRE - Waster cell instability, Det's Venators farsight and more). The losing duplicates from Alpha Genes, WVC, Big and Small, the VRE packs, Det's Xenotypes and Rimsenal xenotype packs are removed; entries whose canonical mod is missing are left alone. Every xenotype that carried a removed gene is rewired to the canonical replacement, so races keep their function through the shared gene.",
-                    requiredMods: new[] { "owlchemist.cherrypicker", "sarg.alphagenes", "wvc.sergkart.races.biotech", "redmattis.bigsmall.core" }),
-                new RebalanceToggle("genepool.hussaraptitudes", "Consolidate VRE - Hussar weapon aptitudes",
-                    "VRE - Hussar generates one aptitude gene per craftable weapon (~300 with a large modlist, one gene UI entry each). This replaces the whole family with four category genes — light/heavy melee and light/heavy ranged aptitude, split at 3 kg — with the same bonus and biostats. The hussar xenotypes' random weapon aptitude now rolls among the four, and with Gene Nodes - Genes for Sale loaded a new archite gene node delivers them. Existing pawns with an old per-weapon aptitude lose it (one-time load warning).",
-                    requiredMods: new[] { "vanillaracesexpanded.hussar" }),
-                new RebalanceToggle("genepool.bsdupes", "Remove Big and Small internal/legacy genes",
-                    "Removes Big and Small - Genes & More genes its author treats as legacy or that duplicate its own alternatives: the three gene stabilizing genes (no replacement) and the deathlike body gene (undead xenotypes get Big and Small's unstable deathlessness instead).",
-                    requiredMods: new[] { "owlchemist.cherrypicker", "sarg.alphagenes", "wvc.sergkart.races.biotech", "redmattis.bigsmall.core" }),
-            }),
 
-            new RebalanceGroup("xenogenes", "Xenotype Gene Integration", new List<RebalanceToggle>
-            {
-                new RebalanceToggle("xenotypes.boglegwater", "Boglegs: water striding",
-                    "Boglegs gain Alpha Genes' water striding gene — no movement penalty in watery terrain, fitting swamp-dwellers.",
-                    requiredMods: new[] { "det.boglegs", "sarg.alphagenes" }),
-                new RebalanceToggle("xenotypes.stonebornskin", "Stoneborn: stoneskin",
-                    "Det's Stoneborn gain WVC - Xenotypes and Genes' stoneskin gene — stone-covered bodies with natural armor and very low flammability, at a metabolism cost. Changes their appearance to stone-like skin.",
-                    requiredMods: new[] { "det.stoneborn", "wvc.sergkart.races.biotech" }),
-                new RebalanceToggle("xenotypes.neanderthalfrost", "Neanderthals: frostbite resistance",
-                    "Neanderthals gain Alpha Genes' frostbite resistance gene, halving frostbite damage — an ice-age adaptation.",
-                    requiredMods: new[] { "sarg.alphagenes", "ludeon.rimworld.biotech" }),
-                new RebalanceToggle("xenotypes.wvcspawns", "WVC: apex xenotypes never spawn as wanderers",
-                    "WVC - Xenotypes and Genes' most powerful races — ferrkind, metalkin, rustkind and deadcat — no longer appear as random wanderers, refugees, beggars or faction pawns. They can still be obtained through WVC's own events, morphs and implanters, like the rest of its apex tier.",
-                    requiredMods: new[] { "wvc.sergkart.races.biotech" }),
-            }),
 
             new RebalanceGroup("odyssey", "Odyssey", new List<RebalanceToggle>
             {
@@ -398,36 +431,6 @@ namespace RebalancePatches
                     requiredMods: new[] { "vanillaexpanded.gravship" },
                     anyOfMods: new[] { "rimsenal.core", "rimsenal.federation", "hlx.ultratechalteredcarbon", "det.spacerarsenal", "detvisor.impactweaponryreloaded" }),
             }, requiredMods: new[] { "ludeon.rimworld.odyssey" }),
-            new RebalanceGroup("scifinames", "Sci-fi Renaming", new List<RebalanceToggle>
-            {
-                new RebalanceToggle("scifinames.bsraces", "Big and Small - Races",
-                    "Renames the Norse-flavoured content to gene-line flavour: jotun become gigants (cryo/pyro variants), ogres hulkers, dvergr deepkin, nisse minikin, svartalfs umbrakin, redcaps scrappers, trolls regenerants, flesh golems bioconstructs and hearthguards/hearthdolls warden/service synths. The Muspelheim, Niflheim, ogre and little people factions, their pawn kinds and all descriptions follow suit.",
-                    requiredMods: new[] { "redmattis.bigsmall" }),
-                new RebalanceToggle("scifinames.bigsmall", "Big and Small - Genes & More",
-                    "The succubus becomes the allurist, the hellguard the abyssal guard, the imp the greater impid, the returned reanimates, and the frost jotun adventurer a cryogigant.",
-                    requiredMods: new[] { "redmattis.bigsmall.core" }),
-                new RebalanceToggle("scifinames.heaven", "Big and Small - Heaven and Hell",
-                    "Strips the religious mythos: angels become ascendants (Satan the adversary prime, Grigori watchers, Nephilim the halfwrought, Lilim the nightwrought), demons become abyssals (gluttons devourers), and the Heaven, Hell and Outcast factions become the Luminal Ascendancy, the Abyssal Dominion and the Exiles.",
-                    requiredMods: new[] { "redmattis.heaven" }),
-                new RebalanceToggle("scifinames.yokai", "Big and Small - Yokai",
-                    "Kitsune become vulpids, nekomata felids and oni hornbrutes (crimson/cobalt); the Yokai Union becomes the Chimeric Union.",
-                    requiredMods: new[] { "redmattis.yokai" }),
-                new RebalanceToggle("scifinames.lamias", "Big and Small - Lamias",
-                    "Lamia become serpids, sirens mesmer serpids, gorgons petrifex serpids, naga greater serpids and nagaraj serpid primes; Greek and Hindu myth references drop from descriptions and the snake tribal federation becomes the serpid tribal federation.",
-                    requiredMods: new[] { "redmattis.lamiasandothersnakes" }),
-                new RebalanceToggle("scifinames.slimes", "Big and Small - Slimes",
-                    "Slimes become plasmoids across all xenotypes and the escaped slimes faction.",
-                    requiredMods: new[] { "redmattis.bsslimes" }),
-                new RebalanceToggle("scifinames.morexenos", "Big and Small - More Xenotypes",
-                    "The devilspider becomes the dreadspider.",
-                    requiredMods: new[] { "redmattis.morexenos" }),
-                new RebalanceToggle("scifinames.wvc", "WVC - Xenotypes and Genes",
-                    "The undead xenotype becomes the necrokin and the lilif the psykin.",
-                    requiredMods: new[] { "wvc.sergkart.races.biotech" }),
-                new RebalanceToggle("scifinames.alphagenes", "Alpha Genes",
-                    "Efreet become cindrids and nereids abyssids.",
-                    requiredMods: new[] { "sarg.alphagenes" }),
-            }),
 
             new RebalanceGroup("dev", "Developer", new List<RebalanceToggle>
             {

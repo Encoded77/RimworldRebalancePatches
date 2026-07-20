@@ -65,6 +65,8 @@ namespace RebalancePatches.UI
             listing.Begin(viewRect);
             try
             {
+                bool anyOverhaulDrawn = false;
+                bool dividerDrawn = false;
                 foreach (RebalanceGroup group in SettingsRegistry.Groups)
                 {
                     if (group.key == "dev" && !Prefs.DevMode)
@@ -77,6 +79,13 @@ namespace RebalancePatches.UI
                     bool headerMatch = searching && MatchesQuery(query, group.label, null);
                     if (searching && !headerMatch && !AnyChildMatches(group, query))
                         continue;
+
+                    if (!group.isOverhaul && anyOverhaulDrawn && !dividerDrawn)
+                    {
+                        listing.GapLine();
+                        dividerDrawn = true;
+                    }
+                    anyOverhaulDrawn |= group.isOverhaul;
 
                     bool expanded = searching || expandedKeys.Contains(group.key);
                     DrawGroupHeader(listing.GetRect(RowHeight), group, groupEligible, expanded);

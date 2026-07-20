@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_Halffoot_Dedup</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <xenotypes>
       <li>
         <xenotype>DV_Halffoot</xenotype>
@@ -15,7 +15,7 @@
 
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_Halffoot_Dedup_Archon</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.archon</li>
     </requiredMods>

@@ -274,7 +274,7 @@
   </Operation>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>xenotypes.wvcspawns</settingKey>
+    <settingKey>genetics.wvcspawns</settingKey>
     <operations>
       <li Class="PatchOperationReplace">
         <xpath>Defs/XenotypeDef[defName="WVC_Ferrkind"]/factionlessGenerationWeight</xpath>

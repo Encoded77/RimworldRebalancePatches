@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.7.0 (2026-07-20)
+
+**Expertise Consolidation** (`vse.expertiseconsolidation`, off by default) — Vanilla Skills Expanded's and modded narrow expertises are replaced by 32 broader ones, two to four per skill, so every pick is a genuine trade-off instead of a long list with one right answer. Bonuses become multipliers topping out near +40% at expertise level 20, instead of flat offsets reaching +100% or overshooting a stat's ceiling; combat and stat-heavy expertises are tuned below that ceiling. Expertises from Alpha Skills, Hauts' Framework, Vanilla Fishing Expanded and Vanilla Gravship Expanded are folded in when loaded, and stats from Integrated Implants, Mechanoid Upgrades, Altered Carbon and Vanilla Psycasts Expanded are picked up the same way. Pawns keep any expertise they already picked.
+
+- Quality expertises now cost work speed: Virtuoso, Master builder and Artificer produce better work more slowly, against Prolific artisan, Siteworker and Fabricator going the other way.
+- New mechanitor expertises: Mechlord (bandwidth, control groups, reach, gestation) on Intellectual and Mechwright (repair, running costs, combat trim) on Crafting.
+- New psycast expertises with real drawbacks: Overchanneler (bigger heat ceiling and stronger casts, but breaks easily, tires fast, and never sheds all its heat) as vanguard on Melee and artillerist on Shooting, and Quietist (effortless heat recovery and cheap casts, but a small ceiling and weaker casts) on Artistic. Both need Royalty.
+
 ## 1.6.1 (2026-07-20)
 
 - The mod settings window is now easier to navigate and shows at a glance which patches can actually apply with the current modlist.

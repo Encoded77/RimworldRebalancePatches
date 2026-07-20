@@ -2,7 +2,7 @@
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>genetics.extractortiers</settingKey>
+    <settingKey>geneticsresearch.extractortiers</settingKey>
     <operations>
       <li Class="PatchOperationConditional">
         <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>
@@ -75,7 +75,7 @@
   </Operation>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>genetics.genenodes</settingKey>
+    <settingKey>geneticsresearch.genenodes</settingKey>
     <operations>
       <li Class="PatchOperationConditional">
         <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>

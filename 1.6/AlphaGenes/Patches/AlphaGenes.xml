@@ -2,7 +2,7 @@
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>genetics.alphagenes</settingKey>
+    <settingKey>geneticsresearch.alphagenes</settingKey>
     <operations>
       <li Class="PatchOperationReplace">
         <xpath>Defs/QuestScriptDef[defName="AG_OpportunitySite_AbandonedBiotechLab"]/questNameRules/rulesStrings</xpath>

@@ -46,7 +46,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void InternalDupeGenesRemoved()
         {
-            if (!Check.Ready("genepool.wvcdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.wvcdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.GenesGone(
                 "WVC_PsychicAbility_Dull", "WVC_PsychicAbility_Deaf", "WVC_Pain_Extra",
@@ -74,7 +74,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.GenesGone(
                 "WVC_MaxTemp_ArchiteIncrease", "WVC_MinTemp_ArchiteDecrease", "WVC_Pain_Nullified",
@@ -103,7 +103,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewiredInternalDupes()
         {
-            if (!Check.Ready("genepool.wvcdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.wvcdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.XenoGene("WVC_Ashen", "PerfectImmunity");
             Check.XenoGene("WVC_Ashen", "DiseaseFree");
@@ -145,7 +145,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewiredDedup()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.XenoGene("WVC_Ashen", "WoundHealing_UltraFast");
             Check.XenoGene("WVC_Beholdkind", "BS_SmallFrame");
@@ -179,7 +179,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void ApexXenotypesNeverWander()
         {
-            if (!Check.Ready("xenotypes.wvcspawns", Ids.WVC, Ids.Biotech))
+            if (!Check.Ready("genetics.wvcspawns", Ids.WVC, Ids.Biotech))
                 return;
             foreach (string name in new[] { "WVC_Ferrkind", "WVC_GeneThrower", "WVC_Rustkind", "WVC_CatDeity" })
                 Check.Eq(Check.Def<XenotypeDef>(name).factionlessGenerationWeight, 0f, name + ".factionlessGenerationWeight");

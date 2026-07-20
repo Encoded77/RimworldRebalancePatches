@@ -67,6 +67,26 @@ namespace RebalancePatches.Tests
             }
         }
 
+        [Test]
+        public static void ChildKeysArePrefixedWithTheirGroup()
+        {
+            foreach (RebalanceGroup group in SettingsRegistry.Groups)
+            {
+                foreach (RebalanceToggle child in group.children)
+                    CheckPrefix(group.key, child.key);
+                foreach (RebalanceSlider slider in group.sliders)
+                    CheckPrefix(group.key, slider.key);
+            }
+        }
+
+        private static void CheckPrefix(string groupKey, string childKey)
+        {
+            Check.True(childKey.StartsWith(groupKey + "."),
+                $"setting '{childKey}' belongs to group '{groupKey}' but is not prefixed '{groupKey}.' — "
+                + "a prefix naming a different group makes keys ambiguous to maintain. Rename it and add "
+                + "a KeyMove to SettingsMigrations so existing configs follow.");
+        }
+
         private static void CheckModIds(string owner, string[] packageIds)
         {
             foreach (string id in packageIds)

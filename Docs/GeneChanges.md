@@ -1,22 +1,22 @@
 # Gene Changes
 
-Everything the Genepool Cleanup module changes in the gene ecosystem: which genes are removed, which version is kept as the canonical one, what each affected xenotype receives instead, and which genes can no longer stack. Every part is a separate settings toggle (restart to apply); turning a toggle off restores its genes on the next restart. Removals run through Cherry Picker (a dependency) automatically — no Cherry Picker setup needed. Nothing here applies unless Alpha Genes, WVC - Xenotypes and Genes and Big and Small - Genes & More are all loaded, except the Hussar weapon aptitudes section which needs only VRE - Hussar.
+Everything the Genetics Overhaul module changes in the gene ecosystem: which genes are removed, which version is kept as the canonical one, what each affected xenotype receives instead, and which genes can no longer stack. Every part is a separate settings toggle (restart to apply); turning a toggle off restores its genes on the next restart. Removals run through Cherry Picker (a dependency) automatically — no Cherry Picker setup needed. Nothing here applies unless Alpha Genes, WVC - Xenotypes and Genes and Big and Small - Genes & More are all loaded, except the Hussar weapon aptitudes section which needs only VRE - Hussar.
 
 ## Removed genes
 
-### Alpha Genes summon genes (`genepool.agsummons`)
+### Alpha Genes summon genes (`genetics.agsummons`)
 
 The whole animal summon family: one summon gene per supported animal (~90 with a large modlist), the three summon randomizers and the temporary bandwidth gene. No xenotype uses any of them; they only dilute the genepool.
 
-### WVC-internal duplicates (`genepool.wvcdupes`)
+### WVC-internal duplicates (`genetics.wvcdupes`)
 
 WVC genes that duplicate vanilla Biotech genes or WVC's own alternatives (~50). The duplicates are removed and WVC's xenotypes carry the surviving version instead. Highlights: the psychically dull/deaf, extra pain, perfect immunity, non-senescent, ageless, never sleep, delicate and undead copies (vanilla versions kept); natural mechlink/psylink/telepathy and temperature/tox variants that have archite versions (archite kept); the pattern aptitude and MechaAI cosmetic-mechanics families; the non-archite reimplanter family (the archite implanter fang and post-implanter genes stay); unbreakable and invulnerable.
 
-### Big and Small internal/legacy (`genepool.bsdupes`)
+### Big and Small internal/legacy (`genetics.bsdupes`)
 
 The three gene stabilizing genes (balance removal, no replacement) and the deathlike body gene (undead xenotypes get unstable deathlessness instead).
 
-### Cross-mod duplicates (`genepool.dedup`)
+### Cross-mod duplicates (`genetics.dedup`)
 
 One canonical gene per function. The guiding idea: *the most specialized mod wins its home turf* —
 
@@ -180,7 +180,7 @@ Every xenotype that carried a removed gene receives the canonical replacement, s
 | WVC_Undead (WVC - Xenotypes and Genes) | WVC_NaturalFastAging, WVC_NaturalFastGrowing, WVC_ToxResist_Total, WVC_Undead | ToxResist_Total, Deathless, VRE_FastAging, BS_EarlyMaturity |
 | Zohar (Rimsenal Xenotype Pack - Zohar) | Gene_SensitiveStomach | AG_FrailStomach |
 
-## Xenotype gene integration (`xenotypes.*`)
+## Xenotype gene integration (`genetics.boglegwater`, `genetics.stonebornskin`, `genetics.neanderthalfrost`, `genetics.wvcspawns`)
 
 Thematic gene additions to individual xenotypes, each behind its own toggle and active only when both the xenotype's mod and the gene's mod are loaded.
 
@@ -190,9 +190,9 @@ Thematic gene additions to individual xenotypes, each behind its own toggle and 
 | Stoneborn (Det's Xenotypes - Stoneborn) | WVC_StoneSkin (WVC - Xenotypes and Genes) | +22% blunt / +12% sharp / +11% heat armor, flammability ×0.2, stone appearance; met -3, cpx 4 |
 | Neanderthal (Biotech) | AG_FrostbiteResistance (Alpha Genes) | frostbite damage ×0.5; met -1 |
 
-Spawn changes (`xenotypes.wvcspawns`): WVC_Ferrkind, WVC_GeneThrower, WVC_Rustkind and WVC_CatDeity get `factionlessGenerationWeight` 0 and are removed from the faction spawn pools WVC adds them to (OutlanderCivil, PirateWaster, OutlanderRefugee, Beggars). They stay available through WVC's events, morphs and implanter chains.
+Spawn changes (`genetics.wvcspawns`): WVC_Ferrkind, WVC_GeneThrower, WVC_Rustkind and WVC_CatDeity get `factionlessGenerationWeight` 0 and are removed from the faction spawn pools WVC adds them to (OutlanderCivil, PirateWaster, OutlanderRefugee, Beggars). They stay available through WVC's events, morphs and implanter chains.
 
-## Hussar weapon aptitudes (`genepool.hussaraptitudes`)
+## Hussar weapon aptitudes (`genetics.hussaraptitudes`)
 
 VRE - Hussar creates one weapon-aptitude gene per craftable weapon (~300 with a large modlist). The whole family is replaced by four category genes with the same bonus and cost: light and heavy melee aptitude, light and heavy ranged aptitude — heavy meaning weapons of 3 kg and up (charge lances, miniguns, giant weapons), light everything below (knives, swords, pistols, rifles under 3 kg). The Hussar and Uhlan xenotypes still receive a random aptitude at spawn, now one of the four. The new genes never roll in genepacks; with Gene Nodes - Genes for Sale loaded, a new archite gene node delivers them, and otherwise they can be extracted from hussars. Pawns from older saves that carried a per-weapon aptitude lose it with a one-time load warning.
 

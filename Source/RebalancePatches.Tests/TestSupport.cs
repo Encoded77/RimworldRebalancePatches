@@ -61,6 +61,9 @@ namespace RebalancePatches.Tests
         public const string GeneFabrication = "amch.eragon.hcgenefabrication";
         public const string VAEAccessories = "vanillaexpanded.vaeaccessories";
         public const string VGravshipC1 = "vanillaexpanded.gravship";
+        public const string AlphaSkills = "sarg.alphaskills";
+        public const string HautsFramework = "hautarche.hautsframework";
+        public const string VCEF = "vanillaexpanded.vcef";
         public const string VSIE = "vanillaexpanded.vanillasocialinteractionsexpanded";
         public const string WarcasketQuality = "danzinagri.warcasketweaponquality";
         public const string CherryPicker = "owlchemist.cherrypicker";
@@ -118,7 +121,7 @@ namespace RebalancePatches.Tests
         {
             if (DefDatabase<ResearchTabDef>.GetNamedSilentFail("RBP_GeneticsTab") != null)
                 return true;
-            Log.Message($"[RBP Tests] SKIP {settingKey}: RBP_GeneticsTab not present (genetics.core off or Biotech absent)");
+            Log.Message($"[RBP Tests] SKIP {settingKey}: RBP_GeneticsTab not present (geneticsresearch.core off or Biotech absent)");
             return false;
         }
 

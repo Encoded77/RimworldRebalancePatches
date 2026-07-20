@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.Stoneborn))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.Stoneborn))
                 return;
             Check.GenesGone("DV_SmallBuild", "DV_Undergrounder");
         }
@@ -18,7 +18,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void StoneSkinAdded()
         {
-            if (!Check.Ready("xenotypes.stonebornskin", Ids.Stoneborn, Ids.WVC, Ids.Biotech))
+            if (!Check.Ready("genetics.stonebornskin", Ids.Stoneborn, Ids.WVC, Ids.Biotech))
                 return;
             Check.XenoGene("Stoneborn", "WVC_StoneSkin");
         }
@@ -26,7 +26,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.Stoneborn))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.Stoneborn))
                 return;
             Check.XenoGene("Stoneborn", "Undergrounder");
         }

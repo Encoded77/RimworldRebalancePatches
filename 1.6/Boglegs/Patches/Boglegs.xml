@@ -2,7 +2,7 @@
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>xenotypes.boglegwater</settingKey>
+    <settingKey>genetics.boglegwater</settingKey>
     <operations>
       <li Class="RebalancePatches.PatchOperationFindModById">
         <mods><li>sarg.alphagenes</li></mods>

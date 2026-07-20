@@ -2,7 +2,7 @@
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>genetics.generipper</settingKey>
+    <settingKey>geneticsresearch.generipper</settingKey>
     <operations>
       <li Class="PatchOperationConditional">
         <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>

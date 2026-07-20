@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_VRESaurid_Dedup_Buzzers</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>det.buzzers</li>
     </requiredMods>

@@ -2,7 +2,7 @@
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>genepool.hussaraptitudes</settingKey>
+    <settingKey>genetics.hussaraptitudes</settingKey>
     <operations>
       <li Class="PatchOperationRemove">
         <xpath>Defs/VREHussars.WeaponGeneTemplateDef[defName="VREHT_WeaponAptitude"]</xpath>

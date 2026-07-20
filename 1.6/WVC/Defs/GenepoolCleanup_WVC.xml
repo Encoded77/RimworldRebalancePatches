@@ -2,7 +2,7 @@
 <Defs>
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_WVC_InternalDupes</defName>
-    <settingKey>genepool.wvcdupes</settingKey>
+    <settingKey>genetics.wvcdupes</settingKey>
     <genes>
       <li>WVC_PsychicAbility_Dull</li>
       <li>WVC_PsychicAbility_Deaf</li>
@@ -59,7 +59,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_WVC_Dedup_AlphaGenes</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>sarg.alphagenes</li>
     </requiredMods>
@@ -71,7 +71,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_WVC_Dedup_BigSmall</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>redmattis.bigsmall.core</li>
     </requiredMods>
@@ -93,7 +93,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_WVC_Dedup_AlphaGenes2</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>sarg.alphagenes</li>
     </requiredMods>
@@ -111,7 +111,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_WVC_Dedup_Pigskin</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.pigskin</li>
     </requiredMods>
@@ -128,7 +128,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_WVC_Dedup_Fungoid</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.fungoid</li>
     </requiredMods>
@@ -141,7 +141,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_WVC_Dedup_Genie</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.genie</li>
     </requiredMods>
@@ -152,7 +152,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_WVC_Dedup_Sanguophage</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.sanguophage</li>
     </requiredMods>
@@ -163,7 +163,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_WVC_Dedup_Hussar</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>vanillaracesexpanded.hussar</li>
     </requiredMods>
@@ -174,7 +174,7 @@
 
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_WVC_Dedup_Askbarn</defName>
-    <settingKey>genepool.dedup</settingKey>
+    <settingKey>genetics.dedup</settingKey>
     <requiredMods>
       <li>rimsenal.askbarn</li>
     </requiredMods>

@@ -2,7 +2,7 @@
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>genetics.core</settingKey>
+    <settingKey>geneticsresearch.core</settingKey>
     <operations>
       <li Class="PatchOperationAdd">
         <xpath>Defs</xpath>

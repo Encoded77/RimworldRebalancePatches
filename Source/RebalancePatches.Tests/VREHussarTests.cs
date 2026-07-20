@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREHussar))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREHussar))
                 return;
             Check.GenesGone("VREH_Giant");
         }
@@ -18,7 +18,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genepool.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREHussar))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREHussar))
                 return;
             Check.XenoGene("VREH_Uhlan", "BS_LargeFrame");
         }
@@ -26,7 +26,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void AptitudesConsolidated()
         {
-            if (!Check.Ready("genepool.hussaraptitudes", Ids.VREHussar))
+            if (!Check.Ready("genetics.hussaraptitudes", Ids.VREHussar))
                 return;
             System.Type templateType = GenTypes.GetTypeInAnyAssembly("VREHussars.WeaponGeneTemplateDef");
             Check.True(templateType != null, "VREHussars.WeaponGeneTemplateDef type missing - VRE-Hussar reworked its generator");
@@ -52,7 +52,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void AptitudeClassificationAndFactors()
         {
-            if (!Check.Ready("genepool.hussaraptitudes", Ids.VREHussar))
+            if (!Check.Ready("genetics.hussaraptitudes", Ids.VREHussar))
                 return;
             // The affecter classifies by the engine's melee/ranged flag plus mass >= 3 kg.
             Check.True(!ConditionalStatAffecter_WeaponClass.IsHeavy(Check.Def<ThingDef>("MeleeWeapon_Knife")), "knife (0.5 kg) classified heavy");

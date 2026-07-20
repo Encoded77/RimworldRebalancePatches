@@ -1,14 +1,12 @@
 [h1]Rebalance Patches[/h1]
-Opinionated balance tweaks and cross-mod compatibility patches for my mod list, with the goal of making everything work together as a more cohesive experience. Patches only apply when their required mods are loaded, and every tweak can be enabled or disabled in the mod settings (requires a restart).
+Opinionated balance tweaks and cross-mod compatibility patches aimed at getting a big pile of mods to play nicely together. Patches only apply when the mods they target are loaded, and every tweak can be turned on or off in the mod settings (restart required).
 
-Heavily inspired by TooManyMods - Compat and the Progression series of research overhauls, alongside plenty of my own patches, with everything behind optional settings.
+Heavily inspired by TooManyMods - Compat and the Progression series of research overhauls.
 
-Warning: this mod touches a lot of things. I'll do my best to keep every change documented and toggleable, but with this many patches there's a good chance I've missed something. I'll also keep on adding to it over time as I patch or integrate other mods together.
-
-Here's a list of features:
+Warning: this mod touches a lot of things. I try to keep every change documented and toggleable, but at this scale I've almost certainly missed something somewhere. It'll also keep growing over time as I patch more mods together. If you ave an issue with a mod try to reproduce withtout this patch enabled.
 
 [h2]Genetics Research Overhaul[/h2]
-Inspired by Progression: Genetics, but without Vanilla Genetics Expanded because I don't like playing with that mod. Push the genetics tier to spacer tier and rework the full progression from basic genetic sampling to archogenetics. Requires Biotech.
+Inspired by Progression: Genetics, but without Vanilla Genetics Expanded, since I don't enjoy playing with that mod. Genetics moves up to spacer tier and the whole progression gets reworked, from basic genetic sampling up to archogenetics. Needs Biotech.
 
 Integrated mods:
 [list]
@@ -17,46 +15,53 @@ Integrated mods:
 [*]Gene Nodes - Genes for Sale
 [*]Gene Fabrication
 [*]Gene Ripper
-[*]Vanilla Quests Expanded - Ancients: a new archogen engineering capstone research lets you build the archogen injector and its lab facilities yourself, at archite-tier costs — recovering them from ancient vaults remains the early route.
+[*]Vanilla Quests Expanded - Ancients: a new archogen engineering capstone lets you build the archogen injector and its lab facilities yourself, at archite-tier costs. Pulling them out of ancient vaults still works as the early route.
 [/list]
 
-Each integration has its own toggle; missing mods are simply skipped.
+Each integration has its own toggle, and anything you don't have installed is skipped.
 
-[h2]Genepool Cleanup[/h2]
-With a full gene modlist, dozens of genes do the same thing under different names. This module keeps one canonical gene per function and removes the duplicates through Cherry Picker — automatically. Every xenotype that carried a removed gene is rewired to the canonical version, so races keep their identity through shared genes: Alpha Genes keeps immunities and armor, Big and Small keeps body mechanics, the specialist VRE packs keep their specialty, Det's packs keep their signature quirks.
+[h2]Genetics Overhaul[/h2]
+Run a full gene modlist and you end up with dozens of genes doing the same thing under different names. This keeps one canonical gene per function and drops the duplicates through Cherry Picker. Any xenotype that carried a removed gene gets pointed at the canonical version instead, so races still read the way they should: Alpha Genes keeps its immunities and armor, Big and Small its body mechanics, the specialist VRE packs their specialty, Det's packs their signature quirks.
 
 On top of the deduplication:
 [list]
-[*]Alpha Genes' ~90 animal summon genes are removed outright (no xenotype uses them).
-[*]VRE - Hussar's ~300 per-weapon aptitude genes become four aptitudes — light/heavy melee, light/heavy ranged — with the same bonus; hussars still roll a random one, and a new archite gene node sells them (Gene Nodes). This part only needs VRE - Hussar.
+[*]Alpha Genes' ~90 animal summon genes are removed outright, stopping them from diluting the pool.
+[*]VRE - Hussar's used to creates one weapon-aptitude gene per craftable weapon (~300 with a large modlist, diluting the pool) I collapsed them into four aptitudes (light/heavy melee, light/heavy ranged) with the same bonus. They still roll a random one.
 [*]Gene conflict fixes: broken and overpowered gene stacks (dodge, claws, deathless, hemogen drain, melee speed, psychic sensitivity...) across Big and Small, WVC, Alpha Genes and VRE become mutually exclusive.
-[*]Xenotype gene integrations: Some xenotypes get a few extra thematic genes from across the modlist to round out their identity. On the balance side, WVC's most powerful races no longer spawn as random wanderers or faction pawns — they stay obtainable through WVC's own events, morphs and implanters.
+[*]Xenotype gene integrations: some xenotypes pick up a few extra thematic genes from elsewhere in the modlist to round out their identity. On the balance side, WVC's most powerful races no longer spawn as random wanderers or faction pawns; you get them through WVC's own events, morphs and implanters.
 [/list]
 
-The deduplication is only active when Alpha Genes, WVC and Big and Small are all loaded; each part has its own toggle, and restoring is as simple as toggling off and restarting. The full list of gene and xenotype changes is documented on github.
-
 [h2]Sci-fi Renaming[/h2]
-Renames fantasy-, Norse- and religion-flavoured races and factions to fit RimWorld's sci-fi setting: everything reads as an engineered gene-line, with labels, descriptions, faction names and pawn kinds rewritten to match:
+Renames the fantasy, Norse and religion flavoured races and factions into something that fits RimWorld's sci-fi setting. Labels, descriptions, faction names and pawn kinds all get rewritten, so everything reads as an engineered gene-line:
 [list]
-[*]Big and Small - Races: jotun become gigants, ogres hulkers, dvergr deepkin, nisse minikin, svartalfs umbrakin, redcaps scrappers, trolls regenerants, flesh golems bioconstructs; Muspelheim becomes the Cinderhold Dominion and Niflheim the Permafrost Clans.
+[*]Big and Small - Races: jotun become gigants, ogres hulkers, dvergr deepkin, nisse minikin, svartalfs umbrakin, redcaps scrappers, trolls regenerants, flesh golems bioconstructs. Muspelheim becomes the Cinderhold Dominion and Niflheim the Permafrost Clans.
 [*]Heaven and Hell: angels become ascendants, demons abyssals; the factions become the Luminal Ascendancy, the Abyssal Dominion and the Exiles.
 [*]Genes & More, Yokai, Lamias, Slimes, More Xenotypes: allurists, greater impids, reanimates, vulpids, felids and hornbrutes, the serpid family, plasmoids, dreadspiders.
 [*]WVC and Alpha Genes: necrokin, psykin, cindrids and abyssids.
 [/list]
 
+[h2]Expertise Overhaul[/h2]
+Vanilla Skills Expanded and its add-ons offer around seventy expertises, most of them a single narrow stat, and their bonuses scale to absurd numbers by expertise level 20. This replaces that list with 32 broader ones, two to four per skill.
+[list]
+[*]Bonuses become multipliers topping out around +40% at expertise level 20, instead of flat offsets that reach +100% or overshoot a stat's ceiling entirely. Combat and stat-heavy expertises are tuned below that.
+[*]Quality expertises cost work speed: Virtuoso, Master builder and Artificer produce better work more slowly, against Prolific artisan, Siteworker and Fabricator going the other way.
+[*]New mechanitor expertises (Mechlord, Mechwright) and psycast expertises (Overchanneler, Quietist)
+[*]Expertises from Alpha Skills, Hauts' Framework, Vanilla Fishing Expanded and Vanilla Gravship Expanded are folded in, and stats from Integrated Implants, Mechanoid Upgrades, Altered Carbon and Vanilla Psycasts Expanded ride along when those are loaded.
+[/list]
+Pawns keep any expertise they already picked.
+
 [h2]Miscellaneous Patches[/h2]
-A curated batch of cross-mod fixes and tweaks, each with its own toggle:
 [list]
 [*]RimIOT - Logistic Matrix: cheaper builds, basic components only, no power consumption.
-[*]Altered Carbon: disables the redundant ranged shield belt from VAE Accessories in favour of the harder to get cuirassier belt, and a slider for the casting relay's needlecasting range (default 10 tiles per relay instead of 5).
-[*]GiTS Cyberbrains: only basic cyberbrains on the market, surgeries via EPOE-Forked brain surgery, post-basic cyberization at ultratech tier, harsher extreme mental break, and a streamlined research tree.
-[*]Odyssey: long-range passenger shuttle — 2000 chemfuel and 2000 kg cargo capacity.
-[*]Alpha Genes': genes join vanilla genepacks, alphapacks/mixedpacks removed.
+[*]Altered Carbon: disables the redundant ranged shield belt from VAE Accessories in favour of the harder to get cuirassier belt, plus a slider for the casting relay's needlecasting range (default 10 tiles per relay instead of 5).
+[*]GiTS Cyberbrains: only basic cyberbrains on the market, surgeries via EPOE-Forked brain surgery, post-basic cyberization at ultratech tier, harsher extreme mental break, and a tidied-up research tree.
+[*]Odyssey: the long-range passenger shuttle gets 2000 chemfuel and 2000 kg cargo capacity.
+[*]Alpha Genes: genes join vanilla genepacks, alphapacks/mixedpacks removed.
 [*]Integrated Implants: slime-safe shoulder turrets, Alpha Mechs chip requirements for mechanitor implant research, levitators ignore water, signal boosters stack with AG command range genes.
-[*]Rimsenal: armors and modular weapons gated behind the corp techs; Spacer trade caravans lose their mechanoid guards.
-[*]Research prereq cleanups: VFE Pirates warcasket weapons (incl. Warcasket Weapon Quality), Impact Weaponry, Spacer Arsenal; Eltex weapons only on psycasters.
+[*]Rimsenal: armors and modular weapons gated behind the corp techs. Spacer trade caravans lose their mechanoid guards.
+[*]Research prereq cleanups: VFE Pirates warcasket weapons (incl. Warcasket Weapon Quality), Impact Weaponry, Spacer Arsenal. Eltex weapons only on psycasters.
 [*]Ideology: inspirations respect precepts, warlike factions can't roll pacifist vows, some modded xenotypes spawn in fitting factions.
-[*]Vanilla & DLC: mixed modded mechanoid raid groups, creep joiners accept all human surgeries, gene complexity sliders, curated VQEA archogen injector genes, vacuum resistance nerfs on modded armors (with Vanilla Gravship Expanded).
+[*]Vanilla & DLC: mixed modded mechanoid raid groups, creep joiners accept all human surgeries, gene complexity sliders, a hand-picked gene list for the VQEA archogen injector, vacuum resistance nerfs on modded armors (with Vanilla Gravship Expanded).
 [/list]
 Full details per toggle in the mod settings and in the documentation on github.
 

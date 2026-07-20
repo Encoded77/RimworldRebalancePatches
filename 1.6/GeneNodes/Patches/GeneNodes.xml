@@ -2,7 +2,7 @@
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>genetics.genenodes</settingKey>
+    <settingKey>geneticsresearch.genenodes</settingKey>
     <operations>
       <li Class="PatchOperationConditional">
         <xpath>Defs/ResearchProjectDef[defName="RBP_ArchiteGeneNodes"]</xpath>
