@@ -49,7 +49,7 @@ namespace RebalancePatches
     public static class SettingsMigrations
     {
         /// Bump whenever a new flip or move is added below.
-        public const int CurrentVersion = 4;
+        public const int CurrentVersion = 5;
 
         private static readonly DefaultFlip[] Flips =
         {
@@ -102,6 +102,13 @@ namespace RebalancePatches
             new KeyMove(4, "xenotypes.factions", "xenotypes.odyssey"),
             new KeyMove(4, "xenotypes.factions", "xenotypes.rimsenal"),
             new KeyMove(4, "xenotypes.wvcchances", "xenotypes.vanilla"),
+
+            // 1.9.0 folded the Alpha Genes gene toolkits research and the standalone gene
+            // integrator retiering into one consumables lane covering Alpha Genes, Big and Small
+            // and WVC. Both predecessors gated content the lane now owns, so a player who had
+            // either on keeps the lane on; sharing a target means on if either source was.
+            new KeyMove(5, "geneticsresearch.agtools", "geneticsresearch.consumables"),
+            new KeyMove(5, "bigsmall.geneintegrator", "geneticsresearch.consumables"),
         };
 
         /// <summary>

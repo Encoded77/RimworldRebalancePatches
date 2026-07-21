@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.ThingRemovalListDef>
+    <defName>RBP_ThingRemoval_BigSmall_GeneTools</defName>
+    <settingKey>geneticsresearch.consumables</settingKey>
+    <requiredMods>
+      <li>sarg.alphagenes</li>
+    </requiredMods>
+    <things>
+      <li>BS_GeneDicombobulator</li>
+    </things>
+  </RebalancePatches.ThingRemovalListDef>
+
+  <RebalancePatches.ThingRemovalListDef>
+    <defName>RBP_ThingRemoval_BigSmall_ArchiteCloner</defName>
+    <settingKey>geneticsresearch.consumables</settingKey>
+    <things>
+      <li>BS_CreateArchiteXenogerm</li>
+    </things>
+  </RebalancePatches.ThingRemovalListDef>
+</Defs>

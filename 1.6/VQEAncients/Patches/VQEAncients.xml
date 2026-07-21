@@ -15,7 +15,7 @@
                   <label>archogen engineering</label>
                   <description>Reverse-engineer the ancients' archogen laboratory equipment. Build archogen injectors and their linkable support facilities to induce archite gene mutations on demand.</description>
                   <baseCost>10000</baseCost>
-                  <techLevel>Spacer</techLevel>
+                  <techLevel>Ultra</techLevel>
                   <tab>RBP_GeneticsTab</tab>
                   <prerequisites>
                     <li>Archogenetics</li>
@@ -24,8 +24,8 @@
                   <requiredResearchFacilities>
                     <li>MultiAnalyzer</li>
                   </requiredResearchFacilities>
-                  <researchViewX>4</researchViewX>
-                  <researchViewY>4.60</researchViewY>
+                  <researchViewX>5</researchViewX>
+                  <researchViewY>3.60</researchViewY>
                 </ResearchProjectDef>
               </value>
             </li>

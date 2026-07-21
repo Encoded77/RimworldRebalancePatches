@@ -190,5 +190,98 @@ namespace RebalancePatches.Tests
             if (beggars != null)
                 Check.True(!Check.HasXenotype(beggars, "WVC_CatDeity"), "Beggars spawns WVC_CatDeity");
         }
+
+        /// Every WVC serum project the consumables lane replaces.
+        private static readonly string[] RetiredSerumProjects =
+        {
+            "WVC_XenotypesAndGenes_SerumLab",
+            "WVC_XenotypesAndGenes_DustogenicFood",
+            "WVC_XenotypesAndGenes_NutrientsInjector",
+            "WVC_XenotypesAndGenes_GeneRestoration",
+            "WVC_XenotypesAndGenes_DisassembleSerum",
+            "WVC_XenotypesAndGenes_RetuneSerum",
+            "WVC_XenotypesAndGenes_XenotypeSerumCrafting",
+            "WVC_XenotypesAndGenes_XenotypeResurrectorSerumCrafting",
+        };
+
+        [Test]
+        public static void SerumLineCollapsed()
+        {
+            if (!Check.Ready("geneticsresearch.consumables", Ids.WVC, Ids.Biotech)
+                || !Check.GeneticsTabLoaded("geneticsresearch.consumables"))
+                return;
+
+            ResearchProjectDef serums = Check.Def<ResearchProjectDef>("RBP_GeneSerums");
+            Check.Eq(serums.techLevel, TechLevel.Spacer, "RBP_GeneSerums.techLevel");
+            Check.Eq(serums.baseCost, 1200f, "RBP_GeneSerums.baseCost");
+            Check.PrereqsAre(serums.prerequisites, "RBP_GeneSerums.prerequisites", "Xenogermination");
+
+            // There is no ultratech serum tier: the xenotype/retune/resurrector serums that would
+            // have justified one carry WVC's WVC_Legacy_Hook="RemoveMe" tag, so WVC deletes them
+            // itself unless its own disableLegacy setting is off - and that is not the default.
+            // All eight retired projects fold into RBP_GeneSerums instead.
+            Check.True(DefDatabase<ResearchProjectDef>.GetNamedSilentFail("RBP_XenotypeSerums") == null,
+                "RBP_XenotypeSerums should no longer be created");
+
+            foreach (string gone in RetiredSerumProjects)
+                Check.True(DefDatabase<ResearchProjectDef>.GetNamedSilentFail(gone) == null,
+                    $"{gone} still present");
+
+            // The serum bench is the one consumer guaranteed to exist with Biotech, so it is the
+            // canary for the repoint having run at all.
+            ThingDef bench = Check.Optional<ThingDef>("WVC_SerumCraftingTable", "geneticsresearch.consumables");
+            if (bench != null)
+                Check.True(Check.ContainsResearch(bench.researchPrerequisites, "RBP_GeneSerums"),
+                    "WVC_SerumCraftingTable does not require RBP_GeneSerums");
+        }
+
+        [Test]
+        public static void SerumConsumersRepointed()
+        {
+            if (!Check.Ready("geneticsresearch.consumables", Ids.WVC, Ids.Biotech)
+                || !Check.GeneticsTabLoaded("geneticsresearch.consumables"))
+                return;
+            // A missed repoint leaves a def pointing at a project we deleted. That resolves to
+            // nothing rather than to a wrong def, so absence of the old name proves little -
+            // assert each consumer positively names its new project instead.
+            ThingDef pills = Check.Optional<ThingDef>("WVC_EyedyePills", "geneticsresearch.consumables");
+            if (pills != null)
+                Check.Eq(Check.RecipePrereqs(pills)?[0]?.defName, "RBP_GeneSerums",
+                    "WVC_EyedyePills recipeMaker.researchPrerequisites[0]");
+            ThingDef restoration = Check.Optional<ThingDef>("WVC_GeneRestorationSerum_Base", "geneticsresearch.consumables");
+            if (restoration != null)
+                Check.Eq(Check.RecipePrereq(restoration)?.defName, "RBP_GeneSerums",
+                    "WVC_GeneRestorationSerum_Base recipeMaker.researchPrerequisite");
+            // Anomaly-only. Its prerequisite pair sits under recipeMaker, not on the ThingDef, and
+            // it keeps Archogenetics alongside the repointed entry.
+            ThingDef shapeshifter = Check.Optional<ThingDef>("WVC_ShapeshifterOverclockerSerum_Base",
+                "geneticsresearch.consumables", Ids.Anomaly);
+            if (shapeshifter != null)
+                Check.PrereqsAre(Check.RecipePrereqs(shapeshifter),
+                    "WVC_ShapeshifterOverclockerSerum_Base recipeMaker.researchPrerequisites",
+                    "RBP_GeneSerums", "Archogenetics");
+
+            // Nothing anywhere may still resolve one of the retired projects.
+            foreach (ThingDef thing in DefDatabase<ThingDef>.AllDefsListForReading)
+            {
+                foreach (string gone in RetiredSerumProjects)
+                {
+                    Check.True(!Check.ContainsResearch(thing.researchPrerequisites, gone),
+                        $"{thing.defName} still requires {gone}");
+                    Check.True(Check.RecipePrereq(thing)?.defName != gone,
+                        $"{thing.defName} recipeMaker still requires {gone}");
+                    Check.True(!Check.ContainsResearch(Check.RecipePrereqs(thing), gone),
+                        $"{thing.defName} recipeMaker still lists {gone}");
+                }
+            }
+            foreach (RecipeDef recipe in DefDatabase<RecipeDef>.AllDefsListForReading)
+                foreach (string gone in RetiredSerumProjects)
+                {
+                    Check.True(recipe.researchPrerequisite?.defName != gone,
+                        $"{recipe.defName} still requires {gone}");
+                    Check.True(!Check.ContainsResearch(recipe.researchPrerequisites, gone),
+                        $"{recipe.defName} still lists {gone}");
+                }
+        }
     }
 }

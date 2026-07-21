@@ -35,6 +35,7 @@ namespace RebalancePatches.Tests
             ResearchProjectDef engineering = Check.Def<ResearchProjectDef>("RBP_ArchogenEngineering");
             Check.Eq(engineering.baseCost, 10000f, "RBP_ArchogenEngineering.baseCost");
             Check.PrereqsAre(engineering.prerequisites, "RBP_ArchogenEngineering.prerequisites", "Archogenetics");
+            Check.Eq(engineering.techLevel, TechLevel.Ultra, "RBP_ArchogenEngineering.techLevel");
             Check.Eq(engineering.tab, Check.Def<ResearchTabDef>("RBP_GeneticsTab"), "RBP_ArchogenEngineering.tab");
             ThingDef injector = Check.Def<ThingDef>("VQEA_ArchogenInjector");
             Check.True(Check.ContainsResearch(injector.researchPrerequisites, "RBP_ArchogenEngineering"),
@@ -74,6 +75,31 @@ namespace RebalancePatches.Tests
             System.Type utils = AccessTools.TypeByName("VanillaQuestsExpandedAncients.Utils");
             Check.True(utils != null, "VanillaQuestsExpandedAncients.Utils type not found");
             Check.HarmonyPatched(AccessTools.Method(utils, "IsValidGeneForInjection"), "vqea.injectorwhitelist");
+        }
+
+        [Test]
+        public static void ArchiteGenesNotFabricable()
+        {
+            if (!Check.Ready("vqea.nofabricatedarchite", Ids.VQEAncients, Ids.GeneFabrication, Ids.CherryPicker))
+                return;
+            // Gene Fabrication implies one Make_Genepack_<gene> recipe per GeneDef at startup, so
+            // the removal only lands on Cherry Picker's main-menu second pass. Skip rather than
+            // fail if the recipes were never generated at all - that means the mod changed how it
+            // names them, which the sweep below reports.
+            int checkedRecipes = 0;
+            foreach (GeneDef gene in DefDatabase<GeneDef>.AllDefsListForReading)
+            {
+                if (!gene.defName.StartsWith("VQEA_"))
+                    continue;
+                checkedRecipes++;
+                Check.True(DefDatabase<RecipeDef>.GetNamedSilentFail("Make_Genepack_" + gene.defName) == null,
+                    $"Make_Genepack_{gene.defName} is still fabricable");
+            }
+            Check.True(checkedRecipes > 0, "no VQEA_ genes found - VQE Ancients renamed its archite genes");
+            // The fabricator must still work for everything else.
+            Check.True(DefDatabase<RecipeDef>.AllDefsListForReading
+                .Any(r => r.defName.StartsWith("Make_Genepack_")),
+                "every gene fabrication recipe was removed, not just the archite ones");
         }
     }
 }

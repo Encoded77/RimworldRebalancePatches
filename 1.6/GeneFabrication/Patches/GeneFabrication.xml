@@ -9,6 +9,14 @@
         <match Class="PatchOperationSequence">
           <operations>
             <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="GeneFabrication"]/label</xpath>
+              <value><label>gene fabrication</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="GeneFabrication"]/description</xpath>
+              <value><description>Build a gene fabrication bench that synthesises genepacks directly from neutroamine, drawing on archite capsules for archite-grade genes. Any gene your colony has records of can be produced to order, rather than waiting on traders, quest rewards and whatever survives in ancient ruins.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
               <xpath>Defs/ResearchProjectDef[defName="GeneFabrication"]/baseCost</xpath>
               <value><baseCost>8000</baseCost></value>
             </li>
@@ -28,8 +36,12 @@
               </value>
             </li>
             <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="GeneFabrication"]/techLevel</xpath>
+              <value><techLevel>Ultra</techLevel></value>
+            </li>
+            <li Class="PatchOperationReplace">
               <xpath>Defs/ResearchProjectDef[defName="GeneFabrication"]/researchViewX</xpath>
-              <value><researchViewX>4</researchViewX></value>
+              <value><researchViewX>5</researchViewX></value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ResearchProjectDef[defName="GeneFabrication"]/researchViewY</xpath>

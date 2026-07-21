@@ -8,6 +8,8 @@ The settings window groups features by mod: groups collapse and expand, a search
 
 If you are **upgrading** from a version where an overhaul was on by default, it stays on: the mod records a config version and pins settings whose default has changed, so an ongoing colony never loses a system it was already running. Settings you chose yourself are always left alone. Only fresh installs start with the overhauls off.
 
+One change has no toggle because there is no sensible way to want it off: research added by this mod now identifies itself as coming from this mod. Research tree views badge each project with its source mod, using a field the game only fills in for content loaded from a file — so everything added by a patch, including this mod's entire Genetics tab, showed up with no source at all. Those defs now carry the mod's icon and can be found by its name in research search filters.
+
 ---
 
 ## Patches
@@ -61,7 +63,6 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 ### Big and Small / VFE / VRE
 
 - **`bigsmall.madscience`** — Mad science requires the Gun turrets research (instead of every turret it unlocks requiring Gun turrets individually, which also displayed wrong).
-- **`bigsmall.geneintegrator`** — The gene integrator — it turns all xenogenes into endogenes, freeing the slots to stack more — moves to the archite research tier, costs an archite capsule plus ultratech materials, and gets a real market value.
 - **`vfepirates.chargeweapons`** — Warcasket charge weapon boxes require pulse-charged munitions research (the railgun needs Mass Drivers with Coilguns loaded); the same gates apply to Warcasket Weapon Quality's direct-craft recipes.
 - **`vfepirates.empirescenario`** — The Empire is no longer permanently hostile to the pirate scenario faction, so the Low orbit crash scenario's reputation can be repaired (Royalty).
 - **`vfeempire.qol`** — The royal armchair counts for Stellarch throne rooms; the candelabra shows its glow radius when placing.
@@ -111,6 +112,7 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 - **`vqea.giantweapons`** — The Enormous and Herculean archite genes let their carriers wield Big and Small's giant weapons.
 - **`vqea.patientgown`** — The patient gown's blunt armor drops from 0.5 to 0.1, so pawns stop preferring it over real armor.
 - **Archogen injector whitelist** (`vqea.injectorwhitelist`) — The archogen injector and ancient-experiment pawns normally roll from *every* loaded archite and negative gene — absurd with a large modlist, including pawn-ruining drawbacks. They now roll from a curated list: VQE - Ancients' own archite powers plus mild drawbacks from vanilla and the major gene mods.
+- **Ancient archite genes cannot be fabricated** (`vqea.nofabricatedarchite`) — Gene Fabrication builds a genepack recipe for every gene in the game, which quietly includes VQE - Ancients' 33 archite powers even though Ancients itself keeps them out of random genepacks. Herculean cost three archite capsules and some neutroamine at a bench, sidestepping the injector entirely. Those 33 recipes are removed, so archite powers come from the injector, ancient labs and quests. Every other gene stays fabricable. Needs Gene Fabrication and Cherry Picker.
 
 ---
 
@@ -143,7 +145,7 @@ A cohesive rework of genetics research: vanilla puts a full gene-editing empire 
 
 ### The tree
 
-All projects sit on a new **Genetics** research tab, at spacer tech, on the hi-tech research bench. Costs escalate down the tree.
+All projects sit on a new **Genetics** research tab, on the hi-tech research bench, with costs escalating down the tree. The spine runs at spacer tech as far as archogenetics; the capstones past it are ultratech and need a multianalyzer (marked \*).
 
 ```mermaid
 graph LR
@@ -152,14 +154,17 @@ graph LR
     X --> GN[gene nodes<br/>1200]
     X --> GC[genepack centrifuge<br/>1400]
     X --> GR[gene ripper<br/>1200]
+    X --> GS[gene serums<br/>1200]
     GP --> A[archogenetics<br/>4000]
     GP --> EV[gene extraction vats<br/>3000]
     GP --> XR[xenogerm replicator<br/>2000]
     GP --> GT[gene toolkits<br/>2500]
     A --> AE[archite gene extraction<br/>5000]
     A --> AGN[archite gene nodes<br/>4500]
-    A --> GF[gene fabrication<br/>8000]
-    A --> ARE[archogen engineering<br/>10000]
+    A --> GF["gene fabrication*<br/>8000"]
+    A --> ARE["archogen engineering*<br/>10000"]
+    A --> GI["gene integration*<br/>5000"]
+    A --> WG["weaponized genetics*<br/>4000"]
 ```
 
 ### Core tree (`geneticsresearch.core`)
@@ -184,15 +189,24 @@ A kill-to-extract a specific gene machine shouldn't share the plain extractor's 
 
 ### Gene Fabrication (`geneticsresearch.genefab`)
 
-Fabricating genes from neutroamine is an end-of-tree power, not a gene-processor side grab: the research becomes an archogenetics capstone (cost 8000).
+Fabricating genes from neutroamine is an end-of-tree power, not a gene-processor side grab: the research becomes an ultratech archogenetics capstone (cost 8000). It is retitled from *Genetic Fabrication* to *gene fabrication* to match the rest of the tab, and its description — which talked about multianalyzers rather than anything the project unlocks — is rewritten to describe the fabrication bench.
+
+Gene Fabrication also builds one genepack recipe per gene in the game and marks every archite one as requiring archogenetics, all listed individually against archogenetics in the research tree, burying everything else that project unlocks. Those recipes drop that prerequisite, since the capstone already gates the fabricator: nothing becomes craftable any earlier, the archogenetics entry becomes readable again, and the research tree builds faster.
 
 ### VQE Ancients archogen lab (`geneticsresearch.vqea`)
 
-A new *archogen engineering* capstone (10000, multianalyzer) lets you build the archogen injector and its 12 linkable lab facilities yourself at archite-tier costs — raiding ancient vaults stays the shortcut, research the long road.
+A new ultratech *archogen engineering* capstone (10000, multianalyzer) lets you build the archogen injector and its 12 linkable lab facilities yourself at archite-tier costs — raiding ancient vaults stays the shortcut, research the long road.
 
-### Alpha Genes gene toolkits (`geneticsresearch.agtools`)
+### Gene tools and serums (`geneticsresearch.consumables`)
 
-Alpha Genes' eleven single-use gene tools normally come from traders and quest rewards only. A new *gene toolkits* project makes them all craftable at the fabrication bench, with costs scaling from genepack tweakers up to the archotech variants (which need an archite capsule). Trade acquisition is untouched.
+Single-use genetic items arrive from three different mods, each with its own research line in its own tab: Alpha Genes' gene tools are trader-only, Big and Small hangs its tools off a 250-point industrial project, and WVC spends eight projects on serums. This replaces all of that with one lane on the Genetics tab, so every consumable in the modlist follows the same progression.
+
+- ***Gene serums*** (1200, spacer, after xenogerm assembly) replaces WVC's entire eight-project serum line: the serum lab, gene restoration, serum disassembly, the specialised per-gene serums, and eyedye pills all come from this one project.
+- ***Gene toolkits*** (2500, spacer, after gene processor) makes Alpha Genes' single-use tools craftable at the fabrication bench and takes over Big and Small's gene tools, xenogerm cloners and animal size serums. Costs scale from genepack tweakers up to the archotech variants, which need an archite capsule **and** archogenetics — previously they were available the moment you had gene processor.
+- ***Weaponized genetics*** (4000, ultratech, after archogenetics, multianalyzer) is Big and Small's *mad science field testing*, retitled and moved onto the tab. Its mutagenic ray weapons and turrets were reachable at industrial tier for 500 points; they now sit with the rest of the archite-tier work. It keeps its gun turrets requirement.
+- ***Gene integration*** (5000, ultratech, after archogenetics, multianalyzer) unlocks the gene integrator, which turns all xenogenes into endogenes and frees the slots to stack more. It costs an archite capsule plus ultratech materials and gets a real market value.
+
+Three redundant items are retired, and the random gene tool dispenser stops offering them: the xenodiscombobulator (Alpha Genes' xenotype injector already rerolls a pawn's genes), the archite xenogerm cloner (the archite genome cloner does the same and more — the cloner's own recipe consumed one) and the germline mutator. They stop being craftable, tradeable, and stop appearing in reward and loot tables, but the items themselves are left in place so existing saves holding one are unaffected. This needs Cherry Picker; without it the items stay available and nothing else changes.
 
 ### Alpha Genes quest flavour (`geneticsresearch.alphagenes`)
 

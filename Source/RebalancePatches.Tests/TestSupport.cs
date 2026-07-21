@@ -119,6 +119,28 @@ namespace RebalancePatches.Tests
                 True(DefDatabase<GeneDef>.GetNamedSilentFail(name) == null, $"{name} still present");
         }
 
+        /// <summary>
+        /// A ThingDef we handed to Cherry Picker is unobtainable. Unlike a GeneDef, Cherry Picker
+        /// never calls DefDatabase&lt;ThingDef&gt;.Remove - deleting a ThingDef would break saves
+        /// that reference one - so it neuters the def in place instead. Assert what it actually
+        /// does: no market value, untradeable, out of every category and reward table, and not
+        /// craftable at any bench. Asserting absence here would always fail.
+        /// </summary>
+        public static void ThingUnobtainable(string name)
+        {
+            ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail(name);
+            if (def == null)
+                return;    // some other mod did delete it outright; nothing left to check
+            Eq(def.BaseMarketValue, 0f, $"{name} BaseMarketValue");
+            Eq(def.tradeability, Tradeability.None, $"{name} tradeability");
+            True(def.thingCategories == null || def.thingCategories.Count == 0,
+                $"{name} still sits in a thing category");
+            True(def.thingSetMakerTags == null || def.thingSetMakerTags.Count == 0,
+                $"{name} still carries reward tags");
+            True(def.recipeMaker?.recipeUsers == null || def.recipeMaker.recipeUsers.Count == 0,
+                $"{name} is still craftable at a bench");
+        }
+
         public static bool GeneticsTabLoaded(string settingKey)
         {
             if (DefDatabase<ResearchTabDef>.GetNamedSilentFail("RBP_GeneticsTab") != null)
@@ -154,7 +176,7 @@ namespace RebalancePatches.Tests
                 Log.Message($"[RBP Tests] SKIP {settingKey}: {what} absent - mod '{ownerMod}' not active (expected)");
                 return null;
             }
-            string removedBy = GeneRemovalInfo.ActiveRemovalSetting(defName);
+            string removedBy = RemovalInfo.ActiveRemovalSetting(defName);
             if (removedBy != null)
             {
                 Log.Message($"[RBP Tests] SKIP {settingKey}: {what} absent - removed by our own '{removedBy}' list (expected)");

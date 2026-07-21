@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using HarmonyLib;
 using RimWorld;
@@ -6,33 +6,12 @@ using Verse;
 
 namespace RebalancePatches
 {
-    public class GeneRemovalListDef : Def
-    {
-        public string settingKey;
-        public List<string> requiredMods = new List<string>();
-        public List<string> genes = new List<string>();
-        public List<string> genePrefixes = new List<string>();
-    }
-
-    public class XenotypeRewireDef : Def
-    {
-        public string settingKey;
-        public List<string> requiredMods = new List<string>();
-        public List<XenotypeRewireEntry> xenotypes = new List<XenotypeRewireEntry>();
-    }
-
-    public class XenotypeRewireEntry
-    {
-        public string xenotype;
-        public List<string> genes = new List<string>();
-    }
-
     /// <summary>
     /// Why a def one of our patches targets is missing from the DefDatabase. A def we removed
     /// ourselves and a def upstream renamed look identical once it is gone, so the tests ask here
     /// before deciding whether an absence is worth reporting.
     /// </summary>
-    public static class GeneRemovalInfo
+    public static class RemovalInfo
     {
         /// <summary>
         /// The settingKey of the removal list currently stripping <paramref name="defName"/>, or
@@ -41,24 +20,90 @@ namespace RebalancePatches
         /// </summary>
         public static string ActiveRemovalSetting(string defName)
         {
-            bool coreActive = GeneCleanup.CoreModsActive();
-            foreach (GeneRemovalListDef list in DefDatabase<GeneRemovalListDef>.AllDefsListForReading)
-                if (GeneCleanup.ListActive(list, coreActive) && GeneCleanup.Matches(list, defName))
+            foreach (DefCleanup.RemovalList list in DefCleanup.AllLists())
+                if (list.active && list.Matches(defName))
                     return list.settingKey;
             return null;
         }
     }
 
-    internal static class GeneCleanup
+    internal static class DefCleanup
     {
-        // The gene ecosystem rebalance assumes all three core gene mods; removals
-        // never apply with only a subset loaded.
+        // The gene ecosystem rebalance assumes all three core gene mods; gene removals
+        // never apply with only a subset loaded. Thing removals are not part of that
+        // rebalance and gate on their own requiredMods instead.
         private static readonly string[] CoreMods =
         {
             "sarg.alphagenes",
             "wvc.sergkart.races.biotech",
             "redmattis.bigsmall.core",
         };
+
+        /// <summary>
+        /// One removal list flattened to what the sweep actually needs, so gene lists and thing
+        /// lists share a single code path. <see cref="Lookup"/> answers "is this def still in the
+        /// database", which is how an already-applied removal is told from a stale key.
+        /// </summary>
+        internal class RemovalList
+        {
+            public string settingKey;
+            public bool active;
+            public Func<string, bool> matches;
+            public Func<HashSet<string>> generatedKeys;
+            public Func<string, Def> lookup;
+
+            public bool Matches(string defName) => matches(defName);
+        }
+
+        internal static List<RemovalList> AllLists()
+        {
+            bool coreActive = CoreModsActive();
+            var lists = new List<RemovalList>();
+
+            foreach (GeneRemovalListDef def in DefDatabase<GeneRemovalListDef>.AllDefsListForReading)
+            {
+                GeneRemovalListDef list = def;
+                lists.Add(new RemovalList
+                {
+                    settingKey = list.settingKey,
+                    active = coreActive && RequiredModsActive(list.requiredMods)
+                        && SettingsRegistry.GetEffective(list.settingKey),
+                    matches = name => Matches(list, name),
+                    generatedKeys = () => GeneratedKeys(list),
+                    lookup = name => DefDatabase<GeneDef>.GetNamedSilentFail(name),
+                });
+            }
+
+            foreach (ThingRemovalListDef def in DefDatabase<ThingRemovalListDef>.AllDefsListForReading)
+            {
+                ThingRemovalListDef list = def;
+                lists.Add(new RemovalList
+                {
+                    settingKey = list.settingKey,
+                    active = RequiredModsActive(list.requiredMods)
+                        && SettingsRegistry.GetEffective(list.settingKey),
+                    matches = name => list.things.Contains(name),
+                    generatedKeys = () => GeneratedKeys(list),
+                    lookup = name => DefDatabase<ThingDef>.GetNamedSilentFail(name),
+                });
+            }
+
+            foreach (RecipeRemovalListDef def in DefDatabase<RecipeRemovalListDef>.AllDefsListForReading)
+            {
+                RecipeRemovalListDef list = def;
+                lists.Add(new RemovalList
+                {
+                    settingKey = list.settingKey,
+                    active = RequiredModsActive(list.requiredMods)
+                        && SettingsRegistry.GetEffective(list.settingKey),
+                    matches = name => list.recipes.Contains(name),
+                    generatedKeys = () => GeneratedKeys(list),
+                    lookup = name => DefDatabase<RecipeDef>.GetNamedSilentFail(name),
+                });
+            }
+
+            return lists;
+        }
 
         public static void TryApply()
         {
@@ -77,9 +122,8 @@ namespace RebalancePatches
             HashSet<string> removedDefs = CherryPickerRemovedDefs();
             if (removedDefs == null)
                 return;
-            bool coreActive = CoreModsActive();
-            ApplyRemovals(removedDefs, coreActive);
-            ApplyRewires(coreActive);
+            ApplyRemovals(removedDefs, AllLists());
+            ApplyRewires(CoreModsActive());
         }
 
         internal static bool CoreModsActive()
@@ -90,23 +134,19 @@ namespace RebalancePatches
             return true;
         }
 
-        internal static bool ListActive(GeneRemovalListDef list, bool coreActive) =>
-            coreActive && RequiredModsActive(list.requiredMods) && SettingsRegistry.GetEffective(list.settingKey);
-
-        private static void ApplyRemovals(HashSet<string> removedDefs, bool coreActive)
+        private static void ApplyRemovals(HashSet<string> removedDefs, List<RemovalList> lists)
         {
-            List<GeneRemovalListDef> lists = DefDatabase<GeneRemovalListDef>.AllDefsListForReading;
             if (lists.Count == 0)
                 return;
 
-            var activeLists = new List<GeneRemovalListDef>();
+            var activeLists = new List<RemovalList>();
             var desired = new HashSet<string>();
-            foreach (GeneRemovalListDef list in lists)
+            foreach (RemovalList list in lists)
             {
-                if (ListActive(list, coreActive))
+                if (list.active)
                 {
                     activeLists.Add(list);
-                    desired.UnionWith(GeneratedKeys(list));
+                    desired.UnionWith(list.generatedKeys());
                 }
             }
             // Existing Cherry Picker keys in our domain: genes an earlier pass already
@@ -120,20 +160,20 @@ namespace RebalancePatches
                 if (parts.Length < 2 || desired.Contains(key))
                     continue;
                 string defName = parts[1];
-                bool inActiveList = false;
-                foreach (GeneRemovalListDef list in activeLists)
-                    if (Matches(list, defName))
+                RemovalList owner = null;
+                foreach (RemovalList list in activeLists)
+                    if (list.Matches(defName))
                     {
-                        inActiveList = true;
+                        owner = list;
                         break;
                     }
-                if (inActiveList && DefDatabase<GeneDef>.GetNamedSilentFail(defName) == null)
+                if (owner != null && owner.lookup(defName) == null)
                 {
                     desired.Add(key);
                     continue;
                 }
-                foreach (GeneRemovalListDef list in lists)
-                    if (Matches(list, defName))
+                foreach (RemovalList list in lists)
+                    if (list.Matches(defName))
                     {
                         undesired.Add(key);
                         break;
@@ -149,7 +189,7 @@ namespace RebalancePatches
                 if (removedDefs.Remove(key))
                     restored++;
             if (desired.Count > 0 || restored > 0)
-                Log.Message($"[RebalancePatches] Genepool cleanup: {desired.Count} genes removed via Cherry Picker ({queued} newly queued, {restored} restored).");
+                Log.Message($"[RebalancePatches] Def cleanup: {desired.Count} defs queued for Cherry Picker removal ({queued} newly queued, {restored} restored).");
         }
 
         private static bool RequiredModsActive(List<string> requiredMods)
@@ -216,7 +256,30 @@ namespace RebalancePatches
                 keys.Add(KeyOf(def));
         }
 
-        internal static bool Matches(GeneRemovalListDef list, string defName)
+        private static HashSet<string> GeneratedKeys(ThingRemovalListDef list)
+        {
+            var keys = new HashSet<string>();
+            foreach (string name in list.things)
+            {
+                ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail(name);
+                if (def != null)
+                    keys.Add(KeyOf(def));
+            }
+            return keys;
+        }
+
+        // Unlike genes and things, the recipes we target may not exist yet when this runs - the mod
+        // that generates them may not have had its startup pass. Key them by name regardless, since
+        // Cherry Picker resolves the key itself on its later main-menu pass.
+        private static HashSet<string> GeneratedKeys(RecipeRemovalListDef list)
+        {
+            var keys = new HashSet<string>();
+            foreach (string name in list.recipes)
+                keys.Add("RecipeDef/" + name);
+            return keys;
+        }
+
+        private static bool Matches(GeneRemovalListDef list, string defName)
         {
             if (defName.EndsWith("_Astrogene"))
                 defName = defName.Substring(0, defName.Length - "_Astrogene".Length);
@@ -231,7 +294,7 @@ namespace RebalancePatches
         // Mirrors Cherry Picker's DefUtility.ToKey: def types outside the Verse and
         // RimWorld namespaces need the namespace as a third key segment or its
         // ToType lookup fails and the key is silently skipped.
-        private static string KeyOf(GeneDef def)
+        private static string KeyOf(Def def)
         {
             Type type = def.GetType();
             string key = type.Name + "/" + def.defName;
@@ -250,3 +313,4 @@ namespace RebalancePatches
         }
     }
 }
+

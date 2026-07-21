@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneticsresearch.consumables</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <ResearchProjectDef>
+                  <defName>RBP_GeneSerums</defName>
+                  <label>gene serums</label>
+                  <description>Build a serum lab and brew injectable gene serums: restore damaged genes, break finished serums back down into their components, and produce the specialised serums tied to individual genes.</description>
+                  <baseCost>1200</baseCost>
+                  <techLevel>Spacer</techLevel>
+                  <tab>RBP_GeneticsTab</tab>
+                  <prerequisites>
+                    <li>Xenogermination</li>
+                  </prerequisites>
+                  <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                  <researchViewX>2</researchViewX>
+                  <researchViewY>5.00</researchViewY>
+                </ResearchProjectDef>
+              </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs//researchPrerequisites/li[.="WVC_XenotypesAndGenes_SerumLab" or .="WVC_XenotypesAndGenes_DustogenicFood" or .="WVC_XenotypesAndGenes_NutrientsInjector" or .="WVC_XenotypesAndGenes_GeneRestoration" or .="WVC_XenotypesAndGenes_DisassembleSerum" or .="WVC_XenotypesAndGenes_RetuneSerum" or .="WVC_XenotypesAndGenes_XenotypeSerumCrafting" or .="WVC_XenotypesAndGenes_XenotypeResurrectorSerumCrafting"]</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs//researchPrerequisites/li[.="WVC_XenotypesAndGenes_SerumLab" or .="WVC_XenotypesAndGenes_DustogenicFood" or .="WVC_XenotypesAndGenes_NutrientsInjector" or .="WVC_XenotypesAndGenes_GeneRestoration" or .="WVC_XenotypesAndGenes_DisassembleSerum" or .="WVC_XenotypesAndGenes_RetuneSerum" or .="WVC_XenotypesAndGenes_XenotypeSerumCrafting" or .="WVC_XenotypesAndGenes_XenotypeResurrectorSerumCrafting"]</xpath>
+                <value><li>RBP_GeneSerums</li></value>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs//researchPrerequisite[.="WVC_XenotypesAndGenes_SerumLab" or .="WVC_XenotypesAndGenes_DustogenicFood" or .="WVC_XenotypesAndGenes_NutrientsInjector" or .="WVC_XenotypesAndGenes_GeneRestoration" or .="WVC_XenotypesAndGenes_DisassembleSerum" or .="WVC_XenotypesAndGenes_RetuneSerum" or .="WVC_XenotypesAndGenes_XenotypeSerumCrafting" or .="WVC_XenotypesAndGenes_XenotypeResurrectorSerumCrafting"]</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs//researchPrerequisite[.="WVC_XenotypesAndGenes_SerumLab" or .="WVC_XenotypesAndGenes_DustogenicFood" or .="WVC_XenotypesAndGenes_NutrientsInjector" or .="WVC_XenotypesAndGenes_GeneRestoration" or .="WVC_XenotypesAndGenes_DisassembleSerum" or .="WVC_XenotypesAndGenes_RetuneSerum" or .="WVC_XenotypesAndGenes_XenotypeSerumCrafting" or .="WVC_XenotypesAndGenes_XenotypeResurrectorSerumCrafting"]</xpath>
+                <value><researchPrerequisite>RBP_GeneSerums</researchPrerequisite></value>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ResearchProjectDef[defName="WVC_XenotypesAndGenes_SerumLab"]</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/ResearchProjectDef[defName="WVC_XenotypesAndGenes_SerumLab" or defName="WVC_XenotypesAndGenes_DustogenicFood" or defName="WVC_XenotypesAndGenes_NutrientsInjector" or defName="WVC_XenotypesAndGenes_GeneRestoration" or defName="WVC_XenotypesAndGenes_DisassembleSerum"]</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ResearchProjectDef[defName="WVC_XenotypesAndGenes_RetuneSerum"]</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/ResearchProjectDef[defName="WVC_XenotypesAndGenes_RetuneSerum" or defName="WVC_XenotypesAndGenes_XenotypeSerumCrafting" or defName="WVC_XenotypesAndGenes_XenotypeResurrectorSerumCrafting"]</xpath>
+              </match>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

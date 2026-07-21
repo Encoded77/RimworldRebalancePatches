@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneticsresearch.consumables</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods>
+            <li>sarg.alphagenes</li>
+            <li>redmattis.bigsmall.core</li>
+          </mods>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+              <ResearchProjectDef>
+                <defName>RBP_GeneToolkits</defName>
+                <label>gene toolkits</label>
+                <description>Craft single-use genetic toolkits that remove, convert or mutate genes on living subjects, edit genepacks, clone a xenogerm from a subject's own genome, and resize animals with growth serums. The archotech-grade targeted variants additionally require archogenetics.</description>
+                <baseCost>2500</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_GeneticsTab</tab>
+                <prerequisites>
+                  <li>GeneProcessor</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>3</researchViewX>
+                <researchViewY>5.00</researchViewY>
+              </ResearchProjectDef>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

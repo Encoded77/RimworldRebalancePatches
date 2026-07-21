@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.9.0 (2026-07-21)
+
+**Unified gene tools and serums lane** (`geneticsresearch.consumables`) — single-use genetic items came from three mods with three separate research lines in three tabs. They now share one lane on the Genetics tab: *gene serums* (spacer, after xenogerm assembly) replacing WVC's whole eight-project serum line, *gene toolkits* (spacer, after gene processor) for Alpha Genes' gene tools and Big and Small's tools and xenogerm cloners, and *gene integration* (ultratech, after archogenetics) for the gene integrator.
+
+- The Genetics tab gains an ultratech band. Gene Fabrication was still spacer-tier despite sitting past archogenetics; it and VQE Ancients' archogen engineering are now ultratech, alongside the new gene integration capstone.
+- Alpha Genes' archotech gene tools now require archogenetics as well as the toolkits project. They were previously craftable as soon as you had gene processor, which put chosen-gene surgery well ahead of the archite tier it belongs to.
+- Big and Small's *experimental gene tools*, *experimental archite gene tools* and *animal size serums* projects are removed; their content moves onto the lane. WVC's eight serum projects all fold into *gene serums*.
+- Big and Small's *mad science field testing* becomes **weaponized genetics**: ultratech, after archogenetics, on the Genetics tab. Its mutagenic ray weapons and turrets were previously reachable at industrial tier for 500 research points.
+- Three redundant items are retired (needs Cherry Picker): the xenodiscombobulator, the archite xenogerm cloner and the germline mutator. They stop being craftable, tradeable and lootable, and Alpha Genes' random gene tool dispenser stops offering them; the items stay in place so existing saves holding one are unaffected.
+- **Alpha Genes gene toolkits** and **Gene integrator at archite tier** are replaced by the single lane toggle. If you had either on, the lane is on.
+
+**Gene Fabrication reads and sits where it should** (`geneticsresearch.genefab`) — the project is retitled from *Genetic Fabrication* to *gene fabrication* to match the rest of the tab, and its description rewritten: it previously described building multianalyzers with dark archotechnology, which is not what it unlocks.
+
+- Gene Fabrication generates a genepack recipe for every gene in the game and marks each archite one as requiring archogenetics, which on a large gene modlist means hundreds of "make genepack" rows listed against that single project in the research tree. Those recipes drop the prerequisite, so the archogenetics entry is readable again and the research tree builds faster. The capstone already gates the fabricator, so nothing becomes craftable any earlier.
+
+**Ancient archite genes cannot be fabricated** (`vqea.nofabricatedarchite`) — VQE - Ancients' 33 archite powers were among the genes Gene Fabrication would build to order, so herculean or matter phasing cost three archite capsules at a bench and bypassed the archogen injector whitelist entirely. Those recipes are removed; every other gene stays fabricable. Needs Gene Fabrication and Cherry Picker.
+
+**Research from this mod shows its source** — research tree UIs badge each project with the mod it came from, read off a field the game only fills in for defs loaded from a file. Everything this mod injects by patch — the Genetics tab and its projects, the Vanilla Skills Expanded expertises, the aptitude genes, the Alpha Memes floors — came through unattributed and rendered blank. They now carry the mod's icon and answer to its name in research search filters.
+
 ## 1.8.0 (2026-07-21)
 
 **Thematic xenotype rosters** — with many xenotype mods installed, the generic factions become a dumping ground: every mod adds its xenotypes to outlanders and pirates at similar weights until baseliners are under 10% of the people you meet and no faction has a recognisable character. The vanilla, Empire, Odyssey and Rimsenal faction rosters are now rebuilt around what each faction is, and every reworked roster keeps at least 35% baseliners.

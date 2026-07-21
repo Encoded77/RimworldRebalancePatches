@@ -1,6 +1,7 @@
 using HarmonyLib;
 using RebalancePatches.Mods.AlteredCarbon;
 using RebalancePatches.Mods.Biotech;
+using RebalancePatches.Mods.GeneFabrication;
 using RebalancePatches.Mods.Inspirations;
 using RebalancePatches.Mods.IntegratedImplants;
 using RebalancePatches.Mods.VQEAncients;
@@ -24,12 +25,14 @@ namespace RebalancePatches
                 return;
             applied = true;
             var harmony = new Harmony("encoded.rebalancepatches");
+            DefAttribution.TryApply();
             AlteredCarbonPatches.TryApply(harmony);
             IntegratedImplantsPatches.TryApply(harmony);
             ArchogenWhitelistPatches.TryApply(harmony);
             InspirationNullifyPatches.TryApply(harmony);
             GeneComplexityPatches.TryApply(harmony);
-            GeneCleanup.TryApply();
+            GeneFabricationPatches.TryApply(harmony);
+            DefCleanup.TryApply();
             DumpAutoRun.TryApply(harmony);
         }
     }

@@ -131,14 +131,15 @@ namespace RebalancePatches
                     "Gene Ripper's machine unlocks from a new gene ripper research project after xenogerm assembly.",
                     anyOfMods: new[] { "defi.generipper", "danielwedemeyer.generipper" }, dependsOn: "geneticsresearch.core"),
                 new RebalanceToggle("geneticsresearch.genefab", "Gene Fabrication as an archogenetics capstone",
-                    "Gene Fabrication's research project moves to the Genetics tab and requires archogenetics instead of gene processor plus fabrication.",
+                    "Gene Fabrication's research project moves to the Genetics tab as an ultratech capstone and requires archogenetics instead of gene processor plus fabrication. It is also retitled to lowercase gene fabrication to match the rest of the tab, and its description now describes the fabrication bench it unlocks rather than multianalyzers. Its per-gene genepack recipes also stop listing archogenetics as their own prerequisite, since the capstone already gates the fabricator: with a large gene modlist that is hundreds of recipes cluttering the archogenetics entry in the research tree, and nothing becomes available any earlier.",
                     requiredMods: new[] { "amch.eragon.hcgenefabrication" }, dependsOn: "geneticsresearch.core"),
                 new RebalanceToggle("geneticsresearch.vqea", "Buildable VQE Ancients archogen laboratory",
-                    "A new archogen engineering research project after archogenetics lets you build VQE Ancients' archogen injector and its linkable lab facilities at archite-tier costs. Recovering them from ancient labs remains the early route.",
+                    "A new ultratech archogen engineering research project after archogenetics lets you build VQE Ancients' archogen injector and its linkable lab facilities at archite-tier costs. Recovering them from ancient labs remains the early route.",
                     requiredMods: new[] { "vanillaquestsexpanded.ancients" }, dependsOn: "geneticsresearch.core"),
-                new RebalanceToggle("geneticsresearch.agtools", "Craftable Alpha Genes gene toolkits",
-                    "A new gene toolkits research project after gene processor lets you craft Alpha Genes' single-use gene tools at the fabrication bench; the archotech variants also cost an archite capsule. Trader and quest acquisition is unchanged, and the archotech xenogenefier's market value is fixed to match its siblings.",
-                    requiredMods: new[] { "sarg.alphagenes" }, dependsOn: "geneticsresearch.core"),
+                new RebalanceToggle("geneticsresearch.consumables", "Unified gene tools and serums line",
+                    "One research lane for every single-use genetic item across Alpha Genes, Big and Small - Genes & More and WVC - Xenotypes and Genes. Gene serums (after xenogerm assembly) takes over WVC's whole eight-project serum line: the serum lab, gene restoration, serum disassembly and the per-gene serums. Gene toolkits (after gene processor) unlocks Alpha Genes' gene tools and Big and Small's gene tools, xenogerm cloners and animal size serums at the fabrication bench, with the archotech variants additionally requiring archogenetics. Gene integration (ultratech, after archogenetics) unlocks Big and Small's gene integrator. Big and Small's experimental gene tools and animal size serums projects are removed in favour of the lane, and its mad science field testing becomes weaponized genetics: ultratech, after archogenetics, on the Genetics tab instead of industrial tier for 500 points. Three redundant tools are removed: Big and Small's xenodiscombobulator (Alpha Genes' xenotype injector does the same job), its archite xenogerm cloner (its archite genome cloner supersedes it) and Alpha Genes' germline mutator.",
+                    anyOfMods: new[] { "sarg.alphagenes", "redmattis.bigsmall.core", "wvc.sergkart.races.biotech" },
+                    dependsOn: "geneticsresearch.core"),
                 new RebalanceToggle("geneticsresearch.alphagenes", "Alpha Genes xenogenetics lab quest names",
                     "Renames Alpha Genes' abandoned biotech lab quest and site to xenogenetics lab flavour, as Progression: Genetics did. Works on its own.",
                     requiredMods: new[] { "sarg.alphagenes" }),
@@ -229,9 +230,6 @@ namespace RebalancePatches
             {
                 new RebalanceToggle("bigsmall.madscience", "Mad science field testing requires gun turrets",
                     "The mad science field testing research itself gets the vanilla Gun turrets prerequisite, instead of every turret and ray weapon it unlocks listing Gun turrets separately, which garbles their requirement display."),
-                new RebalanceToggle("bigsmall.geneintegrator", "Gene integrator at archite tier",
-                    "The gene integrator (turns all xenogenes into endogenes, freeing the slots to stack more) moves behind experimental archite gene tools plus Archogenetics, costs an archite capsule and advanced components to craft, and its market value rises to 4000.",
-                    requiredMods: new[] { "ludeon.rimworld.biotech" }),
             }, requiredMods: new[] { "redmattis.bigsmall.core" }),
 
             new RebalanceGroup("vfepirates", "Vanilla Factions Expanded - Pirates", new List<RebalanceToggle>
@@ -356,6 +354,9 @@ namespace RebalancePatches
                     "The ancient patient gown's blunt armor drops from 50% to 10%, so pawns stop preferring it over real armor."),
                 new RebalanceToggle("vqea.injectorwhitelist", "Curated archogen injector gene pool",
                     "The archogen injector and ancient experiment pawns roll genes from a curated whitelist (VQE Ancients' archite powers plus mild drawbacks from vanilla, Alpha Genes, Big and Small, WVC, VRE and Det's xenotype packs) instead of every archite and negative gene from all loaded mods."),
+                new RebalanceToggle("vqea.nofabricatedarchite", "Ancient archite genes cannot be fabricated",
+                    "Gene Fabrication builds a genepack recipe for every gene in the game, including VQE Ancients' 33 archite powers, which VQE Ancients itself keeps out of random genepacks. Removes those recipes, so herculean, genius, matter phasing and the rest come from the archogen injector, ancient labs and quests rather than a bench. Needs Gene Fabrication and Cherry Picker; does nothing without them.",
+                    requiredMods: new[] { "owlchemist.cherrypicker", "amch.eragon.hcgenefabrication" }),
             }, requiredMods: new[] { "vanillaquestsexpanded.ancients" }),
 
             new RebalanceGroup("eltex", "Eltex Weaponry", new List<RebalanceToggle>

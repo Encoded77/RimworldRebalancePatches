@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.RecipeRemovalListDef>
+    <defName>RBP_RecipeRemoval_VQEAncients_ArchiteGenes</defName>
+    <settingKey>vqea.nofabricatedarchite</settingKey>
+    <requiredMods>
+      <li>amch.eragon.hcgenefabrication</li>
+    </requiredMods>
+    <recipes>
+      <li>Make_Genepack_VQEA_Herculean</li>
+      <li>Make_Genepack_VQEA_Prowess</li>
+      <li>Make_Genepack_VQEA_BlurRunner</li>
+      <li>Make_Genepack_VQEA_Woundless</li>
+      <li>Make_Genepack_VQEA_Marksman</li>
+      <li>Make_Genepack_VQEA_PerfectVision</li>
+      <li>Make_Genepack_VQEA_PlasteelSkin</li>
+      <li>Make_Genepack_VQEA_PlasteelClaws</li>
+      <li>Make_Genepack_VQEA_Genius</li>
+      <li>Make_Genepack_VQEA_Levitation</li>
+      <li>Make_Genepack_VQEA_Serene</li>
+      <li>Make_Genepack_VQEA_PassiveMeditation</li>
+      <li>Make_Genepack_VQEA_Bulwark</li>
+      <li>Make_Genepack_VQEA_Enormous</li>
+      <li>Make_Genepack_VQEA_SubstanceImpervious</li>
+      <li>Make_Genepack_VQEA_MasterfulAnimals</li>
+      <li>Make_Genepack_VQEA_MasterfulArtistic</li>
+      <li>Make_Genepack_VQEA_MasterfulConstruction</li>
+      <li>Make_Genepack_VQEA_MasterfulCooking</li>
+      <li>Make_Genepack_VQEA_MasterfulCrafting</li>
+      <li>Make_Genepack_VQEA_MasterfulMedical</li>
+      <li>Make_Genepack_VQEA_MasterfulMelee</li>
+      <li>Make_Genepack_VQEA_MasterfulMining</li>
+      <li>Make_Genepack_VQEA_MasterfulPlants</li>
+      <li>Make_Genepack_VQEA_MasterfulIntellectual</li>
+      <li>Make_Genepack_VQEA_MasterfulShooting</li>
+      <li>Make_Genepack_VQEA_MasterfulSocial</li>
+      <li>Make_Genepack_VQEA_InfernoSpew</li>
+      <li>Make_Genepack_VQEA_HellsphereBlast</li>
+      <li>Make_Genepack_VQEA_Invisibility</li>
+      <li>Make_Genepack_VQEA_SelfRepairingTissue</li>
+      <li>Make_Genepack_VQEA_Electromagnetized</li>
+      <li>Make_Genepack_VQEA_MatterPhasing</li>
+    </recipes>
+  </RebalancePatches.RecipeRemovalListDef>
+</Defs>

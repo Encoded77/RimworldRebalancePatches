@@ -83,45 +83,6 @@
   </Operation>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>bigsmall.geneintegrator</settingKey>
-    <operations>
-      <li Class="PatchOperationConditional">
-        <xpath>Defs/ThingDef[defName="BS_GeneGeneIntegrator"]</xpath>
-        <match Class="PatchOperationSequence">
-          <operations>
-            <li Class="PatchOperationAdd">
-              <xpath>Defs/ThingDef[defName="BS_GeneGeneIntegrator"]</xpath>
-              <value>
-                <recipeMaker>
-                  <researchPrerequisite>BS_ArchiteGeneScience</researchPrerequisite>
-                  <researchPrerequisites>
-                    <li>Archogenetics</li>
-                  </researchPrerequisites>
-                </recipeMaker>
-                <statBases>
-                  <MarketValue>4000</MarketValue>
-                  <WorkToMake>6000</WorkToMake>
-                </statBases>
-              </value>
-            </li>
-            <li Class="PatchOperationReplace">
-              <xpath>Defs/ThingDef[defName="BS_GeneGeneIntegrator"]/costList</xpath>
-              <value>
-                <costList Inherit="False">
-                  <ArchiteCapsule>1</ArchiteCapsule>
-                  <MedicineUltratech>2</MedicineUltratech>
-                  <ComponentSpacer>2</ComponentSpacer>
-                  <Neutroamine>20</Neutroamine>
-                </costList>
-              </value>
-            </li>
-          </operations>
-        </match>
-      </li>
-    </operations>
-  </Operation>
-
-  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
     <settingKey>geneconflicts.claws</settingKey>
     <operations>
       <li Class="PatchOperationConditional">

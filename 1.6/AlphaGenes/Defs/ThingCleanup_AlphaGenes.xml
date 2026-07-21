@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <RebalancePatches.ThingRemovalListDef>
+    <defName>RBP_ThingRemoval_AlphaGenes_GeneTools</defName>
+    <settingKey>geneticsresearch.consumables</settingKey>
+    <things>
+      <li>AG_GermlineMutator</li>
+    </things>
+  </RebalancePatches.ThingRemovalListDef>
+</Defs>

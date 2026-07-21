@@ -155,6 +155,29 @@ namespace RebalancePatches.Tests
         }
 
         [Test]
+        public static void ConsumablesLaneInheritsEitherPredecessor()
+        {
+            // Two v5 sources share one target, so the lane ends up on if either was on.
+            RebalancePatchesSettings offBoth = Fake(4, cameFromDisk: true);
+            offBoth.Set("geneticsresearch.agtools", false);
+            offBoth.Set("bigsmall.geneintegrator", false);
+            SettingsMigrations.Apply(offBoth);
+            Check.True(offBoth.TryGet("geneticsresearch.consumables", out bool none) && !none,
+                "both predecessors off must leave the lane off");
+            Check.True(!offBoth.TryGet("geneticsresearch.agtools", out _),
+                "the retired agtools key must not survive");
+            Check.True(!offBoth.TryGet("bigsmall.geneintegrator", out _),
+                "the retired geneintegrator key must not survive");
+
+            RebalancePatchesSettings oneOn = Fake(4, cameFromDisk: true);
+            oneOn.Set("geneticsresearch.agtools", false);
+            oneOn.Set("bigsmall.geneintegrator", true);
+            SettingsMigrations.Apply(oneOn);
+            Check.True(oneOn.TryGet("geneticsresearch.consumables", out bool either) && either,
+                "either predecessor on must leave the lane on");
+        }
+
+        [Test]
         public static void MigratedKeysAreAllRegistered()
         {
             RebalancePatchesSettings s = Fake(0, cameFromDisk: true);

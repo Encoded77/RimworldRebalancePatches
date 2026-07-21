@@ -2,31 +2,12 @@
 <Patch>
 
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>geneticsresearch.agtools</settingKey>
+    <settingKey>geneticsresearch.consumables</settingKey>
     <operations>
       <li Class="PatchOperationConditional">
-        <xpath>Defs/ResearchTabDef[defName="RBP_GeneticsTab"]</xpath>
+        <xpath>Defs/ResearchProjectDef[defName="RBP_GeneToolkits"]</xpath>
         <match Class="PatchOperationSequence">
           <operations>
-            <li Class="PatchOperationAdd">
-              <xpath>Defs</xpath>
-              <value>
-                <ResearchProjectDef>
-                  <defName>RBP_GeneToolkits</defName>
-                  <label>gene toolkits</label>
-                  <description>Craft single-use genetic toolkits that remove, convert or mutate genes on living subjects and edit genepacks. The archotech-grade targeted variants additionally require archite capsules.</description>
-                  <baseCost>2500</baseCost>
-                  <techLevel>Spacer</techLevel>
-                  <tab>RBP_GeneticsTab</tab>
-                  <prerequisites>
-                    <li>GeneProcessor</li>
-                  </prerequisites>
-                  <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
-                  <researchViewX>3</researchViewX>
-                  <researchViewY>3.80</researchViewY>
-                </ResearchProjectDef>
-              </value>
-            </li>
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="AG_GenepackTweaker" or defName="AG_GenepackDisruptor"]</xpath>
               <value>
@@ -56,7 +37,7 @@
               </value>
             </li>
             <li Class="PatchOperationAdd">
-              <xpath>Defs/ThingDef[defName="AG_GeneRemover" or defName="AG_Endogenefier" or defName="AG_Xenogenefier" or defName="AG_GermlineMutator"]</xpath>
+              <xpath>Defs/ThingDef[defName="AG_GeneRemover" or defName="AG_Endogenefier" or defName="AG_Xenogenefier"]</xpath>
               <value>
                 <recipeMaker>
                   <researchPrerequisite>RBP_GeneToolkits</researchPrerequisite>
@@ -78,7 +59,7 @@
               </value>
             </li>
             <li Class="PatchOperationAdd">
-              <xpath>Defs/ThingDef[defName="AG_GeneRemover" or defName="AG_Endogenefier" or defName="AG_Xenogenefier" or defName="AG_GermlineMutator"]/statBases</xpath>
+              <xpath>Defs/ThingDef[defName="AG_GeneRemover" or defName="AG_Endogenefier" or defName="AG_Xenogenefier"]/statBases</xpath>
               <value>
                 <WorkToMake>9000</WorkToMake>
               </value>
@@ -114,8 +95,15 @@
             <li Class="PatchOperationAdd">
               <xpath>Defs/ThingDef[defName="AG_ArchoGeneRemover" or defName="AG_ArchoEndogenefier" or defName="AG_ArchoXenogenefier"]</xpath>
               <value>
+                <researchPrerequisites>
+                  <li>RBP_GeneToolkits</li>
+                  <li>Archogenetics</li>
+                </researchPrerequisites>
                 <recipeMaker>
-                  <researchPrerequisite>RBP_GeneToolkits</researchPrerequisite>
+                  <researchPrerequisites>
+                    <li>RBP_GeneToolkits</li>
+                    <li>Archogenetics</li>
+                  </researchPrerequisites>
                   <recipeUsers>
                     <li>FabricationBench</li>
                   </recipeUsers>
@@ -143,6 +131,9 @@
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="AG_ArchoXenogenefier"]/statBases/MarketValue</xpath>
               <value><MarketValue>500</MarketValue></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="AG_RandomGeneTool"]/comps/li[@Class="AlphaGenes.CompProperties_RandomItemSpawner"]/items/li[item="AG_GermlineMutator"]</xpath>
             </li>
           </operations>
         </match>

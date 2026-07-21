@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using HarmonyLib;
 using RimTestRedux;
 using RimWorld;
@@ -85,6 +86,28 @@ namespace RebalancePatches.Tests
             Check.True(Check.XenotypeChanceOf(civil, "DV_Halffoot") > 0f, "OutlanderCivil lacks half-foots");
             Check.True(!Check.HasXenotype(Check.Def<FactionDef>("Pirate"), "DV_Halffoot"),
                 "Pirate still spawns half-foots");
+        }
+
+        [Test]
+        public static void InjectedDefsAreAttributedToThisMod()
+        {
+            // Defs added by PatchOperationAdd have no source asset, so the game files them under
+            // patchedDefs without a modContentPack. Research tree UIs badge each project with its
+            // source mod off that field, so ours would render blank next to everyone else's.
+            // DefAttribution claims them back; this catches any that slip through.
+            var unattributed = new List<string>();
+            foreach (Def def in LoadedModManager.PatchedDefsForReading)
+            {
+                if (def.defName != null && def.defName.StartsWith("RBP_") && def.modContentPack == null)
+                    unattributed.Add(def.defName);
+            }
+            Check.True(unattributed.Count == 0,
+                $"{unattributed.Count} injected defs have no source mod: {string.Join(", ", unattributed.ToArray())}");
+
+            // And the ones that were claimed must point at us, not at whoever loaded last.
+            ResearchTabDef tab = Check.Optional<ResearchTabDef>("RBP_GeneticsTab", "geneticsresearch.core");
+            if (tab != null)
+                Check.Eq(tab.modContentPack?.PackageId, "encoded.rebalancepatches", "RBP_GeneticsTab.modContentPack");
         }
     }
 }

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneticsresearch.consumables</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_GeneToolkits"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <ResearchProjectDef>
+                  <defName>RBP_GeneIntegration</defName>
+                  <label>gene integration</label>
+                  <description>Rewrite a subject's xenogenes into their germline in a single pass, freeing the xenogene slots to carry another full set.</description>
+                  <baseCost>5000</baseCost>
+                  <techLevel>Ultra</techLevel>
+                  <tab>RBP_GeneticsTab</tab>
+                  <prerequisites>
+                    <li>Archogenetics</li>
+                  </prerequisites>
+                  <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                  <requiredResearchFacilities>
+                    <li>MultiAnalyzer</li>
+                  </requiredResearchFacilities>
+                  <researchViewX>5</researchViewX>
+                  <researchViewY>4.20</researchViewY>
+                </ResearchProjectDef>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="BS_GeneToolBase"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_GeneToolkits</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="BS_GeneGeneIntegrator"]</xpath>
+              <value>
+                <recipeMaker>
+                  <researchPrerequisite>RBP_GeneIntegration</researchPrerequisite>
+                </recipeMaker>
+                <statBases>
+                  <MarketValue>4000</MarketValue>
+                  <WorkToMake>6000</WorkToMake>
+                </statBases>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="BS_GeneGeneIntegrator"]/costList</xpath>
+              <value>
+                <costList Inherit="False">
+                  <ArchiteCapsule>1</ArchiteCapsule>
+                  <MedicineUltratech>2</MedicineUltratech>
+                  <ComponentSpacer>2</ComponentSpacer>
+                  <Neutroamine>20</Neutroamine>
+                </costList>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="BS_CreateArchiteXenogerm" or defName="BS_CreateArchiteXenogerm_Endo"]/recipeMaker/researchPrerequisite</xpath>
+              <value>
+                <researchPrerequisites>
+                  <li>RBP_GeneToolkits</li>
+                  <li>Archogenetics</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="BS_CreateArchiteXenogerm" or defName="BS_CreateArchiteXenogerm_Endo"]</xpath>
+              <value>
+                <researchPrerequisites>
+                  <li>RBP_GeneToolkits</li>
+                  <li>Archogenetics</li>
+                </researchPrerequisites>
+              </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="AG_RandomGeneTool"]/comps/li[@Class="AlphaGenes.CompProperties_RandomItemSpawner"]/items/li[item="BS_GeneDicombobulator"]</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/ThingDef[defName="AG_RandomGeneTool"]/comps/li[@Class="AlphaGenes.CompProperties_RandomItemSpawner"]/items/li[item="BS_GeneDicombobulator" or item="BS_CreateArchiteXenogerm"]</xpath>
+              </match>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="BS_SerumSizeSerumBase"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_GeneToolkits</researchPrerequisite></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="BS_MadScienceField"]/label</xpath>
+              <value><label>weaponized genetics</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="BS_MadScienceField"]/description</xpath>
+              <value><description>Turn gene science on the battlefield. Build mutagenic ray weapons and automated turrets that rewrite a target's biology mid-fight, collapsing or bloating them past what their body can carry.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="BS_MadScienceField"]/techLevel</xpath>
+              <value><techLevel>Ultra</techLevel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="BS_MadScienceField"]/baseCost</xpath>
+              <value><baseCost>4000</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="BS_MadScienceField"]/tab</xpath>
+              <value><tab>RBP_GeneticsTab</tab></value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="BS_MadScienceField"]</xpath>
+              <value>
+                <requiredResearchFacilities>
+                  <li>MultiAnalyzer</li>
+                </requiredResearchFacilities>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="BS_MadScienceField"]/researchViewX</xpath>
+              <value><researchViewX>5</researchViewX></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="BS_MadScienceField"]/researchViewY</xpath>
+              <value><researchViewY>5.00</researchViewY></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ResearchProjectDef[defName="BS_MadScienceField"]/prerequisites/li[.="BS_GeneScience" or .="BS_AnimalGrowthSerums"]</xpath>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="BS_MadScienceField"]/prerequisites</xpath>
+              <value><li>Archogenetics</li></value>
+            </li>
+
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ResearchProjectDef[defName="BS_GeneScience" or defName="BS_ArchiteGeneScience" or defName="BS_AnimalGrowthSerums"]</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

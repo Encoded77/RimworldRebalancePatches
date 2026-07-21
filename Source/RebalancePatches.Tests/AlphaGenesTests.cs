@@ -80,24 +80,73 @@ namespace RebalancePatches.Tests
         [Test]
         public static void GeneToolkitsCraftable()
         {
-            if (!Check.Ready("geneticsresearch.agtools", Ids.AlphaGenes, Ids.Biotech) || !Check.GeneticsTabLoaded("geneticsresearch.agtools"))
+            if (!Check.Ready("geneticsresearch.consumables", Ids.AlphaGenes, Ids.Biotech) || !Check.GeneticsTabLoaded("geneticsresearch.consumables"))
                 return;
             ResearchProjectDef toolkits = Check.Def<ResearchProjectDef>("RBP_GeneToolkits");
             Check.Eq(toolkits.baseCost, 2500f, "RBP_GeneToolkits.baseCost");
+            Check.Eq(toolkits.techLevel, TechLevel.Spacer, "RBP_GeneToolkits.techLevel");
             Check.PrereqsAre(toolkits.prerequisites, "RBP_GeneToolkits.prerequisites", "GeneProcessor");
             foreach (string tool in new[] { "AG_GenepackTweaker", "AG_GenepackDisruptor", "AG_GeneRemover", "AG_Endogenefier",
-                "AG_Xenogenefier", "AG_GermlineMutator", "AG_XenotypeNullifier", "AG_XenotypeInjector",
-                "AG_ArchoGeneRemover", "AG_ArchoEndogenefier", "AG_ArchoXenogenefier" })
+                "AG_Xenogenefier", "AG_XenotypeNullifier", "AG_XenotypeInjector" })
             {
                 ThingDef def = Check.Def<ThingDef>(tool);
                 Check.Eq(Check.RecipePrereq(def)?.defName, "RBP_GeneToolkits", $"{tool} recipeMaker.researchPrerequisite");
                 Check.True(Check.CostOf(def, "Neutroamine") >= 4, $"{tool} costs no neutroamine");
                 Check.True(Check.StatBase(def, "WorkToMake") >= 6000f, $"{tool} lacks WorkToMake");
             }
+            // The archotech variants carry the pair as a list, not the singular field, so
+            // archogenetics gates them alongside the toolkits project itself.
             foreach (string tool in new[] { "AG_ArchoGeneRemover", "AG_ArchoEndogenefier", "AG_ArchoXenogenefier" })
-                Check.Eq(Check.CostOf(Check.Def<ThingDef>(tool), "ArchiteCapsule"), 1, $"{tool} costList[ArchiteCapsule]");
+            {
+                ThingDef def = Check.Def<ThingDef>(tool);
+                Check.PrereqsAre(Check.RecipePrereqs(def), $"{tool} recipeMaker.researchPrerequisites",
+                    "RBP_GeneToolkits", "Archogenetics");
+                // The same pair has to sit on the ThingDef, not just on recipeMaker: research-tree
+                // UIs read ThingDef.researchPrerequisites to decide which "unlocked with" group an
+                // item belongs to, and without it the item shows as ungated next to its own recipe.
+                Check.PrereqsAre(def.researchPrerequisites, $"{tool} researchPrerequisites",
+                    "RBP_GeneToolkits", "Archogenetics");
+                Check.Eq(Check.CostOf(def, "ArchiteCapsule"), 1, $"{tool} costList[ArchiteCapsule]");
+                Check.True(Check.StatBase(def, "WorkToMake") >= 6000f, $"{tool} lacks WorkToMake");
+            }
             Check.Eq(Check.StatBase(Check.Def<ThingDef>("AG_ArchoXenogenefier"), "MarketValue"), 500f,
                 "AG_ArchoXenogenefier MarketValue");
+        }
+
+        [Test]
+        public static void GermlineMutatorRemoved()
+        {
+            if (!Check.Ready("geneticsresearch.consumables", Ids.AlphaGenes, Ids.Biotech, Ids.CherryPicker)
+                || !Check.GeneticsTabLoaded("geneticsresearch.consumables"))
+                return;
+            Check.ThingUnobtainable("AG_GermlineMutator");
+            // Cherry Picker does not know about Alpha Genes' custom spawner comp, so its dispenser
+            // entry is ours to strip - otherwise the dispenser keeps handing the tool out.
+            Check.True(!DispenserOffers("AG_GermlineMutator"), "AG_RandomGeneTool still offers AG_GermlineMutator");
+        }
+
+        /// <summary>
+        /// True when Alpha Genes' random gene tool dispenser still lists <paramref name="thingDefName"/>
+        /// in its weighted spawn table. Read reflectively: the comp type lives in Alpha Genes.
+        /// </summary>
+        internal static bool DispenserOffers(string thingDefName)
+        {
+            ThingDef dispenser = DefDatabase<ThingDef>.GetNamedSilentFail("AG_RandomGeneTool");
+            if (dispenser?.comps == null)
+                return false;
+            foreach (CompProperties props in dispenser.comps)
+            {
+                if (props.GetType().Name != "CompProperties_RandomItemSpawner")
+                    continue;
+                if (!(Check.Field(props, "items") is IEnumerable items))
+                    continue;
+                foreach (object entry in items)
+                {
+                    if (Check.Field(entry, "item") is ThingDef item && item.defName == thingDefName)
+                        return true;
+                }
+            }
+            return false;
         }
 
         [Test]
