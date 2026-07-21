@@ -49,7 +49,7 @@ namespace RebalancePatches
     public static class SettingsMigrations
     {
         /// Bump whenever a new flip or move is added below.
-        public const int CurrentVersion = 3;
+        public const int CurrentVersion = 4;
 
         private static readonly DefaultFlip[] Flips =
         {
@@ -90,6 +90,18 @@ namespace RebalancePatches
             new KeyMove(3, "xenotypes.stonebornskin", "genetics.stonebornskin"),
             new KeyMove(3, "xenotypes.neanderthalfrost", "genetics.neanderthalfrost"),
             new KeyMove(3, "xenotypes.wvcspawns", "genetics.wvcspawns"),
+
+            // 1.8.0 replaced the single xenotypes.factions toggle with one key per faction-owning
+            // mod, so the xenotype faction rework can be taken or left per mod. A player who turned
+            // the old toggle off opted out of xenotype faction meddling entirely - fan the choice
+            // out to every new key, including the ones with no predecessor. xenotypes.wvcchances
+            // folded into xenotypes.vanilla, which now owns every vanilla-faction roster edit;
+            // sharing a target means the result is on if either source was.
+            new KeyMove(4, "xenotypes.factions", "xenotypes.vanilla"),
+            new KeyMove(4, "xenotypes.factions", "xenotypes.royalty"),
+            new KeyMove(4, "xenotypes.factions", "xenotypes.odyssey"),
+            new KeyMove(4, "xenotypes.factions", "xenotypes.rimsenal"),
+            new KeyMove(4, "xenotypes.wvcchances", "xenotypes.vanilla"),
         };
 
         /// <summary>

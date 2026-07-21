@@ -135,7 +135,8 @@ namespace RebalancePatches.Tests
                 return;
             Check.GeneTag(Check.Def<GeneDef>("AG_ClawedHands"), "RBP_Claws");
             Check.GeneTag(Check.Def<GeneDef>("AG_CrabClaw"), "RBP_Claws");
-            GeneDef pneumatic = Check.Optional<GeneDef>("AG_VFEI_PneumaticClaw", "geneconflicts.claws");
+            // Alpha Genes only defines this one alongside VFE - Insectoids 2.
+            GeneDef pneumatic = Check.Optional<GeneDef>("AG_VFEI_PneumaticClaw", "geneconflicts.claws", Ids.VFEInsectoids2);
             if (pneumatic != null)
                 Check.GeneTag(pneumatic, "RBP_Claws");
         }

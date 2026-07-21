@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.8.0 (2026-07-21)
+
+**Thematic xenotype rosters** — with many xenotype mods installed, the generic factions become a dumping ground: every mod adds its xenotypes to outlanders and pirates at similar weights until baseliners are under 10% of the people you meet and no faction has a recognisable character. The vanilla, Empire, Odyssey and Rimsenal faction rosters are now rebuilt around what each faction is, and every reworked roster keeps at least 35% baseliners.
+
+- Settled outlander towns lean industrial, rough outlanders frontier, and pirates predatory; xenotypes trimmed from one faction gain weight in one that suits them instead of being dropped.
+- Tribal factions gain a small primitive-themed roster. They previously rolled baseliner every single time, since the tribal base def had no xenotype set at all.
+- The Empire leans aristocratic and military; deep-space xenotypes concentrate in Rimsenal's Spacer factions and Odyssey's Salvagers.
+- The single **Xenotypes join fitting factions** toggle is replaced by one toggle per faction-owning mod (`xenotypes.vanilla`, `xenotypes.royalty`, `xenotypes.odyssey`, `xenotypes.rimsenal`), so the rework can be taken or left per mod. **Fewer WVC xenotypes in generic factions** folds into `xenotypes.vanilla`. If you turned either old toggle off, that choice carries over to the toggles that replaced it.
+- Xenotype Spawning is now an overhaul group, sitting above the divider with the others. It is the one overhaul that ships **on** — it changes which xenotypes newly generated pawns roll, rather than reworking a system you build against, so an ongoing colony is unaffected except in pawns generated from here on.
+## 1.7.0 (2026-07-20)
+
+- New mod icon and preview image.
+
 ## 1.7.0 (2026-07-20)
 
 **Expertise Consolidation** (`vse.expertiseconsolidation`, off by default) — Vanilla Skills Expanded's and modded narrow expertises are replaced by 32 broader ones, two to four per skill, so every pick is a genuine trade-off instead of a long list with one right answer. Bonuses become multipliers topping out near +40% at expertise level 20, instead of flat offsets reaching +100% or overshooting a stat's ceiling; combat and stat-heavy expertises are tuned below that ceiling. Expertises from Alpha Skills, Hauts' Framework, Vanilla Fishing Expanded and Vanilla Gravship Expanded are folded in when loaded, and stats from Integrated Implants, Mechanoid Upgrades, Altered Carbon and Vanilla Psycasts Expanded are picked up the same way. Pawns keep any expertise they already picked.

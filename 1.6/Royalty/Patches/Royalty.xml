@@ -17,4 +17,45 @@
     </operations>
   </Operation>
 
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>xenotypes.royalty</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/HBX_Highborn</xpath>
+        <value><HBX_Highborn>0.09</HBX_Highborn></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/Neanderthal</xpath>
+        <value><Neanderthal>0.04</Neanderthal></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/Askbarn</xpath>
+        <value><Askbarn>0.04</Askbarn></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/Uredd</xpath>
+        <value><Uredd>0.03</Uredd></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/Zohar</xpath>
+        <value><Zohar>0.03</Zohar></value>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/DV_Keshig</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/DV_Brawnum</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/Harana</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/Starjack</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Empire"]/xenotypeSet/xenotypeChances/VREA_AndroidAwakened</xpath>
+      </li>
+    </operations>
+  </Operation>
+
 </Patch>

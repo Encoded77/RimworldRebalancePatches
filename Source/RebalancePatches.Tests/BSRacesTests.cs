@@ -104,10 +104,11 @@ namespace RebalancePatches.Tests
             Check.Eq(Check.Def<PawnKindDef>("BS_Ogre_Chieftain").label, "hulker chef", "BS_Ogre_Chieftain label");
             Check.Eq(Check.Def<PawnKindDef>("BS_Troll_Raider_Adult").label, "regenerant raider", "BS_Troll_Raider_Adult label");
             Check.Eq(Check.Def<PawnKindDef>("BS_FleshGolemWarrior").label, "bioconstruct", "BS_FleshGolemWarrior label");
-            PawnKindDef mechaRanged = Check.Optional<PawnKindDef>("BS_MechaJotunRanged", "scifinames.bsraces");
+            // The mecha jotuns load only with the Simple Androids addon, per BS Races' own LoadFolders.
+            PawnKindDef mechaRanged = Check.Optional<PawnKindDef>("BS_MechaJotunRanged", "scifinames.bsraces", Ids.BSSimpleAndroids);
             if (mechaRanged != null)
                 Check.Eq(mechaRanged.label, "mecha-gigant", "BS_MechaJotunRanged label");
-            PawnKindDef mechaMelee = Check.Optional<PawnKindDef>("BS_MechaJotunMelee", "scifinames.bsraces");
+            PawnKindDef mechaMelee = Check.Optional<PawnKindDef>("BS_MechaJotunMelee", "scifinames.bsraces", Ids.BSSimpleAndroids);
             if (mechaMelee != null)
                 Check.Eq(mechaMelee.label, "mecha-gigant", "BS_MechaJotunMelee label");
         }

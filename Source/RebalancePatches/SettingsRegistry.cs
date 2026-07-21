@@ -144,7 +144,23 @@ namespace RebalancePatches
                     requiredMods: new[] { "sarg.alphagenes" }),
             }, defaultOn: false, requiredMods: new[] { "ludeon.rimworld.biotech" }, isOverhaul: true),
 
-            new RebalanceGroup("scifinames", "Sci-fi Renaming", new List<RebalanceToggle>
+            
+            new RebalanceGroup("xenotypes", "Xenotype Spawning Overhaul", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("xenotypes.vanilla", "Thematic xenotypes in vanilla factions",
+                    "Outlander, pirate and tribal rosters are rebuilt around what each faction is. Settled outlanders lean industrial (Det's Half-foot, Biotech genies, Det's Brawnum), rough outlanders frontier (Det's Venators and Boglegs, yttakin, impids), and pirates predatory (Boglegs, Det's Buzzers, wasters, VRE - Hussar's uhlans). Every roster keeps at least 35% baseliners, where the modlist had crowded them down to under 10%. Tribal factions, which rolled baseliner every single time, gain a small primitive-themed roster (neanderthals, VRE - Saurid's saurids, Det's Venators, impids). Also thins WVC's oddball xenotypes out of generic pools, moving Undead and Sandycat to the Horax cult (Anomaly)."),
+                new RebalanceToggle("xenotypes.royalty", "Thematic xenotypes in the Empire",
+                    "The Empire leans aristocratic and military: Det's Avaloi, Biotech hussars and genies and Highborn Xenotype's highborn stay prominent, while Det's Keshig and Brawnum, Rimsenal's Harana, Odyssey's starjack and VRE - Android's awakened androids leave the roster. Keeps 37% baseliners.",
+                    requiredMods: new[] { "ludeon.rimworld.royalty" }),
+                new RebalanceToggle("xenotypes.odyssey", "Thematic xenotypes for Odyssey factions",
+                    "The Salvagers gain Det's Half-foot and hold a spread of Rimsenal, Det's and Alpha Genes xenotypes at even weight; the Traders guild gains Alpha Genes' Fleetkind.",
+                    requiredMods: new[] { "ludeon.rimworld.odyssey" }),
+                new RebalanceToggle("xenotypes.rimsenal", "Thematic xenotypes for Rimsenal factions",
+                    "Rimsenal's Spacer factions gain the deep-space xenotypes displaced from planetside pools: Odyssey's starjack, Det's Keshig and Half-foot and VRE - Android's awakened androids. WVC's Mechakin, Rogueformer and Genethrower also move here from generic outlander and pirate pools.",
+                    requiredMods: new[] { "rimsenal.spacer" }),
+            }, requiredMods: new[] { "ludeon.rimworld.biotech" }, isOverhaul: true),
+
+            new RebalanceGroup("scifinames", "Sci-fi Renaming Overhaul", new List<RebalanceToggle>
             {
                 new RebalanceToggle("scifinames.bsraces", "Big and Small - Races",
                     "Renames the Norse-flavoured content to gene-line flavour: jotun become gigants (cryo/pyro variants), ogres hulkers, dvergr deepkin, nisse minikin, svartalfs umbrakin, redcaps scrappers, trolls regenerants, flesh golems bioconstructs and hearthguards/hearthdolls warden/service synths. The Muspelheim, Niflheim, ogre and little people factions, their pawn kinds and all descriptions follow suit.",
@@ -262,15 +278,6 @@ namespace RebalancePatches
                 new RebalanceToggle("memes.inspirations", "Inspirations respect ideology precepts",
                     "Pawns whose ideology abhors an activity stop rolling inspirations for it: shooting/melee frenzies blocked by VIE - Memes and Structures and Alpha Memes violence precepts, taming inspiration by their ranching/bonding precepts, and Vanilla Social Interactions Expanded's frenzies by the matching precepts.",
                     requiredMods: new[] { "ludeon.rimworld.ideology" }),
-            }),
-
-            new RebalanceGroup("xenotypes", "Xenotype Spawning", new List<RebalanceToggle>
-            {
-                new RebalanceToggle("xenotypes.factions", "Xenotypes join fitting factions",
-                    "WVC's Mechakin, Rogueformer and Genethrower move from generic outlander/pirate pools to Rimsenal's Spacer factions, and Odyssey's Salvagers/Traders guild gain Rimsenal, Det's and Alpha Genes xenotypes where fitting."),
-                new RebalanceToggle("xenotypes.wvcchances", "Fewer WVC xenotypes in generic factions",
-                    "WVC's Featherdust, Cat deity, Blank, Sandycat and Undead stop spawning in generic vanilla factions; Undead and Sandycat move to the Horax cult instead (Anomaly).",
-                    requiredMods: new[] { "wvc.sergkart.races.biotech" }),
             }),
 
             new RebalanceGroup("implants", "Integrated Implants", new List<RebalanceToggle>
@@ -436,6 +443,9 @@ namespace RebalancePatches
             {
                 new RebalanceToggle("dev.genedump", "Auto-refresh gene database dump",
                     "With dev mode on, rewrites GeneDump.json at the main menu so the dump always reflects the current modlist.",
+                    defaultOn: false),
+                new RebalanceToggle("dev.xenofactiondump", "Auto-refresh xenotype faction dump",
+                    "With dev mode on, rewrites XenotypeFactionDump.json at the main menu: which xenotypes each faction can roll, which ones no faction can roll, and each faction's modded-xenotype share.",
                     defaultOn: false),
             }),
         };

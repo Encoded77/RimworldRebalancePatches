@@ -20,11 +20,11 @@ namespace RebalancePatches.Tests
         [Test]
         public static void WvcXenotypesLeaveGenericFactions()
         {
-            if (!Check.Ready("xenotypes.wvcchances", Ids.WVC))
+            if (!Check.Ready("xenotypes.vanilla", Ids.WVC))
                 return;
             void NotIn(string factionName, string xenotype)
             {
-                FactionDef faction = Check.Optional<FactionDef>(factionName, "xenotypes.wvcchances");
+                FactionDef faction = Check.Optional<FactionDef>(factionName, "xenotypes.vanilla");
                 if (faction != null)
                     Check.True(!Check.HasXenotype(faction, xenotype), $"{factionName} still spawns {xenotype}");
             }

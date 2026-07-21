@@ -18,6 +18,7 @@ namespace RebalancePatches.Tests
         public const string AlteredCarbon = "hlx.ultratechalteredcarbon";
         public const string BigSmallCore = "redmattis.bigsmall.core";
         public const string BigSmallSlimes = "redmattis.bsslimes";
+        public const string BSSimpleAndroids = "redmattis.bigsmall.simpleandroids";
         public const string WVC = "wvc.sergkart.races.biotech";
         public const string VREHighmate = "vanillaracesexpanded.highmate";
         public const string VREArchon = "vanillaracesexpanded.archon";
@@ -89,6 +90,7 @@ namespace RebalancePatches.Tests
         public const string BSMoreXenos = "redmattis.morexenos";
         public const string BSLamias = "redmattis.lamiasandothersnakes";
         public const string VREStarjack = "vanillaracesexpanded.starjack";
+        public const string VREAndroid = "vanillaracesexpanded.android";
     }
 
     internal static class Check
@@ -133,12 +135,34 @@ namespace RebalancePatches.Tests
             return def;
         }
 
-        public static T Optional<T>(string defName, string settingKey) where T : Def
+        /// <summary>
+        /// A def one of our patches targets that is allowed to be missing, logging WHY it is
+        /// missing. Two absences are healthy - a def we removed ourselves, and a def behind an
+        /// addon the user did not subscribe to - and one is a defect: the def was renamed or
+        /// dropped upstream and our patch now does nothing. Only the last is logged as a warning.
+        /// Pass <paramref name="ownerMod"/> for defs that load only with an optional addon.
+        /// </summary>
+        public static T Optional<T>(string defName, string settingKey, string ownerMod = null) where T : Def
         {
             T def = DefDatabase<T>.GetNamedSilentFail(defName);
-            if (def == null)
-                Log.Message($"[RBP Tests] SKIP {settingKey}: optional def {typeof(T).Name} '{defName}' not present");
-            return def;
+            if (def != null)
+                return def;
+
+            string what = $"{typeof(T).Name} '{defName}'";
+            if (ownerMod != null && !ModsConfig.IsActive(ownerMod))
+            {
+                Log.Message($"[RBP Tests] SKIP {settingKey}: {what} absent - mod '{ownerMod}' not active (expected)");
+                return null;
+            }
+            string removedBy = GeneRemovalInfo.ActiveRemovalSetting(defName);
+            if (removedBy != null)
+            {
+                Log.Message($"[RBP Tests] SKIP {settingKey}: {what} absent - removed by our own '{removedBy}' list (expected)");
+                return null;
+            }
+            string ownerNote = ownerMod == null ? "" : $" and '{ownerMod}' is active";
+            Log.Warning($"[RBP Tests] SKIP {settingKey}: {what} absent - UNEXPLAINED: no active removal list covers it{ownerNote}, so the patch may be dead (renamed or removed upstream?)");
+            return null;
         }
 
         public static Def DefOfType(string typeName, string defName)
@@ -244,6 +268,24 @@ namespace RebalancePatches.Tests
                     return true;
             return false;
         }
+
+        public static float XenotypeChanceOf(FactionDef faction, string xenotypeDefName)
+        {
+            XenotypeSet set = faction.xenotypeSet;
+            if (set == null)
+                return 0f;
+            for (int i = 0; i < set.Count; i++)
+                if (set[i].xenotype != null && set[i].xenotype.defName == xenotypeDefName)
+                    return set[i].chance;
+            return 0f;
+        }
+
+        /// <summary>
+        /// What the game actually leaves for baseliners: PawnGenerator appends Baseliner at
+        /// 1 - sum only while that is positive, so a roster summing past 1.0 rolls none at all.
+        /// </summary>
+        public static float BaselinerShare(FactionDef faction) =>
+            faction.xenotypeSet?.BaselinerChance ?? 1f;
 
         public static void XenoGene(string xenotypeDefName, string geneDefName)
         {

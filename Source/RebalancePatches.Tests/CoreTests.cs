@@ -33,5 +33,58 @@ namespace RebalancePatches.Tests
                 Check.HarmonyPatched(AccessTools.Method(typeof(InspirationWorker), "InspirationCanOccur"),
                     "memes.inspirations");
         }
+
+        [Test]
+        public static void GenericFactionsKeepABaselinerFloor()
+        {
+            if (!Check.Ready("xenotypes.vanilla", Ids.Biotech))
+                return;
+            foreach (string name in new[] { "OutlanderCivil", "OutlanderRough", "Pirate" })
+            {
+                FactionDef faction = Check.Def<FactionDef>(name);
+                float baseliner = Check.BaselinerShare(faction);
+                Check.True(baseliner >= 0.35f,
+                    $"{name} leaves only {baseliner:P1} for baseliners, below the 35% floor");
+            }
+        }
+
+        [Test]
+        public static void TribalFactionsGainAThematicRoster()
+        {
+            if (!Check.Ready("xenotypes.vanilla", Ids.Biotech))
+                return;
+            foreach (string name in new[] { "TribeCivil", "TribeRough", "TribeSavage" })
+            {
+                FactionDef faction = Check.Def<FactionDef>(name);
+                Check.True(Check.HasXenotype(faction, "Neanderthal"), $"{name} lacks Neanderthal");
+                float baseliner = Check.BaselinerShare(faction);
+                Check.True(baseliner >= 0.6f,
+                    $"{name} leaves only {baseliner:P1} for baseliners; tribals should stay mostly baseliner");
+            }
+        }
+
+        [Test]
+        public static void PredatoryXenotypesConcentrateInPirates()
+        {
+            if (!Check.Ready("xenotypes.vanilla", Ids.Biotech, Ids.Boglegs))
+                return;
+            FactionDef pirate = Check.Def<FactionDef>("Pirate");
+            FactionDef civil = Check.Def<FactionDef>("OutlanderCivil");
+            Check.True(Check.XenotypeChanceOf(pirate, "DV_Bogleg") > Check.XenotypeChanceOf(civil, "DV_Bogleg"),
+                "boglegs must be commoner among pirates than in settled outlander towns");
+            if (ModsConfig.IsActive(Ids.Buzzers))
+                Check.True(!Check.HasXenotype(civil, "DV_Buzzer"), "OutlanderCivil still spawns buzzers");
+        }
+
+        [Test]
+        public static void IndustrialXenotypesConcentrateInSettledOutlanders()
+        {
+            if (!Check.Ready("xenotypes.vanilla", Ids.Biotech, Ids.Halffoot))
+                return;
+            FactionDef civil = Check.Def<FactionDef>("OutlanderCivil");
+            Check.True(Check.XenotypeChanceOf(civil, "DV_Halffoot") > 0f, "OutlanderCivil lacks half-foots");
+            Check.True(!Check.HasXenotype(Check.Def<FactionDef>("Pirate"), "DV_Halffoot"),
+                "Pirate still spawns half-foots");
+        }
     }
 }

@@ -127,7 +127,7 @@
     </operations>
   </Operation>
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>xenotypes.wvcchances</settingKey>
+    <settingKey>xenotypes.vanilla</settingKey>
     <operations>
       <li Class="PatchOperationConditional">
         <xpath>Defs/FactionDef[defName="PirateYttakin"]/xenotypeSet/xenotypeChances/WVC_Featherdust</xpath>

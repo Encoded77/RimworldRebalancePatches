@@ -11,7 +11,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void OdysseyFactionsGainXenotypes()
         {
-            if (!Check.Ready("xenotypes.factions", Ids.Odyssey))
+            if (!Check.Ready("xenotypes.odyssey", Ids.Odyssey))
                 return;
             FactionDef salvagers = Check.Def<FactionDef>("Salvagers");
             var perMod = new Dictionary<string, string[]>

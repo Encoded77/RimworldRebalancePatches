@@ -30,7 +30,7 @@ namespace RebalancePatches
             InspirationNullifyPatches.TryApply(harmony);
             GeneComplexityPatches.TryApply(harmony);
             GeneCleanup.TryApply();
-            GeneDumpAutoRun.TryApply(harmony);
+            DumpAutoRun.TryApply(harmony);
         }
     }
 }

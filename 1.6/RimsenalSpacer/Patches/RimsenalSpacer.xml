@@ -55,8 +55,17 @@
     </operations>
   </Operation>
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
-    <settingKey>xenotypes.factions</settingKey>
+    <settingKey>xenotypes.rimsenal</settingKey>
     <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/FactionDef[@Name="SpacerFactionBase"]/xenotypeSet/xenotypeChances</xpath>
+        <value>
+          <Starjack MayRequire="ludeon.rimworld.odyssey">0.05</Starjack>
+          <DV_Keshig MayRequire="det.keshig">0.04</DV_Keshig>
+          <DV_Halffoot MayRequire="det.halffoot">0.03</DV_Halffoot>
+          <VREA_AndroidAwakened MayRequire="vanillaracesexpanded.android">0.03</VREA_AndroidAwakened>
+        </value>
+      </li>
       <li Class="RebalancePatches.PatchOperationFindModById">
         <mods>
           <li>wvc.sergkart.races.biotech</li>

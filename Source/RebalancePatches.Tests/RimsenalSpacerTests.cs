@@ -59,7 +59,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void WvcXenotypesMoveToSpacerFactions()
         {
-            if (!Check.Ready("xenotypes.factions", Ids.WVC))
+            if (!Check.Ready("xenotypes.rimsenal", Ids.WVC))
                 return;
             Check.True(!Check.HasXenotype(Check.Def<FactionDef>("OutlanderRough"), "WVC_Meca"), "OutlanderRough still spawns WVC_Meca");
             Check.True(!Check.HasXenotype(Check.Def<FactionDef>("OutlanderRough"), "WVC_RogueFormer"), "OutlanderRough still spawns WVC_RogueFormer");

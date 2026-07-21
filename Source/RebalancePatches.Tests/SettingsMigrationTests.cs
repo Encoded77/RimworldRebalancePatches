@@ -136,7 +136,7 @@ namespace RebalancePatches.Tests
             s.Set("genetics.core", false);              // research tree child, turned off by hand
             s.Set("genepool.dedup", false);             // genepool child, turned off by hand
             s.Set("xenotypes.stonebornskin", false);    // xenotype-gene child, turned off by hand
-            s.Set("xenotypes.factions", false);         // belongs to Xenotype Spawning: must NOT move
+            s.Set("xenotypes.factions", false);         // retired in v4, fans out per faction owner
             SettingsMigrations.Apply(s);
 
             Check.True(s.TryGet("geneticsresearch.core", out bool core) && !core,
@@ -145,8 +145,11 @@ namespace RebalancePatches.Tests
                 "a genepool child must be carried to genetics.*");
             Check.True(s.TryGet("genetics.stonebornskin", out bool skin) && !skin,
                 "a xenotype-gene child must be carried to genetics.*");
-            Check.True(s.TryGet("xenotypes.factions", out bool factions) && !factions,
-                "Xenotype Spawning's own keys must be left alone");
+            Check.True(s.TryGet("xenotypes.vanilla", out bool vanilla) && !vanilla,
+                "the retired xenotypes.factions must carry its choice to xenotypes.vanilla");
+            Check.True(s.TryGet("xenotypes.odyssey", out bool odyssey) && !odyssey,
+                "the retired xenotypes.factions must reach every faction key that replaced it");
+            Check.True(!s.TryGet("xenotypes.factions", out _), "the retired faction key must not survive");
             Check.True(!s.TryGet("genetics.core", out _), "old research child key must not survive");
             Check.True(!s.TryGet("genepool.dedup", out _), "old genepool child key must not survive");
         }

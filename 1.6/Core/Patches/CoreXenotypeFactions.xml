@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>xenotypes.vanilla</settingKey>
+    <operations>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/Stoneborn</xpath>
+        <value><Stoneborn>0.06</Stoneborn></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/Dirtmole</xpath>
+        <value><Dirtmole>0.05</Dirtmole></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/Neanderthal</xpath>
+        <value><Neanderthal>0.04</Neanderthal></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/Zohar</xpath>
+        <value><Zohar>0.04</Zohar></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/Harana</xpath>
+        <value><Harana>0.03</Harana></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/VRE_Lowmate</xpath>
+        <value><VRE_Lowmate>0.005</VRE_Lowmate></value>
+      </li>
+
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/DV_Bogleg</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/DV_Avaloi</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/DV_Brawnum</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/DV_Halffoot</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/DV_Buzzer</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/DV_Venator</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/DV_Keshig</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/Uredd</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/Askbarn</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/Hussar</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/Genie</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/Starjack</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[@Name="OutlanderFactionBase"]/xenotypeSet/xenotypeChances/VREA_AndroidAwakened</xpath>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/FactionDef[defName="OutlanderCivil"]/xenotypeSet</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/FactionDef[defName="OutlanderCivil"]</xpath>
+          <value><xenotypeSet /></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/FactionDef[defName="OutlanderCivil"]/xenotypeSet/xenotypeChances</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/FactionDef[defName="OutlanderCivil"]/xenotypeSet</xpath>
+          <value><xenotypeChances /></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="OutlanderCivil"]/xenotypeSet/xenotypeChances/HBX_Highborn</xpath>
+        <value><HBX_Highborn>0.05</HBX_Highborn></value>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/FactionDef[defName="OutlanderCivil"]/xenotypeSet/xenotypeChances</xpath>
+        <value>
+          <DV_Halffoot MayRequire="det.halffoot">0.09</DV_Halffoot>
+          <Genie MayRequire="ludeon.rimworld.biotech">0.07</Genie>
+          <DV_Brawnum MayRequire="det.brawnum">0.07</DV_Brawnum>
+          <DV_Bogleg MayRequire="det.boglegs">0.04</DV_Bogleg>
+          <Askbarn MayRequire="rimsenal.askbarn">0.03</Askbarn>
+          <Starjack MayRequire="ludeon.rimworld.odyssey">0.025</Starjack>
+        </value>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/FactionDef[defName="OutlanderRough"]/xenotypeSet</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/FactionDef[defName="OutlanderRough"]</xpath>
+          <value><xenotypeSet /></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/FactionDef[defName="OutlanderRough"]/xenotypeSet/xenotypeChances</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/FactionDef[defName="OutlanderRough"]/xenotypeSet</xpath>
+          <value><xenotypeChances /></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/FactionDef[defName="OutlanderRough"]/xenotypeSet/xenotypeChances</xpath>
+        <value>
+          <DV_Venator MayRequire="det.venators">0.09</DV_Venator>
+          <DV_Bogleg MayRequire="det.boglegs">0.07</DV_Bogleg>
+          <DV_Brawnum MayRequire="det.brawnum">0.07</DV_Brawnum>
+          <Yttakin MayRequire="ludeon.rimworld.biotech">0.05</Yttakin>
+          <DV_Halffoot MayRequire="det.halffoot">0.04</DV_Halffoot>
+          <Impid MayRequire="ludeon.rimworld.biotech">0.03</Impid>
+          <Genie MayRequire="ludeon.rimworld.biotech">0.02</Genie>
+        </value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/DV_Bogleg</xpath>
+        <value><DV_Bogleg>0.1</DV_Bogleg></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/DV_Buzzer</xpath>
+        <value><DV_Buzzer>0.08</DV_Buzzer></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Dirtmole</xpath>
+        <value><Dirtmole>0.07</Dirtmole></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Waster</xpath>
+        <value><Waster>0.06</Waster></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/DV_Keshig</xpath>
+        <value><DV_Keshig>0.05</DV_Keshig></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Impid</xpath>
+        <value><Impid>0.04</Impid></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/VRESaurids_Saurid</xpath>
+        <value><VRESaurids_Saurid>0.035</VRESaurids_Saurid></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Stoneborn</xpath>
+        <value><Stoneborn>0.03</Stoneborn></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Pigskin</xpath>
+        <value><Pigskin>0.03</Pigskin></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/VREH_Uhlan</xpath>
+        <value><VREH_Uhlan>0.02</VREH_Uhlan></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/VRE_Lowmate</xpath>
+        <value><VRE_Lowmate>0.015</VRE_Lowmate></value>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Zohar</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Askbarn</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Uredd</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Harana</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Genie</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Neanderthal</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Hussar</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/DV_Halffoot</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/Starjack</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/FactionDef[defName="Pirate"]/xenotypeSet/xenotypeChances/VREA_AndroidAwakened</xpath>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/FactionDef[@Name="TribeBase"]/xenotypeSet</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/FactionDef[@Name="TribeBase"]</xpath>
+          <value><xenotypeSet /></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/FactionDef[@Name="TribeBase"]/xenotypeSet/xenotypeChances</xpath>
+        <nomatch Class="PatchOperationAdd">
+          <xpath>Defs/FactionDef[@Name="TribeBase"]/xenotypeSet</xpath>
+          <value><xenotypeChances /></value>
+        </nomatch>
+      </li>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/FactionDef[@Name="TribeBase"]/xenotypeSet/xenotypeChances</xpath>
+        <value>
+          <Neanderthal MayRequire="ludeon.rimworld.biotech">0.08</Neanderthal>
+          <VRESaurids_Saurid MayRequire="vanillaracesexpanded.saurid">0.05</VRESaurids_Saurid>
+          <DV_Venator MayRequire="det.venators">0.05</DV_Venator>
+          <Impid MayRequire="ludeon.rimworld.biotech">0.04</Impid>
+          <Yttakin MayRequire="ludeon.rimworld.biotech">0.03</Yttakin>
+          <DV_Brawnum MayRequire="det.brawnum">0.02</DV_Brawnum>
+          <VRE_Gauranlenkin MayRequire="vanillaracesexpanded.phytokin">0.01</VRE_Gauranlenkin>
+        </value>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

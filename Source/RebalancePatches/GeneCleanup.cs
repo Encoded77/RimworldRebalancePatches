@@ -27,6 +27,28 @@ namespace RebalancePatches
         public List<string> genes = new List<string>();
     }
 
+    /// <summary>
+    /// Why a def one of our patches targets is missing from the DefDatabase. A def we removed
+    /// ourselves and a def upstream renamed look identical once it is gone, so the tests ask here
+    /// before deciding whether an absence is worth reporting.
+    /// </summary>
+    public static class GeneRemovalInfo
+    {
+        /// <summary>
+        /// The settingKey of the removal list currently stripping <paramref name="defName"/>, or
+        /// null when none is. A list that exists but is toggled off, or whose requiredMods are
+        /// absent, does not count: it removed nothing, so it explains nothing.
+        /// </summary>
+        public static string ActiveRemovalSetting(string defName)
+        {
+            bool coreActive = GeneCleanup.CoreModsActive();
+            foreach (GeneRemovalListDef list in DefDatabase<GeneRemovalListDef>.AllDefsListForReading)
+                if (GeneCleanup.ListActive(list, coreActive) && GeneCleanup.Matches(list, defName))
+                    return list.settingKey;
+            return null;
+        }
+    }
+
     internal static class GeneCleanup
     {
         // The gene ecosystem rebalance assumes all three core gene mods; removals
@@ -55,12 +77,21 @@ namespace RebalancePatches
             HashSet<string> removedDefs = CherryPickerRemovedDefs();
             if (removedDefs == null)
                 return;
-            bool coreActive = true;
-            foreach (string id in CoreMods)
-                coreActive &= ModsConfig.IsActive(id);
+            bool coreActive = CoreModsActive();
             ApplyRemovals(removedDefs, coreActive);
             ApplyRewires(coreActive);
         }
+
+        internal static bool CoreModsActive()
+        {
+            foreach (string id in CoreMods)
+                if (!ModsConfig.IsActive(id))
+                    return false;
+            return true;
+        }
+
+        internal static bool ListActive(GeneRemovalListDef list, bool coreActive) =>
+            coreActive && RequiredModsActive(list.requiredMods) && SettingsRegistry.GetEffective(list.settingKey);
 
         private static void ApplyRemovals(HashSet<string> removedDefs, bool coreActive)
         {
@@ -72,7 +103,7 @@ namespace RebalancePatches
             var desired = new HashSet<string>();
             foreach (GeneRemovalListDef list in lists)
             {
-                if (coreActive && RequiredModsActive(list.requiredMods) && SettingsRegistry.GetEffective(list.settingKey))
+                if (ListActive(list, coreActive))
                 {
                     activeLists.Add(list);
                     desired.UnionWith(GeneratedKeys(list));
@@ -185,7 +216,7 @@ namespace RebalancePatches
                 keys.Add(KeyOf(def));
         }
 
-        private static bool Matches(GeneRemovalListDef list, string defName)
+        internal static bool Matches(GeneRemovalListDef list, string defName)
         {
             if (defName.EndsWith("_Astrogene"))
                 defName = defName.Substring(0, defName.Length - "_Astrogene".Length);

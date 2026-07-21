@@ -4,7 +4,7 @@ What every toggle in the mod settings does, grouped the same way as the settings
 
 The settings window groups features by mod: groups collapse and expand, a search box filters by name and description, and settings whose required mods aren't in the modlist are greyed out with a note saying what's missing (hover for the full requirement list). Groups for mods you don't run can be hidden entirely with *Show inactive mods*.
 
-**The four overhauls sit at the top of the settings window, above a divider, and are all off by default.** They are sweeping changes to how whole systems work — Genetics Overhaul, Genetics Research Overhaul, Sci-fi Renaming and Expertise Overhaul — so nothing below the divider depends on them and nothing changes until you opt in. Turning an overhaul's group on enables everything inside it; individual pieces can then be turned back off. The patches below the divider stay on by default, since each is a small self-contained fix.
+**The five overhauls sit at the top of the settings window, above a divider.** They are sweeping changes to how whole systems work — Genetics Overhaul, Genetics Research Overhaul, Xenotype Spawning Overhaul, Sci-fi Renaming Overhaul and Expertise Overhaul — and nothing below the divider depends on them. Four of them are **off by default**, so nothing changes until you opt in; the exception is the Xenotype Spawning Overhaul, which is on, since it only affects which xenotypes newly generated pawns roll rather than reworking a system you build against. Turning an overhaul's group on enables everything inside it; individual pieces can then be turned back off. The patches below the divider stay on by default, since each is a small self-contained fix.
 
 If you are **upgrading** from a version where an overhaul was on by default, it stays on: the mod records a config version and pins settings whose default has changed, so an ongoing colony never loses a system it was already running. Settings you chose yourself are always left alone. Only fresh installs start with the overhauls off.
 
@@ -75,13 +75,11 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 - **`rimsenalspacer.caravanmechs`** — Rimsenal Spacer trade caravans no longer bring mechanoid guards (their caravan generation was broken).
 - **`rimsenalspacer.smartweapons`** — Smart weapons drop their redundant gunsmithing prerequisite, and the smart visor unlocks from the renamed *smart targeting systems* research.
 
-### Memes, xenotypes & inspirations
+### Memes & inspirations
 
 - **Inspirations respect precepts** (`memes.inspirations`) — Inspirations no longer roll on pawns whose ideology forbids the activity: shooting/melee frenzies respect violence precepts, taming respects ranching, recreation-type inspirations respect joy precepts, and so on — including Vanilla Social Interactions Expanded's frenzies (Ideology).
 - **`memes.factions`** — Warlike Rimsenal factions can't roll Alpha Memes' vow of nonviolence, which broke their combat pawns.
 - **`memes.anomalytraits`** — The Occultist trait and void fascination agree with the Inhuman and Ritualist memes (Anomaly).
-- **`xenotypes.factions`** — Odyssey's Salvagers gain fitting modded xenotypes (Zohar, Askbarn, Uredd, Harana, Venator, Keshig, Fleetkind), the Traders guild gains Fleetkind, and WVC's Mechakin, Rogueformer and Genethrower move to Rimsenal Spacer factions.
-- **`xenotypes.wvcchances`** — WVC's oddball xenotypes (Featherdust, Cat deity, Blank, Sandycat, Undead) leave the generic vanilla factions; Undead and Sandycat join the Horax cult (Anomaly).
 
 ### Integrated Implants
 
@@ -199,7 +197,18 @@ Alpha Genes' eleven single-use gene tools normally come from traders and quest r
 ### Alpha Genes quest flavour (`geneticsresearch.alphagenes`)
 
 The abandoned biotech lab quest is renamed to xenogenetics-lab flavour matching the overhauled genetics theme.
-## Sci-fi Renaming
+## Xenotype Spawning Overhaul
+
+Requires Biotech. With a lot of xenotype mods installed, the generic factions end up as a dumping ground: each mod adds its xenotypes to outlanders and pirates at similar weights, until baseliners are under 10% of everyone you meet and no faction has any character. This rebuilds the faction rosters around what each faction actually is, and nothing is deleted — a xenotype trimmed from one faction gains weight in one that suits it.
+
+Unlike the other overhauls this one is **on by default**, since it changes who spawns rather than how a system works, and an ongoing colony sees it only in newly generated pawns.
+
+- **Thematic xenotypes in vanilla factions** (`xenotypes.vanilla`) — Settled outlander towns lean industrial — Det's Half-foot, Biotech's genies, Det's Brawnum. Rough outlanders lean frontier — Det's Venators and Boglegs, yttakin, impids. Pirates lean predatory — Boglegs, Det's Buzzers, wasters, VRE - Hussar's uhlans. Every roster keeps at least 35% baseliners. Tribal factions, which rolled baseliner every single time, gain a small primitive-themed roster (neanderthals, VRE - Saurid's saurids, Det's Venators, impids) while staying about three-quarters baseliner. Also thins WVC's oddball xenotypes (Featherdust, Cat deity, Blank, Sandycat, Undead) out of the generic pools, with Undead and Sandycat joining the Horax cult instead (Anomaly).
+- **Thematic xenotypes in the Empire** (`xenotypes.royalty`) — The Empire reads as aristocratic and military: Det's Avaloi, Biotech's hussars and genies and Highborn Xenotype's highborn stay prominent, while Det's Keshig and Brawnum, Rimsenal's Harana, Odyssey's starjack and VRE - Android's awakened androids leave the roster. Keeps 37% baseliners.
+- **`xenotypes.odyssey`** — Odyssey's Salvagers gain Det's Half-foot alongside an even spread of Rimsenal, Det's and Alpha Genes xenotypes; the Traders guild gains Alpha Genes' Fleetkind.
+- **`xenotypes.rimsenal`** — Rimsenal's Spacer factions gain the deep-space xenotypes displaced from planetside pools: Odyssey's starjack, Det's Keshig and Half-foot, and VRE - Android's awakened androids. WVC's Mechakin, Rogueformer and Genethrower also move here from the generic outlander and pirate pools.
+
+## Sci-fi Renaming Overhaul
 
 Renames fantasy-, Norse- and religion-flavoured races and factions to RimWorld's gene-engineering flavour: every renamed group reads as an engineered gene-line, with labels, descriptions, faction names and pawn kind names rewritten to match. Purely cosmetic — no stats, genes or spawning change, and existing saves are unaffected beyond the displayed names. One toggle per mod.
 
