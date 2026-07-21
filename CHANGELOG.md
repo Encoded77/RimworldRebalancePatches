@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.9.1 (2026-07-21)
+
+**More developer database dumps** — the gene and xenotype-faction dumps are joined by seven more, each with its own toggle in the Developer group and a debug action for use in-game: recipes and surgeries, hediffs, research projects and tabs, items and buildings, body part trees and races, item acquisition (which traders stock what, and every reward, quest and pawn-gear table that hands it out), and gating rule defs belonging to other mods. All are dev-mode only and nothing changes in a normal game.
+
+- Each dump covers a single def type, so they can be joined for whichever question is being asked instead of a new dump being written per audit.
+- Body dumps now record each race's body, so a surgery no modded race can receive can be told apart from an animal that simply lacks the part.
+- Research dumps record each project's techprint item, and flag any project whose techprint has gone missing — such a project can never be finished.
+- Each dump now runs independently, so one failing no longer stops the others.
+
 ## 1.9.0 (2026-07-21)
 
 **Unified gene tools and serums lane** (`geneticsresearch.consumables`) — single-use genetic items came from three mods with three separate research lines in three tabs. They now share one lane on the Genetics tab: *gene serums* (spacer, after xenogerm assembly) replacing WVC's whole eight-project serum line, *gene toolkits* (spacer, after gene processor) for Alpha Genes' gene tools and Big and Small's tools and xenogerm cloners, and *gene integration* (ultratech, after archogenetics) for the gene integrator.

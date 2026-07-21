@@ -27,17 +27,31 @@ namespace RebalancePatches
             }
         }
 
+        private static void Run(string setting, Action dump)
+        {
+            if (!SettingsRegistry.GetEffective(setting))
+                return;
+            try { dump(); }
+            catch (Exception e) { Log.Error($"[RebalancePatches] Dump '{setting}' failed: {e}"); }
+        }
+
         private static void Postfix()
         {
             if (++menuFrames < 2)
                 return;
             if (Prefs.DevMode)
             {
-                if (SettingsRegistry.GetEffective("dev.genedump"))
-                    GeneDump.DumpGeneDatabase();
-                if (SettingsRegistry.GetEffective("dev.xenofactiondump"))
-                    FactionXenotypeDump.DumpXenotypeFactions();
+                Run("dev.genedump", GeneDump.DumpGeneDatabase);
+                Run("dev.xenofactiondump", FactionXenotypeDump.DumpXenotypeFactions);
+                Run("dev.recipedump", RecipeDump.Dump);
+                Run("dev.hediffdump", HediffDump.Dump);
+                Run("dev.researchdump", ResearchDump.Dump);
+                Run("dev.thingdump", ThingDump.Dump);
+                Run("dev.bodydump", BodyDump.Dump);
+                Run("dev.acquisitiondump", AcquisitionDump.Dump);
+                Run("dev.modrulesdump", ModRulesDump.Dump);
             }
+            // One dump throwing must not stop the rest; each already logs its own failure.
             new Harmony("encoded.rebalancepatches.dumpautorun")
                 .Unpatch((MethodBase)AccessTools.Method(typeof(MainMenuDrawer), nameof(MainMenuDrawer.MainMenuOnGUI)),
                     HarmonyPatchType.Postfix, "encoded.rebalancepatches");
