@@ -3,8 +3,21 @@
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_Halffoot_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>sarg.alphagenes</li>
+    </requiredMods>
     <genes>
       <li>DV_Bandwidth_High</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_Halffoot_Dedup_BigSmall</defName>
+    <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>redmattis.bigsmall.core</li>
+    </requiredMods>
+    <genes>
       <li>DV_ExtrasmallBuild</li>
     </genes>
   </RebalancePatches.GeneRemovalListDef>

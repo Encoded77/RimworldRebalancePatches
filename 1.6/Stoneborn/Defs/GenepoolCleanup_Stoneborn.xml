@@ -4,8 +4,18 @@
     <defName>RBP_GeneRemoval_Stoneborn_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
     <genes>
-      <li>DV_SmallBuild</li>
       <li>DV_Undergrounder</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_Stoneborn_Dedup_BigSmall</defName>
+    <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>redmattis.bigsmall.core</li>
+    </requiredMods>
+    <genes>
+      <li>DV_SmallBuild</li>
     </genes>
   </RebalancePatches.GeneRemovalListDef>
 </Defs>

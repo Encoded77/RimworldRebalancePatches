@@ -9,9 +9,10 @@ namespace RebalancePatches
     // so they are free to live here rather than next to the engine that consumes them.
 
     /// <summary>
-    /// Genes to strip via Cherry Picker. Part of the genepool rebalance, so these lists carry its
-    /// implicit gate as well as their own <see cref="requiredMods"/>: nothing applies unless all
-    /// three core gene mods are loaded.
+    /// Genes to strip via Cherry Picker. A list stands on its own <see cref="requiredMods"/> plus
+    /// the load folder it ships in, which already gates the mod owning the genes: name the mod that
+    /// owns the surviving gene, so a removal never fires without its canonical replacement present.
+    /// A list whose survivor is vanilla, or that removes without replacing, needs no requiredMods.
     /// </summary>
     public class GeneRemovalListDef : Def
     {
@@ -22,10 +23,10 @@ namespace RebalancePatches
     }
 
     /// <summary>
-    /// Non-gene defs to strip via Cherry Picker. Not part of the genepool rebalance, so no implicit
-    /// three-mod gate: each list states its own <see cref="requiredMods"/> and stands on that alone.
-    /// Note that Cherry Picker never deletes a ThingDef - it neuters one in place - so expect these
-    /// to remain in the database, unobtainable rather than absent.
+    /// Non-gene defs to strip via Cherry Picker. Each list states its own
+    /// <see cref="requiredMods"/> and stands on that alone. Note that Cherry Picker never deletes a
+    /// ThingDef - it neuters one in place - so expect these to remain in the database, unobtainable
+    /// rather than absent.
     /// </summary>
     public class ThingRemovalListDef : Def
     {
@@ -48,7 +49,10 @@ namespace RebalancePatches
 
     /// <summary>
     /// Genes to hand to a xenotype, so a xenotype that lost a gene to a removal list keeps the
-    /// function through the canonical replacement instead of simply losing it.
+    /// function through the canonical replacement instead of simply losing it. A replacement from
+    /// an absent mod is skipped silently, so a rewire handing out only modded genes gates itself;
+    /// state <see cref="requiredMods"/> when the replacement is vanilla but the paired removal is
+    /// gated, or the xenotype would gain a gene it never lost one for.
     /// </summary>
     public class XenotypeRewireDef : Def
     {

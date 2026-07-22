@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREHussar))
+            if (!Check.Ready("genetics.dedup", Ids.BigSmallCore, Ids.CherryPicker, Ids.VREHussar))
                 return;
             Check.GenesGone("VREH_Giant");
         }
@@ -18,7 +18,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREHussar))
+            if (!Check.Ready("genetics.dedup", Ids.BigSmallCore, Ids.CherryPicker, Ids.VREHussar))
                 return;
             Check.XenoGene("VREH_Uhlan", "BS_LargeFrame");
         }

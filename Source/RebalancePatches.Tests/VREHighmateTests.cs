@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREHighmate, Ids.BetterGeneInheritance))
+            if (!Check.Ready("genetics.dedup", Ids.CherryPicker, Ids.VREHighmate, Ids.BetterGeneInheritance))
                 return;
             Check.GenesGone("VRE_DominantGenome", "VRE_RecessiveGenome");
         }

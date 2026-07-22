@@ -190,12 +190,6 @@
     <settingKey>genetics.dedup</settingKey>
     <xenotypes>
       <li>
-        <xenotype>WVC_Ashen</xenotype>
-        <genes>
-          <li>WoundHealing_UltraFast</li>
-        </genes>
-      </li>
-      <li>
         <xenotype>WVC_Beholdkind</xenotype>
         <genes>
           <li>BS_SmallFrame</li>
@@ -219,7 +213,6 @@
         <xenotype>WVC_Featherdust</xenotype>
         <genes>
           <li>BS_SmallFrame</li>
-          <li>WoundHealing_UltraFast</li>
         </genes>
       </li>
       <li>
@@ -232,12 +225,6 @@
         <xenotype>WVC_Golemkind</xenotype>
         <genes>
           <li>AG_ArmourMajor</li>
-        </genes>
-      </li>
-      <li>
-        <xenotype>WVC_Leper</xenotype>
-        <genes>
-          <li>Body_FemaleOnly</li>
         </genes>
       </li>
       <li>
@@ -283,12 +270,6 @@
         </genes>
       </li>
       <li>
-        <xenotype>WVC_RuneDryad</xenotype>
-        <genes>
-          <li>WoundHealing_VerySlow</li>
-        </genes>
-      </li>
-      <li>
         <xenotype>WVC_Sacrifice</xenotype>
         <genes>
           <li>BS_LargeFrame</li>
@@ -300,6 +281,40 @@
         <xenotype>WVC_Sandycat</xenotype>
         <genes>
           <li>BS_SmallFrame</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_WVC_Dedup_BigSmall</defName>
+    <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>redmattis.bigsmall.core</li>
+    </requiredMods>
+    <xenotypes>
+      <li>
+        <xenotype>WVC_Ashen</xenotype>
+        <genes>
+          <li>WoundHealing_UltraFast</li>
+        </genes>
+      </li>
+      <li>
+        <xenotype>WVC_Featherdust</xenotype>
+        <genes>
+          <li>WoundHealing_UltraFast</li>
+        </genes>
+      </li>
+      <li>
+        <xenotype>WVC_Leper</xenotype>
+        <genes>
+          <li>Body_FemaleOnly</li>
+        </genes>
+      </li>
+      <li>
+        <xenotype>WVC_RuneDryad</xenotype>
+        <genes>
+          <li>WoundHealing_VerySlow</li>
         </genes>
       </li>
     </xenotypes>

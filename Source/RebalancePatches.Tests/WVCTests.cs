@@ -46,7 +46,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void InternalDupeGenesRemoved()
         {
-            if (!Check.Ready("genetics.wvcdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.wvcdupes", Ids.WVC, Ids.CherryPicker))
                 return;
             Check.GenesGone(
                 "WVC_PsychicAbility_Dull", "WVC_PsychicAbility_Deaf", "WVC_Pain_Extra",

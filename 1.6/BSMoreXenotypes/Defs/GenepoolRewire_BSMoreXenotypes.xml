@@ -13,7 +13,6 @@
       <li>
         <xenotype>BS_HiveQueen</xenotype>
         <genes>
-          <li>Body_FemaleOnly</li>
           <li>AG_ArmourMedium</li>
         </genes>
       </li>
@@ -27,6 +26,22 @@
         <xenotype>BS_Weaver</xenotype>
         <genes>
           <li>AG_ArmourMedium</li>
+        </genes>
+      </li>
+    </xenotypes>
+  </RebalancePatches.XenotypeRewireDef>
+
+  <RebalancePatches.XenotypeRewireDef>
+    <defName>RBP_XenoRewire_BSMoreXenos_Dedup_BigSmall</defName>
+    <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>redmattis.bigsmall.core</li>
+    </requiredMods>
+    <xenotypes>
+      <li>
+        <xenotype>BS_HiveQueen</xenotype>
+        <genes>
+          <li>Body_FemaleOnly</li>
         </genes>
       </li>
     </xenotypes>

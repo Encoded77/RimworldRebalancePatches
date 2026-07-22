@@ -3,6 +3,9 @@
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_Brawnum_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>sarg.alphagenes</li>
+    </requiredMods>
     <xenotypes>
       <li>
         <xenotype>DV_Brawnum</xenotype>

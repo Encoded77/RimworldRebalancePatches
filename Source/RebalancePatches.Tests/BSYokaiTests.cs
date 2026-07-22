@@ -27,7 +27,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSYokai))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSYokai))
                 return;
             Check.XenoGene("BS_GreatBlueOni", "AG_ArmourMedium");
             Check.XenoGene("BS_GreatRedOni", "AG_ArmourMedium");
@@ -51,7 +51,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DeathlikeReplaced()
         {
-            if (!Check.Ready("genetics.bsdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSYokai))
+            if (!Check.Ready("genetics.bsdupes", Ids.BigSmallCore, Ids.CherryPicker, Ids.BSYokai))
                 return;
             Check.XenoGene("BS_Nekomata", "BS_LesserDeathless");
         }

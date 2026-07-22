@@ -25,7 +25,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSLamias))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSLamias))
                 return;
             Check.XenoGene("BS_ViperPrototypeBiomecha", "AG_ArmourMedium");
             Check.XenoGene("BS_ViperPrototypeBiomecha", "AG_ColdImmunity");

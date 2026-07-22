@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.RimsenalAskbarn))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.CherryPicker, Ids.RimsenalAskbarn))
                 return;
             Check.GenesGone("LowFertility");
             if (ModsConfig.IsActive(Ids.Venators))
@@ -22,7 +22,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.RimsenalAskbarn))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.CherryPicker, Ids.RimsenalAskbarn))
                 return;
             Check.XenoGene("Askbarn", "AG_ReducedFertile");
             Check.XenoGene("Uredd", "AG_ReducedFertile");

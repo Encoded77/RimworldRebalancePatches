@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREGenie))
+            if (!Check.Ready("genetics.dedup", Ids.BigSmallCore, Ids.CherryPicker, Ids.VREGenie))
                 return;
             Check.GenesGone("VRE_WoundHealing_VerySlow");
         }

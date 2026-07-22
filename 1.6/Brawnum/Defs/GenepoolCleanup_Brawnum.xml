@@ -3,6 +3,9 @@
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_Brawnum_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>sarg.alphagenes</li>
+    </requiredMods>
     <genes>
       <li>DV_StrongBack</li>
     </genes>

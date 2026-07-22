@@ -3,6 +3,9 @@
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_AlphaGenes_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>redmattis.bigsmall.core</li>
+    </requiredMods>
     <xenotypes>
       <li>
         <xenotype>AG_Malachai</xenotype>

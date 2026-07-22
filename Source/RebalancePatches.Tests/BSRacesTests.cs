@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSRaces))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSRaces))
                 return;
             Check.XenoGene("BS_BrokenTitan", "AG_ColdImmunity");
             Check.XenoGene("BS_FireJotun", "AG_HeatImmunity");
@@ -116,7 +116,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DeathlikeReplaced()
         {
-            if (!Check.Ready("genetics.bsdupes", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.BSRaces))
+            if (!Check.Ready("genetics.bsdupes", Ids.BigSmallCore, Ids.CherryPicker, Ids.BSRaces))
                 return;
             Check.XenoGene("BS_FleshGolemServant", "BS_LesserDeathless");
             Check.XenoGene("BS_PilotableFleshGolem", "BS_LesserDeathless");

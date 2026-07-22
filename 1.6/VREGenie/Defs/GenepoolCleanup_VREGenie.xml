@@ -3,6 +3,9 @@
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_VREGenie_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>redmattis.bigsmall.core</li>
+    </requiredMods>
     <genes>
       <li>VRE_WoundHealing_VerySlow</li>
     </genes>

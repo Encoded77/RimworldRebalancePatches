@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.9.2 (2026-07-22)
+
+- **`genetics.agsummons`** needs Alpha Genes and Cherry Picker. **`genetics.wvcdupes`** needs WVC and Cherry Picker. **`genetics.bsdupes`** needs Big and Small and Cherry Picker.
+- **`genetics.dedup`** needs Cherry Picker plus any gene mod it has entries for. Each duplicate is still dropped only when the mod owning the surviving gene is loaded, so a smaller gene modlist now gets the part of the deduplication that applies to it instead of none of it.
+- Duplicates that lose to a gene from a specific mod now say so individually, so nothing is removed without its replacement present.
+- **`memes.factions`** now also requires one of Rimsenal - Spacer or Rimsenal - Federation; it was offered as available with neither loaded.
+
 ## 1.9.1 (2026-07-21)
 
 **More developer database dumps** — the gene and xenotype-faction dumps are joined by seven more, each with its own toggle in the Developer group and a debug action for use in-game: recipes and surgeries, hediffs, research projects and tabs, items and buildings, body part trees and races, item acquisition (which traders stock what, and every reward, quest and pawn-gear table that hands it out), and gating rule defs belonging to other mods. All are dev-mode only and nothing changes in a normal game.

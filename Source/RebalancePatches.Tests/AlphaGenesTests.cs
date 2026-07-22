@@ -152,7 +152,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void SummonGenesRemoved()
         {
-            if (!Check.Ready("genetics.agsummons", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.agsummons", Ids.AlphaGenes, Ids.CherryPicker))
                 return;
             foreach (string name in new[] { "AG_AnimalSummon_Randomizer", "AG_MajorAnimalSummon_Randomizer",
                 "AG_MinorAnimalSummon_Randomizer", "AG_SummonTempBandwidth" })
@@ -165,7 +165,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.GenesGone("AG_Painless", "AG_SmallerBodySize", "AG_LargerBodySize", "AG_Male", "AG_Female",
                 "AG_AcidImmunity", "AG_AcidWeakness", "AG_ToughSinews", "AG_ArmourMinor",
@@ -211,7 +211,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.BigSmallCore, Ids.CherryPicker))
                 return;
             Check.XenoGene("AG_Malachai", "BS_LargeFrame");
             Check.XenoGene("AG_Malachai", "BS_Pain_None");
@@ -224,7 +224,7 @@ namespace RebalancePatches.Tests
                 Check.XenoGene("AG_Drakonori", "VRESaurids_Oviparous");
             if (ModsConfig.IsActive(Ids.VREArchon))
                 Check.XenoGene("AG_Lapis", "VRE_LongPregnancy");
-            if (ModsConfig.IsActive(Ids.VREFungoid))
+            if (ModsConfig.IsActive(Ids.VREFungoid) && ModsConfig.IsActive(Ids.WVC))
                 Check.XenoGene("AG_Mycormorph", "WVC_NaturalTelepathy");
         }
 

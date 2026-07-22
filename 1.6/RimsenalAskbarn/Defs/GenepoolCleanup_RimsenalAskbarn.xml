@@ -3,6 +3,9 @@
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_RimsenalAskbarn_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>sarg.alphagenes</li>
+    </requiredMods>
     <genes>
       <li>LowFertility</li>
     </genes>

@@ -1,6 +1,6 @@
 # Gene Changes
 
-Everything the Genetics Overhaul module changes in the gene ecosystem: which genes are removed, which version is kept as the canonical one, what each affected xenotype receives instead, and which genes can no longer stack. Every part is a separate settings toggle (restart to apply); turning a toggle off restores its genes on the next restart. Removals run through Cherry Picker (a dependency) automatically — no Cherry Picker setup needed. Nothing here applies unless Alpha Genes, WVC - Xenotypes and Genes and Big and Small - Genes & More are all loaded, except the Hussar weapon aptitudes section which needs only VRE - Hussar.
+Everything the Genetics Overhaul module changes in the gene ecosystem: which genes are removed, which version is kept as the canonical one, what each affected xenotype receives instead, and which genes can no longer stack. Every part is a separate settings toggle (restart to apply); turning a toggle off restores its genes on the next restart. Removals run through Cherry Picker (a dependency) automatically — no Cherry Picker setup needed. Each section applies on its own terms: it needs Cherry Picker plus the mod owning the genes it removes, and where a gene loses to another mod's version, that mod too. Nothing is removed without its replacement present, so a partial gene modlist gets the part of the cleanup that fits it.
 
 ## Removed genes
 

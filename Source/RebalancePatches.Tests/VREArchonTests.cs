@@ -9,7 +9,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREArchon))
+            if (!Check.Ready("genetics.dedup", Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREArchon))
                 return;
             Check.XenoGene("VRE_Archon", "BS_EarlyMaturity");
             Check.XenoGene("VRE_Archon", "WVC_ArchitePsylink");

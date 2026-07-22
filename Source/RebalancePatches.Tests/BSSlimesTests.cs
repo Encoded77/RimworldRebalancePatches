@@ -30,7 +30,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.BigSmallSlimes))
+            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.BigSmallCore, Ids.CherryPicker, Ids.BigSmallSlimes))
                 return;
             Check.XenoGene("BS_BananaSplitSlime", "AG_ColdImmunity");
             Check.XenoGene("BS_BananaSplitSlimeGiant", "AG_ColdImmunity");

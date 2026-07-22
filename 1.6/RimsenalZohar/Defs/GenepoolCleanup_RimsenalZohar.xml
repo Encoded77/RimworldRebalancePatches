@@ -3,6 +3,9 @@
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_RimsenalZohar_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>sarg.alphagenes</li>
+    </requiredMods>
     <genes>
       <li>Gene_SensitiveStomach</li>
     </genes>

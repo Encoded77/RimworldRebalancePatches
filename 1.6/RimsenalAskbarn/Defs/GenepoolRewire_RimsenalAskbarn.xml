@@ -3,6 +3,9 @@
   <RebalancePatches.XenotypeRewireDef>
     <defName>RBP_XenoRewire_RimsenalAskbarn_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>sarg.alphagenes</li>
+    </requiredMods>
     <xenotypes>
       <li>
         <xenotype>Askbarn</xenotype>

@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREPigskin))
+            if (!Check.Ready("genetics.dedup", Ids.BigSmallCore, Ids.CherryPicker, Ids.VREPigskin))
                 return;
             Check.GenesGone("VRE_EverGrowing");
         }
@@ -18,7 +18,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.VREPigskin))
+            if (!Check.Ready("genetics.dedup", Ids.BigSmallCore, Ids.CherryPicker, Ids.VREPigskin))
                 return;
             Check.XenoGene("VRE_Boarskin", "BS_EndlessGrowth");
         }

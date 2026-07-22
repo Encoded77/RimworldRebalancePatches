@@ -3,8 +3,21 @@
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_VREArchon_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>wvc.sergkart.races.biotech</li>
+    </requiredMods>
     <genes>
       <li>VRE_InnatePsylink</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_VREArchon_Dedup_BigSmall</defName>
+    <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>redmattis.bigsmall.core</li>
+    </requiredMods>
+    <genes>
       <li>VRE_EarlyMaturity</li>
     </genes>
   </RebalancePatches.GeneRemovalListDef>

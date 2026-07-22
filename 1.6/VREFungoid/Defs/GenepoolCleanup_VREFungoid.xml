@@ -3,8 +3,21 @@
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_VREFungoid_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>wvc.sergkart.races.biotech</li>
+    </requiredMods>
     <genes>
       <li>VRE_Telepathy</li>
+    </genes>
+  </RebalancePatches.GeneRemovalListDef>
+
+  <RebalancePatches.GeneRemovalListDef>
+    <defName>RBP_GeneRemoval_VREFungoid_Dedup_AlphaGenes</defName>
+    <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>sarg.alphagenes</li>
+    </requiredMods>
+    <genes>
       <li>VRE_TotalAntirotLungs</li>
     </genes>
   </RebalancePatches.GeneRemovalListDef>

@@ -3,6 +3,9 @@
   <RebalancePatches.GeneRemovalListDef>
     <defName>RBP_GeneRemoval_VREHussar_Dedup</defName>
     <settingKey>genetics.dedup</settingKey>
+    <requiredMods>
+      <li>redmattis.bigsmall.core</li>
+    </requiredMods>
     <genes>
       <li>VREH_Giant</li>
     </genes>

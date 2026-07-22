@@ -29,16 +29,6 @@ namespace RebalancePatches
 
     internal static class DefCleanup
     {
-        // The gene ecosystem rebalance assumes all three core gene mods; gene removals
-        // never apply with only a subset loaded. Thing removals are not part of that
-        // rebalance and gate on their own requiredMods instead.
-        private static readonly string[] CoreMods =
-        {
-            "sarg.alphagenes",
-            "wvc.sergkart.races.biotech",
-            "redmattis.bigsmall.core",
-        };
-
         /// <summary>
         /// One removal list flattened to what the sweep actually needs, so gene lists and thing
         /// lists share a single code path. <see cref="Lookup"/> answers "is this def still in the
@@ -57,7 +47,6 @@ namespace RebalancePatches
 
         internal static List<RemovalList> AllLists()
         {
-            bool coreActive = CoreModsActive();
             var lists = new List<RemovalList>();
 
             foreach (GeneRemovalListDef def in DefDatabase<GeneRemovalListDef>.AllDefsListForReading)
@@ -66,7 +55,7 @@ namespace RebalancePatches
                 lists.Add(new RemovalList
                 {
                     settingKey = list.settingKey,
-                    active = coreActive && RequiredModsActive(list.requiredMods)
+                    active = RequiredModsActive(list.requiredMods)
                         && SettingsRegistry.GetEffective(list.settingKey),
                     matches = name => Matches(list, name),
                     generatedKeys = () => GeneratedKeys(list),
@@ -123,15 +112,7 @@ namespace RebalancePatches
             if (removedDefs == null)
                 return;
             ApplyRemovals(removedDefs, AllLists());
-            ApplyRewires(CoreModsActive());
-        }
-
-        internal static bool CoreModsActive()
-        {
-            foreach (string id in CoreMods)
-                if (!ModsConfig.IsActive(id))
-                    return false;
-            return true;
+            ApplyRewires();
         }
 
         private static void ApplyRemovals(HashSet<string> removedDefs, List<RemovalList> lists)
@@ -203,10 +184,8 @@ namespace RebalancePatches
         // Xenotypes that lost a gene to the removal lists get the canonical
         // replacement instead. Same gate as the removals: replacement genes from absent mods and
         // genes the xenotype already carries are skipped silently.
-        private static void ApplyRewires(bool coreActive)
+        private static void ApplyRewires()
         {
-            if (!coreActive)
-                return;
             int added = 0;
             foreach (XenotypeRewireDef rewire in DefDatabase<XenotypeRewireDef>.AllDefsListForReading)
             {

@@ -10,7 +10,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void DedupLosersRemoved()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.Stoneborn))
+            if (!Check.Ready("genetics.dedup", Ids.BigSmallCore, Ids.CherryPicker, Ids.Stoneborn))
                 return;
             Check.GenesGone("DV_SmallBuild", "DV_Undergrounder");
         }
@@ -26,7 +26,7 @@ namespace RebalancePatches.Tests
         [Test]
         public static void XenotypesRewired()
         {
-            if (!Check.Ready("genetics.dedup", Ids.AlphaGenes, Ids.WVC, Ids.BigSmallCore, Ids.CherryPicker, Ids.Stoneborn))
+            if (!Check.Ready("genetics.dedup", Ids.CherryPicker, Ids.Stoneborn))
                 return;
             Check.XenoGene("Stoneborn", "Undergrounder");
         }

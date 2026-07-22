@@ -79,8 +79,8 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 ### Memes & inspirations
 
 - **Inspirations respect precepts** (`memes.inspirations`) — Inspirations no longer roll on pawns whose ideology forbids the activity: shooting/melee frenzies respect violence precepts, taming respects ranching, recreation-type inspirations respect joy precepts, and so on — including Vanilla Social Interactions Expanded's frenzies (Ideology).
-- **`memes.factions`** — Warlike Rimsenal factions can't roll Alpha Memes' vow of nonviolence, which broke their combat pawns.
-- **`memes.anomalytraits`** — The Occultist trait and void fascination agree with the Inhuman and Ritualist memes (Anomaly).
+- **`memes.factions`** — Rimsenal's Spacer and Federation factions can't roll Alpha Memes' vow of nonviolence, which broke their combat pawns. Alpha Memes only adds that meme alongside VIE - Memes and Structures, so both are needed.
+- **`memes.anomalytraits`** — The Occultist trait and void fascination agree with Anomaly's Inhuman and Ritualist memes (Anomaly + Ideology).
 
 ### Integrated Implants
 
@@ -122,12 +122,12 @@ Everything that reshapes the gene pool itself: pruning the duplicates the modlis
 
 ### Genepool cleanup
 
-With every gene mod loaded the genepool holds hundreds of genes, dozens of which do the same thing under different names. This keeps one canonical gene per function, removes the duplicates, and rewires every xenotype that carried a duplicate to the canonical version — races keep their identity through shared genes. Removals run through **Cherry Picker** (a mod dependency) automatically, with no Cherry Picker setup needed; toggling a setting off restores its genes on the next restart. Only active when Alpha Genes, WVC - Xenotypes and Genes and Big and Small - Genes & More are all loaded (except the Hussar aptitudes toggle, which needs only VRE - Hussar). The full list of removed genes, replacements and xenotype changes is in `Docs/GeneChanges.md`.
+With every gene mod loaded the genepool holds hundreds of genes, dozens of which do the same thing under different names. This keeps one canonical gene per function, removes the duplicates, and rewires every xenotype that carried a duplicate to the canonical version — races keep their identity through shared genes. Removals run through **Cherry Picker** (a mod dependency) automatically, with no Cherry Picker setup needed; toggling a setting off restores its genes on the next restart. Each toggle needs only the mods it actually touches — the ones below name theirs — and within the cross-mod toggle, each individual duplicate is dropped only when the mod owning the surviving gene is loaded, so a smaller gene modlist gets the part of the cleanup that applies to it. The full list of removed genes, replacements and xenotype changes is in `Docs/GeneChanges.md`.
 
-- **`genetics.agsummons`** — Removes Alpha Genes' animal summon family (~90 genes, one per supported animal). No xenotype uses them; they only dilute the pool and I don't like them.
-- **`genetics.wvcdupes`** — Removes WVC genes that duplicate vanilla Biotech genes or WVC's own alternatives (~50). WVC xenotypes get the surviving equivalent instead.
-- **`genetics.bsdupes`** — Removes Big and Small's three gene stabilizing genes (balance, no replacement) and the deathlike body gene (undead xenotypes get unstable deathlessness instead).
-- **`genetics.dedup`** — The cross-mod deduplication: Alpha Genes keeps immunities, natural armor, bandwidth, pack mule and the like; Big and Small keeps body size, gender, no pain and healing speed; each specialist VRE race pack keeps its specialty; Det's packs keep their signature quirks; WVC's archite-tier uniques win over everyone's natural versions. Duplicates whose canonical mod is missing are left alone.
+- **`genetics.agsummons`** (Alpha Genes) — Removes Alpha Genes' animal summon family (~90 genes, one per supported animal). No xenotype uses them; they only dilute the pool and I don't like them.
+- **`genetics.wvcdupes`** (WVC - Xenotypes and Genes) — Removes WVC genes that duplicate vanilla Biotech genes or WVC's own alternatives (~50). WVC xenotypes get the surviving equivalent instead.
+- **`genetics.bsdupes`** (Big and Small - Genes & More) — Removes Big and Small's three gene stabilizing genes (balance, no replacement) and the deathlike body gene (undead xenotypes get unstable deathlessness instead).
+- **`genetics.dedup`** (any two gene mods that overlap) — The cross-mod deduplication: Alpha Genes keeps immunities, natural armor, bandwidth, pack mule and the like; Big and Small keeps body size, gender, no pain and healing speed; each specialist VRE race pack keeps its specialty; Det's packs keep their signature quirks; WVC's archite-tier uniques win over everyone's natural versions. Duplicates whose canonical mod is missing are left alone.
 - **`genetics.hussaraptitudes`** — VRE - Hussar generates one weapon-aptitude gene per craftable weapon (~300 with a large modlist). They're replaced by four category genes — light and heavy melee aptitude, light and heavy ranged aptitude (heavy = 3 kg and up) — with the same bonus and cost. The hussar xenotypes still get a random aptitude; with Gene Nodes - Genes for Sale, a new archite gene node delivers the four genes. Pawns from older saves that carried a per-weapon aptitude lose it with a one-time load warning.
 
 ### Xenotype gene integration
