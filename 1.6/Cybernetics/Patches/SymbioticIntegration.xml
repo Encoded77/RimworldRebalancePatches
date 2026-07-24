@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.livingframe</settingKey>
+    <operations>
+
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+          <!-- THE LIVING FRAME -->
+
+          <HediffDef ParentName="AddedBodyPartBase">
+            <defName>RBP_LivingFrameHediff</defName>
+            <label>living frame</label>
+            <labelNoun>a living frame</labelNoun>
+            <description>An installed living frame. It replaced the ribcage, but it was never built. It was grown against a sample of the patient's own tissue until it stopped being foreign. It draws on the body it sits in for power and cooling and gives back structure and mounting space, and it dies with that body: cut it out and it is meat within the hour. Nothing about it works in a chassis that does not bleed.</description>
+            <descriptionHyperlinks><ThingDef>RBP_LivingFrame</ThingDef></descriptionHyperlinks>
+            <spawnThingOnRemoved>RBP_LivingFrame</spawnThingOnRemoved>
+
+            <addedPartProps>
+              <solid>true</solid>
+              <partEfficiency>1.50</partEfficiency>
+              <betterThanNatural>true</betterThanNatural>
+            </addedPartProps>
+          </HediffDef>
+
+          <ThingDef ParentName="BodyPartBionicBase">
+            <defName>RBP_LivingFrame</defName>
+            <label>living frame</label>
+            <description>A ribcage grown rather than fabricated, cultured around a lattice until the lattice is the smaller part of it. It runs on the chemistry of whatever body it is placed in, which is why it carries more hardware than any built frame can and why it is useless outside living tissue. Kept in a nutrient bath until it is fitted. Holds up to 6 torso modules.</description>
+            <descriptionHyperlinks><RecipeDef>RBP_InstallLivingFrame</RecipeDef></descriptionHyperlinks>
+            <techLevel>Ultra</techLevel>
+
+            <recipeMaker>
+              <researchPrerequisite>AdvancedFabrication</researchPrerequisite>
+            </recipeMaker>
+
+            <costList>
+              <Plasteel>45</Plasteel>
+              <ComponentSpacer>20</ComponentSpacer>
+              <Neutroamine>60</Neutroamine>
+            </costList>
+            <statBases>
+              <WorkToMake>60000</WorkToMake>
+              <Mass>3</Mass>
+            </statBases>
+          </ThingDef>
+
+          <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+            <defName>RBP_InstallLivingFrame</defName>
+            <label>install living frame</label>
+            <description>Install a living frame.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_LivingFrame</ThingDef>
+              <HediffDef>RBP_LivingFrameHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing living frame.</jobString>
+            <workAmount>6000</workAmount>
+
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_LivingFrame</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_LivingFrame</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+
+            <workerClass>RebalancePatches.Recipe_InstallLivingPart</workerClass>
+            <appliedOnFixedBodyParts>
+              <li>Ribcage</li>
+            </appliedOnFixedBodyParts>
+            <addsHediff>RBP_LivingFrameHediff</addsHediff>
+          </RecipeDef>
+
+          <RecipeDef ParentName="SurgeryRemoveImplantBase">
+            <defName>RBP_RemoveLivingFrame</defName>
+            <label>remove living frame</label>
+            <description>Remove a living frame.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_LivingFrame</ThingDef>
+              <HediffDef>RBP_LivingFrameHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Removing living frame.</jobString>
+            <removesHediff>RBP_LivingFrameHediff</removesHediff>
+          </RecipeDef>
+
+          <!-- THE GENE-DIVERGENCE IMPLANT -->
+
+          <HediffDef ParentName="ImplantHediffBase">
+            <defName>RBP_GeneDivergenceImplantHediff</defName>
+            <label>apotheosis weave</label>
+            <labelNoun>an apotheosis weave</labelNoun>
+            <description>An installed apotheosis weave. It reads the body it lives in rather than imposing on it: it samples what the genome is doing, works out where that genome has been pushed away from what its xenotype is supposed to be, and reinforces exactly those departures. A stock hussar gets a competent regulator. A body that has been rebuilt gene by gene gets something that has far more to work with.\n\nIt re-reads its host about once a day, so changing what a pawn is changes what the implant gives.</description>
+            <descriptionHyperlinks><ThingDef>RBP_GeneDivergenceImplant</ThingDef></descriptionHyperlinks>
+            <spawnThingOnRemoved>RBP_GeneDivergenceImplant</spawnThingOnRemoved>
+            <initialSeverity>1</initialSeverity>
+            <maxSeverity>5</maxSeverity>
+            <comps>
+              <li Class="RebalancePatches.HediffCompProperties_GeneDivergence">
+
+                <pointsPerTier>8</pointsPerTier>
+                <minSeverity>1</minSeverity>
+                <maxSeverity>5</maxSeverity>
+                <recheckIntervalTicks>60000</recheckIntervalTicks>
+              </li>
+            </comps>
+            <stages>
+
+              <li>
+                <label>integrated</label>
+                <minSeverity>0</minSeverity>
+                <painFactor>0.90</painFactor>
+                <statOffsets>
+                  <InjuryHealingFactor>0.35</InjuryHealingFactor>
+                  <ImmunityGainSpeed>0.20</ImmunityGainSpeed>
+                  <ToxicResistance>0.15</ToxicResistance>
+                  <RestRateMultiplier>0.15</RestRateMultiplier>
+                </statOffsets>
+                <capMods>
+                  <li><capacity>BloodPumping</capacity><offset>0.10</offset></li>
+                  <li><capacity>BloodFiltration</capacity><offset>0.10</offset></li>
+                  <li><capacity>Breathing</capacity><offset>0.10</offset></li>
+                </capMods>
+              </li>
+              <li>
+                <label>adapted</label>
+                <minSeverity>2</minSeverity>
+                <painFactor>0.85</painFactor>
+                <statOffsets>
+                  <InjuryHealingFactor>0.55</InjuryHealingFactor>
+                  <ImmunityGainSpeed>0.30</ImmunityGainSpeed>
+                  <ToxicResistance>0.25</ToxicResistance>
+                  <RestRateMultiplier>0.20</RestRateMultiplier>
+                </statOffsets>
+                <capMods>
+                  <li><capacity>BloodPumping</capacity><offset>0.15</offset></li>
+                  <li><capacity>BloodFiltration</capacity><offset>0.15</offset></li>
+                  <li><capacity>Breathing</capacity><offset>0.15</offset></li>
+                </capMods>
+              </li>
+              <li>
+                <label>entwined</label>
+                <minSeverity>3</minSeverity>
+                <painFactor>0.80</painFactor>
+                <statOffsets>
+                  <InjuryHealingFactor>0.75</InjuryHealingFactor>
+                  <ImmunityGainSpeed>0.40</ImmunityGainSpeed>
+                  <ToxicResistance>0.35</ToxicResistance>
+                  <RestRateMultiplier>0.25</RestRateMultiplier>
+                </statOffsets>
+                <capMods>
+                  <li><capacity>BloodPumping</capacity><offset>0.20</offset></li>
+                  <li><capacity>BloodFiltration</capacity><offset>0.20</offset></li>
+                  <li><capacity>Breathing</capacity><offset>0.20</offset></li>
+                  <li><capacity>Consciousness</capacity><offset>0.05</offset></li>
+                </capMods>
+              </li>
+              <li>
+                <label>converged</label>
+                <minSeverity>4</minSeverity>
+                <painFactor>0.75</painFactor>
+                <statOffsets>
+                  <InjuryHealingFactor>0.95</InjuryHealingFactor>
+                  <ImmunityGainSpeed>0.50</ImmunityGainSpeed>
+                  <ToxicResistance>0.45</ToxicResistance>
+                  <RestRateMultiplier>0.30</RestRateMultiplier>
+                </statOffsets>
+                <capMods>
+                  <li><capacity>BloodPumping</capacity><offset>0.25</offset></li>
+                  <li><capacity>BloodFiltration</capacity><offset>0.25</offset></li>
+                  <li><capacity>Breathing</capacity><offset>0.25</offset></li>
+                  <li><capacity>Consciousness</capacity><offset>0.10</offset></li>
+                </capMods>
+              </li>
+              <li>
+                <label>symbiotic</label>
+                <minSeverity>5</minSeverity>
+                <painFactor>0.70</painFactor>
+                <statOffsets>
+                  <InjuryHealingFactor>1.15</InjuryHealingFactor>
+                  <ImmunityGainSpeed>0.60</ImmunityGainSpeed>
+                  <ToxicResistance>0.55</ToxicResistance>
+                  <RestRateMultiplier>0.35</RestRateMultiplier>
+                </statOffsets>
+                <capMods>
+                  <li><capacity>BloodPumping</capacity><offset>0.30</offset></li>
+                  <li><capacity>BloodFiltration</capacity><offset>0.30</offset></li>
+                  <li><capacity>Breathing</capacity><offset>0.30</offset></li>
+                  <li><capacity>Consciousness</capacity><offset>0.15</offset></li>
+                </capMods>
+              </li>
+            </stages>
+          </HediffDef>
+
+          <ThingDef ParentName="BodyPartBionicBase">
+            <defName>RBP_GeneDivergenceImplant</defName>
+            <label>apotheosis weave</label>
+            <description>A torso implant that spends its whole life reading its host. It compares what the body's genome is actually doing against what that xenotype is nominally supposed to be, and pushes on the difference. In an unaltered body there is little difference to find and it settles for regulating what is there; in a body that has been engineered away from its own template there is a great deal, and it gives back accordingly.</description>
+            <descriptionHyperlinks><RecipeDef>RBP_InstallGeneDivergenceImplant</RecipeDef></descriptionHyperlinks>
+            <techLevel>Ultra</techLevel>
+
+            <recipeMaker>
+              <researchPrerequisite>AdvancedFabrication</researchPrerequisite>
+            </recipeMaker>
+
+            <costList>
+              <Plasteel>64</Plasteel>
+              <ComponentSpacer>20</ComponentSpacer>
+              <Neutroamine>40</Neutroamine>
+            </costList>
+            <statBases>
+              <WorkToMake>45000</WorkToMake>
+              <Mass>1</Mass>
+            </statBases>
+          </ThingDef>
+
+          <RecipeDef ParentName="SurgeryInstallImplantBase">
+            <defName>RBP_InstallGeneDivergenceImplant</defName>
+            <label>install apotheosis weave</label>
+            <description>Install an apotheosis weave.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_GeneDivergenceImplant</ThingDef>
+              <HediffDef>RBP_GeneDivergenceImplantHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing apotheosis weave.</jobString>
+            <workAmount>4000</workAmount>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_GeneDivergenceImplant</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_GeneDivergenceImplant</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+            <appliedOnFixedBodyParts>
+              <li>Torso</li>
+            </appliedOnFixedBodyParts>
+            <addsHediff>RBP_GeneDivergenceImplantHediff</addsHediff>
+          </RecipeDef>
+
+          <RecipeDef ParentName="SurgeryRemoveImplantBase">
+            <defName>RBP_RemoveGeneDivergenceImplant</defName>
+            <label>remove apotheosis weave</label>
+            <description>Remove an apotheosis weave.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_GeneDivergenceImplant</ThingDef>
+              <HediffDef>RBP_GeneDivergenceImplantHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Removing apotheosis weave.</jobString>
+            <removesHediff>RBP_GeneDivergenceImplantHediff</removesHediff>
+          </RecipeDef>
+
+        </value>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/HediffDef[defName="RBP_LivingFrameHediff"]</xpath>
+          <value>
+            <comps>
+              <li Class="EBSGFramework.HediffCompProperties_Modular">
+                <slots>
+                  <li>
+                    <slotID>RBP_TorsoSlot</slotID>
+                    <slotName>torso module slot</slotName>
+                    <capacity>6</capacity>
+                  </li>
+                </slots>
+              </li>
+            </comps>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaracesexpanded.android</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/VREAndroids.AndroidSettings[defName="VREA_AndroidSettings"]/disallowedRecipes</xpath>
+          <value>
+            <li>RBP_InstallLivingFrame</li>
+            <li>RBP_RemoveLivingFrame</li>
+            <li>RBP_InstallGeneDivergenceImplant</li>
+            <li>RBP_RemoveGeneDivergenceImplant</li>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationIfEnabled">
+        <settingKey>cyberneticsresearch.capstones</settingKey>
+        <operations>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="RBP_LivingFrame"]/recipeMaker/researchPrerequisite</xpath>
+            <value><researchPrerequisite>RBP_CybSymbioticIntegration</researchPrerequisite></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="RBP_GeneDivergenceImplant"]/recipeMaker/researchPrerequisite</xpath>
+            <value><researchPrerequisite>RBP_CybSymbioticIntegration</researchPrerequisite></value>
+          </li>
+        </operations>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

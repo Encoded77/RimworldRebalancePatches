@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>gits.cyberbrainnames</settingKey>
+    <operations>
+
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"CS14")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon CS14</find>
+        <replace>Civis Culinary</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallCS14Cyberbrain"]/description</xpath>
+        <find>Poseidon CS14</find>
+        <replace>Civis Culinary</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsCS14Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis Culinary cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"DS23")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon DS23</find>
+        <replace>Civis Mining</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallDS23Cyberbrain"]/description</xpath>
+        <find>Poseidon DS23</find>
+        <replace>Civis Mining</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsDS23Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis Mining cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"PS39")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon PS39</find>
+        <replace>Civis Agrarian</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallPS39Cyberbrain"]/description</xpath>
+        <find>Poseidon PS39</find>
+        <replace>Civis Agrarian</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsPS39Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis Agrarian cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"BS40")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon BS40</find>
+        <replace>Civis Construction</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallBS40Cyberbrain"]/description</xpath>
+        <find>Poseidon BS40</find>
+        <replace>Civis Construction</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsBS40Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis Construction cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"FS57")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon FS57</find>
+        <replace>Civis Industrial</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallFS57Cyberbrain"]/description</xpath>
+        <find>Poseidon FS57</find>
+        <replace>Civis Industrial</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsFS57Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis Industrial cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"TS63")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon TS63</find>
+        <replace>Civis Diplomatic</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallTS63Cyberbrain"]/description</xpath>
+        <find>Poseidon TS63</find>
+        <replace>Civis Diplomatic</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsTS63Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis Diplomatic cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"MS71")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon MS71</find>
+        <replace>Civis Medical</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallMS71Cyberbrain"]/description</xpath>
+        <find>Poseidon MS71</find>
+        <replace>Civis Medical</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsMS71Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis Medical cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"RS86")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon RS86</find>
+        <replace>Civis Analytic</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallRS86Cyberbrain"]/description</xpath>
+        <find>Poseidon RS86</find>
+        <replace>Civis Analytic</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsRS86Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis Analytic cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"FS113")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon FS113</find>
+        <replace>Civis Homestead</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallFS113Cyberbrain"]/description</xpath>
+        <find>Poseidon FS113</find>
+        <replace>Civis Homestead</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsFS113Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis Homestead cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"YS151")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon YS151</find>
+        <replace>Civis Foundry</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallYS151Cyberbrain"]/description</xpath>
+        <find>Poseidon YS151</find>
+        <replace>Civis Foundry</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsYS151Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis Foundry cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"XS176")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon XS176</find>
+        <replace>Civis Engineering</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallXS176Cyberbrain"]/description</xpath>
+        <find>Poseidon XS176</find>
+        <replace>Civis Engineering</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsXS176Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis Engineering cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"HCQ11")]/*[self::label or self::jobString]</xpath>
+        <find>Hanka HCQ11</find>
+        <replace>Aegis Duelist</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallHCQ11Cyberbrain"]/description</xpath>
+        <find>Hanka HCQ11</find>
+        <replace>Aegis Duelist</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsHCQ11Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Aegis Duelist cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"HCQ14N")]/*[self::label or self::jobString]</xpath>
+        <find>Hanka HCQ14N</find>
+        <replace>Aegis Skirmisher</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallHCQ14NCyberbrain"]/description</xpath>
+        <find>Hanka HCQ14N</find>
+        <replace>Aegis Skirmisher</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsHCQ14NHediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Aegis Skirmisher cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"HCQ14T")]/*[self::label or self::jobString]</xpath>
+        <find>Hanka HCQ14T</find>
+        <replace>Aegis Reaver</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallHCQ14TCyberbrain"]/description</xpath>
+        <find>Hanka HCQ14T</find>
+        <replace>Aegis Reaver</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsHCQ14THediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Aegis Reaver cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"SS9G")]/*[self::label or self::jobString]</xpath>
+        <find>Hanka SS9G</find>
+        <replace>Aegis Gunner</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallSS9GCyberbrain"]/description</xpath>
+        <find>Hanka SS9G</find>
+        <replace>Aegis Gunner</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsSS9GHediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Aegis Gunner cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"SS9M")]/*[self::label or self::jobString]</xpath>
+        <find>Hanka SS9M</find>
+        <replace>Aegis Marksman</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallSS9MCyberbrain"]/description</xpath>
+        <find>Hanka SS9M</find>
+        <replace>Aegis Marksman</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsSS9MHediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Aegis Marksman cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"HCQ19")]/*[self::label or self::jobString]</xpath>
+        <find>Hanka HCQ19</find>
+        <replace>Aegis Warden</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallHCQ19Cyberbrain"]/description</xpath>
+        <find>Hanka HCQ19</find>
+        <replace>Aegis Warden</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsHCQ19Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Aegis Warden cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"CSOF2")]/*[self::label or self::jobString]</xpath>
+        <find>Hanka CSOF2</find>
+        <replace>Aegis Sniper</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallCSOF2Cyberbrain"]/description</xpath>
+        <find>Hanka CSOF2</find>
+        <replace>Aegis Sniper</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsCSOF2Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Aegis Sniper cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"CSOF4")]/*[self::label or self::jobString]</xpath>
+        <find>Hanka CSOF4</find>
+        <replace>Aegis Vanguard</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallCSOF4Cyberbrain"]/description</xpath>
+        <find>Hanka CSOF4</find>
+        <replace>Aegis Vanguard</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsCSOF4Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Aegis Vanguard cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"PX7")]/*[self::label or self::jobString]</xpath>
+        <find>Poseidon PX-7</find>
+        <replace>Civis PX-7</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallPX7Cyberbrain"]/description</xpath>
+        <find>Poseidon PX-7</find>
+        <replace>Civis PX-7</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsPX7Hediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Civis PX-7 cyberbrain</labelNoun></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/*[contains(defName,"HADES")]/*[self::label or self::jobString]</xpath>
+        <find>Locus-Solus HADES</find>
+        <replace>Aegis HADES</replace>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/RecipeDef[defName="gitsInstallHADESCyberbrain"]/description</xpath>
+        <find>Locus-Solus HADES</find>
+        <replace>Aegis HADES</replace>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsHADESHediff"]/labelNoun</xpath>
+        <value><labelNoun>an installed Aegis HADES cyberbrain</labelNoun></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsHCQ11Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain built for close combat. Its rebuilt cortex reads an opponent's guard and commits the body to the opening, sharpening every part of melee.
+
+<color=#e6e6e6ff><size=11.8>Aegis Duelist modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   Melee Hit Chance: +6
+   Melee Dodge Chance: +8
+   Move Speed: +12%
+   Melee Cooldown Factor: -25%
+   Melee Damage Factor: +10%
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsHCQ11Hediff"]/description</xpath>
+        <value><description>A cyberbrain built for close combat. Its rebuilt cortex reads an opponent's guard and commits the body to the opening, sharpening every part of melee.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsPS39Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain tuned for the fields, carrying a grower's judgement for planting, tending and harvest so the wearer brings in more from the same ground.
+
+<color=#e6e6e6ff><size=11.8>Civis Agrarian modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   Plant Work Speed: +30%
+   Plant Harvest Yield: +18%
+   Drug Harvest Yield: +18%
+   Pruning Speed: +25%
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsPS39Hediff"]/description</xpath>
+        <value><description>A cyberbrain tuned for the fields, carrying a grower's judgement for planting, tending and harvest so the wearer brings in more from the same ground.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsSS9GCyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain built for the gun, steadying aim and shortening the time from sighting to shot.
+
+<color=#e6e6e6ff><size=11.8>Aegis Gunner modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   Shooting Accuracy: +6
+   Aiming Delay Factor: -25%
+   Ranged Cooldown Factor: -25%
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsSS9GHediff"]/description</xpath>
+        <value><description>A cyberbrain built for the gun, steadying aim and shortening the time from sighting to shot.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsCSOF4Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A deeper combat cyberbrain that refuses to specialise, staying competent with blade and gun alike.
+
+<color=#e6e6e6ff><size=11.8>Aegis Vanguard modifiers:</size><size=10.2>
+
+   Cortex module slots: 4
+   Consciousness: +30%
+   Manipulation: +15%
+   Learning Speed: +60%
+   Research Speed: +10%
+   Shooting Accuracy: +6
+   Aiming Delay: -20%
+   Ranged Cooldown: -20%
+	 Mortar Miss Radius: -8%
+   Melee Hit Chance: +4
+   Melee Dodge Chance: +6
+   Hacking Speed: +100%
+   Move Speed: 20%
+   Melee Cooldown: -35%
+   Melee Damage: +20%
+
+   Mental Break Threshold: +12%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsCSOF4Hediff"]/description</xpath>
+        <value><description>A deeper combat cyberbrain that refuses to specialise, staying competent with blade and gun alike.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsYS151Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A deeper cyberbrain carrying both construction and crafting, for a worker who builds and fabricates in one body.
+
+<color=#e6e6e6ff><size=11.8>Civis Foundry modifiers:</size><size=10.2>
+
+   Cortex module slots: 4
+   Consciousness: +30%
+   Manipulation: +15%
+   Learning Speed: +60%
+   Research Speed: +10%
+   General Labor Speed: +35%
+   Smelting Speed: +35%
+   Construction Speed: +35%
+   Construction Success Chance: +18%
+   Smoothing Speed: +30%
+   Repair Success Chance: +18%
+
+   Mental Break Threshold: +12%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsYS151Hediff"]/description</xpath>
+        <value><description>A deeper cyberbrain carrying both construction and crafting, for a worker who builds and fabricates in one body.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsEnhancedCyberbrain"]/description</xpath>
+        <value><description><![CDATA[A deeper rebuild than the basic model, replacing more of the cerebrum with microcircuitry for faster thought and better memory. It is not tuned toward any one kind of work.
+
+<color=#e6e6e6ff><size=11.8>Enhanced Cyberbrain modifiers:</size><size=10.2>
+
+   Cortex module slots: 2
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+
+   Mental Break Threshold: +8%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsEnhancedHediff"]/description</xpath>
+        <value><description>A deeper rebuild than the basic model, replacing more of the cerebrum with microcircuitry for faster thought and better memory. It is not tuned toward any one kind of work.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsCSOF2Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A deeper cyberbrain for long-range fire, built around reacquiring and holding a distant target.
+
+<color=#e6e6e6ff><size=11.8>Aegis Sniper modifiers:</size><size=10.2>
+
+   Cortex module slots: 4
+   Consciousness: +30%
+   Manipulation: +15%
+   Learning Speed: +60%
+   Research Speed: +10%
+   Shooting Accuracy: +10
+   Aiming Delay: -50%
+   Ranged Cooldown: -50%
+	 Mortar Miss Radius: -10%
+
+   Mental Break Threshold: +12%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsCSOF2Hediff"]/description</xpath>
+        <value><description>A deeper cyberbrain for long-range fire, built around reacquiring and holding a distant target.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsBasicCyberbrain"]/description</xpath>
+        <value><description><![CDATA[The entry model. Micromachines lay a partial lattice through the cortex, giving the wearer a direct link to cybernetic hardware. It carries no work skill of its own and leaves most of the brain intact, so it brings no instability.
+
+<color=#e6e6e6ff><size=11.8>Basic Cyberbrain modifiers:</size><size=10.2>
+
+   Cortex module slots: 1
+   Consciousness: +10%
+   Manipulation: +5%
+   Learning Speed: +5%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsBasicHediff"]/description</xpath>
+        <value><description>The entry model. Micromachines lay a partial lattice through the cortex, giving the wearer a direct link to cybernetic hardware. It carries no work skill of its own and leaves most of the brain intact, so it brings no instability.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsHCQ14TCyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain built for heavy melee, trading speed for raw force. It suits heavy weapons.
+
+<color=#e6e6e6ff><size=11.8>Aegis Reaver modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   Melee Hit Chance: +8
+   Melee Dodge Chance: +8
+   Melee Damage Factor: +100%
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+   Melee Cooldown Factor: +35%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsHCQ14THediff"]/description</xpath>
+        <value><description>A cyberbrain built for heavy melee, trading speed for raw force. It suits heavy weapons.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsXS176Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A deeper cyberbrain pairing the workshop with the lab, carrying both crafting and research.
+
+<color=#e6e6e6ff><size=11.8>Civis Engineering modifiers:</size><size=10.2>
+
+   Cortex module slots: 4
+   Consciousness: +30%
+   Manipulation: +15%
+   Learning Speed: +60%
+   Research Speed: +45%
+   General Labor Speed: +30%
+   Smelting Speed: +30%
+   Reading Speed: +30%
+   Hacking Speed: +185%
+
+   Mental Break Threshold: +12%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsXS176Hediff"]/description</xpath>
+        <value><description>A deeper cyberbrain pairing the workshop with the lab, carrying both crafting and research.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsTS63Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain tuned for talk. It reads faces and cadence and prompts the wearer, lifting trade, negotiation and recruitment.
+
+<color=#e6e6e6ff><size=11.8>Civis Diplomatic modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   Negotiation Ability: +30%
+   Social Impact: +18%
+   Trade Price Improvement: +15%
+   Arrest Success Chance: +25%
+   Suppression Power: +25%
+   Conversion Power: +20%
+
+   Mental Break Threshold: +10%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsTS63Hediff"]/description</xpath>
+        <value><description>A cyberbrain tuned for talk. It reads faces and cadence and prompts the wearer, lifting trade, negotiation and recruitment.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsPX7Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[The Civis flagship. Almost the whole cortex is rebuilt, carrying every trade the maker ever put in a brain at once. It holds no combat capability. So little living brain remains that the wearer's moods run high and they crack far more easily under pressure.
+
+<color=#e6e6e6ff><size=11.8>Civis PX-7 modifiers:</size><size=10.2>
+
+   Cortex module slots: 5
+   Consciousness: +50%
+   Manipulation: +25%
+   Moving: +10%
+   Sight: +25%
+   Hearing: +25%
+   Learning Speed: +100%
+   General Labor Speed: +50%
+   Construction Speed: +65%
+   Mining Speed: +50%
+   Cooking Speed: +65%
+   Smoothing Speed: +90%
+   Drug Production Speed: +65%
+   Smelting Speed: +60%
+   Butcher Speed: +100%
+   Butcher Efficiency: +80%
+   Plant Work Speed: +50%
+   Plant Harvest Yield: +80%
+   Drug Harvest Yield: +80%
+   Pruning Speed: +50%
+   Food Poison Chance: -25%
+   Tending Speed: +20%
+   Operation Speed: +35%
+   Tending Quality: +10%
+   Surgery Success Chance: +20%
+   Reading Speed: +35%
+   Research Speed: +50%
+   Social Impact: +18%
+   Negotiation Ability: +35%
+   Trade Price Improvement: +18%
+   Arrest Success Chance: +10%
+   Hacking Speed: +200%
+   Move Speed: +10%
+
+   Mental Break Threshold: +20%
+   Social Fight Chance: +400%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsPX7Hediff"]/description</xpath>
+        <value><description>The Civis flagship. Almost the whole cortex is rebuilt, carrying every trade the maker ever put in a brain at once. It holds no combat capability. So little living brain remains that the wearer's moods run high and they crack far more easily under pressure.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsCS14Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain tuned for the kitchen. Its rebuilt cortex carries a cook's skill at food and butchery, so meals come faster and less is wasted.
+
+<color=#e6e6e6ff><size=11.8>Civis Culinary modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   Cooking Speed: +30%
+   Drug Production Speed: +30%
+   Food Poison Chance: -25%
+   Butcher Speed: +30%
+   Butcher Efficiency: +18%
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsCS14Hediff"]/description</xpath>
+        <value><description>A cyberbrain tuned for the kitchen. Its rebuilt cortex carries a cook's skill at food and butchery, so meals come faster and less is wasted.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsBS40Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain tuned for building. Its rebuilt cortex holds a builder's instinct for structure and repair, and the work goes up faster and stands longer.
+
+<color=#e6e6e6ff><size=11.8>Civis Construction modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   Construction Speed: +30%
+   Construction Success Chance: +18%
+   Smoothing Speed: +25%
+   Repair Success Chance: +18%
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsBS40Hediff"]/description</xpath>
+        <value><description>A cyberbrain tuned for building. Its rebuilt cortex holds a builder's instinct for structure and repair, and the work goes up faster and stands longer.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsDS23Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain tuned for the rock face. It reads strata and drives faster mining and deep drilling.
+
+<color=#e6e6e6ff><size=11.8>Civis Mining modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   Mining Speed: +30%
+   Mining Yield: +18%
+   Deep Drilling Speed: +30%
+   Smoothing Speed: +25%
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsDS23Hediff"]/description</xpath>
+        <value><description>A cyberbrain tuned for the rock face. It reads strata and drives faster mining and deep drilling.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsHADESCyberbrain"]/description</xpath>
+        <value><description><![CDATA[The Aegis flagship. The wearer shoots and moves at the very limit of a human body. So little living brain remains that the mind runs badly unstable, prone to violent swings and to breaking under pressure.
+
+<color=#e6e6e6ff><size=11.8>Aegis HADES modifiers:</size><size=10.2>
+
+   Cortex module slots: 5
+   Consciousness: +50%
+   Manipulation: +25%
+   Moving: +10%
+   Sight: +25%
+   Hearing: +25%
+   Learning Speed: +100%
+   Research Speed: +20%
+   Shooting Accuracy: +12
+   Aiming Delay: -65%
+   Ranged Cooldown: -65%
+	 Mortar Miss Radius: -20%
+   Melee Hit Chance: +12
+   Melee Dodge Chance: +18
+   Hacking Speed: +120%
+   Move Speed: +50%
+   Melee Cooldown: -25%
+   Melee Damage: +35%
+
+   Mental Break Threshold: +20%
+   Social Fight Chance: +400%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsHADESHediff"]/description</xpath>
+        <value><description>The Aegis flagship. The wearer shoots and moves at the very limit of a human body. So little living brain remains that the mind runs badly unstable, prone to violent swings and to breaking under pressure.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsHCQ14NCyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain built for fast melee, favouring dodges and quick strikes. It suits light weapons.
+
+<color=#e6e6e6ff><size=11.8>Aegis Skirmisher modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   Melee Hit Chance: +4
+   Melee Dodge Chance: +12
+   Melee Cooldown Factor: -50%
+   Move Speed: 25%
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+   Melee Damage Factor: -25%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsHCQ14NHediff"]/description</xpath>
+        <value><description>A cyberbrain built for fast melee, favouring dodges and quick strikes. It suits light weapons.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsMS71Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain tuned for medicine, laying anatomy and procedure over the surgeon's view to raise tending quality and surgical success.
+
+<color=#e6e6e6ff><size=11.8>Civis Medical modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   Tending Speed: +30%
+   Operation Speed: +30%
+   Tend Quality: +18%
+   Surgery Success Chance: +25%
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsMS71Hediff"]/description</xpath>
+        <value><description>A cyberbrain tuned for medicine, laying anatomy and procedure over the surgeon's view to raise tending quality and surgical success.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsRS86Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain tuned for the lab and the terminal, speeding research, data work and hacking.
+
+<color=#e6e6e6ff><size=11.8>Civis Analytic modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +35%
+   Reading Speed: +30%
+   Hacking Speed: +150%
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsRS86Hediff"]/description</xpath>
+        <value><description>A cyberbrain tuned for the lab and the terminal, speeding research, data work and hacking.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsHCQ19Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A deeper melee cyberbrain, built for a soldier meant to close and win a fight outright.
+
+<color=#e6e6e6ff><size=11.8>Aegis Warden modifiers:</size><size=10.2>
+
+   Cortex module slots: 4
+   Consciousness: +30%
+   Manipulation: +15%
+   Learning Speed: +60%
+   Research Speed: +10%
+   Melee Hit Chance: +8
+   Melee Dodge Chance: +12
+   Move Speed: +25%
+   Melee Cooldown Factor: -15%
+   Melee Damage Factor: +20%
+
+   Mental Break Threshold: +12%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsHCQ19Hediff"]/description</xpath>
+        <value><description>A deeper melee cyberbrain, built for a soldier meant to close and win a fight outright.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsFS113Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A deeper cyberbrain carrying both the kitchen and the fields, for a colonist who cooks and farms in one body.
+
+<color=#e6e6e6ff><size=11.8>Civis Homestead modifiers:</size><size=10.2>
+
+   Cortex module slots: 4
+   Consciousness: +30%
+   Manipulation: +15%
+   Learning Speed: +60%
+   Research Speed: +10%
+   Plant Work Speed: +35%
+   Plant Harvest Yield: +18%
+   Drug Harvest Yield: +18%
+   Pruning Speed: +30%
+   Cooking Speed: +35%
+   Drug Production Speed: +35%
+   Food Poison Chance: -25%
+   Butcher Speed: +35%
+   Butcher Efficiency: +18%
+
+   Mental Break Threshold: +12%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsFS113Hediff"]/description</xpath>
+        <value><description>A deeper cyberbrain carrying both the kitchen and the fields, for a colonist who cooks and farms in one body.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsSS9MCyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain built for precision fire, solving range and lead for a single accurate shot. It suits long marksman weapons.
+
+<color=#e6e6e6ff><size=11.8>Aegis Marksman modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   Shooting Accuracy: +12
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+   Aiming Delay Factor: +35%
+   Ranged Cooldown Factor: +35%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsSS9MHediff"]/description</xpath>
+        <value><description>A cyberbrain built for precision fire, solving range and lead for a single accurate shot. It suits long marksman weapons.</description></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="gitsFS57Cyberbrain"]/description</xpath>
+        <value><description><![CDATA[A cyberbrain tuned for the workshop and smelter, carrying fabrication and crafting skill and speeding heavy labour.
+
+<color=#e6e6e6ff><size=11.8>Civis Industrial modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Consciousness: +25%
+   Manipulation: +10%
+   Learning Speed: +50%
+   Research Speed: +5%
+   General Labor Speed: +30%
+   Smelting Speed: +30%
+
+   Mental Break Threshold: +10%
+   Social Fight Chance: +50%
+</size></color>]]></description></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsFS57Hediff"]/description</xpath>
+        <value><description>A cyberbrain tuned for the workshop and smelter, carrying fabrication and crafting skill and speeding heavy labour.</description></value>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>gits.mentalbreak</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationReplaceInText">
+        <xpath>Defs/ThingDef[defName="gitsPX7Cyberbrain" or defName="gitsHADESCyberbrain"]/description</xpath>
+        <find>Mental Break Threshold: +20%</find>
+        <replace>Mental Break Threshold: +40%</replace>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

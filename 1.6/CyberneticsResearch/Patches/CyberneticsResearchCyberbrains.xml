@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Cyberbrain research trunk: 11 nodes, then craft-gate repoints. -->
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.cyberbrains</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+          <li Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybNeuralInterface</defName>
+                <label>neural interface</label>
+                <description>Micromachine swarms fine enough to work inside living nervous tissue, and the injector hardware that places them. A swarm can map a cortex, hold a lattice open while it sets, and be flushed back out again if the work goes wrong.\n\nNothing here replaces a brain. This is the common toolset every cyberbrain house builds on, and the micromachines themselves are the material each of their models is grown around.</description>
+                <baseCost>1000</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybSurgicalImplantation</li>
+                  <li>MicroelectronicsBasics</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>15</researchViewX>
+                <researchViewY>2.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybBasicCyberbrain</defName>
+                <label>basic cyberbrain</label>
+                <description>The entry model, and the same product whichever house stamps it: a partial lattice threaded through the cortex. It carries none of the wearer's work for them, but learns alongside them and keeps what it learns. Deliberately unspecialised.</description>
+                <baseCost>1600</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybNeuralInterface</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>16</researchViewX>
+                <researchViewY>2.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybEnhancedCyberbrain</defName>
+                <label>enhanced cyberbrain</label>
+                <description>A far deeper lattice, and the last cyberbrain sold as a general-purpose product. It thinks faster and holds more, without yet being tuned toward any one life.\n\nThe specialised makers each start from a brain like this one. Civis tunes for labour, Aegis for killing, and Echo, quieter and not sold openly, for the psychic architecture of the mind.</description>
+                <baseCost>2200</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybBasicCyberbrain</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>17</researchViewX>
+                <researchViewY>2.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybNeuralCoprocessors</defName>
+                <label>neural coprocessors</label>
+                <description>Auxiliary intelligences small enough to ride in a cortex slot. A coprocessor does not rebuild a mind the way a cyberbrain does; it sits beside one, holding a single trade's worth of judgement ready and offering it a half-second before the wearer would have reached the same conclusion themselves.\n\nCivis sells the labour lines and Aegis the combat ones, but the architecture is shared. Fitting one needs a cyberbrain to plug into.</description>
+                <baseCost>2600</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybBasicCyberbrain</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>17</researchViewX>
+                <researchViewY>1.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybNeuralWellBeing</defName>
+                <label>neural well-being</label>
+                <description>The unglamorous half of neural engineering. Hardware that makes a mind easier to live in rather than better at anything: mood regulation, memory that holds, sleep that finishes, pain turned down, a voice that carries.\n\nCivis's oldest and cheapest line, and the parts are legal almost everywhere.</description>
+                <baseCost>1400</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybBasicCyberbrain</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>17</researchViewX>
+                <researchViewY>0.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybCivisCyberbrains</defName>
+                <label>Civis cyberbrains</label>
+                <description>Civis is a consumer house. Its cyberbrains are sold by trade, one model per trade: a lifetime of a cook's or a driller's or a negotiator's instincts, compressed and installed.\n\nEach model owns one trade and is ordinary outside it, bought for a colonist who already knows their work.</description>
+                <baseCost>2600</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybEnhancedCyberbrain</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>18</researchViewX>
+                <researchViewY>3.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybCivisAdvanced</defName>
+                <label>Civis advanced cyberbrains</label>
+                <description>Civis's professional range. Each model carries two trades at once and runs both better than the single-domain line runs one, which is why the house will not sell them to a first-time wearer.\n\nHouse literature calls them foreman brains.</description>
+                <baseCost>3800</baseCost>
+                <techLevel>Ultra</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybCivisCyberbrains</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>19</researchViewX>
+                <researchViewY>3.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybCivisPX7</defName>
+                <label>Civis PX-7</label>
+                <description>The Civis flagship, and the furthest a mind has been taken toward pure competence. A PX-7 carries every trade the house ever built a brain for at once, a generalist with no dead spots, though a dedicated specialist still edges it in its own trade.\n\nThere is no combat capability anywhere in it. Civis has never sold one and does not intend to start.</description>
+                <baseCost>6000</baseCost>
+                <techLevel>Ultra</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybCivisAdvanced</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>20</researchViewX>
+                <researchViewY>3.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybAegisCyberbrains</defName>
+                <label>Aegis cyberbrains</label>
+                <description>Aegis is a military contractor and prices like one. Its cyberbrains do one of two things, close the distance or hold it, and within each the house sells variants rather than upgrades: a balanced model, one that trades survivability for damage, one that trades damage for the ability to not be hit.\n\nNo Aegis model is strictly better than its siblings at this tier.</description>
+                <baseCost>2800</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybEnhancedCyberbrain</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>18</researchViewX>
+                <researchViewY>4.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybAegisAdvanced</defName>
+                <label>Aegis advanced cyberbrains</label>
+                <description>Aegis's contract range, fitted to people the house expects to get back. A dedicated melee model, a long-range model, and one that refuses to specialise and stays competent at both. Which of them beats a cheaper variant depends on the fight.\n\nAegis will not quote a price without knowing who the wearer is.</description>
+                <baseCost>4000</baseCost>
+                <techLevel>Ultra</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybAegisCyberbrains</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>19</researchViewX>
+                <researchViewY>4.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybAegisHADES</defName>
+                <label>Aegis HADES</label>
+                <description>The Aegis flagship. A HADES wearer shoots and moves at the limit of what a human frame can take, and pays for it in stability: a raised mental break threshold comes with the accuracy.</description>
+                <baseCost>6000</baseCost>
+                <techLevel>Ultra</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybAegisAdvanced</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>20</researchViewX>
+                <researchViewY>4.00</researchViewY>
+              </ResearchProjectDef>
+
+            </value>
+          </li>
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+  <!-- Repoint cyberbrain craft gates onto the trunk. Install/remove surgeries stay on the root. -->
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.cyberbrains</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>moistestwhale.gitscyberbrains</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+
+                <!-- Neural interface: micromachine and CCSM injector crafting. -->
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/RecipeDef[@Name="gitsMakeMicromachinesBase"]/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybNeuralInterface</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/RecipeDef[@Name="gitsMakeCCSMInjectorBase"]/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybNeuralInterface</researchPrerequisite></value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="gitsBasicCyberbrain"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybBasicCyberbrain</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="gitsEnhancedCyberbrain"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybEnhancedCyberbrain</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="gitsCS14Cyberbrain" or defName="gitsDS23Cyberbrain" or defName="gitsPS39Cyberbrain" or defName="gitsBS40Cyberbrain" or defName="gitsFS57Cyberbrain" or defName="gitsTS63Cyberbrain" or defName="gitsMS71Cyberbrain" or defName="gitsRS86Cyberbrain"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybCivisCyberbrains</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+
+                <!-- Civis, advanced tier - the 3 two-trade models. -->
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="gitsFS113Cyberbrain" or defName="gitsYS151Cyberbrain" or defName="gitsXS176Cyberbrain"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybCivisAdvanced</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="gitsPX7Cyberbrain"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybCivisPX7</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="gitsHADESCyberbrain"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybAegisHADES</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="gitsHCQ11Cyberbrain" or defName="gitsHCQ14TCyberbrain" or defName="gitsHCQ14NCyberbrain" or defName="gitsSS9GCyberbrain" or defName="gitsSS9MCyberbrain"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybAegisCyberbrains</researchPrerequisite></value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="gitsHCQ19Cyberbrain" or defName="gitsCSOF2Cyberbrain" or defName="gitsCSOF4Cyberbrain"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybAegisAdvanced</researchPrerequisite></value>
+                </li>
+
+              </operations>
+            </match>
+          </li>
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.cyberbrains</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>vat.epoeforked</li>
+            </mods>
+            <match Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="RBP_AuxiliaryAI_Artisan"]</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="RBP_AuxiliaryAI_Artisan" or defName="RBP_AuxiliaryAI_Construction" or defName="RBP_AuxiliaryAI_Diplomatic" or defName="RBP_AuxiliaryAI_Medical" or defName="RBP_AuxiliaryAI_Agricultural" or defName="RBP_AuxiliaryAI_Mining" or defName="RBP_AuxiliaryAI_Brawler" or defName="RBP_AuxiliaryAI_Commando" or defName="RBP_AuxiliaryAI_Sharpshooter"]</xpath>
+                <value>
+                  <recipeMaker>
+                    <researchPrerequisite>RBP_CybNeuralCoprocessors</researchPrerequisite>
+                  </recipeMaker>
+                </value>
+              </match>
+            </match>
+          </li>
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+  <!-- Altered Carbon 2: three thematic researches dissolve into this one node. -->
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.cyberbrains</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>hlx.ultratechalteredcarbon</li>
+            </mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AC_MentalFuse" or defName="AC_Dreamcatcher" or defName="AC_VoiceSynthesizer"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybNeuralWellBeing</researchPrerequisite></value>
+            </match>
+          </li>
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.cyberbrains</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.royalty</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybCivisPX7" or defName="RBP_CybAegisHADES"]</xpath>
+          <value>
+            <techprintCount>1</techprintCount>
+            <techprintCommonality>1</techprintCommonality>
+            <techprintMarketValue>2000</techprintMarketValue>
+            <heldByFactionCategoryTags>
+              <li>Empire</li>
+            </heldByFactionCategoryTags>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.cyberbrains</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>vat.epoeforked</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="BrainStimulator"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybNeuralWellBeing</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="AIChip"]/recipeMaker</xpath>
+                  <value>
+                    <researchPrerequisite>RBP_CybNeuralWellBeing</researchPrerequisite>
+                  </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="EPOE_MAAI_Chip"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybNeuralInterface</researchPrerequisite></value>
+                </li>
+              </operations>
+            </match>
+          </li>
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.cyberbrains</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>lts.i</li>
+            </mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_MemoryDatabank" or defName="LTS_Neurostreamer" or defName="HackingPortImplant" or defName="WiredReflex"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybNeuralWellBeing</researchPrerequisite></value>
+            </match>
+          </li>
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.cyberbrains</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>ludeon.rimworld.royalty</li>
+            </mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Neurocalculator" or defName="LearningAssistant" or defName="Joywire" or defName="Painstopper" or defName="Mindscrew"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybNeuralWellBeing</researchPrerequisite></value>
+            </match>
+          </li>
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

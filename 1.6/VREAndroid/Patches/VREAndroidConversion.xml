@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.androidconversion</settingKey>
+    <operations>
+
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+          <ThingDef ParentName="MechSerumBase">
+            <defName>RBP_NeuroformSerum</defName>
+            <label>neuroform serum</label>
+            <description>A dose of mechanites carrying a map of somebody else's nervous system and instructions for laying down a substrate that can hold one.\n\nOn its own it does nothing useful. Injected without a chassis to build into, the mechanites exhaust themselves rewriting tissue that has nowhere to go. It is the first half of a process, and the half that is worthless alone.</description>
+
+            <graphicData>
+              <texPath>Things/Item/Resource/ArchiteCapsule</texPath>
+              <graphicClass>Graphic_Single</graphicClass>
+            </graphicData>
+            <stackLimit>5</stackLimit>
+
+            <statBases>
+              <WorkToMake>20000</WorkToMake>
+            </statBases>
+            <thingCategories>
+              <li>Drugs</li>
+            </thingCategories>
+            <recipeMaker>
+              <workSpeedStat>DrugSynthesisSpeed</workSpeedStat>
+              <workSkill>Intellectual</workSkill>
+              <effectWorking>Smith</effectWorking>
+              <soundWorking>Recipe_Machining</soundWorking>
+              <researchPrerequisite>VREA_AndroidTech</researchPrerequisite>
+              <recipeUsers>
+                <li>VREA_AndroidPartWorkbench</li>
+              </recipeUsers>
+              <skillRequirements>
+                <Intellectual>8</Intellectual>
+              </skillRequirements>
+            </recipeMaker>
+            <costList>
+              <Neutroamine>130</Neutroamine>
+              <ComponentSpacer>4</ComponentSpacer>
+              <MedicineUltratech>4</MedicineUltratech>
+              <Gold>15</Gold>
+            </costList>
+          </ThingDef>
+
+          <ThingDef ParentName="VREA_BodyPartAndroidBase">
+            <defName>RBP_AndroidConversionKit</defName>
+            <label>android conversion kit</label>
+            <description>Everything one body needs to stop being a body. A neuroform charge primed against a specific substrate, the substrate itself in collapsed form, and the reactor that will run it afterwards.\n\nThe reactor is the expensive part and the reason the kit cannot be improvised. A synthetic body is not powered by whatever it used to eat; it draws from a sealed core that has to be built, installed and eventually replaced. Assembling one of these is the last time that core will be easy to reach.</description>
+
+            <statBases>
+              <WorkToMake>55000</WorkToMake>
+              <Mass>8</Mass>
+            </statBases>
+
+            <techHediffsTags Inherit="False" />
+            <recipeMaker>
+              <researchPrerequisite>VREA_AndroidTech</researchPrerequisite>
+              <skillRequirements>
+                <Crafting>10</Crafting>
+              </skillRequirements>
+            </recipeMaker>
+            <costList>
+              <RBP_NeuroformSerum>1</RBP_NeuroformSerum>
+              <VREA_Reactor>1</VREA_Reactor>
+              <Plasteel>150</Plasteel>
+              <ComponentSpacer>12</ComponentSpacer>
+              <Neutroamine>80</Neutroamine>
+            </costList>
+          </ThingDef>
+
+          <RecipeDef ParentName="SurgeryFlesh">
+            <defName>RBP_ConvertToAndroid</defName>
+            <label>synthetic ascension</label>
+            <description>Fit an android conversion kit, converting the patient into an awakened android. Everything their genes were doing for them stops; disease, ageing and the rest of biology stop with it. The kit's reactor becomes their power source, and their limbs and organs are replaced with the synthetic equivalents.\n\nThe patient spends the following days barely able to move while motor control is remapped onto the new body.\n\nCannot be performed on a patient who already has a synthetic body.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_AndroidConversionKit</ThingDef>
+            </descriptionHyperlinks>
+            <workerClass>RebalancePatches.Mods.AndroidConversion.Recipe_ConvertToAndroid</workerClass>
+            <jobString>Performing synthetic ascension.</jobString>
+            <workAmount>12000</workAmount>
+            <targetsBodyPart>false</targetsBodyPart>
+            <hideBodyPartNames>true</hideBodyPartNames>
+            <humanlikeOnly>true</humanlikeOnly>
+            <surgerySuccessChanceFactor>0.9</surgerySuccessChanceFactor>
+            <developmentalStageFilter>Adult</developmentalStageFilter>
+            <skillRequirements>
+              <Medicine>10</Medicine>
+            </skillRequirements>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_AndroidConversionKit</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_AndroidConversionKit</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+            <recipeUsers>
+              <li>Human</li>
+            </recipeUsers>
+          </RecipeDef>
+
+          <HediffDef ParentName="DiseaseBase">
+            <defName>RBP_SyntheticAscensionRecovery</defName>
+            <label>ascension recovery</label>
+            <description>The aftermath of a whole-body replacement. Motor control is being remapped onto limbs that answer differently, and until the mapping settles the body does very little that is useful.</description>
+
+            <modExtensions Inherit="False">
+              <li Class="VREAndroids.AndroidSettingsExtension">
+                <androidCanCatchIt>true</androidCanCatchIt>
+              </li>
+            </modExtensions>
+            <comps>
+              <li Class="HediffCompProperties_Disappears">
+                <disappearsAfterTicks>90000~150000</disappearsAfterTicks>
+                <showRemainingTime>true</showRemainingTime>
+              </li>
+            </comps>
+            <stages>
+              <li>
+                <capMods>
+                  <li>
+                    <capacity>Moving</capacity>
+                    <postFactor>0.1</postFactor>
+                  </li>
+                  <li>
+                    <capacity>Manipulation</capacity>
+                    <postFactor>0.1</postFactor>
+                  </li>
+                </capMods>
+              </li>
+            </stages>
+          </HediffDef>
+
+          <RebalancePatches.ThingRemovalListDef>
+            <defName>RBP_ThingRemoval_VREAndroid_ConversionSerum</defName>
+            <settingKey>cybernetics.androidconversion</settingKey>
+            <requiredMods>
+              <li>derp88.vreandroidconversion</li>
+            </requiredMods>
+            <things>
+              <li>ConversionSerum</li>
+            </things>
+          </RebalancePatches.ThingRemovalListDef>
+
+        </value>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationIfEnabled">
+        <settingKey>cyberneticsresearch.capstones</settingKey>
+        <operations>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="RBP_NeuroformSerum"]/recipeMaker/researchPrerequisite</xpath>
+            <value><researchPrerequisite>RBP_CybSyntheticAscension</researchPrerequisite></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="RBP_AndroidConversionKit"]/recipeMaker/researchPrerequisite</xpath>
+            <value><researchPrerequisite>RBP_CybSyntheticAscension</researchPrerequisite></value>
+          </li>
+        </operations>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>derp88.vreandroidconversion</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="ConversionSerum"]/recipeMaker</xpath>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="ConversionSerum"]/ingestible</xpath>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="ConversionSerum"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="ConversionSerum"]</xpath>
+              <value>
+                <tradeability>None</tradeability>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

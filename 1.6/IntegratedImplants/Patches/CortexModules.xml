@@ -1,0 +1,1028 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_ArchotechBlackbox"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="LTS_ArchotechBlackbox"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>LTS_ArchotechBlackbox</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>LTS_ArchotechBlackbox</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="LTS_ArchotechBlackbox"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="LTS_ArchotechBlackbox"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>1</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>LTS_ArchotechBlackbox</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>LTS_ArchotechBlackbox</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="LTS_InstallArchotechBlackbox"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallArchotechBlackbox"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallArchotechBlackbox"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="LTS_InstallArchotechBlackbox"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_MemoryDatabank"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="LTS_MemoryDatabank"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>LTS_MemoryDatabank</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>LTS_MemoryDatabank</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="LTS_MemoryDatabank"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="LTS_MemoryDatabank"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>1</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>LTS_MemoryDatabank</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>LTS_MemoryDatabank</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="LTS_InstallMemoryDatabank"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallMemoryDatabank"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallMemoryDatabank"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="LTS_InstallMemoryDatabank"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_Neurostreamer"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="LTS_Neurostreamer"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>LTS_Neurostreamer</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>LTS_Neurostreamer</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="LTS_Neurostreamer"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="LTS_Neurostreamer"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>1</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>LTS_Neurostreamer</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>LTS_Neurostreamer</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="LTS_InstallNeurostreamer"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallNeurostreamer"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallNeurostreamer"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="LTS_InstallNeurostreamer"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_GunneryAssistant"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="LTS_GunneryAssistant"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>LTS_GunneryAssistant</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>LTS_GunneryAssistant</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="LTS_GunneryAssistant"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="LTS_GunneryAssistant"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>2</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>LTS_GunneryAssistant</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>LTS_GunneryAssistant</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="LTS_InstallGunneryAssistant"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallGunneryAssistant"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallGunneryAssistant"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="LTS_InstallGunneryAssistant"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="NeuralHeatsink"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="NeuralHeatsink"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>NeuralHeatsink</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>NeuralHeatsink</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="NeuralHeatsink"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="NeuralHeatsink"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>1</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>NeuralHeatsink</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>NeuralHeatsink</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallNeuralHeatsink"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallNeuralHeatsink"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="InstallNeuralHeatsink"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="InstallNeuralHeatsink"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PsychicAgonizer"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PsychicAgonizer"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PsychicAgonizer</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PsychicAgonizer</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="PsychicAgonizer"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="PsychicAgonizer"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>2</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>PsychicAgonizer</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>PsychicAgonizer</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallPsychicAgonizer"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallPsychicAgonizer"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="InstallPsychicAgonizer"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="InstallPsychicAgonizer"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PsychicBeguiler"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PsychicBeguiler"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PsychicBeguiler</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PsychicBeguiler</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="PsychicBeguiler"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="PsychicBeguiler"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>2</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>PsychicBeguiler</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>PsychicBeguiler</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallPsychicBeguiler"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallPsychicBeguiler"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="InstallPsychicBeguiler"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="InstallPsychicBeguiler"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PsychicNullifier"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PsychicNullifier"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PsychicNullifier</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PsychicNullifier</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="PsychicNullifier"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="PsychicNullifier"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>2</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>PsychicNullifier</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>PsychicNullifier</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallPsychicNullifier"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallPsychicNullifier"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="InstallPsychicNullifier"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="InstallPsychicNullifier"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_PsychicReaper"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="LTS_PsychicReaper"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>LTS_PsychicReaper</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>LTS_PsychicReaper</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="LTS_PsychicReaper"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="LTS_PsychicReaper"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>2</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>LTS_PsychicReaper</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>LTS_PsychicReaper</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="LTS_InstallPsychicReaper"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallPsychicReaper"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallPsychicReaper"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="LTS_InstallPsychicReaper"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PsychicSustainer"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PsychicSustainer"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PsychicSustainer</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PsychicSustainer</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="PsychicSustainer"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="PsychicSustainer"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>2</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>PsychicSustainer</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>PsychicSustainer</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallPsychicSustainer"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallPsychicSustainer"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="InstallPsychicSustainer"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="InstallPsychicSustainer"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PsychokeneticShield"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PsychokeneticShield"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PsychokeneticShield</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PsychokeneticShield</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="PsychokeneticShield"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="PsychokeneticShield"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>2</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>PsychokeneticShield</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>PsychokeneticShield</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallPsychokeneticShield"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallPsychokeneticShield"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="InstallPsychokeneticShield"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="InstallPsychokeneticShield"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PsychicLevitator"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PsychicLevitator"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PsychicLevitator</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PsychicLevitator</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="PsychicLevitator"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="PsychicLevitator"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>2</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>PsychicLevitator</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>PsychicLevitator</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallPsychicLevitator"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallPsychicLevitator"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="InstallPsychicLevitator"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="InstallPsychicLevitator"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_BrainDetonator"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="LTS_BrainDetonator"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>LTS_BrainDetonator</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>LTS_BrainDetonator</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="LTS_BrainDetonator"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="LTS_BrainDetonator"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>1</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>LTS_BrainDetonator</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>LTS_BrainDetonator</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="LTS_InstallBrainDetonator"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallBrainDetonator"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallBrainDetonator"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="LTS_InstallBrainDetonator"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_NeuralStunner"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="LTS_NeuralStunner"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>LTS_NeuralStunner</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>LTS_NeuralStunner</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="LTS_NeuralStunner"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="LTS_NeuralStunner"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>1</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>LTS_NeuralStunner</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>LTS_NeuralStunner</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="LTS_InstallNeuralStunner"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallNeuralStunner"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallNeuralStunner"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="LTS_InstallNeuralStunner"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="HackingPortImplant"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="HackingPortImplant"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>HackingPortImplant</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>HackingPortImplant</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="HackingPortImplant"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="HackingPortImplant"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>1</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>HackingPortImplant</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>HackingPortImplant</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallHackingPortImplant"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallHackingPortImplant"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="InstallHackingPortImplant"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="InstallHackingPortImplant"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_Voicelock"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="LTS_Voicelock"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>LTS_Voicelock</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>LTS_Voicelock</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="LTS_Voicelock"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="LTS_Voicelock"]</xpath>
+                  <value>
+                    <comps>
+                      <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                        <ejectable>false</ejectable>
+                        <installSound>Standard_Reload</installSound>
+                        <ejectSound>Standard_Reload</ejectSound>
+                        <requiredCapacity>1</requiredCapacity>
+                        <slotIDs>
+                          <li>RBP_CortexSlot</li>
+                        </slotIDs>
+                        <hediffs>
+                          <li>LTS_Voicelock</li>
+                        </hediffs>
+                        <excludeIDs>
+                          <li>LTS_Voicelock</li>
+                        </excludeIDs>
+                      </li>
+                    </comps>
+                  </value>
+                </match>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="LTS_InstallVoicelock"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallVoicelock"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationConditional">
+                <xpath>Defs/RecipeDef[defName="LTS_InstallVoicelock"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="LTS_InstallVoicelock"]</xpath>
+                  <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                </match>
+              </nomatch>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

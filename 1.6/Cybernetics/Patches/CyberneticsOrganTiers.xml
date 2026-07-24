@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.tiers</settingKey>
+    <operations>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="SimpleProstheticHeart" or defName="SurrogateLung" or defName="SurrogateStomach" or defName="SurrogateLiver" or defName="SurrogateKidney"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>0.80</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="BionicHeart" or defName="SyntheticLung" or defName="BionicStomach" or defName="SyntheticLiver" or defName="SyntheticKidney"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforkedroyalty</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="EPOE_DetoxifierSyntheticLiver" or defName="EPOE_ImmunoenhancerSyntheticKidney"]/addedPartProps/partEfficiency</xpath>
+          <value><partEfficiency>1.15</partEfficiency></value>
+        </match>
+      </li>
+
+      <!-- ROYALTY -->
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.royalty</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="DetoxifierStomach" or defName="NuclearStomach" or defName="ReprocessorStomach"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="DetoxifierStomach" or defName="ReprocessorStomach"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>6</ComponentSpacer></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Immunoenhancer" or defName="LoveEnhancer"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>3</ComponentSpacer></value>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.biotech</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="DetoxifierLung" or defName="DetoxifierKidney"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="DetoxifierLung" or defName="DetoxifierKidney"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>6</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ushanka.biologicalwarfare</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="USH_IronLung"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="USH_IronLung"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>6</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="USH_IronLung"]/costList/Steel</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="LTS_BionicLung"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_BionicKidney" or defName="LTS_BionicLiver" or defName="LTS_BionicLung"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_ArchotechHeart" or defName="LTS_ArchotechLung" or defName="LTS_ArchotechLiver" or defName="LTS_ArchotechKidney" or defName="LTS_ArchotechStomach"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.50</partEfficiency></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="LTS_ModularBionicKidney" or defName="LTS_ModularBionicLung" or defName="LTS_ModularBionicStomach"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_ModularBionicKidney" or defName="LTS_ModularBionicLung" or defName="LTS_ModularBionicStomach"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_ModularArchotechKidney" or defName="LTS_ModularArchotechLung" or defName="LTS_ModularArchotechStomach"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.50</partEfficiency></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="RBP_AdvancedSyntheticHeart"]</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="RBP_AdvancedSyntheticHeart" or defName="RBP_AdvancedSyntheticLung" or defName="RBP_AdvancedSyntheticLiver" or defName="RBP_AdvancedSyntheticKidney" or defName="RBP_AdvancedSyntheticStomach"]/addedPartProps/partEfficiency</xpath>
+          <value><partEfficiency>1.35</partEfficiency></value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

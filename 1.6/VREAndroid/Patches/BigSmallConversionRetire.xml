@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.androidconversion</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>redmattis.betterprerequisites</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/RecipeDef[not(@Abstract="True")][researchPrerequisite/li="BS_AndroidConversion" or researchPrerequisite="BS_AndroidConversion"] | Defs/ResearchProjectDef[prerequisites/li="BS_AndroidConversion" or hiddenPrerequisites/li="BS_AndroidConversion"] | Defs/ThingDef[recipeMaker/researchPrerequisite="BS_AndroidConversion" or researchPrerequisites/li="BS_AndroidConversion"]</xpath>
+          <nomatch Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="BS_AndroidConversion"]</xpath>
+          </nomatch>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

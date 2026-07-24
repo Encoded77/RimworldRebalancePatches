@@ -1,0 +1,985 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+
+          <li Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybModularCybernetics</defName>
+                <label>modular cybernetics</label>
+                <description>Standardise the inside of an artificial limb or organ. A common mounting rail, a shared power bus and a data channel turn a finished prosthetic into a socket, so hardware can be swapped in and out without rebuilding the part around it.\n\nUnlocks the module bench and the first small modules: eyes that see in the dark or shrug off a flash, a nose that reads a meal before it is eaten, a tongue that enjoys it.</description>
+                <baseCost>2200</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybSurgicalImplantation</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>9</researchViewX>
+                <researchViewY>2.10</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybIntegralMelee</defName>
+                <label>integral melee weaponry</label>
+                <description>Build blades, claws and fangs that live inside the body. Folded into a forearm, a shin or a jaw, they deploy in a fraction of a second and never have to be drawn, carried or dropped.</description>
+                <baseCost>2500</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybModularCybernetics</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>10</researchViewX>
+                <researchViewY>0.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybIntegralRanged</defName>
+                <label>integral ranged weaponry</label>
+                <description>Fit a barrel where a bone used to be. Arm-mounted guns feed from internal magazines and fire on a nerve impulse, while targeting and telescopic optics turn an eye socket into a fire control system.</description>
+                <baseCost>2800</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybModularCybernetics</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>10</researchViewX>
+                <researchViewY>0.60</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybLocomotionSystems</defName>
+                <label>locomotion systems</label>
+                <description>Rebuild how a body moves. Reshaped joints, deployable fins and lift assistance change gait rather than strength, letting a colonist cross ground, water and thin air that would otherwise stop them.</description>
+                <baseCost>2000</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybModularCybernetics</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>10</researchViewX>
+                <researchViewY>1.20</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybMetabolicSystems</defName>
+                <label>metabolic and environmental systems</label>
+                <description>Take the chemistry of survival out of the hands of biology. Stomachs that digest what no one should eat, lungs and kidneys that strip out poison, and ribs that hold a body at its own comfortable temperature whatever the sky is doing.</description>
+                <baseCost>2400</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybModularCybernetics</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>10</researchViewX>
+                <researchViewY>1.80</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybSkillChips</defName>
+                <label>skill chips</label>
+                <description>Encode practised competence onto a chip and let a nervous system read it back. A chip port sits at the base of the spine; the chips themselves slot into it, and can be pulled and moved to whoever needs the skill this season.\n\nThe rarest chips are found, not made.</description>
+                <baseCost>2600</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybModularCybernetics</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>10</researchViewX>
+                <researchViewY>2.40</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybUtilitySystems</defName>
+                <label>utility systems</label>
+                <description>The unglamorous hardware that makes a working body work better: bracing that carries a load, tool hands that mine and shape, glands and ribs that dose a colonist with what they need when they need it, and clocks that free a person from the night.</description>
+                <baseCost>1500</baseCost>
+                <techLevel>Industrial</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybModularCybernetics</li>
+                </prerequisites>
+                <researchViewX>10</researchViewX>
+                <researchViewY>3.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybDefensiveSystems</defName>
+                <label>defensive systems</label>
+                <description>Armour that cannot be taken off. Plating grown under the skin, hardened dermal glands, and emergency systems that fire a shield, seal a breach or smother a fire in the instant before it matters.</description>
+                <baseCost>3000</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybModularCybernetics</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>10</researchViewX>
+                <researchViewY>3.60</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybFieldManipulation</defName>
+                <label>field manipulation</label>
+                <description>Project something other than matter. Implanted emitters bend light around their host, hold a shield bubble at arm's length, or feed a lock exactly the biometric signature it was waiting for.</description>
+                <baseCost>4000</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybModularCybernetics</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>10</researchViewX>
+                <researchViewY>4.20</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybUltratechWeaponModules</defName>
+                <label>ultratech weapon modules</label>
+                <description>The top of the integral weapons line: monofilament wire, contained plasma, lattice-grown talons and gravitic strikes. Each is built at the edge of what can be held together, and worth more than the arm it is fitted to.</description>
+                <baseCost>6000</baseCost>
+                <techLevel>Ultra</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybIntegralMelee</li>
+                  <li>RBP_CybIntegralRanged</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>11</researchViewX>
+                <researchViewY>0.30</researchViewY>
+              </ResearchProjectDef>
+
+            </value>
+          </li>
+
+          <!-- Modular cybernetics -->
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleBench"]/researchPrerequisites/li[text()="LTS_ModularBionics"]</xpath>
+              <value><li>RBP_CybModularCybernetics</li></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleEye_EyeColour"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybModularCybernetics</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleEye_NightVision"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybModularCybernetics</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleEye_ProtectiveLens"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybModularCybernetics</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleNose_AestheticNose"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybModularCybernetics</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleNose_GastroAnalyzer"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybModularCybernetics</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleJaw_GourmandTongue"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybModularCybernetics</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <!-- Integral melee weaponry -->
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_ArmBlade"]/recipeMaker</xpath>
+              <value><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_BionicClaw"]/recipeMaker/researchPrerequisites/li[text()="LTS_ModularBionics"]</xpath>
+              <value><li>RBP_CybIntegralMelee</li></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_VibroModule"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleLeg_FootBlade"]/recipeMaker</xpath>
+              <value><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleLeg_VenomFootBlade"]/recipeMaker</xpath>
+              <value><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleLeg_VenomFootBlade"]/recipeMaker/researchPrerequisites/li[text()="VenomSynthesis"]</xpath>
+              <value><li>RBP_CybIntegralMelee</li></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleJaw_VenomFangs"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleJaw_HemoFangs"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="ElbowBlade"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="HandTalon"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="KneeSpike"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VenomFangs"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VenomTalon"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>hlx.ultratechalteredcarbon</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AC_RogianArmBlade"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybIntegralMelee</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <!-- Integral ranged weaponry -->
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="LTS_TechNeedingModuleItem"]/recipeMaker/researchPrerequisites/li[text()="LTS_ModularBionics"]</xpath>
+              <value><li>RBP_CybIntegralRanged</li></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_RecoilSuppression"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybIntegralRanged</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleEye_Targeting"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybIntegralRanged</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleEye_Telescopic"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybIntegralRanged</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforked</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="TacticalCorneaImplant"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybIntegralRanged</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <!-- Locomotion systems -->
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleLeg_Digitigrade"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybLocomotionSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleLeg_RetractableFlipper"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybLocomotionSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_Gravlifter"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybLocomotionSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <!-- Metabolic and environmental -->
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleStomach_Nuclear"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleStomach_Reprocessor"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleStomach_Sterilizing"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleLung_DetoxifierLung"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleLung_Rebreather"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleKidney_DetoxifierKidney"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleKidney_Immunoenhancer"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="InternalClimateControlImplant"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforked</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="HeaterRib"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforked</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="CoolerRib"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforked</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="RespirationRib"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="NuclearStomach"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="ReprocessorStomach"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <!-- Skill chips -->
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="LTS_BaseSkillChipItem"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybSkillChips</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_SkillChipPort"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybSkillChips</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <!-- Utility systems -->
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_DrillHand"]/recipeMaker/researchPrerequisites/li[text()="LTS_ModularBionics"]</xpath>
+              <value><li>RBP_CybUtilitySystems</li></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_FieldHand"]/recipeMaker/researchPrerequisites/li[text()="LTS_ModularBionics"]</xpath>
+              <value><li>RBP_CybUtilitySystems</li></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_DeathGrip"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="SkeletalBracing"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="CryptoWakeImplant"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="BiotunerImplant"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="StrengthEnhancer"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_GunneryAssistant"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></value>
+            </match>
+          </li>
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>lts.i</li>
+              <li>ludeon.rimworld.odyssey</li>
+            </mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_GunneryAssistant"]/recipeMaker</xpath>
+              <value>
+                <researchPrerequisites>
+                  <li>AdvancedGravtech</li>
+                </researchPrerequisites>
+              </value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforked</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="MedicalRib"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforked</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="DruggedRib"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforked</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="PainkillerRib"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforked</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="WakeUpRib"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforked</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="AdrenalineRib"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="CircadianAssistant"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="CircadianHalfCycler"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="EPIA_CircadianRefresher"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <!-- Defensive systems -->
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_SubdermalArmour"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybDefensiveSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_PrestigeSubdermalArmour"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybDefensiveSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_CellularAdapter"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybDefensiveSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="CranialInsulation"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybDefensiveSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_EmergencyShield"]/recipeMaker/researchPrerequisites/li[text()="LTS_EmergencyImplants"]</xpath>
+              <value><li>RBP_CybDefensiveSystems</li></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_EmergencyVacseal"]/recipeMaker/researchPrerequisites/li[text()="LTS_EmergencyImplants"]</xpath>
+              <value><li>RBP_CybDefensiveSystems</li></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_FireSupressionSystem"]/recipeMaker/researchPrerequisites/li[text()="LTS_EmergencyImplants"]</xpath>
+              <value><li>RBP_CybDefensiveSystems</li></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforked</li></mods>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="CoagulatorRib"]</xpath>
+              <value><recipeMaker><researchPrerequisite>RBP_CybDefensiveSystems</researchPrerequisite></recipeMaker></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="ArmorskinGland"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybDefensiveSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="StoneskinGland"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybDefensiveSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="ToughskinGland"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybDefensiveSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.odyssey</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="VacskinGland"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybDefensiveSystems</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <!-- Field manipulation -->
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_StealthSystem"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybFieldManipulation</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ShieldImplant"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybFieldManipulation</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="BiochameleonDevice"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybFieldManipulation</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <!-- Ultratech weapon modules -->
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="LTS_UltraWeaponModuleItem"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleLeg_GravKick"]/recipeMaker/researchPrerequisites/li[text()="LTS_ModularBionicWeaponryUltra"]</xpath>
+              <value><li>RBP_CybUltratechWeaponModules</li></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="EPOE_ScytherElbowBlade"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="EPOE_ScytherHandTalon"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="EPOE_ScytherKneeSpike"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="EPOE_AdvancedElbowBlade"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="EPOE_AdvancedHandTalon"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="EPOE_AdvancedKneeSpike"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_UpgradeBionicElbowBlade"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_UpgradeBionicHandTalon"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_UpgradeBionicKneeSpike"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_UpgradeAdvancedElbowBlade"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_UpgradeAdvancedHandTalon"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforkedroyalty</li></mods>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_UpgradeAdvancedKneeSpike"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybUltratechWeaponModules</researchPrerequisite></value>
+            </match>
+          </li>
+
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+          <li Class="PatchOperationConditional">
+            <xpath>Defs/ResearchProjectDef[defName="HulkificationSurgery"]</xpath>
+            <match Class="PatchOperationSequence">
+              <operations>
+
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs</xpath>
+                  <value>
+                    <ResearchProjectDef>
+                      <defName>RBP_CybAnomalousGrafting</defName>
+                      <label>anomalous grafting</label>
+                      <description>The surgery for seating things a body was never meant to hold, like bioferrite and dead-life residue, and for keeping the host standing while the flesh learns to tolerate them.</description>
+                      <baseCost>800</baseCost>
+                      <techLevel>Industrial</techLevel>
+                      <tab>RBP_CyberneticsTab</tab>
+                      <prerequisites>
+                        <li>Prosthetics</li>
+                      </prerequisites>
+                      <researchViewX>2</researchViewX>
+                      <researchViewY>6.20</researchViewY>
+                    </ResearchProjectDef>
+                  </value>
+                </li>
+
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ResearchProjectDef[defName="LTS_AdvancedGhoulEnhancements" or defName="DreadheartRegeneration" or defName="PsychicAgonizer" or defName="BlacksightDevice" or defName="MetalhorrorSymbiont" or defName="HyperalkalaicArchites" or defName="PsychicBeguiler" or defName="HulkificationSurgery" or defName="HyperAdrenalineGland" or defName="DefensiveImpaler" or defName="DeadlifeCoil" or defName="SlayersCollar" or defName="StalkerizingSurgery" or defName="NullificationLobotomy" or defName="DroneLobotomy" or defName="PsychicSustainer" or defName="AnalgesialLobotomy"]/prerequisites</xpath>
+                  <value>
+                    <li>RBP_CybAnomalousGrafting</li>
+                  </value>
+                </li>
+
+              </operations>
+            </match>
+          </li>
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.royalty</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybUltratechWeaponModules"]</xpath>
+          <value>
+            <techprintCount>1</techprintCount>
+            <techprintCommonality>1</techprintCommonality>
+            <techprintMarketValue>2000</techprintMarketValue>
+            <heldByFactionCategoryTags>
+              <li>Empire</li>
+            </heldByFactionCategoryTags>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

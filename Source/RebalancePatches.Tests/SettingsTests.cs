@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using RimTestRedux;
 using RimWorld;
 using Verse;
@@ -15,20 +17,63 @@ namespace RebalancePatches.Tests
             foreach (ModContentPack mod in LoadedModManager.RunningModsListForReading)
                 if (mod.PackageId == "encoded.rebalancepatches")
                     ours = mod;
-            Check.True(ours != null, "encoded.rebalancepatches not among running mods");
+            if (!Check.Soft(ours != null, "encoded.rebalancepatches not among running mods"))
+            {
+                Check.SoftResult();
+                return;
+            }
+
             int gated = 0;
+            var all = new List<PatchOperationIfEnabled>();
             foreach (PatchOperation op in ours.Patches)
             {
-                PatchOperationIfEnabled wrapper = op as PatchOperationIfEnabled;
-                Check.True(wrapper != null,
+                Check.Soft(op is PatchOperationIfEnabled,
                     $"top-level patch operation {op.GetType().Name} is not wrapped in PatchOperationIfEnabled (from {op.sourceFile})");
                 gated++;
-                Check.True(!string.IsNullOrEmpty(wrapper.settingKey),
-                    $"PatchOperationIfEnabled without settingKey (from {op.sourceFile})");
-                Check.True(SettingsRegistry.GroupOf(wrapper.settingKey) != null,
-                    $"settingKey '{wrapper.settingKey}' (from {op.sourceFile}) is not registered in SettingsRegistry");
+                Collect(op, all, new HashSet<PatchOperation>(), 0);
             }
-            Check.True(gated > 0, "no patch operations loaded for encoded.rebalancepatches");
+
+            foreach (PatchOperationIfEnabled wrapper in all)
+            {
+                if (!Check.Soft(!string.IsNullOrEmpty(wrapper.settingKey),
+                        $"PatchOperationIfEnabled without settingKey (from {wrapper.sourceFile})"))
+                    continue;
+                Check.Soft(SettingsRegistry.GroupOf(wrapper.settingKey) != null,
+                    $"settingKey '{wrapper.settingKey}' (from {wrapper.sourceFile}) is not registered in SettingsRegistry");
+            }
+
+            Check.Note($"{gated} top-level operation(s), {all.Count} settings gate(s) including nested");
+            Check.Soft(gated > 0, "no patch operations loaded for encoded.rebalancepatches");
+            Check.Soft(all.Count >= gated, "nested collection found fewer gates than there are top-level operations");
+            Check.SoftResult();
+        }
+
+        private static void Collect(PatchOperation op, List<PatchOperationIfEnabled> found,
+            HashSet<PatchOperation> seen, int depth)
+        {
+            if (op == null || depth > 12 || !seen.Add(op))
+                return;
+            if (op is PatchOperationIfEnabled gate)
+                found.Add(gate);
+
+            foreach (FieldInfo field in op.GetType()
+                         .GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance))
+            {
+                object value;
+                try { value = field.GetValue(op); }
+                catch { continue; }
+
+                if (value is PatchOperation child)
+                {
+                    Collect(child, found, seen, depth + 1);
+                }
+                else if (value is IEnumerable list && !(value is string))
+                {
+                    foreach (object item in list)
+                        if (item is PatchOperation nested)
+                            Collect(nested, found, seen, depth + 1);
+                }
+            }
         }
 
         [Test]
@@ -65,6 +110,40 @@ namespace RebalancePatches.Tests
                     CheckModIds(slider.key, slider.requiredMods);
                 }
             }
+        }
+
+        [Test]
+        public static void EffectiveDefaultsMatchTheRegistry()
+        {
+            // key -> why the XML is allowed to disagree with the registry. Empty today.
+            var deliberateOverrides = new Dictionary<string, string>();
+
+            var compared = 0;
+            foreach (RebalanceGroup group in SettingsRegistry.Groups)
+            {
+                foreach (RebalanceToggle child in group.children)
+                {
+                    compared++;
+                    bool effective = SettingsRegistry.DefaultOf(child.key);
+                    if (effective == child.defaultOn)
+                        continue;
+                    if (deliberateOverrides.TryGetValue(child.key, out string reason))
+                    {
+                        Check.Note($"{child.key}: XML default {effective} overrides registry " +
+                            $"{child.defaultOn} on purpose - {reason}");
+                        continue;
+                    }
+                    Check.Soft(false,
+                        $"'{child.key}' is declared defaultOn: {child.defaultOn} in SettingsRegistry " +
+                        $"but resolves to {effective} in game, because a patch file declared " +
+                        "<defaultOn> for it. Either the registry is wrong or the XML is - a player " +
+                        "reading the settings would be told one thing and given the other");
+                }
+            }
+
+            Check.True(compared > 0, "no toggles were compared - SettingsRegistry.Groups was empty");
+            Check.Note($"compared {compared} toggle default(s) against their effective value");
+            Check.SoftResult();
         }
 
         [Test]

@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+
+                <ThingDef ParentName="EPIAGlitterworldImplantBase">
+                  <defName>RBP_AuxiliaryAI_Artisan</defName>
+                  <label>auxiliary AI (artisan)</label>
+                  <description>A cortical assistant that models tool paths and material behaviour a half-second ahead of the hands, guiding fine work as it happens.</description>
+                  <costList>
+                    <EPOE_MAAI_Chip>2</EPOE_MAAI_Chip>
+                    <Gold>3</Gold>
+                    <Plasteel>15</Plasteel>
+                    <ComponentSpacer>4</ComponentSpacer>
+                  </costList>
+                  <statBases>
+                    <Mass>0.3</Mass>
+                  </statBases>
+                  <techHediffsTags>
+                    <li>Advanced</li>
+                  </techHediffsTags>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>LTS_SkillChipSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>EPIA_AuxiliaryAI_Artisan</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>EPIA_AuxiliaryAI_Artisan</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </ThingDef>
+
+                <ThingDef ParentName="EPIAGlitterworldImplantBase">
+                  <defName>RBP_AuxiliaryAI_Construction</defName>
+                  <label>auxiliary AI (construction)</label>
+                  <description>A cortical assistant that holds load paths, tolerances and assembly order in working memory, so the builder never has to stop and think about them.</description>
+                  <costList>
+                    <EPOE_MAAI_Chip>2</EPOE_MAAI_Chip>
+                    <Gold>3</Gold>
+                    <Plasteel>15</Plasteel>
+                    <ComponentSpacer>4</ComponentSpacer>
+                  </costList>
+                  <statBases>
+                    <Mass>0.3</Mass>
+                  </statBases>
+                  <techHediffsTags>
+                    <li>Advanced</li>
+                  </techHediffsTags>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>LTS_SkillChipSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>ConstructorCore</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>ConstructorCore</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </ThingDef>
+
+                <ThingDef ParentName="EPIAGlitterworldImplantBase">
+                  <defName>RBP_AuxiliaryAI_Diplomatic</defName>
+                  <label>auxiliary AI (diplomatic)</label>
+                  <description>A cortical assistant that reads microexpression and cadence in real time and feeds the wearer a running estimate of what the other party will accept.</description>
+                  <costList>
+                    <EPOE_MAAI_Chip>2</EPOE_MAAI_Chip>
+                    <Gold>3</Gold>
+                    <Plasteel>15</Plasteel>
+                    <ComponentSpacer>4</ComponentSpacer>
+                  </costList>
+                  <statBases>
+                    <Mass>0.3</Mass>
+                  </statBases>
+                  <techHediffsTags>
+                    <li>Advanced</li>
+                  </techHediffsTags>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>LTS_SkillChipSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>DiplomatCore</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>DiplomatCore</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </ThingDef>
+
+                <ThingDef ParentName="EPIAGlitterworldImplantBase">
+                  <defName>RBP_AuxiliaryAI_Medical</defName>
+                  <label>auxiliary AI (medical)</label>
+                  <description>A cortical assistant carrying a full diagnostic and surgical reference, overlaying anatomy and procedure on the patient as the surgeon works.</description>
+                  <costList>
+                    <EPOE_MAAI_Chip>2</EPOE_MAAI_Chip>
+                    <Gold>3</Gold>
+                    <Plasteel>15</Plasteel>
+                    <ComponentSpacer>4</ComponentSpacer>
+                  </costList>
+                  <statBases>
+                    <Mass>0.3</Mass>
+                  </statBases>
+                  <techHediffsTags>
+                    <li>Advanced</li>
+                  </techHediffsTags>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>LTS_SkillChipSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>DoctorCore</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>DoctorCore</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </ThingDef>
+
+                <ThingDef ParentName="EPIAGlitterworldImplantBase">
+                  <defName>RBP_AuxiliaryAI_Agricultural</defName>
+                  <label>auxiliary AI (agricultural)</label>
+                  <description>A cortical assistant that tracks soil chemistry, growth stage and weather against yield models, and tells the farmer what to do about it.</description>
+                  <costList>
+                    <EPOE_MAAI_Chip>2</EPOE_MAAI_Chip>
+                    <Gold>3</Gold>
+                    <Plasteel>15</Plasteel>
+                    <ComponentSpacer>4</ComponentSpacer>
+                  </costList>
+                  <statBases>
+                    <Mass>0.3</Mass>
+                  </statBases>
+                  <techHediffsTags>
+                    <li>Advanced</li>
+                  </techHediffsTags>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>LTS_SkillChipSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>FarmerCore</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>FarmerCore</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </ThingDef>
+
+                <ThingDef ParentName="EPIAGlitterworldImplantBase">
+                  <defName>RBP_AuxiliaryAI_Mining</defName>
+                  <label>auxiliary AI (mining)</label>
+                  <description>A cortical assistant that reads strata density through the pick and marks the fracture line before the swing lands.</description>
+                  <costList>
+                    <EPOE_MAAI_Chip>2</EPOE_MAAI_Chip>
+                    <Gold>3</Gold>
+                    <Plasteel>15</Plasteel>
+                    <ComponentSpacer>4</ComponentSpacer>
+                  </costList>
+                  <statBases>
+                    <Mass>0.3</Mass>
+                  </statBases>
+                  <techHediffsTags>
+                    <li>Advanced</li>
+                  </techHediffsTags>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>LTS_SkillChipSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>MinerCore</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>MinerCore</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </ThingDef>
+
+                <ThingDef ParentName="EPIAGlitterworldImplantBase">
+                  <defName>RBP_AuxiliaryAI_Brawler</defName>
+                  <label>auxiliary AI (brawler)</label>
+                  <description>A combat assistant that predicts an opponent's guard and commits the wearer's body to the opening before conscious thought catches up. It monopolises so much cerebral bandwidth that no other auxiliary AI can run beside it.</description>
+                  <costList>
+                    <EPOE_MAAI_Chip>4</EPOE_MAAI_Chip>
+                    <Gold>3</Gold>
+                    <Plasteel>15</Plasteel>
+                    <ComponentSpacer>3</ComponentSpacer>
+                  </costList>
+                  <statBases>
+                    <Mass>0.3</Mass>
+                  </statBases>
+                  <techHediffsTags>
+                    <li>Advanced</li>
+                  </techHediffsTags>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>LTS_SkillChipSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>EPIA_AuxiliaryAI_Brawler</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>EPIA_AuxiliaryAI_Brawler</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </ThingDef>
+
+                <ThingDef ParentName="EPIAGlitterworldImplantBase">
+                  <defName>RBP_AuxiliaryAI_Commando</defName>
+                  <label>auxiliary AI (commando)</label>
+                  <description>A combat assistant that maintains a live threat map and routes the wearer through cover without being asked. It monopolises so much cerebral bandwidth that no other auxiliary AI can run beside it.</description>
+                  <costList>
+                    <EPOE_MAAI_Chip>4</EPOE_MAAI_Chip>
+                    <Gold>3</Gold>
+                    <Plasteel>15</Plasteel>
+                    <ComponentSpacer>3</ComponentSpacer>
+                  </costList>
+                  <statBases>
+                    <Mass>0.3</Mass>
+                  </statBases>
+                  <techHediffsTags>
+                    <li>Advanced</li>
+                  </techHediffsTags>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>LTS_SkillChipSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>EPIA_AuxiliaryAI_Commando</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>EPIA_AuxiliaryAI_Commando</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </ThingDef>
+
+                <ThingDef ParentName="EPIAGlitterworldImplantBase">
+                  <defName>RBP_AuxiliaryAI_Sharpshooter</defName>
+                  <label>auxiliary AI (sharpshooter)</label>
+                  <description>A combat assistant that solves for range, drift and lead continuously, releasing the shot at the moment the solution converges. It monopolises so much cerebral bandwidth that no other auxiliary AI can run beside it.</description>
+                  <costList>
+                    <EPOE_MAAI_Chip>4</EPOE_MAAI_Chip>
+                    <Gold>3</Gold>
+                    <Plasteel>15</Plasteel>
+                    <ComponentSpacer>3</ComponentSpacer>
+                  </costList>
+                  <statBases>
+                    <Mass>0.3</Mass>
+                  </statBases>
+                  <techHediffsTags>
+                    <li>Advanced</li>
+                  </techHediffsTags>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>LTS_SkillChipSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>EPIA_AuxiliaryAI_Sharpshooter</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>EPIA_AuxiliaryAI_Sharpshooter</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </ThingDef>
+
+              </value>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Artisan"]/ingredients</xpath>
+              <value>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_AuxiliaryAI_Artisan</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Artisan"]/fixedIngredientFilter</xpath>
+              <value>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>RBP_AuxiliaryAI_Artisan</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Artisan"]/uiIconThing</xpath>
+              <value>
+                <uiIconThing>RBP_AuxiliaryAI_Artisan</uiIconThing>
+              </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Artisan"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Artisan"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Artisan"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallConstructorCore"]/ingredients</xpath>
+              <value>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_AuxiliaryAI_Construction</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallConstructorCore"]/fixedIngredientFilter</xpath>
+              <value>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>RBP_AuxiliaryAI_Construction</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallConstructorCore"]/uiIconThing</xpath>
+              <value>
+                <uiIconThing>RBP_AuxiliaryAI_Construction</uiIconThing>
+              </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallConstructorCore"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallConstructorCore"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallConstructorCore"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallDiplomatCore"]/ingredients</xpath>
+              <value>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_AuxiliaryAI_Diplomatic</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallDiplomatCore"]/fixedIngredientFilter</xpath>
+              <value>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>RBP_AuxiliaryAI_Diplomatic</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallDiplomatCore"]/uiIconThing</xpath>
+              <value>
+                <uiIconThing>RBP_AuxiliaryAI_Diplomatic</uiIconThing>
+              </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallDiplomatCore"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallDiplomatCore"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallDiplomatCore"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallDoctorCore"]/ingredients</xpath>
+              <value>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_AuxiliaryAI_Medical</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallDoctorCore"]/fixedIngredientFilter</xpath>
+              <value>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>RBP_AuxiliaryAI_Medical</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallDoctorCore"]/uiIconThing</xpath>
+              <value>
+                <uiIconThing>RBP_AuxiliaryAI_Medical</uiIconThing>
+              </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallDoctorCore"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallDoctorCore"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallDoctorCore"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallFarmerCore"]/ingredients</xpath>
+              <value>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_AuxiliaryAI_Agricultural</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallFarmerCore"]/fixedIngredientFilter</xpath>
+              <value>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>RBP_AuxiliaryAI_Agricultural</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallFarmerCore"]/uiIconThing</xpath>
+              <value>
+                <uiIconThing>RBP_AuxiliaryAI_Agricultural</uiIconThing>
+              </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallFarmerCore"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallFarmerCore"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallFarmerCore"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallMinerCore"]/ingredients</xpath>
+              <value>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_AuxiliaryAI_Mining</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallMinerCore"]/fixedIngredientFilter</xpath>
+              <value>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>RBP_AuxiliaryAI_Mining</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="InstallMinerCore"]/uiIconThing</xpath>
+              <value>
+                <uiIconThing>RBP_AuxiliaryAI_Mining</uiIconThing>
+              </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallMinerCore"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallMinerCore"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallMinerCore"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Brawler"]/ingredients</xpath>
+              <value>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_AuxiliaryAI_Brawler</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Brawler"]/fixedIngredientFilter</xpath>
+              <value>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>RBP_AuxiliaryAI_Brawler</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Brawler"]/uiIconThing</xpath>
+              <value>
+                <uiIconThing>RBP_AuxiliaryAI_Brawler</uiIconThing>
+              </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Brawler"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Brawler"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Brawler"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Commando"]/ingredients</xpath>
+              <value>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_AuxiliaryAI_Commando</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Commando"]/fixedIngredientFilter</xpath>
+              <value>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>RBP_AuxiliaryAI_Commando</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Commando"]/uiIconThing</xpath>
+              <value>
+                <uiIconThing>RBP_AuxiliaryAI_Commando</uiIconThing>
+              </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Commando"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Commando"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Commando"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Sharpshooter"]/ingredients</xpath>
+              <value>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_AuxiliaryAI_Sharpshooter</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Sharpshooter"]/fixedIngredientFilter</xpath>
+              <value>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>RBP_AuxiliaryAI_Sharpshooter</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Sharpshooter"]/uiIconThing</xpath>
+              <value>
+                <uiIconThing>RBP_AuxiliaryAI_Sharpshooter</uiIconThing>
+              </value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Sharpshooter"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Sharpshooter"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="EPIA_InstallAuxiliaryAI_Sharpshooter"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationRemove">
+          <xpath>Defs/ThingDef[defName="EPIA_AuxiliaryAI_Worker" or defName="EPIA_AuxiliaryAI_Combat"]/recipeMaker</xpath>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

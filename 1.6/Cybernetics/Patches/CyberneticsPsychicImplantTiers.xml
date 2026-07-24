@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.tiers</settingKey>
+    <operations>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_NHEC"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHEC"]/costList/Plasteel</xpath>
+              <value><Plasteel>30</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHEC"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>8</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHEC"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>9</VPE_Eltex></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="PI_NHEC"]/costList/Gold</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_NHRA"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHRA"]/costList/Plasteel</xpath>
+              <value><Plasteel>30</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHRA"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>8</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHRA"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>9</VPE_Eltex></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="PI_NHRA"]/costList/Silver</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_HOPS"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_HOPS"]/costList/Plasteel</xpath>
+              <value><Plasteel>30</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_HOPS"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>8</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_HOPS"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>9</VPE_Eltex></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_Resistance"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_Resistance"]/costList/Plasteel</xpath>
+              <value><Plasteel>30</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_Resistance"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>8</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_Resistance"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>6</VPE_Eltex></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_NHCS"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHCS"]/costList/Plasteel</xpath>
+              <value><Plasteel>30</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHCS"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>8</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHCS"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>6</VPE_Eltex></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="PI_NHCS"]/costList/Gold</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_AMC"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_AMC"]/costList/Plasteel</xpath>
+              <value><Plasteel>15</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_AMC"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>4</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_AMC"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>6</VPE_Eltex></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="PI_AMC"]/costList/Gold</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_PRC"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_PRC"]/costList/Plasteel</xpath>
+              <value><Plasteel>15</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_PRC"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>6</VPE_Eltex></value>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_PRC"]/costList/ComponentSpacer</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_PRC"]/costList/ComponentSpacer</xpath>
+                <value><ComponentSpacer>4</ComponentSpacer></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_PRC"]/costList</xpath>
+                <value><ComponentSpacer>4</ComponentSpacer></value>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="PI_PRC"]/costList/Gold</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_Passivator"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_Passivator"]/costList/Plasteel</xpath>
+              <value><Plasteel>15</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_Passivator"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>2</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_Passivator"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>2</VPE_Eltex></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_TPDD"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_TPDD"]/costList/Plasteel</xpath>
+              <value><Plasteel>15</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_TPDD"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>2</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_TPDD"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>2</VPE_Eltex></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="PI_TPDD"]/costList/Gold</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_NHSV"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHSV"]/costList/Plasteel</xpath>
+              <value><Plasteel>5</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHSV"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>1</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_NHSV"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>1</VPE_Eltex></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_PFC"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_PFC"]/costList/Plasteel</xpath>
+              <value><Plasteel>120</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_PFC"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>10</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_PFC"]/costList/Uranium</xpath>
+              <value><Uranium>40</Uranium></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_PFC"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>20</VPE_Eltex></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_PFC"]/statBases/WorkToMake</xpath>
+              <value><WorkToMake>48000</WorkToMake></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_AMV"]/costList</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_AMV"]/costList/Plasteel</xpath>
+              <value><Plasteel>60</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_AMV"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>16</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_AMV"]/costList/VPE_Eltex</xpath>
+              <value><VPE_Eltex>18</VPE_Eltex></value>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_AMV"]/statBases</xpath>
+              <match Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="PI_AMV"]/statBases/WorkToMake</xpath>
+                <match Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="PI_AMV"]/statBases/WorkToMake</xpath>
+                  <value><WorkToMake>48000</WorkToMake></value>
+                </match>
+                <nomatch Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="PI_AMV"]/statBases</xpath>
+                  <value><WorkToMake>48000</WorkToMake></value>
+                </nomatch>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_AMV"]</xpath>
+                <value>
+                  <statBases>
+                    <WorkToMake>48000</WorkToMake>
+                  </statBases>
+                </value>
+              </nomatch>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="EltexAdornments"]/costList/ComponentSpacer</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="EltexAdornments"]/costList/ComponentSpacer</xpath>
+          <value><ComponentSpacer>4</ComponentSpacer></value>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="NeuralHeatsink"]/costList/ComponentSpacer</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="NeuralHeatsink"]/costList/ComponentSpacer</xpath>
+          <value><ComponentSpacer>6</ComponentSpacer></value>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

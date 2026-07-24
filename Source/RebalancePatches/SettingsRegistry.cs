@@ -204,6 +204,70 @@ namespace RebalancePatches
                     "Replaces the long list of narrow expertises with 32 broader ones, two to four per skill, so every pick is a real choice. Bonuses become multipliers capping near +40% at expertise level 20 instead of flat offsets that reach +100% or overshoot a stat's ceiling; combat and stat-heavy expertises are tuned lower, quality expertises cost work speed, and the two psycast expertises carry real drawbacks. Adds mechanitor and psycast expertises, which the base mods lack. Folds in the expertises from Alpha Skills, Hauts' Framework, Vanilla Fishing Expanded and Vanilla Gravship Expanded, and picks up stats from Integrated Implants, Mechanoid Upgrades, Altered Carbon and Vanilla Psycasts Expanded when those are present. Off by default; existing pawns keep the expertise they already have."),
             }, defaultOn: false, requiredMods: new[] { "vanillaexpanded.skills" }, isOverhaul: true),
 
+            new RebalanceGroup("cybernetics", "Cybernetics Overhaul", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("cybernetics.modules", "Bolt-on implants need something to plug into",
+                    "Implants that add an ability instead of replacing a body part become modules: a surgeon plugs them into a slot on a host already installed in the pawn (a cyberbrain for cognitive ones, a thoracic frame for torso ones). A pawn carries only as many as its hosts' tiers allow, and module quality scales the effect. Converts modules from Integrated Implants, EPOE-Forked and Psychic Implants. Needs EBSG Framework.",
+                    requiredMods: new[] { "ebsg.framework" }),
+                new RebalanceToggle("cybernetics.npchosts", "Raiders carrying a module arrive with the host too",
+                    "A raider, trader or visitor generated carrying a module also arrives with the host implant it plugs into, up to two per pawn. A module with nowhere to go is left off instead of arriving attached to nothing. Needs EBSG Framework.",
+                    requiredMods: new[] { "ebsg.framework" }),
+                new RebalanceToggle("cybernetics.advancedorgans", "Advanced synthetic organs",
+                    "Adds an advanced synthetic heart, lung, liver, kidney, stomach and nose, filling the gap between EPOE-Forked's synthetic organs and the archotech tier. Built at the fabrication bench once you have advanced bionics. Needs EPOE-Forked.",
+                    requiredMods: new[] { "vat.epoeforked" }),
+                new RebalanceToggle("cybernetics.thoracicframe", "Thoracic frames",
+                    "Adds bionic, advanced and archotech thoracic frames that replace the ribcage. With EBSG Framework each hosts torso modules (2, 3 and 4 by tier); without it they are simply good ribcages. Big and Small's mechanical ribs take them where present."),
+                new RebalanceToggle("cybernetics.tiers", "Implants share one ladder of effect and price",
+                    "Puts artificial body parts from every loaded mod on one ladder, so a tier means the same thing everywhere: prosthetic 80%, bionic 115%, advanced 135% and archotech 150% of the natural part. Prices are then set by what an implant actually does, so two parts doing the same job cost the same and a specialist always costs more than the plain part. Covers Core, Royalty, Biotech, EPOE-Forked, Integrated Implants, GiTS, Psychic Implants and Big and Small, each when loaded; found archotech parts keep their own prices."),
+                new RebalanceToggle("cybernetics.micromachines", "Better implants are built out of micromachines",
+                    "Anything above the plain bionic tier is built from micromachines instead of raw advanced components (four components become one micromachine, worth exactly the same). Replacing a lost part still costs only components; adding capability now also wants micromachines, one shared part made at your own bench. Needs GiTS Cyberbrains.",
+                    requiredMods: new[] { "moistestwhale.gitscyberbrains" }),
+                new RebalanceToggle("cybernetics.archotechshards", "Archotech recycling",
+                    "Adds archotech shards: break an archotech part down at a fabrication bench for shards, and assemble any archotech part from shards, plasteel and heavy work, so two salvaged parts become the one you wanted. Shards also come from exotic traders and quest rewards. Needs the Cybernetics Research body lane.",
+                    dependsOn: "cyberneticsresearch.body"),
+                new RebalanceToggle("cybernetics.androidblocklist", "Androids refuse wetware implants",
+                    "Androids can no longer receive surgeries that only make sense on living tissue: organ replacements, hemogenic and deathrest implants, endocrine glands and wombs, from Integrated Implants, EPOE-Forked and GiTS. Needs Vanilla Races Expanded - Android.",
+                    requiredMods: new[] { "vanillaracesexpanded.android" }),
+                new RebalanceToggle("cybernetics.echobrains", "Cyberbrains built for psycasters",
+                    "Adds two psycaster cyberbrains, a specialized model and a flagship that trades stability for power, and cuts the meditation bonus other cyberbrains gave as a side effect, so psychic capability becomes a choice rather than a freebie on a combat brain. Both host cortex modules with EBSG Framework. Needs GiTS Cyberbrains.",
+                    requiredMods: new[] { "moistestwhale.gitscyberbrains" }),
+                new RebalanceToggle("cybernetics.livingframe", "An endgame for bodies that stayed alive",
+                    "Adds the flesh-path endgame: a living frame grown to match its body, holding more modules than any archotech part, and an implant that gives more the further a pawn's genes are engineered from their baseline. Neither can be fitted to a synthetic body."),
+                new RebalanceToggle("cybernetics.ascension", "Ascended bodies keep psychic capability",
+                    "Adds hardware that gives an ascended synthetic body back its psychic sensitivity, so choosing the machine path does not close off psycasting. With the research overhaul on, it waits behind the ascension research. Needs Vanilla Races Expanded - Android.",
+                    requiredMods: new[] { "vanillaracesexpanded.android" }),
+                new RebalanceToggle("cybernetics.androidconversion", "Rebuild a living pawn as an android",
+                    "Adds the way into the synthetic ending: brew a neuroform serum, build a conversion kit around it and a reactor, then operate. The pawn wakes as an android, keeping any prosthetics they already had, and is out of action for several days. Needs Vanilla Races Expanded - Android.",
+                    requiredMods: new[] { "vanillaracesexpanded.android" }),
+            }, defaultOn: false, isOverhaul: true),
+
+            new RebalanceGroup("cyberneticsresearch", "Cybernetics Research Overhaul", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("cyberneticsresearch.core", "One Cybernetics tab, one research to operate",
+                    "Replaces every implant mod's research tab with a single Cybernetics tab, rooted on one cheap early research that all implant surgery answers to: once you can operate, you can fit anything you get hold of. Turn this on first; every other option in this group builds on it.",
+                    dependsOn: "cybernetics.modules"),
+                new RebalanceToggle("cyberneticsresearch.body", "Body parts unlock a tier at a time",
+                    "Folds the prosthetic, bionic and advanced body-part research from several mods into one ladder on the tab: crude prosthetics and surrogate organs first, then bionic limbs, organs and senses as separate unlocks, then the advanced tiers, the ribcage frames and the archotech chassis.",
+                    dependsOn: "cyberneticsresearch.core"),
+                new RebalanceToggle("cyberneticsresearch.modules", "Modules unlock by what they do",
+                    "Splits implant-module research into lanes: melee and ranged integral weapons, locomotion, metabolic and environmental systems, skill chips, defensive and utility hardware, and a top ultratech weapon tier.",
+                    dependsOn: "cyberneticsresearch.core"),
+                new RebalanceToggle("cyberneticsresearch.cyberbrains", "Cyberbrains come from rival manufacturers",
+                    "Reorganises cyberbrains into three manufacturers, each with its own tiers and flagship, instead of one ladder that hands you every specialization at once. Opens on a neural interface research that also unlocks micromachines, and the MA-AI chip with EPOE-Forked. Needs GiTS Cyberbrains.",
+                    requiredMods: new[] { "moistestwhale.gitscyberbrains" },
+                    dependsOn: "cyberneticsresearch.core"),
+                new RebalanceToggle("cyberneticsresearch.mind", "Psychic hardware and mind transfer",
+                    "Spreads psychic implants across researches by strength, with the strongest on side branches you go out of your way for, and keeps mind transfer's steps distinct: recording, sleeves, resleeving, remote casting and editing. Needs Psychic Implants or Altered Carbon.",
+                    anyOfMods: new[] { "cedaro.psychicimplant", "hlx.ultratechalteredcarbon" },
+                    dependsOn: "cyberneticsresearch.core"),
+                new RebalanceToggle("cyberneticsresearch.capstones", "Two endings to the tree, not one",
+                    "Adds two final researches that share a prerequisite and pull opposite ways: one rebuilds a pawn as a synthetic body with no biology left to fail, the other grows a frame that only works in living tissue. Both sit at the far end of the tab.",
+                    dependsOn: "cyberneticsresearch.core"),
+                new RebalanceToggle("cyberneticsresearch.retire", "Clear out the research this replaces",
+                    "Deletes the original projects the Cybernetics tab took over, so the old mod tabs empty out instead of offering the same unlocks twice. Projects other mods' code needs are moved onto the tab rather than deleted. Best used with all four lane options above on.",
+                    dependsOn: "cyberneticsresearch.core"),
+            }, defaultOn: false, isOverhaul: true),
+
             new RebalanceGroup("rimiot", "RimIOT - Logistic Matrix", new List<RebalanceToggle>
             {
                 new RebalanceToggle("rimiot.costs", "Reduce build costs",
@@ -302,6 +366,9 @@ namespace RebalancePatches
                 new RebalanceToggle("implants.boosterrange", "Signal boosters stack with Alpha Genes command range genes",
                     "Alpha Genes' increased/decreased command range genes override the mech command radius outright, discarding signal booster implants; with this fix the booster's bonus is added on top of the gene's 35/15 tile radius.",
                     requiredMods: new[] { "sarg.alphagenes" }),
+                new RebalanceToggle("implants.cerebrexsurgery", "Cerebrex node needs surgery",
+                    "Integrated Implants' cerebrex node is self-installable from the gear tab, bypassing the doctor, medicine and research every other brain implant needs. This strips its self-install comps and adds a proper install surgery (behind Ultra mechtech, the same research that gates crafting it). Post-death extraction is unchanged. Needs Biotech and Odyssey, which the node itself requires to exist.",
+                    requiredMods: new[] { "ludeon.rimworld.biotech", "ludeon.rimworld.odyssey" }),
             }, requiredMods: new[] { "lts.i" }),
 
             new RebalanceGroup("vreinsector", "Vanilla Races Expanded - Insector", new List<RebalanceToggle>
@@ -310,7 +377,6 @@ namespace RebalancePatches
                     "Carriers of the colossal geneline gene get Big and Small's Giant trait, letting them equip B&S giant weapons.",
                     requiredMods: new[] { "oskarpotocki.vfe.insectoid2", "redmattis.bigsmall.core" }),
             }, requiredMods: new[] { "vanillaracesexpanded.insector" }),
-
 
             new RebalanceGroup("impactweaponry", "Impact Weaponry - Reloaded", new List<RebalanceToggle>
             {
@@ -337,6 +403,8 @@ namespace RebalancePatches
                 new RebalanceToggle("vanilla.toxicmeat", "Toxic meat unchecked by default",
                     "VAE - Waste Animals' toxic meat is disallowed by default in hopper storage and meal recipe ingredient filters.",
                     requiredMods: new[] { "vanillaexpanded.vaewaste" }),
+                new RebalanceToggle("vanilla.hideemptyresearchtabs", "Hide empty research tabs",
+                    "Research tabs that no research project is assigned to are left out of the research window's tab row. The tab currently open and the Main tab are always shown."),
                 new RebalanceToggle("vanilla.creepjoinersurgery", "Creep joiners accept human surgeries",
                     "Every surgery recipe that lists humans as a target (implants and prosthetics from any mod included) also accepts Anomaly's creep joiners, who use their own race def and are otherwise skipped by modded implants.",
                     requiredMods: new[] { "ludeon.rimworld.anomaly" }),
@@ -373,6 +441,12 @@ namespace RebalancePatches
                     requiredMods: new[] { "ludeon.rimworld.royalty" }),
             }, requiredMods: new[] { "zal.eltexweaponry" }),
 
+            new RebalanceGroup("yart", "Yet Another Research Tree (YART)", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("yart.unlockgrouping", "Group unlocks by every research that gates them",
+                    "An item whose crafting recipe needs a second research is listed under that research on a project's card, next to the recipe, instead of in the plain unlock list above it. This is how the vanilla research window groups them."),
+            }, requiredMods: new[] { "seohyeon.yart" }),
+
             new RebalanceGroup("gits", "GiTS Cyberbrains", new List<RebalanceToggle>
             {
                 new RebalanceToggle("gits.merchant", "Only basic cyberbrains sold by merchants",
@@ -384,8 +458,9 @@ namespace RebalancePatches
                     "Raises the extreme cyberbrain mental break threshold offset from +20% to +40%."),
                 new RebalanceToggle("gits.research", "Streamline the research tree",
                     "Collapses the nanite surgery researches into nanite grafting and removes the empty filler nodes."),
+                new RebalanceToggle("gits.cyberbrainnames", "Cyberbrains named by role",
+                    "Renames GiTS's cyberbrains after the work they do (Civis Mining, Aegis Marksman) instead of factory codes (Poseidon DS23, Hanka HCQ11), keeping the flagships as Civis PX-7 and Aegis HADES. Their descriptions are rewritten in plain terms and state the cortex-module slot count."),
             }, requiredMods: new[] { "moistestwhale.gitscyberbrains" }),
-
 
             new RebalanceGroup("alphagenes", "Alpha Genes", new List<RebalanceToggle>
             {
@@ -434,8 +509,6 @@ namespace RebalancePatches
                     "Det's Brawnum's slow hitter joins the mutual-exclusion tag VRE - Archon uses for its fast and slow melee hitter genes, so melee speed genes can't stack across the two mods.",
                     requiredMods: new[] { "det.brawnum", "vanillaracesexpanded.archon" }),
             }, requiredMods: new[] { "ludeon.rimworld.biotech" }),
-
-
 
             new RebalanceGroup("odyssey", "Odyssey", new List<RebalanceToggle>
             {

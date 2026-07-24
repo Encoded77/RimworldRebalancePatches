@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.micromachines</settingKey>
+    <operations>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="AdvancedPowerArm" and costList/ComponentSpacer=9]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="AdvancedPowerArm" and costList/ComponentSpacer=9]/costList</xpath>
+              <value><gitsMicromachines>2</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AdvancedPowerArm" and costList/ComponentSpacer=9]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>1</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[(defName="AdvancedBionicArm" or defName="AdvancedBionicLeg" or defName="AdvancedBionicSpine" or defName="AdvancedBionicEye" or defName="AdvancedPowerArm" or defName="EPOE_DetoxifierSyntheticLiver" or defName="EPOE_ImmunoenhancerSyntheticKidney" or defName="RBP_AdvancedSyntheticHeart" or defName="RBP_AdvancedSyntheticLung" or defName="RBP_AdvancedSyntheticLiver" or defName="RBP_AdvancedSyntheticKidney" or defName="RBP_AdvancedSyntheticStomach") and costList/ComponentSpacer=6]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[(defName="AdvancedBionicArm" or defName="AdvancedBionicLeg" or defName="AdvancedBionicSpine" or defName="AdvancedBionicEye" or defName="AdvancedPowerArm" or defName="EPOE_DetoxifierSyntheticLiver" or defName="EPOE_ImmunoenhancerSyntheticKidney" or defName="RBP_AdvancedSyntheticHeart" or defName="RBP_AdvancedSyntheticLung" or defName="RBP_AdvancedSyntheticLiver" or defName="RBP_AdvancedSyntheticKidney" or defName="RBP_AdvancedSyntheticStomach") and costList/ComponentSpacer=6]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[(defName="AdvancedBionicArm" or defName="AdvancedBionicLeg" or defName="AdvancedBionicSpine" or defName="AdvancedBionicEye" or defName="AdvancedPowerArm" or defName="EPOE_DetoxifierSyntheticLiver" or defName="EPOE_ImmunoenhancerSyntheticKidney" or defName="RBP_AdvancedSyntheticHeart" or defName="RBP_AdvancedSyntheticLung" or defName="RBP_AdvancedSyntheticLiver" or defName="RBP_AdvancedSyntheticKidney" or defName="RBP_AdvancedSyntheticStomach") and costList/ComponentSpacer=6]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>2</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[(defName="AdvancedBionicJaw" or defName="RBP_AdvancedSyntheticNose") and costList/ComponentSpacer=5]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[(defName="AdvancedBionicJaw" or defName="RBP_AdvancedSyntheticNose") and costList/ComponentSpacer=5]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[(defName="AdvancedBionicJaw" or defName="RBP_AdvancedSyntheticNose") and costList/ComponentSpacer=5]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>1</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[(defName="AdvancedBionicEar" or defName="AdvancedBionicHand" or defName="AdvancedBionicFoot" or defName="ExoskeletonSuit" or defName="EPIA_TacticalBionicEye" or defName="EPIA_AuxiliaryAI_Worker" or defName="Coagulator" or defName="HealingEnhancer") and costList/ComponentSpacer=4]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[(defName="AdvancedBionicEar" or defName="AdvancedBionicHand" or defName="AdvancedBionicFoot" or defName="ExoskeletonSuit" or defName="EPIA_TacticalBionicEye" or defName="EPIA_AuxiliaryAI_Worker" or defName="Coagulator" or defName="HealingEnhancer") and costList/ComponentSpacer=4]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[(defName="AdvancedBionicEar" or defName="AdvancedBionicHand" or defName="AdvancedBionicFoot" or defName="ExoskeletonSuit" or defName="EPIA_TacticalBionicEye" or defName="EPIA_AuxiliaryAI_Worker" or defName="Coagulator" or defName="HealingEnhancer") and costList/ComponentSpacer=4]/costList/ComponentSpacer</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[(defName="DetoxifierLung" or defName="DetoxifierKidney" or defName="USH_IronLung" or defName="DetoxifierStomach" or defName="ReprocessorStomach") and costList/ComponentSpacer=6]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[(defName="DetoxifierLung" or defName="DetoxifierKidney" or defName="USH_IronLung" or defName="DetoxifierStomach" or defName="ReprocessorStomach") and costList/ComponentSpacer=6]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[(defName="DetoxifierLung" or defName="DetoxifierKidney" or defName="USH_IronLung" or defName="DetoxifierStomach" or defName="ReprocessorStomach") and costList/ComponentSpacer=6]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>2</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="NuclearStomach" and costList/ComponentSpacer=4]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="NuclearStomach" and costList/ComponentSpacer=4]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="NuclearStomach" and costList/ComponentSpacer=4]/costList/ComponentSpacer</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[(defName="RBP_LivingFrame" or defName="RBP_GeneDivergenceImplant") and costList/ComponentSpacer=20]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[(defName="RBP_LivingFrame" or defName="RBP_GeneDivergenceImplant") and costList/ComponentSpacer=20]/costList</xpath>
+              <value><gitsMicromachines>5</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[(defName="RBP_LivingFrame" or defName="RBP_GeneDivergenceImplant") and costList/ComponentSpacer=20]/costList/ComponentSpacer</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <!-- 16 -> 4 micromachines. The assist meditation vice brain. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_AMV" and costList/ComponentSpacer=16]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="PI_AMV" and costList/ComponentSpacer=16]/costList</xpath>
+              <value><gitsMicromachines>4</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="PI_AMV" and costList/ComponentSpacer=16]/costList/ComponentSpacer</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <!-- 12 -> 3 micromachines. The android conversion kit. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="RBP_AndroidConversionKit" and costList/ComponentSpacer=12]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="RBP_AndroidConversionKit" and costList/ComponentSpacer=12]/costList</xpath>
+              <value><gitsMicromachines>3</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="RBP_AndroidConversionKit" and costList/ComponentSpacer=12]/costList/ComponentSpacer</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="PI_PFC" and costList/ComponentSpacer=10]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="PI_PFC" and costList/ComponentSpacer=10]/costList</xpath>
+              <value><gitsMicromachines>2</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="PI_PFC" and costList/ComponentSpacer=10]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>2</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[(defName="RBP_ThoracicFrameAdvanced" or defName="PI_HOPS" or defName="PI_NHCS" or defName="PI_NHEC" or defName="PI_NHRA" or defName="PI_Resistance") and costList/ComponentSpacer=8]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[(defName="RBP_ThoracicFrameAdvanced" or defName="PI_HOPS" or defName="PI_NHCS" or defName="PI_NHEC" or defName="PI_NHRA" or defName="PI_Resistance") and costList/ComponentSpacer=8]/costList</xpath>
+              <value><gitsMicromachines>2</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[(defName="RBP_ThoracicFrameAdvanced" or defName="PI_HOPS" or defName="PI_NHCS" or defName="PI_NHEC" or defName="PI_NHRA" or defName="PI_Resistance") and costList/ComponentSpacer=8]/costList/ComponentSpacer</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[(defName="RBP_ThoracicFrameBionic" or defName="NeuralHeatsink" or defName="LTS_PrestigeSubdermalArmour") and costList/ComponentSpacer=6]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[(defName="RBP_ThoracicFrameBionic" or defName="NeuralHeatsink" or defName="LTS_PrestigeSubdermalArmour") and costList/ComponentSpacer=6]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[(defName="RBP_ThoracicFrameBionic" or defName="NeuralHeatsink" or defName="LTS_PrestigeSubdermalArmour") and costList/ComponentSpacer=6]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>2</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <!-- 5 -> 1 component + 1 micromachine. The memory databank. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="LTS_MemoryDatabank" and costList/ComponentSpacer=5]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="LTS_MemoryDatabank" and costList/ComponentSpacer=5]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_MemoryDatabank" and costList/ComponentSpacer=5]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>1</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[(defName="RBP_NeuroformSerum" or defName="PI_AMC" or defName="PI_PRC" or defName="RBP_AuxiliaryAI_Agricultural" or defName="RBP_AuxiliaryAI_Artisan" or defName="RBP_AuxiliaryAI_Construction" or defName="RBP_AuxiliaryAI_Diplomatic" or defName="RBP_AuxiliaryAI_Medical" or defName="RBP_AuxiliaryAI_Mining" or defName="CircadianAssistant" or defName="CircadianHalfCycler" or defName="EPIA_CircadianRefresher" or defName="LTS_SkillChipPort" or defName="LearningAssistant" or defName="Neurocalculator") and costList/ComponentSpacer=4]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[(defName="RBP_NeuroformSerum" or defName="PI_AMC" or defName="PI_PRC" or defName="RBP_AuxiliaryAI_Agricultural" or defName="RBP_AuxiliaryAI_Artisan" or defName="RBP_AuxiliaryAI_Construction" or defName="RBP_AuxiliaryAI_Diplomatic" or defName="RBP_AuxiliaryAI_Medical" or defName="RBP_AuxiliaryAI_Mining" or defName="CircadianAssistant" or defName="CircadianHalfCycler" or defName="EPIA_CircadianRefresher" or defName="LTS_SkillChipPort" or defName="LearningAssistant" or defName="Neurocalculator") and costList/ComponentSpacer=4]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[(defName="RBP_NeuroformSerum" or defName="PI_AMC" or defName="PI_PRC" or defName="RBP_AuxiliaryAI_Agricultural" or defName="RBP_AuxiliaryAI_Artisan" or defName="RBP_AuxiliaryAI_Construction" or defName="RBP_AuxiliaryAI_Diplomatic" or defName="RBP_AuxiliaryAI_Medical" or defName="RBP_AuxiliaryAI_Mining" or defName="CircadianAssistant" or defName="CircadianHalfCycler" or defName="EPIA_CircadianRefresher" or defName="LTS_SkillChipPort" or defName="LearningAssistant" or defName="Neurocalculator") and costList/ComponentSpacer=4]/costList/ComponentSpacer</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <!-- 8 -> 2 micromachines. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="StoneskinGland" and costList/ComponentSpacer=8]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="StoneskinGland" and costList/ComponentSpacer=8]/costList</xpath>
+              <value><gitsMicromachines>2</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="StoneskinGland" and costList/ComponentSpacer=8]/costList/ComponentSpacer</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <!-- 6 -> 2 components + 1 micromachine. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[(defName="ArmorskinGland" or defName="EPOE_AdvancedDrillArm" or defName="GhoulPowerPlating") and costList/ComponentSpacer=6]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[(defName="ArmorskinGland" or defName="EPOE_AdvancedDrillArm" or defName="GhoulPowerPlating") and costList/ComponentSpacer=6]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[(defName="ArmorskinGland" or defName="EPOE_AdvancedDrillArm" or defName="GhoulPowerPlating") and costList/ComponentSpacer=6]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>2</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <!-- 5 -> 1 component + 1 micromachine. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[(defName="BS_BionicStriderLeg" or defName="LTS_BionicTail" or defName="LTS_ManipulationTail" or defName="LTS_ScorpionTail" or defName="VacskinGland") and costList/ComponentSpacer=5]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[(defName="BS_BionicStriderLeg" or defName="LTS_BionicTail" or defName="LTS_ManipulationTail" or defName="LTS_ScorpionTail" or defName="VacskinGland") and costList/ComponentSpacer=5]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[(defName="BS_BionicStriderLeg" or defName="LTS_BionicTail" or defName="LTS_ManipulationTail" or defName="LTS_ScorpionTail" or defName="VacskinGland") and costList/ComponentSpacer=5]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>1</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <!-- 4 -> 1 micromachine. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[(defName="DeathrestApparatus" or defName="DeathrestCapacitor" or defName="EltexAdornments" or defName="EPOE_AdvancedFieldHand" or defName="GhoulBioferriteExtractor" or defName="HemogenicActivator" or defName="HemogenicMicrocompressor" or defName="MuscleStimulator" or defName="PowerArm" or defName="Synthmarrow" or defName="Synthwomb" or defName="ToughskinGland") and costList/ComponentSpacer=4]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[(defName="DeathrestApparatus" or defName="DeathrestCapacitor" or defName="EltexAdornments" or defName="EPOE_AdvancedFieldHand" or defName="GhoulBioferriteExtractor" or defName="HemogenicActivator" or defName="HemogenicMicrocompressor" or defName="MuscleStimulator" or defName="PowerArm" or defName="Synthmarrow" or defName="Synthwomb" or defName="ToughskinGland") and costList/ComponentSpacer=4]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[(defName="DeathrestApparatus" or defName="DeathrestCapacitor" or defName="EltexAdornments" or defName="EPOE_AdvancedFieldHand" or defName="GhoulBioferriteExtractor" or defName="HemogenicActivator" or defName="HemogenicMicrocompressor" or defName="MuscleStimulator" or defName="PowerArm" or defName="Synthmarrow" or defName="Synthwomb" or defName="ToughskinGland") and costList/ComponentSpacer=4]/costList/ComponentSpacer</xpath>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[@Name="LTS_BaseSkillChipItem" and costList/ComponentSpacer=6]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[@Name="LTS_BaseSkillChipItem" and costList/ComponentSpacer=6]/costList</xpath>
+              <value><gitsMicromachines>1</gitsMicromachines></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="LTS_BaseSkillChipItem" and costList/ComponentSpacer=6]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>2</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

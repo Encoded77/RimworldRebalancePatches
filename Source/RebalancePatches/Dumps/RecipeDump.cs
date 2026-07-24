@@ -6,16 +6,6 @@ using Verse;
 
 namespace RebalancePatches
 {
-    /// <summary>
-    /// Every RecipeDef — surgeries and bench recipes alike. Surgeries carry the implant ecosystem;
-    /// bench recipes carry what an item costs to make. Keeping both in one dump means the analyzer
-    /// can ask "what installs this and what does making it cost" from a single file.
-    ///
-    /// The only computed field is <c>workerBaseChain</c>: recipe behaviour lives in a C# class
-    /// hierarchy that no longer exists once the game is closed, so the chain has to be captured
-    /// here. Everything else — research chains, which bodies have the target part, whether an
-    /// android may take it — is a join the analyzer does across dumps.
-    /// </summary>
     internal static class RecipeDump
     {
         private static readonly Type[] Referenced =
@@ -46,16 +36,12 @@ namespace RebalancePatches
                         j.Name("isSurgery"); j.Value(recipe.IsSurgery);
                         j.Name("workerClass"); j.Value(recipe.workerClass?.FullName);
 
-                        // Base chain, so the analyzer can ask "is this a Recipe_InstallImplant?"
-                        // without the type ever being loaded.
                         j.Name("workerBaseChain");
                         j.BeginArray();
                         for (Type t = recipe.workerClass; t != null && t != typeof(object); t = t.BaseType)
                             j.Value(t.Name);
                         j.EndArray();
 
-                        // AllRecipeUsers folds in ThingDefs that list the recipe themselves, which
-                        // recipeUsers alone misses.
                         j.Name("allRecipeUsers");
                         j.BeginArray();
                         foreach (string user in (recipe.AllRecipeUsers ?? Enumerable.Empty<ThingDef>())
@@ -64,8 +50,9 @@ namespace RebalancePatches
                             j.Value(user);
                         j.EndArray();
 
-                        // Ingredient filters resolve to concrete defs only while the database is
-                        // live, so flatten them now.
+                        j.Name("implantIngredient");
+                        j.Value(ImplantIngredientOf(recipe)?.defName);
+
                         j.Name("resolvedIngredients");
                         j.BeginArray();
                         if (recipe.ingredients != null)
@@ -89,6 +76,27 @@ namespace RebalancePatches
                 }
                 j.EndArray();
             }, () => $"{total} recipes ({surgeries} surgeries)");
+        }
+
+        private static ThingDef ImplantIngredientOf(RecipeDef recipe)
+        {
+            if (recipe.ingredients == null) return null;
+            ThingDef fallback = null;
+            foreach (IngredientCount ing in recipe.ingredients)
+            {
+                if (ing?.filter == null) continue;
+                foreach (ThingDef thing in ing.filter.AllowedThingDefs)
+                {
+                    if (thing == null || thing.IsMedicine) continue;
+                    if (thing.isTechHediff) return thing;
+                    if (thing.thingCategories != null)
+                        foreach (ThingCategoryDef cat in thing.thingCategories)
+                            if (cat != null && cat.defName.IndexOf("BodyPart", StringComparison.OrdinalIgnoreCase) >= 0)
+                                return thing;
+                    fallback ??= thing;
+                }
+            }
+            return fallback;
         }
     }
 }

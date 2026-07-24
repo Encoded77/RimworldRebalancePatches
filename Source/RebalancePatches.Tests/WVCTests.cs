@@ -216,10 +216,6 @@ namespace RebalancePatches.Tests
             Check.Eq(serums.baseCost, 1200f, "RBP_GeneSerums.baseCost");
             Check.PrereqsAre(serums.prerequisites, "RBP_GeneSerums.prerequisites", "Xenogermination");
 
-            // There is no ultratech serum tier: the xenotype/retune/resurrector serums that would
-            // have justified one carry WVC's WVC_Legacy_Hook="RemoveMe" tag, so WVC deletes them
-            // itself unless its own disableLegacy setting is off - and that is not the default.
-            // All eight retired projects fold into RBP_GeneSerums instead.
             Check.True(DefDatabase<ResearchProjectDef>.GetNamedSilentFail("RBP_XenotypeSerums") == null,
                 "RBP_XenotypeSerums should no longer be created");
 
@@ -227,8 +223,6 @@ namespace RebalancePatches.Tests
                 Check.True(DefDatabase<ResearchProjectDef>.GetNamedSilentFail(gone) == null,
                     $"{gone} still present");
 
-            // The serum bench is the one consumer guaranteed to exist with Biotech, so it is the
-            // canary for the repoint having run at all.
             ThingDef bench = Check.Optional<ThingDef>("WVC_SerumCraftingTable", "geneticsresearch.consumables");
             if (bench != null)
                 Check.True(Check.ContainsResearch(bench.researchPrerequisites, "RBP_GeneSerums"),
@@ -238,22 +232,33 @@ namespace RebalancePatches.Tests
         [Test]
         public static void SerumConsumersRepointed()
         {
-            if (!Check.Ready("geneticsresearch.consumables", Ids.WVC, Ids.Biotech)
-                || !Check.GeneticsTabLoaded("geneticsresearch.consumables"))
+            if (!Check.Ready("geneticsresearch.consumables", Ids.WVC, Ids.Biotech))
                 return;
-            // A missed repoint leaves a def pointing at a project we deleted. That resolves to
-            // nothing rather than to a wrong def, so absence of the old name proves little -
-            // assert each consumer positively names its new project instead.
+
+            if (!Check.Soft(Check.GeneticsTabLoaded("geneticsresearch.consumables"),
+                    "RBP_GeneticsTab is absent although geneticsresearch.consumables is on and both " +
+                    "WVC and Biotech are active - the serum repoint cannot be verified"))
+            {
+                Check.SoftResult();
+                return;
+            }
+            Check.Note("SerumConsumersRepointed: past the gate, checking mandatory consumers");
+
             ThingDef pills = Check.Optional<ThingDef>("WVC_EyedyePills", "geneticsresearch.consumables");
-            if (pills != null)
-                Check.Eq(Check.RecipePrereqs(pills)?[0]?.defName, "RBP_GeneSerums",
-                    "WVC_EyedyePills recipeMaker.researchPrerequisites[0]");
+            if (Check.Soft(pills != null,
+                    "WVC_EyedyePills absent - the serum repoint has no mandatory consumer to verify " +
+                    "(WVC renamed or removed it?); without it this test would pass vacuously."))
+                Check.Soft(Check.RecipePrereqs(pills)?[0]?.defName == "RBP_GeneSerums",
+                    "WVC_EyedyePills recipeMaker.researchPrerequisites[0] is " +
+                    $"'{Check.RecipePrereqs(pills)?[0]?.defName ?? "null"}', expected RBP_GeneSerums");
+
             ThingDef restoration = Check.Optional<ThingDef>("WVC_GeneRestorationSerum_Base", "geneticsresearch.consumables");
-            if (restoration != null)
-                Check.Eq(Check.RecipePrereq(restoration)?.defName, "RBP_GeneSerums",
-                    "WVC_GeneRestorationSerum_Base recipeMaker.researchPrerequisite");
-            // Anomaly-only. Its prerequisite pair sits under recipeMaker, not on the ThingDef, and
-            // it keeps Archogenetics alongside the repointed entry.
+            if (Check.Soft(restoration != null,
+                    "WVC_GeneRestorationSerum_Base absent - mandatory serum repoint consumer missing " +
+                    "(WVC renamed or removed it?); without it this test would pass vacuously."))
+                Check.Soft(Check.RecipePrereq(restoration)?.defName == "RBP_GeneSerums",
+                    "WVC_GeneRestorationSerum_Base recipeMaker.researchPrerequisite is " +
+                    $"'{Check.RecipePrereq(restoration)?.defName ?? "null"}', expected RBP_GeneSerums");
             ThingDef shapeshifter = Check.Optional<ThingDef>("WVC_ShapeshifterOverclockerSerum_Base",
                 "geneticsresearch.consumables", Ids.Anomaly);
             if (shapeshifter != null)
@@ -282,6 +287,8 @@ namespace RebalancePatches.Tests
                     Check.True(!Check.ContainsResearch(recipe.researchPrerequisites, gone),
                         $"{recipe.defName} still lists {gone}");
                 }
+
+            Check.SoftResult();
         }
     }
 }

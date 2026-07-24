@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_ModularBionicArm" or defName="LTS_ModularBionicEye" or defName="LTS_ModularBionicJaw" or defName="LTS_ModularBionicKidney" or defName="LTS_ModularBionicLeg" or defName="LTS_ModularBionicLung" or defName="LTS_ModularBionicNose" or defName="LTS_ModularBionicSpine" or defName="LTS_ModularBionicStomach"]/comps/li[@Class="EBSGFramework.HediffCompProperties_Modular"]/slots/li/capacity</xpath>
+              <value>
+                <capacity>2</capacity>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_ModularArchotechArm" or defName="LTS_ModularArchotechEye" or defName="LTS_ModularArchotechJaw" or defName="LTS_ModularArchotechKidney" or defName="LTS_ModularArchotechLeg" or defName="LTS_ModularArchotechLung" or defName="LTS_ModularArchotechNose" or defName="LTS_ModularArchotechSpine" or defName="LTS_ModularArchotechStomach"]/comps/li[@Class="EBSGFramework.HediffCompProperties_Modular"]/slots/li/capacity</xpath>
+              <value>
+                <capacity>3</capacity>
+              </value>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

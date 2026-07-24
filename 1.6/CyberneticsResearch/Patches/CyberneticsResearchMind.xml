@@ -1,0 +1,685 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.mind</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+
+            <ResearchProjectDef>
+              <defName>RBP_CybEchoNeuralRegulation</defName>
+              <label>Echo neural regulation</label>
+              <description>Echo's entry line: heat sinks, entropy dampers, a one-shot surge valve and a meditation aid. None of it makes a psycaster stronger; all of it keeps one from burning out.</description>
+              <baseCost>2400</baseCost>
+              <techLevel>Spacer</techLevel>
+              <tab>RBP_CyberneticsTab</tab>
+              <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+              <prerequisites>
+                <li>RBP_CybSurgicalImplantation</li>
+              </prerequisites>
+              <researchViewX>23</researchViewX>
+              <researchViewY>0.80</researchViewY>
+            </ResearchProjectDef>
+
+            <ResearchProjectDef>
+              <defName>RBP_CybEchoPsyfocusSystems</defName>
+              <label>Echo psyfocus systems</label>
+              <description>Echo's second line spends less focus per cast: a recycling capacitor shaves the cost off every cast, a resistance lattice halves it at the price of the caster's own meditation, a cost suppressor halves it and lets neural heat run hot instead. Three answers to one problem, none of them free.</description>
+              <baseCost>3000</baseCost>
+              <techLevel>Spacer</techLevel>
+              <tab>RBP_CyberneticsTab</tab>
+              <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+              <prerequisites>
+                <li>RBP_CybEchoNeuralRegulation</li>
+              </prerequisites>
+              <researchViewX>24</researchViewX>
+              <researchViewY>0.80</researchViewY>
+            </ResearchProjectDef>
+
+            <ResearchProjectDef>
+              <defName>RBP_CybEchoCyberbrains</defName>
+              <label>Echo cyberbrains</label>
+              <description>Echo does not build general-purpose brains. A SEER replaces the psychic architecture of a mind with hardware built for it: entropy sheds faster, the focus band runs wider, and casting steadies without the caster having to be steady. It is a worse brain than a Civis or an Aegis at everything else, and its buyers have never cared.</description>
+              <baseCost>4500</baseCost>
+              <techLevel>Ultra</techLevel>
+              <tab>RBP_CyberneticsTab</tab>
+              <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+              <requiredResearchFacilities>
+                <li>MultiAnalyzer</li>
+              </requiredResearchFacilities>
+              <prerequisites>
+                <li>RBP_CybEchoPsyfocusSystems</li>
+              </prerequisites>
+              <researchViewX>25</researchViewX>
+              <researchViewY>0.80</researchViewY>
+            </ResearchProjectDef>
+
+            <ResearchProjectDef>
+              <defName>RBP_CybEchoOracle</defName>
+              <label>Echo ORACLE</label>
+              <description>The house's flagship, and the furthest anyone has taken a mind toward being a psychic instrument. An ORACLE rebuilds the psychic architecture almost end to end and carries extra cortex capacity for the hardware that hangs off it. Echo never solved what the rebuild costs elsewhere: an ORACLE wearer is a formidable psycaster and a noticeably more fragile person.</description>
+              <baseCost>6000</baseCost>
+              <techLevel>Ultra</techLevel>
+              <tab>RBP_CyberneticsTab</tab>
+              <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+              <requiredResearchFacilities>
+                <li>MultiAnalyzer</li>
+              </requiredResearchFacilities>
+              <prerequisites>
+                <li>RBP_CybEchoCyberbrains</li>
+              </prerequisites>
+              <researchViewX>26</researchViewX>
+              <researchViewY>0.80</researchViewY>
+            </ResearchProjectDef>
+
+            <ResearchProjectDef>
+              <defName>RBP_CybEchoSensitivityAmplifier</defName>
+              <label>Echo sensitivity amplifier</label>
+              <description>Raw psychic sensitivity, driven upward. It is crude, painful, and the single largest stat swing in the psychic catalogue, which is why Echo sells it apart and does not advertise it.</description>
+              <baseCost>4500</baseCost>
+              <techLevel>Ultra</techLevel>
+              <tab>RBP_CyberneticsTab</tab>
+              <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+              <requiredResearchFacilities>
+                <li>MultiAnalyzer</li>
+              </requiredResearchFacilities>
+              <prerequisites>
+                <li>RBP_CybEchoPsyfocusSystems</li>
+              </prerequisites>
+              <researchViewX>25</researchViewX>
+              <researchViewY>1.60</researchViewY>
+            </ResearchProjectDef>
+
+            <ResearchProjectDef>
+              <defName>RBP_CybEchoFusionCore</defName>
+              <label>Echo fusion core</label>
+              <description>Two devices that manufacture psychic energy rather than manage it. A caged fusion core refills focus but cripples heat dissipation; a vicarious meditator earns focus while its owner does something else. Neither is needed to cast; both are pure indulgence.</description>
+              <baseCost>8000</baseCost>
+              <techLevel>Ultra</techLevel>
+              <tab>RBP_CyberneticsTab</tab>
+              <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+              <requiredResearchFacilities>
+                <li>MultiAnalyzer</li>
+              </requiredResearchFacilities>
+              <prerequisites>
+                <li>RBP_CybEchoSensitivityAmplifier</li>
+              </prerequisites>
+              <researchViewX>26</researchViewX>
+              <researchViewY>1.60</researchViewY>
+            </ResearchProjectDef>
+
+            <ResearchProjectDef>
+              <defName>RBP_CybEchoSuppression</defName>
+              <label>Echo suppression</label>
+              <description>The other half of Echo's business: a passivator that all but severs a mind from the psychic field, and a targeter that renders the wearer deaf to drones and soothing emanations alike. Worn by people whose job is to stand in front of a psycaster.</description>
+              <baseCost>3500</baseCost>
+              <techLevel>Ultra</techLevel>
+              <tab>RBP_CyberneticsTab</tab>
+              <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+              <requiredResearchFacilities>
+                <li>MultiAnalyzer</li>
+              </requiredResearchFacilities>
+              <prerequisites>
+                <li>RBP_CybEchoNeuralRegulation</li>
+              </prerequisites>
+              <researchViewX>24</researchViewX>
+              <researchViewY>0.00</researchViewY>
+            </ResearchProjectDef>
+
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.mind</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods>
+            <li>cedaro.psychicimplant</li>
+          </mods>
+          <match Class="PatchOperationSequence">
+            <operations>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_NHSV"]/recipeMaker/researchPrerequisites/li[text()="BrainWiring"]</xpath>
+                <value><li>RBP_CybEchoNeuralRegulation</li></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_NHEC"]/recipeMaker/researchPrerequisites/li[text()="NeuralComputation"]</xpath>
+                <value><li>RBP_CybEchoNeuralRegulation</li></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_NHRA"]/recipeMaker/researchPrerequisites/li[text()="NeuralComputation"]</xpath>
+                <value><li>RBP_CybEchoNeuralRegulation</li></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_AMC"]/recipeMaker/researchPrerequisites/li[text()="NeuralComputation"]</xpath>
+                <value><li>RBP_CybEchoNeuralRegulation</li></value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_PRC"]/recipeMaker/researchPrerequisites/li[text()="MolecularAnalysis"]</xpath>
+                <value><li>RBP_CybEchoPsyfocusSystems</li></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_Resistance"]/recipeMaker/researchPrerequisites/li[text()="NeuralComputation"]</xpath>
+                <value><li>RBP_CybEchoPsyfocusSystems</li></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_NHCS"]/recipeMaker/researchPrerequisites/li[text()="NeuralComputation"]</xpath>
+                <value><li>RBP_CybEchoPsyfocusSystems</li></value>
+              </li>
+
+              <!-- Echo sensitivity amplifier: PsychicSensitivity +0.75, bought with pain. -->
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_HOPS"]/recipeMaker/researchPrerequisites/li[text()="NeuralComputation"]</xpath>
+                <value><li>RBP_CybEchoSensitivityAmplifier</li></value>
+              </li>
+
+              <!-- Echo fusion core: the two Hediff.Tick() implants. -->
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_PFC"]/recipeMaker/researchPrerequisites/li[text()="ShipReactor"]</xpath>
+                <value><li>RBP_CybEchoFusionCore</li></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_AMV"]/recipeMaker/researchPrerequisites/li[text()="NeuralComputation"]</xpath>
+                <value><li>RBP_CybEchoFusionCore</li></value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="PI_TPDD"]/recipeMaker/researchPrerequisites/li[text()="BrainWiring"]</xpath>
+                <value><li>RBP_CybEchoSuppression</li></value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_Passivator"]/recipeMaker</xpath>
+                <value>
+                  <researchPrerequisites>
+                    <li>RBP_CybEchoSuppression</li>
+                  </researchPrerequisites>
+                </value>
+              </li>
+
+            </operations>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.mind</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods>
+            <li>lts.i</li>
+          </mods>
+          <match Class="PatchOperationSequence">
+            <operations>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="NeuralHeatsink"]/recipeMaker/researchPrerequisite</xpath>
+                <value><researchPrerequisite>RBP_CybEchoNeuralRegulation</researchPrerequisite></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="EltexAdornments"]/recipeMaker/researchPrerequisite</xpath>
+                <value><researchPrerequisite>RBP_CybEchoSensitivityAmplifier</researchPrerequisite></value>
+              </li>
+            </operations>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.mind</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods>
+            <li>moistestwhale.gitscyberbrains</li>
+          </mods>
+          <match Class="PatchOperationSequence">
+            <operations>
+              <li Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="RBP_EchoSeerCyberbrain"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="RBP_EchoSeerCyberbrain"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybEchoCyberbrains</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </match>
+              </li>
+              <li Class="PatchOperationConditional">
+                <xpath>Defs/ThingDef[defName="RBP_EchoOracleCyberbrain"]</xpath>
+                <match Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="RBP_EchoOracleCyberbrain"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybEchoOracle</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </match>
+              </li>
+            </operations>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.mind</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods>
+            <li>hlx.ultratechalteredcarbon</li>
+          </mods>
+          <match Class="PatchOperationSequence">
+            <operations>
+
+              <!-- The one authored node in this lane -->
+              <li Class="PatchOperationAdd">
+                <xpath>Defs</xpath>
+                <value>
+                  <ResearchProjectDef>
+                    <defName>RBP_CybCorticalStacks</defName>
+                    <label>cortical stacks</label>
+                    <description>Recording a mind is one problem; running it in a body that was never its own is the harder one. This is the science of the resleeve: the matrix that holds a stack, the connector that reads it, and the procedures for duplicating, wiping and rebinding a person who is now a file.</description>
+                    <baseCost>6000</baseCost>
+                    <techLevel>Ultra</techLevel>
+                    <tab>RBP_CyberneticsTab</tab>
+                    <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                    <requiredResearchFacilities>
+                      <li>MultiAnalyzer</li>
+                    </requiredResearchFacilities>
+                    <prerequisites>
+                      <li>AC_NeuralDigitalization</li>
+                    </prerequisites>
+                    <researchViewX>25</researchViewX>
+                    <researchViewY>3.40</researchViewY>
+                  </ResearchProjectDef>
+                </value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralDigitalization"]/label</xpath>
+                <value><label>neural digitisation</label></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralDigitalization"]/description</xpath>
+                <value><description>A mind is a pattern, and a pattern can be recorded. A blank cortical stack seated at the top of the spine copies a person as they live; a cache keeps the copy once they die.</description></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralDigitalization"]/baseCost</xpath>
+                <value><baseCost>5000</baseCost></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralDigitalization"]/prerequisites</xpath>
+                <value>
+                  <prerequisites>
+                    <li>RBP_CybSurgicalImplantation</li>
+                  </prerequisites>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralDigitalization"]</xpath>
+                <value>
+                  <tab>RBP_CyberneticsTab</tab>
+                </value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralDigitalization"]/researchViewX</xpath>
+                <value><researchViewX>24</researchViewX></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralDigitalization"]/researchViewY</xpath>
+                <value><researchViewY>3.40</researchViewY></value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralEditing"]/label</xpath>
+                <value><label>neural editing</label></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralEditing"]/description</xpath>
+                <value><description>Once a person is a file, the file can be opened: duplicated, cut, wiped, or handed to someone else. The benches are ordinary, but the decision to use them is not.</description></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralEditing"]/baseCost</xpath>
+                <value><baseCost>5000</baseCost></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralEditing"]/prerequisites</xpath>
+                <value>
+                  <prerequisites>
+                    <li>RBP_CybCorticalStacks</li>
+                  </prerequisites>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralEditing"]</xpath>
+                <value>
+                  <tab>RBP_CyberneticsTab</tab>
+                </value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralEditing"]/researchViewX</xpath>
+                <value><researchViewX>26</researchViewX></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralEditing"]/researchViewY</xpath>
+                <value><researchViewY>3.40</researchViewY></value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralCasting"]/label</xpath>
+                <value><label>needlecasting</label></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralCasting"]/description</xpath>
+                <value><description>A stacked mind can be transmitted. Needlecasting throws a consciousness down a psychic subwave carrier into a waiting remote body hundreds of tiles away; the body left behind keeps breathing on life support and nothing else. Relays extend the reach.</description></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralCasting"]/baseCost</xpath>
+                <value><baseCost>5500</baseCost></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralCasting"]/prerequisites</xpath>
+                <value>
+                  <prerequisites>
+                    <li>RBP_CybCorticalStacks</li>
+                  </prerequisites>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralCasting"]</xpath>
+                <value>
+                  <tab>RBP_CyberneticsTab</tab>
+                </value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralCasting"]/researchViewX</xpath>
+                <value><researchViewX>26</researchViewX></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_NeuralCasting"]/researchViewY</xpath>
+                <value><researchViewY>4.20</researchViewY></value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SleeveGestation"]/label</xpath>
+                <value><label>sleeve gestation</label></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SleeveGestation"]/description</xpath>
+                <value><description>A recorded mind needs a body to wear. Sleeves are blank bodies grown to order in a gestator, as good or poor as the genetic stock poured into the vat. Grow your own and you stop depending on who happens to have died recently.</description></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SleeveGestation"]/baseCost</xpath>
+                <value><baseCost>5000</baseCost></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SleeveGestation"]/prerequisites</xpath>
+                <value>
+                  <prerequisites>
+                    <li>AC_NeuralDigitalization</li>
+                  </prerequisites>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SleeveGestation"]</xpath>
+                <value>
+                  <tab>RBP_CyberneticsTab</tab>
+                </value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SleeveGestation"]/researchViewX</xpath>
+                <value><researchViewX>25</researchViewX></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SleeveGestation"]/researchViewY</xpath>
+                <value><researchViewY>2.60</researchViewY></value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SkilltrainerProduction"]/label</xpath>
+                <value><label>neural trainers</label></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SkilltrainerProduction"]/description</xpath>
+                <value><description>A stacked mind can be made to practise: drop a recorded person into a virtual task ten thousand times and harvest the neural pattern as a skilltrainer, ready to hand to someone who never did the work. The minds used are not asked.</description></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SkilltrainerProduction"]/baseCost</xpath>
+                <value><baseCost>4500</baseCost></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SkilltrainerProduction"]/prerequisites</xpath>
+                <value>
+                  <prerequisites>
+                    <li>RBP_CybCorticalStacks</li>
+                  </prerequisites>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SkilltrainerProduction"]</xpath>
+                <value>
+                  <tab>RBP_CyberneticsTab</tab>
+                </value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SkilltrainerProduction"]/researchViewX</xpath>
+                <value><researchViewX>26</researchViewX></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_SkilltrainerProduction"]/researchViewY</xpath>
+                <value><researchViewY>5.00</researchViewY></value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_PsytrainerProduction"]/label</xpath>
+                <value><label>neural trainers: psytrainers</label></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_PsytrainerProduction"]/description</xpath>
+                <value><description>The same process turned on a psycaster: a psychic ability is a learned shape, and a mind held in that shape long enough presses into a psytrainer. Cheap only because the hard part was solved next door.</description></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_PsytrainerProduction"]/baseCost</xpath>
+                <value><baseCost>2000</baseCost></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_PsytrainerProduction"]/prerequisites</xpath>
+                <value>
+                  <prerequisites>
+                    <li>AC_SkilltrainerProduction</li>
+                  </prerequisites>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ResearchProjectDef[defName="AC_PsytrainerProduction"]</xpath>
+                <value>
+                  <tab>RBP_CyberneticsTab</tab>
+                </value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_PsytrainerProduction"]/researchViewX</xpath>
+                <value><researchViewX>26</researchViewX></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="AC_PsytrainerProduction"]/researchViewY</xpath>
+                <value><researchViewY>5.80</researchViewY></value>
+              </li>
+
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="AC_NeuralMatrix"]/researchPrerequisites/li[text()="AC_NeuralDigitalization"]</xpath>
+                <value><li>RBP_CybCorticalStacks</li></value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="AC_NeuralConnector"]/researchPrerequisites/li[text()="AC_NeuralDigitalization"]</xpath>
+                <value><li>RBP_CybCorticalStacks</li></value>
+              </li>
+
+              <!-- The editor buildings follow the mechanic they serve. -->
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="AC_NeuralEditor"]/researchPrerequisites/li[text()="AC_NeuralDigitalization"]</xpath>
+                <value><li>AC_NeuralEditing</li></value>
+              </li>
+
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="AC_DuplicateNeuralStack"]</xpath>
+                <value>
+                  <researchPrerequisites>
+                    <li>RBP_CybCorticalStacks</li>
+                  </researchPrerequisites>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="AC_DuplicateNeuralStackPawn"]</xpath>
+                <value>
+                  <researchPrerequisites>
+                    <li>RBP_CybCorticalStacks</li>
+                  </researchPrerequisites>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="AC_WipeActiveNeuralStack"]</xpath>
+                <value>
+                  <researchPrerequisites>
+                    <li>RBP_CybCorticalStacks</li>
+                  </researchPrerequisites>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="AC_UnboundPersona"]</xpath>
+                <value>
+                  <researchPrerequisites>
+                    <li>RBP_CybCorticalStacks</li>
+                  </researchPrerequisites>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="AC_ResetBiocodedThings"]</xpath>
+                <value>
+                  <researchPrerequisites>
+                    <li>RBP_CybCorticalStacks</li>
+                  </researchPrerequisites>
+                </value>
+              </li>
+
+            </operations>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.mind</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="AC_CompactNeuralEditor"]/researchPrerequisites/li[text()="AC_NeuralDigitalization"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods>
+            <li>hlx.ultratechalteredcarbon</li>
+          </mods>
+          <match Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>vanillaexpanded.gravship</li>
+            </mods>
+            <match Class="PatchOperationConditional">
+              <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="AC_CompactNeuralEditor"]/researchPrerequisites/li[text()="AC_NeuralDigitalization"]</xpath>
+                <value><li>AC_NeuralEditing</li></value>
+              </match>
+            </match>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.mind</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.royalty</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybEchoFusionCore" or defName="RBP_CybEchoSuppression" or defName="RBP_CybEchoOracle"]</xpath>
+          <value>
+            <techprintCount>1</techprintCount>
+            <techprintCommonality>1</techprintCommonality>
+            <techprintMarketValue>2000</techprintMarketValue>
+            <heldByFactionCategoryTags>
+              <li>Empire</li>
+            </heldByFactionCategoryTags>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.mind</settingKey>
+    <operations>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybEnhancedCyberbrain"]</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ResearchProjectDef[defName="AC_NeuralDigitalization"]/prerequisites</xpath>
+          <value>
+            <prerequisites>
+              <li>RBP_CybEnhancedCyberbrain</li>
+            </prerequisites>
+          </value>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBasicCyberbrain"]</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybEchoNeuralRegulation"]/prerequisites</xpath>
+          <value>
+            <prerequisites>
+              <li>RBP_CybBasicCyberbrain</li>
+            </prerequisites>
+          </value>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybCorticalStacks"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybSyntheticAscension" or defName="RBP_CybSymbioticIntegration"]/prerequisites</xpath>
+          <value>
+            <li>RBP_CybCorticalStacks</li>
+          </value>
+        </match>
+      </li>
+
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ResearchProjectDef[(defName="RBP_CybSyntheticAscension" or defName="RBP_CybSymbioticIntegration") and (prerequisites/li="RBP_CybArchotechCybernetics" or prerequisites/li="RBP_CybCorticalStacks")]/prerequisites/li[text()="RBP_CybSurgicalImplantation"]</xpath>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

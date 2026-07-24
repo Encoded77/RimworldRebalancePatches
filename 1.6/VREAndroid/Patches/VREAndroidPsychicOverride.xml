@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.ascension</settingKey>
+    <operations>
+
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+          <VREAndroids.AndroidGeneDef ParentName="VREA_HardwareBase">
+            <defName>RBP_PsychicResonator</defName>
+            <label>psychic resonator</label>
+            <description>A lattice of archotech filament grown through the persona core, tuned to the same band the psychic hardware of a living brain works in. It does not simulate a mind; it gives an existing one a surface that psychic energy can push against.\n\nOverrides the deafness built into every synthetic chassis. What comes back is the full range: psycasts, psychic implants, and every psychic phenomenon that was previously simply absent, including the unpleasant ones.</description>
+            <iconPath>UI/Icons/Genes/Hardware/Gene_PsychicallyDeaf</iconPath>
+            <displayOrderInCategory>19.5</displayOrderInCategory>
+            <biostatCpx>4</biostatCpx>
+            <isCoreComponent>false</isCoreComponent>
+          </VREAndroids.AndroidGeneDef>
+
+        </value>
+      </li>
+
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/StatDef[defName="PsychicSensitivity"]/parts</xpath>
+        <order>Prepend</order>
+        <value>
+          <li Class="RebalancePatches.StatPart_PsychicDeafnessOverride" />
+        </value>
+      </li>
+
+      <li Class="PatchOperationAddModExtension">
+        <xpath>Defs/HediffDef[defName="PsychicAmplifier"]</xpath>
+        <value>
+          <li Class="VREAndroids.AndroidSettingsExtension">
+            <androidCanCatchIt>true</androidCanCatchIt>
+          </li>
+        </value>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

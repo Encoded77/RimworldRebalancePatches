@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.tiers</settingKey>
+    <operations>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainBasicBase" or @Name="gitsBodyPartCyberbrainEnhancedBase"]/costList/gitsMicromachines</xpath>
+        <value><gitsMicromachines>1</gitsMicromachines></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainSpecializedBase"]/costList/gitsMicromachines</xpath>
+        <value><gitsMicromachines>2</gitsMicromachines></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainAdvancedBase"]/costList/gitsMicromachines</xpath>
+        <value><gitsMicromachines>3</gitsMicromachines></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainExtremeBase"]/costList/gitsMicromachines</xpath>
+        <value><gitsMicromachines>4</gitsMicromachines></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainBasicBase"]/statBases/WorkToMake</xpath>
+        <value><WorkToMake>28000</WorkToMake></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainEnhancedBase"]/statBases/WorkToMake</xpath>
+        <value><WorkToMake>32000</WorkToMake></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainSpecializedBase"]/statBases/WorkToMake</xpath>
+        <value><WorkToMake>34000</WorkToMake></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainAdvancedBase"]/statBases/WorkToMake</xpath>
+        <value><WorkToMake>36000</WorkToMake></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainExtremeBase"]/statBases/WorkToMake</xpath>
+        <value><WorkToMake>40000</WorkToMake></value>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

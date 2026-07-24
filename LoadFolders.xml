@@ -3,6 +3,13 @@
   <v1.6>
     <li>1.6</li>
     <li>1.6/Core</li>
+    <!-- Folders apply in reverse of this list. Listed first so Anomaly's creepjoiner sweep applies
+         last, after every folder that injects recipes. -->
+    <li IfModActive="ludeon.rimworld.anomaly">1.6/Anomaly</li>
+    <!-- Listed high so it applies near-last: repoints craft gates onto defs the Cybernetics,
+         EPOEForked and GiTS folders below inject, so those must apply first. Own folder because
+         files apply in filename order within a folder. -->
+    <li>1.6/CyberneticsResearch</li>
     <li IfModActive="vanillaexpanded.vanillasocialinteractionsexpanded">1.6/VSIE</li>
     <li IfModActive="cn.rimiot">1.6/RimIOT</li>
     <li IfModActive="hlx.ultratechalteredcarbon">1.6/AlteredCarbon</li>
@@ -20,8 +27,11 @@
     <li IfModActive="rimsenal.spacer">1.6/RimsenalSpacer</li>
     <li IfModActive="ludeon.rimworld.royalty">1.6/Royalty</li>
     <li IfModActive="lts.i">1.6/IntegratedImplants</li>
+    <li IfModActive="vanillaracesexpanded.android">1.6/VREAndroid</li>
+    <li IfModActive="vat.epoeforked">1.6/EPOEForked</li>
+    <li IfModActive="cedaro.psychicimplant">1.6/PsychicImplants</li>
+    <li>1.6/Cybernetics</li>
     <li IfModActive="rimsenal.core">1.6/RimsenalCore</li>
-    <li IfModActive="ludeon.rimworld.anomaly">1.6/Anomaly</li>
     <li IfModActive="vanillaracesexpanded.insector">1.6/VREInsector</li>
     <li IfModActive="vanillaexpanded.skills">1.6/VanillaSkillsExpanded</li>
     <li IfModActive="detvisor.impactweaponryreloaded">1.6/ImpactWeaponry</li>
@@ -50,9 +60,8 @@
     <li IfModActive="redmattis.morexenos">1.6/BSMoreXenotypes</li>
     <li IfModActive="redmattis.lamiasandothersnakes">1.6/BSLamias</li>
     <li IfModActive="vanillaracesexpanded.sanguophage">1.6/VRESanguophage</li>
-    <!-- Patch files apply in REVERSE of this listing (foldersToLoadDescendingOrder),
-         so 1.6/Biotech must be listed LAST to patch first (it creates the Genetics tab
-         the folders above test for), and GeneNodes before GeneExtractorTiers. -->
+    <!-- Applies in reverse, so Biotech is listed last to apply first (it creates the Genetics tab
+         the folders above test for); GeneNodes before GeneExtractorTiers. -->
     <li IfModActive="sarg.alphagenes">1.6/AlphaGenes</li>
     <li IfModActive="vanillaquestsexpanded.ancients">1.6/VQEAncients</li>
     <li IfModActive="amch.eragon.hcgenefabrication">1.6/GeneFabrication</li>

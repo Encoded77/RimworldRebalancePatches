@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.archotechshards</settingKey>
+    <operations>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+
+            <ThingDef ParentName="ResourceBase">
+              <defName>RBP_ArchotechShard</defName>
+              <label>archotech shard</label>
+              <description>A fragment cut from a larger archotech part without waking whatever runs inside it. It stays faintly warm, closes its own cuts, and gives up nothing under a microscope. Enough of them, reassembled with enough patience, will hold the shape of a working archotech part.</description>
+              <graphicData>
+                <texPath>Things/Item/Health/HealthItem</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+                <color>(155,165,148)</color>
+                <drawSize>0.70</drawSize>
+              </graphicData>
+              <techLevel>Archotech</techLevel>
+              <stackLimit>25</stackLimit>
+              <statBases>
+                <MarketValue>600</MarketValue>
+                <MaxHitPoints>100</MaxHitPoints>
+                <Mass>0.4</Mass>
+                <Flammability>0</Flammability>
+                <DeteriorationRate>0</DeteriorationRate>
+              </statBases>
+              <thingCategories>
+                <li>ItemsMisc</li>
+              </thingCategories>
+              <tradeTags>
+                <li>ExoticMisc</li>
+              </tradeTags>
+              <thingSetMakerTags>
+                <li>RewardStandardLowFreq</li>
+              </thingSetMakerTags>
+            </ThingDef>
+
+            <RecipeDef Name="RBP_ArchotechAssemblyBase" Abstract="True">
+              <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+              <effectWorking>Cook</effectWorking>
+              <soundWorking>Recipe_Machining</soundWorking>
+              <workSkill>Crafting</workSkill>
+              <workAmount>61000</workAmount>
+              <researchPrerequisite>RBP_CybArchotechCybernetics</researchPrerequisite>
+              <recipeUsers>
+                <li>FabricationBench</li>
+              </recipeUsers>
+              <skillRequirements>
+                <Crafting>10</Crafting>
+              </skillRequirements>
+              <fixedIngredientFilter>
+                <thingDefs>
+                  <li>RBP_ArchotechShard</li>
+                  <li>Plasteel</li>
+                </thingDefs>
+              </fixedIngredientFilter>
+            </RecipeDef>
+
+            <RecipeDef Name="RBP_ArchotechTeardownBase" Abstract="True">
+              <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+              <effectWorking>Cook</effectWorking>
+              <soundWorking>Recipe_Machining</soundWorking>
+              <workSkill>Crafting</workSkill>
+              <workAmount>12000</workAmount>
+              <researchPrerequisite>RBP_CybArchotechCybernetics</researchPrerequisite>
+              <recipeUsers>
+                <li>FabricationBench</li>
+              </recipeUsers>
+              <skillRequirements>
+                <Crafting>8</Crafting>
+              </skillRequirements>
+            </RecipeDef>
+
+          </value>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="ArchotechArm"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechArm</defName>
+                <label>assemble archotech arm</label>
+                <description>Assemble an archotech arm from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>ArchotechArm</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech arm.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <ArchotechArm>1</ArchotechArm>
+                </products>
+                <uiIconThing>ArchotechArm</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechArm</defName>
+                <label>break down archotech arm</label>
+                <description>Break an archotech arm down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech arm.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>ArchotechArm</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>ArchotechArm</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="ArchotechLeg"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechLeg</defName>
+                <label>assemble archotech leg</label>
+                <description>Assemble an archotech leg from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>ArchotechLeg</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech leg.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <ArchotechLeg>1</ArchotechLeg>
+                </products>
+                <uiIconThing>ArchotechLeg</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechLeg</defName>
+                <label>break down archotech leg</label>
+                <description>Break an archotech leg down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech leg.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>ArchotechLeg</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>ArchotechLeg</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="ArchotechEye"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechEye</defName>
+                <label>assemble archotech eye</label>
+                <description>Assemble an archotech eye from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>ArchotechEye</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech eye.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <ArchotechEye>1</ArchotechEye>
+                </products>
+                <uiIconThing>ArchotechEye</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechEye</defName>
+                <label>break down archotech eye</label>
+                <description>Break an archotech eye down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech eye.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>ArchotechEye</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>ArchotechEye</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="ArchotechVoicebox"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechVoicebox</defName>
+                <label>assemble archotech voice box</label>
+                <description>Assemble an archotech voice box from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>ArchotechVoicebox</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech voice box.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>2</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <ArchotechVoicebox>1</ArchotechVoicebox>
+                </products>
+                <uiIconThing>ArchotechVoicebox</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechVoicebox</defName>
+                <label>break down archotech voice box</label>
+                <description>Break an archotech voice box down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech voice box.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>ArchotechVoicebox</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>ArchotechVoicebox</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>1</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="Archowomb"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechWomb</defName>
+                <label>assemble archotech womb</label>
+                <description>Assemble an archotech womb from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>Archowomb</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech womb.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>2</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <Archowomb>1</Archowomb>
+                </products>
+                <uiIconThing>Archowomb</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechWomb</defName>
+                <label>break down archotech womb</label>
+                <description>Break an archotech womb down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech womb.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Archowomb</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>Archowomb</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>1</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="LTS_ArchotechHeart"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechHeart</defName>
+                <label>assemble archotech heart</label>
+                <description>Assemble an archotech heart from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>LTS_ArchotechHeart</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech heart.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <LTS_ArchotechHeart>1</LTS_ArchotechHeart>
+                </products>
+                <uiIconThing>LTS_ArchotechHeart</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechHeart</defName>
+                <label>break down archotech heart</label>
+                <description>Break an archotech heart down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech heart.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>LTS_ArchotechHeart</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>LTS_ArchotechHeart</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="LTS_ArchotechLung"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechLung</defName>
+                <label>assemble archotech lung</label>
+                <description>Assemble an archotech lung from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>LTS_ArchotechLung</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech lung.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <LTS_ArchotechLung>1</LTS_ArchotechLung>
+                </products>
+                <uiIconThing>LTS_ArchotechLung</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechLung</defName>
+                <label>break down archotech lung</label>
+                <description>Break an archotech lung down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech lung.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>LTS_ArchotechLung</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>LTS_ArchotechLung</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="LTS_ArchotechLiver"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechLiver</defName>
+                <label>assemble archotech liver</label>
+                <description>Assemble an archotech liver from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>LTS_ArchotechLiver</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech liver.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <LTS_ArchotechLiver>1</LTS_ArchotechLiver>
+                </products>
+                <uiIconThing>LTS_ArchotechLiver</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechLiver</defName>
+                <label>break down archotech liver</label>
+                <description>Break an archotech liver down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech liver.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>LTS_ArchotechLiver</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>LTS_ArchotechLiver</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="LTS_ArchotechKidney"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechKidney</defName>
+                <label>assemble archotech kidney</label>
+                <description>Assemble an archotech kidney from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>LTS_ArchotechKidney</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech kidney.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <LTS_ArchotechKidney>1</LTS_ArchotechKidney>
+                </products>
+                <uiIconThing>LTS_ArchotechKidney</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechKidney</defName>
+                <label>break down archotech kidney</label>
+                <description>Break an archotech kidney down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech kidney.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>LTS_ArchotechKidney</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>LTS_ArchotechKidney</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="LTS_ArchotechStomach"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechStomach</defName>
+                <label>assemble archotech stomach</label>
+                <description>Assemble an archotech stomach from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>LTS_ArchotechStomach</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech stomach.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <LTS_ArchotechStomach>1</LTS_ArchotechStomach>
+                </products>
+                <uiIconThing>LTS_ArchotechStomach</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechStomach</defName>
+                <label>break down archotech stomach</label>
+                <description>Break an archotech stomach down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech stomach.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>LTS_ArchotechStomach</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>LTS_ArchotechStomach</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="LTS_ArchotechSpine"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechSpine</defName>
+                <label>assemble archotech spine</label>
+                <description>Assemble an archotech spine from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>LTS_ArchotechSpine</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech spine.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <LTS_ArchotechSpine>1</LTS_ArchotechSpine>
+                </products>
+                <uiIconThing>LTS_ArchotechSpine</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechSpine</defName>
+                <label>break down archotech spine</label>
+                <description>Break an archotech spine down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech spine.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>LTS_ArchotechSpine</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>LTS_ArchotechSpine</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="LTS_ArchotechJaw"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechJaw</defName>
+                <label>assemble archotech jaw</label>
+                <description>Assemble an archotech jaw from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>LTS_ArchotechJaw</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech jaw.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <LTS_ArchotechJaw>1</LTS_ArchotechJaw>
+                </products>
+                <uiIconThing>LTS_ArchotechJaw</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechJaw</defName>
+                <label>break down archotech jaw</label>
+                <description>Break an archotech jaw down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech jaw.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>LTS_ArchotechJaw</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>LTS_ArchotechJaw</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="LTS_ArchotechNose"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechNose</defName>
+                <label>assemble archotech nose</label>
+                <description>Assemble an archotech nose from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>LTS_ArchotechNose</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech nose.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <LTS_ArchotechNose>1</LTS_ArchotechNose>
+                </products>
+                <uiIconThing>LTS_ArchotechNose</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechNose</defName>
+                <label>break down archotech nose</label>
+                <description>Break an archotech nose down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech nose.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>LTS_ArchotechNose</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>LTS_ArchotechNose</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="LTS_ArchotechEar"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechEar</defName>
+                <label>assemble archotech ear</label>
+                <description>Assemble an archotech ear from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>LTS_ArchotechEar</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech ear.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <LTS_ArchotechEar>1</LTS_ArchotechEar>
+                </products>
+                <uiIconThing>LTS_ArchotechEar</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechEar</defName>
+                <label>break down archotech ear</label>
+                <description>Break an archotech ear down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech ear.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>LTS_ArchotechEar</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>LTS_ArchotechEar</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="LTS_ArchotechBlackbox"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechMemorizer</defName>
+                <label>assemble archotech memorizer</label>
+                <description>Assemble an archotech memorizer from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>LTS_ArchotechBlackbox</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech memorizer.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>2</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <LTS_ArchotechBlackbox>1</LTS_ArchotechBlackbox>
+                </products>
+                <uiIconThing>LTS_ArchotechBlackbox</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechMemorizer</defName>
+                <label>break down archotech memorizer</label>
+                <description>Break an archotech memorizer down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech memorizer.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>LTS_ArchotechBlackbox</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>LTS_ArchotechBlackbox</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>1</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="BS_IndestructibelApparel"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechApparelIntegrator</defName>
+                <label>assemble archotech apparel-integrator</label>
+                <description>Assemble an archotech apparel-integrator from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>BS_IndestructibelApparel</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech apparel-integrator.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>4</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <BS_IndestructibelApparel>1</BS_IndestructibelApparel>
+                </products>
+                <uiIconThing>BS_IndestructibelApparel</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechApparelIntegrator</defName>
+                <label>break down archotech apparel-integrator</label>
+                <description>Break an archotech apparel-integrator down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech apparel-integrator.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>BS_IndestructibelApparel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>BS_IndestructibelApparel</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_ThoracicFrameArchotech"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechThoracicFrame</defName>
+                <label>assemble archotech thoracic frame</label>
+                <description>Assemble an archotech thoracic frame from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ThoracicFrameArchotech</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech thoracic frame.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>6</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <RBP_ThoracicFrameArchotech>1</RBP_ThoracicFrameArchotech>
+                </products>
+                <uiIconThing>RBP_ThoracicFrameArchotech</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechThoracicFrame</defName>
+                <label>break down archotech thoracic frame</label>
+                <description>Break an archotech thoracic frame down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech thoracic frame.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ThoracicFrameArchotech</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>RBP_ThoracicFrameArchotech</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>3</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="AC_EmptyArchotechStack"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <RecipeDef ParentName="RBP_ArchotechAssemblyBase">
+                <defName>RBP_BuildArchotechStack</defName>
+                <label>assemble archotech stack</label>
+                <description>Assemble an empty archotech stack from archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>AC_EmptyArchotechStack</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Assembling archotech stack.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>RBP_ArchotechShard</li>
+                      </thingDefs>
+                    </filter>
+                    <count>5</count>
+                  </li>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>Plasteel</li>
+                      </thingDefs>
+                    </filter>
+                    <count>20</count>
+                  </li>
+                </ingredients>
+                <products>
+                  <AC_EmptyArchotechStack>1</AC_EmptyArchotechStack>
+                </products>
+                <uiIconThing>AC_EmptyArchotechStack</uiIconThing>
+              </RecipeDef>
+
+              <RecipeDef ParentName="RBP_ArchotechTeardownBase">
+                <defName>RBP_TeardownArchotechStack</defName>
+                <label>break down archotech stack</label>
+                <description>Break an empty archotech stack down into archotech shards.</description>
+                <descriptionHyperlinks>
+                  <ThingDef>RBP_ArchotechShard</ThingDef>
+                </descriptionHyperlinks>
+                <jobString>Breaking down archotech stack.</jobString>
+                <ingredients>
+                  <li>
+                    <filter>
+                      <thingDefs>
+                        <li>AC_EmptyArchotechStack</li>
+                      </thingDefs>
+                    </filter>
+                    <count>1</count>
+                  </li>
+                </ingredients>
+                <fixedIngredientFilter>
+                  <thingDefs>
+                    <li>AC_EmptyArchotechStack</li>
+                  </thingDefs>
+                </fixedIngredientFilter>
+                <products>
+                  <RBP_ArchotechShard>2</RBP_ArchotechShard>
+                </products>
+                <uiIconThing>RBP_ArchotechShard</uiIconThing>
+              </RecipeDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

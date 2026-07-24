@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.tiers</settingKey>
+    <operations>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="BionicEye" or defName="BionicEar" or defName="BionicJaw" or defName="BionicTongue"]/addedPartProps/partEfficiency</xpath>
+        <value><partEfficiency>1.15</partEfficiency></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="CochlearImplant"]/addedPartProps/partEfficiency</xpath>
+        <value><partEfficiency>0.80</partEfficiency></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="ArchotechEye"]/addedPartProps/partEfficiency</xpath>
+        <value><partEfficiency>1.50</partEfficiency></value>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LightReceptor" or defName="ArtificialNose"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>0.80</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="HydraulicJaw"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>0.80</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="SilentJaw"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="AdvancedBionicEye" or defName="AdvancedBionicEar" or defName="AdvancedBionicJaw"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.35</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="EPIA_TacticalBionicEye"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.35</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="GoldenEye"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>0</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="GoldenEye"]/costList/Gold</xpath>
+              <value><Gold>20</Gold></value>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.royalty</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="AestheticNose"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AestheticNose"]/costList/Plasteel</xpath>
+              <value><Plasteel>15</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AestheticNose"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>3</ComponentSpacer></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="LTS_BionicNose"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_BionicNose"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_ArchotechEar" or defName="LTS_ArchotechJaw" or defName="LTS_ArchotechNose"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.50</partEfficiency></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="LTS_GourmandTongue"]</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="LTS_GourmandTongue"]/addedPartProps/partEfficiency</xpath>
+          <value><partEfficiency>1.15</partEfficiency></value>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="LTS_ModularBionicEye" or defName="LTS_ModularBionicJaw" or defName="LTS_ModularBionicNose"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_ModularBionicEye" or defName="LTS_ModularBionicJaw" or defName="LTS_ModularBionicNose"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_ModularArchotechEye" or defName="LTS_ModularArchotechJaw" or defName="LTS_ModularArchotechNose"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.50</partEfficiency></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="LTS_FaceplateArachnid"]/costList/ComponentSpacer</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_FaceplateArachnid"]/costList/Plasteel</xpath>
+              <value><Plasteel>15</Plasteel></value>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_FaceplateArachnid"]/costList/gitsMicromachines</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="LTS_FaceplateArachnid"]/costList/ComponentSpacer</xpath>
+                    <value><ComponentSpacer>1</ComponentSpacer></value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[defName="LTS_FaceplateArachnid"]/costList/gitsMicromachines</xpath>
+                    <value><gitsMicromachines>2</gitsMicromachines></value>
+                  </li>
+                </operations>
+              </match>
+              <nomatch Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="LTS_FaceplateArachnid"]/costList/ComponentSpacer</xpath>
+                <value><ComponentSpacer>9</ComponentSpacer></value>
+              </nomatch>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

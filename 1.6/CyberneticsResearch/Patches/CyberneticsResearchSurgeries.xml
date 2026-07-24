@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[researchPrerequisite="BrainSurgery"][not(defName="InstallBrainStimulatorAnimal" or defName="RemoveBrainStimulatorAnimal")]/researchPrerequisite</xpath>
+          <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="EPIASurgeryBasic" or @Name="EPIASurgeryAdvancedBionic" or @Name="EPIASurgeryGlitterworld" or @Name="EPIASurgeryOptimizer" or @Name="EPIA_SurgerySyntheticRepair"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="InstallAIPersonaCore"]/researchPrerequisite</xpath>
+          <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+        </match>
+      </li>
+
+      <!-- Simple prosthetics and surrogate organs (14). -->
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="InstallArtificialNose" or defName="InstallGoldenEye" or defName="InstallHydraulicJaw"
+               or defName="InstallLightReceptor" or defName="InstallSimpleProstheticFinger"
+               or defName="InstallSimpleProstheticFoot" or defName="InstallSimpleProstheticHand"
+               or defName="InstallSimpleProstheticHeart" or defName="InstallSimpleProstheticToe"
+               or defName="InstallSimpleSpine" or defName="InstallSurrogateKidney"
+               or defName="InstallSurrogateLiver" or defName="InstallSurrogateLung"
+               or defName="InstallSurrogateStomach"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <!-- Bionic and synthetic parts (11). -->
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="InstallBionicFinger" or defName="InstallBionicFoot" or defName="InstallBionicHand"
+               or defName="InstallBionicHeart" or defName="InstallBionicStomach" or defName="InstallBionicToe"
+               or defName="InstallPowerArm" or defName="InstallSilentJaw" or defName="InstallSyntheticKidney"
+               or defName="InstallSyntheticLiver" or defName="InstallSyntheticLung"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="EPIA_RestoreBones" or defName="InstallNaturalArm" or defName="InstallNaturalEar"
+               or defName="InstallNaturalEye" or defName="InstallNaturalJaw" or defName="InstallNaturalLeg"
+               or defName="InstallNaturalNose" or defName="InstallNaturalStomach"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <!-- Rib replacements, muscle stimulators and the scyther blade (12). -->
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="InstallAdrenalineRib" or defName="InstallCoagulatorRib" or defName="InstallCoolerRib"
+               or defName="InstallDruggedRib" or defName="InstallHeaterRib" or defName="InstallMedicalRib"
+               or defName="InstallMuscleStimulatorArms" or defName="InstallMuscleStimulatorLegs"
+               or defName="InstallPainkillerRib" or defName="InstallRespirationRib"
+               or defName="InstallScytherBlade" or defName="InstallWakeUpRib"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <!-- The ungated removals (14). -->
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="EPIA_RemoveProtectiveExoskeleton" or defName="EPIA_RemoveScytherBlade"
+               or defName="RemoveAdrenalineRib" or defName="RemoveCoagulatorRib" or defName="RemoveCoolerRib"
+               or defName="RemoveDeathAcidifier" or defName="RemoveDruggedRib" or defName="RemoveExoskeletonSuit"
+               or defName="RemoveHeaterRib" or defName="RemoveMedicalRib" or defName="RemovePainkillerRib"
+               or defName="RemoveRespirationRib" or defName="RemoveTacticalCorneaImplant"
+               or defName="RemoveWakeUpRib"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforkedroyalty</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="EPIA_InstallCircadianRefresher" or defName="EPIA_RemoveCircadianRefresher"
+               or defName="EPIA_RemoveDetoxifierEnhancer" or defName="InstallEPOE_AdvancedDrillArm"
+               or defName="InstallEPOE_AdvancedElbowBlade" or defName="InstallEPOE_AdvancedFieldHand"
+               or defName="InstallEPOE_AdvancedHandTalon" or defName="InstallEPOE_AdvancedKneeSpike"
+               or defName="InstallEPOE_DetoxifierEnhancer" or defName="InstallEPOE_DetoxifierSyntheticLiver"
+               or defName="InstallEPOE_ImmunoenhancerSyntheticKidney" or defName="InstallEPOE_ScytherElbowBlade"
+               or defName="InstallEPOE_ScytherHandTalon" or defName="InstallEPOE_ScytherKneeSpike"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>moistestwhale.gitscyberbrains</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[@Name="gitsSurgeryInstallCyberbrainBase" or @Name="gitsSurgeryRemoveCyberbrainBase" or @Name="gitsSurgeryImmunityNanitesBase" or @Name="gitsSurgeryRepairNanitesBase" or @Name="gitsSurgeryRemoveOrganDecayBase"]/researchPrerequisite</xpath>
+          <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[researchPrerequisite="I_ExtraArms"]/researchPrerequisite</xpath>
+          <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[@Name="LTS_SurgeryModularisation"]/researchPrerequisite</xpath>
+          <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[@Name="SurgeryInstallImplantedExplosiveBase"]/researchPrerequisite</xpath>
+          <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="SurgeryRemoveImplantedExplosiveBase"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[@Name="SurgeryInstallImplantSangophageBase"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+      <!-- ...and the matching removals, which hang off Core's remove base instead. -->
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="RemoveDeathrestApparatus" or defName="RemoveDeathrestCapacitor"
+               or defName="RemoveHemoFangs" or defName="RemoveHemogenicActivator"
+               or defName="RemoveHemogenicMicrocompressor"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="InstallArchotechVoicebox" or defName="InstallArchowomb"
+               or defName="InstallBiochameleonDevice" or defName="InstallBiotunerImplant"
+               or defName="InstallCranialInsulation" or defName="InstallCryptoWakeImplant"
+               or defName="InstallEltexAdornments" or defName="InstallHackingPortImplant"
+               or defName="InstallInternalClimateControlImplant" or defName="InstallLactoStimulator"
+               or defName="InstallNeuralHeatsink" or defName="InstallPsychicLevitator"
+               or defName="InstallPsychicNullifier" or defName="InstallSkeletalBracing"
+               or defName="InstallStrengthEnhancer" or defName="InstallSynthmarrow" or defName="InstallSynthwomb"
+               or defName="InstallWiredReflex" or defName="LTS_InstallArchotechBlackbox"
+               or defName="LTS_InstallBionicTail" or defName="LTS_InstallBrainDetonator"
+               or defName="LTS_InstallCellularAdapter" or defName="LTS_InstallCommsImplant"
+               or defName="LTS_InstallFaceplateArachnid" or defName="LTS_InstallFireSupressionSystem"
+               or defName="LTS_InstallGourmandTongue" or defName="LTS_InstallManipulationTail"
+               or defName="LTS_InstallMemoryDatabank" or defName="LTS_InstallNeuralStunner"
+               or defName="LTS_InstallNeurostreamer" or defName="LTS_InstallPrestigeSubdermalArmour"
+               or defName="LTS_InstallScorpionTail" or defName="LTS_InstallShoulderBeamTurret"
+               or defName="LTS_InstallShoulderChargeTurret" or defName="LTS_InstallShoulderMortar"
+               or defName="LTS_InstallShoulderRocketPod" or defName="LTS_InstallShoulderTurret"
+               or defName="LTS_InstallStealthSystem" or defName="LTS_InstallSubdermalArmour"
+               or defName="LTS_InstallVanguard" or defName="LTS_InstallVoicelock"
+               or defName="LTS_RemoveArchotechBlackbox" or defName="LTS_RemoveBionicTail"
+               or defName="LTS_RemoveBrainDetonator" or defName="LTS_RemoveCellularAdapter"
+               or defName="LTS_RemoveCommsImplant" or defName="LTS_RemoveDeathAcidifier"
+               or defName="LTS_RemoveFaceplateArachnid" or defName="LTS_RemoveFireSupressionSystem"
+               or defName="LTS_RemoveGourmandTongue" or defName="LTS_RemoveManipulationTail"
+               or defName="LTS_RemoveMemoryDatabank" or defName="LTS_RemoveNeuralStunner"
+               or defName="LTS_RemoveNeurostreamer" or defName="LTS_RemovePrestigeSubdermalArmour"
+               or defName="LTS_RemoveScorpionTail" or defName="LTS_RemoveShoulderBeamTurret"
+               or defName="LTS_RemoveShoulderChargeTurret" or defName="LTS_RemoveShoulderMortar"
+               or defName="LTS_RemoveShoulderRocketPod" or defName="LTS_RemoveShoulderTurret"
+               or defName="LTS_RemoveStealthSystem" or defName="LTS_RemoveSubdermalArmour"
+               or defName="LTS_RemoveVanguard" or defName="LTS_RemoveVoicelock"
+               or defName="RemoveArchotechVoicebox" or defName="RemoveArchowomb"
+               or defName="RemoveBiochameleonDevice" or defName="RemoveBiotunerImplant"
+               or defName="RemoveCranialInsulation" or defName="RemoveCryptoWakeImplant"
+               or defName="RemoveEltexAdornments" or defName="RemoveHackingPortImplant"
+               or defName="RemoveInternalClimateControlImplant" or defName="RemoveLactoStimulator"
+               or defName="RemoveNeuralHeatsink" or defName="RemovePsychicLevitator"
+               or defName="RemovePsychicNullifier" or defName="RemoveSkeletalBracing"
+               or defName="RemoveStrengthEnhancer" or defName="RemoveSynthmarrow" or defName="RemoveSynthwomb"
+               or defName="RemoveWiredReflex"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="LTS_InstallArchotechEar" or defName="LTS_InstallArchotechHeart"
+               or defName="LTS_InstallArchotechJaw" or defName="LTS_InstallArchotechKidney"
+               or defName="LTS_InstallArchotechLiver" or defName="LTS_InstallArchotechLung"
+               or defName="LTS_InstallArchotechNose" or defName="LTS_InstallArchotechSpine"
+               or defName="LTS_InstallArchotechStomach" or defName="LTS_InstallBionicKidney"
+               or defName="LTS_InstallBionicLiver" or defName="LTS_InstallBionicLung"
+               or defName="LTS_InstallBionicNose"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="RBSE_RemoveLeftExtraAdvancedBionicArm"
+               or defName="RBSE_RemoveLeftExtraAdvancedPowerArm" or defName="RBSE_RemoveLeftExtraPowerArm"
+               or defName="RBSE_RemoveRightExtraAdvancedBionicArm"
+               or defName="RBSE_RemoveRightExtraAdvancedPowerArm" or defName="RBSE_RemoveRightExtraPowerArm"
+               or defName="RemoveLeftExtraAdvancedBionicArm" or defName="RemoveLeftExtraAdvancedDrillArm"
+               or defName="RemoveLeftExtraAdvancedFieldHand" or defName="RemoveLeftExtraAdvancedPowerArm"
+               or defName="RemoveLeftExtraAnimaClawerArm" or defName="RemoveLeftExtraAnimaGauranlenArm"
+               or defName="RemoveLeftExtraAraArm" or defName="RemoveLeftExtraAraMantisBlade"
+               or defName="RemoveLeftExtraArchotechArm" or defName="RemoveLeftExtraBionicArm"
+               or defName="RemoveLeftExtraDrillArm" or defName="RemoveLeftExtraFieldHand"
+               or defName="RemoveLeftExtraFSFAdvBionicArm" or defName="RemoveLeftExtraFSFAdvBionicBreachArm"
+               or defName="RemoveLeftExtraFSFAdvBionicConstructionArm"
+               or defName="RemoveLeftExtraFSFAdvBionicDrillArm" or defName="RemoveLeftExtraFSFAdvBionicFieldArm"
+               or defName="RemoveLeftExtraFSFAdvBionicMedicArm" or defName="RemoveLeftExtraFSFAdvBionicPowerArm"
+               or defName="RemoveLeftExtraFSFAdvBionicTaserArm" or defName="RemoveLeftExtraFSFArchotechMedicArm"
+               or defName="RemoveLeftExtraFSFArchotechPowerArm" or defName="RemoveLeftExtraHellclawArm"
+               or defName="RemoveLeftExtraHelldrillArm" or defName="RemoveLeftExtraHellsawArm"
+               or defName="RemoveLeftExtraOEBionicArm" or defName="RemoveLeftExtraOEBionicCACArm"
+               or defName="RemoveLeftExtraOEBionicMArm" or defName="RemoveLeftExtraOEImplantAcidArm"
+               or defName="RemoveLeftExtraOEImplantCryoArm" or defName="RemoveLeftExtraOEImplantDemolisherArm"
+               or defName="RemoveLeftExtraOEImplantDuelistArm" or defName="RemoveLeftExtraOEImplantEMPArm"
+               or defName="RemoveLeftExtraOEImplantFireArm" or defName="RemoveLeftExtraPowerArm"
+               or defName="RemoveLeftExtraPowerClaw" or defName="RemoveRightExtraAdvancedBionicArm"
+               or defName="RemoveRightExtraAdvancedDrillArm" or defName="RemoveRightExtraAdvancedFieldHand"
+               or defName="RemoveRightExtraAdvancedPowerArm" or defName="RemoveRightExtraAnimaClawerArm"
+               or defName="RemoveRightExtraAnimaGauranlenArm" or defName="RemoveRightExtraAraArm"
+               or defName="RemoveRightExtraAraMantisBlade" or defName="RemoveRightExtraArchotechArm"
+               or defName="RemoveRightExtraBionicArm" or defName="RemoveRightExtraDrillArm"
+               or defName="RemoveRightExtraFieldHand" or defName="RemoveRightExtraFSFAdvBionicArm"
+               or defName="RemoveRightExtraFSFAdvBionicBreachArm"
+               or defName="RemoveRightExtraFSFAdvBionicConstructionArm"
+               or defName="RemoveRightExtraFSFAdvBionicDrillArm" or defName="RemoveRightExtraFSFAdvBionicFieldArm"
+               or defName="RemoveRightExtraFSFAdvBionicMedicArm" or defName="RemoveRightExtraFSFAdvBionicPowerArm"
+               or defName="RemoveRightExtraFSFAdvBionicTaserArm" or defName="RemoveRightExtraFSFArchotechMedicArm"
+               or defName="RemoveRightExtraFSFArchotechPowerArm" or defName="RemoveRightExtraHellclawArm"
+               or defName="RemoveRightExtraHelldrillArm" or defName="RemoveRightExtraHellsawArm"
+               or defName="RemoveRightExtraOEBionicArm" or defName="RemoveRightExtraOEBionicCACArm"
+               or defName="RemoveRightExtraOEBionicMArm" or defName="RemoveRightExtraOEImplantAcidArm"
+               or defName="RemoveRightExtraOEImplantCryoArm" or defName="RemoveRightExtraOEImplantDemolisherArm"
+               or defName="RemoveRightExtraOEImplantDuelistArm" or defName="RemoveRightExtraOEImplantEMPArm"
+               or defName="RemoveRightExtraOEImplantFireArm" or defName="RemoveRightExtraPowerArm"
+               or defName="RemoveRightExtraPowerClaw"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="InstallPsychokeneticShield" or defName="LTS_InstallEmergencyShield"
+               or defName="LTS_InstallShieldImplant" or defName="LTS_InstallSkillChipPort"
+               or defName="LTS_RemoveEmergencyShield" or defName="LTS_RemoveShieldImplant"
+               or defName="LTS_RemoveSkillChipPort" or defName="RemovePsychokeneticShield"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <!-- Cryptoforge compatibility family (4). -->
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="LTS_InstallCryptoCoagulator" or defName="LTS_InstallJotunnskinGland"
+               or defName="LTS_RemoveCryptoCoagulator" or defName="LTS_RemoveJotunnskinGland"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="LTS_InstallEmergencyVacseal" or defName="LTS_InstallGravlifter"
+               or defName="LTS_InstallGunneryAssistant" or defName="LTS_RemoveEmergencyVacseal"
+               or defName="LTS_RemoveGravlifter" or defName="LTS_RemoveGunneryAssistant"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>lts.i</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="RBP_InstallCerebrexNode"]/researchPrerequisite</xpath>
+          <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>cedaro.psychicimplant</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="Install_PI_AMC" or defName="Install_PI_AMV" or defName="Install_PI_HOPS"
+               or defName="Install_PI_NHCS" or defName="Install_PI_NHEC" or defName="Install_PI_NHRA"
+               or defName="Install_PI_NHSV" or defName="Install_PI_Passivator" or defName="Install_PI_PFC"
+               or defName="Install_PI_PRC" or defName="Install_PI_Resistance" or defName="Install_PI_TPDD"
+               or defName="RBP_Remove_PI_AMC" or defName="RBP_Remove_PI_AMV" or defName="Remove_PI_HOPS"
+               or defName="Remove_PI_NHCS" or defName="Remove_PI_NHEC" or defName="Remove_PI_NHRA"
+               or defName="Remove_PI_NHSV" or defName="Remove_PI_Passivator" or defName="Remove_PI_PFC"
+               or defName="Remove_PI_PRC" or defName="Remove_PI_Resistance" or defName="Remove_PI_TPDD"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+
+      <!-- Stacks and sleeves: neural, remote and archotech, empty and filled (8). -->
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>hlx.ultratechalteredcarbon</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="AC_InstallArchotechStack" or defName="AC_InstallEmptyArchotechStack"
+               or defName="AC_InstallEmptyNeuralStack" or defName="AC_InstallNeuralStack"
+               or defName="AC_InstallRemoteStack" or defName="AC_RemoveArchotechStack"
+               or defName="AC_RemoveNeuralStack" or defName="AC_RemoveRemoteStack"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>hlx.ultratechalteredcarbon</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="AC_InstallDreamcatcher" or defName="AC_InstallMentalFuse"
+               or defName="AC_InstallRogianArmBlade" or defName="AC_InstallRogianArmBlade_Mono"
+               or defName="AC_InstallRogianArmBlade_Plasma" or defName="AC_InstallRogianArmBlade_Toxblad"
+               or defName="AC_InstallRogianArmBlade_Zeus" or defName="AC_InstallVoiceSynthesizer"
+               or defName="AC_RemoveDreamcatcher" or defName="AC_RemoveMentalFuse"
+               or defName="AC_RemoveRogianArmBlade" or defName="AC_RemoveRogianArmBlade_Mono"
+               or defName="AC_RemoveRogianArmBlade_Plasma" or defName="AC_RemoveRogianArmBlade_Toxblade"
+               or defName="AC_RemoveRogianArmBlade_Zeus" or defName="AC_RemoveVoiceSynthesizer"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/RecipeDef[defName="InstallArchotechEye" or defName="InstallArchotechArm" or defName="InstallArchotechLeg"]</xpath>
+        <value>
+          <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+        </value>
+      </li>
+
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/RecipeDef[defName="RBP_InstallThoracicFrameBionic" or defName="RBP_RemoveThoracicFrameBionic"
+             or defName="RBP_InstallThoracicFrameAdvanced" or defName="RBP_RemoveThoracicFrameAdvanced"
+             or defName="RBP_InstallThoracicFrameArchotech" or defName="RBP_RemoveThoracicFrameArchotech"]</xpath>
+        <value>
+          <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+        </value>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>sambucher.adogsaidanimalprosthetics2</li>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef[defName="InstallBrainStimulatorAnimal" or defName="RemoveBrainStimulatorAnimal"]/researchPrerequisite</xpath>
+          <value><researchPrerequisite>AnimalBionics</researchPrerequisite></value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>redmattis.betterprerequisites</li></mods>
+        <match Class="PatchOperationRemove">
+          <xpath>Defs/RecipeDef[defName="BS_VacuumProof"]/researchPrerequisite</xpath>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>moistestwhale.gitscyberbrains</li></mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/RecipeDef/researchPrerequisite[text()="gitsResearchImmunityNanites" or text()="gitsToxinRepairNanites" or text()="gitsOrganDecayNanites"]</xpath>
+          <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>moistestwhale.gitscyberbrains</li></mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[@Name="gitsSurgeryImmunityNanitesBase" or @Name="gitsSurgeryRepairNanitesBase" or @Name="gitsSurgeryRemoveOrganDecayBase"]/researchPrerequisites</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[@Name="gitsSurgeryImmunityNanitesBase" or @Name="gitsSurgeryRepairNanitesBase" or @Name="gitsSurgeryRemoveOrganDecayBase"]/researchPrerequisites</xpath>
+                <value>
+                  <researchPrerequisites>
+                    <li>RBP_CybSurgicalImplantation</li>
+                  </researchPrerequisites>
+                </value>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[@Name="gitsSurgeryImmunityNanitesBase" or @Name="gitsSurgeryRepairNanitesBase" or @Name="gitsSurgeryRemoveOrganDecayBase"]/researchPrerequisite</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[@Name="gitsSurgeryImmunityNanitesBase" or @Name="gitsSurgeryRepairNanitesBase" or @Name="gitsSurgeryRemoveOrganDecayBase"]/researchPrerequisite</xpath>
+                <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[@Name="gitsSurgeryRemoveOrganDecayBase"][not(researchPrerequisite) and not(researchPrerequisites)]</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[@Name="gitsSurgeryRemoveOrganDecayBase"]</xpath>
+                <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+              </match>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/RecipeDef[defName="RBP_InstallLivingFrame"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="RBP_InstallLivingFrame" or defName="RBP_RemoveLivingFrame" or defName="RBP_InstallGeneDivergenceImplant" or defName="RBP_RemoveGeneDivergenceImplant"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/RecipeDef[defName="RBP_ConvertToAndroid"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="RBP_ConvertToAndroid"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/RecipeDef[defName="RBP_InstallSkillChipAnimals"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/RecipeDef[defName="RBP_InstallSkillChipAnimals"]</xpath>
+          <value>
+            <researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

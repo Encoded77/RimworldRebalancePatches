@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>implants.cerebrexsurgery</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="LTS_CerebrexNode"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_CerebrexNode"]/comps/li[@Class="CompProperties_UseEffectInstallImplant"]</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/ThingDef[defName="LTS_CerebrexNode"]/comps/li[@Class="CompProperties_UseEffectInstallImplant"]</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_CerebrexNode"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/ThingDef[defName="LTS_CerebrexNode"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_CerebrexNode"]/comps/li[@Class="CompProperties_UseEffectPlaySound"]</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/ThingDef[defName="LTS_CerebrexNode"]/comps/li[@Class="CompProperties_UseEffectPlaySound"]</xpath>
+              </match>
+            </li>
+
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <RecipeDef ParentName="SurgeryInstallImplantBase">
+                  <defName>RBP_InstallCerebrexNode</defName>
+                  <label>install cerebrex node</label>
+                  <description>Install a cerebrex node.</description>
+                  <descriptionHyperlinks>
+                    <ThingDef>LTS_CerebrexNode</ThingDef>
+                    <HediffDef>LTS_CerebrexNodeImplant</HediffDef>
+                  </descriptionHyperlinks>
+                  <jobString>Installing cerebrex node.</jobString>
+                  <researchPrerequisite>UltraMechtech</researchPrerequisite>
+                  <ingredients>
+                    <li>
+                      <filter>
+                        <thingDefs>
+                          <li>LTS_CerebrexNode</li>
+                        </thingDefs>
+                      </filter>
+                      <count>1</count>
+                    </li>
+                  </ingredients>
+                  <fixedIngredientFilter>
+                    <thingDefs>
+                      <li>LTS_CerebrexNode</li>
+                    </thingDefs>
+                  </fixedIngredientFilter>
+                  <appliedOnFixedBodyParts>
+                    <li>Brain</li>
+                  </appliedOnFixedBodyParts>
+                  <addsHediff>LTS_CerebrexNodeImplant</addsHediff>
+                </RecipeDef>
+              </value>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

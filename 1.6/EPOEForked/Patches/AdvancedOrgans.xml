@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.advancedorgans</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+          <HediffDef ParentName="addedPartAdvanced">
+            <defName>RBP_AdvancedSyntheticHeart</defName>
+            <label>advanced synthetic heart</label>
+            <labelNoun>an advanced synthetic heart</labelNoun>
+            <description>An installed advanced synthetic heart. Layered myofibril bundles and a redundant high-flow pump keep circulation steady under any load, while a lattice-dust healing system repairs damage as it happens.</description>
+            <descriptionHyperlinks><ThingDef>RBP_AdvancedSyntheticHeart</ThingDef></descriptionHyperlinks>
+            <spawnThingOnRemoved>RBP_AdvancedSyntheticHeart</spawnThingOnRemoved>
+            <addedPartProps>
+              <solid>true</solid>
+              <partEfficiency>1.35</partEfficiency>
+              <betterThanNatural>true</betterThanNatural>
+            </addedPartProps>
+          </HediffDef>
+
+          <ThingDef ParentName="BodyPartAdvancedBionicBase">
+            <defName>RBP_AdvancedSyntheticHeart</defName>
+            <label>advanced synthetic heart</label>
+            <description>An ultra advanced artificial heart, further improved from the synthetic models. Layered myofibril bundles and a redundant high-flow pump keep circulation steady under any load, while a lattice-dust healing system repairs damage as it happens.</description>
+            <descriptionHyperlinks><RecipeDef>RBP_InstallAdvancedSyntheticHeart</RecipeDef></descriptionHyperlinks>
+            <isTechHediff>true</isTechHediff>
+            <techLevel>Spacer</techLevel>
+            <costList>
+              <Plasteel>20</Plasteel>
+              <ComponentSpacer>6</ComponentSpacer>
+            </costList>
+            <statBases>
+              <Mass>2</Mass>
+            </statBases>
+          </ThingDef>
+
+          <RecipeDef ParentName="EPIASurgeryAdvancedBionic">
+            <defName>RBP_InstallAdvancedSyntheticHeart</defName>
+            <label>install advanced synthetic heart</label>
+            <description>Installs an advanced synthetic heart.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_AdvancedSyntheticHeart</ThingDef>
+              <HediffDef>RBP_AdvancedSyntheticHeart</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing advanced synthetic heart.</jobString>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_AdvancedSyntheticHeart</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_AdvancedSyntheticHeart</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+            <appliedOnFixedBodyParts>
+              <li>Heart</li>
+            </appliedOnFixedBodyParts>
+            <addsHediff>RBP_AdvancedSyntheticHeart</addsHediff>
+            <uiIconThing>RBP_AdvancedSyntheticHeart</uiIconThing>
+          </RecipeDef>
+
+          <HediffDef ParentName="addedPartAdvanced">
+            <defName>RBP_AdvancedSyntheticLung</defName>
+            <label>advanced synthetic lung</label>
+            <labelNoun>an advanced synthetic lung</labelNoun>
+            <description>An installed advanced synthetic lung. Cascading gas-exchange membranes pull oxygen from even the thinnest air, and a lattice-dust healing system keeps them clear of scarring and particulates.</description>
+            <descriptionHyperlinks><ThingDef>RBP_AdvancedSyntheticLung</ThingDef></descriptionHyperlinks>
+            <spawnThingOnRemoved>RBP_AdvancedSyntheticLung</spawnThingOnRemoved>
+            <addedPartProps>
+              <solid>true</solid>
+              <partEfficiency>1.35</partEfficiency>
+              <betterThanNatural>true</betterThanNatural>
+            </addedPartProps>
+            <preventsLungRot>true</preventsLungRot>
+          </HediffDef>
+
+          <ThingDef ParentName="BodyPartAdvancedBionicBase">
+            <defName>RBP_AdvancedSyntheticLung</defName>
+            <label>advanced synthetic lung</label>
+            <description>An ultra advanced artificial lung, further improved from the synthetic models. Cascading gas-exchange membranes pull oxygen from even the thinnest air, and a lattice-dust healing system keeps them clear of scarring and particulates.</description>
+            <descriptionHyperlinks><RecipeDef>RBP_InstallAdvancedSyntheticLung</RecipeDef></descriptionHyperlinks>
+            <isTechHediff>true</isTechHediff>
+            <techLevel>Spacer</techLevel>
+            <costList>
+              <Plasteel>20</Plasteel>
+              <ComponentSpacer>6</ComponentSpacer>
+            </costList>
+            <statBases>
+              <Mass>2</Mass>
+            </statBases>
+          </ThingDef>
+
+          <RecipeDef ParentName="EPIASurgeryAdvancedBionic">
+            <defName>RBP_InstallAdvancedSyntheticLung</defName>
+            <label>install advanced synthetic lung</label>
+            <description>Installs an advanced synthetic lung.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_AdvancedSyntheticLung</ThingDef>
+              <HediffDef>RBP_AdvancedSyntheticLung</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing advanced synthetic lung.</jobString>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_AdvancedSyntheticLung</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_AdvancedSyntheticLung</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+            <appliedOnFixedBodyParts>
+              <li>Lung</li>
+            </appliedOnFixedBodyParts>
+            <addsHediff>RBP_AdvancedSyntheticLung</addsHediff>
+            <uiIconThing>RBP_AdvancedSyntheticLung</uiIconThing>
+          </RecipeDef>
+
+          <HediffDef ParentName="addedPartAdvanced">
+            <defName>RBP_AdvancedSyntheticLiver</defName>
+            <label>advanced synthetic liver</label>
+            <labelNoun>an advanced synthetic liver</labelNoun>
+            <description>An installed advanced synthetic liver. A dense bank of chemical synthesizers rewrites its own catalysts on the fly, neutralizing toxins the biological organ would never survive.</description>
+            <descriptionHyperlinks><ThingDef>RBP_AdvancedSyntheticLiver</ThingDef></descriptionHyperlinks>
+            <spawnThingOnRemoved>RBP_AdvancedSyntheticLiver</spawnThingOnRemoved>
+            <addedPartProps>
+              <solid>true</solid>
+              <partEfficiency>1.35</partEfficiency>
+              <betterThanNatural>true</betterThanNatural>
+            </addedPartProps>
+          </HediffDef>
+
+          <ThingDef ParentName="BodyPartAdvancedBionicBase">
+            <defName>RBP_AdvancedSyntheticLiver</defName>
+            <label>advanced synthetic liver</label>
+            <description>An ultra advanced artificial liver, further improved from the synthetic models. A dense bank of chemical synthesizers rewrites its own catalysts on the fly, neutralizing toxins the biological organ would never survive.</description>
+            <descriptionHyperlinks><RecipeDef>RBP_InstallAdvancedSyntheticLiver</RecipeDef></descriptionHyperlinks>
+            <isTechHediff>true</isTechHediff>
+            <techLevel>Spacer</techLevel>
+            <costList>
+              <Plasteel>20</Plasteel>
+              <ComponentSpacer>6</ComponentSpacer>
+            </costList>
+            <statBases>
+              <Mass>2</Mass>
+            </statBases>
+          </ThingDef>
+
+          <RecipeDef ParentName="EPIASurgeryAdvancedBionic">
+            <defName>RBP_InstallAdvancedSyntheticLiver</defName>
+            <label>install advanced synthetic liver</label>
+            <description>Installs an advanced synthetic liver.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_AdvancedSyntheticLiver</ThingDef>
+              <HediffDef>RBP_AdvancedSyntheticLiver</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing advanced synthetic liver.</jobString>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_AdvancedSyntheticLiver</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_AdvancedSyntheticLiver</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+            <appliedOnFixedBodyParts>
+              <li>Liver</li>
+            </appliedOnFixedBodyParts>
+            <addsHediff>RBP_AdvancedSyntheticLiver</addsHediff>
+            <uiIconThing>RBP_AdvancedSyntheticLiver</uiIconThing>
+          </RecipeDef>
+
+          <HediffDef ParentName="addedPartAdvanced">
+            <defName>RBP_AdvancedSyntheticKidney</defName>
+            <label>advanced synthetic kidney</label>
+            <labelNoun>an advanced synthetic kidney</labelNoun>
+            <description>An installed advanced synthetic kidney. Self-cleaning molecular sieves strip waste from the blood at a rate no biological kidney could sustain, and never clog.</description>
+            <descriptionHyperlinks><ThingDef>RBP_AdvancedSyntheticKidney</ThingDef></descriptionHyperlinks>
+            <spawnThingOnRemoved>RBP_AdvancedSyntheticKidney</spawnThingOnRemoved>
+            <addedPartProps>
+              <solid>true</solid>
+              <partEfficiency>1.35</partEfficiency>
+              <betterThanNatural>true</betterThanNatural>
+            </addedPartProps>
+          </HediffDef>
+
+          <ThingDef ParentName="BodyPartAdvancedBionicBase">
+            <defName>RBP_AdvancedSyntheticKidney</defName>
+            <label>advanced synthetic kidney</label>
+            <description>An ultra advanced artificial kidney, further improved from the synthetic models. Self-cleaning molecular sieves strip waste from the blood at a rate no biological kidney could sustain, and never clog.</description>
+            <descriptionHyperlinks><RecipeDef>RBP_InstallAdvancedSyntheticKidney</RecipeDef></descriptionHyperlinks>
+            <isTechHediff>true</isTechHediff>
+            <techLevel>Spacer</techLevel>
+            <costList>
+              <Plasteel>20</Plasteel>
+              <ComponentSpacer>6</ComponentSpacer>
+            </costList>
+            <statBases>
+              <Mass>2</Mass>
+            </statBases>
+          </ThingDef>
+
+          <RecipeDef ParentName="EPIASurgeryAdvancedBionic">
+            <defName>RBP_InstallAdvancedSyntheticKidney</defName>
+            <label>install advanced synthetic kidney</label>
+            <description>Installs an advanced synthetic kidney.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_AdvancedSyntheticKidney</ThingDef>
+              <HediffDef>RBP_AdvancedSyntheticKidney</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing advanced synthetic kidney.</jobString>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_AdvancedSyntheticKidney</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_AdvancedSyntheticKidney</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+            <appliedOnFixedBodyParts>
+              <li>Kidney</li>
+            </appliedOnFixedBodyParts>
+            <addsHediff>RBP_AdvancedSyntheticKidney</addsHediff>
+            <uiIconThing>RBP_AdvancedSyntheticKidney</uiIconThing>
+          </RecipeDef>
+
+          <HediffDef ParentName="addedPartAdvanced">
+            <defName>RBP_AdvancedSyntheticStomach</defName>
+            <label>advanced synthetic stomach</label>
+            <labelNoun>an advanced synthetic stomach</labelNoun>
+            <description>An installed advanced synthetic stomach. Sealed reaction chambers break down almost any energy-bearing foodstuff, and the tract is hostile enough that parasites and spoilage organisms simply do not survive it.</description>
+            <descriptionHyperlinks><ThingDef>RBP_AdvancedSyntheticStomach</ThingDef></descriptionHyperlinks>
+            <spawnThingOnRemoved>RBP_AdvancedSyntheticStomach</spawnThingOnRemoved>
+            <stages>
+              <li>
+                <makeImmuneTo>
+                  <li>GutWorms</li>
+                </makeImmuneTo>
+                <foodPoisoningChanceFactor>0.25</foodPoisoningChanceFactor>
+              </li>
+            </stages>
+            <addedPartProps>
+              <solid>true</solid>
+              <partEfficiency>1.35</partEfficiency>
+              <betterThanNatural>true</betterThanNatural>
+            </addedPartProps>
+          </HediffDef>
+
+          <ThingDef ParentName="BodyPartAdvancedBionicBase">
+            <defName>RBP_AdvancedSyntheticStomach</defName>
+            <label>advanced synthetic stomach</label>
+            <description>An ultra advanced artificial stomach, further improved from the synthetic models. Sealed reaction chambers break down almost any energy-bearing foodstuff, and the tract is hostile enough that parasites and spoilage organisms simply do not survive it.</description>
+            <descriptionHyperlinks><RecipeDef>RBP_InstallAdvancedSyntheticStomach</RecipeDef></descriptionHyperlinks>
+            <isTechHediff>true</isTechHediff>
+            <techLevel>Spacer</techLevel>
+            <costList>
+              <Plasteel>20</Plasteel>
+              <ComponentSpacer>6</ComponentSpacer>
+            </costList>
+            <statBases>
+              <Mass>2</Mass>
+            </statBases>
+          </ThingDef>
+
+          <RecipeDef ParentName="EPIASurgeryAdvancedBionic">
+            <defName>RBP_InstallAdvancedSyntheticStomach</defName>
+            <label>install advanced synthetic stomach</label>
+            <description>Installs an advanced synthetic stomach.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_AdvancedSyntheticStomach</ThingDef>
+              <HediffDef>RBP_AdvancedSyntheticStomach</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing advanced synthetic stomach.</jobString>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_AdvancedSyntheticStomach</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_AdvancedSyntheticStomach</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+            <appliedOnFixedBodyParts>
+              <li>Stomach</li>
+            </appliedOnFixedBodyParts>
+            <addsHediff>RBP_AdvancedSyntheticStomach</addsHediff>
+            <uiIconThing>RBP_AdvancedSyntheticStomach</uiIconThing>
+          </RecipeDef>
+
+          <HediffDef ParentName="addedPartAdvanced">
+            <defName>RBP_AdvancedSyntheticNose</defName>
+            <label>advanced synthetic nose</label>
+            <labelNoun>an advanced synthetic nose</labelNoun>
+            <description>An installed advanced synthetic nose. A wide-spectrum chemoreceptor array feeds a dedicated scent processor, picking single molecules out of the air and naming them.</description>
+            <descriptionHyperlinks><ThingDef>RBP_AdvancedSyntheticNose</ThingDef></descriptionHyperlinks>
+            <spawnThingOnRemoved>RBP_AdvancedSyntheticNose</spawnThingOnRemoved>
+            <addedPartProps>
+              <solid>true</solid>
+              <partEfficiency>1.35</partEfficiency>
+              <betterThanNatural>true</betterThanNatural>
+            </addedPartProps>
+          </HediffDef>
+
+          <ThingDef ParentName="BodyPartAdvancedBionicBase">
+            <defName>RBP_AdvancedSyntheticNose</defName>
+            <label>advanced synthetic nose</label>
+            <description>An ultra advanced artificial nose, further improved from the synthetic models. A wide-spectrum chemoreceptor array feeds a dedicated scent processor, picking single molecules out of the air and naming them.</description>
+            <descriptionHyperlinks><RecipeDef>RBP_InstallAdvancedSyntheticNose</RecipeDef></descriptionHyperlinks>
+            <isTechHediff>true</isTechHediff>
+            <techLevel>Spacer</techLevel>
+
+            <recipeMaker>
+              <researchPrerequisite>RBP_CybAdvancedSenses</researchPrerequisite>
+            </recipeMaker>
+            <costList>
+              <Plasteel>15</Plasteel>
+              <ComponentSpacer>5</ComponentSpacer>
+            </costList>
+            <statBases>
+              <Mass>0.3</Mass>
+            </statBases>
+          </ThingDef>
+
+          <RecipeDef ParentName="EPIASurgeryAdvancedBionic">
+            <defName>RBP_InstallAdvancedSyntheticNose</defName>
+            <label>install advanced synthetic nose</label>
+            <description>Installs an advanced synthetic nose.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_AdvancedSyntheticNose</ThingDef>
+              <HediffDef>RBP_AdvancedSyntheticNose</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing advanced synthetic nose.</jobString>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_AdvancedSyntheticNose</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_AdvancedSyntheticNose</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+            <appliedOnFixedBodyParts>
+              <li>Nose</li>
+            </appliedOnFixedBodyParts>
+            <addsHediff>RBP_AdvancedSyntheticNose</addsHediff>
+            <uiIconThing>RBP_AdvancedSyntheticNose</uiIconThing>
+          </RecipeDef>
+
+        </value>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

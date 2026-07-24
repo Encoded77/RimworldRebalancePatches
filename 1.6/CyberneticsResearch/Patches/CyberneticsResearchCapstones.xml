@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.capstones</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+
+          <li Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybSyntheticAscension</defName>
+                <label>synthetic ascension</label>
+                <description><![CDATA[The last operation a body undergoes. What is left of the patient is lifted out, and what it is put back into does not breathe, age, or sicken. Disease has nothing to work on. Time has nothing to wear down.
+
+The cost is everything biology was doing for you. Genes stop meaning anything. Every advantage that came from being made of meat is gone, and what replaces it has to be built, powered and maintained.
+
+Unlocks a three-step conversion. Brew a neuroform serum, build it into a conversion kit around a reactor, then operate. The patient wakes as an android: synthetic limbs and organs, no disease, no ageing, and no gene doing anything for them ever again. It cannot be performed on a body that is already synthetic.
+
+<color=#e6e6e6ff><size=11.8>The ascension chain:</size><size=10.2>
+
+   Neuroform serum: 20,000 work, Intellectual 8
+   Conversion kit: 55,000 work, Crafting 10, consumes the serum and a reactor
+   Ascension surgery: 12,000 work, Medicine 10, 90% success, adults only
+
+   Recovery: Moving and Manipulation at 10% for 1.5 to 2.5 days
+</size></color>]]></description>
+                <baseCost>9000</baseCost>
+                <techLevel>Ultra</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybSurgicalImplantation</li>
+                </prerequisites>
+                <researchViewX>33</researchViewX>
+                <researchViewY>0.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybSymbioticIntegration</defName>
+                <label>symbiotic integration</label>
+                <description><![CDATA[The other answer. Rather than replace the body, build a frame that agrees with it: a lattice that feeds on the same chemistry it supports and fails the moment that chemistry stops. It will never work in a synthetic chassis, and it does not want to.
+
+Unlocks two torso pieces. The living frame replaces the ribcage and carries more modules than any archotech part. The apotheosis weave reads how far its host's genome has been pushed away from what its xenotype is supposed to be and reinforces exactly those departures, re-reading the pawn about once a day. Every eight points of divergence moves it up a stage, and there are five.
+
+An unmodified pawn is not shut out: the first stage is already a strong implant, and the frame does not care about genetics at all. What a heavily engineered body gets is the rest of the ladder.
+
+<color=#e6e6e6ff><size=11.8>Apotheosis weave, first stage to fully diverged:</size><size=10.2>
+
+   Injury Healing Factor: +35% to +115%
+   Immunity Gain Speed: +20% to +60%
+   Toxic Resistance: +15% to +55%
+   Rest Rate Multiplier: +15% to +35%
+   Blood Pumping, Blood Filtration, Breathing: +10% to +30%
+   Consciousness: +5% to +15%, from the third stage on
+   Pain: -10% to -30%
+
+   Living frame: 6 torso module slots, against 4 on the archotech frame
+</size></color>]]></description>
+                <baseCost>9000</baseCost>
+                <techLevel>Ultra</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybSurgicalImplantation</li>
+                </prerequisites>
+                <researchViewX>33</researchViewX>
+                <researchViewY>1.00</researchViewY>
+              </ResearchProjectDef>
+
+            </value>
+          </li>
+
+          <li Class="PatchOperationConditional">
+            <xpath>Defs/ResearchProjectDef[defName="RBP_CybArchotechCybernetics"]</xpath>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="RBP_CybSyntheticAscension" or defName="RBP_CybSymbioticIntegration"]/prerequisites</xpath>
+              <value>
+                <li>RBP_CybArchotechCybernetics</li>
+              </value>
+            </match>
+          </li>
+
+          <li Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[(defName="RBP_CybSyntheticAscension" or defName="RBP_CybSymbioticIntegration") and (prerequisites/li="RBP_CybArchotechCybernetics" or prerequisites/li="RBP_CybCorticalStacks")]/prerequisites/li[text()="RBP_CybSurgicalImplantation"]</xpath>
+          </li>
+
+          <li Class="PatchOperationConditional">
+            <xpath>Defs/GeneDef[defName="RBP_PsychicResonator"] | Defs/VREAndroids.AndroidGeneDef[defName="RBP_PsychicResonator"]</xpath>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="RBP_CybSyntheticAscension"]</xpath>
+              <value>
+                <descriptionHyperlinks>
+                  <GeneDef>RBP_PsychicResonator</GeneDef>
+                </descriptionHyperlinks>
+              </value>
+            </match>
+          </li>
+
+          <li Class="PatchOperationConditional">
+            <xpath>Defs/ResearchProjectDef[defName="Archogenetics"]</xpath>
+            <match Class="PatchOperationAdd">
+              <xpath>Defs/ResearchProjectDef[defName="RBP_CybSymbioticIntegration"]/prerequisites</xpath>
+              <value>
+                <li>Archogenetics</li>
+              </value>
+            </match>
+          </li>
+
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

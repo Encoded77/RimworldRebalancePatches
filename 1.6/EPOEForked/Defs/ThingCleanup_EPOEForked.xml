@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+
+  <RebalancePatches.ThingRemovalListDef>
+    <defName>RBP_ThingRemoval_EPOEForked_GenericAuxiliaryAI</defName>
+    <settingKey>cybernetics.modules</settingKey>
+    <requiredMods>
+      <li>ebsg.framework</li>
+    </requiredMods>
+    <things>
+      <li>EPIA_AuxiliaryAI_Worker</li>
+      <li>EPIA_AuxiliaryAI_Combat</li>
+    </things>
+  </RebalancePatches.ThingRemovalListDef>
+</Defs>

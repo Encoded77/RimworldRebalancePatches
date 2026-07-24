@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="TacticalCorneaImplant"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="TacticalCorneaImplant"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>LTS_EyeModuleSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>TacticalCorneaImplant</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>TacticalCorneaImplant</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="TacticalCorneaImplant"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>LTS_EyeModuleSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>TacticalCorneaImplant</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>TacticalCorneaImplant</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallTacticalCorneaImplant"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallTacticalCorneaImplant"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallTacticalCorneaImplant"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.echobrains</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+          <!-- Echo SEER -->
+          <HediffDef ParentName="gitsAddedCyberbrainBase">
+            <defName>RBP_EchoSeerHediff</defName>
+            <label>Echo SEER cyberbrain</label>
+            <labelNoun>an installed Echo SEER cyberbrain</labelNoun>
+            <description><![CDATA[An Echo SEER cyberbrain. Echo builds for a narrower market than the other houses: where a Civis brain optimises labour and an Aegis brain optimises killing, a SEER is tuned to the psychic architecture of the mind. Its lattice runs cooler under entropy load and holds a wider focus band, which a psycaster feels as steadier casting rather than raw power.
+
+<color=#e6e6e6ff><size=11.8>Echo SEER modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Psychic Sensitivity: +25%
+   Meditation Focus Gain: +40%
+   Psychic Entropy Max: +20
+   Psychic Entropy Recovery: +15%
+   Consciousness: +20%
+
+   Pain: +30%
+   Hunger Rate: +35%
+   Rest Fall Rate: +25%
+</size></color>]]></description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_EchoSeerCyberbrain</ThingDef>
+            </descriptionHyperlinks>
+            <defaultLabelColor>(120, 90, 200)</defaultLabelColor>
+            <abilities>
+              <li>gitsPainReceptorDampen</li>
+              <li>gitsWorkDBUplink</li>
+            </abilities>
+            <addedPartProps>
+              <betterThanNatural>true</betterThanNatural>
+              <solid>true</solid>
+              <partEfficiency>1.40</partEfficiency>
+            </addedPartProps>
+            <comps>
+              <li Class="HediffCompProperties_SeverityPerDay">
+                <severityPerDay>0.33</severityPerDay>
+              </li>
+            </comps>
+            <stages>
+              <li>
+                <label>adapting</label>
+                <painFactor>1.30</painFactor>
+                <hungerRateFactorOffset>0.35</hungerRateFactorOffset>
+                <restFallFactorOffset>0.25</restFallFactorOffset>
+                <partIgnoreMissingHP>true</partIgnoreMissingHP>
+                <capMods>
+                  <li>
+                    <capacity>Consciousness</capacity>
+                    <offset>0.05</offset>
+                  </li>
+                </capMods>
+              </li>
+              <li>
+                <minSeverity>0.999</minSeverity>
+                <capMods>
+                  <li>
+                    <capacity>Consciousness</capacity>
+                    <offset>0.20</offset>
+                  </li>
+                </capMods>
+
+                <statOffsets>
+                  <PsychicSensitivity>0.25</PsychicSensitivity>
+                  <MeditationFocusGain MayRequire="ludeon.rimworld.royalty">0.40</MeditationFocusGain>
+                  <PsychicEntropyMax MayRequire="ludeon.rimworld.royalty">20</PsychicEntropyMax>
+                  <PsychicEntropyRecoveryRate MayRequire="ludeon.rimworld.royalty">0.15</PsychicEntropyRecoveryRate>
+                </statOffsets>
+              </li>
+            </stages>
+          </HediffDef>
+
+          <ThingDef ParentName="gitsBodyPartCyberbrainSpecializedBase">
+            <defName>RBP_EchoSeerCyberbrain</defName>
+            <label>Echo SEER cyberbrain</label>
+            <description><![CDATA[A specialized cyberbrain from Echo, a quieter house than Civis or Aegis and one that sells almost exclusively to psycasters and the institutions that keep them. The SEER does not make a mind stronger so much as steadier: entropy sheds faster, the focus band runs wider, and the psychic architecture is held in tolerance by hardware rather than by discipline.
+
+<color=#e6e6e6ff><size=11.8>Echo SEER modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Psychic Sensitivity: +25%
+   Meditation Focus Gain: +40%
+   Psychic Entropy Max: +20
+   Psychic Entropy Recovery: +15%
+   Consciousness: +20%
+
+   Pain: +30%
+   Hunger Rate: +35%
+   Rest Fall Rate: +25%
+</size></color>]]></description>
+            <descriptionHyperlinks>
+              <HediffDef>RBP_EchoSeerHediff</HediffDef>
+              <RecipeDef>RBP_InstallEchoSeerCyberbrain</RecipeDef>
+            </descriptionHyperlinks>
+          </ThingDef>
+
+          <RecipeDef ParentName="gitsSurgeryInstallSpecializedCyberbrainBase">
+            <defName>RBP_InstallEchoSeerCyberbrain</defName>
+            <label>install Echo SEER cyberbrain</label>
+            <description><![CDATA[Install an Echo SEER cyberbrain.
+
+<color=#e6e6e6ff><size=11.8>Echo SEER modifiers:</size><size=10.2>
+
+   Cortex module slots: 3
+   Psychic Sensitivity: +25%
+   Meditation Focus Gain: +40%
+   Psychic Entropy Max: +20
+   Psychic Entropy Recovery: +15%
+   Consciousness: +20%
+
+   Pain: +30%
+   Hunger Rate: +35%
+   Rest Fall Rate: +25%
+</size></color>]]></description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_EchoSeerCyberbrain</ThingDef>
+              <HediffDef>RBP_EchoSeerHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing Echo SEER cyberbrain.</jobString>
+            <addsHediff>RBP_EchoSeerHediff</addsHediff>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_EchoSeerCyberbrain</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_EchoSeerCyberbrain</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+          </RecipeDef>
+
+          <RecipeDef ParentName="gitsSurgeryRemoveSpecializedCyberbrainBase">
+            <defName>RBP_RemoveEchoSeerCyberbrain</defName>
+            <label>nullify active cyberbrain</label>
+            <description>Remove the installed cyberbrain, leaving the brain without one.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_EchoSeerCyberbrain</ThingDef>
+              <HediffDef>RBP_EchoSeerHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Nullifying active cyberbrain.</jobString>
+            <removesHediff>RBP_EchoSeerHediff</removesHediff>
+          </RecipeDef>
+
+          <!-- Echo ORACLE -->
+          <HediffDef ParentName="gitsAddedCyberbrainBase">
+            <defName>RBP_EchoOracleHediff</defName>
+            <label>Echo ORACLE cyberbrain</label>
+            <labelNoun>an installed Echo ORACLE cyberbrain</labelNoun>
+            <description><![CDATA[An Echo ORACLE cyberbrain, the house's flagship and the furthest anyone has taken a mind toward pure psychic instrument. Nearly the whole psychic architecture is now hardware. Entropy sheds almost as fast as it accumulates and the focus band is enormous, but Echo never solved what the rebuild costs elsewhere. An ORACLE wearer is a formidable psycaster and a noticeably more fragile person.
+
+<color=#e6e6e6ff><size=11.8>Echo ORACLE modifiers:</size><size=10.2>
+
+   Cortex module slots: 6
+   Psychic Sensitivity: +60%
+   Meditation Focus Gain: +90%
+   Psychic Entropy Max: +45
+   Psychic Entropy Recovery: +40%
+   Consciousness: +10%
+
+   Mental Break Threshold: +15%
+   Pain: +50%
+   Hunger Rate: +60%
+   Rest Fall Rate: +35%
+</size></color>]]></description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_EchoOracleCyberbrain</ThingDef>
+            </descriptionHyperlinks>
+            <defaultLabelColor>(150, 80, 220)</defaultLabelColor>
+            <abilities>
+              <li>gitsPainReceptorNullify</li>
+              <li>gitsWorkDBUplink</li>
+            </abilities>
+            <addedPartProps>
+              <betterThanNatural>true</betterThanNatural>
+              <solid>true</solid>
+              <partEfficiency>1.50</partEfficiency>
+            </addedPartProps>
+            <comps>
+              <li Class="HediffCompProperties_SeverityPerDay">
+                <severityPerDay>0.33</severityPerDay>
+              </li>
+            </comps>
+            <stages>
+              <li>
+                <label>adapting</label>
+                <painFactor>1.50</painFactor>
+                <hungerRateFactorOffset>0.60</hungerRateFactorOffset>
+                <restFallFactorOffset>0.35</restFallFactorOffset>
+                <partIgnoreMissingHP>true</partIgnoreMissingHP>
+                <capMods>
+                  <li>
+                    <capacity>Consciousness</capacity>
+                    <offset>0.05</offset>
+                  </li>
+                </capMods>
+                <hediffGivers>
+                  <li Class="HediffGiver_Random">
+                    <hediff>gitsCyberbrainSclerosis</hediff>
+                    <mtbDays>76</mtbDays>
+                    <partsToAffect>
+                      <li>Brain</li>
+                    </partsToAffect>
+                    <allowOnLodgers>false</allowOnLodgers>
+                    <allowOnBeggars>false</allowOnBeggars>
+                    <allowOnQuestReservedPawns>false</allowOnQuestReservedPawns>
+                  </li>
+                  <li Class="HediffGiver_Random">
+                    <hediff>gitsClosedShellSyndrome</hediff>
+                    <mtbDays>39</mtbDays>
+                    <partsToAffect>
+                      <li>Brain</li>
+                    </partsToAffect>
+                    <allowOnLodgers>false</allowOnLodgers>
+                    <allowOnBeggars>false</allowOnBeggars>
+                    <allowOnQuestReservedPawns>false</allowOnQuestReservedPawns>
+                  </li>
+                </hediffGivers>
+              </li>
+              <li>
+                <minSeverity>0.999</minSeverity>
+
+                <capMods>
+                  <li>
+                    <capacity>Consciousness</capacity>
+                    <offset>0.10</offset>
+                  </li>
+                </capMods>
+
+                <statOffsets>
+                  <PsychicSensitivity>0.60</PsychicSensitivity>
+                  <MentalBreakThreshold>0.15</MentalBreakThreshold>
+                  <MeditationFocusGain MayRequire="ludeon.rimworld.royalty">0.90</MeditationFocusGain>
+                  <PsychicEntropyMax MayRequire="ludeon.rimworld.royalty">45</PsychicEntropyMax>
+                  <PsychicEntropyRecoveryRate MayRequire="ludeon.rimworld.royalty">0.40</PsychicEntropyRecoveryRate>
+                </statOffsets>
+              </li>
+            </stages>
+          </HediffDef>
+
+          <ThingDef ParentName="gitsBodyPartCyberbrainExtremeBase">
+            <defName>RBP_EchoOracleCyberbrain</defName>
+            <label>Echo ORACLE cyberbrain</label>
+            <description><![CDATA[Echo's flagship cyberbrain, and the reason the house is spoken of carefully. An ORACLE rebuilds the psychic architecture of a mind in hardware almost end to end. What it gives a psycaster is not subtle. What it takes is the even keel of the person underneath: ORACLE wearers are known for brilliance in the field and for being difficult to keep steady out of it.
+
+<color=#e6e6e6ff><size=11.8>Echo ORACLE modifiers:</size><size=10.2>
+
+   Cortex module slots: 6
+   Psychic Sensitivity: +60%
+   Meditation Focus Gain: +90%
+   Psychic Entropy Max: +45
+   Psychic Entropy Recovery: +40%
+   Consciousness: +10%
+
+   Mental Break Threshold: +15%
+   Pain: +50%
+   Hunger Rate: +60%
+   Rest Fall Rate: +35%
+</size></color>]]></description>
+            <descriptionHyperlinks>
+              <HediffDef>RBP_EchoOracleHediff</HediffDef>
+              <RecipeDef>RBP_InstallEchoOracleCyberbrain</RecipeDef>
+            </descriptionHyperlinks>
+          </ThingDef>
+
+          <RecipeDef ParentName="gitsSurgeryInstallExtremeCyberbrainBase">
+            <defName>RBP_InstallEchoOracleCyberbrain</defName>
+            <label>install Echo ORACLE cyberbrain</label>
+            <description><![CDATA[Install an Echo ORACLE cyberbrain.
+
+<color=#e6e6e6ff><size=11.8>Echo ORACLE modifiers:</size><size=10.2>
+
+   Cortex module slots: 6
+   Psychic Sensitivity: +60%
+   Meditation Focus Gain: +90%
+   Psychic Entropy Max: +45
+   Psychic Entropy Recovery: +40%
+   Consciousness: +10%
+
+   Mental Break Threshold: +15%
+   Pain: +50%
+   Hunger Rate: +60%
+   Rest Fall Rate: +35%
+</size></color>]]></description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_EchoOracleCyberbrain</ThingDef>
+              <HediffDef>RBP_EchoOracleHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing Echo ORACLE cyberbrain.</jobString>
+            <addsHediff>RBP_EchoOracleHediff</addsHediff>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_EchoOracleCyberbrain</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_EchoOracleCyberbrain</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+          </RecipeDef>
+
+          <RecipeDef ParentName="gitsSurgeryRemoveExtremeCyberbrainBase">
+            <defName>RBP_RemoveEchoOracleCyberbrain</defName>
+            <label>nullify active cyberbrain</label>
+            <description>Remove the installed cyberbrain, leaving the brain without one.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_EchoOracleCyberbrain</ThingDef>
+              <HediffDef>RBP_EchoOracleHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Nullifying active cyberbrain.</jobString>
+            <removesHediff>RBP_EchoOracleHediff</removesHediff>
+          </RecipeDef>
+
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.echobrains</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[starts-with(defName,"gits")]/stages/li/statOffsets/MeditationFocusGain</xpath>
+        <value>
+          <MeditationFocusGain MayRequire="ludeon.rimworld.royalty">0.05</MeditationFocusGain>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.echobrains</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/HediffDef[defName="RBP_EchoSeerHediff"]</xpath>
+              <value>
+                <comps>
+                  <li Class="EBSGFramework.HediffCompProperties_Modular">
+                    <slots>
+                      <li>
+                        <slotID>RBP_CortexSlot</slotID>
+                        <slotName>cortex module slot</slotName>
+                        <capacity>3</capacity>
+                      </li>
+                    </slots>
+                  </li>
+                </comps>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]</xpath>
+              <value>
+                <comps>
+                  <li Class="EBSGFramework.HediffCompProperties_Modular">
+                    <slots>
+                      <li>
+                        <slotID>RBP_CortexSlot</slotID>
+                        <slotName>cortex module slot</slotName>
+                        <capacity>6</capacity>
+                      </li>
+                    </slots>
+                  </li>
+                </comps>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

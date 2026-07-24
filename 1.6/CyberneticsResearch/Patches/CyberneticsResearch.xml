@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.core</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+          <ResearchTabDef>
+            <defName>RBP_CyberneticsTab</defName>
+            <label>cybernetics</label>
+            <generalTitle>Cybernetics research projects</generalTitle>
+            <generalDescription>Prosthetics, bionics, implant modules, cyberbrains and the paths beyond the body. Research at a hi-tech research bench; you can only have one active project at a time.</generalDescription>
+          </ResearchTabDef>
+
+          <ResearchProjectDef>
+            <defName>RBP_CybSurgicalImplantation</defName>
+            <label>surgical implantation</label>
+            <description>The surgery behind every implant: anchoring hardware, splicing it to nerve, and keeping the patient alive through it. Once known, any implant can be fitted, from a wooden foot to an archotech brain.</description>
+            <baseCost>700</baseCost>
+            <techLevel>Industrial</techLevel>
+            <tab>RBP_CyberneticsTab</tab>
+            <prerequisites>
+              <li>MedicineProduction</li>
+            </prerequisites>
+            <researchViewX>0</researchViewX>
+            <researchViewY>2.60</researchViewY>
+          </ResearchProjectDef>
+
+        </value>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

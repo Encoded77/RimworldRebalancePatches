@@ -34,6 +34,7 @@ One change has no toggle because there is no sensible way to want it off: resear
 - **Harsher extreme mental break** (`gits.mentalbreak`) — The PX-7 and HADES cyberbrains' mental break threshold penalty doubles from +20% to +40%.
 - **Streamlined research tree** (`gits.research`) — The three nanite surgery researches collapse into one, empty filler nodes are deleted and prerequisites are rewired; no more one-recipe padding.
 - **Surgeries via EPOE, ultratech tiers** (`gits.surgeries`) — Cyberbrain surgery unlocks with EPOE-Forked's Brain Surgery research, and everything past the basic cyberbrain moves to ultratech, integrating GiTS into the EPOE surgery progression and pushing the crazy tiers to endgame. Needs EPOE-Forked; does nothing without it.
+- **Cyberbrains named by role** (`gits.cyberbrainnames`) — Renames the cyberbrains after the work they do (Civis Mining, Aegis Marksman) instead of factory codes, keeping the flagships as Civis PX-7 and Aegis HADES. Their descriptions are rewritten in plain terms and state the cortex-module slot count.
 
 ### Odyssey
 
@@ -90,6 +91,7 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 - **`implants.shoulderslimes`** — Shoulder turrets install on the shoulder instead of the torso, which slime and robot bodies don't have (fixes errors with Big and Small - Slimes).
 - **Levitating implants ignore water** (`implants.waterpathing`) — Pawns with the psychic levitator or gravlifter float over water instead of wading.
 - **Signal boosters stack with AG command range genes** (`implants.boosterrange`) — Alpha Genes' command range genes used to override Integrated Implants' signal boosters entirely; now the gene sets the base range and boosters extend it, with the command ring drawn correctly. Needs both mods.
+- **Cerebrex node needs surgery** (`implants.cerebrexsurgery`) — The cerebrex node was self-installable straight from the gear tab, skipping the doctor, medicine and research every other brain implant needs. Now it takes an install surgery gated behind Ultra mechtech, like the rest. Post-death extraction is unchanged. Needs Biotech and Odyssey.
 
 ### Weapons & apparel
 
@@ -104,7 +106,12 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 - **`vanilla.mechraidgroups`** — Mechanoid raids come in combined compositions mixing vanilla, Alpha Mechs and Rimsenal Spacer mechs.
 - **`vanilla.toxicmeat`** — VAE Waste's toxic meat is unchecked by default in hoppers and meal recipes.
 - **`vanilla.creepjoinersurgery`** — Creep joiners accept every surgery a regular human can get, including modded implants and prosthetics (Anomaly).
+- **`vanilla.hideemptyresearchtabs`** — A research tab that no research project is assigned to is left out of the research window's tab row instead of opening onto blank space. Works for any tab from any mod, and the tab comes back on its own if a project is ever assigned to it again. The tab you are currently on and the Main tab are always shown.
 - **Gene complexity sliders** (`vanilla.genecomplexitybase`, `vanilla.genecomplexityprocessor`) — Two sliders: extra base gene complexity for the gene assembler (default +10), and complexity per gene processor (default 3, vanilla 2). Toggling either off keeps the vanilla value.
+
+### Yet Another Research Tree (YART)
+
+- **`yart.unlockgrouping`** — A research card lists what the project unlocks, then a separate block per extra requirement: "Unlocked with *other research*". An item you can only make once a *second* research is done was landing in the first block, drawn as though this project alone unlocked it, while the recipe that makes it was correctly filed under the second research — the item and its own recipe on different headings. Both now sit under the research that is actually still missing, which is how the vanilla research window groups them.
 
 ### VQE Ancients
 
@@ -221,6 +228,35 @@ Unlike the other overhauls this one is **on by default**, since it changes who s
 - **Thematic xenotypes in the Empire** (`xenotypes.royalty`) — The Empire reads as aristocratic and military: Det's Avaloi, Biotech's hussars and genies and Highborn Xenotype's highborn stay prominent, while Det's Keshig and Brawnum, Rimsenal's Harana, Odyssey's starjack and VRE - Android's awakened androids leave the roster. Keeps 37% baseliners.
 - **`xenotypes.odyssey`** — Odyssey's Salvagers gain Det's Half-foot alongside an even spread of Rimsenal, Det's and Alpha Genes xenotypes; the Traders guild gains Alpha Genes' Fleetkind.
 - **`xenotypes.rimsenal`** — Rimsenal's Spacer factions gain the deep-space xenotypes displaced from planetside pools: Odyssey's starjack, Det's Keshig and Half-foot, and VRE - Android's awakened androids. WVC's Mechakin, Rogueformer and Genethrower also move here from the generic outlander and pirate pools.
+
+## Cybernetics Overhaul
+
+The content half of the cybernetics rework: what implants are, how they host one another, and what they cost. The research tree is a separate module, [Cybernetics Research Overhaul](#cybernetics-research-overhaul). Off by default; every module has its own toggle and touches only the mods it needs. The design behind both halves is in `Docs/CyberneticsChanges.md`.
+
+- **Bolt-on implants become modules** (`cybernetics.modules`) — An implant that adds a capability rather than replacing a body part becomes a module, plugged into a slot on a host already installed in the pawn (a cyberbrain for cognitive ones, a thoracic frame for torso ones). Host tier caps how many a pawn carries, and module quality scales the effect. Needs EBSG Framework; converts modules from Integrated Implants, EPOE-Forked and Psychic Implants.
+- **Raiders arrive with their host** (`cybernetics.npchosts`) — An NPC generated carrying a module also gets the host it plugs into, up to two per pawn; a module with nowhere to go is left off. Needs EBSG Framework.
+- **Advanced synthetic organs** (`cybernetics.advancedorgans`) — Adds an advanced synthetic heart, lung, liver, kidney, stomach and nose, filling the gap between EPOE-Forked's synthetic organs and the archotech tier. Needs EPOE-Forked.
+- **Thoracic frames** (`cybernetics.thoracicframe`) — Adds bionic, advanced and archotech thoracic frames that replace the ribcage; with EBSG Framework each hosts torso modules, otherwise they are simply good ribcages.
+- **One ladder of effect and price** (`cybernetics.tiers`) — Puts artificial body parts from every loaded mod on one ladder (prosthetic, bionic, advanced, archotech) and sets each part's price by what it does, so two parts doing the same job cost the same. Covers Core, Royalty, Biotech, EPOE-Forked, Integrated Implants, GiTS, Psychic Implants and Big and Small.
+- **Micromachine crafting** (`cybernetics.micromachines`) — Parts above the plain bionic tier are built from micromachines instead of raw advanced components, one shared component made at your own bench. Needs GiTS Cyberbrains.
+- **Archotech recycling** (`cybernetics.archotechshards`) — Break archotech parts down for shards and assemble any archotech part from them, so two salvaged parts become the one you wanted. Shards also come from exotic traders and quest rewards. Needs the research body lane.
+- **Androids refuse wetware implants** (`cybernetics.androidblocklist`) — Androids can no longer receive surgeries that only make sense on living tissue. Needs Vanilla Races Expanded - Android.
+- **Cyberbrains for psycasters** (`cybernetics.echobrains`) — Adds two Echo psycaster cyberbrains and cuts the meditation bonus other cyberbrains gave as a side effect, so psychic capability is a choice rather than a freebie on a combat brain. Needs GiTS Cyberbrains.
+- **The flesh capstone** (`cybernetics.livingframe`) — Adds a living frame that hosts more modules than any archotech part and an implant that rewards a heavily engineered body. Neither can be fitted to a synthetic body.
+- **Ascended bodies keep psychic capability** (`cybernetics.ascension`) — Restores psychic sensitivity to an ascended synthetic body, so the machine path does not close off psycasting. Needs Vanilla Races Expanded - Android.
+- **Rebuild a living pawn as an android** (`cybernetics.androidconversion`) — The synthetic ending: brew a neuroform serum, build a conversion kit around it and a reactor, then operate. Needs Vanilla Races Expanded - Android.
+
+## Cybernetics Research Overhaul
+
+Consolidates the implant research of every mod into one Cybernetics tab with a clear progression, staged from a single surgery root through the body, module and cyberbrain lanes to two capstones. Off by default; turn `cyberneticsresearch.core` on first, then the lanes. Design and reasoning in `Docs/CyberneticsChanges.md`.
+
+- **One tab, one surgery** (`cyberneticsresearch.core`) — A single Cybernetics tab rooted on a cheap early research that all implant surgery answers to. Turn on first; the rest builds on it.
+- **Body lane** (`cyberneticsresearch.body`) — Prosthetic, bionic and advanced body-part research as a staged ladder: limbs, organs and senses unlock separately, then the advanced tiers, the ribcage frames and the archotech chassis.
+- **Modules lane** (`cyberneticsresearch.modules`) — Implant-module research split into lanes: integral melee and ranged weapons, locomotion, metabolic and environmental systems, skill chips, defensive and utility hardware, and a top ultratech weapon tier.
+- **Cyberbrain lanes** (`cyberneticsresearch.cyberbrains`) — Cyberbrains organised into three manufacturers, each with its own tiers and flagship, opening on a neural interface research that also unlocks micromachines. Needs GiTS Cyberbrains.
+- **Psychic and mind-transfer lanes** (`cyberneticsresearch.mind`) — Psychic implants spread across researches by strength, with mind transfer kept as distinct steps. Needs Psychic Implants or Altered Carbon.
+- **Two capstones** (`cyberneticsresearch.capstones`) — Two final researches that share a prerequisite and pull opposite ways: synthetic ascension and symbiotic integration.
+- **Retire the old research** (`cyberneticsresearch.retire`) — Deletes the original projects the tab took over so old mod tabs empty out instead of duplicating unlocks. Best with all four lanes on.
 
 ## Sci-fi Renaming Overhaul
 

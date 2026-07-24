@@ -1,15 +1,3 @@
-// Offline analyzer for the implant ecosystem dumps (throwaway, gitignored output).
-//
-// Joins RecipeDump + HediffDump + ThingDump + ResearchDump + BodyDump + AcquisitionDump +
-// ModRulesDump into the audit Big Project 6 needs. Every cross-def judgement lives here rather than
-// in the dumps, so changing a rule costs a re-run instead of a RimWorld restart.
-//
-// Emits:
-//   implants.md       — master inventory: what installs where, from which mod, gated by what
-//   implant-hosts.md  — the "no wetware mount" audit + the modular slot capacity table
-//   implant-android.md— which surgeries an android accepts, and what the blocklist never mentions
-//   implant-research.md — research bloat: unlock counts, merge candidates, techprint exposure
-//   implant-gaps.md   — reverse mismatches and tier coverage holes
 using System.Globalization;
 using System.Text;
 using System.Text.Json;
@@ -51,8 +39,6 @@ var modRules = Load(dumpDir, "ModRulesDump.json");
 // ---- models ---------------------------------------------------------------------------------
 
 var hediffById = new Dictionary<string, Hediff>(StringComparer.Ordinal);
-// Raw elements kept alongside the model: the power analysis needs stage-level stat and capacity
-// data that the flattened model deliberately does not carry.
 var hediffRaw = new Dictionary<string, JsonElement>(StringComparer.Ordinal);
 foreach (var h in hediffs.RootElement.GetProperty("hediffs").EnumerateArray())
 {
@@ -65,17 +51,15 @@ foreach (var h in hediffs.RootElement.GetProperty("hediffs").EnumerateArray())
         Label = Str(h, "label") ?? name,
         Mod = ShortMod(Str(h, "mod")),
         IsAddedPart = Bool(h, "isAddedPart"),
+        PartEfficiency = h.TryGetProperty("addedPartProps", out var app) && app.ValueKind == JsonValueKind.Object
+            ? Num(app, "partEfficiency") : 0f,
         AndroidCanCatch = !h.TryGetProperty("androidCanCatch", out var ac) || ac.GetBoolean(),
-        // HediffDef.isBad defaults to TRUE, and the dump records only non-default values — so the
-        // property appears only when a mod explicitly set it false. Absence means "is an ailment".
         IsBad = !h.TryGetProperty("isBad", out var isBadProp) || isBadProp.ValueKind == JsonValueKind.True,
         Slots = ReadSlots(h),
     };
 }
 
 var thingById = new Dictionary<string, Thing>(StringComparer.Ordinal);
-// Things carrying CompProperties_Usable can be self-installed with no surgeon. That is either a
-// deliberate solo-play affordance (mechlink pattern) or an accidental bypass of the surgery gate.
 var selfInstallable = new HashSet<string>(StringComparer.Ordinal);
 foreach (var t in things.RootElement.GetProperty("things").EnumerateArray())
 {
@@ -127,8 +111,6 @@ foreach (var b in bodies.RootElement.GetProperty("bodies").EnumerateArray())
     partsByBody[name] = new HashSet<string>(Strings(b, "partNames"), StringComparer.Ordinal);
 }
 
-// Which bodies belong to humanlike races. An animal lacking a Shoulder is correct; a humanlike
-// race that cannot receive a humanlike implant is the bug this audit is looking for.
 var humanlikeBodyNames = new HashSet<string>(StringComparer.Ordinal);
 var racesByBody = new Dictionary<string, List<string>>(StringComparer.Ordinal);
 if (bodies.RootElement.TryGetProperty("pawns", out var pawns))
@@ -183,14 +165,10 @@ foreach (var r in recipes.RootElement.GetProperty("recipes").EnumerateArray())
         TargetParts = Strings(r, "appliedOnFixedBodyParts"),
         Research = ResolveResearch(r),
         Ingredients = ReadIngredients(r),
+        ImplantIngredient = Str(r, "implantIngredient"),
         WorkAmount = Num(r, "workAmount"),
     };
 
-    // Attach class — moved out of the dump so the rule is reviewable here.
-    //   replacesPart : swaps a body part, so the host is artificial by definition
-    //   addOn        : adds a hediff and removes nothing — the host part stays flesh
-    //   upgrade      : swaps one hediff for another (modularisation, tier changes)
-    //   removes      : takes something out
     bool replaces = added?.IsAddedPart == true
                     || chain.Contains("Recipe_InstallArtificialBodyPart")
                     || chain.Contains("Recipe_InstallNaturalBodyPart");
@@ -227,7 +205,9 @@ foreach (var group in ecosystem.GroupBy(s => s.Mod).OrderByDescending(g => g.Cou
     sb.AppendLine("| --- | --- | --- | ---: | --- | --- |");
     foreach (var s in group.OrderBy(s => s.Label, StringComparer.OrdinalIgnoreCase))
     {
-        Thing item = s.Ingredients.Select(i => thingById.GetValueOrDefault(i)).FirstOrDefault(t => t?.IsImplantLike == true)
+        // Prefer the dump's explicit choice; the local heuristics are a fallback for older dumps.
+        Thing item = (s.ImplantIngredient != null ? thingById.GetValueOrDefault(s.ImplantIngredient) : null)
+                     ?? s.Ingredients.Select(i => thingById.GetValueOrDefault(i)).FirstOrDefault(t => t?.IsImplantLike == true)
                      ?? s.Ingredients.Select(i => thingById.GetValueOrDefault(i)).FirstOrDefault(t => t != null);
         sb.AppendLine($"| {s.Label} | {s.Attach} | {item?.Label ?? "—"} | {item?.MarketValue.ToString("0", CultureInfo.InvariantCulture) ?? "—"} " +
                       $"| {(s.Research.Count > 0 ? string.Join(", ", s.Research) : "—")} | {(s.AndroidBlockReason == null ? "yes" : "**no** — " + s.AndroidBlockReason)} |");
@@ -264,8 +244,6 @@ int unreadable = 0;
 if (hediffs.RootElement.TryGetProperty("modularSlotTable", out var slotTable))
     foreach (var slot in slotTable.EnumerateObject().OrderBy(s => s.Name, StringComparer.Ordinal))
     {
-        // Capacity is null when the framework field could not be read — never conflate that with 0,
-        // which would read as "this slot accepts nothing".
         var caps = slot.Value.TryGetProperty("capacities", out var c)
             ? c.EnumerateArray().Select(x => x.ValueKind == JsonValueKind.Number ? x.GetInt32().ToString() : "?").ToList()
             : new List<string>();
@@ -408,10 +386,6 @@ sb = new StringBuilder();
 Head(sb, "Phase 2 audit",
     "Machine-checkable audit items: implants treated as ailments, implants installable without a surgeon, and surgeries no humanlike body can receive.");
 
-// --- item 5: isBad coverage ---
-// A hediff flagged isBad is treated as an ailment, so healer serums, biosculpting and Anomaly's
-// regeneration strip it. Implants should not be ailments. The existing implants.chipbad fix is
-// this pattern applied to one mod.
 var badImplants = new List<Hediff>();
 foreach (var s in ecosystem)
 {
@@ -454,8 +428,6 @@ foreach (var t in selfInstallImplants)
 }
 sb.AppendLine();
 
-// --- item 8: reverse mismatches, humanlike only ---
-// Joined through BodyDump's pawns section: only bodies actually used by a humanlike race count.
 var humanlikeBodies = partsByBody.Where(b => humanlikeBodyNames.Contains(b.Key))
     .ToDictionary(b => b.Key, b => b.Value, StringComparer.Ordinal);
 sb.AppendLine($"## Surgeries some humanlike bodies cannot receive");
@@ -464,11 +436,7 @@ sb.AppendLine($"Checked against **{humanlikeBodies.Count} humanlike bodies** (ra
 sb.AppendLine("BodyDump). A body missing every targeted part can never receive the surgery.");
 sb.AppendLine();
 
-// Group by the affected body set: dozens of surgeries failing on the same body is one gap, not
-// dozens, and grouping shows which body is actually the problem.
 var mismatches = new Dictionary<string, List<Surgery>>(StringComparer.Ordinal);
-// A Dog Said is animal-only by design and verified sealed, so its surgeries failing on every
-// humanlike body is the intended behaviour, not a gap.
 foreach (var s in ecosystem.Where(s => s.TargetParts.Count > 0
                                        && !string.Equals(s.Mod, "sambucher.adogsaidanimalprosthetics2",
                                            StringComparison.OrdinalIgnoreCase)))
@@ -501,13 +469,6 @@ foreach (var group in mismatches.OrderByDescending(g => g.Value.Count))
 if (mismatchRows == 0) sb.AppendLine("None — every humanlike body can receive every ecosystem surgery.");
 Write(outDir, "implant-audit.md", sb);
 
-// ---- implant-android-blocklist.md -----------------------------------------------------------
-//
-// Audit item 6. The design rule is that androids accept everything except evident wetware — so this
-// proposes which of the currently-allowed surgeries should be blocked, and why. Classification is
-// heuristic and deliberately visible: every entry states the rule that caught it, so a wrong call is
-// argued with rather than discovered in-game.
-
 sb = new StringBuilder();
 Head(sb, "Android blocklist proposal",
     "Which ecosystem surgeries an android should be refused, classified by why. The shipped blocklist names zero ecosystem content.");
@@ -535,10 +496,6 @@ var metabolicParts = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
     return null;
 }
 
-// Two mods are excluded before classification, for opposite reasons:
-//   A Dog Said  - animal-only and verified sealed, so it can never reach a humanlike android.
-//   VRE Android - its content IS android content. The reactor replaces a Stomach, which the
-//                 metabolic-organ rule would otherwise block on the very pawns it exists for.
 var excludedFromBlocklist = new[]
 {
     "sambucher.adogsaidanimalprosthetics2",
@@ -585,18 +542,10 @@ foreach (var p in proposals.OrderBy(p => p.S.DefName, StringComparer.Ordinal))
 sb.AppendLine("```");
 Write(outDir, "implant-android-blocklist.md", sb);
 
-// ---- implant-power.md -----------------------------------------------------------------------
-//
-// Audit items 3 and 4. Naively summing every implant that touches a stat overstates wildly, because
-// a pawn has one heart and one brain. So contributions are grouped by target body part and only the
-// best per part is counted: that is what one pawn can actually reach.
-
 sb = new StringBuilder();
 Head(sb, "Power outliers and stacking",
     "What one pawn can actually stack on a single stat, and which implants are strongest for their tier.");
 
-// How many of each part a Human actually has. Left and right arms share one BodyPartDef, so an
-// implant targeting "Arm" can be installed twice — counting it once understates every paired part.
 var partMultiplicity = new Dictionary<string, int>(StringComparer.Ordinal);
 foreach (var b in bodies.RootElement.GetProperty("bodies").EnumerateArray())
 {
@@ -645,10 +594,6 @@ foreach (var s in ecosystem)
             Record(capByStat, Str(m, "capacity") ?? "?", partLabel, Num(m, "offset") * mult, s.Label, s.Mod);
 }
 
-// --- modules: every one that fits a slot, since every slot is currently uncapped ---
-// Modules bypass the per-part logic entirely: they install into slots, and with capacity -1 a host
-// accepts all of them at once. This is the stacking the capacity system exists to bound, so it is
-// summed rather than best-per-part.
 int moduleCount = 0;
 foreach (var t in things.RootElement.GetProperty("things").EnumerateArray())
 {
@@ -724,25 +669,19 @@ foreach (var pair in capByStat.OrderByDescending(p => p.Value.Values.Sum(v => v.
 }
 Write(outDir, "implant-power.md", sb);
 
-// ---- implant-coverage.md --------------------------------------------------------------------
-//
-// Audit items 1, 2 and 7 share one analysis: who replaces which body part, at which tier. Two mods
-// replacing the same part are duplicates competing for one slot (items 1 and 2); a part covered at
-// one tier but not the next is a ladder gap (item 7).
-
 sb = new StringBuilder();
 Head(sb, "Part coverage, duplicates and tier gaps",
     "Which mods replace which body part, at which tier. Duplicates compete for one slot; missing tiers are ladder gaps.");
 
-// Tier inferred from the label, since the ladder is expressed in names not data.
-string TierOf(string label)
+string TierOf(Surgery s)
 {
-    string l = (label ?? "").ToLowerInvariant();
-    if (l.Contains("archotech")) return "archotech";
-    if (l.Contains("advanced")) return "advanced";
-    if (l.Contains("bionic")) return "bionic";
-    if (Regex.IsMatch(l, @"prosthet|simple|peg |hook|wooden|denture")) return "prosthetic";
-    return "other";
+    float eff = s.AddsHediff != null && hediffById.TryGetValue(s.AddsHediff, out Hediff hh)
+        ? hh.PartEfficiency : 0f;
+    if (eff <= 0f) return "unknown";
+    if (eff >= 1.45f) return "archotech";
+    if (eff >= 1.30f) return "advanced";
+    if (eff >= 1.15f) return "bionic";
+    return "prosthetic";      // 1.0 and below: baseline anatomy or a downgrade
 }
 
 string[] tierOrder = { "prosthetic", "bionic", "advanced", "archotech" };
@@ -755,7 +694,7 @@ foreach (var s in ecosystem.Where(s => s.Attach == "replacesPart"
     foreach (string part in s.TargetParts.Where(p => !p.StartsWith("BS_", StringComparison.Ordinal)))
     {
         if (!coverage.TryGetValue(part, out var tiers)) coverage[part] = tiers = new(StringComparer.Ordinal);
-        string tier = TierOf(s.Label);
+        string tier = TierOf(s);
         if (!tiers.TryGetValue(tier, out var list)) tiers[tier] = list = new();
         list.Add((s.Label, s.Mod));
     }
@@ -918,6 +857,7 @@ sealed class Surgery
     public string DefName, Label, Mod, Attach, AddsHediff, RemovesHediff, AndroidBlockReason;
     public HashSet<string> WorkerChain = new();
     public List<string> TargetParts = new(), Research = new(), Ingredients = new();
+    public string ImplantIngredient;
     public bool FleshHostPossible;
     public float WorkAmount;
 }
@@ -926,6 +866,7 @@ sealed class Hediff
 {
     public string DefName, Label, Mod;
     public bool IsAddedPart, AndroidCanCatch, IsBad;
+    public float PartEfficiency;
     public List<Slot> Slots = new();
 }
 

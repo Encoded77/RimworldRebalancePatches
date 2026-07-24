@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.body</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+
+          <!-- THE 12 NEW NODES -->
+          <li Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybSurrogateOrgans</defName>
+                <label>surrogate organs</label>
+                <description>Grow crude stand-in organs that keep a patient alive without a donor. They work, they are cheap, and they will never be as good as the real thing, but nobody has to die for one.\n\nUnlocks surrogate hearts, kidneys, livers, lungs and stomachs.</description>
+                <baseCost>1000</baseCost>
+                <techLevel>Industrial</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>Prosthetics</li>
+                </prerequisites>
+                <researchViewX>1</researchViewX>
+                <researchViewY>3.20</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybBionicOrgans</defName>
+                <label>bionic organs</label>
+                <description>Print whole synthetic organs that beat the flesh original instead of merely standing in for it. Tireless hearts, filtered lungs, engineered stomachs that can digest things a body never should.\n\nUnlocks the synthetic nano printer and synthetic hearts, lungs, livers, kidneys, stomachs and wombs.</description>
+                <baseCost>1800</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybSurrogateOrgans</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+
+                <requiredResearchFacilities>
+                  <li>MultiAnalyzer</li>
+                </requiredResearchFacilities>
+                <researchViewX>2</researchViewX>
+                <researchViewY>2.20</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybBionicSenses</defName>
+                <label>bionic senses</label>
+                <description>Rebuild the senses rather than the frame. Bionic optics and cochleae feed a sharper picture of the world back into the brain, and an engineered jaw or tongue restores speech and eating outright.\n\nUnlocks bionic eyes, ears, jaws, tongues and noses.</description>
+                <baseCost>1400</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>Prosthetics</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <!-- See bionic organs above: the whole bionic tier requires a multi-analyzer. -->
+                <requiredResearchFacilities>
+                  <li>MultiAnalyzer</li>
+                </requiredResearchFacilities>
+                <researchViewX>2</researchViewX>
+                <researchViewY>4.20</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybAdvancedLimbs</defName>
+                <label>advanced limbs</label>
+                <description>Second-generation limbs, rebuilt around a machine-assist intelligence chip instead of a plain servo. Stronger, faster and far more expensive than the bionics they upgrade from.\n\nUnlocks the assist chip itself plus advanced arms, legs, hands, feet, fingers, toes, spines and power arms.</description>
+                <baseCost>3000</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>Bionics</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>3</researchViewX>
+                <researchViewY>0.40</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybExtraLimbs</defName>
+                <label>extra limbs</label>
+                <description>Limbs built for one job instead of for being a limb: a drill that chews through rock, a field hand that plants and harvests on its own, a claw that ends arguments, a prehensile tail for everything else.\n\nUnlocks drill arms, field hands, power claws, their advanced versions, and bionic, manipulation and scorpion tails.</description>
+                <baseCost>2800</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>Bionics</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>3</researchViewX>
+                <researchViewY>1.30</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybThoracicFrame</defName>
+                <label>thoracic frame</label>
+                <description>Replace the ribcage with a machined frame that leaves standardised bays behind the sternum. On its own it does nothing at all. It is the mounting point every chest module screws into, and the reason a colonist can carry several of them at once.\n\nUnlocks the bionic and advanced thoracic frames and the blank rib every rib upgrade is built from.</description>
+                <baseCost>2000</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybBionicOrgans</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>3</researchViewX>
+                <researchViewY>2.20</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybAdvancedOrgans</defName>
+                <label>advanced organs</label>
+                <description>Organs that do more than the body ever asked of them: hearts that never falter under load, livers that strip toxins out of the blood, kidneys that hold an immune response together. The exoskeleton belongs here too, a powered frame worn inside the torso.\n\nUnlocks advanced synthetic hearts, lungs, livers, kidneys and stomachs, detoxifying and immunoenhancing organs, coagulators, healing enhancers and exoskeletons.</description>
+                <baseCost>3200</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybBionicOrgans</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>3</researchViewX>
+                <researchViewY>3.20</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybAdvancedSenses</defName>
+                <label>advanced senses</label>
+                <description>Sensory hardware that stops pretending to be an organ. Advanced optics pick out a target across a valley, and a tactical eye overlays the shot before the shooter has thought about it.\n\nUnlocks advanced bionic eyes, ears, jaws and noses, and the tactical bionic eye.</description>
+                <baseCost>2600</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybBionicSenses</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>3</researchViewX>
+                <researchViewY>4.20</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybArchotechCybernetics</defName>
+                <label>archotech cybernetics</label>
+                <description>The reverse-engineering of archotech body parts: hardware that repairs itself, weighs almost nothing and works better than anything a human factory can print. Understanding it is the work of a lifetime. Even then, one cannot be built from raw steel.</description>
+                <baseCost>6000</baseCost>
+                <techLevel>Ultra</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybAdvancedLimbs</li>
+                  <li>RBP_CybAdvancedOrgans</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>4</researchViewX>
+                <researchViewY>0.80</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybVitalRibs</defName>
+                <label>vital ribs</label>
+                <description>Hollow out the replacement ribs and pack them with a chemical plant. One rib holds a drug reservoir, another a clotting agent, another a stimulant that dumps into the bloodstream the moment a fight starts.\n\nUnlocks adrenaline, coagulator, drugged, medical, painkiller, respiration and wake-up ribs, and synthetic marrow.</description>
+                <baseCost>1500</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybThoracicFrame</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>4</researchViewX>
+                <researchViewY>2.00</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybClimateRibs</defName>
+                <label>climate ribs</label>
+                <description>Ribs that run a heat pump instead of a chemical plant. A colonist fitted with one shrugs off a desert afternoon or an ice storm that would put an unmodified body in bed.\n\nUnlocks cooling ribs and heating ribs.</description>
+                <baseCost>1200</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybThoracicFrame</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>4</researchViewX>
+                <researchViewY>2.80</researchViewY>
+              </ResearchProjectDef>
+
+              <ResearchProjectDef>
+                <defName>RBP_CybOrganOptimizers</defName>
+                <label>organ optimizers</label>
+                <description>Nanobot swarms that improve the flesh already there instead of cutting it out. They rebuild muscle attachment, sharpen reflexes, and with a different payload reshape a face or rewire what a person finds beautiful.\n\nUnlocks organic and instinct optimizing nanobots, aesthetic shapers and love enhancers.</description>
+                <baseCost>3000</baseCost>
+                <techLevel>Spacer</techLevel>
+                <tab>RBP_CyberneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_CybAdvancedOrgans</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <researchViewX>4</researchViewX>
+                <researchViewY>4.60</researchViewY>
+              </ResearchProjectDef>
+
+            </value>
+          </li>
+
+          <!-- THE 2 REPURPOSED NODES - Core, always present -->
+
+          <!-- Prosthetics becomes the prosthetic rung of this trunk. -->
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Prosthetics"]/label</xpath>
+            <value><label>prosthetics</label></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Prosthetics"]/description</xpath>
+            <value><description>Build replacement limbs and organs out of steel and plasteel. A simple prosthetic is worse than the flesh it replaces, but it beats an empty socket, and it can be made with tools you already own.\n\nUnlocks simple prosthetic arms, legs, hands, feet, fingers, toes, spines, noses, jaws, eyes and cochlear implants.</description></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Prosthetics"]/baseCost</xpath>
+            <value><baseCost>600</baseCost></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Prosthetics"]/techLevel</xpath>
+            <value><techLevel>Industrial</techLevel></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Prosthetics"]/prerequisites</xpath>
+            <value>
+              <prerequisites>
+                <li>RBP_CybSurgicalImplantation</li>
+              </prerequisites>
+            </value>
+          </li>
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/ResearchProjectDef[defName="Prosthetics"]</xpath>
+            <value>
+              <tab>RBP_CyberneticsTab</tab>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Prosthetics"]/researchViewX</xpath>
+            <value><researchViewX>1</researchViewX></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Prosthetics"]/researchViewY</xpath>
+            <value><researchViewY>1.60</researchViewY></value>
+          </li>
+
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Bionics"]/label</xpath>
+            <value><label>bionic limbs</label></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Bionics"]/description</xpath>
+            <value><description>Powered limbs that outperform the ones they replace. Servo-driven joints, load-bearing spines and muscle stimulators turn a wounded colonist into a faster worker and a better fighter.\n\nUnlocks the bionics workbench and bionic arms, legs, hands, feet, fingers, toes, spines, power arms and muscle stimulators.</description></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Bionics"]/baseCost</xpath>
+            <value><baseCost>1600</baseCost></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Bionics"]/techLevel</xpath>
+            <value><techLevel>Spacer</techLevel></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Bionics"]/prerequisites</xpath>
+            <value>
+              <prerequisites>
+                <li>Prosthetics</li>
+              </prerequisites>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Bionics"]/requiredResearchBuilding</xpath>
+            <value><requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding></value>
+          </li>
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/ResearchProjectDef[defName="Bionics"]</xpath>
+            <value>
+              <tab>RBP_CyberneticsTab</tab>
+            </value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Bionics"]/researchViewX</xpath>
+            <value><researchViewX>2</researchViewX></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/ResearchProjectDef[defName="Bionics"]/researchViewY</xpath>
+            <value><researchViewY>0.40</researchViewY></value>
+          </li>
+
+          <!-- CORE - always present -->
+
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="BionicEye" or defName="BionicEar" or defName="BionicJaw" or defName="BionicTongue"]</xpath>
+            <value>
+              <recipeMaker>
+                <researchPrerequisite>RBP_CybBionicSenses</researchPrerequisite>
+              </recipeMaker>
+            </value>
+          </li>
+
+          <li Class="PatchOperationConditional">
+            <xpath>Defs/ThingDef[defName="RBP_ThoracicFrameBionic"]</xpath>
+            <match Class="PatchOperationSequence">
+              <operations>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="RBP_ThoracicFrameBionic"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybThoracicFrame</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="RBP_ThoracicFrameAdvanced"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybThoracicFrame</researchPrerequisite></value>
+                </li>
+              </operations>
+            </match>
+          </li>
+
+          <!-- ROYALTY -->
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>ludeon.rimworld.royalty</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="DetoxifierStomach" or defName="NuclearStomach" or defName="ReprocessorStomach" or defName="Immunoenhancer"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybBionicOrgans</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="GastroAnalyzer" or defName="AestheticNose"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybBionicSenses</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="Coagulator" or defName="HealingEnhancer"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybAdvancedOrgans</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="AestheticShaper" or defName="LoveEnhancer"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybOrganOptimizers</researchPrerequisite></value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="DrillArm" or defName="FieldHand" or defName="PowerClaw"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybExtraLimbs</researchPrerequisite></value>
+                </li>
+              </operations>
+            </match>
+          </li>
+
+          <!-- EPOE-FORKED -->
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>vat.epoeforked</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+
+                <!-- Item bases -->
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[@Name="EPIASurrogateBase"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybSurrogateOrgans</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[@Name="EPIASyntheticBase"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybBionicOrgans</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[@Name="BodyPartAdvancedBionicBase"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybAdvancedOrgans</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[@Name="EPIA_BodyPartBlankRibBase"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybThoracicFrame</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[@Name="EPIA_BodyPartBionicRibBase"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybVitalRibs</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[@Name="EPIAOrganicOptimizer"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybOrganOptimizers</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[@Name="EPIAGlitterworldBionicBase"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybAdvancedSenses</researchPrerequisite></value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/RecipeDef[@Name="RecipeSyntheticOrgan"]/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybBionicOrgans</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/RecipeDef[@Name="RecipeAdvancedProsthesis"]/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybAdvancedLimbs</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/RecipeDef[@Name="EPIA_RecipeUpgradeBionicRib"]/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybVitalRibs</researchPrerequisite></value>
+                </li>
+
+                <!-- Divergent members of the bases above. -->
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="MuscleStimulator"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>Bionics</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="SilentJaw"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybBionicSenses</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="AdvancedBionicArm" or defName="AdvancedBionicLeg" or defName="AdvancedBionicHand" or defName="AdvancedBionicFoot" or defName="AdvancedBionicFinger" or defName="AdvancedBionicToe" or defName="AdvancedBionicSpine" or defName="AdvancedPowerArm"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybAdvancedLimbs</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="AdvancedBionicEye" or defName="AdvancedBionicEar" or defName="AdvancedBionicJaw"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybAdvancedSenses</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="CreateAdvancedBionicEye" or defName="CreateAdvancedBionicEar" or defName="CreateAdvancedBionicJaw"]</xpath>
+                  <value><researchPrerequisite>RBP_CybAdvancedSenses</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="CoolerRib" or defName="HeaterRib"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybClimateRibs</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/RecipeDef[defName="EPIA_UpgradeCoolingRib" or defName="EPIA_UpgradeHeatingRib"]</xpath>
+                  <value><researchPrerequisite>RBP_CybClimateRibs</researchPrerequisite></value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="EPOE_MAAI_Chip"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybAdvancedLimbs</researchPrerequisite></value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="TableOrgans"]/researchPrerequisites/li[.="SyntheticOrgans"]</xpath>
+                  <value><li>RBP_CybBionicOrgans</li></value>
+                </li>
+
+              </operations>
+            </match>
+          </li>
+
+          <!-- EPOE-FORKED: ROYALTY ADD-ON -->
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>vat.epoeforkedroyalty</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="EPOE_AdvancedDrillArm" or defName="EPOE_AdvancedFieldHand"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybExtraLimbs</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/RecipeDef[defName="EPIA_UpgradeAdvancedDrillArm" or defName="EPIA_UpgradeAdvancedFieldHand"]/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybExtraLimbs</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="EPOE_DetoxifierSyntheticLiver" or defName="EPOE_ImmunoenhancerSyntheticKidney" or defName="EPOE_DetoxifierEnhancer"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybAdvancedOrgans</researchPrerequisite></value>
+                </li>
+              </operations>
+            </match>
+          </li>
+
+          <!-- INTEGRATED IMPLANTS -->
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>lts.i</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="Synthwomb"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybBionicOrgans</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="Synthmarrow"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybVitalRibs</researchPrerequisite></value>
+                </li>
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="LTS_BionicTail" or defName="LTS_ManipulationTail"]/recipeMaker/researchPrerequisite</xpath>
+                  <value><researchPrerequisite>RBP_CybExtraLimbs</researchPrerequisite></value>
+                </li>
+
+                <li Class="PatchOperationReplace">
+                  <xpath>Defs/ThingDef[defName="LTS_ScorpionTail"]/recipeMaker/researchPrerequisites/li[.="I_BionicTails"]</xpath>
+                  <value><li>RBP_CybExtraLimbs</li></value>
+                </li>
+              </operations>
+            </match>
+          </li>
+
+          <li Class="RebalancePatches.PatchOperationFindModById">
+            <mods>
+              <li>lts.i</li>
+            </mods>
+            <match Class="PatchOperationSequence">
+              <operations>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="LTS_BionicKidney" or defName="LTS_BionicLiver" or defName="LTS_BionicLung"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybBionicOrgans</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+                <li Class="PatchOperationAdd">
+                  <xpath>Defs/ThingDef[defName="LTS_BionicNose"]</xpath>
+                  <value>
+                    <recipeMaker>
+                      <researchPrerequisite>RBP_CybBionicSenses</researchPrerequisite>
+                    </recipeMaker>
+                  </value>
+                </li>
+              </operations>
+            </match>
+          </li>
+
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.body</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <operations>
+          <li Class="PatchOperationConditional">
+            <xpath>Defs/ThingDef[defName="USH_IronLung"]/recipeMaker/researchPrerequisite</xpath>
+            <match Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="USH_IronLung"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>RBP_CybBionicOrgans</researchPrerequisite></value>
+            </match>
+          </li>
+        </operations>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

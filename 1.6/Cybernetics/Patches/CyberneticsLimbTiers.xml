@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.tiers</settingKey>
+    <operations>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="SimpleProstheticArm" or defName="SimpleProstheticLeg"]/addedPartProps/partEfficiency</xpath>
+        <value><partEfficiency>0.80</partEfficiency></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="PowerClaw"]/addedPartProps/partEfficiency</xpath>
+        <value><partEfficiency>0.80</partEfficiency></value>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="BionicArm" or defName="BionicLeg"]/addedPartProps/partEfficiency</xpath>
+        <value><partEfficiency>1.15</partEfficiency></value>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="LTS_ModularBionicArm"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_ModularBionicArm" or defName="LTS_ModularBionicLeg"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_ModularArchotechArm" or defName="LTS_ModularArchotechLeg"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.50</partEfficiency></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="ArchotechArm" or defName="ArchotechLeg"]/addedPartProps/partEfficiency</xpath>
+        <value><partEfficiency>1.50</partEfficiency></value>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.royalty</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/HediffDef[defName="DrillArm" or defName="FieldHand"]/addedPartProps</xpath>
+              <value><partEfficiency>0.80</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="FieldHand"]/costList/Steel</xpath>
+              <value><Steel>45</Steel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="FieldHand"]/costList/ComponentIndustrial</xpath>
+              <value><ComponentIndustrial>7</ComponentIndustrial></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="SimpleProstheticHand" or defName="SimpleProstheticFoot" or defName="SimpleProstheticFinger" or defName="SimpleProstheticToe"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>0.80</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="BionicHand" or defName="BionicFoot"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="BionicFinger" or defName="BionicToe"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.35</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="AdvancedBionicArm" or defName="AdvancedBionicLeg" or defName="AdvancedBionicHand" or defName="AdvancedBionicFoot"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.35</partEfficiency></value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="PowerArm"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="AdvancedPowerArm"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.35</partEfficiency></value>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforkedroyalty</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="EPOE_AdvancedDrillArm" or defName="EPOE_AdvancedFieldHand"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.35</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="EPOE_AdvancedFieldHand"]/costList/Steel</xpath>
+              <value><Steel>45</Steel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="EPOE_AdvancedFieldHand"]/costList/ComponentIndustrial</xpath>
+              <value><ComponentIndustrial>7</ComponentIndustrial></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>redmattis.betterprerequisites</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="BS_BionicStriderLeg"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="BS_BionicStriderLeg"]/costList/Plasteel</xpath>
+              <value><Plasteel>20</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="BS_BionicStriderLeg"]/costList/ComponentSpacer</xpath>
+              <value><ComponentSpacer>5</ComponentSpacer></value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/ThingDef[defName="BS_BionicStriderLeg"]/statBases</xpath>
+              <value><WorkToMake>34000</WorkToMake></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="BS_BionicLocomotiveSpine"]/addedPartProps</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/HediffDef[defName="BS_BionicLocomotiveSpine"]/addedPartProps/partEfficiency</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="BS_BionicLocomotiveSpine"]/addedPartProps/partEfficiency</xpath>
+                <value><partEfficiency>1.15</partEfficiency></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/HediffDef[defName="BS_BionicLocomotiveSpine"]/addedPartProps</xpath>
+                <value><partEfficiency>1.15</partEfficiency></value>
+              </nomatch>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/HediffDef[defName="BS_BionicLocomotiveSpine"]/comps/li[baseEfficiency]</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/HediffDef[defName="BS_BionicLocomotiveSpine"]/comps/li[baseEfficiency]/baseEfficiency</xpath>
+                <value><baseEfficiency>1.15</baseEfficiency></value>
+              </match>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="BS_BionicLocomotiveSpine"]/costList/Plasteel</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="BS_BionicLocomotiveSpine"]/costList/Plasteel</xpath>
+              <value><Plasteel>80</Plasteel></value>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="BS_BionicLocomotiveSpine"]/costList/ComponentSpacer</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BS_BionicLocomotiveSpine"]/costList/ComponentSpacer</xpath>
+                <value><ComponentSpacer>8</ComponentSpacer></value>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="BS_BionicLocomotiveSpine"]/statBases/WorkToMake</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="BS_BionicLocomotiveSpine"]/statBases/WorkToMake</xpath>
+                <value><WorkToMake>26000</WorkToMake></value>
+              </match>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

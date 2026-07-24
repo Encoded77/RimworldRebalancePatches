@@ -1,11 +1,22 @@
 # Changelog
 
+## 1.10.0 (2026-07-24)
+
+**Cybernetics Overhaul and Cybernetics Research Overhaul** — two new settings groups that pull the implant ecosystem into one system: Core, Royalty, Biotech, EPOE-Forked, Integrated Implants, GiTS Cyberbrains, Psychic Implants, Altered Carbon and VRE - Android. A single Cybernetics research tab rooted on one *surgical implantation* research, a clear three-branch progression (chassis, cortex, modules) in place of the mods' overlapping tabs, and two opposed capstones to build toward: synthetic ascension and symbiotic integration. Off by default; every part is its own toggle. Design notes in `Docs/CyberneticsChanges.md`.
+
+- **Implants that host implants** — bolt-on implants that add a capability become modules and plug into a slot on a cyberbrain (cognitive) or thoracic frame (torso); host tier caps how many a pawn carries. Needs EBSG Framework.
+- **One ladder of effect and price** — artificial body parts from every loaded mod share one tier ladder and are priced by what they do, so two parts doing the same job cost the same.
+- **Cyberbrains by manufacturer** (`gits.cyberbrainnames`) — GiTS's cyberbrains are named for their role under three makers (Civis, Aegis, Echo) instead of factory codes, with descriptions rewritten in plain terms and a stated cortex-module slot count.
+
+- **Group unlocks by every research that gates them** (`yart.unlockgrouping`) — on a Yet Another Research Tree project card, an item you can only make once a second research is finished was drawn in the plain unlock list, as though this project alone unlocked it, while the recipe that makes it was correctly filed under "Unlocked with *that research*". The item now joins its own recipe under that heading, matching how the vanilla research window groups them. Nothing about what has to be researched changes.
+
 ## 1.9.2 (2026-07-22)
 
 - **`genetics.agsummons`** needs Alpha Genes and Cherry Picker. **`genetics.wvcdupes`** needs WVC and Cherry Picker. **`genetics.bsdupes`** needs Big and Small and Cherry Picker.
 - **`genetics.dedup`** needs Cherry Picker plus any gene mod it has entries for. Each duplicate is still dropped only when the mod owning the surviving gene is loaded, so a smaller gene modlist now gets the part of the deduplication that applies to it instead of none of it.
 - Duplicates that lose to a gene from a specific mod now say so individually, so nothing is removed without its replacement present.
 - **`memes.factions`** now also requires one of Rimsenal - Spacer or Rimsenal - Federation; it was offered as available with neither loaded.
+- **Hide empty research tabs** (`vanilla.hideemptyresearchtabs`) — a research tab that no research project is assigned to is no longer drawn in the research window. Applies to any tab from any mod, and the tab reappears by itself if a project is assigned to it again. The tab you are on and the Main tab are always shown.
 
 ## 1.9.1 (2026-07-21)
 

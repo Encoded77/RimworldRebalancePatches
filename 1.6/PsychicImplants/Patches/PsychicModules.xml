@@ -1,0 +1,749 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+          <RecipeDef ParentName="SurgeryRemoveImplantBase">
+            <defName>RBP_Remove_PI_AMC</defName>
+            <label>remove assist meditation circuit</label>
+            <description>Remove assist meditation circuit.</description>
+            <descriptionHyperlinks>
+              <ThingDef>PI_AMC</ThingDef>
+              <HediffDef>PI_AMC</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Removing assist meditation circuit.</jobString>
+            <removesHediff>PI_AMC</removesHediff>
+          </RecipeDef>
+          <RecipeDef ParentName="SurgeryRemoveImplantBase">
+            <defName>RBP_Remove_PI_AMV</defName>
+            <label>remove assist meditation vice brain</label>
+            <description>Remove assist meditation vice brain.</description>
+            <descriptionHyperlinks>
+              <ThingDef>PI_AMV</ThingDef>
+              <HediffDef>PI_AMV</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Removing assist meditation vice brain.</jobString>
+            <removesHediff>PI_AMV</removesHediff>
+          </RecipeDef>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_AMC"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_AMC"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_AMC</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_AMC</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_AMC"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_AMC</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_AMC</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_AMV"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_AMV"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_AMV</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_AMV</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_AMV"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_AMV</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_AMV</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_HOPS"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_HOPS"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_HOPS</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_HOPS</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_HOPS"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>2</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_HOPS</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_HOPS</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_NHCS"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_NHCS"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_NHCS</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_NHCS</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_NHCS"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_NHCS</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_NHCS</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_NHEC"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_NHEC"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_NHEC</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_NHEC</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_NHEC"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>2</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_NHEC</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_NHEC</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_NHRA"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_NHRA"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_NHRA</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_NHRA</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_NHRA"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>2</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_NHRA</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_NHRA</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_NHSV"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_NHSV"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_NHSV</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_NHSV</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_NHSV"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_NHSV</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_NHSV</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_Passivator"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_Passivator"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_Passivator</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_Passivator</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_Passivator"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_Passivator</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_Passivator</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_PFC"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_PFC"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_PFC</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_PFC</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_PFC"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>2</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_PFC</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_PFC</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_PRC"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_PRC"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_PRC</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_PRC</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_PRC"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_PRC</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_PRC</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_Resistance"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_Resistance"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_Resistance</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_Resistance</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_Resistance"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_Resistance</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_Resistance</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PI_TPDD"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_TPDD"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PI_TPDD</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PI_TPDD</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PI_TPDD"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PI_TPDD</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PI_TPDD</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_AMC"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_AMC"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_AMC"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_AMV"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_AMV"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_AMV"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_HOPS"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_HOPS"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_HOPS"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_NHCS"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_NHCS"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_NHCS"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_NHEC"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_NHEC"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_NHEC"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_NHRA"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_NHRA"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_NHRA"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_NHSV"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_NHSV"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_NHSV"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_Passivator"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_Passivator"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_Passivator"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_PFC"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_PFC"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_PFC"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_PRC"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_PRC"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_PRC"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_Resistance"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_Resistance"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_Resistance"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="Install_PI_TPDD"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="Install_PI_TPDD"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="Install_PI_TPDD"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

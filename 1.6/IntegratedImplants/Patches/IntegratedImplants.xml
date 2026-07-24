@@ -100,4 +100,63 @@
       </li>
     </operations>
   </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_SkillChipPort"]/comps/li[@Class="EBSGFramework.HediffCompProperties_Modular"]/slots/li[slotID="LTS_SkillChipSlot"]/capacity</xpath>
+              <value>
+                <capacity>2</capacity>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <RecipeDef>
+                  <defName>RBP_InstallSkillChipAnimals</defName>
+                  <label>install animals skill chip</label>
+                  <description>Install an animals skill chip into a skill chip port. The port holds a limited number of chips.</description>
+                  <descriptionHyperlinks>
+                    <ThingDef>LTS_SpacerSkillChip_Animals</ThingDef>
+                  </descriptionHyperlinks>
+                  <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                  <jobString>Installing skill chip.</jobString>
+                  <workAmount>2000</workAmount>
+                  <surgerySuccessChanceFactor>1</surgerySuccessChanceFactor>
+                  <deathOnFailedSurgeryChance>0</deathOnFailedSurgeryChance>
+                  <anesthetize>true</anesthetize>
+                  <ingredients>
+                    <li>
+                      <filter>
+                        <thingDefs>
+                          <li>LTS_SpacerSkillChip_Animals</li>
+                        </thingDefs>
+                      </filter>
+                      <count>1</count>
+                    </li>
+                  </ingredients>
+                  <fixedIngredientFilter>
+                    <thingDefs>
+                      <li>LTS_SpacerSkillChip_Animals</li>
+                    </thingDefs>
+                  </fixedIngredientFilter>
+                  <recipeUsers>
+                    <li>Human</li>
+                    <li MayRequire="ludeon.rimworld.anomaly">CreepJoiner</li>
+                  </recipeUsers>
+                </RecipeDef>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
 </Patch>

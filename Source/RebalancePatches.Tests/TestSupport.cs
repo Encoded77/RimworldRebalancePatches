@@ -35,6 +35,7 @@ namespace RebalancePatches.Tests
         public const string VFEPirates = "oskarpotocki.vfe.pirates";
         public const string VFEEmpire = "oskarpotocki.vfe.empire";
         public const string VFEInsectoids2 = "oskarpotocki.vfe.insectoid2";
+        public const string VFEDeserters = "oskarpotocki.vfe.deserters";
         public const string VWE = "vanillaexpanded.vwe";
         public const string VWECoilguns = "vanillaexpanded.vwec";
         public const string VSE = "vanillaexpanded.skills";
@@ -46,6 +47,7 @@ namespace RebalancePatches.Tests
         public const string AlphaMemes = "sarg.alphamemes";
         public const string AlphaMechs = "sarg.alphamechs";
         public const string IntegratedImplants = "lts.i";
+        public const string PsychicImplants = "cedaro.psychicimplant";
         public const string ImpactWeaponry = "detvisor.impactweaponryreloaded";
         public const string SpacerArsenal = "det.spacerarsenal";
         public const string EltexWeaponry = "zal.eltexweaponry";
@@ -54,6 +56,9 @@ namespace RebalancePatches.Tests
         public const string RimIOT = "cn.rimiot";
         public const string GiTS = "moistestwhale.gitscyberbrains";
         public const string EPOEForked = "vat.epoeforked";
+        public const string EPOEForkedRoyalty = "vat.epoeforkedroyalty";
+        public const string BigSmallFramework = "redmattis.betterprerequisites";
+        public const string EBSG = "ebsg.framework";
         public const string ReSplice = "resplice.xotr.core";
         public const string GeneExtractorTiers = "redmattis.geneextractor";
         public const string GeneNodes = "redmattis.genenodes";
@@ -91,25 +96,47 @@ namespace RebalancePatches.Tests
         public const string BSLamias = "redmattis.lamiasandothersnakes";
         public const string VREStarjack = "vanillaracesexpanded.starjack";
         public const string VREAndroid = "vanillaracesexpanded.android";
+        public const string VREAndroidConversion = "derp88.vreandroidconversion";
+        public const string YART = "seohyeon.yart";
+        public const string UshankaBioWarfare = "ushanka.biologicalwarfare";
+        public const string ADogSaid2 = "sambucher.adogsaidanimalprosthetics2";
     }
 
     internal static class Check
     {
         public static bool Ready(string settingKey, params string[] modIds)
         {
+            TestCoverage.BeginTest(CallerName(), settingKey);
+            return ReadyCore(settingKey, modIds);
+        }
+
+        private static string CallerName()
+        {
+            try
+            {
+                var frame = new System.Diagnostics.StackTrace(2, false).GetFrame(0);
+                var method = frame?.GetMethod();
+                return method == null ? "?" : $"{method.DeclaringType?.Name}.{method.Name}";
+            }
+            catch { return "?"; }
+        }
+
+        private static bool ReadyCore(string settingKey, string[] modIds)
+        {
             foreach (string id in modIds)
             {
                 if (!ModsConfig.IsActive(id))
                 {
-                    Log.Message($"[RBP Tests] SKIP {settingKey}: mod '{id}' not active");
+                    TestCoverage.SkippedMissingMod(settingKey, id);
                     return false;
                 }
             }
             if (!SettingsRegistry.GetEffective(settingKey))
             {
-                Log.Message($"[RBP Tests] SKIP {settingKey}: toggle disabled");
+                TestCoverage.SkippedToggleOff(settingKey);
                 return false;
             }
+            TestCoverage.Ran(settingKey);
             return true;
         }
 
@@ -119,13 +146,6 @@ namespace RebalancePatches.Tests
                 True(DefDatabase<GeneDef>.GetNamedSilentFail(name) == null, $"{name} still present");
         }
 
-        /// <summary>
-        /// A ThingDef we handed to Cherry Picker is unobtainable. Unlike a GeneDef, Cherry Picker
-        /// never calls DefDatabase&lt;ThingDef&gt;.Remove - deleting a ThingDef would break saves
-        /// that reference one - so it neuters the def in place instead. Assert what it actually
-        /// does: no market value, untradeable, out of every category and reward table, and not
-        /// craftable at any bench. Asserting absence here would always fail.
-        /// </summary>
         public static void ThingUnobtainable(string name)
         {
             ThingDef def = DefDatabase<ThingDef>.GetNamedSilentFail(name);
@@ -153,17 +173,11 @@ namespace RebalancePatches.Tests
         {
             T def = DefDatabase<T>.GetNamedSilentFail(defName);
             if (def == null)
-                throw new Exception($"{typeof(T).Name} '{defName}' not found - target mod renamed or removed it");
+                throw Fail($"FAILED: {typeof(T).Name} '{defName}' not found - target mod renamed or removed it, " +
+                    "or one of our own patches deleted it");
             return def;
         }
 
-        /// <summary>
-        /// A def one of our patches targets that is allowed to be missing, logging WHY it is
-        /// missing. Two absences are healthy - a def we removed ourselves, and a def behind an
-        /// addon the user did not subscribe to - and one is a defect: the def was renamed or
-        /// dropped upstream and our patch now does nothing. Only the last is logged as a warning.
-        /// Pass <paramref name="ownerMod"/> for defs that load only with an optional addon.
-        /// </summary>
         public static T Optional<T>(string defName, string settingKey, string ownerMod = null) where T : Def
         {
             T def = DefDatabase<T>.GetNamedSilentFail(defName);
@@ -198,16 +212,43 @@ namespace RebalancePatches.Tests
             return def;
         }
 
+        private static Exception Fail(string message)
+        {
+            TestCoverage.Failed(message);
+            return new Exception(message);
+        }
+
+        public static bool Soft(bool condition, string because)
+        {
+            TestCoverage.Asserted();
+            if (!condition)
+                TestCoverage.Failed("FAILED: " + because);
+            return condition;
+        }
+
+        /// <summary>Context recorded against this test, surfaced only if it fails.</summary>
+        public static void Note(string message) => TestCoverage.Note(message);
+
+        public static void SoftResult()
+        {
+            TestCoverage.SoftResultCalled();
+            int count = TestCoverage.FailureCount();
+            if (count > 0)
+                throw new Exception($"FAILED: {count} problem(s) - see TestCoverage.txt for the full list");
+        }
+
         public static void True(bool condition, string because)
         {
+            TestCoverage.Asserted();
             if (!condition)
-                throw new Exception("FAILED: " + because);
+                throw Fail("FAILED: " + because);
         }
 
         public static void Eq(object actual, object expected, string what)
         {
+            TestCoverage.Asserted();
             if (!Equals(actual, expected))
-                throw new Exception($"FAILED: {what}: expected '{expected ?? "null"}', got '{actual ?? "null"}'");
+                throw Fail($"FAILED: {what}: expected '{expected ?? "null"}', got '{actual ?? "null"}'");
         }
 
         public static object Field(object obj, string name)
@@ -302,10 +343,6 @@ namespace RebalancePatches.Tests
             return 0f;
         }
 
-        /// <summary>
-        /// What the game actually leaves for baseliners: PawnGenerator appends Baseliner at
-        /// 1 - sum only while that is positive, so a roster summing past 1.0 rolls none at all.
-        /// </summary>
         public static float BaselinerShare(FactionDef faction) =>
             faction.xenotypeSet?.BaselinerChance ?? 1f;
 

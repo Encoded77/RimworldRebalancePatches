@@ -1,0 +1,1426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_StealthSystem"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_StealthSystem"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_StealthSystem"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_StealthSystem"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_StealthSystem"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_StealthSystem</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_StealthSystem"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_StealthSystem</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallStealthSystem"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallStealthSystem"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallStealthSystem"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="DeacidifierMembrane"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="DeacidifierMembrane"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="DeacidifierMembrane"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="DeacidifierMembrane"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="DeacidifierMembrane"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>2</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>DeacidifierMembrane</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="DeacidifierMembrane"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>2</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>DeacidifierMembrane</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="InstallDeacidifierMembrane"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="InstallDeacidifierMembrane"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="InstallDeacidifierMembrane"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="BiochameleonDevice"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="BiochameleonDevice"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="BiochameleonDevice"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="BiochameleonDevice"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="BiochameleonDevice"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>BiochameleonDevice</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="BiochameleonDevice"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>BiochameleonDevice</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="InstallBiochameleonDevice"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="InstallBiochameleonDevice"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="InstallBiochameleonDevice"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_EmergencyShield"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_EmergencyShield"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_EmergencyShield"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_EmergencyShield"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_EmergencyShield"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>2</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_EmergencyShield</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_EmergencyShield"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>2</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_EmergencyShield</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallEmergencyShield"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallEmergencyShield"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallEmergencyShield"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_EmergencyVacseal"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_EmergencyVacseal"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_EmergencyVacseal"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_EmergencyVacseal"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_EmergencyVacseal"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>2</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_EmergencyVacseal</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_EmergencyVacseal"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>2</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_EmergencyVacseal</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallEmergencyVacseal"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallEmergencyVacseal"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallEmergencyVacseal"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_ShieldImplant"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_ShieldImplant"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_ShieldImplant"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_ShieldImplant"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_ShieldImplant"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>2</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_ShieldImplant</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_ShieldImplant"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>2</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_ShieldImplant</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallShieldImplant"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallShieldImplant"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallShieldImplant"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_FireSupressionSystem"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_FireSupressionSystem"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_FireSupressionSystem"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_FireSupressionSystem"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_FireSupressionSystem"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_FireSupressionSystem</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_FireSupressionSystem"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_FireSupressionSystem</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallFireSupressionSystem"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallFireSupressionSystem"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallFireSupressionSystem"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="CranialInsulation"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="CranialInsulation"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="CranialInsulation"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="CranialInsulation"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="CranialInsulation"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>CranialInsulation</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="CranialInsulation"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>CranialInsulation</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="InstallCranialInsulation"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="InstallCranialInsulation"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="InstallCranialInsulation"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="SkeletalBracing"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="SkeletalBracing"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="SkeletalBracing"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="SkeletalBracing"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="SkeletalBracing"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>2</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>SkeletalBracing</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="SkeletalBracing"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>2</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>SkeletalBracing</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="InstallSkeletalBracing"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="InstallSkeletalBracing"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="InstallSkeletalBracing"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_SubdermalArmour"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_SubdermalArmour"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_SubdermalArmour"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_SubdermalArmour"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_SubdermalArmour"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>2</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_SubdermalArmour</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_SubdermalArmour"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>2</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_SubdermalArmour</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallSubdermalArmour"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallSubdermalArmour"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallSubdermalArmour"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_PrestigeSubdermalArmour"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_PrestigeSubdermalArmour"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_PrestigeSubdermalArmour"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_PrestigeSubdermalArmour"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_PrestigeSubdermalArmour"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>2</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_PrestigeSubdermalArmour</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_PrestigeSubdermalArmour"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>2</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_PrestigeSubdermalArmour</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallPrestigeSubdermalArmour"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallPrestigeSubdermalArmour"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallPrestigeSubdermalArmour"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="InternalClimateControlImplant"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="InternalClimateControlImplant"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="InternalClimateControlImplant"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="InternalClimateControlImplant"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="InternalClimateControlImplant"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>InternalClimateControlImplant</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="InternalClimateControlImplant"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>InternalClimateControlImplant</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="InstallInternalClimateControlImplant"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="InstallInternalClimateControlImplant"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="InstallInternalClimateControlImplant"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="CryptoWakeImplant"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="CryptoWakeImplant"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="CryptoWakeImplant"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="CryptoWakeImplant"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="CryptoWakeImplant"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>CryptoWakeImplant</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="CryptoWakeImplant"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>CryptoWakeImplant</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="InstallCryptoWakeImplant"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="InstallCryptoWakeImplant"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="InstallCryptoWakeImplant"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="BiotunerImplant"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="BiotunerImplant"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="BiotunerImplant"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="BiotunerImplant"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="BiotunerImplant"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>BiotunerImplant</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="BiotunerImplant"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>BiotunerImplant</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="InstallBiotunerImplant"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="InstallBiotunerImplant"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="InstallBiotunerImplant"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_CellularAdapter"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_CellularAdapter"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_CellularAdapter"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_CellularAdapter"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_CellularAdapter"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_CellularAdapter</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_CellularAdapter"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_CellularAdapter</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallCellularAdapter"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallCellularAdapter"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallCellularAdapter"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_CryptoCoagulator"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_CryptoCoagulator"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_CryptoCoagulator"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_CryptoCoagulator"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_CryptoCoagulator"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_CryptoCoagulator</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_CryptoCoagulator"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_CryptoCoagulator</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallCryptoCoagulator"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallCryptoCoagulator"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallCryptoCoagulator"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_Gravlifter"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_Gravlifter"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_Gravlifter"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_Gravlifter"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_Gravlifter"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_Gravlifter</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_Gravlifter"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_Gravlifter</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallGravlifter"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallGravlifter"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallGravlifter"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_Vanguard"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_Vanguard"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_Vanguard"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_Vanguard"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_Vanguard"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_Vanguard</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_Vanguard"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_Vanguard</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallVanguard"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallVanguard"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallVanguard"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="WiredReflex"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="WiredReflex"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="WiredReflex"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="WiredReflex"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="WiredReflex"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>WiredReflex</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="WiredReflex"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>WiredReflex</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="InstallWiredReflex"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="InstallWiredReflex"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="InstallWiredReflex"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="StrengthEnhancer"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="StrengthEnhancer"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="StrengthEnhancer"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="StrengthEnhancer"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="StrengthEnhancer"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>StrengthEnhancer</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="StrengthEnhancer"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>StrengthEnhancer</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="InstallStrengthEnhancer"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="InstallStrengthEnhancer"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="InstallStrengthEnhancer"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="HyperAdrenalineGland"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="HyperAdrenalineGland"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="HyperAdrenalineGland"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="HyperAdrenalineGland"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="HyperAdrenalineGland"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>HyperAdrenalineGland</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="HyperAdrenalineGland"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>HyperAdrenalineGland</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="InstallHyperAdrenalineGland"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="InstallHyperAdrenalineGland"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="InstallHyperAdrenalineGland"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_JotunnskinGland"]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_JotunnskinGland"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    <match Class="PatchOperationRemove">
+                      <xpath>Defs/ThingDef[defName="LTS_JotunnskinGland"]/comps/li[@Class="CompProperties_Usable"]</xpath>
+                    </match>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="LTS_JotunnskinGland"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_JotunnskinGland"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_TorsoSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>LTS_JotunnskinGland</li>
+                          </hediffs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="LTS_JotunnskinGland"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_TorsoSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>LTS_JotunnskinGland</li>
+                            </hediffs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="LTS_InstallJotunnskinGland"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallJotunnskinGland"]/workerClass</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="LTS_InstallJotunnskinGland"]</xpath>
+                      <value>
+                        <workerClass>RebalancePatches.Recipe_InstallModule</workerClass>
+                      </value>
+                    </nomatch>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

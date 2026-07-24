@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.tiers</settingKey>
+    <operations>
+
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/HediffDef[defName="BionicSpine"]/addedPartProps</xpath>
+        <value><partEfficiency>1.15</partEfficiency></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="BionicSpine"]/costList/Plasteel</xpath>
+        <value><Plasteel>105</Plasteel></value>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vat.epoeforked</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="SimpleSpine"]/addedPartProps/partEfficiency</xpath>
+          <value><partEfficiency>0.80</partEfficiency></value>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="AdvancedBionicSpine"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="AdvancedBionicSpine"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.35</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AdvancedBionicSpine"]/costList/Plasteel</xpath>
+              <value><Plasteel>155</Plasteel></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="CreateAdvancedBionicSpine"]/ingredients/li[filter/thingDefs/li="Plasteel"]/count</xpath>
+              <value><count>50</count></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="LTS_ArchotechSpine"]</xpath>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/HediffDef[defName="LTS_ArchotechSpine"]/addedPartProps/partEfficiency</xpath>
+          <value><partEfficiency>1.50</partEfficiency></value>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="LTS_ModularBionicSpine"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/HediffDef[defName="LTS_ModularBionicSpine"]/addedPartProps</xpath>
+              <value><partEfficiency>1.15</partEfficiency></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/HediffDef[defName="LTS_ModularArchotechSpine"]/addedPartProps/partEfficiency</xpath>
+              <value><partEfficiency>1.50</partEfficiency></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

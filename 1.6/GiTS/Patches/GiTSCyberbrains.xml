@@ -34,93 +34,6 @@
         <xpath>Defs/HediffDef[defName="gitsHADESHediff"]/stages/li[statOffsets/MentalBreakThreshold]/statOffsets/MentalBreakThreshold</xpath>
         <value><MentalBreakThreshold>0.40</MentalBreakThreshold></value>
       </li>
-      <li Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="gitsPX7Cyberbrain"]/description</xpath>
-        <value>
-          <description><![CDATA[This prototype Poseidon PX-7 cyberbrain is an extreme upgrade that enhances a user's ability to work on just about anything.
-
-The cyberization method has micromachines inserted into the brain, integrating with larger-scale microcircuitry and creating interfaces with the brain. The resulting tissue is a hybridization of organic nervous tissue and cybernetic components and is superior to the original in all aspects.
-
-With less than 5% of original brain matter remaining for ghost retention, drawbacks have begun to present themselves due to cyberization. The user has started to present perversely heightened emotions as their brain is less capable of dampening such, showing signs of possible psychological disorders.
-
-
-<color=#e6e6e6ff><size=11.8>Poseidon PX-7 modifiers:</size><size=10.2>
-
-   Part Efficiency: +50%
-   Consciousness: +50%
-   Manipulation: +25%
-   Moving: +10%
-   Sight: +25%
-   Hearing: +25%
-   Learning Speed: +100%
-   General Labor Speed: +50%
-   Construction Speed: +65%
-   Mining Speed: +50%
-   Cooking Speed: +65%
-   Smoothing Speed: +90%
-   Drug Production Speed: +65%
-   Smelting Speed: +60%
-   Butcher Speed: +100%
-   Butcher Efficiency: +80%
-   Plant Work Speed: +50%
-   Plant Harvest Yield: +80%
-   Drug Harvest Yield: +80%
-   Pruning Speed: +50%
-   Food Poison Chance: -25%
-   Tending Speed: +20%
-   Operation Speed: +35%
-   Tending Quality: +10%
-   Surgery Success Chance: +20%
-   Reading Speed: +35%
-   Research Speed: +50%
-   Social Impact: +18%
-   Negotiation Ability: +35%
-   Trade Price Improvement: +18%
-   Arrest Success Chance: +10%
-   Hacking Speed: +200%
-   Move Speed: +10%
-
-   Mental Break Threshold: +40%
-   Social Fight Chance: +400%
-</size></color>]]></description>
-        </value>
-      </li>
-      <li Class="PatchOperationReplace">
-        <xpath>Defs/ThingDef[defName="gitsHADESCyberbrain"]/description</xpath>
-        <value>
-          <description><![CDATA[This Locus-Solus HADES cyberbrain is an extreme upgrade that can be considered to be the ultimate cyberbrain for enhancing a user's combat abilities.
-
-The cyberization method has micromachines inserted into the brain, integrating with larger-scale microcircuitry and creating interfaces with the brain. The resulting tissue is a hybridization of organic nervous tissue and cybernetic components and is superior to the original in all aspects.
-
-With less than 5% of original brain matter remaining for ghost retention, drawbacks have begun to present themselves due to cyberization. The user has started to present perversely heightened emotions as their brain is less capable of dampening such, showing signs of possible psychological disorders.
-
-
-<color=#e6e6e6ff><size=11.8>Locus-Solus HADES modifiers:</size><size=10.2>
-
-   Part Efficiency: +50%
-   Consciousness: +50%
-   Manipulation: +25%
-   Moving: +10%
-   Sight: +25%
-   Hearing: +25%
-   Learning Speed: +100%
-   Research Speed: +20%
-   Shooting Accuracy: +12
-   Aiming Delay: -65%
-   Ranged Cooldown: -65%
-   Mortar Miss Radius: -20%
-   Melee Hit Chance: +12
-   Melee Dodge Chance: +18
-   Hacking Speed: +120%
-   Move Speed: +50%
-   Melee Cooldown: -25%
-   Melee Damage: +35%
-
-   Mental Break Threshold: +40%
-   Social Fight Chance: +400%
-</size></color>]]></description>
-        </value>
-      </li>
     </operations>
   </Operation>
 
@@ -226,6 +139,278 @@ With less than 5% of original brain matter remaining for ghost retention, drawba
               <xpath>Defs/ResearchProjectDef[defName="gitsResearchBrainCyberization"]</xpath>
             </li>
           </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainBasicBase"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainBasicBase"]/comps</xpath>
+            <value>
+              <li Class="EBSGFramework.HediffCompProperties_Modular">
+                <slots>
+                  <li>
+                    <slotID>RBP_CortexSlot</slotID>
+                    <slotName>cortex module slot</slotName>
+                    <capacity>1</capacity>
+                  </li>
+                </slots>
+              </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainBasicBase"]</xpath>
+            <value>
+              <comps>
+                <li Class="EBSGFramework.HediffCompProperties_Modular">
+                  <slots>
+                    <li>
+                      <slotID>RBP_CortexSlot</slotID>
+                      <slotName>cortex module slot</slotName>
+                      <capacity>1</capacity>
+                    </li>
+                  </slots>
+                </li>
+              </comps>
+            </value>
+          </nomatch>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainEnhancedBase"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainEnhancedBase"]/comps</xpath>
+            <value>
+              <li Class="EBSGFramework.HediffCompProperties_Modular">
+                <slots>
+                  <li>
+                    <slotID>RBP_CortexSlot</slotID>
+                    <slotName>cortex module slot</slotName>
+                    <capacity>2</capacity>
+                  </li>
+                </slots>
+              </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainEnhancedBase"]</xpath>
+            <value>
+              <comps>
+                <li Class="EBSGFramework.HediffCompProperties_Modular">
+                  <slots>
+                    <li>
+                      <slotID>RBP_CortexSlot</slotID>
+                      <slotName>cortex module slot</slotName>
+                      <capacity>2</capacity>
+                    </li>
+                  </slots>
+                </li>
+              </comps>
+            </value>
+          </nomatch>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainSpecWorkBase"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainSpecWorkBase"]/comps</xpath>
+            <value>
+              <li Class="EBSGFramework.HediffCompProperties_Modular">
+                <slots>
+                  <li>
+                    <slotID>RBP_CortexSlot</slotID>
+                    <slotName>cortex module slot</slotName>
+                    <capacity>3</capacity>
+                  </li>
+                </slots>
+              </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainSpecWorkBase"]</xpath>
+            <value>
+              <comps>
+                <li Class="EBSGFramework.HediffCompProperties_Modular">
+                  <slots>
+                    <li>
+                      <slotID>RBP_CortexSlot</slotID>
+                      <slotName>cortex module slot</slotName>
+                      <capacity>3</capacity>
+                    </li>
+                  </slots>
+                </li>
+              </comps>
+            </value>
+          </nomatch>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainSpecCombatBase"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainSpecCombatBase"]/comps</xpath>
+            <value>
+              <li Class="EBSGFramework.HediffCompProperties_Modular">
+                <slots>
+                  <li>
+                    <slotID>RBP_CortexSlot</slotID>
+                    <slotName>cortex module slot</slotName>
+                    <capacity>3</capacity>
+                  </li>
+                </slots>
+              </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainSpecCombatBase"]</xpath>
+            <value>
+              <comps>
+                <li Class="EBSGFramework.HediffCompProperties_Modular">
+                  <slots>
+                    <li>
+                      <slotID>RBP_CortexSlot</slotID>
+                      <slotName>cortex module slot</slotName>
+                      <capacity>3</capacity>
+                    </li>
+                  </slots>
+                </li>
+              </comps>
+            </value>
+          </nomatch>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainAdvWorkBase"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainAdvWorkBase"]/comps</xpath>
+            <value>
+              <li Class="EBSGFramework.HediffCompProperties_Modular">
+                <slots>
+                  <li>
+                    <slotID>RBP_CortexSlot</slotID>
+                    <slotName>cortex module slot</slotName>
+                    <capacity>4</capacity>
+                  </li>
+                </slots>
+              </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainAdvWorkBase"]</xpath>
+            <value>
+              <comps>
+                <li Class="EBSGFramework.HediffCompProperties_Modular">
+                  <slots>
+                    <li>
+                      <slotID>RBP_CortexSlot</slotID>
+                      <slotName>cortex module slot</slotName>
+                      <capacity>4</capacity>
+                    </li>
+                  </slots>
+                </li>
+              </comps>
+            </value>
+          </nomatch>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainAdvCombatBase"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainAdvCombatBase"]/comps</xpath>
+            <value>
+              <li Class="EBSGFramework.HediffCompProperties_Modular">
+                <slots>
+                  <li>
+                    <slotID>RBP_CortexSlot</slotID>
+                    <slotName>cortex module slot</slotName>
+                    <capacity>4</capacity>
+                  </li>
+                </slots>
+              </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainAdvCombatBase"]</xpath>
+            <value>
+              <comps>
+                <li Class="EBSGFramework.HediffCompProperties_Modular">
+                  <slots>
+                    <li>
+                      <slotID>RBP_CortexSlot</slotID>
+                      <slotName>cortex module slot</slotName>
+                      <capacity>4</capacity>
+                    </li>
+                  </slots>
+                </li>
+              </comps>
+            </value>
+          </nomatch>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainExtremeBase"]/comps</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainExtremeBase"]/comps</xpath>
+            <value>
+              <li Class="EBSGFramework.HediffCompProperties_Modular">
+                <slots>
+                  <li>
+                    <slotID>RBP_CortexSlot</slotID>
+                    <slotName>cortex module slot</slotName>
+                    <capacity>5</capacity>
+                  </li>
+                </slots>
+              </li>
+            </value>
+          </match>
+          <nomatch Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainExtremeBase"]</xpath>
+            <value>
+              <comps>
+                <li Class="EBSGFramework.HediffCompProperties_Modular">
+                  <slots>
+                    <li>
+                      <slotID>RBP_CortexSlot</slotID>
+                      <slotName>cortex module slot</slotName>
+                      <capacity>5</capacity>
+                    </li>
+                  </slots>
+                </li>
+              </comps>
+            </value>
+          </nomatch>
         </match>
       </li>
     </operations>

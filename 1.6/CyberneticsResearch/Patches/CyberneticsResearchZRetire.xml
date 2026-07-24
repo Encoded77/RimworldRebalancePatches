@@ -1,0 +1,563 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.retire</settingKey>
+    <operations>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>vat.epoeforked</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="SyntheticSkin" or defName="EPIA_SyntheticBone" or defName="NeuromuscularFramework"]/recipeMaker/researchPrerequisite[text()="EPOE_SyntheticRepair"]</xpath>
+            <value><researchPrerequisite>RBP_CybBionicOrgans</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>vat.epoeforked</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="NeurocureFramework"]/recipeMaker/researchPrerequisite[text()="EPOE_NeurologicalTreatment"]</xpath>
+            <value><researchPrerequisite>RBP_CybBionicOrgans</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/RecipeDef[@Name="LTS_SurgeryMechanical"]/researchPrerequisite[text()="LTS_ModularBionics"]</xpath>
+            <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/RecipeDef[@Name="SurgeryInstallImplantedExplosiveBase"]/researchPrerequisite[text()="I_ImplantedExplosives"]</xpath>
+            <value><researchPrerequisite>RBP_CybSurgicalImplantation</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>moistestwhale.gitscyberbrains</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="gitsResearchImmunityNanites" or defName="gitsResearchBrainCyberization"]/prerequisites/li[text()="gitsResearchNaniteGrafting"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>moistestwhale.gitscyberbrains</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="gitsResearchBrainCyberization"]/prerequisites/li[text()="BrainSurgery"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>moistestwhale.gitscyberbrains</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="gitsResearchCyberInterface"]/prerequisites/li[text()="gitsResearchMicromachines"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <!-- Body-trunk repoints -->
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>sambucher.adogsaidanimalprosthetics2</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[@Name="BodyPartSurrogateAnimalBase"]/recipeMaker/researchPrerequisite[text()="SurrogateOrgans"]</xpath>
+            <value><researchPrerequisite>RBP_CybSurrogateOrgans</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>sambucher.adogsaidanimalprosthetics2</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[@Name="BodyPartSyntheticAnimalBase"]/recipeMaker/researchPrerequisite[text()="SyntheticOrgans"]</xpath>
+            <value><researchPrerequisite>RBP_CybBionicOrgans</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>vat.epoeforked</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[@Name="EPIAGlitterworldImplantBase"]/recipeMaker/researchPrerequisite[text()="EPOE_Glitterworld_Implants"]</xpath>
+            <value><researchPrerequisite>RBP_CybAdvancedSenses</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>vat.epoeforkedroyalty</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/RecipeDef[defName="EPIA_UpgradeDetoxifierSyntheticLiver" or defName="EPIA_UpgradeImmunoenhancerSyntheticKidney"]/researchPrerequisite[text()="EPOE_SyntheticOrgansIntegration"]</xpath>
+            <value><researchPrerequisite>RBP_CybAdvancedOrgans</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="LTS_FaceplateArachnid"]/recipeMaker/researchPrerequisite[text()="LTS_BionicFaceplates"]</xpath>
+            <value><researchPrerequisite>RBP_CybBionicSenses</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="LTS_GourmandTongue"]/recipeMaker/researchPrerequisite[text()="MolecularAnalysis"]</xpath>
+            <value><researchPrerequisite>RBP_CybBionicSenses</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <!-- Module-trunk repoints -->
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[@Name="LTS_BaseModuleItem"]/recipeMaker/researchPrerequisite[text()="LTS_ModularBionics"]</xpath>
+            <value><researchPrerequisite>RBP_CybModularCybernetics</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[@Name="BodyPartSangophageBase"]/recipeMaker/researchPrerequisite[text()="I_SanguophageImplants"]</xpath>
+            <value><researchPrerequisite>RBP_CybMetabolicSystems</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="LTS_SubdermalHelmet" or defName="LTS_PrestigeSubdermalHelmet" or defName="LTS_TargeterImplant"]/recipeMaker/researchPrerequisite[text()="I_SubdermalArmour"]</xpath>
+            <value><researchPrerequisite>RBP_CybDefensiveSystems</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="LTS_EmergencyDisruptorFlare"]/recipeMaker/researchPrerequisites/li[text()="LTS_EmergencyImplants"]</xpath>
+            <value><li>RBP_CybDefensiveSystems</li></value>
+          </match>
+        </match>
+      </li>
+
+      <!-- The lacto-stimulator, alongside the cryptowake implant the module trunk already moved. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="LactoStimulator"]/recipeMaker/researchPrerequisite[text()="I_BasicHormonalImplants"]</xpath>
+            <value><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <!-- The three captive-control implants. Support hardware with no lane of its own. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="LTS_NeuralStunner" or defName="LTS_BrainDetonator" or defName="LTS_Voicelock"]/recipeMaker/researchPrerequisite[text()="I_CaptiveControl"]</xpath>
+            <value><researchPrerequisite>RBP_CybUtilitySystems</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="LTS_ShoulderTurret"]/recipeMaker/researchPrerequisite[text()="I_ShoulderTurrets"]</xpath>
+            <value><researchPrerequisite>RBP_CybIntegralRanged</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="LTS_ShoulderChargeTurret" or defName="LTS_ShoulderBeamTurret" or defName="LTS_ShoulderRocketPod" or defName="LTS_ShoulderMortar"]/recipeMaker/researchPrerequisites/li[text()="I_ShoulderTurrets"]</xpath>
+            <value><li>RBP_CybIntegralRanged</li></value>
+          </match>
+        </match>
+      </li>
+
+      <!-- Cyberbrain-trunk repoints -->
+
+      <!-- The comms implant, alongside the neurostreamer the cyberbrain trunk already moved. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBasicCyberbrain"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/ThingDef[defName="LTS_CommsImplant"]/recipeMaker/researchPrerequisite[text()="I_TelecommunicationImplants"]</xpath>
+            <value><researchPrerequisite>RBP_CybNeuralWellBeing</researchPrerequisite></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBasicCyberbrain"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>vanillaexpanded.achievements</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/AchievementsExpanded.AchievementDef[defName="gitsAchieveJapanMiracle"]/tracker/def[text()="gitsResearchMicromachines"]</xpath>
+            <value><def>RBP_CybNeuralInterface</def></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBasicCyberbrain"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>vanillaexpanded.achievements</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/AchievementsExpanded.AchievementDef[defName="gitsAchieveManMeetsMachine"]/tracker/def[text()="gitsResearchBasicCyberization" or text()="gitsResearchBrainCyberization"]</xpath>
+            <value><def>RBP_CybBasicCyberbrain</def></value>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybAegisHADES"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>vanillaexpanded.achievements</li></mods>
+          <match Class="PatchOperationReplace">
+            <xpath>Defs/AchievementsExpanded.AchievementDef[defName="gitsAchieveHowFarGone"]/tracker/def[text()="gitsResearchExtremeCyberization"]</xpath>
+            <value><def>RBP_CybAegisHADES</def></value>
+          </match>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.retire</settingKey>
+    <operations>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>vat.epoeforked</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="BrainSurgery" or defName="EPOE_AIPersonaCoreImplant"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybSurgicalImplantation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="I_ExtraArms" or defName="I_ImplantedExplosives"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <!-- Body trunk -->
+
+      <!-- EPOE-Forked's own organ, limb and rib line. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>vat.epoeforked</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="SurrogateOrgans" or defName="SyntheticOrgans" or defName="AdvancedBionics" or defName="RibReplacements" or defName="EPOE_OrganicOptimizer" or defName="EPOE_SyntheticRepair" or defName="EPOE_NeurologicalTreatment" or defName="EPOE_MAAIChip"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <!-- EPOE-Forked's Royalty add-on. All three are techprinted; see the file header note. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>vat.epoeforkedroyalty</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="EPOE_AdvancedSpecializedLimbs" or defName="EPOE_AdvancedCompactWeaponry" or defName="EPOE_SyntheticOrgansIntegration"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <!-- Vanilla Royalty implant projects whose content is entirely body-trunk. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>ludeon.rimworld.royalty</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="SpecializedLimbs" or defName="CompactWeaponry" or defName="ArtificialMetabolism" or defName="SkinHardening" or defName="HealingFactors" or defName="FleshShaping"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <!-- Integrated Implants' faceplate project - its one item lands on a body node. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="LTS_BionicFaceplates"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <!-- Module trunk -->
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="I_BasicImplants" or defName="I_BasicHormonalImplants" or defName="I_SanguophageImplants" or defName="I_SubdermalArmour" or defName="I_ShoulderTurrets" or defName="I_CranialInsulation" or defName="I_CaptiveControl" or defName="I_Biomimicry" or defName="I_SkillChipPort" or defName="LTS_NeuralHyperacceleration" or defName="LTS_EmergencyImplants" or defName="LTS_FieldManipulationImplants" or defName="LTS_ModularBionics" or defName="LTS_ModularBionicWeaponry" or defName="LTS_ModularBionicWeaponryUltra" or defName="LTS_ModularBionicOptics" or defName="LTS_ModularBionicArms" or defName="LTS_ModularBionicLegs"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <!-- Vanilla Royalty: circadian influence splits three implants onto utility systems. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>ludeon.rimworld.royalty</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="CircadianInfluence"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <!-- Altered Carbon 2: the Rogian arm blade is an integral melee module. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>hlx.ultratechalteredcarbon</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="AC_RogianArmaments"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <!-- Body AND module trunks: content on both sides -->
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+          <match Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>lts.i</li></mods>
+            <match Class="PatchOperationRemove">
+              <xpath>Defs/ResearchProjectDef[defName="I_BionicTails"]</xpath>
+            </match>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+          <match Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationRemove">
+              <xpath>Defs/ResearchProjectDef[defName="VenomSynthesis"]</xpath>
+            </match>
+          </match>
+        </match>
+      </li>
+
+      <!-- Body AND cyberbrain trunks -->
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybBasicCyberbrain"]</xpath>
+          <match Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>vat.epoeforked</li></mods>
+            <match Class="PatchOperationRemove">
+              <xpath>Defs/ResearchProjectDef[defName="EPOE_Glitterworld_Implants"]</xpath>
+            </match>
+          </match>
+        </match>
+      </li>
+
+      <!-- Cyberbrain trunk -->
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBasicCyberbrain"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>hlx.ultratechalteredcarbon</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="AC_VocalSynthesis" or defName="AC_MentalFortification" or defName="AC_REMEnchanment"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBasicCyberbrain"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="I_TelecommunicationImplants"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <!-- Cyberbrain AND mind trunks -->
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBasicCyberbrain"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybEchoNeuralRegulation"]</xpath>
+          <match Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>moistestwhale.gitscyberbrains</li></mods>
+            <match Class="PatchOperationRemove">
+              <xpath>Defs/ResearchProjectDef[defName="gitsResearchMicromachines" or defName="gitsResearchNaniteGrafting" or defName="gitsResearchCyberNetIntegration" or defName="gitsResearchBasicCyberization" or defName="gitsResearchEnhancedCyberization" or defName="gitsResearchSpecializedCyberization" or defName="gitsResearchAdvSpecializedCyberization" or defName="gitsResearchCombatCyberization" or defName="gitsResearchExtremeCyberization"]</xpath>
+            </match>
+          </match>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBasicCyberbrain"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybEchoNeuralRegulation"]</xpath>
+          <match Class="RebalancePatches.PatchOperationFindModById">
+            <mods><li>ludeon.rimworld.royalty</li></mods>
+            <match Class="PatchOperationRemove">
+              <xpath>Defs/ResearchProjectDef[defName="NeuralComputation" or defName="BrainWiring"]</xpath>
+            </match>
+          </match>
+        </match>
+      </li>
+
+      <!-- Mind trunk -->
+
+      <!-- Eltex augmentation's two items are psychic hardware and moved with the Echo lane. -->
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybEchoNeuralRegulation"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods><li>lts.i</li></mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ResearchProjectDef[defName="I_EltexAugmentation"]</xpath>
+          </match>
+        </match>
+      </li>
+
+      <!-- Body AND module AND mind trunks -->
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_CybBionicOrgans"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybModularCybernetics"]</xpath>
+          <match Class="PatchOperationConditional">
+            <xpath>Defs/ResearchProjectDef[defName="RBP_CybEchoNeuralRegulation"]</xpath>
+            <match Class="RebalancePatches.PatchOperationFindModById">
+              <mods><li>ludeon.rimworld.royalty</li></mods>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/ResearchProjectDef[defName="MolecularAnalysis"]</xpath>
+              </match>
+            </match>
+          </match>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.retire</settingKey>
+    <operations>
+      <li Class="PatchOperationRemove">
+        <xpath>//researchPrerequisites/li[text()="SurrogateOrgans" or text()="SyntheticOrgans" or text()="AdvancedBionics" or text()="RibReplacements" or text()="EPOE_OrganicOptimizer" or text()="EPOE_Glitterworld_Implants" or text()="EPOE_MAAIChip" or text()="EPOE_SyntheticRepair" or text()="EPOE_NeurologicalTreatment" or text()="EPOE_AIPersonaCoreImplant" or text()="BrainSurgery" or text()="EPOE_AdvancedSpecializedLimbs" or text()="EPOE_AdvancedCompactWeaponry" or text()="EPOE_SyntheticOrgansIntegration" or text()="gitsResearchMicromachines" or text()="gitsResearchNaniteGrafting" or text()="gitsResearchCyberNetIntegration" or text()="gitsResearchBasicCyberization" or text()="gitsResearchEnhancedCyberization" or text()="gitsResearchSpecializedCyberization" or text()="gitsResearchAdvSpecializedCyberization" or text()="gitsResearchCombatCyberization" or text()="gitsResearchExtremeCyberization" or text()="I_BasicImplants" or text()="I_BasicHormonalImplants" or text()="I_SanguophageImplants" or text()="I_ExtraArms" or text()="I_ImplantedExplosives" or text()="I_SubdermalArmour" or text()="I_ShoulderTurrets" or text()="I_CranialInsulation" or text()="I_BionicTails" or text()="I_EltexAugmentation" or text()="I_CaptiveControl" or text()="I_Biomimicry" or text()="I_SkillChipPort" or text()="I_TelecommunicationImplants" or text()="LTS_BionicFaceplates" or text()="LTS_NeuralHyperacceleration" or text()="LTS_EmergencyImplants" or text()="LTS_FieldManipulationImplants" or text()="LTS_ModularBionics" or text()="LTS_ModularBionicWeaponry" or text()="LTS_ModularBionicWeaponryUltra" or text()="LTS_ModularBionicOptics" or text()="LTS_ModularBionicArms" or text()="LTS_ModularBionicLegs" or text()="NeuralComputation" or text()="BrainWiring" or text()="MolecularAnalysis" or text()="CircadianInfluence" or text()="ArtificialMetabolism" or text()="FleshShaping" or text()="HealingFactors" or text()="SkinHardening" or text()="SpecializedLimbs" or text()="CompactWeaponry" or text()="VenomSynthesis" or text()="AC_VocalSynthesis" or text()="AC_MentalFortification" or text()="AC_REMEnchanment" or text()="AC_RogianArmaments"]</xpath>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>//prerequisites/li[text()="SurrogateOrgans" or text()="SyntheticOrgans" or text()="AdvancedBionics" or text()="RibReplacements" or text()="EPOE_OrganicOptimizer" or text()="EPOE_Glitterworld_Implants" or text()="EPOE_MAAIChip" or text()="EPOE_SyntheticRepair" or text()="EPOE_NeurologicalTreatment" or text()="EPOE_AIPersonaCoreImplant" or text()="BrainSurgery" or text()="EPOE_AdvancedSpecializedLimbs" or text()="EPOE_AdvancedCompactWeaponry" or text()="EPOE_SyntheticOrgansIntegration" or text()="gitsResearchMicromachines" or text()="gitsResearchNaniteGrafting" or text()="gitsResearchCyberNetIntegration" or text()="gitsResearchBasicCyberization" or text()="gitsResearchEnhancedCyberization" or text()="gitsResearchSpecializedCyberization" or text()="gitsResearchAdvSpecializedCyberization" or text()="gitsResearchCombatCyberization" or text()="gitsResearchExtremeCyberization" or text()="I_BasicImplants" or text()="I_BasicHormonalImplants" or text()="I_SanguophageImplants" or text()="I_ExtraArms" or text()="I_ImplantedExplosives" or text()="I_SubdermalArmour" or text()="I_ShoulderTurrets" or text()="I_CranialInsulation" or text()="I_BionicTails" or text()="I_EltexAugmentation" or text()="I_CaptiveControl" or text()="I_Biomimicry" or text()="I_SkillChipPort" or text()="I_TelecommunicationImplants" or text()="LTS_BionicFaceplates" or text()="LTS_NeuralHyperacceleration" or text()="LTS_EmergencyImplants" or text()="LTS_FieldManipulationImplants" or text()="LTS_ModularBionics" or text()="LTS_ModularBionicWeaponry" or text()="LTS_ModularBionicWeaponryUltra" or text()="LTS_ModularBionicOptics" or text()="LTS_ModularBionicArms" or text()="LTS_ModularBionicLegs" or text()="NeuralComputation" or text()="BrainWiring" or text()="MolecularAnalysis" or text()="CircadianInfluence" or text()="ArtificialMetabolism" or text()="FleshShaping" or text()="HealingFactors" or text()="SkinHardening" or text()="SpecializedLimbs" or text()="CompactWeaponry" or text()="VenomSynthesis" or text()="AC_VocalSynthesis" or text()="AC_MentalFortification" or text()="AC_REMEnchanment" or text()="AC_RogianArmaments"]</xpath>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cyberneticsresearch.retire</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>vat.epoeforked</li></mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="Schematic"]/comps/li[@Class="CompProperties_Book"]/doers/li[@Class="BookOutcomeProperties_GainResearch"]/exclude/EPOE_AIPersonaCoreImplant</xpath>
+              <match Class="PatchOperationRemove">
+                <xpath>Defs/ThingDef[defName="Schematic"]/comps/li[@Class="CompProperties_Book"]/doers/li[@Class="BookOutcomeProperties_GainResearch"]/exclude/EPOE_AIPersonaCoreImplant</xpath>
+              </match>
+            </li>
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="Schematic"]/comps/li[@Class="CompProperties_Book"]/doers/li[@Class="BookOutcomeProperties_GainResearch"]/tabs</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="Schematic"]/comps/li[@Class="CompProperties_Book"]/doers/li[@Class="BookOutcomeProperties_GainResearch"]/tabs</xpath>
+                <value>
+                  <RBP_CyberneticsTab />
+                </value>
+              </match>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

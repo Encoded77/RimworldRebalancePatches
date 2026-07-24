@@ -106,8 +106,7 @@ InitTestScene*.unity*
 
 .vscode/
 .claude/
-Plan.md
-Todos.md
+/Local/**
 Analysis/out/
 Analysis/**/bin/
 Analysis/**/obj/

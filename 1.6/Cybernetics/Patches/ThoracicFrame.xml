@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.thoracicframe</settingKey>
+    <operations>
+
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+          <HediffDef ParentName="AddedBodyPartBase">
+            <defName>RBP_ThoracicFrameBionicHediff</defName>
+            <label>bionic thoracic frame</label>
+            <labelNoun>a bionic thoracic frame</labelNoun>
+            <description>An installed bionic thoracic frame. The natural ribcage has been replaced by a plasteel lattice with powered mounting rails and a shared power and data bus, leaving room inside the chest cavity for hardware that would otherwise have nowhere to go.</description>
+            <descriptionHyperlinks><ThingDef>RBP_ThoracicFrameBionic</ThingDef></descriptionHyperlinks>
+            <spawnThingOnRemoved>RBP_ThoracicFrameBionic</spawnThingOnRemoved>
+            <addedPartProps>
+              <solid>true</solid>
+              <partEfficiency>1.15</partEfficiency>
+              <betterThanNatural>true</betterThanNatural>
+            </addedPartProps>
+          </HediffDef>
+
+          <ThingDef ParentName="BodyPartBionicBase">
+            <defName>RBP_ThoracicFrameBionic</defName>
+            <label>bionic thoracic frame</label>
+            <description>A plasteel lattice built to replace a human ribcage. Powered mounting rails and a shared power and data bus turn the chest cavity into usable space for torso-mounted hardware. Holds up to 2 torso modules.</description>
+            <descriptionHyperlinks><RecipeDef>RBP_InstallThoracicFrameBionic</RecipeDef></descriptionHyperlinks>
+            <techLevel>Spacer</techLevel>
+            <costList>
+              <Plasteel>30</Plasteel>
+              <ComponentSpacer>6</ComponentSpacer>
+            </costList>
+            <statBases>
+              <WorkToMake>30000</WorkToMake>
+              <Mass>4</Mass>
+            </statBases>
+          </ThingDef>
+
+          <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+            <defName>RBP_InstallThoracicFrameBionic</defName>
+            <label>install bionic thoracic frame</label>
+            <description>Install a bionic thoracic frame.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_ThoracicFrameBionic</ThingDef>
+              <HediffDef>RBP_ThoracicFrameBionicHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing bionic thoracic frame.</jobString>
+            <workAmount>4000</workAmount>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_ThoracicFrameBionic</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_ThoracicFrameBionic</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+            <appliedOnFixedBodyParts>
+              <li>Ribcage</li>
+              <li MayRequire="redmattis.betterprerequisites">BS_MechanicalRibs</li>
+            </appliedOnFixedBodyParts>
+            <addsHediff>RBP_ThoracicFrameBionicHediff</addsHediff>
+          </RecipeDef>
+
+          <RecipeDef ParentName="SurgeryRemoveImplantBase">
+            <defName>RBP_RemoveThoracicFrameBionic</defName>
+            <label>remove bionic thoracic frame</label>
+            <description>Remove a bionic thoracic frame.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_ThoracicFrameBionic</ThingDef>
+              <HediffDef>RBP_ThoracicFrameBionicHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Removing bionic thoracic frame.</jobString>
+            <removesHediff>RBP_ThoracicFrameBionicHediff</removesHediff>
+          </RecipeDef>
+
+          <HediffDef ParentName="AddedBodyPartBase">
+            <defName>RBP_ThoracicFrameAdvancedHediff</defName>
+            <label>advanced thoracic frame</label>
+            <labelNoun>an advanced thoracic frame</labelNoun>
+            <description>An installed advanced thoracic frame. A self-diagnosing carbon-lattice chassis replaces the ribcage entirely, with its own coolant loop and a wider power bus than a bionic frame can carry, so heavier hardware can be mounted without starving the rest of the body.</description>
+            <descriptionHyperlinks><ThingDef>RBP_ThoracicFrameAdvanced</ThingDef></descriptionHyperlinks>
+            <spawnThingOnRemoved>RBP_ThoracicFrameAdvanced</spawnThingOnRemoved>
+            <addedPartProps>
+              <solid>true</solid>
+              <partEfficiency>1.35</partEfficiency>
+              <betterThanNatural>true</betterThanNatural>
+            </addedPartProps>
+          </HediffDef>
+
+          <ThingDef ParentName="BodyPartBionicBase">
+            <defName>RBP_ThoracicFrameAdvanced</defName>
+            <label>advanced thoracic frame</label>
+            <description>A self-diagnosing carbon-lattice chassis built to replace a ribcage. Its own coolant loop and an oversized power bus let it carry heavier torso hardware than a bionic frame, and it repairs minor damage to itself. Holds up to 3 torso modules.</description>
+            <descriptionHyperlinks><RecipeDef>RBP_InstallThoracicFrameAdvanced</RecipeDef></descriptionHyperlinks>
+            <techLevel>Ultra</techLevel>
+
+            <recipeMaker>
+              <researchPrerequisite>AdvancedFabrication</researchPrerequisite>
+            </recipeMaker>
+
+            <costList>
+              <Plasteel>55</Plasteel>
+              <ComponentSpacer>8</ComponentSpacer>
+            </costList>
+            <statBases>
+              <WorkToMake>45000</WorkToMake>
+              <Mass>4</Mass>
+            </statBases>
+          </ThingDef>
+
+          <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+            <defName>RBP_InstallThoracicFrameAdvanced</defName>
+            <label>install advanced thoracic frame</label>
+            <description>Install an advanced thoracic frame.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_ThoracicFrameAdvanced</ThingDef>
+              <HediffDef>RBP_ThoracicFrameAdvancedHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing advanced thoracic frame.</jobString>
+            <workAmount>4500</workAmount>
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_ThoracicFrameAdvanced</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_ThoracicFrameAdvanced</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+            <appliedOnFixedBodyParts>
+              <li>Ribcage</li>
+              <li MayRequire="redmattis.betterprerequisites">BS_MechanicalRibs</li>
+            </appliedOnFixedBodyParts>
+            <addsHediff>RBP_ThoracicFrameAdvancedHediff</addsHediff>
+          </RecipeDef>
+
+          <RecipeDef ParentName="SurgeryRemoveImplantBase">
+            <defName>RBP_RemoveThoracicFrameAdvanced</defName>
+            <label>remove advanced thoracic frame</label>
+            <description>Remove an advanced thoracic frame.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_ThoracicFrameAdvanced</ThingDef>
+              <HediffDef>RBP_ThoracicFrameAdvancedHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Removing advanced thoracic frame.</jobString>
+            <removesHediff>RBP_ThoracicFrameAdvancedHediff</removesHediff>
+          </RecipeDef>
+
+          <HediffDef ParentName="AddedBodyPartBase">
+            <defName>RBP_ThoracicFrameArchotechHediff</defName>
+            <label>archotech thoracic frame</label>
+            <labelNoun>an archotech thoracic frame</labelNoun>
+            <description>An installed archotech thoracic frame. It looks like bone and moves like bone, yet it is harder than plasteel, reshapes itself around whatever is mounted inside it, and repairs its own damage. How it powers and cools the hardware it carries is not something human engineering can account for.</description>
+            <descriptionHyperlinks><ThingDef>RBP_ThoracicFrameArchotech</ThingDef></descriptionHyperlinks>
+            <spawnThingOnRemoved>RBP_ThoracicFrameArchotech</spawnThingOnRemoved>
+            <addedPartProps>
+              <solid>true</solid>
+              <partEfficiency>1.5</partEfficiency>
+              <betterThanNatural>true</betterThanNatural>
+            </addedPartProps>
+          </HediffDef>
+
+          <ThingDef ParentName="BodyPartArchotechBase">
+            <defName>RBP_ThoracicFrameArchotech</defName>
+            <label>archotech thoracic frame</label>
+            <description>A ribcage grown rather than built. It looks and feels like bone, but it is harder than plasteel, repairs its own damage, and rearranges itself to hold whatever is mounted inside it. Its internal workings are a mystery to human minds. Holds up to 4 torso modules.</description>
+            <descriptionHyperlinks><RecipeDef>RBP_InstallThoracicFrameArchotech</RecipeDef></descriptionHyperlinks>
+            <techLevel>Archotech</techLevel>
+            <statBases>
+              <MarketValue>4000</MarketValue>
+              <Mass>3</Mass>
+            </statBases>
+            <thingSetMakerTags>
+              <li>RewardStandardCore</li>
+            </thingSetMakerTags>
+          </ThingDef>
+
+          <RecipeDef ParentName="SurgeryInstallBodyPartArtificialBase">
+            <defName>RBP_InstallThoracicFrameArchotech</defName>
+            <label>install archotech thoracic frame</label>
+            <description>Install an archotech thoracic frame.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_ThoracicFrameArchotech</ThingDef>
+              <HediffDef>RBP_ThoracicFrameArchotechHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Installing archotech thoracic frame.</jobString>
+            <workAmount>5000</workAmount>
+
+            <ingredients>
+              <li>
+                <filter>
+                  <thingDefs>
+                    <li>RBP_ThoracicFrameArchotech</li>
+                  </thingDefs>
+                </filter>
+                <count>1</count>
+              </li>
+            </ingredients>
+            <fixedIngredientFilter>
+              <thingDefs>
+                <li>RBP_ThoracicFrameArchotech</li>
+              </thingDefs>
+            </fixedIngredientFilter>
+            <appliedOnFixedBodyParts>
+              <li>Ribcage</li>
+              <li MayRequire="redmattis.betterprerequisites">BS_MechanicalRibs</li>
+            </appliedOnFixedBodyParts>
+            <addsHediff>RBP_ThoracicFrameArchotechHediff</addsHediff>
+          </RecipeDef>
+
+          <RecipeDef ParentName="SurgeryRemoveImplantBase">
+            <defName>RBP_RemoveThoracicFrameArchotech</defName>
+            <label>remove archotech thoracic frame</label>
+            <description>Remove an archotech thoracic frame.</description>
+            <descriptionHyperlinks>
+              <ThingDef>RBP_ThoracicFrameArchotech</ThingDef>
+              <HediffDef>RBP_ThoracicFrameArchotechHediff</HediffDef>
+            </descriptionHyperlinks>
+            <jobString>Removing archotech thoracic frame.</jobString>
+            <removesHediff>RBP_ThoracicFrameArchotechHediff</removesHediff>
+          </RecipeDef>
+
+        </value>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/HediffDef[defName="RBP_ThoracicFrameBionicHediff"]</xpath>
+              <value>
+                <comps>
+                  <li Class="EBSGFramework.HediffCompProperties_Modular">
+                    <slots>
+                      <li>
+                        <slotID>RBP_TorsoSlot</slotID>
+                        <slotName>torso module slot</slotName>
+                        <capacity>2</capacity>
+                      </li>
+                    </slots>
+                  </li>
+                </comps>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/HediffDef[defName="RBP_ThoracicFrameAdvancedHediff"]</xpath>
+              <value>
+                <comps>
+                  <li Class="EBSGFramework.HediffCompProperties_Modular">
+                    <slots>
+                      <li>
+                        <slotID>RBP_TorsoSlot</slotID>
+                        <slotName>torso module slot</slotName>
+                        <capacity>3</capacity>
+                      </li>
+                    </slots>
+                  </li>
+                </comps>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/HediffDef[defName="RBP_ThoracicFrameArchotechHediff"]</xpath>
+              <value>
+                <comps>
+                  <li Class="EBSGFramework.HediffCompProperties_Modular">
+                    <slots>
+                      <li>
+                        <slotID>RBP_TorsoSlot</slotID>
+                        <slotName>torso module slot</slotName>
+                        <capacity>4</capacity>
+                      </li>
+                    </slots>
+                  </li>
+                </comps>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

@@ -97,6 +97,98 @@ namespace RebalancePatches.Tests
         }
 
         [Test]
+        public static void TorsoImplantsAreModules()
+        {
+            if (!Check.Ready("cybernetics.modules", Ids.IntegratedImplants, Ids.EBSG))
+                return;
+
+            var modules = new[]
+            {
+                new[] { "LTS_StealthSystem", "1", "LTS_InstallStealthSystem" },
+                new[] { "DeacidifierMembrane", "2", "InstallDeacidifierMembrane" },
+                new[] { "BiochameleonDevice", "1", "InstallBiochameleonDevice" },
+                new[] { "LTS_EmergencyShield", "2", "LTS_InstallEmergencyShield" },
+                new[] { "LTS_EmergencyVacseal", "2", "LTS_InstallEmergencyVacseal" },
+                new[] { "LTS_ShieldImplant", "2", "LTS_InstallShieldImplant" },
+                new[] { "LTS_FireSupressionSystem", "1", "LTS_InstallFireSupressionSystem" },
+                new[] { "CranialInsulation", "1", "InstallCranialInsulation" },
+                new[] { "SkeletalBracing", "2", "InstallSkeletalBracing" },
+                new[] { "LTS_SubdermalArmour", "2", "LTS_InstallSubdermalArmour" },
+                new[] { "LTS_PrestigeSubdermalArmour", "2", "LTS_InstallPrestigeSubdermalArmour" },
+                new[] { "InternalClimateControlImplant", "1", "InstallInternalClimateControlImplant" },
+                new[] { "CryptoWakeImplant", "1", "InstallCryptoWakeImplant" },
+                new[] { "BiotunerImplant", "1", "InstallBiotunerImplant" },
+                new[] { "LTS_CellularAdapter", "1", "LTS_InstallCellularAdapter" },
+                new[] { "LTS_CryptoCoagulator", "1", "LTS_InstallCryptoCoagulator" },
+                new[] { "LTS_Gravlifter", "1", "LTS_InstallGravlifter" },
+                new[] { "LTS_Vanguard", "1", "LTS_InstallVanguard" },
+                new[] { "WiredReflex", "1", "InstallWiredReflex" },
+                new[] { "StrengthEnhancer", "1", "InstallStrengthEnhancer" },
+                new[] { "HyperAdrenalineGland", "1", "InstallHyperAdrenalineGland" },
+                new[] { "LTS_JotunnskinGland", "1", "LTS_InstallJotunnskinGland" },
+            };
+
+            int converted = 0;
+            foreach (string[] entry in modules)
+            {
+                string thingName = entry[0];
+                float capacity = float.Parse(entry[1]);
+                string recipeName = entry[2];
+
+                ThingDef thing = DefDatabase<ThingDef>.GetNamedSilentFail(thingName);
+                if (thing == null)
+                    continue;
+                converted++;
+
+                if (!Check.Soft(thing.comps != null, $"{thingName} has no comps at all"))
+                    continue;
+
+                object module = null;
+                bool usable = false;
+                foreach (CompProperties props in thing.comps)
+                {
+                    if (props == null)
+                        continue;
+                    if (props.GetType().Name == "CompProperties_UseEffectHediffModule")
+                        module = props;
+                    if (props is CompProperties_Usable)
+                        usable = true;
+                }
+
+                Check.Soft(!usable, $"{thingName} still carries CompProperties_Usable, so it can self-install");
+
+                if (!Check.Soft(module != null, $"{thingName} carries no module comp; comps are: "
+                        + string.Join(", ", thing.comps.ConvertAll(c => c?.GetType().Name ?? "null").ToArray())))
+                    continue;
+
+                var slotIds = Check.Field(module, "slotIDs") as System.Collections.Generic.List<string>;
+                Check.Soft(slotIds != null && slotIds.Contains("RBP_TorsoSlot"),
+                    $"{thingName} module slotIDs are [{(slotIds == null ? "null" : string.Join(", ", slotIds.ToArray()))}], not RBP_TorsoSlot");
+
+                Check.Soft(System.Convert.ToSingle(Check.Field(module, "requiredCapacity")) == capacity,
+                    $"{thingName} requiredCapacity is {Check.Field(module, "requiredCapacity")}, expected {capacity}");
+
+                var hediffs = Check.Field(module, "hediffs") as System.Collections.IEnumerable;
+                bool grantsOwnHediff = false;
+                if (hediffs != null)
+                    foreach (object h in hediffs)
+                        if (h is Def def && def.defName == thingName)
+                            grantsOwnHediff = true;
+                Check.Soft(grantsOwnHediff, $"{thingName} module does not grant the {thingName} hediff");
+
+                RecipeDef install = DefDatabase<RecipeDef>.GetNamedSilentFail(recipeName);
+                if (!Check.Soft(install != null, $"{recipeName} is missing while {thingName} exists"))
+                    continue;
+                Check.Soft(install.workerClass == typeof(Recipe_InstallModule),
+                    $"{recipeName} workerClass is {install.workerClass?.FullName ?? "null"}, expected RebalancePatches.Recipe_InstallModule");
+            }
+
+            Check.Note($"{converted} of {modules.Length} torso implants were present in this modlist");
+            Check.Soft(converted > 0, "no Integrated Implants torso implant defs loaded at all");
+            Check.SoftResult();
+        }
+
+        [Test]
         public static void BoosterStacksWithCommandRangeGenes()
         {
             if (!Check.Ready("implants.boosterrange", Ids.IntegratedImplants, Ids.AlphaGenes))

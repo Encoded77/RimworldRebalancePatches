@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.tiers</settingKey>
+    <operations>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[@Name="LTS_BaseModuleItem"]</xpath>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="LTS_BaseModuleItem"]/costList</xpath>
+              <value>
+                <costList Inherit="False">
+                  <ComponentSpacer>4</ComponentSpacer>
+                  <Plasteel>10</Plasteel>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleEye_Targeting" or defName="LTS_ModuleEye_Telescopic" or defName="LTS_ModuleEye_NightVision" or defName="LTS_ModuleEye_ProtectiveLens"]/costList</xpath>
+              <value>
+                <costList Inherit="False">
+                  <ComponentSpacer>4</ComponentSpacer>
+                  <Plasteel>5</Plasteel>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleEye_EyeColour"]/costList</xpath>
+              <value>
+                <costList Inherit="False">
+                  <ComponentSpacer>1</ComponentSpacer>
+                </costList>
+              </value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_DeathGrip"]/costList</xpath>
+              <value>
+                <costList Inherit="False">
+                  <ComponentSpacer>1</ComponentSpacer>
+                  <Plasteel>5</Plasteel>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_ArmBlade" or defName="LTS_ModuleLeg_FootBlade" or defName="LTS_ModuleLeg_VenomFootBlade"]/costList</xpath>
+              <value>
+                <costList Inherit="False">
+                  <Steel>40</Steel>
+                  <ComponentIndustrial>7</ComponentIndustrial>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_SMG" or defName="LTS_ModuleArm_Shotgun"]/costList</xpath>
+              <value>
+                <costList Inherit="False">
+                  <Steel>60</Steel>
+                  <ComponentIndustrial>8</ComponentIndustrial>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_Incinerator"]/costList</xpath>
+              <value>
+                <costList Inherit="False">
+                  <Steel>60</Steel>
+                  <ComponentIndustrial>8</ComponentIndustrial>
+                  <Bioferrite>30</Bioferrite>
+                </costList>
+              </value>
+            </li>
+
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_CryptoClaw"]/statBases/MarketValue</xpath>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ThingDef[defName="LTS_ModuleStomach_Nuclear"]/costList/NuclearStomach</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[defName="LTS_ModuleStomach_Nuclear"]/costList</xpath>
+          <value>
+            <ComponentSpacer>2</ComponentSpacer>
+          </value>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.royalty</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="ElbowBlade" or defName="HandTalon" or defName="KneeSpike" or defName="VenomFangs" or defName="VenomTalon"]/costList</xpath>
+          <value>
+            <costList>
+              <Steel>40</Steel>
+              <ComponentIndustrial>7</ComponentIndustrial>
+            </costList>
+          </value>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.micromachines</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>moistestwhale.gitscyberbrains</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="BS_BionicLocomotiveSpine" and costList/ComponentSpacer=8]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[defName="BS_BionicLocomotiveSpine" and costList/ComponentSpacer=8]/costList</xpath>
+                    <value><gitsMicromachines>2</gitsMicromachines></value>
+                  </li>
+                  <li Class="PatchOperationRemove">
+                    <xpath>Defs/ThingDef[defName="BS_BionicLocomotiveSpine" and costList/ComponentSpacer=8]/costList/ComponentSpacer</xpath>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[(defName="LTS_SubdermalArmour" or defName="LTS_FaceplateArachnid" or defName="LTS_StealthSystem" or defName="EPOE_AdvancedElbowBlade" or defName="EPOE_AdvancedKneeSpike" or defName="LTS_SpacerSkillChip_Animals" or defName="LTS_SpacerSkillChip_Artistic" or defName="LTS_SpacerSkillChip_Construction" or defName="LTS_SpacerSkillChip_Cooking" or defName="LTS_SpacerSkillChip_Crafting" or defName="LTS_SpacerSkillChip_Intellectual" or defName="LTS_SpacerSkillChip_Medicine" or defName="LTS_SpacerSkillChip_Melee" or defName="LTS_SpacerSkillChip_Mining" or defName="LTS_SpacerSkillChip_Plants" or defName="LTS_SpacerSkillChip_Shooting" or defName="LTS_SpacerSkillChip_Social") and costList/ComponentSpacer=6]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[(defName="LTS_SubdermalArmour" or defName="LTS_FaceplateArachnid" or defName="LTS_StealthSystem" or defName="EPOE_AdvancedElbowBlade" or defName="EPOE_AdvancedKneeSpike" or defName="LTS_SpacerSkillChip_Animals" or defName="LTS_SpacerSkillChip_Artistic" or defName="LTS_SpacerSkillChip_Construction" or defName="LTS_SpacerSkillChip_Cooking" or defName="LTS_SpacerSkillChip_Crafting" or defName="LTS_SpacerSkillChip_Intellectual" or defName="LTS_SpacerSkillChip_Medicine" or defName="LTS_SpacerSkillChip_Melee" or defName="LTS_SpacerSkillChip_Mining" or defName="LTS_SpacerSkillChip_Plants" or defName="LTS_SpacerSkillChip_Shooting" or defName="LTS_SpacerSkillChip_Social") and costList/ComponentSpacer=6]/costList</xpath>
+                    <value><gitsMicromachines>1</gitsMicromachines></value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[(defName="LTS_SubdermalArmour" or defName="LTS_FaceplateArachnid" or defName="LTS_StealthSystem" or defName="EPOE_AdvancedElbowBlade" or defName="EPOE_AdvancedKneeSpike" or defName="LTS_SpacerSkillChip_Animals" or defName="LTS_SpacerSkillChip_Artistic" or defName="LTS_SpacerSkillChip_Construction" or defName="LTS_SpacerSkillChip_Cooking" or defName="LTS_SpacerSkillChip_Crafting" or defName="LTS_SpacerSkillChip_Intellectual" or defName="LTS_SpacerSkillChip_Medicine" or defName="LTS_SpacerSkillChip_Melee" or defName="LTS_SpacerSkillChip_Mining" or defName="LTS_SpacerSkillChip_Plants" or defName="LTS_SpacerSkillChip_Shooting" or defName="LTS_SpacerSkillChip_Social") and costList/ComponentSpacer=6]/costList/ComponentSpacer</xpath>
+                    <value><ComponentSpacer>2</ComponentSpacer></value>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[(defName="BiochameleonDevice" or defName="LTS_ShoulderMortar" or defName="LTS_ShoulderRocketPod") and costList/ComponentSpacer=5]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[(defName="BiochameleonDevice" or defName="LTS_ShoulderMortar" or defName="LTS_ShoulderRocketPod") and costList/ComponentSpacer=5]/costList</xpath>
+                    <value><gitsMicromachines>1</gitsMicromachines></value>
+                  </li>
+                  <li Class="PatchOperationReplace">
+                    <xpath>Defs/ThingDef[(defName="BiochameleonDevice" or defName="LTS_ShoulderMortar" or defName="LTS_ShoulderRocketPod") and costList/ComponentSpacer=5]/costList/ComponentSpacer</xpath>
+                    <value><ComponentSpacer>1</ComponentSpacer></value>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[(@Name="LTS_BaseModuleItem" or defName="LTS_ModuleEye_Targeting" or defName="LTS_ModuleEye_Telescopic" or defName="LTS_ModuleEye_NightVision" or defName="LTS_ModuleEye_ProtectiveLens" or defName="BiotunerImplant" or defName="CranialInsulation" or defName="HackingPortImplant" or defName="LTS_CellularAdapter" or defName="LTS_ShoulderBeamTurret" or defName="LTS_ShoulderChargeTurret" or defName="HemoFangs" or defName="TacticalCorneaImplant" or defName="AC_RogianArmBlade" or defName="EPOE_AdvancedHandTalon" or defName="EPOE_ScytherElbowBlade" or defName="EPOE_ScytherKneeSpike") and costList/ComponentSpacer=4]</xpath>
+              <match Class="PatchOperationSequence">
+                <operations>
+                  <li Class="PatchOperationAdd">
+                    <xpath>Defs/ThingDef[(@Name="LTS_BaseModuleItem" or defName="LTS_ModuleEye_Targeting" or defName="LTS_ModuleEye_Telescopic" or defName="LTS_ModuleEye_NightVision" or defName="LTS_ModuleEye_ProtectiveLens" or defName="BiotunerImplant" or defName="CranialInsulation" or defName="HackingPortImplant" or defName="LTS_CellularAdapter" or defName="LTS_ShoulderBeamTurret" or defName="LTS_ShoulderChargeTurret" or defName="HemoFangs" or defName="TacticalCorneaImplant" or defName="AC_RogianArmBlade" or defName="EPOE_AdvancedHandTalon" or defName="EPOE_ScytherElbowBlade" or defName="EPOE_ScytherKneeSpike") and costList/ComponentSpacer=4]/costList</xpath>
+                    <value><gitsMicromachines>1</gitsMicromachines></value>
+                  </li>
+                  <li Class="PatchOperationRemove">
+                    <xpath>Defs/ThingDef[(@Name="LTS_BaseModuleItem" or defName="LTS_ModuleEye_Targeting" or defName="LTS_ModuleEye_Telescopic" or defName="LTS_ModuleEye_NightVision" or defName="LTS_ModuleEye_ProtectiveLens" or defName="BiotunerImplant" or defName="CranialInsulation" or defName="HackingPortImplant" or defName="LTS_CellularAdapter" or defName="LTS_ShoulderBeamTurret" or defName="LTS_ShoulderChargeTurret" or defName="HemoFangs" or defName="TacticalCorneaImplant" or defName="AC_RogianArmBlade" or defName="EPOE_AdvancedHandTalon" or defName="EPOE_ScytherElbowBlade" or defName="EPOE_ScytherKneeSpike") and costList/ComponentSpacer=4]/costList/ComponentSpacer</xpath>
+                  </li>
+                </operations>
+              </match>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="LTS_ModuleArm_CryptoClaw"]/costList</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/ThingDef[defName="LTS_ModuleArm_CryptoClaw"]/costList</xpath>
+                <value>
+                  <costList Inherit="False">
+                    <ComponentSpacer>3</ComponentSpacer>
+                    <Plasteel>15</Plasteel>
+                    <Gold>20</Gold>
+                  </costList>
+                </value>
+              </match>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

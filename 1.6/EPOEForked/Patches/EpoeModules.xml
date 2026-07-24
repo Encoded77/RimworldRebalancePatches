@@ -1,0 +1,785 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.modules</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ebsg.framework</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="MedicalRib"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="MedicalRib"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_TorsoSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>MedicalRib</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>MedicalRib</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="MedicalRib"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_TorsoSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>MedicalRib</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>MedicalRib</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="DruggedRib"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="DruggedRib"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_TorsoSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>DruggedRib</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>DruggedRib</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="DruggedRib"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_TorsoSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>DruggedRib</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>DruggedRib</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="AdrenalineRib"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="AdrenalineRib"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_TorsoSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>AdrenalineRib</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>AdrenalineRib</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="AdrenalineRib"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_TorsoSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>AdrenalineRib</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>AdrenalineRib</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="PainkillerRib"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PainkillerRib"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_TorsoSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>PainkillerRib</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>PainkillerRib</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="PainkillerRib"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_TorsoSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>PainkillerRib</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>PainkillerRib</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="HeaterRib"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="HeaterRib"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_TorsoSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>HeaterRib</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>HeaterRib</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="HeaterRib"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_TorsoSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>HeaterRib</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>HeaterRib</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="CoolerRib"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="CoolerRib"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_TorsoSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>CoolerRib</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>CoolerRib</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="CoolerRib"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_TorsoSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>CoolerRib</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>CoolerRib</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="CoagulatorRib"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="CoagulatorRib"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_TorsoSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>CoagulatorRib</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>CoagulatorRib</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="CoagulatorRib"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_TorsoSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>CoagulatorRib</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>CoagulatorRib</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="RespirationRib"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="RespirationRib"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_TorsoSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>RespirationRib</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>RespirationRib</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="RespirationRib"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_TorsoSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>RespirationRib</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>RespirationRib</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="WakeUpRib"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="WakeUpRib"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_TorsoSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>WakeUpRib</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>WakeUpRib</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="WakeUpRib"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_TorsoSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>WakeUpRib</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>WakeUpRib</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="AIChip"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="AIChip"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>AIChip</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>AIChip</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="AIChip"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>AIChip</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>AIChip</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="BrainStimulator"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="BrainStimulator"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>1</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>BrainStimulator</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>BrainStimulator</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="BrainStimulator"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>1</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>BrainStimulator</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>BrainStimulator</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/ThingDef[defName="AIPersonaCore"]/comps</xpath>
+              <match Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="AIPersonaCore"]/comps</xpath>
+                <value>
+                  <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                    <ejectable>false</ejectable>
+                    <installSound>Standard_Reload</installSound>
+                    <ejectSound>Standard_Reload</ejectSound>
+                    <requiredCapacity>2</requiredCapacity>
+                    <slotIDs>
+                      <li>RBP_CortexSlot</li>
+                    </slotIDs>
+                    <hediffs>
+                      <li>AIPersonaCore</li>
+                    </hediffs>
+                    <excludeIDs>
+                      <li>AIPersonaCore</li>
+                    </excludeIDs>
+                  </li>
+                </value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/ThingDef[defName="AIPersonaCore"]</xpath>
+                <value>
+                  <comps>
+                    <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                      <ejectable>false</ejectable>
+                      <installSound>Standard_Reload</installSound>
+                      <ejectSound>Standard_Reload</ejectSound>
+                      <requiredCapacity>2</requiredCapacity>
+                      <slotIDs>
+                        <li>RBP_CortexSlot</li>
+                      </slotIDs>
+                      <hediffs>
+                        <li>AIPersonaCore</li>
+                      </hediffs>
+                      <excludeIDs>
+                        <li>AIPersonaCore</li>
+                      </excludeIDs>
+                    </li>
+                  </comps>
+                </value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallMedicalRib"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallMedicalRib"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallMedicalRib"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallDruggedRib"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallDruggedRib"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallDruggedRib"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallAdrenalineRib"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallAdrenalineRib"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallAdrenalineRib"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallPainkillerRib"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallPainkillerRib"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallPainkillerRib"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallHeaterRib"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallHeaterRib"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallHeaterRib"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallCoolerRib"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallCoolerRib"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallCoolerRib"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallCoagulatorRib"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallCoagulatorRib"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallCoagulatorRib"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallRespirationRib"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallRespirationRib"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallRespirationRib"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallWakeUpRib"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallWakeUpRib"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallWakeUpRib"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallAIChip"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallAIChip"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallAIChip"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallBrainStimulator"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallBrainStimulator"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallBrainStimulator"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="PatchOperationConditional">
+              <xpath>Defs/RecipeDef[defName="InstallAIPersonaCore"]/workerClass</xpath>
+              <match Class="PatchOperationReplace">
+                <xpath>Defs/RecipeDef[defName="InstallAIPersonaCore"]/workerClass</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </match>
+              <nomatch Class="PatchOperationAdd">
+                <xpath>Defs/RecipeDef[defName="InstallAIPersonaCore"]</xpath>
+                <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+              </nomatch>
+            </li>
+
+            <li Class="RebalancePatches.PatchOperationFindModById">
+              <mods>
+                <li>vat.epoeforkedroyalty</li>
+              </mods>
+              <match Class="PatchOperationSequence">
+                <operations>
+
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/ThingDef[defName="EPIA_CircadianRefresher"]/comps</xpath>
+                    <match Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="EPIA_CircadianRefresher"]/comps</xpath>
+                      <value>
+                        <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                          <ejectable>false</ejectable>
+                          <installSound>Standard_Reload</installSound>
+                          <ejectSound>Standard_Reload</ejectSound>
+                          <requiredCapacity>1</requiredCapacity>
+                          <slotIDs>
+                            <li>RBP_CortexSlot</li>
+                          </slotIDs>
+                          <hediffs>
+                            <li>EPIA_CircadianRefresher</li>
+                          </hediffs>
+                          <excludeIDs>
+                            <li>EPIA_CircadianRefresher</li>
+                          </excludeIDs>
+                        </li>
+                      </value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/ThingDef[defName="EPIA_CircadianRefresher"]</xpath>
+                      <value>
+                        <comps>
+                          <li Class="EBSGFramework.CompProperties_UseEffectHediffModule">
+                            <ejectable>false</ejectable>
+                            <installSound>Standard_Reload</installSound>
+                            <ejectSound>Standard_Reload</ejectSound>
+                            <requiredCapacity>1</requiredCapacity>
+                            <slotIDs>
+                              <li>RBP_CortexSlot</li>
+                            </slotIDs>
+                            <hediffs>
+                              <li>EPIA_CircadianRefresher</li>
+                            </hediffs>
+                            <excludeIDs>
+                              <li>EPIA_CircadianRefresher</li>
+                            </excludeIDs>
+                          </li>
+                        </comps>
+                      </value>
+                    </nomatch>
+                  </li>
+
+                  <li Class="PatchOperationConditional">
+                    <xpath>Defs/RecipeDef[defName="EPIA_InstallCircadianRefresher"]/workerClass</xpath>
+                    <match Class="PatchOperationReplace">
+                      <xpath>Defs/RecipeDef[defName="EPIA_InstallCircadianRefresher"]/workerClass</xpath>
+                      <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                    </match>
+                    <nomatch Class="PatchOperationAdd">
+                      <xpath>Defs/RecipeDef[defName="EPIA_InstallCircadianRefresher"]</xpath>
+                      <value><workerClass>RebalancePatches.Recipe_InstallModule</workerClass></value>
+                    </nomatch>
+                  </li>
+
+                </operations>
+              </match>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>
