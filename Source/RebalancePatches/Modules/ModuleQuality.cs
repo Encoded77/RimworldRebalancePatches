@@ -12,8 +12,6 @@ namespace RebalancePatches
     {
         private const string SettingKey = "cybernetics.modules";
 
-        private static readonly float[] Factors = { 0.80f, 0.90f, 1.00f, 1.06f, 1.12f, 1.18f, 1.25f };
-
         private static float SeverityFor(QualityCategory quality) => 0.8f + 0.1f * (int)quality;
 
         private const float LowestBand = 0.8f;
@@ -30,7 +28,7 @@ namespace RebalancePatches
         /// <summary>The severity an installed module of this quality gives its payload.</summary>
         internal static float SeverityOf(QualityCategory quality) => SeverityFor(quality);
 
-        internal static float FactorOf(QualityCategory quality) => Factors[(int)quality];
+        internal static float FactorOf(QualityCategory quality) => QualityScaling.FactorOf(quality);
 
         public static void TryApply(Harmony harmony)
         {
@@ -92,6 +90,9 @@ namespace RebalancePatches
 
         internal static void DisplayStatsPostfix(HediffDef __instance, ref IEnumerable<StatDrawEntry> __result)
         {
+            // A banded payload has one stage per quality; the default listing would show all of them at
+            // once. Deliberately replace it with just the base (stage 0) numbers so the info card reads
+            // as a single implant rather than a stack of quality bands.
             if (banded.Contains(__instance))
                 __result = __instance.stages[0].SpecialDisplayStats();
         }
@@ -154,11 +155,11 @@ namespace RebalancePatches
             var stages = new List<HediffStage> { original };
             foreach (QualityCategory quality in Enum.GetValues(typeof(QualityCategory)))
             {
-                HediffStage band = CloneStage(original);
+                HediffStage band = QualityScaling.CloneStage(original);
                 band.minSeverity = SeverityFor(quality);
                 if (quality != QualityCategory.Normal)
                     band.label = quality.GetLabel();
-                Scale(band, Factors[(int)quality]);
+                QualityScaling.Scale(band, QualityScaling.FactorOf(quality));
                 stages.Add(band);
             }
             payload.stages = stages;
@@ -171,77 +172,6 @@ namespace RebalancePatches
             || (stage.statFactors != null && stage.statFactors.Count > 0)
             || (stage.capMods != null && stage.capMods.Count > 0)
             || stage.partEfficiencyOffset != 0f;
-
-        private static void Scale(HediffStage stage, float factor)
-        {
-            if (factor == 1f)
-                return;
-
-            if (stage.statOffsets != null)
-                foreach (StatModifier offset in stage.statOffsets)
-                    offset.value *= factor;
-
-            if (stage.statFactors != null)
-                foreach (StatModifier statFactor in stage.statFactors)
-                    statFactor.value = Mathf.Max(0f, 1f + (statFactor.value - 1f) * factor);
-
-            if (stage.capMods != null)
-                foreach (PawnCapacityModifier capMod in stage.capMods)
-                {
-                    capMod.offset = Toward(capMod.offset, factor);
-                    capMod.postFactor = Mathf.Max(0f, 1f + Toward(capMod.postFactor - 1f, factor));
-                }
-
-            stage.partEfficiencyOffset = Toward(stage.partEfficiencyOffset, factor);
-        }
-
-        private static float Toward(float value, float factor)
-        {
-            if (value == 0f)
-                return value;
-            return value > 0f ? value * factor : value / factor;
-        }
-
-        private static HediffStage CloneStage(HediffStage source)
-        {
-            var clone = new HediffStage();
-            foreach (FieldInfo field in typeof(HediffStage).GetFields(BindingFlags.Public | BindingFlags.Instance))
-                if (!field.IsInitOnly && !field.IsLiteral)
-                    field.SetValue(clone, field.GetValue(source));
-            clone.statOffsets = CopyStats(source.statOffsets);
-            clone.statFactors = CopyStats(source.statFactors);
-            clone.capMods = CopyCapMods(source.capMods);
-            return clone;
-        }
-
-        private static List<StatModifier> CopyStats(List<StatModifier> source)
-        {
-            if (source == null)
-                return null;
-            var copy = new List<StatModifier>(source.Count);
-            foreach (StatModifier modifier in source)
-                copy.Add(new StatModifier { stat = modifier.stat, value = modifier.value });
-            return copy;
-        }
-
-        private static List<PawnCapacityModifier> CopyCapMods(List<PawnCapacityModifier> source)
-        {
-            if (source == null)
-                return null;
-            var copy = new List<PawnCapacityModifier>(source.Count);
-            foreach (PawnCapacityModifier modifier in source)
-                copy.Add(new PawnCapacityModifier
-                {
-                    capacity = modifier.capacity,
-                    offset = modifier.offset,
-                    setMax = modifier.setMax,
-                    postFactor = modifier.postFactor,
-                    statFactorMod = modifier.statFactorMod,
-                    setMaxCurveOverride = modifier.setMaxCurveOverride,
-                    setMaxCurveEvaluateStat = modifier.setMaxCurveEvaluateStat,
-                });
-            return copy;
-        }
 
         private static void GiveModulesQuality()
         {

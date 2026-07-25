@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.10.3 (2026-07-25)
+
+- **Melee Weapons For All Tech Levels** — new settings group. **Ultra melee weapons not stocked by traders** (`bambamelee.ultratrade`) — the ultra-tier weapons (the ultra gladius, longsword, axe and spear, plus the Solar and Quasar tiers with Beyond Our Reach) become sellable-only, so traders never stock them for purchase and they stay a research-and-craft reward.
+
+## 1.10.2 (2026-07-25)
+
+- **Automatic Hydroponics** — new settings group. **Costlier builds, higher power draw** (`autohydroponics.costlier`) — the large and small auto hydroponics cost more steel and components, and their power draw rises to 2000W and 1000W respectively, matching how much round-the-clock hand-tended hydroponics each one replaces.
+
+## 1.10.1 (2026-07-25)
+
+- **Cyberbrains vary with quality** (`cybernetics.cyberbrainquality`) — GiTS cyberbrains, and the Echo brains, are now built and traded at a quality, and quality scales what the brain does: a better one gives more and its downsides ease, a worse one gives less. The one-time adaptation after surgery is unchanged. Off by default; needs GiTS Cyberbrains.
+- **Harsher extreme cyberbrain drawbacks** (`gits.extremedrawbacks`) — New toggle: the extreme flagships (Civis PX-7, Aegis HADES, and the Echo ORACLE where present) get more pain, hunger and rest loss while the brain adapts, and a higher chance of a lasting complication during that adaptation. **`gits.mentalbreak`** now also covers the Echo ORACLE.
+- **Now translatable** — every string the mod adds in code, both in-game and in its settings menu, is keyed for translation. English is unchanged.
+- **Quality reads a stat's good direction** — implant quality scaling treated every positive number as a bonus, so a drawback like mental break threshold grew with quality instead of easing. Drawbacks now ease as quality rises and worsen as it falls, in step with the bonuses, for both modules and cyberbrains.
+- Echo SEER and ORACLE cyberbrain descriptions now separate the permanent, quality-scaling bonuses from the one-time adaptation penalties, which were previously listed as if they were permanent.
+
 ## 1.10.0 (2026-07-24)
 
 **Cybernetics Overhaul and Cybernetics Research Overhaul** — two new settings groups that pull the implant ecosystem into one system: Core, Royalty, Biotech, EPOE-Forked, Integrated Implants, GiTS Cyberbrains, Psychic Implants, Altered Carbon and VRE - Android. A single Cybernetics research tab rooted on one *surgical implantation* research, a clear three-branch progression (chassis, cortex, modules) in place of the mods' overlapping tabs, and two opposed capstones to build toward: synthetic ascension and symbiotic integration. Off by default; every part is its own toggle. Design notes in `Docs/CyberneticsChanges.md`.

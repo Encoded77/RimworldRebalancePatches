@@ -46,6 +46,7 @@ namespace RebalancePatches
             GeneFabricationPatches.TryApply(harmony);
             NpcModuleHostPatches.TryApply(harmony);
             ModuleQuality.TryApply(harmony);
+            CyberbrainQualityPatches.TryApply(harmony);
             AndroidPsylinkPatches.TryApply(harmony);
             AndroidHardwareResearchGate.TryApply(harmony);
             EmptyResearchTabPatches.TryApply(harmony);

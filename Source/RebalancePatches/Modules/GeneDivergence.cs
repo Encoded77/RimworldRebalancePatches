@@ -33,7 +33,7 @@ namespace RebalancePatches
         public float Points => cachedPoints;
 
         public override string CompTipStringExtra =>
-            "Gene divergence: " + cachedPoints.ToString("0.#") + " (from the baseline for this pawn's xenotype)";
+            "RBP.GeneDivergence.Tip".Translate(cachedPoints.ToString("0.#"));
 
         public override void CompExposeData()
         {

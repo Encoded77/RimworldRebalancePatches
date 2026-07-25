@@ -19,6 +19,10 @@ One change has no toggle because there is no sensible way to want it off: resear
 - **Cheaper builds** (`rimiot.costs`) — Cables, input connectors and interfaces cost a little steel and regular components instead of advanced ones. Passive logistics infrastructure leadin to performance gain on hauling shouldn't be an endgame investment.
 - **No power consumption** (`rimiot.power`) — Network buildings no longer draw power or need wiring, and their descriptions are rewritten to match.
 
+### Automatic Hydroponics
+
+- **Costlier builds, higher power draw** (`autohydroponics.costlier`) — The large and small auto hydroponics cost more steel and components, and their power draw climbs to 2000W and 1000W respectively. Each bay replaces a wall of hand-tended hydroponics growing around the clock, so it shouldn't be cheap to raise or run.
+
 ### Altered Carbon
 
 - **Disable VAE ranged shield belt** (`altered.shieldbelt`) — Vanilla Apparel Expanded - Accessories' ranged shield belt is a cheaper duplicate of Altered Carbon's cuirassier belt, so it becomes uncraftable, untradeable and stops spawning; the harder-to-get AC version stays. Existing belts keep working.
@@ -31,7 +35,8 @@ One change has no toggle because there is no sensible way to want it off: resear
 ### GiTS Cyberbrains
 
 - **Only basic cyberbrains sold** (`gits.merchant`) — Traders no longer stock the enhanced, specialized, advanced or extreme tiers, so buying a top-tier brain can't skip the progression. They stay craftable and can spawn on raiders.
-- **Harsher extreme mental break** (`gits.mentalbreak`) — The PX-7 and HADES cyberbrains' mental break threshold penalty doubles from +20% to +40%.
+- **Harsher extreme mental break** (`gits.mentalbreak`) — The PX-7 and HADES cyberbrains' mental break threshold penalty doubles from +20% to +40%, and the Echo ORACLE gets the same where the Echo brains are loaded.
+- **Harsher extreme cyberbrain drawbacks** (`gits.extremedrawbacks`) — The extreme flagships (PX-7, HADES, and the Echo ORACLE where present) become rougher to install: more pain, hunger and rest loss while the brain adapts, and a higher chance of a lasting sclerosis or closed-shell-syndrome complication during that adaptation.
 - **Streamlined research tree** (`gits.research`) — The three nanite surgery researches collapse into one, empty filler nodes are deleted and prerequisites are rewired; no more one-recipe padding.
 - **Surgeries via EPOE, ultratech tiers** (`gits.surgeries`) — Cyberbrain surgery unlocks with EPOE-Forked's Brain Surgery research, and everything past the basic cyberbrain moves to ultratech, integrating GiTS into the EPOE surgery progression and pushing the crazy tiers to endgame. Needs EPOE-Forked; does nothing without it.
 - **Cyberbrains named by role** (`gits.cyberbrainnames`) — Renames the cyberbrains after the work they do (Civis Mining, Aegis Marksman) instead of factory codes, keeping the flagships as Civis PX-7 and Aegis HADES. Their descriptions are rewritten in plain terms and state the cortex-module slot count.
@@ -98,6 +103,7 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 - **`impactweaponry.bolterprereq`** — The warcasket impact bolter needs spacer warcasket weaponry plus impact shot, dropping a redundant extra prerequisite.
 - **`spacerarsenal.prereqs`** — Spacer Arsenal's heavy weapons unlock from Vanilla Weapons Expanded's Heavy Weapons + Fabrication; the coil weapons from Mass Drivers (Coilguns).
 - **`eltex.spawns`** — Eltex weapons stop spawning on random raiders and appear where they belong: Empire cataphracts, psycasters and deserters (Royalty).
+- **`bambamelee.ultratrade`** — Melee Weapons For All Tech Levels' ultra-tier weapons (the ultra gladius, longsword, axe and spear, plus the Solar and Quasar tiers with Beyond Our Reach) become sellable-only, so traders never stock them for purchase and they stay a research-and-craft reward. You can still sell a looted or crafted one.
 - **`alphamemes.vacstonetiles`** — Alpha Memes' styled tiles can be built from Odyssey's vacstone blocks.
 
 ### Vanilla & DLC
@@ -242,6 +248,7 @@ The content half of the cybernetics rework: what implants are, how they host one
 - **Archotech recycling** (`cybernetics.archotechshards`) — Break archotech parts down for shards and assemble any archotech part from them, so two salvaged parts become the one you wanted. Shards also come from exotic traders and quest rewards. Needs the research body lane.
 - **Androids refuse wetware implants** (`cybernetics.androidblocklist`) — Androids can no longer receive surgeries that only make sense on living tissue. Needs Vanilla Races Expanded - Android.
 - **Cyberbrains for psycasters** (`cybernetics.echobrains`) — Adds two Echo psycaster cyberbrains and cuts the meditation bonus other cyberbrains gave as a side effect, so psychic capability is a choice rather than a freebie on a combat brain. Needs GiTS Cyberbrains.
+- **Cyberbrains vary with quality** (`cybernetics.cyberbrainquality`) — Gives cyberbrains a quality (built and traded at one) that scales what the brain does: a better brain gives more and its downsides ease, a worse one gives less. The one-time post-surgery adaptation is unchanged. Needs GiTS Cyberbrains.
 - **The flesh capstone** (`cybernetics.livingframe`) — Adds a living frame that hosts more modules than any archotech part and an implant that rewards a heavily engineered body. Neither can be fitted to a synthetic body.
 - **Ascended bodies keep psychic capability** (`cybernetics.ascension`) — Restores psychic sensitivity to an ascended synthetic body, so the machine path does not close off psycasting. Needs Vanilla Races Expanded - Android.
 - **Rebuild a living pawn as an android** (`cybernetics.androidconversion`) — The synthetic ending: brew a neuroform serum, build a conversion kit around it and a reactor, then operate. Needs Vanilla Races Expanded - Android.

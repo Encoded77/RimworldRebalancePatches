@@ -15,7 +15,7 @@ namespace RebalancePatches
         private static Type compModularType, compUseEffectType, compPropsUseEffectType, moduleSlotType, compPropsModularType;
         private static MethodInfo getOpenSlotsByProps, installModule, removeModule;
         private static FieldInfo ownerHediffField, usedSlotField, slotIdField, slotIdsField, slotsField;
-        private static FieldInfo payloadDefsField, linkedHediffsField;
+        private static FieldInfo payloadDefsField, linkedHediffsField, moduleHolderField;
 
         public static bool Available
         {
@@ -53,6 +53,7 @@ namespace RebalancePatches
                 slotsField = compPropsModularType.GetField("slots", BindingFlags.Public | BindingFlags.Instance);
                 payloadDefsField = compPropsUseEffectType.GetField("hediffs", BindingFlags.Public | BindingFlags.Instance);
                 linkedHediffsField = compUseEffectType.GetField("linkedHediffs", BindingFlags.Public | BindingFlags.Instance);
+                moduleHolderField = compModularType.GetField("moduleHolder", BindingFlags.Public | BindingFlags.Instance);
 
                 if (getOpenSlotsByProps == null || installModule == null
                     || ownerHediffField == null || usedSlotField == null || slotIdField == null
@@ -152,8 +153,7 @@ namespace RebalancePatches
         {
             Resolve();
             if (compModularType == null || modularComp == null) yield break;
-            FieldInfo holder = compModularType.GetField("moduleHolder", BindingFlags.Public | BindingFlags.Instance);
-            if (!(holder?.GetValue(modularComp) is IEnumerable items)) yield break;
+            if (!(moduleHolderField?.GetValue(modularComp) is IEnumerable items)) yield break;
             foreach (object item in items)
                 if (item is ThingWithComps module)
                     yield return module;
@@ -192,7 +192,8 @@ namespace RebalancePatches
             {
                 if (!(getOpenSlotsByProps.Invoke(modularComp, new[] { moduleProps }) is IEnumerable slots)) return null;
                 foreach (object slot in slots)
-                    return slotIdField.GetValue(slot) as string;
+                    if (slotIdField.GetValue(slot) is string id)
+                        return id;
             }
             catch (Exception e)
             {

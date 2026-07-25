@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Settings menu: group, toggle and slider labels and descriptions. Generated from
+       SettingsRegistry; keyed by the setting key so a translator overrides text here only. -->
+
+  <RBP.genetics.label>Genetics Overhaul</RBP.genetics.label>
+  <RBP.genetics.agsummons.label>Remove Alpha Genes summon genes</RBP.genetics.agsummons.label>
+  <RBP.genetics.agsummons.desc>Removes Alpha Genes' animal summon genes (one per supported animal, ~90 with a large modlist, plus the summon randomizers and temporary bandwidth gene). No xenotype uses them; they only dilute the gene pool. Needs Cherry Picker, which does the removing.</RBP.genetics.agsummons.desc>
+  <RBP.genetics.wvcdupes.label>Remove WVC-internal duplicate genes</RBP.genetics.wvcdupes.label>
+  <RBP.genetics.wvcdupes.desc>Removes WVC - Xenotypes and Genes' genes that duplicate vanilla Biotech genes or WVC's own alternatives: psychically dull/deaf copies, extra pain, perfect immunity, non-senescent, natural ageless, never rest, the seven pattern aptitude genes, natural/super variants that have archite versions, unbreakable, invulnerable, implanter fangs, delicate and undead. WVC xenotypes that carried a removed gene get the surviving equivalent instead (vanilla or WVC's own kept version). Needs Cherry Picker, which does the removing.</RBP.genetics.wvcdupes.desc>
+  <RBP.genetics.dedup.label>Remove cross-mod duplicate genes</RBP.genetics.dedup.label>
+  <RBP.genetics.dedup.desc>One canonical gene per function: Alpha Genes keeps immunities, natural armor and bandwidth; Big and Small keeps no pain, body size, gender and healing-speed genes; specialist mods keep their specialty (VRE - Pigskin aging, VRE - Archon pregnancy, VRE - Saurid egg-laying, VRE - Waster cell instability, Det's Venators farsight and more). The losing duplicates from Alpha Genes, WVC, Big and Small, the VRE packs, Det's Xenotypes and Rimsenal xenotype packs are removed; entries whose canonical mod is missing are left alone, so this scales to whichever of those mods you run. Every xenotype that carried a removed gene is rewired to the canonical replacement, so races keep their function through the shared gene. Needs Cherry Picker, which does the removing.</RBP.genetics.dedup.desc>
+  <RBP.genetics.hussaraptitudes.label>Consolidate VRE - Hussar weapon aptitudes</RBP.genetics.hussaraptitudes.label>
+  <RBP.genetics.hussaraptitudes.desc>VRE - Hussar generates one aptitude gene per craftable weapon (~300 with a large modlist, one gene UI entry each). This replaces the whole family with four category genes — light/heavy melee and light/heavy ranged aptitude, split at 3 kg — with the same bonus and biostats. The hussar xenotypes' random weapon aptitude now rolls among the four, and with Gene Nodes - Genes for Sale loaded a new archite gene node delivers them. Existing pawns with an old per-weapon aptitude lose it (one-time load warning).</RBP.genetics.hussaraptitudes.desc>
+  <RBP.genetics.bsdupes.label>Remove Big and Small internal/legacy genes</RBP.genetics.bsdupes.label>
+  <RBP.genetics.bsdupes.desc>Removes Big and Small - Genes &amp; More genes its author treats as legacy or that duplicate its own alternatives: the three gene stabilizing genes (no replacement) and the deathlike body gene (undead xenotypes get Big and Small's unstable deathlessness instead). Needs Cherry Picker, which does the removing.</RBP.genetics.bsdupes.desc>
+  <RBP.genetics.boglegwater.label>Boglegs: water striding</RBP.genetics.boglegwater.label>
+  <RBP.genetics.boglegwater.desc>Boglegs gain Alpha Genes' water striding gene — no movement penalty in watery terrain, fitting swamp-dwellers.</RBP.genetics.boglegwater.desc>
+  <RBP.genetics.stonebornskin.label>Stoneborn: stoneskin</RBP.genetics.stonebornskin.label>
+  <RBP.genetics.stonebornskin.desc>Det's Stoneborn gain WVC - Xenotypes and Genes' stoneskin gene — stone-covered bodies with natural armor and very low flammability, at a metabolism cost. Changes their appearance to stone-like skin.</RBP.genetics.stonebornskin.desc>
+  <RBP.genetics.neanderthalfrost.label>Neanderthals: frostbite resistance</RBP.genetics.neanderthalfrost.label>
+  <RBP.genetics.neanderthalfrost.desc>Neanderthals gain Alpha Genes' frostbite resistance gene, halving frostbite damage — an ice-age adaptation.</RBP.genetics.neanderthalfrost.desc>
+  <RBP.genetics.wvcspawns.label>WVC: apex xenotypes never spawn as wanderers</RBP.genetics.wvcspawns.label>
+  <RBP.genetics.wvcspawns.desc>WVC - Xenotypes and Genes' most powerful races — ferrkind, metalkin, rustkind and deadcat — no longer appear as random wanderers, refugees, beggars or faction pawns. They can still be obtained through WVC's own events, morphs and implanters, like the rest of its apex tier.</RBP.genetics.wvcspawns.desc>
+  <RBP.geneticsresearch.label>Genetics Research Overhaul</RBP.geneticsresearch.label>
+  <RBP.geneticsresearch.core.label>Genetics research tab and tree (Biotech)</RBP.geneticsresearch.core.label>
+  <RBP.geneticsresearch.core.desc>Adds a Genetics research tab rooted on a new basic genetic sampling project that unlocks the gene extractor and gene bank. Xenogermination becomes xenogerm assembly and moves there with gene processor and archogenetics, all at spacer tech with a hi-tech research bench required. Turn this on first; the rest of the group builds on it.</RBP.geneticsresearch.core.desc>
+  <RBP.geneticsresearch.resplice.label>ReSplice: Core buildings via dedicated research</RBP.geneticsresearch.resplice.label>
+  <RBP.geneticsresearch.resplice.desc>ReSplice: Core's gene centrifuge and xenogerm duplicator move behind new genepack centrifuge and xenogerm replicator research projects on the Genetics tab and are renamed to match.</RBP.geneticsresearch.resplice.desc>
+  <RBP.geneticsresearch.extractortiers.label>Gene Extractor Tiers vats via dedicated research</RBP.geneticsresearch.extractortiers.label>
+  <RBP.geneticsresearch.extractortiers.desc>Gene Extractor Tiers' gene extraction vat unlocks from a new research project after gene processor, and its archite vats from a new archite gene extraction project after archogenetics.</RBP.geneticsresearch.extractortiers.desc>
+  <RBP.geneticsresearch.genenodes.label>Gene nodes via dedicated research, pricier archite nodes</RBP.geneticsresearch.genenodes.label>
+  <RBP.geneticsresearch.genenodes.desc>Gene Extractor Tiers' base gene nodes unlock from a new gene nodes project after xenogerm assembly. Archite gene nodes, including Gene Nodes - Genes for Sale's, move behind a new archite gene nodes project after archogenetics and cost more to build.</RBP.geneticsresearch.genenodes.desc>
+  <RBP.geneticsresearch.generipper.label>Gene Ripper via dedicated research</RBP.geneticsresearch.generipper.label>
+  <RBP.geneticsresearch.generipper.desc>Gene Ripper's machine unlocks from a new gene ripper research project after xenogerm assembly.</RBP.geneticsresearch.generipper.desc>
+  <RBP.geneticsresearch.genefab.label>Gene Fabrication as an archogenetics capstone</RBP.geneticsresearch.genefab.label>
+  <RBP.geneticsresearch.genefab.desc>Gene Fabrication's research project moves to the Genetics tab as an ultratech capstone and requires archogenetics instead of gene processor plus fabrication. It is also retitled to lowercase gene fabrication to match the rest of the tab, and its description now describes the fabrication bench it unlocks rather than multianalyzers. Its per-gene genepack recipes also stop listing archogenetics as their own prerequisite, since the capstone already gates the fabricator: with a large gene modlist that is hundreds of recipes cluttering the archogenetics entry in the research tree, and nothing becomes available any earlier.</RBP.geneticsresearch.genefab.desc>
+  <RBP.geneticsresearch.vqea.label>Buildable VQE Ancients archogen laboratory</RBP.geneticsresearch.vqea.label>
+  <RBP.geneticsresearch.vqea.desc>A new ultratech archogen engineering research project after archogenetics lets you build VQE Ancients' archogen injector and its linkable lab facilities at archite-tier costs. Recovering them from ancient labs remains the early route.</RBP.geneticsresearch.vqea.desc>
+  <RBP.geneticsresearch.consumables.label>Unified gene tools and serums line</RBP.geneticsresearch.consumables.label>
+  <RBP.geneticsresearch.consumables.desc>One research lane for every single-use genetic item across Alpha Genes, Big and Small - Genes &amp; More and WVC - Xenotypes and Genes. Gene serums (after xenogerm assembly) takes over WVC's whole eight-project serum line: the serum lab, gene restoration, serum disassembly and the per-gene serums. Gene toolkits (after gene processor) unlocks Alpha Genes' gene tools and Big and Small's gene tools, xenogerm cloners and animal size serums at the fabrication bench, with the archotech variants additionally requiring archogenetics. Gene integration (ultratech, after archogenetics) unlocks Big and Small's gene integrator. Big and Small's experimental gene tools and animal size serums projects are removed in favour of the lane, and its mad science field testing becomes weaponized genetics: ultratech, after archogenetics, on the Genetics tab instead of industrial tier for 500 points. Three redundant tools are removed: Big and Small's xenodiscombobulator (Alpha Genes' xenotype injector does the same job), its archite xenogerm cloner (its archite genome cloner supersedes it) and Alpha Genes' germline mutator.</RBP.geneticsresearch.consumables.desc>
+  <RBP.geneticsresearch.alphagenes.label>Alpha Genes xenogenetics lab quest names</RBP.geneticsresearch.alphagenes.label>
+  <RBP.geneticsresearch.alphagenes.desc>Renames Alpha Genes' abandoned biotech lab quest and site to xenogenetics lab flavour, as Progression: Genetics did. Works on its own.</RBP.geneticsresearch.alphagenes.desc>
+  <RBP.xenotypes.label>Xenotype Spawning Overhaul</RBP.xenotypes.label>
+  <RBP.xenotypes.vanilla.label>Thematic xenotypes in vanilla factions</RBP.xenotypes.vanilla.label>
+  <RBP.xenotypes.vanilla.desc>Outlander, pirate and tribal rosters are rebuilt around what each faction is. Settled outlanders lean industrial (Det's Half-foot, Biotech genies, Det's Brawnum), rough outlanders frontier (Det's Venators and Boglegs, yttakin, impids), and pirates predatory (Boglegs, Det's Buzzers, wasters, VRE - Hussar's uhlans). Every roster keeps at least 35% baseliners, where the modlist had crowded them down to under 10%. Tribal factions, which rolled baseliner every single time, gain a small primitive-themed roster (neanderthals, VRE - Saurid's saurids, Det's Venators, impids). Also thins WVC's oddball xenotypes out of generic pools, moving Undead and Sandycat to the Horax cult (Anomaly).</RBP.xenotypes.vanilla.desc>
+  <RBP.xenotypes.royalty.label>Thematic xenotypes in the Empire</RBP.xenotypes.royalty.label>
+  <RBP.xenotypes.royalty.desc>The Empire leans aristocratic and military: Det's Avaloi, Biotech hussars and genies and Highborn Xenotype's highborn stay prominent, while Det's Keshig and Brawnum, Rimsenal's Harana, Odyssey's starjack and VRE - Android's awakened androids leave the roster. Keeps 37% baseliners.</RBP.xenotypes.royalty.desc>
+  <RBP.xenotypes.odyssey.label>Thematic xenotypes for Odyssey factions</RBP.xenotypes.odyssey.label>
+  <RBP.xenotypes.odyssey.desc>The Salvagers gain Det's Half-foot and hold a spread of Rimsenal, Det's and Alpha Genes xenotypes at even weight; the Traders guild gains Alpha Genes' Fleetkind.</RBP.xenotypes.odyssey.desc>
+  <RBP.xenotypes.rimsenal.label>Thematic xenotypes for Rimsenal factions</RBP.xenotypes.rimsenal.label>
+  <RBP.xenotypes.rimsenal.desc>Rimsenal's Spacer factions gain the deep-space xenotypes displaced from planetside pools: Odyssey's starjack, Det's Keshig and Half-foot and VRE - Android's awakened androids. WVC's Mechakin, Rogueformer and Genethrower also move here from generic outlander and pirate pools.</RBP.xenotypes.rimsenal.desc>
+  <RBP.scifinames.label>Sci-fi Renaming Overhaul</RBP.scifinames.label>
+  <RBP.scifinames.bsraces.label>Big and Small - Races</RBP.scifinames.bsraces.label>
+  <RBP.scifinames.bsraces.desc>Renames the Norse-flavoured content to gene-line flavour: jotun become gigants (cryo/pyro variants), ogres hulkers, dvergr deepkin, nisse minikin, svartalfs umbrakin, redcaps scrappers, trolls regenerants, flesh golems bioconstructs and hearthguards/hearthdolls warden/service synths. The Muspelheim, Niflheim, ogre and little people factions, their pawn kinds and all descriptions follow suit.</RBP.scifinames.bsraces.desc>
+  <RBP.scifinames.bigsmall.label>Big and Small - Genes &amp; More</RBP.scifinames.bigsmall.label>
+  <RBP.scifinames.bigsmall.desc>The succubus becomes the allurist, the hellguard the abyssal guard, the imp the greater impid, the returned reanimates, and the frost jotun adventurer a cryogigant.</RBP.scifinames.bigsmall.desc>
+  <RBP.scifinames.heaven.label>Big and Small - Heaven and Hell</RBP.scifinames.heaven.label>
+  <RBP.scifinames.heaven.desc>Strips the religious mythos: angels become ascendants (Satan the adversary prime, Grigori watchers, Nephilim the halfwrought, Lilim the nightwrought), demons become abyssals (gluttons devourers), and the Heaven, Hell and Outcast factions become the Luminal Ascendancy, the Abyssal Dominion and the Exiles.</RBP.scifinames.heaven.desc>
+  <RBP.scifinames.yokai.label>Big and Small - Yokai</RBP.scifinames.yokai.label>
+  <RBP.scifinames.yokai.desc>Kitsune become vulpids, nekomata felids and oni hornbrutes (crimson/cobalt); the Yokai Union becomes the Chimeric Union.</RBP.scifinames.yokai.desc>
+  <RBP.scifinames.lamias.label>Big and Small - Lamias</RBP.scifinames.lamias.label>
+  <RBP.scifinames.lamias.desc>Lamia become serpids, sirens mesmer serpids, gorgons petrifex serpids, naga greater serpids and nagaraj serpid primes; Greek and Hindu myth references drop from descriptions and the snake tribal federation becomes the serpid tribal federation.</RBP.scifinames.lamias.desc>
+  <RBP.scifinames.slimes.label>Big and Small - Slimes</RBP.scifinames.slimes.label>
+  <RBP.scifinames.slimes.desc>Slimes become plasmoids across all xenotypes and the escaped slimes faction.</RBP.scifinames.slimes.desc>
+  <RBP.scifinames.morexenos.label>Big and Small - More Xenotypes</RBP.scifinames.morexenos.label>
+  <RBP.scifinames.morexenos.desc>The devilspider becomes the dreadspider.</RBP.scifinames.morexenos.desc>
+  <RBP.scifinames.wvc.label>WVC - Xenotypes and Genes</RBP.scifinames.wvc.label>
+  <RBP.scifinames.wvc.desc>The undead xenotype becomes the necrokin and the lilif the psykin.</RBP.scifinames.wvc.desc>
+  <RBP.scifinames.alphagenes.label>Alpha Genes</RBP.scifinames.alphagenes.label>
+  <RBP.scifinames.alphagenes.desc>Efreet become cindrids and nereids abyssids.</RBP.scifinames.alphagenes.desc>
+  <RBP.vse.label>Expertise Overhaul</RBP.vse.label>
+  <RBP.vse.expertiseconsolidation.label>Consolidate and retune expertises</RBP.vse.expertiseconsolidation.label>
+  <RBP.vse.expertiseconsolidation.desc>Replaces the long list of narrow expertises with 32 broader ones, two to four per skill, so every pick is a real choice. Bonuses become multipliers capping near +40% at expertise level 20 instead of flat offsets that reach +100% or overshoot a stat's ceiling; combat and stat-heavy expertises are tuned lower, quality expertises cost work speed, and the two psycast expertises carry real drawbacks. Adds mechanitor and psycast expertises, which the base mods lack. Folds in the expertises from Alpha Skills, Hauts' Framework, Vanilla Fishing Expanded and Vanilla Gravship Expanded, and picks up stats from Integrated Implants, Mechanoid Upgrades, Altered Carbon and Vanilla Psycasts Expanded when those are present. Off by default; existing pawns keep the expertise they already have.</RBP.vse.expertiseconsolidation.desc>
+  <RBP.cybernetics.label>Cybernetics Overhaul</RBP.cybernetics.label>
+  <RBP.cybernetics.modules.label>Bolt-on implants need something to plug into</RBP.cybernetics.modules.label>
+  <RBP.cybernetics.modules.desc>Implants that add an ability instead of replacing a body part become modules: a surgeon plugs them into a slot on a host already installed in the pawn (a cyberbrain for cognitive ones, a thoracic frame for torso ones). A pawn carries only as many as its hosts' tiers allow, and module quality scales the effect. Converts modules from Integrated Implants, EPOE-Forked and Psychic Implants. Needs EBSG Framework.</RBP.cybernetics.modules.desc>
+  <RBP.cybernetics.npchosts.label>Raiders carrying a module arrive with the host too</RBP.cybernetics.npchosts.label>
+  <RBP.cybernetics.npchosts.desc>A raider, trader or visitor generated carrying a module also arrives with the host implant it plugs into, up to two per pawn. A module with nowhere to go is left off instead of arriving attached to nothing. Needs EBSG Framework.</RBP.cybernetics.npchosts.desc>
+  <RBP.cybernetics.advancedorgans.label>Advanced synthetic organs</RBP.cybernetics.advancedorgans.label>
+  <RBP.cybernetics.advancedorgans.desc>Adds an advanced synthetic heart, lung, liver, kidney, stomach and nose, filling the gap between EPOE-Forked's synthetic organs and the archotech tier. Built at the fabrication bench once you have advanced bionics. Needs EPOE-Forked.</RBP.cybernetics.advancedorgans.desc>
+  <RBP.cybernetics.thoracicframe.label>Thoracic frames</RBP.cybernetics.thoracicframe.label>
+  <RBP.cybernetics.thoracicframe.desc>Adds bionic, advanced and archotech thoracic frames that replace the ribcage. With EBSG Framework each hosts torso modules (2, 3 and 4 by tier); without it they are simply good ribcages. Big and Small's mechanical ribs take them where present.</RBP.cybernetics.thoracicframe.desc>
+  <RBP.cybernetics.tiers.label>Implants share one ladder of effect and price</RBP.cybernetics.tiers.label>
+  <RBP.cybernetics.tiers.desc>Puts artificial body parts from every loaded mod on one ladder, so a tier means the same thing everywhere: prosthetic 80%, bionic 115%, advanced 135% and archotech 150% of the natural part. Prices are then set by what an implant actually does, so two parts doing the same job cost the same and a specialist always costs more than the plain part. Covers Core, Royalty, Biotech, EPOE-Forked, Integrated Implants, GiTS, Psychic Implants and Big and Small, each when loaded; found archotech parts keep their own prices.</RBP.cybernetics.tiers.desc>
+  <RBP.cybernetics.micromachines.label>Better implants are built out of micromachines</RBP.cybernetics.micromachines.label>
+  <RBP.cybernetics.micromachines.desc>Anything above the plain bionic tier is built from micromachines instead of raw advanced components (four components become one micromachine, worth exactly the same). Replacing a lost part still costs only components; adding capability now also wants micromachines, one shared part made at your own bench. Needs GiTS Cyberbrains.</RBP.cybernetics.micromachines.desc>
+  <RBP.cybernetics.archotechshards.label>Archotech recycling</RBP.cybernetics.archotechshards.label>
+  <RBP.cybernetics.archotechshards.desc>Adds archotech shards: break an archotech part down at a fabrication bench for shards, and assemble any archotech part from shards, plasteel and heavy work, so two salvaged parts become the one you wanted. Shards also come from exotic traders and quest rewards. Needs the Cybernetics Research body lane.</RBP.cybernetics.archotechshards.desc>
+  <RBP.cybernetics.androidblocklist.label>Androids refuse wetware implants</RBP.cybernetics.androidblocklist.label>
+  <RBP.cybernetics.androidblocklist.desc>Androids can no longer receive surgeries that only make sense on living tissue: organ replacements, hemogenic and deathrest implants, endocrine glands and wombs, from Integrated Implants, EPOE-Forked and GiTS. Needs Vanilla Races Expanded - Android.</RBP.cybernetics.androidblocklist.desc>
+  <RBP.cybernetics.echobrains.label>Cyberbrains built for psycasters</RBP.cybernetics.echobrains.label>
+  <RBP.cybernetics.echobrains.desc>Adds two psycaster cyberbrains, a specialized model and a flagship that trades stability for power, and cuts the meditation bonus other cyberbrains gave as a side effect, so psychic capability becomes a choice rather than a freebie on a combat brain. Both host cortex modules with EBSG Framework. Needs GiTS Cyberbrains.</RBP.cybernetics.echobrains.desc>
+  <RBP.cybernetics.cyberbrainquality.label>Cyberbrains vary with quality</RBP.cybernetics.cyberbrainquality.label>
+  <RBP.cybernetics.cyberbrainquality.desc>Cyberbrains are built and traded at a quality, and the quality scales what the brain does: an excellent brain gives more than a poor one, and its downsides ease rather than worsen. The one-time adaptation after surgery is unchanged. Needs GiTS Cyberbrains.</RBP.cybernetics.cyberbrainquality.desc>
+  <RBP.cybernetics.livingframe.label>An endgame for bodies that stayed alive</RBP.cybernetics.livingframe.label>
+  <RBP.cybernetics.livingframe.desc>Adds the flesh-path endgame: a living frame grown to match its body, holding more modules than any archotech part, and an implant that gives more the further a pawn's genes are engineered from their baseline. Neither can be fitted to a synthetic body.</RBP.cybernetics.livingframe.desc>
+  <RBP.cybernetics.ascension.label>Ascended bodies keep psychic capability</RBP.cybernetics.ascension.label>
+  <RBP.cybernetics.ascension.desc>Adds hardware that gives an ascended synthetic body back its psychic sensitivity, so choosing the machine path does not close off psycasting. With the research overhaul on, it waits behind the ascension research. Needs Vanilla Races Expanded - Android.</RBP.cybernetics.ascension.desc>
+  <RBP.cybernetics.androidconversion.label>Rebuild a living pawn as an android</RBP.cybernetics.androidconversion.label>
+  <RBP.cybernetics.androidconversion.desc>Adds the way into the synthetic ending: brew a neuroform serum, build a conversion kit around it and a reactor, then operate. The pawn wakes as an android, keeping any prosthetics they already had, and is out of action for several days. Needs Vanilla Races Expanded - Android.</RBP.cybernetics.androidconversion.desc>
+  <RBP.cyberneticsresearch.label>Cybernetics Research Overhaul</RBP.cyberneticsresearch.label>
+  <RBP.cyberneticsresearch.core.label>One Cybernetics tab, one research to operate</RBP.cyberneticsresearch.core.label>
+  <RBP.cyberneticsresearch.core.desc>Replaces every implant mod's research tab with a single Cybernetics tab, rooted on one cheap early research that all implant surgery answers to: once you can operate, you can fit anything you get hold of. Turn this on first; every other option in this group builds on it.</RBP.cyberneticsresearch.core.desc>
+  <RBP.cyberneticsresearch.body.label>Body parts unlock a tier at a time</RBP.cyberneticsresearch.body.label>
+  <RBP.cyberneticsresearch.body.desc>Folds the prosthetic, bionic and advanced body-part research from several mods into one ladder on the tab: crude prosthetics and surrogate organs first, then bionic limbs, organs and senses as separate unlocks, then the advanced tiers, the ribcage frames and the archotech chassis.</RBP.cyberneticsresearch.body.desc>
+  <RBP.cyberneticsresearch.modules.label>Modules unlock by what they do</RBP.cyberneticsresearch.modules.label>
+  <RBP.cyberneticsresearch.modules.desc>Splits implant-module research into lanes: melee and ranged integral weapons, locomotion, metabolic and environmental systems, skill chips, defensive and utility hardware, and a top ultratech weapon tier.</RBP.cyberneticsresearch.modules.desc>
+  <RBP.cyberneticsresearch.cyberbrains.label>Cyberbrains come from rival manufacturers</RBP.cyberneticsresearch.cyberbrains.label>
+  <RBP.cyberneticsresearch.cyberbrains.desc>Reorganises cyberbrains into three manufacturers, each with its own tiers and flagship, instead of one ladder that hands you every specialization at once. Opens on a neural interface research that also unlocks micromachines, and the MA-AI chip with EPOE-Forked. Needs GiTS Cyberbrains.</RBP.cyberneticsresearch.cyberbrains.desc>
+  <RBP.cyberneticsresearch.mind.label>Psychic hardware and mind transfer</RBP.cyberneticsresearch.mind.label>
+  <RBP.cyberneticsresearch.mind.desc>Spreads psychic implants across researches by strength, with the strongest on side branches you go out of your way for, and keeps mind transfer's steps distinct: recording, sleeves, resleeving, remote casting and editing. Needs Psychic Implants or Altered Carbon.</RBP.cyberneticsresearch.mind.desc>
+  <RBP.cyberneticsresearch.capstones.label>Two endings to the tree, not one</RBP.cyberneticsresearch.capstones.label>
+  <RBP.cyberneticsresearch.capstones.desc>Adds two final researches that share a prerequisite and pull opposite ways: one rebuilds a pawn as a synthetic body with no biology left to fail, the other grows a frame that only works in living tissue. Both sit at the far end of the tab.</RBP.cyberneticsresearch.capstones.desc>
+  <RBP.cyberneticsresearch.retire.label>Clear out the research this replaces</RBP.cyberneticsresearch.retire.label>
+  <RBP.cyberneticsresearch.retire.desc>Deletes the original projects the Cybernetics tab took over, so the old mod tabs empty out instead of offering the same unlocks twice. Projects other mods' code needs are moved onto the tab rather than deleted. Best used with all four lane options above on.</RBP.cyberneticsresearch.retire.desc>
+  <RBP.rimiot.label>RimIOT - Logistic Matrix</RBP.rimiot.label>
+  <RBP.rimiot.costs.label>Reduce build costs</RBP.rimiot.costs.label>
+  <RBP.rimiot.costs.desc>Cheaper cable, connector and interface, with advanced components replaced by basic ones.</RBP.rimiot.costs.desc>
+  <RBP.rimiot.power.label>Remove power consumption</RBP.rimiot.power.label>
+  <RBP.rimiot.power.desc>Network buildings draw no power and need no wiring, and their descriptions drop the power notes.</RBP.rimiot.power.desc>
+  <RBP.autohydroponics.label>Automatic Hydroponics</RBP.autohydroponics.label>
+  <RBP.autohydroponics.costlier.label>Costlier auto hydroponics with higher power draw</RBP.autohydroponics.costlier.label>
+  <RBP.autohydroponics.costlier.desc>The large and small auto hydroponics cost more steel and components to build, and their power draw rises to 2000W and 1000W respectively, to match how much hand-tended hydroponics they replace.</RBP.autohydroponics.costlier.desc>
+  <RBP.altered.label>Altered Carbon</RBP.altered.label>
+  <RBP.altered.shieldbelt.label>Disable the ranged shield belt from VAE Accessories</RBP.altered.shieldbelt.label>
+  <RBP.altered.shieldbelt.desc>Makes Vanilla Apparel Expanded - Accessories' ranged shield belt unobtainable in favour of Altered Carbon's cuirassier belt. The def is kept, so saves are unaffected.</RBP.altered.shieldbelt.desc>
+  <RBP.altered.shieldsfab.label>Advanced shields research requires Fabrication</RBP.altered.shieldsfab.label>
+  <RBP.altered.shieldsfab.desc>The advanced shields research additionally requires Fabrication, since its gear can only be crafted at the fabrication bench anyway.</RBP.altered.shieldsfab.desc>
+  <RBP.altered.cuirassier.label>Cuirassier belt uses vanilla shield scaling</RBP.altered.cuirassier.label>
+  <RBP.altered.cuirassier.desc>The cuirassier belt swaps VEF's shield bubble for the vanilla shield comp (120 base max shield, scales with quality, doesn't block outgoing shots).</RBP.altered.cuirassier.desc>
+  <RBP.altered.traitblacklist.label>Neural editor ignores physical/psychic traits</RBP.altered.traitblacklist.label>
+  <RBP.altered.traitblacklist.desc>The stack saving options ignore body-bound traits from Hauts' Added Traits (Awakened, Transcendent and the totem traits), The Sims Traits and Vanilla Traits Expanded, so they aren't carried between sleeves. Entries apply only when their mod is loaded.</RBP.altered.traitblacklist.desc>
+  <RBP.altered.sleevecancer.label>Fix sleeve quality cancer rates</RBP.altered.sleevecancer.label>
+  <RBP.altered.sleevecancer.desc>Good through legendary sleeve quality genes multiply cancer rate by negative numbers (-0.1 to -0.5), inverting the stat; they become proper reduction factors (x0.9 to x0.5).</RBP.altered.sleevecancer.desc>
+  <RBP.altered.relayrange.label>Casting relay range per relay</RBP.altered.relayrange.label>
+  <RBP.altered.relayrange.desc>World tiles of needlecasting range each powered casting relay adds to a neural matrix. Altered Carbon's own value is 5; toggling this off keeps it.</RBP.altered.relayrange.desc>
+  <RBP.bigsmall.label>Big and Small - Genes &amp; More</RBP.bigsmall.label>
+  <RBP.bigsmall.madscience.label>Mad science field testing requires gun turrets</RBP.bigsmall.madscience.label>
+  <RBP.bigsmall.madscience.desc>The mad science field testing research itself gets the vanilla Gun turrets prerequisite, instead of every turret and ray weapon it unlocks listing Gun turrets separately, which garbles their requirement display.</RBP.bigsmall.madscience.desc>
+  <RBP.vfepirates.label>Vanilla Factions Expanded - Pirates</RBP.vfepirates.label>
+  <RBP.vfepirates.chargeweapons.label>Clean warcasket charge weapon prerequisites</RBP.vfepirates.chargeweapons.label>
+  <RBP.vfepirates.chargeweapons.desc>Warcasket charge blaster and lance require pulse-charged munitions plus spacer warcasket weaponry, dropping the inherited redundant prerequisite; with VWE - Coilguns, the warcasket railgun gets the same treatment via Mass Drivers. With Warcasket Weapon Quality, its direct-craft recipes get the same research gates the weapon boxes had.</RBP.vfepirates.chargeweapons.desc>
+  <RBP.vfepirates.empirescenario.label>Empire not permanently hostile to pirates</RBP.vfepirates.empirescenario.label>
+  <RBP.vfepirates.empirescenario.desc>The Empire is no longer permanently hostile to the player pirate faction from the Low orbit crash scenario, so reputation can be repaired.</RBP.vfepirates.empirescenario.desc>
+  <RBP.vfeempire.label>Vanilla Factions Expanded - Empire</RBP.vfeempire.label>
+  <RBP.vfeempire.qol.label>Royal armchair throne + candelabra glow radius</RBP.vfeempire.qol.label>
+  <RBP.vfeempire.qol.desc>Vanilla Furniture Expanded's royal armchair satisfies the Stellarch and High Stellarch throne room seat requirement, and the candelabra shows its light radius when placing.</RBP.vfeempire.qol.desc>
+  <RBP.rimsenal.label>Rimsenal - Core</RBP.rimsenal.label>
+  <RBP.rimsenal.corpcost.label>Corp techs cost 3000</RBP.rimsenal.corpcost.label>
+  <RBP.rimsenal.corpcost.desc>The three corp tier-1 researches (crystalline, furnace, kinetic) drop from 3050 to 3000 base cost.</RBP.rimsenal.corpcost.desc>
+  <RBP.rimsenal.armortechs.label>Armors require their corp's tech</RBP.rimsenal.armortechs.label>
+  <RBP.rimsenal.armortechs.desc>Rimsenal armors require their own corporation's research (Greydale modular gear via modular equipment manufacturing, Yeonhwa suits via crystalline techs, Jotun heavy armors via furnace/siege techs, Tesseron carapaces via kinetic techs) instead of vanilla flak/recon/powered armor. Also repairs the artillery armor's malformed siege gun prerequisite.</RBP.rimsenal.armortechs.desc>
+  <RBP.rimsenal.modularweapons.label>Modular weapons via modular equipment manufacturing</RBP.rimsenal.modularweapons.label>
+  <RBP.rimsenal.modularweapons.desc>The modular carbine and MRS conversion kit require modular equipment manufacturing instead of vanilla gun researches, and the GD multi launcher additionally requires it alongside Mortars.</RBP.rimsenal.modularweapons.desc>
+  <RBP.rimsenalspacer.label>Rimsenal - Spacer Faction Pack</RBP.rimsenalspacer.label>
+  <RBP.rimsenalspacer.caravanmechs.label>Caravans without mechanoid guards</RBP.rimsenalspacer.caravanmechs.label>
+  <RBP.rimsenalspacer.caravanmechs.desc>Spacer faction trade caravans no longer bring mechanoids as guards; the mechs frequently get left behind and roamed the colony map forever.</RBP.rimsenalspacer.caravanmechs.desc>
+  <RBP.rimsenalspacer.smartweapons.label>Clean smart weapon research prerequisites</RBP.rimsenalspacer.smartweapons.label>
+  <RBP.rimsenalspacer.smartweapons.desc>Smart charge weapons and the smart minigun drop their redundant inherited gunsmithing prerequisite; with Royalty, the smart visor unlocks from the Gunlink research, which is renamed to smart targeting systems.</RBP.rimsenalspacer.smartweapons.desc>
+  <RBP.memes.label>Meme &amp; Ideology Fixes</RBP.memes.label>
+  <RBP.memes.factions.label>No pacifist memes for warlike factions</RBP.memes.factions.label>
+  <RBP.memes.factions.desc>Rimsenal's Spacer and Federation factions can't generate with Alpha Memes' vow of nonviolence meme, which breaks their combat pawn generation. Alpha Memes only adds that meme alongside VIE - Memes and Structures, so both are needed.</RBP.memes.factions.desc>
+  <RBP.memes.anomalytraits.label>Occultist and void fascination fit inhuman memes</RBP.memes.anomalytraits.label>
+  <RBP.memes.anomalytraits.desc>The Occultist trait and void fascination agree with Anomaly's Inhuman and Ritualist memes, so pawns who have them no longer resent an ideology built around them. Needs Ideology, since memes do nothing without it.</RBP.memes.anomalytraits.desc>
+  <RBP.memes.inspirations.label>Inspirations respect ideology precepts</RBP.memes.inspirations.label>
+  <RBP.memes.inspirations.desc>Pawns whose ideology abhors an activity stop rolling inspirations for it: shooting/melee frenzies blocked by VIE - Memes and Structures and Alpha Memes violence precepts, taming inspiration by their ranching/bonding precepts, and Vanilla Social Interactions Expanded's frenzies by the matching precepts.</RBP.memes.inspirations.desc>
+  <RBP.implants.label>Integrated Implants</RBP.implants.label>
+  <RBP.implants.chipbad.label>Skill chips survive cleansing effects</RBP.implants.chipbad.label>
+  <RBP.implants.chipbad.desc>Marks Integrated Implants' skill chip hediffs isBad=false so healer serums, biosculpting and similar purges don't rip them out.</RBP.implants.chipbad.desc>
+  <RBP.implants.chiptiers.label>Mechanitor implants need Alpha Mechs chips</RBP.implants.chiptiers.label>
+  <RBP.implants.chiptiers.desc>Mechhive satellite uplink, mechwomb, warprogrammer interface and remote dominator cost Alpha Mechs' tier 4/5/6/6 chips instead of vanilla tier 2/2/3/3 chips.</RBP.implants.chiptiers.desc>
+  <RBP.implants.voicelockmasochist.label>Masochists enjoy the voicelock</RBP.implants.voicelockmasochist.label>
+  <RBP.implants.voicelockmasochist.desc>Pawns with the Masochist trait get +8 mood instead of -8 while their voicelock is active.</RBP.implants.voicelockmasochist.desc>
+  <RBP.implants.shoulderslimes.label>Shoulder turrets install on the shoulder</RBP.implants.shoulderslimes.label>
+  <RBP.implants.shoulderslimes.desc>Shoulder turret and shoulder charge turret surgeries target the shoulder instead of the torso, which slime bodies lack (avoids errors).</RBP.implants.shoulderslimes.desc>
+  <RBP.implants.waterpathing.label>Levitating implants ignore water</RBP.implants.waterpathing.label>
+  <RBP.implants.waterpathing.desc>Pawns with the psychic levitator or personal grav engine implant move over water at no extra pathing cost.</RBP.implants.waterpathing.desc>
+  <RBP.implants.boosterrange.label>Signal boosters stack with Alpha Genes command range genes</RBP.implants.boosterrange.label>
+  <RBP.implants.boosterrange.desc>Alpha Genes' increased/decreased command range genes override the mech command radius outright, discarding signal booster implants; with this fix the booster's bonus is added on top of the gene's 35/15 tile radius.</RBP.implants.boosterrange.desc>
+  <RBP.implants.cerebrexsurgery.label>Cerebrex node needs surgery</RBP.implants.cerebrexsurgery.label>
+  <RBP.implants.cerebrexsurgery.desc>Integrated Implants' cerebrex node is self-installable from the gear tab, bypassing the doctor, medicine and research every other brain implant needs. This strips its self-install comps and adds a proper install surgery (behind Ultra mechtech, the same research that gates crafting it). Post-death extraction is unchanged. Needs Biotech and Odyssey, which the node itself requires to exist.</RBP.implants.cerebrexsurgery.desc>
+  <RBP.vreinsector.label>Vanilla Races Expanded - Insector</RBP.vreinsector.label>
+  <RBP.vreinsector.colossalweapons.label>Colossal insectors wield giant weapons</RBP.vreinsector.colossalweapons.label>
+  <RBP.vreinsector.colossalweapons.desc>Carriers of the colossal geneline gene get Big and Small's Giant trait, letting them equip B&amp;S giant weapons.</RBP.vreinsector.colossalweapons.desc>
+  <RBP.impactweaponry.label>Impact Weaponry - Reloaded</RBP.impactweaponry.label>
+  <RBP.impactweaponry.bolterprereq.label>Clean warcasket impact bolter prerequisites</RBP.impactweaponry.bolterprereq.label>
+  <RBP.impactweaponry.bolterprereq.desc>The warcasket impact bolter requires spacer warcasket weaponry (VFE - Pirates) plus impact shot, dropping the redundant extra prerequisite.</RBP.impactweaponry.bolterprereq.desc>
+  <RBP.spacerarsenal.label>Spacer Arsenal</RBP.spacerarsenal.label>
+  <RBP.spacerarsenal.prereqs.label>Heavy weapons via VWE researches</RBP.spacerarsenal.prereqs.label>
+  <RBP.spacerarsenal.prereqs.desc>With Vanilla Weapons Expanded: brute rifle, clash HMG/rifle and contact/thump grenades require Heavy Weapons plus Fabrication. With VWE - Coilguns: coil lance and sparksabre require Mass Drivers.</RBP.spacerarsenal.prereqs.desc>
+  <RBP.vanilla.label>Vanilla &amp; DLC</RBP.vanilla.label>
+  <RBP.vanilla.healingenhancer.label>Healing enhancer uses injury healing factor</RBP.vanilla.healingenhancer.label>
+  <RBP.vanilla.healingenhancer.desc>The Royalty healing enhancer implant grants x1.5 injury healing factor instead of the hidden natural healing factor, so the bonus shows up in the pawn's stat window.</RBP.vanilla.healingenhancer.desc>
+  <RBP.vanilla.mechraidgroups.label>Combined mechanoid raid groups</RBP.vanilla.mechraidgroups.label>
+  <RBP.vanilla.mechraidgroups.desc>Adds melee, light, heavy and all-star raid compositions to the Mechanoid faction mixing vanilla mechs with Alpha Mechs and Rimsenal Spacer mechs (each entry only applies when its mod is loaded), plus a bomb-rush group with Alpha Mechs and Rimsenal Spacer.</RBP.vanilla.mechraidgroups.desc>
+  <RBP.vanilla.toxicmeat.label>Toxic meat unchecked by default</RBP.vanilla.toxicmeat.label>
+  <RBP.vanilla.toxicmeat.desc>VAE - Waste Animals' toxic meat is disallowed by default in hopper storage and meal recipe ingredient filters.</RBP.vanilla.toxicmeat.desc>
+  <RBP.vanilla.hideemptyresearchtabs.label>Hide empty research tabs</RBP.vanilla.hideemptyresearchtabs.label>
+  <RBP.vanilla.hideemptyresearchtabs.desc>Research tabs that no research project is assigned to are left out of the research window's tab row. The tab currently open and the Main tab are always shown.</RBP.vanilla.hideemptyresearchtabs.desc>
+  <RBP.vanilla.creepjoinersurgery.label>Creep joiners accept human surgeries</RBP.vanilla.creepjoinersurgery.label>
+  <RBP.vanilla.creepjoinersurgery.desc>Every surgery recipe that lists humans as a target (implants and prosthetics from any mod included) also accepts Anomaly's creep joiners, who use their own race def and are otherwise skipped by modded implants.</RBP.vanilla.creepjoinersurgery.desc>
+  <RBP.vanilla.genecomplexitybase.label>Extra base xenogerm complexity</RBP.vanilla.genecomplexitybase.label>
+  <RBP.vanilla.genecomplexitybase.desc>Genetic complexity added to the gene assembler's base limit of 6, before gene processors. Toggling this off keeps vanilla.</RBP.vanilla.genecomplexitybase.desc>
+  <RBP.vanilla.genecomplexityprocessor.label>Complexity per gene processor</RBP.vanilla.genecomplexityprocessor.label>
+  <RBP.vanilla.genecomplexityprocessor.desc>Genetic complexity each powered gene processor adds to the assembler's limit. Vanilla is 2; toggling this off keeps it.</RBP.vanilla.genecomplexityprocessor.desc>
+  <RBP.vqea.label>Vanilla Quests Expanded - Ancients</RBP.vqea.label>
+  <RBP.vqea.sittable.label>Sittable ancient hospital seating</RBP.vqea.sittable.label>
+  <RBP.vqea.sittable.desc>The ancient hospital armchair and bench become actual seats, using the comfort they already have.</RBP.vqea.sittable.desc>
+  <RBP.vqea.giantweapons.label>Enormous and Herculean wield giant weapons</RBP.vqea.giantweapons.label>
+  <RBP.vqea.giantweapons.desc>Carriers of the enormous or herculean archite genes get Big and Small's Giant trait, letting them equip B&amp;S giant weapons.</RBP.vqea.giantweapons.desc>
+  <RBP.vqea.patientgown.label>Patient gown blunt armor nerf</RBP.vqea.patientgown.label>
+  <RBP.vqea.patientgown.desc>The ancient patient gown's blunt armor drops from 50% to 10%, so pawns stop preferring it over real armor.</RBP.vqea.patientgown.desc>
+  <RBP.vqea.injectorwhitelist.label>Curated archogen injector gene pool</RBP.vqea.injectorwhitelist.label>
+  <RBP.vqea.injectorwhitelist.desc>The archogen injector and ancient experiment pawns roll genes from a curated whitelist (VQE Ancients' archite powers plus mild drawbacks from vanilla, Alpha Genes, Big and Small, WVC, VRE and Det's xenotype packs) instead of every archite and negative gene from all loaded mods.</RBP.vqea.injectorwhitelist.desc>
+  <RBP.vqea.nofabricatedarchite.label>Ancient archite genes cannot be fabricated</RBP.vqea.nofabricatedarchite.label>
+  <RBP.vqea.nofabricatedarchite.desc>Gene Fabrication builds a genepack recipe for every gene in the game, including VQE Ancients' 33 archite powers, which VQE Ancients itself keeps out of random genepacks. Removes those recipes, so herculean, genius, matter phasing and the rest come from the archogen injector, ancient labs and quests rather than a bench. Needs Gene Fabrication and Cherry Picker; does nothing without them.</RBP.vqea.nofabricatedarchite.desc>
+  <RBP.eltex.label>Eltex Weaponry</RBP.eltex.label>
+  <RBP.eltex.spawns.label>Eltex weapons only on psycasters</RBP.eltex.spawns.label>
+  <RBP.eltex.spawns.desc>Eltex weapons stop spawning on random enemies: they become psychic-tagged gear carried by Empire cataphracts, Empire psycasters (with Vanilla Psycasts Expanded) and deserters (with VFE - Empire).</RBP.eltex.spawns.desc>
+  <RBP.bambamelee.label>Melee Weapons For All Tech Levels</RBP.bambamelee.label>
+  <RBP.bambamelee.ultratrade.label>Ultra melee weapons not stocked by traders</RBP.bambamelee.ultratrade.label>
+  <RBP.bambamelee.ultratrade.desc>The ultra-tier tiered melee weapons — the base ultra gladius, longsword, axe and spear, plus Beyond Our Reach's Solar and Quasar tiers — become sellable-only: traders never stock them for purchase, so they stay a research-and-craft reward. You can still sell a looted or crafted one.</RBP.bambamelee.ultratrade.desc>
+  <RBP.yart.label>Yet Another Research Tree (YART)</RBP.yart.label>
+  <RBP.yart.unlockgrouping.label>Group unlocks by every research that gates them</RBP.yart.unlockgrouping.label>
+  <RBP.yart.unlockgrouping.desc>An item whose crafting recipe needs a second research is listed under that research on a project's card, next to the recipe, instead of in the plain unlock list above it. This is how the vanilla research window groups them.</RBP.yart.unlockgrouping.desc>
+  <RBP.gits.label>GiTS Cyberbrains</RBP.gits.label>
+  <RBP.gits.merchant.label>Only basic cyberbrains sold by merchants</RBP.gits.merchant.label>
+  <RBP.gits.merchant.desc>Removes the higher-tier cyberbrains from trader stock. They stay craftable and can still spawn on raiders.</RBP.gits.merchant.desc>
+  <RBP.gits.surgeries.label>Surgeries via EPOE brain surgery, later research to ultratech</RBP.gits.surgeries.label>
+  <RBP.gits.surgeries.desc>Cyberbrain install and nullify surgeries unlock at EPOE-Forked's Brain Surgery research instead of the GiTS node, and post-basic cyberization research moves to the ultratech tier.</RBP.gits.surgeries.desc>
+  <RBP.gits.mentalbreak.label>Harsher extreme mental break</RBP.gits.mentalbreak.label>
+  <RBP.gits.mentalbreak.desc>Raises the extreme cyberbrain mental break threshold offset from +20% to +40%, on the Civis PX-7 and Aegis HADES flagships and, with the Echo brains loaded, the Echo ORACLE.</RBP.gits.mentalbreak.desc>
+  <RBP.gits.extremedrawbacks.label>Harsher extreme cyberbrain drawbacks</RBP.gits.extremedrawbacks.label>
+  <RBP.gits.extremedrawbacks.desc>Makes the extreme-tier flagships (Civis PX-7, Aegis HADES, and the Echo ORACLE where present) rougher to install: more pain, hunger and rest loss while the brain adapts, and a higher chance of a lasting complication (sclerosis or closed-shell syndrome) during that adaptation. Pairs with harsher extreme mental break for the full package.</RBP.gits.extremedrawbacks.desc>
+  <RBP.gits.research.label>Streamline the research tree</RBP.gits.research.label>
+  <RBP.gits.research.desc>Collapses the nanite surgery researches into nanite grafting and removes the empty filler nodes.</RBP.gits.research.desc>
+  <RBP.gits.cyberbrainnames.label>Cyberbrains named by role</RBP.gits.cyberbrainnames.label>
+  <RBP.gits.cyberbrainnames.desc>Renames GiTS's cyberbrains after the work they do (Civis Mining, Aegis Marksman) instead of factory codes (Poseidon DS23, Hanka HCQ11), keeping the flagships as Civis PX-7 and Aegis HADES. Their descriptions are rewritten in plain terms and state the cortex-module slot count.</RBP.gits.cyberbrainnames.desc>
+  <RBP.alphagenes.label>Alpha Genes</RBP.alphagenes.label>
+  <RBP.alphagenes.genepacks.label>Alpha Genes genes in vanilla genepacks</RBP.alphagenes.genepacks.label>
+  <RBP.alphagenes.genepacks.desc>Alpha Genes' genes spawn in vanilla genepacks (cosmetic genes at much lower weight), the random genepack spawner in gene lab quests only yields vanilla genepacks, and alphapacks/mixedpacks become unobtainable (existing ones are untouched).</RBP.alphagenes.genepacks.desc>
+  <RBP.alphagenes.beautyrename.label>Rename angelic beauty to uncanny beauty</RBP.alphagenes.beautyrename.label>
+  <RBP.alphagenes.beautyrename.desc>Alpha Genes' angelic beauty gene is relabeled uncanny beauty so it can't be confused with WVC's angel beauty gene. Label only.</RBP.alphagenes.beautyrename.desc>
+  <RBP.alphamemes.label>Alpha Memes</RBP.alphamemes.label>
+  <RBP.alphamemes.vacstonetiles.label>Vacstone styled tiles</RBP.alphamemes.vacstonetiles.label>
+  <RBP.alphamemes.vacstonetiles.desc>Jewish, kemetic, steampunk, neolithic and ocular styled tiles can be built from Odyssey's vacstone blocks.</RBP.alphamemes.vacstonetiles.desc>
+  <RBP.geneconflicts.label>Gene Conflict Fixes</RBP.geneconflicts.label>
+  <RBP.geneconflicts.bloodlust.label>Bloodlust and Distressed genes conflict</RBP.geneconflicts.bloodlust.label>
+  <RBP.geneconflicts.bloodlust.desc>Big and Small's bloodlust gene and VRE - Highmate's distressed gene force traits that suppress each other and bug out when combined; they become mutually exclusive.</RBP.geneconflicts.bloodlust.desc>
+  <RBP.geneconflicts.psychic.label>Psychic UV/dark sensitivity vs psychically dull/deaf</RBP.geneconflicts.psychic.label>
+  <RBP.geneconflicts.psychic.desc>WVC - Xenotypes and Genes' psychic UV sensitivity and psychic dark sensitivity genes become mutually exclusive with the vanilla psychically dull and psychically deaf genes, whose forced traits they would otherwise fight.</RBP.geneconflicts.psychic.desc>
+  <RBP.geneconflicts.firefoam.label>Firefoam pop vs fire obsession</RBP.geneconflicts.firefoam.label>
+  <RBP.geneconflicts.firefoam.desc>WVC - Xenotypes and Genes' firefoam pop gene suppresses the Pyromaniac trait that Alpha Genes' fire obsession gene forces; they become mutually exclusive.</RBP.geneconflicts.firefoam.desc>
+  <RBP.geneconflicts.hemogen.label>No hemogen drain stacking</RBP.geneconflicts.hemogen.label>
+  <RBP.geneconflicts.hemogen.desc>Big and Small's greater blood drain and WVC's hemogen gain join the mutual-exclusion tag VRE - Sanguophage already uses for its hemogen drain genes, and the vanilla hemogen drain gene gets that tag too.</RBP.geneconflicts.hemogen.desc>
+  <RBP.geneconflicts.deathless.label>Deathless-type genes are mutually exclusive</RBP.geneconflicts.deathless.label>
+  <RBP.geneconflicts.deathless.desc>Vanilla deathless, Big and Small's revenant soul and immortal return, WVC's undead and never dead, and VRE - Archon's transcendent can no longer be combined on one pawn.</RBP.geneconflicts.deathless.desc>
+  <RBP.geneconflicts.dodge.label>Melee dodge genes are mutually exclusive</RBP.geneconflicts.dodge.label>
+  <RBP.geneconflicts.dodge.desc>Melee dodge genes from VQE - Ancients (prowess), Rimsenal Harana (agile fighter), Rimsenal Askbarn (lightning reflexes, born warrior), Det's Keshig (deft, lumbering) and Highborn Xenotype (fencer) share VRE - Lycanthrope's melee dodge exclusion tag, so dodge bonuses can't stack across mods.</RBP.geneconflicts.dodge.desc>
+  <RBP.geneconflicts.claws.label>Claw genes are mutually exclusive</RBP.geneconflicts.claws.label>
+  <RBP.geneconflicts.claws.desc>Innate claw and talon attack genes can't stack: Alpha Genes' clawed hands, crab claw and pneumatic claw, VRE - Saurid's saurid claws, VRE - Sanguophage's talons, WVC's kitty and archite claws, Big and Small's venom talons, VRE - Insector's charger claws and VQE - Ancients' plasteel claws share a mutual-exclusion tag.</RBP.geneconflicts.claws.desc>
+  <RBP.geneconflicts.bleedrate.label>Slow bleeding vs hemophiliac</RBP.geneconflicts.bleedrate.label>
+  <RBP.geneconflicts.bleedrate.desc>Big and Small's slow bleeding gene and VRE - Genie's hemophiliac gene pull bleed rate in opposite directions; they become mutually exclusive.</RBP.geneconflicts.bleedrate.desc>
+  <RBP.geneconflicts.flirty.label>Flirty vs never flirts</RBP.geneconflicts.flirty.label>
+  <RBP.geneconflicts.flirty.desc>VRE - Highmate's flirty gene and Big and Small's never flirts gene contradict each other; they become mutually exclusive.</RBP.geneconflicts.flirty.desc>
+  <RBP.geneconflicts.meleespeed.label>No melee attack speed stacking</RBP.geneconflicts.meleespeed.label>
+  <RBP.geneconflicts.meleespeed.desc>Det's Brawnum's slow hitter joins the mutual-exclusion tag VRE - Archon uses for its fast and slow melee hitter genes, so melee speed genes can't stack across the two mods.</RBP.geneconflicts.meleespeed.desc>
+  <RBP.odyssey.label>Odyssey</RBP.odyssey.label>
+  <RBP.odyssey.shuttle.label>Long-range passenger shuttle</RBP.odyssey.shuttle.label>
+  <RBP.odyssey.shuttle.desc>Raises the passenger shuttle's chemfuel capacity from 400 to 2000 and its cargo mass capacity from 500 to 2000.</RBP.odyssey.shuttle.desc>
+  <RBP.odyssey.vacuumtrims.label>Vacuum resistance trims on modded armor</RBP.odyssey.vacuumtrims.label>
+  <RBP.odyssey.vacuumtrims.desc>Trims the vacuum resistance of spacer armor from Rimsenal - Core, Rimsenal - Federation, Altered Carbon 2, Spacer Arsenal and Impact Weaponry - Reloaded (each only when loaded), keeping full vacuum protection hard to reach; the Spacer Arsenal ensign and Impact Weaponry crusader helmets also lose a little sharp armor. Vanilla Gravship Expanded - Chapter 1's balance assumes scarce vacuum resistance.</RBP.odyssey.vacuumtrims.desc>
+  <RBP.dev.label>Developer</RBP.dev.label>
+  <RBP.dev.genedump.label>Auto-refresh gene database dump</RBP.dev.genedump.label>
+  <RBP.dev.genedump.desc>With dev mode on, rewrites GeneDump.json at the main menu so the dump always reflects the current modlist.</RBP.dev.genedump.desc>
+  <RBP.dev.xenofactiondump.label>Auto-refresh xenotype faction dump</RBP.dev.xenofactiondump.label>
+  <RBP.dev.xenofactiondump.desc>With dev mode on, rewrites XenotypeFactionDump.json at the main menu: which xenotypes each faction can roll, which ones no faction can roll, and each faction's modded-xenotype share.</RBP.dev.xenofactiondump.desc>
+  <RBP.dev.recipedump.label>Auto-refresh recipe dump</RBP.dev.recipedump.label>
+  <RBP.dev.recipedump.desc>With dev mode on, rewrites RecipeDump.json at the main menu: every recipe and surgery, with its worker class chain, benches and resolved ingredients.</RBP.dev.recipedump.desc>
+  <RBP.dev.hediffdump.label>Auto-refresh hediff dump</RBP.dev.hediffdump.label>
+  <RBP.dev.hediffdump.desc>With dev mode on, rewrites HediffDump.json at the main menu: every hediff, which ones are added body parts, and the modular slot table with its capacities.</RBP.dev.hediffdump.desc>
+  <RBP.dev.researchdump.label>Auto-refresh research dump</RBP.dev.researchdump.label>
+  <RBP.dev.researchdump.desc>With dev mode on, rewrites ResearchDump.json at the main menu: every project and tab, each project's techprint item, and any project whose techprint went missing.</RBP.dev.researchdump.desc>
+  <RBP.dev.thingdump.label>Auto-refresh thing dump</RBP.dev.thingdump.label>
+  <RBP.dev.thingdump.desc>With dev mode on, rewrites ThingDump.json at the main menu: every item and building with its resolved market value, work, mass and hit points, and the recipes that produce it.</RBP.dev.thingdump.desc>
+  <RBP.dev.bodydump.label>Auto-refresh body dump</RBP.dev.bodydump.label>
+  <RBP.dev.bodydump.desc>With dev mode on, rewrites BodyDump.json at the main menu: every body's resolved part tree and every body part def. Finds surgeries that no loaded body can receive.</RBP.dev.bodydump.desc>
+  <RBP.dev.acquisitiondump.label>Auto-refresh acquisition dump</RBP.dev.acquisitiondump.label>
+  <RBP.dev.acquisitiondump.desc>With dev mode on, rewrites AcquisitionDump.json at the main menu: which traders stock each item, and every reward, quest, scenario and pawn gear table that hands it out.</RBP.dev.acquisitiondump.desc>
+  <RBP.dev.modrulesdump.label>Auto-refresh mod rules dump</RBP.dev.modrulesdump.label>
+  <RBP.dev.modrulesdump.desc>With dev mode on, rewrites ModRulesDump.json at the main menu: rule defs from other mods that gate which surgeries and hediffs a pawn is allowed to receive.</RBP.dev.modrulesdump.desc>
+
+</LanguageData>

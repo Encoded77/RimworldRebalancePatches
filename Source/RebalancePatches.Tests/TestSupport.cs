@@ -51,9 +51,13 @@ namespace RebalancePatches.Tests
         public const string ImpactWeaponry = "detvisor.impactweaponryreloaded";
         public const string SpacerArsenal = "det.spacerarsenal";
         public const string EltexWeaponry = "zal.eltexweaponry";
+        public const string BambaMelee = "bamba.allbambamelee.tiered";
+        public const string BambaBOR = "bambaryla.bor.redux";
+        public const string BambaBORLegacy = "bambaryla.bor";
         public const string HautsTraits = "hautarche.hautstraits";
         public const string VQEAncients = "vanillaquestsexpanded.ancients";
         public const string RimIOT = "cn.rimiot";
+        public const string AutomaticHydroponics = "poncho.automatichydroponics";
         public const string GiTS = "moistestwhale.gitscyberbrains";
         public const string EPOEForked = "vat.epoeforked";
         public const string EPOEForkedRoyalty = "vat.epoeforkedroyalty";

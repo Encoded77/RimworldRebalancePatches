@@ -172,5 +172,52 @@ namespace RebalancePatches.Tests
                 Check.True(!string.IsNullOrEmpty(id) && id == id.ToLowerInvariant() && !id.Contains(" "),
                     $"'{owner}' declares malformed packageId '{id}'");
         }
+
+        [Test]
+        public static void EverySettingHasTranslatedText()
+        {
+            // Label and description text lives in Languages/English/Keyed, keyed off the setting key.
+            // A missing entry would render as the raw key in the settings menu, so assert each resolves.
+            var checkedKeys = 0;
+            foreach (RebalanceGroup group in SettingsRegistry.Groups)
+            {
+                CheckTranslates($"RBP.{group.key}.label", group.label, ref checkedKeys);
+                foreach (RebalanceToggle child in group.children)
+                {
+                    CheckTranslates($"RBP.{child.key}.label", child.label, ref checkedKeys);
+                    CheckTranslates($"RBP.{child.key}.desc", child.description, ref checkedKeys);
+                }
+                foreach (RebalanceSlider slider in group.sliders)
+                {
+                    CheckTranslates($"RBP.{slider.key}.label", slider.label, ref checkedKeys);
+                    CheckTranslates($"RBP.{slider.key}.desc", slider.description, ref checkedKeys);
+                }
+            }
+
+            // Settings-window chrome and in-game runtime strings, which have no registry entry.
+            string[] loose =
+            {
+                "RBP.UI.RestartNote", "RBP.UI.SearchPlaceholder", "RBP.UI.CollapseAll", "RBP.UI.ExpandAll",
+                "RBP.UI.ShowInactive", "RBP.UI.ShowInactiveTip", "RBP.UI.NotLoaded", "RBP.UI.GroupGateTip",
+                "RBP.UI.CountOn", "RBP.UI.GroupOff", "RBP.UI.Requires", "RBP.UI.SliderTip",
+                "RBP.UI.ResetToDefault", "RBP.UI.Needs", "RBP.UI.NeedsOneOf", "RBP.UI.RequiredModsHeader",
+                "RBP.UI.AnyOfHeader", "RBP.UI.Loaded", "RBP.UI.Missing",
+                "RBP.GeneDivergence.Tip", "RBP.Module.GenericName", "RebalancePatches.NoOpenModuleSlot",
+            };
+            foreach (string key in loose)
+                CheckTranslates(key, null, ref checkedKeys);
+
+            Check.Note($"verified {checkedKeys} translation key(s)");
+            Check.SoftResult();
+        }
+
+        private static void CheckTranslates(string key, string resolved, ref int count)
+        {
+            count++;
+            Check.Soft(key.CanTranslate(), $"missing Keyed translation for '{key}'");
+            if (resolved != null)
+                Check.Soft(resolved != key && !string.IsNullOrEmpty(resolved),
+                    $"'{key}' resolved to the raw key or empty text");
+        }
     }
 }

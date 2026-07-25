@@ -32,7 +32,7 @@ parallel unlocks:
 
 - **Chassis** rebuilds the body: crude prosthetics and surrogate organs first, then bionic limbs,
   organs and senses as separate unlocks, then the advanced tiers, the thoracic frames that replace the
-  ribcage, and the archotech limbs. at the top
+  ribcage, and the archotech limbs at the top.
 - **Cortex** rebuilds the mind: cyberbrains and their coprocessors on one side, and the mind-transfer
   line on the other (recording a mind, growing a sleeve, resleeving, remote casting, editing).
 - **Modules** are the hardware that plugs into the chassis and cortex: integral melee and ranged
@@ -58,7 +58,8 @@ graph LR
 
 The overhaul draws a line between a **part** and a **module**. A part replaces a body part; a module
 adds a capability, and instead of being fitted on its own it plugs into a slot on a host already
-installed in the pawn. Cognitive modules go into a cyberbrain, torso modules into a thoracic frame, limbs modules on limbs, etc. How
+installed in the pawn. Cognitive modules go into a cyberbrain, torso modules into a thoracic frame,
+limb modules into limbs, and so on. How
 many a pawn can carry depends on the tier of the hosts it paid for, not on how many implants exist. This
 turns "install every buff in the game" into a real chassis-building decision, and gives the frames and
 cyberbrains a purpose beyond their own stats. It is also what lets bolt-on implants from Integrated

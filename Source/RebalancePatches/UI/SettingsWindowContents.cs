@@ -51,7 +51,7 @@ namespace RebalancePatches.UI
             Color prev = GUI.color;
             GUI.color = NoteColor;
             Text.Anchor = TextAnchor.MiddleLeft;
-            Widgets.Label(banner, "Changes take effect after restarting RimWorld. Greyed-out entries need mods that aren't loaded.");
+            Widgets.Label(banner, "RBP.UI.RestartNote".Translate());
             Text.Anchor = TextAnchor.UpperLeft;
             GUI.color = prev;
 
@@ -126,7 +126,7 @@ namespace RebalancePatches.UI
                 Color prev = GUI.color;
                 GUI.color = NoteColor;
                 Text.Anchor = TextAnchor.MiddleLeft;
-                Widgets.Label(new Rect(searchRect.x + 6f, searchRect.y, searchRect.width - 6f, searchRect.height), "Search settings...");
+                Widgets.Label(new Rect(searchRect.x + 6f, searchRect.y, searchRect.width - 6f, searchRect.height), "RBP.UI.SearchPlaceholder".Translate());
                 Text.Anchor = TextAnchor.UpperLeft;
                 GUI.color = prev;
             }
@@ -142,7 +142,7 @@ namespace RebalancePatches.UI
 
             var collapseRect = new Rect(rect.xMax - 110f, rect.y + 2f, 110f, rect.height - 4f);
             bool anyExpanded = expandedKeys.Count > 0;
-            if (Widgets.ButtonText(collapseRect, anyExpanded ? "Collapse all" : "Expand all"))
+            if (Widgets.ButtonText(collapseRect, (anyExpanded ? "RBP.UI.CollapseAll" : "RBP.UI.ExpandAll").Translate()))
             {
                 if (anyExpanded)
                 {
@@ -156,8 +156,8 @@ namespace RebalancePatches.UI
             }
 
             var inactiveRect = new Rect(collapseRect.x - LabelGap - 170f, rect.y, 170f, rect.height);
-            Widgets.CheckboxLabeled(inactiveRect, "Show inactive mods", ref showInactive);
-            TooltipHandler.TipRegion(inactiveRect, "Also list groups whose target mod isn't in the current modlist.");
+            Widgets.CheckboxLabeled(inactiveRect, "RBP.UI.ShowInactive".Translate(), ref showInactive);
+            TooltipHandler.TipRegion(inactiveRect, "RBP.UI.ShowInactiveTip".Translate());
         }
 
         private static void DrawGroupHeader(Rect rect, RebalanceGroup group, bool eligible, bool expanded)
@@ -188,18 +188,18 @@ namespace RebalancePatches.UI
             if (!eligible)
             {
                 string missing = ModEligibility.MissingNames(group.requiredMods);
-                DrawNote(noteRect, "Not loaded: " + missing, MissingColor);
+                DrawNote(noteRect, "RBP.UI.NotLoaded".Translate(missing), MissingColor);
                 TooltipHandler.TipRegion(rect, GateTooltip("group." + group.key, group.requiredMods, null,
-                    "This mod isn't in the current modlist, so none of these patches can apply."));
+                    "RBP.UI.GroupGateTip".Translate()));
             }
             else if (eligible && cur)
             {
                 CountToggles(group, out int on, out int total);
-                DrawNote(noteRect, on + "/" + total + " on", NoteColor);
+                DrawNote(noteRect, "RBP.UI.CountOn".Translate(on, total), NoteColor);
             }
             else if (eligible)
             {
-                DrawNote(noteRect, "group off", NoteColor);
+                DrawNote(noteRect, "RBP.UI.GroupOff".Translate(), NoteColor);
             }
 
             if (Widgets.ButtonInvisible(labelRect))
@@ -246,7 +246,7 @@ namespace RebalancePatches.UI
             else if (modsOk && !depOn)
             {
                 RebalanceToggle dep = SettingsRegistry.ToggleOf(child.dependsOn);
-                DrawNote(noteRect, "Requires: " + (dep?.label ?? child.dependsOn), NoteColor);
+                DrawNote(noteRect, "RBP.UI.Requires".Translate(dep?.label ?? child.dependsOn), NoteColor);
             }
 
             if (interactive)
@@ -263,9 +263,10 @@ namespace RebalancePatches.UI
             Widgets.DrawHighlightIfMouseover(rect);
 
             bool modsOk = groupEligible && ModEligibility.AllActive(slider.requiredMods);
-            string tip = slider.description + "\n\nDefault: " + slider.defaultValue;
-            if (slider.requiredMods.Length > 0)
-                tip = GateTooltip(slider.key, slider.requiredMods, null, slider.description + "\n\nDefault: " + slider.defaultValue);
+            string descWithDefault = "RBP.UI.SliderTip".Translate(slider.description, slider.defaultValue);
+            string tip = slider.requiredMods.Length > 0
+                ? GateTooltip(slider.key, slider.requiredMods, null, descWithDefault)
+                : descWithDefault;
             TooltipHandler.TipRegion(rect, tip);
 
             var box = new Vector2(rect.x + ChildIndent, rect.y + (rect.height - CheckboxSize) / 2f);
@@ -324,7 +325,7 @@ namespace RebalancePatches.UI
 
                 if (SettingsRegistry.IsValueOverridden(slider.key))
                 {
-                    TooltipHandler.TipRegion(revertRect, "Reset to default (" + slider.defaultValue + ")");
+                    TooltipHandler.TipRegion(revertRect, "RBP.UI.ResetToDefault".Translate(slider.defaultValue));
                     if (Widgets.ButtonImage(revertRect, TexButton.Reload))
                         SettingsRegistry.ClearValue(slider.key);
                 }
@@ -398,9 +399,9 @@ namespace RebalancePatches.UI
             var parts = new List<string>();
             string missing = ModEligibility.MissingNames(required);
             if (missing != null)
-                parts.Add("Needs " + missing);
+                parts.Add("RBP.UI.Needs".Translate(missing));
             if (anyOf != null && !ModEligibility.AnyActive(anyOf))
-                parts.Add("Needs one of: " + ModEligibility.AllNames(anyOf));
+                parts.Add("RBP.UI.NeedsOneOf".Translate(ModEligibility.AllNames(anyOf)));
             note = string.Join("; ", parts);
             gateNoteCache[cacheKey] = note;
             return note;
@@ -411,20 +412,22 @@ namespace RebalancePatches.UI
             if (gateTooltipCache.TryGetValue(cacheKey, out string tip))
                 return tip;
 
+            string loadedTag = "RBP.UI.Loaded".Translate();
+            string missingTag = "RBP.UI.Missing".Translate();
             var sb = new StringBuilder(description);
             if (required != null && required.Length > 0)
             {
-                sb.Append("\n\nRequired mods:");
+                sb.Append("\n\n").Append("RBP.UI.RequiredModsHeader".Translate().ToString());
                 foreach (string id in required)
-                    sb.Append("\n  - ").Append(ModEligibility.NameOf(id))
-                        .Append(ModEligibility.Active(id) ? " (loaded)" : " (missing)");
+                    sb.Append("\n  - ").Append(ModEligibility.NameOf(id)).Append(" ")
+                        .Append(ModEligibility.Active(id) ? loadedTag : missingTag);
             }
             if (anyOf != null && anyOf.Length > 0)
             {
-                sb.Append("\n\nNeeds at least one of:");
+                sb.Append("\n\n").Append("RBP.UI.AnyOfHeader".Translate().ToString());
                 foreach (string id in anyOf)
-                    sb.Append("\n  - ").Append(ModEligibility.NameOf(id))
-                        .Append(ModEligibility.Active(id) ? " (loaded)" : " (missing)");
+                    sb.Append("\n  - ").Append(ModEligibility.NameOf(id)).Append(" ")
+                        .Append(ModEligibility.Active(id) ? loadedTag : missingTag);
             }
             tip = sb.ToString();
             gateTooltipCache[cacheKey] = tip;

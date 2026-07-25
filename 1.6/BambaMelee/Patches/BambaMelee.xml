@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>bambamelee.ultratrade</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="Bamba_Melee_Ultra_Gladius" or defName="Bamba_Melee_Ultra_Longsword" or defName="Bamba_Melee_Ultra_Axe" or defName="Bamba_Melee_Ultra_Spear" or defName="Bamba_Melee_Solar_Gladius" or defName="Bamba_Melee_Solar_Longsword" or defName="Bamba_Melee_Solar_Hammer" or defName="Bamba_Melee_Solar_Spear" or defName="Bamba_Melee_Quasar_Gladius" or defName="Bamba_Melee_Quasar_Longsword" or defName="Bamba_Melee_Quasar_Hammer" or defName="Bamba_Melee_Quasar_Spear"]</xpath>
+        <value>
+          <tradeability>Sellable</tradeability>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

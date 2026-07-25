@@ -18,12 +18,15 @@
 <color=#e6e6e6ff><size=11.8>Echo SEER modifiers:</size><size=10.2>
 
    Cortex module slots: 3
+
+   Scaling with quality (shown at normal):
    Psychic Sensitivity: +25%
    Meditation Focus Gain: +40%
    Psychic Entropy Max: +20
    Psychic Entropy Recovery: +15%
    Consciousness: +20%
 
+   While adapting:
    Pain: +30%
    Hunger Rate: +35%
    Rest Fall Rate: +25%
@@ -87,12 +90,15 @@
 <color=#e6e6e6ff><size=11.8>Echo SEER modifiers:</size><size=10.2>
 
    Cortex module slots: 3
+
+   Scaling with quality (shown at normal):
    Psychic Sensitivity: +25%
    Meditation Focus Gain: +40%
    Psychic Entropy Max: +20
    Psychic Entropy Recovery: +15%
    Consciousness: +20%
 
+   While adapting:
    Pain: +30%
    Hunger Rate: +35%
    Rest Fall Rate: +25%
@@ -111,12 +117,15 @@
 <color=#e6e6e6ff><size=11.8>Echo SEER modifiers:</size><size=10.2>
 
    Cortex module slots: 3
+
+   Scaling with quality (shown at normal):
    Psychic Sensitivity: +25%
    Meditation Focus Gain: +40%
    Psychic Entropy Max: +20
    Psychic Entropy Recovery: +15%
    Consciousness: +20%
 
+   While adapting:
    Pain: +30%
    Hunger Rate: +35%
    Rest Fall Rate: +25%
@@ -166,13 +175,16 @@
 <color=#e6e6e6ff><size=11.8>Echo ORACLE modifiers:</size><size=10.2>
 
    Cortex module slots: 6
+
+   Scaling with quality (shown at normal):
    Psychic Sensitivity: +60%
    Meditation Focus Gain: +90%
    Psychic Entropy Max: +45
    Psychic Entropy Recovery: +40%
    Consciousness: +10%
-
    Mental Break Threshold: +15%
+
+   While adapting:
    Pain: +50%
    Hunger Rate: +60%
    Rest Fall Rate: +35%
@@ -260,13 +272,16 @@
 <color=#e6e6e6ff><size=11.8>Echo ORACLE modifiers:</size><size=10.2>
 
    Cortex module slots: 6
+
+   Scaling with quality (shown at normal):
    Psychic Sensitivity: +60%
    Meditation Focus Gain: +90%
    Psychic Entropy Max: +45
    Psychic Entropy Recovery: +40%
    Consciousness: +10%
-
    Mental Break Threshold: +15%
+
+   While adapting:
    Pain: +50%
    Hunger Rate: +60%
    Rest Fall Rate: +35%
@@ -285,13 +300,16 @@
 <color=#e6e6e6ff><size=11.8>Echo ORACLE modifiers:</size><size=10.2>
 
    Cortex module slots: 6
+
+   Scaling with quality (shown at normal):
    Psychic Sensitivity: +60%
    Meditation Focus Gain: +90%
    Psychic Entropy Max: +45
    Psychic Entropy Recovery: +40%
    Consciousness: +10%
-
    Mental Break Threshold: +15%
+
+   While adapting:
    Pain: +50%
    Hunger Rate: +60%
    Rest Fall Rate: +35%

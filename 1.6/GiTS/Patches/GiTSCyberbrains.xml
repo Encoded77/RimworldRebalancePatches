@@ -34,6 +34,16 @@
         <xpath>Defs/HediffDef[defName="gitsHADESHediff"]/stages/li[statOffsets/MentalBreakThreshold]/statOffsets/MentalBreakThreshold</xpath>
         <value><MentalBreakThreshold>0.40</MentalBreakThreshold></value>
       </li>
+      <!-- Our Echo ORACLE is an extreme-tier flagship too; match it when the Echo brains are present. -->
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]</xpath>
+        <operations>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]/stages/li[statOffsets/MentalBreakThreshold]/statOffsets/MentalBreakThreshold</xpath>
+            <value><MentalBreakThreshold>0.40</MentalBreakThreshold></value>
+          </li>
+        </operations>
+      </li>
     </operations>
   </Operation>
 

@@ -39,7 +39,7 @@ namespace RebalancePatches
             if (chosen.Comp == null) chosen = hosts.FirstOrDefault();
             if (chosen.Comp == null)
             {
-                Messages.Message("RebalancePatches.NoOpenModuleSlot".Translate(pawn.LabelShort, ModuleDef?.label ?? "module"),
+                Messages.Message("RebalancePatches.NoOpenModuleSlot".Translate(pawn.LabelShort, ModuleDef?.label ?? "RBP.Module.GenericName".Translate()),
                     pawn, MessageTypeDefOf.RejectInput, historical: false);
                 return;
             }

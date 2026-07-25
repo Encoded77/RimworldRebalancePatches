@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Gives every GiTS cyberbrain (and the Echo brains, which inherit these bases) a quality, and swaps
+       the implant hediff for one that scales its stage numbers by that quality. See Hediff_QualityImplant
+       and CyberbrainQualityPatches. -->
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>cybernetics.cyberbrainquality</settingKey>
+    <operations>
+
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainBase"]</xpath>
+        <operations>
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[@Name="gitsBodyPartCyberbrainBase"]</xpath>
+            <value>
+              <comps>
+                <li>
+                  <compClass>CompQuality</compClass>
+                </li>
+              </comps>
+            </value>
+          </li>
+        </operations>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainBase"]</xpath>
+        <operations>
+          <li Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[@Name="gitsAddedCyberbrainBase"]</xpath>
+            <value>
+              <hediffClass>RebalancePatches.Hediff_QualityImplant</hediffClass>
+            </value>
+          </li>
+        </operations>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

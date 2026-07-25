@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <!-- Settings window chrome. -->
+  <RBP.UI.RestartNote>Changes take effect after restarting RimWorld. Greyed-out entries need mods that aren't loaded.</RBP.UI.RestartNote>
+  <RBP.UI.SearchPlaceholder>Search settings...</RBP.UI.SearchPlaceholder>
+  <RBP.UI.CollapseAll>Collapse all</RBP.UI.CollapseAll>
+  <RBP.UI.ExpandAll>Expand all</RBP.UI.ExpandAll>
+  <RBP.UI.ShowInactive>Show inactive mods</RBP.UI.ShowInactive>
+  <RBP.UI.ShowInactiveTip>Also list groups whose target mod isn't in the current modlist.</RBP.UI.ShowInactiveTip>
+  <RBP.UI.NotLoaded>Not loaded: {0}</RBP.UI.NotLoaded>
+  <RBP.UI.GroupGateTip>This mod isn't in the current modlist, so none of these patches can apply.</RBP.UI.GroupGateTip>
+  <RBP.UI.CountOn>{0}/{1} on</RBP.UI.CountOn>
+  <RBP.UI.GroupOff>group off</RBP.UI.GroupOff>
+  <RBP.UI.Requires>Requires: {0}</RBP.UI.Requires>
+  <RBP.UI.SliderTip>{0}\n\nDefault: {1}</RBP.UI.SliderTip>
+  <RBP.UI.ResetToDefault>Reset to default ({0})</RBP.UI.ResetToDefault>
+  <RBP.UI.Needs>Needs {0}</RBP.UI.Needs>
+  <RBP.UI.NeedsOneOf>Needs one of: {0}</RBP.UI.NeedsOneOf>
+  <RBP.UI.RequiredModsHeader>Required mods:</RBP.UI.RequiredModsHeader>
+  <RBP.UI.AnyOfHeader>Needs at least one of:</RBP.UI.AnyOfHeader>
+  <RBP.UI.Loaded>(loaded)</RBP.UI.Loaded>
+  <RBP.UI.Missing>(missing)</RBP.UI.Missing>
+
+  <!-- In-game runtime strings. -->
+  <RBP.GeneDivergence.Tip>Gene divergence: {0} (from the baseline for this pawn's xenotype)</RBP.GeneDivergence.Tip>
+  <RBP.Module.GenericName>module</RBP.Module.GenericName>
+  <RebalancePatches.NoOpenModuleSlot>{0} has no host with an open module slot for {1}.</RebalancePatches.NoOpenModuleSlot>
+
+</LanguageData>

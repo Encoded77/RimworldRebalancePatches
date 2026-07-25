@@ -12,6 +12,7 @@
     <li>1.6/CyberneticsResearch</li>
     <li IfModActive="vanillaexpanded.vanillasocialinteractionsexpanded">1.6/VSIE</li>
     <li IfModActive="cn.rimiot">1.6/RimIOT</li>
+    <li IfModActive="poncho.automatichydroponics">1.6/AutomaticHydroponics</li>
     <li IfModActive="hlx.ultratechalteredcarbon">1.6/AlteredCarbon</li>
     <li IfModActive="moistestwhale.gitscyberbrains">1.6/GiTS</li>
     <li IfModActive="ludeon.rimworld.odyssey">1.6/Odyssey</li>
@@ -41,6 +42,7 @@
     <li IfModActive="rimsenal.federation">1.6/RimsenalFederation</li>
     <li IfModActive="vanillaexpanded.vaewaste">1.6/VAEWaste</li>
     <li IfModActive="zal.eltexweaponry">1.6/EltexWeaponry</li>
+    <li IfModActive="bamba.allbambamelee.tiered">1.6/BambaMelee</li>
     <li IfModActive="vanillaracesexpanded.hussar">1.6/VREHussar</li>
     <li IfModActive="vanillaracesexpanded.saurid">1.6/VRESaurid</li>
     <li IfModActive="vanillaracesexpanded.phytokin">1.6/VREPhytokin</li>

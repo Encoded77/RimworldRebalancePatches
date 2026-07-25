@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <!-- Makes the extreme-tier cyberbrains harder to live with: a rougher adaptation and a higher chance
+       of a lasting brain complication during it. Covers GiTS's flagships (Civis PX-7, Aegis HADES) and,
+       when the Echo brains are present, our Echo ORACLE. Mental break is handled by gits.mentalbreak. -->
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>gits.extremedrawbacks</settingKey>
+    <operations>
+
+      <!-- GiTS flagships: rougher adaptation. -->
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsPX7Hediff" or defName="gitsHADESHediff"]/stages/li[painFactor]/painFactor</xpath>
+        <value><painFactor>1.8</painFactor></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsPX7Hediff" or defName="gitsHADESHediff"]/stages/li[hungerRateFactorOffset]/hungerRateFactorOffset</xpath>
+        <value><hungerRateFactorOffset>0.85</hungerRateFactorOffset></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsPX7Hediff" or defName="gitsHADESHediff"]/stages/li[restFallFactorOffset]/restFallFactorOffset</xpath>
+        <value><restFallFactorOffset>0.5</restFallFactorOffset></value>
+      </li>
+
+      <!-- GiTS flagships: complications strike more readily while the brain settles. -->
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsPX7Hediff" or defName="gitsHADESHediff"]/stages/li/hediffGivers/li[hediff="gitsCyberbrainSclerosis"]/mtbDays</xpath>
+        <value><mtbDays>48</mtbDays></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/HediffDef[defName="gitsPX7Hediff" or defName="gitsHADESHediff"]/stages/li/hediffGivers/li[hediff="gitsClosedShellSyndrome"]/mtbDays</xpath>
+        <value><mtbDays>24</mtbDays></value>
+      </li>
+
+      <!-- Echo ORACLE, only if the Echo brains were added. -->
+      <li Class="RebalancePatches.PatchOperationIfPresent">
+        <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]</xpath>
+        <operations>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]/stages/li[painFactor]/painFactor</xpath>
+            <value><painFactor>1.8</painFactor></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]/stages/li[hungerRateFactorOffset]/hungerRateFactorOffset</xpath>
+            <value><hungerRateFactorOffset>0.85</hungerRateFactorOffset></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]/stages/li[restFallFactorOffset]/restFallFactorOffset</xpath>
+            <value><restFallFactorOffset>0.5</restFallFactorOffset></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]/stages/li/hediffGivers/li[hediff="gitsCyberbrainSclerosis"]/mtbDays</xpath>
+            <value><mtbDays>48</mtbDays></value>
+          </li>
+          <li Class="PatchOperationReplace">
+            <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]/stages/li/hediffGivers/li[hediff="gitsClosedShellSyndrome"]/mtbDays</xpath>
+            <value><mtbDays>24</mtbDays></value>
+          </li>
+        </operations>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

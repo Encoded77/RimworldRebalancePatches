@@ -3,7 +3,7 @@
   <packageId>encoded.rebalancepatches</packageId>
   <name>Encoded's Rebalance Patches</name>
   <author>Encoded</author>
-  <modVersion>1.10.0</modVersion>
+  <modVersion>1.10.3</modVersion>
   <url></url>
   <supportedVersions>
     <li>1.6</li>
@@ -27,6 +27,7 @@
     <li>ebsg.framework</li>
     <li>cedaro.psychicimplant</li>
     <li>cn.rimiot</li>
+    <li>poncho.automatichydroponics</li>
     <li>hlx.ultratechalteredcarbon</li>
     <li>vanillaexpanded.vaeaccessories</li>
     <li>moistestwhale.gitscyberbrains</li>
@@ -95,6 +96,7 @@
     <li>hautarche.hautsframework</li>
     <li>vanillaexpanded.vcef</li>
     <li>vanillaexpanded.gravship</li>
+    <li>bamba.allbambamelee.tiered</li>
   </loadAfter>
   <description>Opinionated balance tweaks and cross-mod compatibility patches. Each patch applies only when the mod it targets is loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). Requires Harmony.</description>
 </ModMetaData>
