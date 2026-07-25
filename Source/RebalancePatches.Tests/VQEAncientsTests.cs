@@ -63,6 +63,15 @@ namespace RebalancePatches.Tests
         }
 
         [Test]
+        public static void PatientGownSellableOnly()
+        {
+            if (!Check.Ready("vqea.gowntrade", Ids.VQEAncients))
+                return;
+            Check.Eq(Check.Def<ThingDef>("VQEA_Apparel_PatientGown").tradeability, Tradeability.Sellable,
+                "VQEA_Apparel_PatientGown tradeability");
+        }
+
+        [Test]
         public static void ArchogenInjectorWhitelist()
         {
             if (!Check.Ready("vqea.injectorwhitelist", Ids.VQEAncients))

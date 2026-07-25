@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.4 (2026-07-25)
+
+- **Patient gown not stocked by merchants** (`vqea.gowntrade`) — VQE - Ancients' patient gown becomes sellable-only, so merchants never stock it for purchase; you can still sell one looted from an ancient complex.
+
 ## 1.10.3 (2026-07-25)
 
 - **Melee Weapons For All Tech Levels** — new settings group. **Ultra melee weapons not stocked by traders** (`bambamelee.ultratrade`) — the ultra-tier weapons (the ultra gladius, longsword, axe and spear, plus the Solar and Quasar tiers with Beyond Our Reach) become sellable-only, so traders never stock them for purchase and they stay a research-and-craft reward.

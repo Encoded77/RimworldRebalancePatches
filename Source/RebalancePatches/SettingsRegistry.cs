@@ -341,6 +341,7 @@ namespace RebalancePatches
                 new RebalanceToggle("vqea.giantweapons",
                     requiredMods: new[] { "redmattis.bigsmall.core" }),
                 new RebalanceToggle("vqea.patientgown"),
+                new RebalanceToggle("vqea.gowntrade"),
                 new RebalanceToggle("vqea.injectorwhitelist"),
                 new RebalanceToggle("vqea.nofabricatedarchite",
                     requiredMods: new[] { "owlchemist.cherrypicker", "amch.eragon.hcgenefabrication" }),

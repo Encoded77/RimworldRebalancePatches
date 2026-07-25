@@ -124,6 +124,7 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 - **`vqea.sittable`** — The ancient hospital armchair and bench become actual seats.
 - **`vqea.giantweapons`** — The Enormous and Herculean archite genes let their carriers wield Big and Small's giant weapons.
 - **`vqea.patientgown`** — The patient gown's blunt armor drops from 0.5 to 0.1, so pawns stop preferring it over real armor.
+- **`vqea.gowntrade`** — The patient gown becomes sellable-only, so merchants never stock it for purchase; you can still sell one looted from an ancient complex.
 - **Archogen injector whitelist** (`vqea.injectorwhitelist`) — The archogen injector and ancient-experiment pawns normally roll from *every* loaded archite and negative gene — absurd with a large modlist, including pawn-ruining drawbacks. They now roll from a curated list: VQE - Ancients' own archite powers plus mild drawbacks from vanilla and the major gene mods.
 - **Ancient archite genes cannot be fabricated** (`vqea.nofabricatedarchite`) — Gene Fabrication builds a genepack recipe for every gene in the game, which quietly includes VQE - Ancients' 33 archite powers even though Ancients itself keeps them out of random genepacks. Herculean cost three archite capsules and some neutroamine at a bench, sidestepping the injector entirely. Those 33 recipes are removed, so archite powers come from the injector, ancient labs and quests. Every other gene stays fabricable. Needs Gene Fabrication and Cherry Picker.
 

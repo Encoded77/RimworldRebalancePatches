@@ -423,6 +423,17 @@
     </operations>
   </Operation>
   <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vqea.gowntrade</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs/ThingDef[defName="VQEA_Apparel_PatientGown"]</xpath>
+        <value>
+          <tradeability>Sellable</tradeability>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
     <settingKey>geneconflicts.dodge</settingKey>
     <operations>
       <li Class="PatchOperationConditional">

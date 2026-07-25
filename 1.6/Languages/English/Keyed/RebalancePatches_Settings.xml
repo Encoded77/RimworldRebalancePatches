@@ -212,6 +212,8 @@
   <RBP.vqea.giantweapons.desc>Carriers of the enormous or herculean archite genes get Big and Small's Giant trait, letting them equip B&amp;S giant weapons.</RBP.vqea.giantweapons.desc>
   <RBP.vqea.patientgown.label>Patient gown blunt armor nerf</RBP.vqea.patientgown.label>
   <RBP.vqea.patientgown.desc>The ancient patient gown's blunt armor drops from 50% to 10%, so pawns stop preferring it over real armor.</RBP.vqea.patientgown.desc>
+  <RBP.vqea.gowntrade.label>Patient gown not stocked by merchants</RBP.vqea.gowntrade.label>
+  <RBP.vqea.gowntrade.desc>The ancient patient gown becomes sellable-only, so merchants never stock it for purchase. You can still sell one looted from an ancient complex.</RBP.vqea.gowntrade.desc>
   <RBP.vqea.injectorwhitelist.label>Curated archogen injector gene pool</RBP.vqea.injectorwhitelist.label>
   <RBP.vqea.injectorwhitelist.desc>The archogen injector and ancient experiment pawns roll genes from a curated whitelist (VQE Ancients' archite powers plus mild drawbacks from vanilla, Alpha Genes, Big and Small, WVC, VRE and Det's xenotype packs) instead of every archite and negative gene from all loaded mods.</RBP.vqea.injectorwhitelist.desc>
   <RBP.vqea.nofabricatedarchite.label>Ancient archite genes cannot be fabricated</RBP.vqea.nofabricatedarchite.label>
