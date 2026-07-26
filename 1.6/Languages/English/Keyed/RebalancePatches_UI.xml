@@ -9,7 +9,6 @@
   <RBP.UI.ShowInactive>Show inactive mods</RBP.UI.ShowInactive>
   <RBP.UI.ShowInactiveTip>Also list groups whose target mod isn't in the current modlist.</RBP.UI.ShowInactiveTip>
   <RBP.UI.NotLoaded>Not loaded: {0}</RBP.UI.NotLoaded>
-  <RBP.UI.GroupGateTip>This mod isn't in the current modlist, so none of these patches can apply.</RBP.UI.GroupGateTip>
   <RBP.UI.CountOn>{0}/{1} on</RBP.UI.CountOn>
   <RBP.UI.GroupOff>group off</RBP.UI.GroupOff>
   <RBP.UI.Requires>Requires: {0}</RBP.UI.Requires>

@@ -182,6 +182,7 @@ namespace RebalancePatches.Tests
             foreach (RebalanceGroup group in SettingsRegistry.Groups)
             {
                 CheckTranslates($"RBP.{group.key}.label", group.label, ref checkedKeys);
+                CheckTranslates($"RBP.{group.key}.desc", group.description, ref checkedKeys);
                 foreach (RebalanceToggle child in group.children)
                 {
                     CheckTranslates($"RBP.{child.key}.label", child.label, ref checkedKeys);
@@ -198,7 +199,7 @@ namespace RebalancePatches.Tests
             string[] loose =
             {
                 "RBP.UI.RestartNote", "RBP.UI.SearchPlaceholder", "RBP.UI.CollapseAll", "RBP.UI.ExpandAll",
-                "RBP.UI.ShowInactive", "RBP.UI.ShowInactiveTip", "RBP.UI.NotLoaded", "RBP.UI.GroupGateTip",
+                "RBP.UI.ShowInactive", "RBP.UI.ShowInactiveTip", "RBP.UI.NotLoaded",
                 "RBP.UI.CountOn", "RBP.UI.GroupOff", "RBP.UI.Requires", "RBP.UI.SliderTip",
                 "RBP.UI.ResetToDefault", "RBP.UI.Needs", "RBP.UI.NeedsOneOf", "RBP.UI.RequiredModsHeader",
                 "RBP.UI.AnyOfHeader", "RBP.UI.Loaded", "RBP.UI.Missing",

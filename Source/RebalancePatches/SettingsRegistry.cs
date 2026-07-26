@@ -59,6 +59,7 @@ namespace RebalancePatches
 
         public readonly string key;
         public string label => ("RBP." + key + ".label").Translate();
+        public string description => ("RBP." + key + ".desc").Translate();
         public readonly bool defaultOn;
         public readonly List<RebalanceToggle> children;
         public readonly List<RebalanceSlider> sliders;

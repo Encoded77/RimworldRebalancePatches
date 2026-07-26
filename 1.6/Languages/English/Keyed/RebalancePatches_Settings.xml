@@ -4,6 +4,41 @@
   <!-- Settings menu: group, toggle and slider labels and descriptions. Generated from
        SettingsRegistry; keyed by the setting key so a translator overrides text here only. -->
 
+  <!-- Group hover descriptions (shown as a tooltip on each group header). -->
+  <RBP.genetics.desc>De-duplicates the cross-mod gene pool onto one canonical gene per function, rewires xenotypes onto the survivors, and adds small thematic genes to individual races. Needs Cherry Picker and the gene mods it touches.</RBP.genetics.desc>
+  <RBP.geneticsresearch.desc>Adds a dedicated Genetics research tab and tree that gathers Biotech's and the gene mods' buildings, tools and serums into one staged progression. Needs Biotech.</RBP.geneticsresearch.desc>
+  <RBP.xenotypes.desc>Rebalances which xenotypes spawn across vanilla, Empire, Odyssey and Rimsenal factions so each reads thematically while keeping a baseliner majority. Needs Biotech.</RBP.xenotypes.desc>
+  <RBP.scifinames.desc>Renames xenotypes, genes and factions across the Big and Small family, WVC and Alpha Genes to consistent sci-fi terminology. Labels only.</RBP.scifinames.desc>
+  <RBP.vse.desc>Replaces Vanilla Skills Expanded's roughly seventy narrow expertises with 32 broader ones, two to four per skill, at saner bonuses. Needs Vanilla Skills Expanded.</RBP.vse.desc>
+  <RBP.cybernetics.desc>Pulls artificial body parts and implants from every loaded mod onto one tier ladder priced by effect, with module slots and opposed synthetic and symbiotic endgame capstones.</RBP.cybernetics.desc>
+  <RBP.cyberneticsresearch.desc>Reorganises implant research into a single Cybernetics tab with body, module, cyberbrain, psychic and capstone lanes, retiring the source mods' overlapping trees.</RBP.cyberneticsresearch.desc>
+  <RBP.rimiot.desc>Makes RimIOT - Logistic Matrix's network infrastructure cheaper to build and free to run. Needs RimIOT.</RBP.rimiot.desc>
+  <RBP.autohydroponics.desc>Raises Automatic Hydroponics' bays' build cost and power draw to match the hand-tended hydroponics each one replaces. Needs Automatic Hydroponics.</RBP.autohydroponics.desc>
+  <RBP.altered.desc>Balance and bug fixes for Altered Carbon: shield-belt duplication, casting-relay range, sleeve quality cancer rates and cross-sleeve traits. Needs Altered Carbon.</RBP.altered.desc>
+  <RBP.bigsmall.desc>Mad science requires the Gun turrets research once, instead of every turret it unlocks requiring it separately. Needs Big and Small.</RBP.bigsmall.desc>
+  <RBP.vfepirates.desc>Warcasket charge weapons gate behind pulse-charged munitions research, and the Empire can make peace with the pirate crash-scenario faction. Needs VFE - Pirates.</RBP.vfepirates.desc>
+  <RBP.vfeempire.desc>Quality-of-life fixes for VFE - Empire: the royal armchair counts for throne rooms and the candelabra shows its glow radius. Needs VFE - Empire.</RBP.vfeempire.desc>
+  <RBP.rimsenal.desc>Rimsenal armors and modular weapons unlock from their matching corp techs, and tier-1 corp techs cost more research. Needs Rimsenal - Core.</RBP.rimsenal.desc>
+  <RBP.rimsenalspacer.desc>Fixes Rimsenal Spacer's trade caravans, which brought broken mech guards, and the smart weapons' research gating. Needs Rimsenal - Spacer.</RBP.rimsenalspacer.desc>
+  <RBP.memes.desc>Ideology and meme fixes: inspirations respect precepts, and broken meme, faction and Anomaly trait combinations are reconciled. Needs Ideology.</RBP.memes.desc>
+  <RBP.implants.desc>Balance and bug fixes for Integrated Implants: skill chips, mechanitor implant costs, install surgeries, water pathing and Alpha Genes command-range stacking. Needs Integrated Implants.</RBP.implants.desc>
+  <RBP.vreinsector.desc>VRE - Insector's colossal insectors can wield Big and Small's giant weapons. Needs VRE - Insector and Big and Small.</RBP.vreinsector.desc>
+  <RBP.impactweaponry.desc>The warcasket impact bolter drops a redundant research prerequisite. Needs Impact Weaponry - Reloaded.</RBP.impactweaponry.desc>
+  <RBP.spacerarsenal.desc>Spacer Arsenal's heavy and coil weapons unlock from Vanilla Weapons Expanded's matching research. Needs Spacer Arsenal.</RBP.spacerarsenal.desc>
+  <RBP.vanilla.desc>Assorted vanilla and DLC tweaks: healing enhancer stat, combined mech raids, toxic-meat defaults, creep-joiner surgeries, empty research tabs and gene-complexity sliders.</RBP.vanilla.desc>
+  <RBP.vqea.desc>Balance and bug fixes for VQE - Ancients: seatable furniture, the patient gown, giant-weapon genes and a curated archogen injector and fabrication whitelist. Needs VQE - Ancients.</RBP.vqea.desc>
+  <RBP.eltex.desc>Eltex weapons stop spawning on random raiders and appear on Empire cataphracts, psycasters and deserters. Needs Eltex Weaponry and Royalty.</RBP.eltex.desc>
+  <RBP.bambamelee.desc>Melee Weapons For All Tech Levels' ultra-tier weapons become sellable-only, staying a research-and-craft reward. Needs the mod.</RBP.bambamelee.desc>
+  <RBP.yart.desc>On Yet Another Research Tree cards, an item gated by a second research is grouped under that research with its recipe, matching the vanilla window. Needs YART.</RBP.yart.desc>
+  <RBP.progressionrobotics.desc>Thins Progression: Robotics' research tree by grouping its many per-mech and per-gadget projects into fewer thematic nodes. Needs Progression: Robotics.</RBP.progressionrobotics.desc>
+  <RBP.gits.desc>Balance, research and naming changes for GiTS Cyberbrains: trader stock, extreme-tier drawbacks, a streamlined tree and role-based names. Needs GiTS Cyberbrains.</RBP.gits.desc>
+  <RBP.alphagenes.desc>Lets Alpha Genes' genes appear in vanilla genepacks at sane rates, and disambiguates a beauty gene name against WVC. Needs Alpha Genes.</RBP.alphagenes.desc>
+  <RBP.alphamemes.desc>Alpha Memes' styled tiles can be built from Odyssey's vacstone blocks. Needs Alpha Memes and Odyssey.</RBP.alphamemes.desc>
+  <RBP.geneconflicts.desc>Makes genes whose forced traits fight each other, or whose bonuses stack brokenly across mods, mutually exclusive. Each fix needs the mods it reconciles.</RBP.geneconflicts.desc>
+  <RBP.odyssey.desc>Odyssey tweaks: a long-range passenger shuttle, and trimmed vacuum resistance on modded spacer armor. Needs Odyssey.</RBP.odyssey.desc>
+  <RBP.vge.desc>Vanilla Gravship Expanded's gravjumper engine lifts twice the structure, so one engine can carry a larger gravship. Needs VGE - Chapter 1.</RBP.vge.desc>
+  <RBP.dev.desc>Developer-only tools: def-dump debug actions used to build and check these patches. Shown only in Dev Mode.</RBP.dev.desc>
+
   <RBP.genetics.label>Genetics Overhaul</RBP.genetics.label>
   <RBP.genetics.agsummons.label>Remove Alpha Genes summon genes</RBP.genetics.agsummons.label>
   <RBP.genetics.agsummons.desc>Removes Alpha Genes' animal summon genes (one per supported animal, ~90 with a large modlist, plus the summon randomizers and temporary bandwidth gene). No xenotype uses them; they only dilute the gene pool. Needs Cherry Picker, which does the removing.</RBP.genetics.agsummons.desc>

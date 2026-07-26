@@ -190,16 +190,20 @@ namespace RebalancePatches.UI
                 string missing = ModEligibility.MissingNames(group.requiredMods);
                 DrawNote(noteRect, "RBP.UI.NotLoaded".Translate(missing), MissingColor);
                 TooltipHandler.TipRegion(rect, GateTooltip("group." + group.key, group.requiredMods, null,
-                    "RBP.UI.GroupGateTip".Translate()));
+                    group.description));
             }
-            else if (eligible && cur)
+            else
             {
-                CountToggles(group, out int on, out int total);
-                DrawNote(noteRect, "RBP.UI.CountOn".Translate(on, total), NoteColor);
-            }
-            else if (eligible)
-            {
-                DrawNote(noteRect, "RBP.UI.GroupOff".Translate(), NoteColor);
+                if (cur)
+                {
+                    CountToggles(group, out int on, out int total);
+                    DrawNote(noteRect, "RBP.UI.CountOn".Translate(on, total), NoteColor);
+                }
+                else
+                {
+                    DrawNote(noteRect, "RBP.UI.GroupOff".Translate(), NoteColor);
+                }
+                TooltipHandler.TipRegion(rect, group.description);
             }
 
             if (Widgets.ButtonInvisible(labelRect))

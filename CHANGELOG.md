@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.10.7 (2026-07-26)
+- **Settings groups now have hover descriptions** — hovering a group header in the mod settings shows a one-line summary of what that group does; ineligible groups still list the mods they need.
+
 ## 1.10.6 (2026-07-26)
 
 - **Progression: Robotics de-bloat** — new settings group that thins out Progression: Robotics' research tree, where every mechanoid and gadget has its own project. Off by default; two toggles. Merged projects cost about a quarter less than the projects they replace.
