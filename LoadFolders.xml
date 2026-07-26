@@ -16,6 +16,7 @@
     <li IfModActive="hlx.ultratechalteredcarbon">1.6/AlteredCarbon</li>
     <li IfModActive="moistestwhale.gitscyberbrains">1.6/GiTS</li>
     <li IfModActive="ludeon.rimworld.odyssey">1.6/Odyssey</li>
+    <li IfModActive="vanillaexpanded.gravship">1.6/VGE</li>
     <li IfModActive="redmattis.bigsmall.core">1.6/BigAndSmall</li>
     <li IfModActive="wvc.sergkart.races.biotech">1.6/WVC</li>
     <li IfModActive="vanillaracesexpanded.highmate">1.6/VREHighmate</li>

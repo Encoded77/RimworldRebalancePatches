@@ -46,6 +46,10 @@ One change has no toggle because there is no sensible way to want it off: resear
 - **Long-range passenger shuttle** (`odyssey.shuttle`) — Chemfuel capacity 400 → 2000 and cargo capacity 500 → 2000 kg. The stock shuttle barely leaves the neighbourhood and I don't want to install modded shuttles.
 - **Vacuum resistance trims on modded armor** (`odyssey.vacuumtrims`) — Only active with Vanilla Gravship Expanded - Chapter 1, whose balance assumes 100% vacuum resistance is hard to reach — while modded spacer armor hands it out freely. Helmets and suits from Rimsenal (Core and Federation), Altered Carbon 2, Spacer Arsenal and Impact Weaponry - Reloaded get their vacuum resistance trimmed a few points below the cap, with a couple of description fixes so items advertise what they actually do.
 
+### Vanilla Gravship Expanded - Chapter 1
+
+- **Sturdier gravjumper engine** (`vge.gravjumpercapacity`) — The gravjumper engine's structural capacity goes from 100 to 200 tiles, so a single gravjumper can lift a larger gravship.
+
 ### Gene conflict fixes (`geneconflicts.*`)
 
 Genes whose forced traits fight each other, or whose bonuses stack brokenly across mods, become mutually exclusive:

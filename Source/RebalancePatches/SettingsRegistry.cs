@@ -417,6 +417,11 @@ namespace RebalancePatches
                     anyOfMods: new[] { "rimsenal.core", "rimsenal.federation", "hlx.ultratechalteredcarbon", "det.spacerarsenal", "detvisor.impactweaponryreloaded" }),
             }, requiredMods: new[] { "ludeon.rimworld.odyssey" }),
 
+            new RebalanceGroup("vge", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("vge.gravjumpercapacity"),
+            }, requiredMods: new[] { "vanillaexpanded.gravship" }),
+
             new RebalanceGroup("dev", new List<RebalanceToggle>
             {
                 new RebalanceToggle("dev.genedump",

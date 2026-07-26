@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.5 (2026-07-26)
+
+- **Vanilla Gravship Expanded - Chapter 1** — new settings group. **Sturdier gravjumper engine** (`vge.gravjumpercapacity`) — the gravjumper engine's structural capacity goes from 100 to 200 tiles, so a single gravjumper can lift a larger gravship.
+
 ## 1.10.4 (2026-07-25)
 
 - **Patient gown not stocked by merchants** (`vqea.gowntrade`) — VQE - Ancients' patient gown becomes sellable-only, so merchants never stock it for purchase; you can still sell one looted from an ancient complex.
