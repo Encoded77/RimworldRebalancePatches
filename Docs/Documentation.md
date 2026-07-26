@@ -123,6 +123,13 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 
 - **`yart.unlockgrouping`** — A research card lists what the project unlocks, then a separate block per extra requirement: "Unlocked with *other research*". An item you can only make once a *second* research is done was landing in the first block, drawn as though this project alone unlocked it, while the recipe that makes it was correctly filed under the second research — the item and its own recipe on different headings. Both now sit under the research that is actually still missing, which is how the vanilla research window groups them.
 
+### Progression: Robotics de-bloat
+
+Progression: Robotics gives every mechanoid and every piece of mechanitor gear its own research project, which fills the tree with dozens of tiny nodes. This groups the too-specific ones into thematic projects. Off by default; turn on the parts you want. Merged projects cost about a quarter less than the projects they replace.
+
+- **Group per-mech unlock research by theme** (`progressionrobotics.groupmechs`) — Collapses closely related mech unlocks into shared projects. The vanilla cyclops, pikeman, scorcher and tunneler become one *standard combat mechs* project; cleansweeper and agrihand become *basic utility mechs*; fabricor and paramedic become *advanced utility mechs*. With Alpha Mechs, the bellicor and artilleron become *militor variants*, lux/munifex/polychoron become *energy-weapon mechs*, aura and optio become *assault and support mechs*, demolisher/fireworm/phalanx become *heavy assault mechs*, apoptosis and infernus become *cryptoharmonized mechs*, and culinarius and turbocleaner become *culinary and cleaning mechs*. Distinctive mechs — militor, diabolus, centipedes, war queen, legionary, tesseron, centipede blaster, blitzkrieg, modified biomechs and siegemelter — keep their own project.
+- **Consolidate mechanitor gear research** (`progressionrobotics.groupgear`) — Merges the bandwidth, control and booster projects into a few nodes. The airwire headset, control pack, bandwidth pack and control sublink become *mechanitor bandwidth gear*; the array headset, band node, high control sublink, mechcommander helmet and integrator headset become *advanced bandwidth gear*; the mech booster, remote repairer and remote shielder become *mech field support*; the mechlord suit and repair probe become *mechlord equipment*. With Alpha Mechs, the efficiency, protection and targeting boosters become *mech booster tuning*, and the persistent mech booster and mech disruptor become *advanced mech boosters*.
+
 ### VQE Ancients
 
 - **`vqea.sittable`** — The ancient hospital armchair and bench become actual seats.

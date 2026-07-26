@@ -238,6 +238,20 @@ Write-Host "Prefs.xml backed up to $prefsBackup"
 
 $restoreFrom = Resolve-PrefsRestoreSource $prefsPath $prefsBackup $workDir
 
+# Bust the GAGARIN (Performance Optimizer) patch cache. It caches the flattened post-patch defs
+# keyed on patch-FILE content, not on our mod settings, so a run that toggled a RebalancePatches
+# setting without editing a patch file replays a stale cache and the patch silently never applies -
+# every def-state assertion then fails against the old defs. Deleting the unified/hash files forces
+# a full rebuild with the current settings. Textures cache is left alone.
+$gagarinCache = Join-Path $SaveDataDir 'MissileGirl\Cache'
+if (Test-Path -LiteralPath $gagarinCache) {
+    foreach ($f in 'Unified.xml', 'Unified_Original.xml', 'AssetsHash.xml', 'AssetsHashInt.xml') {
+        $p = Join-Path $gagarinCache $f
+        if (Test-Path -LiteralPath $p) { Remove-Item -LiteralPath $p -Force }
+    }
+    Write-Host "GAGARIN patch cache cleared ($gagarinCache)"
+}
+
 $process    = $null
 $lastPhase  = $null
 $killedFor  = $null

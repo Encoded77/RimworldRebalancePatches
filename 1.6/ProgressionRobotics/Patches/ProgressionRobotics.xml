@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>progressionrobotics.groupmechs</settingKey>
+    <operations>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.biotech</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <!-- Standard combat mechs: cyclops + pikeman + scorcher + tunneler -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Cyclops"]/label</xpath>
+              <value><label>Standard combat mechs</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Cyclops"]/description</xpath>
+              <value><description>Produce the cyclops, pikeman, scorcher and tunneler combat mechanoids.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Cyclops"]/baseCost</xpath>
+              <value><baseCost>3000</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="Pikeman"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Cyclops</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="Scorcher"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Cyclops</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="Tunneler"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Cyclops</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Pikeman"]</xpath></li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Scorcher"]</xpath></li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Tunneler"]</xpath></li>
+
+            <!-- Basic utility mechs: cleansweeper + agrihand -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Cleansweeper"]/label</xpath>
+              <value><label>Basic utility mechs</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Cleansweeper"]/description</xpath>
+              <value><description>Build the cleansweeper and agrihand work mechanoids.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Cleansweeper"]/baseCost</xpath>
+              <value><baseCost>800</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="Agrihand"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Cleansweeper</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Agrihand"]</xpath></li>
+
+            <!-- Advanced utility mechs: fabricor + paramedic -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Fabricor"]/label</xpath>
+              <value><label>Advanced utility mechs</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Fabricor"]/description</xpath>
+              <value><description>Produce the fabricor and paramedic work mechanoids.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Fabricor"]/baseCost</xpath>
+              <value><baseCost>2300</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="Paramedic"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Fabricor</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Paramedic"]</xpath></li>
+
+          </operations>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>sarg.alphamechs</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <!-- Militor variants: bellicor + artilleron -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Bellicor"]/label</xpath>
+              <value><label>Militor variants</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Bellicor"]/description</xpath>
+              <value><description>Produce the bellicor and artilleron combat mechanoids, advanced variants of the militor.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Bellicor"]/baseCost</xpath>
+              <value><baseCost>1200</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="AM_ArtilleronRecipe"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Bellicor</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Artilleron"]</xpath></li>
+
+            <!-- Energy-weapon mechs: lux + munifex + polychoron -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Lux"]/label</xpath>
+              <value><label>Energy-weapon mechs</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Lux"]/description</xpath>
+              <value><description>Produce the lux, munifex and polychoron combat mechanoids, armed with focused-energy and mass-driver weapons.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Lux"]/baseCost</xpath>
+              <value><baseCost>2300</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="AM_MunifexRecipe"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Lux</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="AM_PolychoronRecipe"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Lux</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Munifex"]</xpath></li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Polychoron"]</xpath></li>
+
+            <!-- Assault & support mechs: aura + optio -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Aura"]/label</xpath>
+              <value><label>Assault &amp; support mechs</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Aura"]/description</xpath>
+              <value><description>Produce the aura close-combat mechanoid and the optio shield-support mechanoid.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Aura"]/baseCost</xpath>
+              <value><baseCost>1500</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="AM_OptioRecipe"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Aura</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Optio"]</xpath></li>
+
+            <!-- Heavy assault mechs: demolisher + fireworm + phalanx -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Demolisher"]/label</xpath>
+              <value><label>Heavy assault mechs</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Demolisher"]/description</xpath>
+              <value><description>Produce the demolisher, fireworm and phalanx heavy combat mechanoids.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Demolisher"]/baseCost</xpath>
+              <value><baseCost>3400</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="AM_FirewormRecipe"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Demolisher</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="AM_PhalanxRecipe"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Demolisher</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Fireworm"]</xpath></li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Phalanx"]</xpath></li>
+
+            <!-- Cryptoharmonized mechs: apoptosis + infernus -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Apoptosis"]/label</xpath>
+              <value><label>Cryptoharmonized mechs</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Apoptosis"]/description</xpath>
+              <value><description>Produce the apoptosis and infernus ultra-heavy combat mechanoids.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Apoptosis"]/baseCost</xpath>
+              <value><baseCost>6000</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="AM_InfernusRecipe"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Apoptosis</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Infernus"]</xpath></li>
+
+            <!-- Culinary &amp; cleaning mechs: culinarius + turbocleaner -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Culinarius"]/label</xpath>
+              <value><label>Culinary &amp; cleaning mechs</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Culinarius"]/description</xpath>
+              <value><description>Build the culinarius cooking mechanoid and the turbocleaner cleaning mechanoid.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_Culinarius"]/baseCost</xpath>
+              <value><baseCost>1000</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/RecipeDef[defName="AM_Mech_TurboCleanerRecipe"]/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_Culinarius</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_Turbocleaner"]</xpath></li>
+
+          </operations>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>progressionrobotics.groupgear</settingKey>
+    <operations>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.biotech</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <!-- Mechanitor bandwidth gear: airwire headset + control pack + bandwidth pack + control sublink -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_AirwireHeadset"]/label</xpath>
+              <value><label>Mechanitor bandwidth gear</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_AirwireHeadset"]/description</xpath>
+              <value><description>Manufacture the airwire headset, control pack, bandwidth pack and control sublink, letting a mechanitor control more mechs.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_AirwireHeadset"]/baseCost</xpath>
+              <value><baseCost>1600</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_PackControl"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_AirwireHeadset</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_PackBandwidth"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_AirwireHeadset</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="ControlSublink"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_AirwireHeadset</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_ControlPack"]</xpath></li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_BandwidthPack"]</xpath></li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_ControlSublink"]</xpath></li>
+
+            <!-- Advanced bandwidth gear: array headset + band node + control sublink (high) + mechcommander helmet + integrator headset -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_ArrayHeadset"]/label</xpath>
+              <value><label>Advanced bandwidth gear</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_ArrayHeadset"]/description</xpath>
+              <value><description>Manufacture the array headset, band node, high control sublink, mechcommander helmet and integrator headset, greatly expanding a mechanitor's control bandwidth.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_ArrayHeadset"]/baseCost</xpath>
+              <value><baseCost>4000</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="BandNode"]/researchPrerequisites</xpath>
+              <value><researchPrerequisites><li>Ferny_ArrayHeadset</li></researchPrerequisites></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="ControlSublinkHigh"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_ArrayHeadset</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_ArmorHelmetMechCommander"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_ArrayHeadset</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_IntegratorHeadset"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_ArrayHeadset</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_BandNode"]</xpath></li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_ControlSublinkHigh"]</xpath></li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_MechCommanderHelmet"]</xpath></li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_IntegratorHeadset"]</xpath></li>
+
+            <!-- Mech field support: mech booster + remote repairer + remote shielder -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_MechBooster"]/label</xpath>
+              <value><label>Mech field support</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_MechBooster"]/description</xpath>
+              <value><description>Build the mech booster and manufacture the remote repairer and remote shielder mechlink upgrades.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_MechBooster"]/baseCost</xpath>
+              <value><baseCost>3400</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="RemoteRepairer"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_MechBooster</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="RemoteShielder"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_MechBooster</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_RemoteRepairer"]</xpath></li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_RemoteShielder"]</xpath></li>
+
+            <!-- Mechlord equipment: mechlord suit + repair probe -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_MechlordSuit"]/label</xpath>
+              <value><label>Mechlord equipment</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_MechlordSuit"]/description</xpath>
+              <value><description>Manufacture the mechlord suit and helmet and build the repair probe.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_MechlordSuit"]/baseCost</xpath>
+              <value><baseCost>4500</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="RepairProbe"]/recipeMaker/researchPrerequisite</xpath>
+              <value><researchPrerequisite>Ferny_MechlordSuit</researchPrerequisite></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_RepairProbe"]</xpath></li>
+
+          </operations>
+        </match>
+      </li>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>sarg.alphamechs</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+
+            <!-- Mech booster tuning: efficiency + protection + targeting boosters -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_MechEfficiencyBooster"]/label</xpath>
+              <value><label>Mech booster tuning</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_MechEfficiencyBooster"]/description</xpath>
+              <value><description>Build the efficiency, protection and targeting mech boosters, remote devices that enhance friendly mechanoids in range.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_MechEfficiencyBooster"]/baseCost</xpath>
+              <value><baseCost>4500</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AM_MechArmorBooster"]/researchPrerequisites</xpath>
+              <value><researchPrerequisites><li>Ferny_MechEfficiencyBooster</li></researchPrerequisites></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AM_MechTargettingBooster"]/researchPrerequisites</xpath>
+              <value><researchPrerequisites><li>Ferny_MechEfficiencyBooster</li></researchPrerequisites></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_MechProtectionBooster"]</xpath></li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_MechTargetingBooster"]</xpath></li>
+
+            <!-- Advanced mech boosters: persistent mech booster + mech disruptor -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_PersistentMechBooster"]/label</xpath>
+              <value><label>Advanced mech boosters</label></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_PersistentMechBooster"]/description</xpath>
+              <value><description>Build the persistent mech booster and the mech disruptor.</description></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_PersistentMechBooster"]/baseCost</xpath>
+              <value><baseCost>6000</baseCost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_PersistentMechBooster"]/prerequisites</xpath>
+              <value><prerequisites><li>Ferny_MechEfficiencyBooster</li></prerequisites></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AM_MechDisruptor"]/researchPrerequisites</xpath>
+              <value><researchPrerequisites><li>Ferny_PersistentMechBooster</li></researchPrerequisites></value>
+            </li>
+            <li Class="PatchOperationRemove"><xpath>Defs/ResearchProjectDef[defName="Ferny_MechDisruptor"]</xpath></li>
+
+            <!-- Repoint gear kept individual off the folded biotech nodes -->
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_MechMasterHelmet"]/prerequisites</xpath>
+              <value><prerequisites><li>Ferny_ArrayHeadset</li></prerequisites></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ResearchProjectDef[defName="Ferny_BeamcasterBandNode"]/prerequisites</xpath>
+              <value><prerequisites><li>Ferny_ArrayHeadset</li><li>AM_MechanoidBeamcasting</li></prerequisites></value>
+            </li>
+
+          </operations>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

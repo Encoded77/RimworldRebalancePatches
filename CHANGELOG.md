@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.10.6 (2026-07-26)
+
+- **Progression: Robotics de-bloat** — new settings group that thins out Progression: Robotics' research tree, where every mechanoid and gadget has its own project. Off by default; two toggles. Merged projects cost about a quarter less than the projects they replace.
+  - **Group per-mech unlock research by theme** (`progressionrobotics.groupmechs`) — Collapses closely related mech unlocks into shared projects: the vanilla cyclops, pikeman, scorcher and tunneler become one *standard combat mechs* project, cleansweeper and agrihand become *basic utility mechs*, and fabricor and paramedic become *advanced utility mechs*. With Alpha Mechs, the bellicor and artilleron become *militor variants*, lux/munifex/polychoron become *energy-weapon mechs*, aura and optio become *assault and support mechs*, demolisher/fireworm/phalanx become *heavy assault mechs*, apoptosis and infernus become *cryptoharmonized mechs*, and culinarius and turbocleaner become *culinary and cleaning mechs*. Distinctive mechs keep their own project.
+  - **Consolidate mechanitor gear research** (`progressionrobotics.groupgear`) — Merges the bandwidth, control and booster projects into a few nodes: *mechanitor bandwidth gear* (airwire headset, control pack, bandwidth pack, control sublink), *advanced bandwidth gear* (array headset, band node, high control sublink, mechcommander helmet, integrator headset), *mech field support* (mech booster, remote repairer, remote shielder) and *mechlord equipment* (mechlord suit, repair probe). With Alpha Mechs, the efficiency/protection/targeting boosters become *mech booster tuning* and the persistent mech booster and mech disruptor become *advanced mech boosters*.
+
 ## 1.10.5 (2026-07-26)
 
 - **Vanilla Gravship Expanded - Chapter 1** — new settings group. **Sturdier gravjumper engine** (`vge.gravjumpercapacity`) — the gravjumper engine's structural capacity goes from 100 to 200 tiles, so a single gravjumper can lift a larger gravship.

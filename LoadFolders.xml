@@ -15,6 +15,7 @@
     <li IfModActive="poncho.automatichydroponics">1.6/AutomaticHydroponics</li>
     <li IfModActive="hlx.ultratechalteredcarbon">1.6/AlteredCarbon</li>
     <li IfModActive="moistestwhale.gitscyberbrains">1.6/GiTS</li>
+    <li IfModActive="ferny.progressionrobotics2">1.6/ProgressionRobotics</li>
     <li IfModActive="ludeon.rimworld.odyssey">1.6/Odyssey</li>
     <li IfModActive="vanillaexpanded.gravship">1.6/VGE</li>
     <li IfModActive="redmattis.bigsmall.core">1.6/BigAndSmall</li>

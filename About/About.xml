@@ -3,7 +3,7 @@
   <packageId>encoded.rebalancepatches</packageId>
   <name>Encoded's Rebalance Patches</name>
   <author>Encoded</author>
-  <modVersion>1.10.5</modVersion>
+  <modVersion>1.10.6</modVersion>
   <url></url>
   <supportedVersions>
     <li>1.6</li>
@@ -79,6 +79,7 @@
     <li>rimsenal.spacer</li>
     <li>lts.i</li>
     <li>sarg.alphamechs</li>
+    <li>ferny.progressionrobotics2</li>
     <li>rimsenal.core</li>
     <li>vanillaracesexpanded.insector</li>
     <li>vanillaexpanded.skills</li>

@@ -363,6 +363,14 @@ namespace RebalancePatches
                 new RebalanceToggle("yart.unlockgrouping"),
             }, requiredMods: new[] { "seohyeon.yart" }),
 
+            new RebalanceGroup("progressionrobotics", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("progressionrobotics.groupmechs",
+                    anyOfMods: new[] { "ludeon.rimworld.biotech", "sarg.alphamechs" }),
+                new RebalanceToggle("progressionrobotics.groupgear",
+                    anyOfMods: new[] { "ludeon.rimworld.biotech", "sarg.alphamechs" }),
+            }, defaultOn: false, requiredMods: new[] { "ferny.progressionrobotics2" }),
+
             new RebalanceGroup("gits", new List<RebalanceToggle>
             {
                 new RebalanceToggle("gits.merchant"),

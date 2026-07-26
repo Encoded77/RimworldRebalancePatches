@@ -46,6 +46,7 @@ namespace RebalancePatches.Tests
         public const string AlphaGenes = "sarg.alphagenes";
         public const string AlphaMemes = "sarg.alphamemes";
         public const string AlphaMechs = "sarg.alphamechs";
+        public const string ProgressionRobotics = "ferny.progressionrobotics2";
         public const string IntegratedImplants = "lts.i";
         public const string PsychicImplants = "cedaro.psychicimplant";
         public const string ImpactWeaponry = "detvisor.impactweaponryreloaded";
