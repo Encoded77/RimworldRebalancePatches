@@ -12,6 +12,7 @@
   <RBP.vse.desc>Replaces Vanilla Skills Expanded's roughly seventy narrow expertises with 32 broader ones, two to four per skill, at saner bonuses. Needs Vanilla Skills Expanded.</RBP.vse.desc>
   <RBP.cybernetics.desc>Pulls artificial body parts and implants from every loaded mod onto one tier ladder priced by effect, with module slots and opposed synthetic and symbiotic endgame capstones.</RBP.cybernetics.desc>
   <RBP.cyberneticsresearch.desc>Reorganises implant research into a single Cybernetics tab with body, module, cyberbrain, psychic and capstone lanes, retiring the source mods' overlapping trees.</RBP.cyberneticsresearch.desc>
+  <RBP.ideology.desc>Adds gene-themed ideoligion memes that react to how far a pawn's genome has been engineered from its xenotype template. Needs Ideology and Biotech.</RBP.ideology.desc>
   <RBP.rimiot.desc>Makes RimIOT - Logistic Matrix's network infrastructure cheaper to build and free to run. Needs RimIOT.</RBP.rimiot.desc>
   <RBP.autohydroponics.desc>Raises Automatic Hydroponics' bays' build cost and power draw to match the hand-tended hydroponics each one replaces. Needs Automatic Hydroponics.</RBP.autohydroponics.desc>
   <RBP.altered.desc>Balance and bug fixes for Altered Carbon: shield-belt duplication, casting-relay range, sleeve quality cancer rates and cross-sleeve traits. Needs Altered Carbon.</RBP.altered.desc>
@@ -108,6 +109,10 @@
   <RBP.vse.label>Expertise Overhaul</RBP.vse.label>
   <RBP.vse.expertiseconsolidation.label>Consolidate and retune expertises</RBP.vse.expertiseconsolidation.label>
   <RBP.vse.expertiseconsolidation.desc>Replaces the long list of narrow expertises with 32 broader ones, two to four per skill, so every pick is a real choice. Bonuses become multipliers capping near +40% at expertise level 20 instead of flat offsets that reach +100% or overshoot a stat's ceiling; combat and stat-heavy expertises are tuned lower, quality expertises cost work speed, and the two psycast expertises carry real drawbacks. Adds mechanitor and psycast expertises, which the base mods lack. Folds in the expertises from Alpha Skills, Hauts' Framework, Vanilla Fishing Expanded and Vanilla Gravship Expanded, and picks up stats from Integrated Implants, Mechanoid Upgrades, Altered Carbon and Vanilla Psycasts Expanded when those are present. Off by default; existing pawns keep the expertise they already have.</RBP.vse.expertiseconsolidation.desc>
+  <RBP.vse.expertisegeneration.label>Generated pawns can start with an expertise</RBP.vse.expertisegeneration.label>
+  <RBP.vse.expertisegeneration.desc>Vanilla Skills Expanded only ever gives expertise to colonists you pick it for. With this on, every generated pawn skilled enough to qualify - raiders, recruits, visitors, slaves - has a chance to already hold one matching expertise at a low starting level (1 to 3), chosen from the skills they are strongest in and following Vanilla Skills Expanded's own rules for who can hold what. The chance is set by the slider below.</RBP.vse.expertisegeneration.desc>
+  <RBP.vse.expertisegenerationchance.label>Chance to start with an expertise</RBP.vse.expertisegenerationchance.label>
+  <RBP.vse.expertisegenerationchance.desc>Percent chance that a qualifying generated pawn already holds a matching expertise. Applies only while the option above is on; toggling this slider off uses the default of 20%.</RBP.vse.expertisegenerationchance.desc>
   <RBP.cybernetics.label>Cybernetics Overhaul</RBP.cybernetics.label>
   <RBP.cybernetics.modules.label>Bolt-on implants need something to plug into</RBP.cybernetics.modules.label>
   <RBP.cybernetics.modules.desc>Implants that add an ability instead of replacing a body part become modules: a surgeon plugs them into a slot on a host already installed in the pawn (a cyberbrain for cognitive ones, a thoracic frame for torso ones). A pawn carries only as many as its hosts' tiers allow, and module quality scales the effect. Converts modules from Integrated Implants, EPOE-Forked and Psychic Implants. Needs EBSG Framework.</RBP.cybernetics.modules.desc>
@@ -150,6 +155,9 @@
   <RBP.cyberneticsresearch.capstones.desc>Adds two final researches that share a prerequisite and pull opposite ways: one rebuilds a pawn as a synthetic body with no biology left to fail, the other grows a frame that only works in living tissue. Both sit at the far end of the tab.</RBP.cyberneticsresearch.capstones.desc>
   <RBP.cyberneticsresearch.retire.label>Clear out the research this replaces</RBP.cyberneticsresearch.retire.label>
   <RBP.cyberneticsresearch.retire.desc>Deletes the original projects the Cybernetics tab took over, so the old mod tabs empty out instead of offering the same unlocks twice. Projects other mods' code needs are moved onto the tab rather than deleted. Best used with all four lane options above on.</RBP.cyberneticsresearch.retire.desc>
+  <RBP.ideology.label>Ideology - gene memes</RBP.ideology.label>
+  <RBP.ideology.genememes.label>Genecrafted and Bloodline Purity memes</RBP.ideology.genememes.label>
+  <RBP.ideology.genememes.desc>Adds two opposed memes. Genecrafted pawns are proud the further their genome is engineered from its xenotype template and look down on the untouched; Bloodline Purity pawns are disgusted by engineered genomes, more so the further they stray, and scorn the altered. Both scale with the same divergence measure and ignore synthetic bodies. Needs Biotech.</RBP.ideology.genememes.desc>
   <RBP.rimiot.label>RimIOT - Logistic Matrix</RBP.rimiot.label>
   <RBP.rimiot.costs.label>Reduce build costs</RBP.rimiot.costs.label>
   <RBP.rimiot.costs.desc>Cheaper cable, connector and interface, with advanced components replaced by basic ones.</RBP.rimiot.costs.desc>
@@ -259,6 +267,10 @@
   <RBP.bambamelee.label>Melee Weapons For All Tech Levels</RBP.bambamelee.label>
   <RBP.bambamelee.ultratrade.label>Ultra melee weapons not stocked by traders</RBP.bambamelee.ultratrade.label>
   <RBP.bambamelee.ultratrade.desc>The ultra-tier tiered melee weapons — the base ultra gladius, longsword, axe and spear, plus Beyond Our Reach's Solar and Quasar tiers — become sellable-only: traders never stock them for purchase, so they stay a research-and-craft reward. You can still sell a looted or crafted one.</RBP.bambamelee.ultratrade.desc>
+  <RBP.smallfurniture.label>Small Furniture</RBP.smallfurniture.label>
+  <RBP.smallfurniture.desc>Fixes for Small Furniture's compact workbench variants.</RBP.smallfurniture.desc>
+  <RBP.smallfurniture.hitechbenchresearch.label>Small hi-tech benches count as a hi-tech research bench</RBP.smallfurniture.hitechbenchresearch.label>
+  <RBP.smallfurniture.hitechbenchresearch.desc>Lets Small Furniture's medium and small hi-tech research benches satisfy research projects that require the vanilla Hi-Tech Research Bench, so those projects can be selected and researched at them. A linked small multi-analyzer stands in for a multi-analyzer as usual. Without this, the benches only count while Small Furniture's own small multi-analyzer option is enabled.</RBP.smallfurniture.hitechbenchresearch.desc>
   <RBP.yart.label>Yet Another Research Tree (YART)</RBP.yart.label>
   <RBP.yart.unlockgrouping.label>Group unlocks by every research that gates them</RBP.yart.unlockgrouping.label>
   <RBP.yart.unlockgrouping.desc>An item whose crafting recipe needs a second research is listed under that research on a project's card, next to the recipe, instead of in the plain unlock list above it. This is how the vanilla research window groups them.</RBP.yart.unlockgrouping.desc>

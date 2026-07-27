@@ -169,7 +169,11 @@ namespace RebalancePatches
             new RebalanceGroup("vse", new List<RebalanceToggle>
             {
                 new RebalanceToggle("vse.expertiseconsolidation"),
-            }, defaultOn: false, requiredMods: new[] { "vanillaexpanded.skills" }, isOverhaul: true),
+                new RebalanceToggle("vse.expertisegeneration"),
+            }, defaultOn: false, sliders: new List<RebalanceSlider>
+            {
+                new RebalanceSlider("vse.expertisegenerationchance", 20, 0, 50),
+            }, requiredMods: new[] { "vanillaexpanded.skills" }, isOverhaul: true),
 
             new RebalanceGroup("cybernetics", new List<RebalanceToggle>
             {
@@ -217,6 +221,12 @@ namespace RebalancePatches
                 new RebalanceToggle("cyberneticsresearch.retire",
                     dependsOn: "cyberneticsresearch.core"),
             }, defaultOn: false, isOverhaul: true),
+
+            new RebalanceGroup("ideology", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("ideology.genememes",
+                    requiredMods: new[] { "ludeon.rimworld.biotech" }),
+            }, requiredMods: new[] { "ludeon.rimworld.ideology" }),
 
             new RebalanceGroup("rimiot", new List<RebalanceToggle>
             {
@@ -353,6 +363,11 @@ namespace RebalancePatches
                 new RebalanceToggle("eltex.spawns",
                     requiredMods: new[] { "ludeon.rimworld.royalty" }),
             }, requiredMods: new[] { "zal.eltexweaponry" }),
+
+            new RebalanceGroup("smallfurniture", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("smallfurniture.hitechbenchresearch"),
+            }, requiredMods: new[] { "xercaine.furniture.small" }),
 
             new RebalanceGroup("bambamelee", new List<RebalanceToggle>
             {

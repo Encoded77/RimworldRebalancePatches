@@ -6,6 +6,8 @@ using RebalancePatches.Mods.Inspirations;
 using RebalancePatches.Mods.IntegratedImplants;
 using RebalancePatches.Mods.ResearchDisplay;
 using RebalancePatches.Mods.ResearchUI;
+using RebalancePatches.Mods.SmallFurniture;
+using RebalancePatches.Mods.VanillaSkillsExpanded;
 using RebalancePatches.Mods.VQEAncients;
 using RebalancePatches.Mods.VREAndroid;
 using Verse;
@@ -50,6 +52,8 @@ namespace RebalancePatches
             AndroidPsylinkPatches.TryApply(harmony);
             AndroidHardwareResearchGate.TryApply(harmony);
             EmptyResearchTabPatches.TryApply(harmony);
+            SmallFurnitureResearchBench.TryApply(harmony);
+            ExpertiseGenerationPatches.TryApply(harmony);
             YartUnlockGrouping.TryApply(harmony);
             DefCleanup.TryApply();
             DumpAutoRun.TryApply(harmony);

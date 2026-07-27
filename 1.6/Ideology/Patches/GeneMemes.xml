@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>ideology.genememes</settingKey>
+    <operations>
+
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>ludeon.rimworld.biotech</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+
+            <IssueDef>
+              <defName>RBP_GeneticTemplate</defName>
+              <label>genetic template</label>
+              <iconPath>UI/Issues/BodyModifications</iconPath>
+            </IssueDef>
+
+            <PreceptDef>
+              <defName>RBP_GeneTemplate_Transcend</defName>
+              <issue>RBP_GeneticTemplate</issue>
+              <label>raw material</label>
+              <description>The genome we are born with is a rough draft. A worthy body is one engineered far from the template it started as.</description>
+              <impact>Medium</impact>
+              <displayOrderInIssue>0</displayOrderInIssue>
+              <displayOrderInImpact>100</displayOrderInImpact>
+              <conflictingMemes>
+                <li>RBP_BloodlinePurity</li>
+              </conflictingMemes>
+              <associatedMemes>
+                <li>RBP_Genecrafted</li>
+              </associatedMemes>
+              <comps>
+                <li Class="PreceptComp_SituationalThought">
+                  <thought>RBP_GeneDiverged_Approved</thought>
+                </li>
+                <li Class="PreceptComp_SituationalThought">
+                  <thought>RBP_GeneBaseline_Disapproved</thought>
+                </li>
+                <li Class="PreceptComp_SituationalThought">
+                  <thought>RBP_GeneBaseline_Disapproved_Social</thought>
+                </li>
+              </comps>
+            </PreceptDef>
+
+            <PreceptDef>
+              <defName>RBP_GeneTemplate_Sacred</defName>
+              <issue>RBP_GeneticTemplate</issue>
+              <label>sacred lineage</label>
+              <description>A xenotype's template is the inheritance of its bloodline. To engineer it away is to defile what our ancestors were.</description>
+              <impact>High</impact>
+              <displayOrderInIssue>10</displayOrderInIssue>
+              <displayOrderInImpact>100</displayOrderInImpact>
+              <conflictingMemes>
+                <li>RBP_Genecrafted</li>
+              </conflictingMemes>
+              <associatedMemes>
+                <li>RBP_BloodlinePurity</li>
+              </associatedMemes>
+              <comps>
+                <li Class="PreceptComp_SituationalThought">
+                  <thought>RBP_GeneDiverged_Disapproved</thought>
+                </li>
+                <li Class="PreceptComp_SituationalThought">
+                  <thought>RBP_GeneDiverged_Disapproved_Social</thought>
+                </li>
+              </comps>
+            </PreceptDef>
+
+            <!-- Genecrafted: the reshaped body is a virtue, the untouched one a failing. -->
+
+            <ThoughtDef>
+              <defName>RBP_GeneDiverged_Approved</defName>
+              <workerClass>RebalancePatches.ThoughtWorker_Precept_GeneDivergence</workerClass>
+              <validWhileDespawned>true</validWhileDespawned>
+              <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+              <modExtensions>
+                <li Class="RebalancePatches.GeneDivergenceThoughtExtension">
+                  <pointsPerStage>5</pointsPerStage>
+                </li>
+              </modExtensions>
+              <stages>
+                <li>
+                  <label>reshaped flesh</label>
+                  <description>My genome has been pushed off its template. This is how a body should be treated.</description>
+                  <baseMoodEffect>1</baseMoodEffect>
+                </li>
+                <li>
+                  <label>engineered flesh</label>
+                  <description>My genome is well clear of the draft I was born with. My beliefs are made real in my body.</description>
+                  <baseMoodEffect>2</baseMoodEffect>
+                </li>
+                <li>
+                  <label>rewritten flesh</label>
+                  <description>Little of the original template remains in me. I am becoming what I chose to be.</description>
+                  <baseMoodEffect>3</baseMoodEffect>
+                </li>
+                <li>
+                  <label>remade flesh</label>
+                  <description>My body bears almost no resemblance to the raw stock it grew from. This is mastery.</description>
+                  <baseMoodEffect>4</baseMoodEffect>
+                </li>
+                <li>
+                  <label>transcendent flesh</label>
+                  <description>I have left my birth template far behind. I am authored, not inherited.</description>
+                  <baseMoodEffect>5</baseMoodEffect>
+                </li>
+              </stages>
+            </ThoughtDef>
+
+            <ThoughtDef>
+              <defName>RBP_GeneBaseline_Disapproved</defName>
+              <workerClass>RebalancePatches.ThoughtWorker_Precept_NoGeneDivergence</workerClass>
+              <minExpectation>Moderate</minExpectation>
+              <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+              <stages>
+                <li>
+                  <label>untouched template</label>
+                  <description>My genome is exactly as I was born. It's shameful to leave the raw draft unimproved.</description>
+                  <baseMoodEffect>-4</baseMoodEffect>
+                </li>
+              </stages>
+            </ThoughtDef>
+
+            <ThoughtDef>
+              <defName>RBP_GeneBaseline_Disapproved_Social</defName>
+              <thoughtClass>Thought_SituationalSocial</thoughtClass>
+              <workerClass>RebalancePatches.ThoughtWorker_Precept_NoGeneDivergence_Social</workerClass>
+              <stages>
+                <li>
+                  <label>untouched template</label>
+                  <baseOpinionOffset>-4</baseOpinionOffset>
+                </li>
+              </stages>
+            </ThoughtDef>
+
+            <!-- Bloodline Purity: engineering the template is defilement, worse the further it goes. -->
+
+            <ThoughtDef>
+              <defName>RBP_GeneDiverged_Disapproved</defName>
+              <workerClass>RebalancePatches.ThoughtWorker_Precept_GeneDivergence</workerClass>
+              <validWhileDespawned>true</validWhileDespawned>
+              <doNotApplyToQuestLodgers>true</doNotApplyToQuestLodgers>
+              <modExtensions>
+                <li Class="RebalancePatches.GeneDivergenceThoughtExtension">
+                  <pointsPerStage>5</pointsPerStage>
+                </li>
+              </modExtensions>
+              <stages>
+                <li>
+                  <label>altered template</label>
+                  <description>My genome has been meddled with. It should have been left as my bloodline made it.</description>
+                  <baseMoodEffect>-3</baseMoodEffect>
+                </li>
+                <li>
+                  <label>corrupted template</label>
+                  <description>My genome has been pulled well off its true form. This is a violation of my lineage.</description>
+                  <baseMoodEffect>-6</baseMoodEffect>
+                </li>
+                <li>
+                  <label>defiled template</label>
+                  <description>So much of me has been rewritten. My ancestors would not recognise this body.</description>
+                  <baseMoodEffect>-10</baseMoodEffect>
+                </li>
+                <li>
+                  <label>desecrated template</label>
+                  <description>Almost nothing of my true bloodline is left. I have been made into something profane.</description>
+                  <baseMoodEffect>-15</baseMoodEffect>
+                </li>
+              </stages>
+            </ThoughtDef>
+
+            <ThoughtDef>
+              <defName>RBP_GeneDiverged_Disapproved_Social</defName>
+              <thoughtClass>Thought_SituationalSocial</thoughtClass>
+              <workerClass>RebalancePatches.ThoughtWorker_Precept_GeneDivergence_Social</workerClass>
+              <stages>
+                <li>
+                  <label>altered template</label>
+                  <baseOpinionOffset>-5</baseOpinionOffset>
+                </li>
+              </stages>
+            </ThoughtDef>
+
+            <!-- Memes -->
+
+            <MemeDef>
+              <defName>RBP_Genecrafted</defName>
+              <label>genecrafted</label>
+              <description>The genome we inherit is only a starting point. A body should be engineered far from the template it was born with, and those who leave themselves as raw stock have wasted their potential.</description>
+              <iconPath>UI/Memes/RBP_Genecrafted</iconPath>
+              <groupDef>Misc</groupDef>
+              <impact>2</impact>
+              <exclusionTags>
+                <li>RBP_GeneticTemplate</li>
+              </exclusionTags>
+              <requireOne>
+                <li>
+                  <li>RBP_GeneTemplate_Transcend</li>
+                </li>
+              </requireOne>
+            </MemeDef>
+
+            <MemeDef>
+              <defName>RBP_BloodlinePurity</defName>
+              <label>bloodline purity</label>
+              <description>A xenotype's genome is the sacred inheritance of its bloodline. To engineer it away from its template is to defile the ancestors, and the more a body is rewritten the greater the desecration.</description>
+              <iconPath>UI/Memes/RBP_BloodlinePurity</iconPath>
+              <groupDef>Misc</groupDef>
+              <impact>2</impact>
+              <exclusionTags>
+                <li>RBP_GeneticTemplate</li>
+              </exclusionTags>
+              <requireOne>
+                <li>
+                  <li>RBP_GeneTemplate_Sacred</li>
+                </li>
+              </requireOne>
+            </MemeDef>
+
+          </value>
+        </match>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

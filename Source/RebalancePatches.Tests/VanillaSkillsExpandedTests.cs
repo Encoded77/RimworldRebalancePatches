@@ -1,5 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using HarmonyLib;
+using RebalancePatches.Mods.VanillaSkillsExpanded;
 using RimTestRedux;
 using RimWorld;
 using Verse;
@@ -337,6 +340,129 @@ namespace RebalancePatches.Tests
             if (ModsConfig.IsActive(Ids.Royalty))
                 all.AddRange(RoyaltyAggregateDefNames);
             return all;
+        }
+
+        [Test]
+        public static void GeneratedPawnsCanStartWithAnExpertise()
+        {
+            if (!Check.Ready("vse.expertisegeneration", Ids.VSE))
+                return;
+
+            // The feature is a postfix on pawn generation; without it nothing below could fire.
+            Check.HarmonyPatched(
+                AccessTools.Method(typeof(PawnGenerator), nameof(PawnGenerator.GeneratePawn),
+                    new[] { typeof(PawnGenerationRequest) }),
+                "expertise generation");
+
+            Pawn pawn = MakeAdult();
+            if (!Check.Soft(pawn?.skills != null, "could not generate a test pawn with skills"))
+            {
+                Discard(pawn);
+                Check.SoftResult();
+                return;
+            }
+            try
+            {
+                // Generation may have granted one already; start from a clean slate we control.
+                ClearExpertise(pawn);
+                SkillRecord shooting = pawn.skills.GetSkill(SkillDefOf.Shooting);
+                shooting.Level = 18;
+                shooting.passion = Passion.Major;   // a non-bad passion, so CanApplyOn allows it
+
+                Check.Soft(ExpertiseGenerationPatches.Grant(pawn, 0f) == null,
+                    "a zero chance still granted an expertise");
+
+                Def granted = ExpertiseGenerationPatches.Grant(pawn, 1f);
+                if (!Check.Soft(granted != null,
+                        "a full-chance roll on an 18-shooting pawn granted nothing - CanApplyOn or the def pool is wrong"))
+                {
+                    Discard(pawn);
+                    Check.SoftResult();
+                    return;
+                }
+                Check.Note($"granted '{granted.defName}'");
+
+                int level = LevelOfLastExpertise(pawn);
+                Check.Soft(level >= 1 && level <= 3, $"granted expertise started at level {level}, expected 1 to 3");
+
+                // Repeated grants must never take a pawn past Vanilla Skills Expanded's own per-pawn
+                // cap - CanApplyOn enforces it and we honour its refusal. Read the real setting rather
+                // than assume its default, so the test holds whatever the player set it to.
+                int max = MaxExpertise();
+                for (int i = 0; i < max + 3; i++)
+                    ExpertiseGenerationPatches.Grant(pawn, 1f);
+                Check.Soft(ExpertiseCount(pawn) <= max,
+                    $"grants ran the pawn to {ExpertiseCount(pawn)} expertise past the cap of {max}");
+            }
+            finally
+            {
+                Discard(pawn);
+            }
+            Check.SoftResult();
+        }
+
+        private static Pawn MakeAdult()
+        {
+            try
+            {
+                return PawnGenerator.GeneratePawn(new PawnGenerationRequest(
+                    PawnKindDefOf.Colonist, Faction.OfPlayer, PawnGenerationContext.NonPlayer,
+                    forceGenerateNewPawn: true, canGeneratePawnRelations: false,
+                    allowAddictions: false, allowFood: false,
+                    developmentalStages: DevelopmentalStage.Adult));
+            }
+            catch (Exception e)
+            {
+                Log.Warning("[RBP Tests] could not generate a test pawn: " + e.Message);
+                return null;
+            }
+        }
+
+        private static object Tracker(Pawn pawn)
+        {
+            Type trackers = GenTypes.GetTypeInAnyAssembly("VSE.ExpertiseTrackers");
+            return trackers?.GetMethod("Expertise", new[] { typeof(Pawn) })?.Invoke(null, new object[] { pawn });
+        }
+
+        private static IList Records(Pawn pawn)
+        {
+            object tracker = Tracker(pawn);
+            return tracker?.GetType().GetProperty("AllExpertise")?.GetValue(tracker) as IList;
+        }
+
+        private static void ClearExpertise(Pawn pawn)
+        {
+            object tracker = Tracker(pawn);
+            tracker?.GetType().GetMethod("ClearExpertise")?.Invoke(tracker, null);
+        }
+
+        private static int ExpertiseCount(Pawn pawn) => Records(pawn)?.Count ?? 0;
+
+        private static int MaxExpertise()
+        {
+            object settings = GenTypes.GetTypeInAnyAssembly("VSE.SkillsMod")
+                ?.GetField("Settings")?.GetValue(null);
+            object value = settings?.GetType().GetField("MaxExpertise")?.GetValue(settings);
+            return value is int i ? i : 1;
+        }
+
+        private static int LevelOfLastExpertise(Pawn pawn)
+        {
+            IList records = Records(pawn);
+            if (records == null || records.Count == 0)
+                return 0;
+            object last = records[records.Count - 1];
+            return (int)last.GetType().GetProperty("Level").GetValue(last);
+        }
+
+        private static void Discard(Pawn pawn)
+        {
+            try
+            {
+                if (pawn != null && !pawn.Destroyed)
+                    pawn.Destroy();
+            }
+            catch { }
         }
     }
 }

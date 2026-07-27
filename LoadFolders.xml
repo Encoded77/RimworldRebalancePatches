@@ -29,6 +29,7 @@
     <li IfModActive="oskarpotocki.vfe.pirates">1.6/VFEPirates</li>
     <li IfModActive="rimsenal.spacer">1.6/RimsenalSpacer</li>
     <li IfModActive="ludeon.rimworld.royalty">1.6/Royalty</li>
+    <li IfModActive="ludeon.rimworld.ideology">1.6/Ideology</li>
     <li IfModActive="lts.i">1.6/IntegratedImplants</li>
     <li IfModActive="vanillaracesexpanded.android">1.6/VREAndroid</li>
     <li IfModActive="vat.epoeforked">1.6/EPOEForked</li>

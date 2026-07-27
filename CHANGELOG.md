@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.10.10 (2026-07-27)
+- **Expertise on generated pawns** (`vse.expertisegeneration`) — new toggle in the Expertise Overhaul group, off by default. Vanilla Skills Expanded only ever gives expertise to colonists you pick it for; with this on, every generated pawn skilled enough to qualify — raiders, recruits, visitors, slaves — has a chance to already hold one matching expertise at a low starting level (1 to 3), chosen from the skills they are strongest in and following Vanilla Skills Expanded's own eligibility rules (minimum skill, no bad passion, per-pawn cap). Works with or without the consolidation toggle. The chance is a slider, 20% by default. Needs Vanilla Skills Expanded.
+
+## 1.10.9 (2026-07-27)
+- **Ideology - gene memes** — new settings group. **Genecrafted and Bloodline Purity memes** (`ideology.genememes`) — two opposed ideoligion memes built around genetics, mirroring how transhumanist and flesh purity treat implants. Genecrafted pawns feel better the further their genome has been engineered from their xenotype's template, are ashamed to be genetically untouched, and look down on the pristine; Bloodline Purity pawns are disgusted to have their genes altered — worse the further they stray — and scorn the engineered. Both scale with the same measure of how far a pawn's genes sit from their own xenotype (a stock Hussar and a baseliner both count as pristine) and ignore synthetic bodies. One ideoligion can't take both. Both memes ship with their own icons. Needs Ideology and Biotech.
+
+## 1.10.8 (2026-07-26)
+- **Small Furniture** — new settings group. **Small hi-tech benches count as a hi-tech research bench** (`smallfurniture.hitechbenchresearch`) — Small Furniture's medium and small hi-tech research benches now satisfy research projects that require the vanilla Hi-Tech Research Bench, so those projects can be selected and researched at them (a linked small multi-analyzer stands in for a multi-analyzer, and power and facility requirements are still honoured), and the "need research bench" alert no longer shows when one of these benches is built. Previously the benches only qualified while Small Furniture's own small multi-analyzer option was enabled.
+
 ## 1.10.7 (2026-07-26)
 - **Settings groups now have hover descriptions** — hovering a group header in the mod settings shows a one-line summary of what that group does; ineligible groups still list the mods they need.
 

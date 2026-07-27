@@ -92,6 +92,10 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 - **`memes.factions`** — Rimsenal's Spacer and Federation factions can't roll Alpha Memes' vow of nonviolence, which broke their combat pawns. Alpha Memes only adds that meme alongside VIE - Memes and Structures, so both are needed.
 - **`memes.anomalytraits`** — The Occultist trait and void fascination agree with Anomaly's Inhuman and Ritualist memes (Anomaly + Ideology).
 
+### Ideology gene memes
+
+- **Genecrafted and Bloodline Purity** (`ideology.genememes`) — Two opposed memes that care about genetics the way transhumanist and flesh purity care about implants. A **Genecrafted** ideoligion holds that the genome you're born with is only raw material: pawns feel better the further their genes have been engineered from their xenotype's template, are ashamed to be left untouched, and look down on the genetically pristine. A **Bloodline Purity** ideoligion holds the template sacred: pawns are disgusted to have their genes altered — more so the further they stray — and scorn the engineered. Both read the same measure of how far a pawn's genes sit from their own xenotype (a Hussar with the stock Hussar genes counts as pristine; a baseliner counts as pristine), and both ignore synthetic bodies such as androids. A single ideoligion can't take both. Needs Ideology and Biotech.
+
 ### Integrated Implants
 
 - **`implants.chipbad`** — Skill chips are no longer treated as ailments, so healer serums and biosculpting don't remove them.
@@ -118,6 +122,10 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 - **`vanilla.creepjoinersurgery`** — Creep joiners accept every surgery a regular human can get, including modded implants and prosthetics (Anomaly).
 - **`vanilla.hideemptyresearchtabs`** — A research tab that no research project is assigned to is left out of the research window's tab row instead of opening onto blank space. Works for any tab from any mod, and the tab comes back on its own if a project is ever assigned to it again. The tab you are currently on and the Main tab are always shown.
 - **Gene complexity sliders** (`vanilla.genecomplexitybase`, `vanilla.genecomplexityprocessor`) — Two sliders: extra base gene complexity for the gene assembler (default +10), and complexity per gene processor (default 3, vanilla 2). Toggling either off keeps the vanilla value.
+
+### Small Furniture
+
+- **`smallfurniture.hitechbenchresearch`** — Small Furniture's medium and small hi-tech research benches count as a Hi-Tech Research Bench, so research projects that require the vanilla bench can be selected and researched at them, and the "need research bench" alert clears once one is built. A linked small multi-analyzer stands in for a multi-analyzer, and the bench's power and facility requirements are still honoured. Without this fix those benches only qualify while Small Furniture's own small multi-analyzer option is enabled.
 
 ### Yet Another Research Tree (YART)
 
@@ -332,6 +340,12 @@ Some expertises are deliberately not pure upside:
 ### Other mods
 
 Expertises from **Alpha Skills**, **Hauts' Framework**, **Vanilla Fishing Expanded** and **Vanilla Gravship Expanded** are folded in when those mods are loaded: their stats ride along on whichever expertise they thematically belong to, so nothing is lost. Stats from **Integrated Implants**, **Mechanoid Upgrades**, **Altered Carbon** and **Vanilla Psycasts Expanded** are picked up the same way. Without them the same expertises simply carry fewer stats.
+
+### Expertise on generated pawns
+
+**`vse.expertisegeneration`** — off by default. Needs Vanilla Skills Expanded.
+
+On its own, Vanilla Skills Expanded only ever hands expertise to colonists you pick it for, so the rest of the world never has any. With this on, **every generated pawn skilled enough to qualify** — raiders, recruits, visitors, slaves — has a chance to already hold one matching expertise at a low starting level (1 to 3), chosen from the skills they are strongest in. A captured enemy sniper can come with a shooting expertise already in hand. Which pawns can hold what follows Vanilla Skills Expanded's own rules (minimum skill level, no bad passion, and its per-pawn expertise cap), so it respects whatever you have those set to, and it works whether or not the consolidation above is on. The chance is a slider, **20% by default**, adjustable up or down.
 
 Two gaps in the base mods are filled: **Mechlord** and **Mechwright** cover mechanitors, Mechlord for bandwidth, control groups and reach, Mechwright for repair, running costs and combat trim. Both need Biotech. The psycast pair needs Royalty, and Anomalist needs Anomaly.
 
