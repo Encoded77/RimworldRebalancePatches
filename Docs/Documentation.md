@@ -287,6 +287,14 @@ Consolidates the implant research of every mod into one Cybernetics tab with a c
 - **Two capstones** (`cyberneticsresearch.capstones`) — Two final researches that share a prerequisite and pull opposite ways: synthetic ascension and symbiotic integration.
 - **Retire the old research** (`cyberneticsresearch.retire`) — Deletes the original projects the tab took over so old mod tabs empty out instead of duplicating unlocks. Best with all four lanes on.
 
+## Pawn Augmentation
+
+Off by default. With a deep implant modlist, the base game still generates raiders, traders and visitors almost entirely unaugmented, so the world never looks like the technology it contains actually exists. This makes generated non-player pawns spawn already carrying implants, weighted by their faction's tech level, on top of vanilla's own sparse augmentation. Your own colonists are never touched.
+
+- **Non-player pawns spawn with bionics** (`worldaugment.bionics`) — Ultra and spacer factions get bionics substantially, industrial factions modestly, and tribal and medieval factions never. It draws only on implants that are actually reachable — those tagged as advanced, which is what vanilla, EPOE-Forked and Integrated Implants use — so it follows whatever implant mods are loaded without needing any of them. Weapon implants (blades, drills) are left out, and expensive parts stay rarer than cheap ones. Higher-tech factions also carry more parts and can afford pricier ones.
+- **High-tech factions can carry GiTS cyberbrains** (`worldaugment.cyberbrains`) — GiTS tags its cyberbrains so pawn generation can never reach them, so on their own they never appear on anyone. This adds them to the pool for spacer factions (common cyberbrains) and ultra factions (the advanced ones too). Needs GiTS Cyberbrains.
+- **Augmentation frequency** (`worldaugment.frequency`) — A slider scaling how often augmentation happens, as a percent of the built-in per-faction chances. 100 is default; lower makes augmented pawns rarer, higher more common.
+
 ## Sci-fi Renaming Overhaul
 
 Renames fantasy-, Norse- and religion-flavoured races and factions to RimWorld's gene-engineering flavour: every renamed group reads as an engineered gene-line, with labels, descriptions, faction names and pawn kind names rewritten to match. Purely cosmetic — no stats, genes or spawning change, and existing saves are unaffected beyond the displayed names. One toggle per mod.

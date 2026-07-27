@@ -4,6 +4,7 @@ using RebalancePatches.Mods.Biotech;
 using RebalancePatches.Mods.GeneFabrication;
 using RebalancePatches.Mods.Inspirations;
 using RebalancePatches.Mods.IntegratedImplants;
+using RebalancePatches.Mods.PawnGeneration;
 using RebalancePatches.Mods.ResearchDisplay;
 using RebalancePatches.Mods.ResearchUI;
 using RebalancePatches.Mods.SmallFurniture;
@@ -54,6 +55,7 @@ namespace RebalancePatches
             EmptyResearchTabPatches.TryApply(harmony);
             SmallFurnitureResearchBench.TryApply(harmony);
             ExpertiseGenerationPatches.TryApply(harmony);
+            WorldAugmentationPatches.TryApply(harmony);
             YartUnlockGrouping.TryApply(harmony);
             DefCleanup.TryApply();
             DumpAutoRun.TryApply(harmony);

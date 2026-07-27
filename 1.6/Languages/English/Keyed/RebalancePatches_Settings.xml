@@ -13,6 +13,7 @@
   <RBP.cybernetics.desc>Pulls artificial body parts and implants from every loaded mod onto one tier ladder priced by effect, with module slots and opposed synthetic and symbiotic endgame capstones.</RBP.cybernetics.desc>
   <RBP.cyberneticsresearch.desc>Reorganises implant research into a single Cybernetics tab with body, module, cyberbrain, psychic and capstone lanes, retiring the source mods' overlapping trees.</RBP.cyberneticsresearch.desc>
   <RBP.ideology.desc>Adds gene-themed ideoligion memes that react to how far a pawn's genome has been engineered from its xenotype template. Needs Ideology and Biotech.</RBP.ideology.desc>
+  <RBP.worldaugment.desc>Generated non-player pawns spawn with bionics, and optionally GiTS cyberbrains, weighted by their faction's tech level, so raiders, traders and visitors reflect the implant mods you have loaded.</RBP.worldaugment.desc>
   <RBP.rimiot.desc>Makes RimIOT - Logistic Matrix's network infrastructure cheaper to build and free to run. Needs RimIOT.</RBP.rimiot.desc>
   <RBP.autohydroponics.desc>Raises Automatic Hydroponics' bays' build cost and power draw to match the hand-tended hydroponics each one replaces. Needs Automatic Hydroponics.</RBP.autohydroponics.desc>
   <RBP.altered.desc>Balance and bug fixes for Altered Carbon: shield-belt duplication, casting-relay range, sleeve quality cancer rates and cross-sleeve traits. Needs Altered Carbon.</RBP.altered.desc>
@@ -155,6 +156,13 @@
   <RBP.cyberneticsresearch.capstones.desc>Adds two final researches that share a prerequisite and pull opposite ways: one rebuilds a pawn as a synthetic body with no biology left to fail, the other grows a frame that only works in living tissue. Both sit at the far end of the tab.</RBP.cyberneticsresearch.capstones.desc>
   <RBP.cyberneticsresearch.retire.label>Clear out the research this replaces</RBP.cyberneticsresearch.retire.label>
   <RBP.cyberneticsresearch.retire.desc>Deletes the original projects the Cybernetics tab took over, so the old mod tabs empty out instead of offering the same unlocks twice. Projects other mods' code needs are moved onto the tab rather than deleted. Best used with all four lane options above on.</RBP.cyberneticsresearch.retire.desc>
+  <RBP.worldaugment.label>Pawn augmentation</RBP.worldaugment.label>
+  <RBP.worldaugment.bionics.label>Non-player pawns spawn with bionics</RBP.worldaugment.bionics.label>
+  <RBP.worldaugment.bionics.desc>On top of vanilla's own sparse augmentation, generated non-player pawns get bionics weighted by their faction's tech level: ultra and spacer factions substantially, industrial factions modestly, tribal and medieval never. Only implants tagged as advanced and reachable are used (so it follows whatever implant mods are loaded), weapon implants are excluded, and the pawn's own colonists are left alone. Off by default.</RBP.worldaugment.bionics.desc>
+  <RBP.worldaugment.cyberbrains.label>High-tech factions can carry GiTS cyberbrains</RBP.worldaugment.cyberbrains.label>
+  <RBP.worldaugment.cyberbrains.desc>Adds GiTS cyberbrains to the pool for spacer and ultra factions, which the base game leaves unreachable by pawn generation. Spacer factions get common cyberbrains, ultra factions the advanced ones too. Needs GiTS Cyberbrains and the option above.</RBP.worldaugment.cyberbrains.desc>
+  <RBP.worldaugment.frequency.label>Augmentation frequency</RBP.worldaugment.frequency.label>
+  <RBP.worldaugment.frequency.desc>Scales how often augmentation happens, as a percent of the built-in per-faction chances. 100 is the default; lower makes augmented pawns rarer, higher makes them more common. Toggling this slider off uses 100.</RBP.worldaugment.frequency.desc>
   <RBP.ideology.label>Ideology - gene memes</RBP.ideology.label>
   <RBP.ideology.genememes.label>Genecrafted and Bloodline Purity memes</RBP.ideology.genememes.label>
   <RBP.ideology.genememes.desc>Adds two opposed memes. Genecrafted pawns are proud the further their genome is engineered from its xenotype template and look down on the untouched; Bloodline Purity pawns are disgusted by engineered genomes, more so the further they stray, and scorn the altered. Both scale with the same divergence measure and ignore synthetic bodies. Needs Biotech.</RBP.ideology.genememes.desc>

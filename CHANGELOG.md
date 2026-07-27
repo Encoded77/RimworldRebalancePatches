@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.11.0 (2026-07-27)
+- **Pawn Augmentation** — new settings group, off by default. With a deep implant modlist the base game still generates raiders, traders and visitors almost unaugmented; this makes generated non-player pawns spawn carrying implants weighted by their faction's tech level, on top of vanilla's own augmentation. Your colonists are never touched.
+  - **Non-player pawns spawn with bionics** (`worldaugment.bionics`) — Ultra and spacer factions substantially, industrial modestly, tribal and medieval never. Draws only on reachable advanced-tagged implants (vanilla, EPOE-Forked, Integrated Implants and anything else that tags itself the same way), excludes weapon implants, and keeps expensive parts rarer than cheap ones. Higher-tech factions carry more and afford pricier parts.
+  - **High-tech factions can carry GiTS cyberbrains** (`worldaugment.cyberbrains`) — GiTS cyberbrains are tagged so pawn generation can never reach them, so on their own they never appear; this adds them to the pool for spacer factions (common) and ultra factions (advanced too). Needs GiTS Cyberbrains.
+  - **Augmentation frequency** (`worldaugment.frequency`) — slider scaling how often it happens, as a percent of the built-in per-faction chances (100 by default).
+
 ## 1.10.11 (2026-07-27)
 - **Settings changes now clear the Missile Girl patch cache** — Missile Girl - Performance Mod (also seen as Performance Optimizer / GAGARIN) caches the flattened post-patch defs keyed on patch files, not on this mod's settings, so on its own a settings change was replayed stale and silently never applied until the cache was cleared by hand. Changing any setting now detects that cache and resets it automatically, so the change takes effect on the next restart. No effect if that mod isn't installed.
 - **Settings logging** — the log now records a one-line summary of the loaded config at startup, and, when settings are changed, which keys changed and whether the patch cache was reset. Helps diagnose "my toggle isn't doing anything" reports.

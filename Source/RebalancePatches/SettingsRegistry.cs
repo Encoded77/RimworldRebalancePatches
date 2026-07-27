@@ -175,6 +175,17 @@ namespace RebalancePatches
                 new RebalanceSlider("vse.expertisegenerationchance", 20, 0, 50),
             }, requiredMods: new[] { "vanillaexpanded.skills" }, isOverhaul: true),
 
+            new RebalanceGroup("worldaugment", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("worldaugment.bionics"),
+                new RebalanceToggle("worldaugment.cyberbrains",
+                    requiredMods: new[] { "moistestwhale.gitscyberbrains" },
+                    dependsOn: "worldaugment.bionics"),
+            }, defaultOn: false, sliders: new List<RebalanceSlider>
+            {
+                new RebalanceSlider("worldaugment.frequency", 100, 0, 200),
+            }, isOverhaul: true),
+
             new RebalanceGroup("cybernetics", new List<RebalanceToggle>
             {
                 new RebalanceToggle("cybernetics.modules",
