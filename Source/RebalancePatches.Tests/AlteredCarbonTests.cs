@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using RimTestRedux;
 using RimWorld;
 using Verse;
@@ -98,6 +99,61 @@ namespace RebalancePatches.Tests
                 return;
             Check.Eq(Check.StatModifierValue(Check.Def<ThingDef>("AC_Apparel_ChrysalisHelmet").equippedStatOffsets, "VacuumResistance"),
                 0.62f, "AC_Apparel_ChrysalisHelmet VacuumResistance");
+        }
+
+        [Test]
+        public static void SleeveBrokerTrader()
+        {
+            if (!Check.Ready("altered.sleevemarket", Ids.AlteredCarbon))
+                return;
+            TraderKindDef trader = Check.Def<TraderKindDef>("RBP_Orbital_SleeveMarket");
+            Check.Soft(trader.orbital, "RBP_Orbital_SleeveMarket is not an orbital trader");
+
+            List<StockGenerator> gens = trader.stockGenerators;
+            Check.Note("stock generators: " + string.Join(", ", gens.Select(DescribeGen)));
+
+            Check.Soft(gens.Any(g => g.GetType().Name == "StockGenerator_Sleeves"),
+                "sleeve broker has no sleeve-body generator");
+            Check.Soft(SingleDefGen(gens, "AC_EmptyNeuralStack") != null,
+                "sleeve broker does not sell empty neural stacks");
+            Check.Soft(SingleDefGen(gens, "AC_NanoStorageDrive") != null,
+                "sleeve broker does not sell a nano storage drive");
+            if (ModsConfig.IsActive(Ids.Biotech))
+                Check.Soft(SingleDefGen(gens, "Genepack") != null,
+                    "Biotech is active but the sleeve broker sells no genepacks");
+
+            int richness = SettingsRegistry.GetEffectiveValue("altered.sleevemarket.richness");
+            foreach (StockGenerator g in gens)
+            {
+                string sd = SingleDefName(g);
+                bool scaled = g.GetType().Name == "StockGenerator_Sleeves" || sd == "AC_EmptyNeuralStack" || sd == "Genepack";
+                if (scaled)
+                    Check.Soft(g.countRange.max == richness,
+                        $"{DescribeGen(g)} countRange.max {g.countRange.max} does not track richness slider {richness}");
+            }
+
+            Check.SoftResult();
+        }
+
+        private static StockGenerator SingleDefGen(List<StockGenerator> gens, string defName)
+        {
+            foreach (StockGenerator g in gens)
+                if (SingleDefName(g) == defName)
+                    return g;
+            return null;
+        }
+
+        private static string SingleDefName(StockGenerator g)
+        {
+            if (g is StockGenerator_SingleDef)
+                return (Check.Field(g, "thingDef") as ThingDef)?.defName;
+            return null;
+        }
+
+        private static string DescribeGen(StockGenerator g)
+        {
+            string sd = SingleDefName(g);
+            return sd != null ? "SingleDef(" + sd + ")" : g.GetType().Name;
         }
     }
 }

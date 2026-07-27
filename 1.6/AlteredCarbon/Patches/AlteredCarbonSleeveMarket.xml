@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>altered.sleevemarket</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+          <TraderKindDef>
+            <defName>RBP_Orbital_SleeveMarket</defName>
+            <label>sleeve broker</label>
+            <orbital>true</orbital>
+            <faction MayRequire="Ludeon.RimWorld.Odyssey">TradersGuild</faction>
+            <stockGenerators>
+              <li Class="StockGenerator_SingleDef">
+                <thingDef>Silver</thingDef>
+                <countRange>800~2500</countRange>
+              </li>
+              <li Class="RebalancePatches.StockGenerator_Sleeves">
+                <countRange>1~3</countRange>
+              </li>
+              <li Class="StockGenerator_SingleDef">
+                <thingDef>AC_EmptyNeuralStack</thingDef>
+                <countRange>1~3</countRange>
+              </li>
+              <li Class="StockGenerator_SingleDef">
+                <thingDef>AC_NanoStorageDrive</thingDef>
+                <countRange>1~2</countRange>
+              </li>
+              <li MayRequire="Ludeon.RimWorld.Biotech" Class="StockGenerator_SingleDef">
+                <thingDef>Genepack</thingDef>
+                <countRange>1~3</countRange>
+              </li>
+            </stockGenerators>
+          </TraderKindDef>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>altered.sleevemarket.richness</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationReplaceFromSetting">
+        <settingKey>altered.sleevemarket.richness</settingKey>
+        <xpath>Defs/TraderKindDef[defName="RBP_Orbital_SleeveMarket"]/stockGenerators/li[@Class="RebalancePatches.StockGenerator_Sleeves"]/countRange</xpath>
+        <value><countRange>1~{value}</countRange></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceFromSetting">
+        <settingKey>altered.sleevemarket.richness</settingKey>
+        <xpath>Defs/TraderKindDef[defName="RBP_Orbital_SleeveMarket"]/stockGenerators/li[thingDef="AC_EmptyNeuralStack"]/countRange</xpath>
+        <value><countRange>1~{value}</countRange></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationReplaceFromSetting">
+        <settingKey>altered.sleevemarket.richness</settingKey>
+        <xpath>Defs/TraderKindDef[defName="RBP_Orbital_SleeveMarket"]/stockGenerators/li[thingDef="Genepack"]/countRange</xpath>
+        <value><countRange>1~{value}</countRange></value>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

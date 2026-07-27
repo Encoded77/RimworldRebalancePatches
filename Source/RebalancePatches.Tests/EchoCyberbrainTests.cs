@@ -154,6 +154,30 @@ namespace RebalancePatches.Tests
             Check.SoftResult();
         }
 
+        [Test]
+        public static void EchoBrainsCostEltex()
+        {
+            if (!Check.Ready(Key, Ids.GiTS, Ids.VPE))
+                return;
+
+            AssertEltex("RBP_EchoSeerCyberbrain", 7);
+            AssertEltex("RBP_EchoOracleCyberbrain", 15);
+
+            Check.SoftResult();
+        }
+
+        private static void AssertEltex(string thingName, int expected)
+        {
+            ThingDef item = DefDatabase<ThingDef>.GetNamedSilentFail(thingName);
+            if (!Check.Soft(item != null, $"{thingName} not found"))
+                return;
+            int? eltex = Check.CostOf(item, "VPE_Eltex");
+            Check.Soft(eltex == expected,
+                $"{thingName} eltex cost is {(eltex.HasValue ? eltex.Value.ToString() : "none")}, expected {expected}");
+            Check.Soft(Check.CostOf(item, "gitsMicromachines").HasValue,
+                $"{thingName} lost its inherited gitsMicromachines cost - the added eltex costList replaced the parent's instead of merging");
+        }
+
         private static void AssertCortexCapacity(string hediffName, int expected)
         {
             HediffDef hediff = DefDatabase<HediffDef>.GetNamedSilentFail(hediffName);

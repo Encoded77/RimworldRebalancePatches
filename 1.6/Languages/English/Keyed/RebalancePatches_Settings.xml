@@ -191,6 +191,10 @@
   <RBP.altered.sleevecancer.desc>Good through legendary sleeve quality genes multiply cancer rate by negative numbers (-0.1 to -0.5), inverting the stat; they become proper reduction factors (x0.9 to x0.5).</RBP.altered.sleevecancer.desc>
   <RBP.altered.relayrange.label>Casting relay range per relay</RBP.altered.relayrange.label>
   <RBP.altered.relayrange.desc>World tiles of needlecasting range each powered casting relay adds to a neural matrix. Altered Carbon's own value is 5; toggling this off keeps it.</RBP.altered.relayrange.desc>
+  <RBP.altered.sleevemarket.label>Sleeve broker orbital trader</RBP.altered.sleevemarket.label>
+  <RBP.altered.sleevemarket.desc>Adds an occasional orbital trader that sells the transhumanist trade its buy-side: empty sleeve bodies, empty neural stacks, a nano storage drive to bootstrap the research, and, with Biotech, genepacks. Everything is priced by its own high market value. Needs Altered Carbon; genepacks need Biotech.</RBP.altered.sleevemarket.desc>
+  <RBP.altered.sleevemarket.richness.label>Sleeve broker stock richness</RBP.altered.sleevemarket.richness.label>
+  <RBP.altered.sleevemarket.richness.desc>Upper bound on how many sleeve bodies, neural stacks and genepacks the sleeve broker carries per visit. Toggling this off leaves the default of 3.</RBP.altered.sleevemarket.richness.desc>
   <RBP.bigsmall.label>Big and Small - Genes &amp; More</RBP.bigsmall.label>
   <RBP.bigsmall.madscience.label>Mad science field testing requires gun turrets</RBP.bigsmall.madscience.label>
   <RBP.bigsmall.madscience.desc>The mad science field testing research itself gets the vanilla Gun turrets prerequisite, instead of every turret and ray weapon it unlocks listing Gun turrets separately, which garbles their requirement display.</RBP.bigsmall.madscience.desc>

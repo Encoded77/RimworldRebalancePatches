@@ -119,13 +119,17 @@ namespace RebalancePatches.Tests
                 if (rung == null)
                     continue;
 
-                Check.Soft(Math.Abs(item.BaseMarketValue - rung.ValueWithChips) < 2.5f,
+                float eltex = EltexOffset(item);
+                float value = item.BaseMarketValue - eltex;
+                Check.Soft(Math.Abs(value - rung.ValueWithChips) < 2.5f,
                     $"{item.defName} ({rung.Name} rung, from {ModOf(item)}) is worth " +
-                    $"{item.BaseMarketValue:0.#}, ladder says {rung.ValueWithChips:0}; it carries " +
+                    $"{item.BaseMarketValue:0.#}" +
+                    (eltex > 0f ? $" ({value:0.#} without its {eltex:0.#} eltex premium)" : "") +
+                    $", ladder says {rung.ValueWithChips:0}; it carries " +
                     $"{ComponentsShown(item)} and {Check.StatBase(item, "WorkToMake")} work");
 
                 if (!rungValue.ContainsKey(rung.Name))
-                    rungValue[rung.Name] = item.BaseMarketValue;
+                    rungValue[rung.Name] = value;
             }
 
             var steps = new List<string>();
@@ -488,6 +492,19 @@ namespace RebalancePatches.Tests
 
         private static int MicromachineValueOf(ThingDef def) =>
             (Check.CostOf(def, "gitsMicromachines") ?? 0) * 800;
+
+        // The Echo brains carry a deliberate eltex premium (cybernetics.echobrains) on top of
+        // their tier baseline; strip its exact market-value contribution before the ladder check.
+        private static float EltexOffset(ThingDef def)
+        {
+            if (!ModsConfig.IsActive(Ids.VPE))
+                return 0f;
+            int? count = Check.CostOf(def, "VPE_Eltex");
+            if (!count.HasValue)
+                return 0f;
+            ThingDef eltex = DefDatabase<ThingDef>.GetNamedSilentFail("VPE_Eltex");
+            return eltex == null ? 0f : count.Value * eltex.BaseMarketValue;
+        }
 
         private static string ComponentsShown(ThingDef def)
         {

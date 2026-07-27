@@ -263,10 +263,13 @@ namespace RebalancePatches
                 new RebalanceToggle("altered.cuirassier"),
                 new RebalanceToggle("altered.traitblacklist"),
                 new RebalanceToggle("altered.sleevecancer"),
+                new RebalanceToggle("altered.sleevemarket"),
             }, sliders: new List<RebalanceSlider>
             {
                 new RebalanceSlider("altered.relayrange",
                     10, 1, 25),
+                new RebalanceSlider("altered.sleevemarket.richness",
+                    3, 1, 8),
             }, requiredMods: new[] { "hlx.ultratechalteredcarbon" }),
 
             new RebalanceGroup("bigsmall", new List<RebalanceToggle>

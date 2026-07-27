@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.13.0 (2026-07-28)
+- **Echo cyberbrains cost eltex** (`cybernetics.echobrains`) — with Vanilla Psycasts Expanded loaded, the custom Echo SEER and ORACLE cyberbrains now cost eltex to craft (7 and 15 respectively), added on top of their inherited materials. No effect without Vanilla Psycasts Expanded.
+- **Sleeve broker orbital trader** (`altered.sleevemarket`) — adds an occasional orbital trader that gives Altered Carbon's transhuman economy a buy-side. It sells empty sleeve bodies (grown adults, blanked ready to cast into), empty neural stacks, a nano storage drive to bootstrap the research if you never unlocked it, and, with Biotech, genepacks. Everything trades at its own high market value. A **stock richness** slider (`altered.sleevemarket.richness`, 1–8, default 3) caps how many sleeves, stacks and genepacks it carries per visit. Needs Altered Carbon; genepacks need Biotech.
+
 ## 1.12.0 (2026-07-27)
 - **Ushanka's Biological Warfare** — new settings group. **Staged research tree** (`biowarfare.researchtree`) — rebuilds the flat biological warfare research into a staged progression on its own tab. Weapons climb through *advanced pathogens* and *lethal pathogens* tiers with cost rising as diseases get deadlier, and every vaccine now branches from a shared *antigen analysis* node (which also unlocks the antigens analyzer) rather than requiring its matching weapon, so offence and defence are researched independently. Needs Ushanka's Biological Warfare.
 

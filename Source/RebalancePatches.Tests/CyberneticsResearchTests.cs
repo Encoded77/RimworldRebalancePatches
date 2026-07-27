@@ -112,6 +112,50 @@ namespace RebalancePatches.Tests
         }
 
         [Test]
+        public static void TechprintGeneratesAndIsEmpireTradeable()
+        {
+            if (!Check.Ready(ModulesKey, Ids.Royalty) || !TabLoaded(ModulesKey))
+                return;
+
+            const string defName = "RBP_CybUltratechWeaponModules";
+            ResearchProjectDef research = Check.Def<ResearchProjectDef>(defName);
+
+            Check.Soft(research.techprintCount == 1,
+                $"{defName} techprintCount is {research.techprintCount}, expected 1");
+            Check.Soft(research.heldByFactionCategoryTags != null && research.heldByFactionCategoryTags.Contains("Empire"),
+                $"{defName} is not held by the Empire, so Empire traders cannot stock its techprint");
+
+            ThingDef print = DefDatabase<ThingDef>.GetNamedSilentFail("Techprint_" + defName);
+            if (!Check.Soft(print != null, $"no Techprint item generated for {defName} - the print can never appear"))
+            {
+                Check.SoftResult();
+                return;
+            }
+            Check.Soft(print.tradeTags != null && print.tradeTags.Contains("Techprint"),
+                "the generated techprint lacks the Techprint trade tag");
+            Check.Soft(print.tradeability != Tradeability.None, "the generated techprint is not tradeable");
+            Check.Soft(research.Techprint == print, "research.Techprint does not resolve to the generated item");
+
+            // Whether an Empire trader would actually offer it, and the depth penalty on its weight.
+            Faction empire = Find.FactionManager?.AllFactions?.FirstOrDefault(f => f.def.categoryTag == "Empire");
+            if (empire != null)
+            {
+                List<ResearchProjectDef> pool = TechprintUtility.GetResearchProjectsNeedingTechprintsNow(empire).ToList();
+                float weight = TechprintUtility.GetSelectionWeight_NewTemp(research, true);
+                Check.Note($"Empire techprint pool={pool.Count}; {defName} eligible={pool.Contains(research)}, " +
+                           $"weight={weight:0.###}, prereqsDone={research.PrerequisitesCompleted}");
+                Check.Soft(pool.Contains(research),
+                    $"{defName} is not in the Empire's techprint pool, so its print will never be stocked");
+            }
+            else
+            {
+                Check.Note("no Empire faction in the test world; trader eligibility not exercised");
+            }
+
+            Check.SoftResult();
+        }
+
+        [Test]
         public static void CyberbrainNodesSitOnTheTab()
         {
             if (!Check.Ready(CyberbrainsKey, Ids.GiTS) || !TabLoaded(CyberbrainsKey))
