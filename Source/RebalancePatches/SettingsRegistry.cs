@@ -250,6 +250,11 @@ namespace RebalancePatches
                 new RebalanceToggle("autohydroponics.costlier"),
             }, requiredMods: new[] { "poncho.automatichydroponics" }),
 
+            new RebalanceGroup("biowarfare", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("biowarfare.researchtree"),
+            }, requiredMods: new[] { "ushanka.biologicalwarfare" }),
+
             new RebalanceGroup("altered", new List<RebalanceToggle>
             {
                 new RebalanceToggle("altered.shieldbelt",

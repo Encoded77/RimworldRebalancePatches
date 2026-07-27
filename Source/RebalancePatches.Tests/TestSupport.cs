@@ -104,6 +104,7 @@ namespace RebalancePatches.Tests
         public const string VREAndroidConversion = "derp88.vreandroidconversion";
         public const string YART = "seohyeon.yart";
         public const string UshankaBioWarfare = "ushanka.biologicalwarfare";
+        public const string NecroaArchovirus = "ushanka.necroaarchovirus";
         public const string ADogSaid2 = "sambucher.adogsaidanimalprosthetics2";
         public const string SmallFurniture = "xercaine.furniture.small";
     }

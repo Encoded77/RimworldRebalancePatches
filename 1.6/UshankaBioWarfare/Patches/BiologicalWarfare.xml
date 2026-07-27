@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>biowarfare.researchtree</settingKey>
+    <operations>
+
+      <!-- Staging nodes: two offence gates and one defence spine, all on the mod's own tab. -->
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+          <ResearchProjectDef ParentName="USH_BiologicalProjectBase">
+            <defName>RBP_USH_AdvancedPathogens</defName>
+            <label>advanced pathogens</label>
+            <description>Culturing more aggressive strains and stabilising them for weaponisation, opening the way to more dangerous diseases.</description>
+            <baseCost>1500</baseCost>
+            <prerequisites>
+              <li>USH_PathogenProductionRes</li>
+            </prerequisites>
+            <researchViewX>1.00</researchViewX>
+            <researchViewY>2.00</researchViewY>
+          </ResearchProjectDef>
+
+          <ResearchProjectDef ParentName="USH_BiologicalProjectBase">
+            <defName>RBP_USH_LethalPathogens</defName>
+            <label>lethal pathogens</label>
+            <description>The containment and delivery techniques needed to weaponise the deadliest known pathogens without killing your own colony first.</description>
+            <baseCost>3000</baseCost>
+            <prerequisites>
+              <li>RBP_USH_AdvancedPathogens</li>
+            </prerequisites>
+            <researchViewX>2.00</researchViewX>
+            <researchViewY>2.80</researchViewY>
+          </ResearchProjectDef>
+
+          <ResearchProjectDef ParentName="USH_BiologicalProjectBase">
+            <defName>RBP_USH_AntigenAnalysis</defName>
+            <label>antigen analysis</label>
+            <description>The study of disease antigens and the lab work behind them. Unlocks the antigens analyzer and is the foundation of every vaccine.</description>
+            <baseCost>1200</baseCost>
+            <prerequisites>
+              <li>USH_PathogenProductionRes</li>
+            </prerequisites>
+            <researchViewX>1.00</researchViewX>
+            <researchViewY>4.20</researchViewY>
+          </ResearchProjectDef>
+
+        </value>
+      </li>
+
+      <!-- The antigens analyzer now unlocks from the antigen-analysis node rather than the root. -->
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="USH_AntigensAnalyzer"]/researchPrerequisites</xpath>
+        <value>
+          <researchPrerequisites>
+            <li>RBP_USH_AntigenAnalysis</li>
+          </researchPrerequisites>
+        </value>
+      </li>
+
+      <!-- ===== Offence: reposition tier 1 and gate tiers 2 and 3 behind the new nodes. ===== -->
+
+      <!-- Tier 1 (prereq stays the root): reposition only. -->
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_FluOperationRes"]/researchViewX</xpath><value><researchViewX>1.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_FluOperationRes"]/researchViewY</xpath><value><researchViewY>0.40</researchViewY></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_SleepingSicknessOperationRes"]/researchViewX</xpath><value><researchViewX>1.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_SleepingSicknessOperationRes"]/researchViewY</xpath><value><researchViewY>1.20</researchViewY></value></li>
+
+      <!-- Tier 2 (prereq -> advanced pathogens, cost 700, X 2.0). -->
+      <li Class="PatchOperationAdd"><xpath>Defs/ResearchProjectDef[defName="USH_MalariaOperationRes"]</xpath><value><prerequisites Inherit="False"><li>RBP_USH_AdvancedPathogens</li></prerequisites><baseCost>700</baseCost></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_MalariaOperationRes"]/researchViewX</xpath><value><researchViewX>2.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_MalariaOperationRes"]/researchViewY</xpath><value><researchViewY>0.40</researchViewY></value></li>
+      <li Class="PatchOperationAdd"><xpath>Defs/ResearchProjectDef[defName="USH_ScariaOperationRes"]</xpath><value><prerequisites Inherit="False"><li>RBP_USH_AdvancedPathogens</li></prerequisites><baseCost>700</baseCost></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_ScariaOperationRes"]/researchViewX</xpath><value><researchViewX>2.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_ScariaOperationRes"]/researchViewY</xpath><value><researchViewY>1.20</researchViewY></value></li>
+      <li Class="PatchOperationAdd"><xpath>Defs/ResearchProjectDef[defName="USH_PlagueOperationRes"]</xpath><value><prerequisites Inherit="False"><li>RBP_USH_AdvancedPathogens</li></prerequisites><baseCost>700</baseCost></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_PlagueOperationRes"]/researchViewX</xpath><value><researchViewX>2.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_PlagueOperationRes"]/researchViewY</xpath><value><researchViewY>1.20</researchViewY></value></li>
+
+      <!-- Tier 3 (prereq -> lethal pathogens, cost 1000, X 3.0). -->
+      <li Class="PatchOperationAdd"><xpath>Defs/ResearchProjectDef[defName="USH_NecroaOperationRes"]</xpath><value><prerequisites Inherit="False"><li>RBP_USH_LethalPathogens</li></prerequisites><baseCost>1000</baseCost></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_NecroaOperationRes"]/researchViewX</xpath><value><researchViewX>3.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_NecroaOperationRes"]/researchViewY</xpath><value><researchViewY>1.20</researchViewY></value></li>
+      <li Class="PatchOperationAdd"><xpath>Defs/ResearchProjectDef[defName="USH_FleshBreakerOperationRes"]</xpath><value><prerequisites Inherit="False"><li>RBP_USH_LethalPathogens</li></prerequisites><baseCost>1000</baseCost></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_FleshBreakerOperationRes"]/researchViewX</xpath><value><researchViewX>3.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_FleshBreakerOperationRes"]/researchViewY</xpath><value><researchViewY>2.00</researchViewY></value></li>
+
+      <!-- ===== Defence: every vaccine hangs off antigen analysis, not its own weapon research. ===== -->
+
+      <!-- Tier 1 vaccines (cost 800). -->
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_FluVaccineRes"]/prerequisites</xpath><value><prerequisites><li>RBP_USH_AntigenAnalysis</li></prerequisites></value></li>
+      <li Class="PatchOperationAdd"><xpath>Defs/ResearchProjectDef[defName="USH_FluVaccineRes"]</xpath><value><baseCost>800</baseCost></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_FluVaccineRes"]/researchViewX</xpath><value><researchViewX>2.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_FluVaccineRes"]/researchViewY</xpath><value><researchViewY>3.40</researchViewY></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_SleepingSicknessVaccineRes"]/prerequisites</xpath><value><prerequisites><li>RBP_USH_AntigenAnalysis</li></prerequisites></value></li>
+      <li Class="PatchOperationAdd"><xpath>Defs/ResearchProjectDef[defName="USH_SleepingSicknessVaccineRes"]</xpath><value><baseCost>800</baseCost></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_SleepingSicknessVaccineRes"]/researchViewX</xpath><value><researchViewX>2.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_SleepingSicknessVaccineRes"]/researchViewY</xpath><value><researchViewY>4.00</researchViewY></value></li>
+
+      <!-- Tier 2 vaccines (cost stays 1200). -->
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_MalariaVaccineRes"]/prerequisites</xpath><value><prerequisites><li>RBP_USH_AntigenAnalysis</li></prerequisites></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_MalariaVaccineRes"]/researchViewX</xpath><value><researchViewX>2.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_MalariaVaccineRes"]/researchViewY</xpath><value><researchViewY>4.60</researchViewY></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_ScariaVaccineRes"]/prerequisites</xpath><value><prerequisites><li>RBP_USH_AntigenAnalysis</li></prerequisites></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_ScariaVaccineRes"]/researchViewX</xpath><value><researchViewX>2.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_ScariaVaccineRes"]/researchViewY</xpath><value><researchViewY>5.20</researchViewY></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_PlagueVaccineRes"]/prerequisites</xpath><value><prerequisites><li>RBP_USH_AntigenAnalysis</li></prerequisites></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_PlagueVaccineRes"]/researchViewX</xpath><value><researchViewX>2.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_PlagueVaccineRes"]/researchViewY</xpath><value><researchViewY>5.80</researchViewY></value></li>
+
+      <!-- Tier 3 vaccine (cost 1600). -->
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_NecroaVaccineRes"]/prerequisites</xpath><value><prerequisites><li>RBP_USH_AntigenAnalysis</li></prerequisites></value></li>
+      <li Class="PatchOperationAdd"><xpath>Defs/ResearchProjectDef[defName="USH_NecroaVaccineRes"]</xpath><value><baseCost>1600</baseCost></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_NecroaVaccineRes"]/researchViewX</xpath><value><researchViewX>2.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_NecroaVaccineRes"]/researchViewY</xpath><value><researchViewY>6.40</researchViewY></value></li>
+
+      <!-- Generic infection vaccine: onto the same spine, kept as the pricey catch-all. -->
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_InfectionVaccineRes"]/prerequisites</xpath><value><prerequisites><li>RBP_USH_AntigenAnalysis</li></prerequisites></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_InfectionVaccineRes"]/researchViewX</xpath><value><researchViewX>2.00</researchViewX></value></li>
+      <li Class="PatchOperationReplace"><xpath>Defs/ResearchProjectDef[defName="USH_InfectionVaccineRes"]/researchViewY</xpath><value><researchViewY>7.00</researchViewY></value></li>
+
+    </operations>
+  </Operation>
+
+</Patch>

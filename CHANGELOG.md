@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.12.0 (2026-07-27)
+- **Ushanka's Biological Warfare** — new settings group. **Staged research tree** (`biowarfare.researchtree`) — rebuilds the flat biological warfare research into a staged progression on its own tab. Weapons climb through *advanced pathogens* and *lethal pathogens* tiers with cost rising as diseases get deadlier, and every vaccine now branches from a shared *antigen analysis* node (which also unlocks the antigens analyzer) rather than requiring its matching weapon, so offence and defence are researched independently. Needs Ushanka's Biological Warfare.
+
 ## 1.11.0 (2026-07-27)
 - **Pawn Augmentation** — new settings group, off by default. With a deep implant modlist the base game still generates raiders, traders and visitors almost unaugmented; this makes generated non-player pawns spawn carrying implants weighted by their faction's tech level, on top of vanilla's own augmentation. Your colonists are never touched.
   - **Non-player pawns spawn with bionics** (`worldaugment.bionics`) — Ultra and spacer factions substantially, industrial modestly, tribal and medieval never. Draws only on reachable advanced-tagged implants (vanilla, EPOE-Forked, Integrated Implants and anything else that tags itself the same way), excludes weapon implants, and keeps expensive parts rarer than cheap ones. Higher-tech factions carry more and afford pricier parts.

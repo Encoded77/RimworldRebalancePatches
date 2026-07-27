@@ -16,6 +16,7 @@
   <RBP.worldaugment.desc>Generated non-player pawns spawn with bionics, and optionally GiTS cyberbrains, weighted by their faction's tech level, so raiders, traders and visitors reflect the implant mods you have loaded.</RBP.worldaugment.desc>
   <RBP.rimiot.desc>Makes RimIOT - Logistic Matrix's network infrastructure cheaper to build and free to run. Needs RimIOT.</RBP.rimiot.desc>
   <RBP.autohydroponics.desc>Raises Automatic Hydroponics' bays' build cost and power draw to match the hand-tended hydroponics each one replaces. Needs Automatic Hydroponics.</RBP.autohydroponics.desc>
+  <RBP.biowarfare.desc>Restructures Ushanka's Biological Warfare research into a staged progression on its own tab. Needs Ushanka's Biological Warfare.</RBP.biowarfare.desc>
   <RBP.altered.desc>Balance and bug fixes for Altered Carbon: shield-belt duplication, casting-relay range, sleeve quality cancer rates and cross-sleeve traits. Needs Altered Carbon.</RBP.altered.desc>
   <RBP.bigsmall.desc>Mad science requires the Gun turrets research once, instead of every turret it unlocks requiring it separately. Needs Big and Small.</RBP.bigsmall.desc>
   <RBP.vfepirates.desc>Warcasket charge weapons gate behind pulse-charged munitions research, and the Empire can make peace with the pirate crash-scenario faction. Needs VFE - Pirates.</RBP.vfepirates.desc>
@@ -172,6 +173,9 @@
   <RBP.rimiot.power.label>Remove power consumption</RBP.rimiot.power.label>
   <RBP.rimiot.power.desc>Network buildings draw no power and need no wiring, and their descriptions drop the power notes.</RBP.rimiot.power.desc>
   <RBP.autohydroponics.label>Automatic Hydroponics</RBP.autohydroponics.label>
+  <RBP.biowarfare.label>Ushanka's Biological Warfare</RBP.biowarfare.label>
+  <RBP.biowarfare.researchtree.label>Staged research tree</RBP.biowarfare.researchtree.label>
+  <RBP.biowarfare.researchtree.desc>Rebuilds the flat biological warfare research into a staged progression on its own tab. The weapon researches climb through advanced- and lethal-pathogen tiers with rising cost, while every vaccine now branches from a shared antigen-analysis node (which also unlocks the antigens analyzer) instead of each one requiring its matching weapon, so offence and defence are researched independently.</RBP.biowarfare.researchtree.desc>
   <RBP.autohydroponics.costlier.label>Costlier auto hydroponics with higher power draw</RBP.autohydroponics.costlier.label>
   <RBP.autohydroponics.costlier.desc>The large and small auto hydroponics cost more steel and components to build, and their power draw rises to 2000W and 1000W respectively, to match how much hand-tended hydroponics they replace.</RBP.autohydroponics.costlier.desc>
   <RBP.altered.label>Altered Carbon</RBP.altered.label>

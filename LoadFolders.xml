@@ -13,6 +13,7 @@
     <li IfModActive="vanillaexpanded.vanillasocialinteractionsexpanded">1.6/VSIE</li>
     <li IfModActive="cn.rimiot">1.6/RimIOT</li>
     <li IfModActive="poncho.automatichydroponics">1.6/AutomaticHydroponics</li>
+    <li IfModActive="ushanka.biologicalwarfare">1.6/UshankaBioWarfare</li>
     <li IfModActive="hlx.ultratechalteredcarbon">1.6/AlteredCarbon</li>
     <li IfModActive="moistestwhale.gitscyberbrains">1.6/GiTS</li>
     <li IfModActive="ferny.progressionrobotics2">1.6/ProgressionRobotics</li>

@@ -25,6 +25,10 @@ One change has no toggle because there is no sensible way to want it off: resear
 
 - **Costlier builds, higher power draw** (`autohydroponics.costlier`) — The large and small auto hydroponics cost more steel and components, and their power draw climbs to 2000W and 1000W respectively. Each bay replaces a wall of hand-tended hydroponics growing around the clock, so it shouldn't be cheap to raise or run.
 
+### Ushanka's Biological Warfare
+
+- **Staged research tree** (`biowarfare.researchtree`) — The mod's biological warfare research is a flat fan: every disease's weapons and vaccine hang off one root at the same cost. This rebuilds it into a staged progression on its own tab. The weapons climb through two tiers — *advanced pathogens* then *lethal pathogens* — with cost rising as the diseases get deadlier (Flu and sleeping sickness first, then malaria, scaria and plague, then necroa and flesh breaker). Every vaccine now branches from a single *antigen analysis* node, which also unlocks the antigens analyzer, instead of each vaccine requiring its matching weapon — so a colony can research defence without researching offence, and the two read as separate lanes. Needs Ushanka's Biological Warfare.
+
 ### Altered Carbon
 
 - **Disable VAE ranged shield belt** (`altered.shieldbelt`) — Vanilla Apparel Expanded - Accessories' ranged shield belt is a cheaper duplicate of Altered Carbon's cuirassier belt, so it becomes uncraftable, untradeable and stops spawning; the harder-to-get AC version stays. Existing belts keep working.
