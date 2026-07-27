@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.11 (2026-07-27)
+- **Settings changes now clear the Missile Girl patch cache** — Missile Girl - Performance Mod (also seen as Performance Optimizer / GAGARIN) caches the flattened post-patch defs keyed on patch files, not on this mod's settings, so on its own a settings change was replayed stale and silently never applied until the cache was cleared by hand. Changing any setting now detects that cache and resets it automatically, so the change takes effect on the next restart. No effect if that mod isn't installed.
+- **Settings logging** — the log now records a one-line summary of the loaded config at startup, and, when settings are changed, which keys changed and whether the patch cache was reset. Helps diagnose "my toggle isn't doing anything" reports.
+
 ## 1.10.10 (2026-07-27)
 - **Expertise on generated pawns** (`vse.expertisegeneration`) — new toggle in the Expertise Overhaul group, off by default. Vanilla Skills Expanded only ever gives expertise to colonists you pick it for; with this on, every generated pawn skilled enough to qualify — raiders, recruits, visitors, slaves — has a chance to already hold one matching expertise at a low starting level (1 to 3), chosen from the skills they are strongest in and following Vanilla Skills Expanded's own eligibility rules (minimum skill, no bad passion, per-pawn cap). Works with or without the consolidation toggle. The chance is a slider, 20% by default. Needs Vanilla Skills Expanded.
 

@@ -10,6 +10,10 @@ namespace RebalancePatches
 
         public int configVersion;
 
+        // The effective-settings signature at the last settings-menu save, so the next save can tell
+        // whether the patch-gating state actually changed and the Missile Girl cache needs resetting.
+        public string appliedSignature = "";
+
         public bool CameFromDisk { get; private set; }
 
         public bool TryGet(string key, out bool value) => values.TryGetValue(key, out value);
@@ -30,6 +34,8 @@ namespace RebalancePatches
             Scribe_Collections.Look(ref intValues, "intValues", LookMode.Value, LookMode.Value);
             intValues ??= new Dictionary<string, int>();
             Scribe_Values.Look(ref configVersion, "configVersion", 0);
+            Scribe_Values.Look(ref appliedSignature, "appliedSignature", "");
+            appliedSignature ??= "";
             if (Scribe.mode == LoadSaveMode.LoadingVars)
                 CameFromDisk = true;
         }

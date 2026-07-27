@@ -2,6 +2,8 @@
 
 What every toggle in the mod settings does, grouped the same way as the settings window. Every feature can be turned off individually (restart required), and every feature silently does nothing if the mods it targets aren't loaded.
 
+If **Missile Girl - Performance Mod** (or its predecessor's XML patch cache, sometimes bundled as Performance Optimizer / GAGARIN) is active, that cache is keyed on patch files rather than on these settings, so on its own a settings change would be replayed stale and silently never apply. Changing any setting here now resets that cache automatically, so the change takes effect on the next restart with no manual cache-clearing.
+
 The settings window groups features by mod: groups collapse and expand, a search box filters by name and description, and settings whose required mods aren't in the modlist are greyed out with a note saying what's missing (hover for the full requirement list). Groups for mods you don't run can be hidden entirely with *Show inactive mods*.
 
 **The five overhauls sit at the top of the settings window, above a divider.** They are sweeping changes to how whole systems work — Genetics Overhaul, Genetics Research Overhaul, Xenotype Spawning Overhaul, Sci-fi Renaming Overhaul and Expertise Overhaul — and nothing below the divider depends on them. Four of them are **off by default**, so nothing changes until you opt in; the exception is the Xenotype Spawning Overhaul, which is on, since it only affects which xenotypes newly generated pawns roll rather than reworking a system you build against. Turning an overhaul's group on enables everything inside it; individual pieces can then be turned back off. The patches below the divider stay on by default, since each is a small self-contained fix.
