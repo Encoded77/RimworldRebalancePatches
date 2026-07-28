@@ -189,8 +189,10 @@ namespace RebalancePatches.UI
             {
                 string missing = ModEligibility.MissingNames(group.requiredMods);
                 DrawNote(noteRect, "RBP.UI.NotLoaded".Translate(missing), MissingColor);
-                TooltipHandler.TipRegion(rect, GateTooltip("group." + group.key, group.requiredMods, null,
-                    group.description));
+                // Only overhaul groups carry a hover description; a plain mod-named group needs none.
+                if (group.isOverhaul)
+                    TooltipHandler.TipRegion(rect, GateTooltip("group." + group.key, group.requiredMods, null,
+                        group.description));
             }
             else
             {
@@ -203,7 +205,8 @@ namespace RebalancePatches.UI
                 {
                     DrawNote(noteRect, "RBP.UI.GroupOff".Translate(), NoteColor);
                 }
-                TooltipHandler.TipRegion(rect, group.description);
+                if (group.isOverhaul)
+                    TooltipHandler.TipRegion(rect, group.description);
             }
 
             if (Widgets.ButtonInvisible(labelRect))

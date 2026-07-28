@@ -164,7 +164,7 @@
   <RBP.worldaugment.cyberbrains.desc>Adds GiTS cyberbrains to the pool for spacer and ultra factions, which the base game leaves unreachable by pawn generation. Spacer factions get common cyberbrains, ultra factions the advanced ones too. Needs GiTS Cyberbrains and the option above.</RBP.worldaugment.cyberbrains.desc>
   <RBP.worldaugment.frequency.label>Augmentation frequency</RBP.worldaugment.frequency.label>
   <RBP.worldaugment.frequency.desc>Scales how often augmentation happens, as a percent of the built-in per-faction chances. 100 is the default; lower makes augmented pawns rarer, higher makes them more common. Toggling this slider off uses 100.</RBP.worldaugment.frequency.desc>
-  <RBP.ideology.label>Ideology - gene memes</RBP.ideology.label>
+  <RBP.ideology.label>Ideology</RBP.ideology.label>
   <RBP.ideology.genememes.label>Genecrafted and Bloodline Purity memes</RBP.ideology.genememes.label>
   <RBP.ideology.genememes.desc>Adds two opposed memes. Genecrafted pawns are proud the further their genome is engineered from its xenotype template and look down on the untouched; Bloodline Purity pawns are disgusted by engineered genomes, more so the further they stray, and scorn the altered. Both scale with the same divergence measure and ignore synthetic bodies. Needs Biotech.</RBP.ideology.genememes.desc>
   <RBP.rimiot.label>RimIOT - Logistic Matrix</RBP.rimiot.label>
@@ -292,7 +292,7 @@
   <RBP.yart.label>Yet Another Research Tree (YART)</RBP.yart.label>
   <RBP.yart.unlockgrouping.label>Group unlocks by every research that gates them</RBP.yart.unlockgrouping.label>
   <RBP.yart.unlockgrouping.desc>An item whose crafting recipe needs a second research is listed under that research on a project's card, next to the recipe, instead of in the plain unlock list above it. This is how the vanilla research window groups them.</RBP.yart.unlockgrouping.desc>
-  <RBP.progressionrobotics.label>Progression: Robotics de-bloat</RBP.progressionrobotics.label>
+  <RBP.progressionrobotics.label>Progression Robotics</RBP.progressionrobotics.label>
   <RBP.progressionrobotics.groupmechs.label>Group per-mech unlock research by theme</RBP.progressionrobotics.groupmechs.label>
   <RBP.progressionrobotics.groupmechs.desc>Progression: Robotics gives every mechanoid its own research project. This collapses the too-specific ones into thematic nodes so the tree is less cluttered. Biotech's standard combat mechs (cyclops, pikeman, scorcher, tunneler) become one project; cleansweeper and agrihand become basic utility mechs; fabricor and paramedic become advanced utility mechs. With Alpha Mechs, the bellicor and artilleron become militor variants, lux/munifex/polychoron become energy-weapon mechs, aura and optio become assault and support mechs, demolisher/fireworm/phalanx become heavy assault mechs, apoptosis and infernus become cryptoharmonized mechs, and culinarius and turbocleaner become culinary and cleaning mechs. Distinctive mechs (militor, diabolus, centipedes, war queen, legionary, tesseron, centipede blaster, blitzkrieg, modified biomechs, siegemelter) keep their own research. Merged projects cost about 25 percent less than the projects they replace.</RBP.progressionrobotics.groupmechs.desc>
   <RBP.progressionrobotics.groupgear.label>Consolidate mechanitor gear research</RBP.progressionrobotics.groupgear.label>
