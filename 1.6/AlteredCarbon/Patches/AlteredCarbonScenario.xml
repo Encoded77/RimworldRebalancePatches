@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>altered.scenario</settingKey>
+    <operations>
+
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+          <ThingDef ParentName="BuildingBase">
+            <defName>RBP_BunkerNeuralMatrix</defName>
+            <label>derelict neural matrix</label>
+            <description>A neural matrix left running in a forgotten bunker, jury-rigged to draw on its own sealed power cell. It no longer draws from any grid and never seems to run dry. It holds the digitized mind casting into your sleeve. If it is destroyed, that connection ends.</description>
+            <thingClass>AlteredCarbon.Building_NeuralMatrix</thingClass>
+            <tickerType>Normal</tickerType>
+            <drawerType>RealtimeOnly</drawerType>
+            <drawHighlight>true</drawHighlight>
+            <highlightColor>(0.9, 0.9, 0.9)</highlightColor>
+            <graphicData>
+              <texPath>Things/Building/Misc/NeuralMatrix</texPath>
+              <graphicClass>Graphic_Multi</graphicClass>
+              <drawSize>(4.5,4.5)</drawSize>
+              <shaderType>CutoutComplex</shaderType>
+              <damageData>
+                <cornerTL>Damage/Corner</cornerTL>
+                <cornerTR>Damage/Corner</cornerTR>
+                <cornerBL>Damage/Corner</cornerBL>
+                <cornerBR>Damage/Corner</cornerBR>
+              </damageData>
+            </graphicData>
+            <size>(3,3)</size>
+            <statBases>
+              <MaxHitPoints>500</MaxHitPoints>
+              <WorkToBuild>12000</WorkToBuild>
+              <Flammability>1.0</Flammability>
+              <Cleanliness>1</Cleanliness>
+            </statBases>
+            <uiOrder>5001</uiOrder>
+            <altitudeLayer>BuildingOnTop</altitudeLayer>
+            <neverMultiSelect>true</neverMultiSelect>
+            <defaultPlacingRot>East</defaultPlacingRot>
+            <rotatable>true</rotatable>
+            <passability>PassThroughOnly</passability>
+            <pathCost>100</pathCost>
+            <castEdgeShadows>true</castEdgeShadows>
+            <canOverlapZones>false</canOverlapZones>
+            <terrainAffordanceNeeded>Medium</terrainAffordanceNeeded>
+            <blockWind>true</blockWind>
+            <uiIconPath>Things/Building/Misc/NeuralMatrix_MenuIcon</uiIconPath>
+            <building>
+              <ai_chillDestination>false</ai_chillDestination>
+              <destroySound>BuildingDestroyed_Metal_Big</destroySound>
+              <preventDeteriorationOnTop>true</preventDeteriorationOnTop>
+              <ignoreStoredThingsBeauty>true</ignoreStoredThingsBeauty>
+              <fixedStorageSettings>
+                <filter>
+                  <thingDefs>
+                    <li>AC_ActiveNeuralStack</li>
+                  </thingDefs>
+                </filter>
+              </fixedStorageSettings>
+              <defaultStorageSettings>
+                <priority>Important</priority>
+                <filter>
+                  <thingDefs>
+                    <li>AC_ActiveNeuralStack</li>
+                  </thingDefs>
+                </filter>
+              </defaultStorageSettings>
+              <buildingTags>
+                <li>Neural</li>
+              </buildingTags>
+            </building>
+            <placeWorkers>
+              <li>PlaceWorker_ShowFacilitiesConnections</li>
+            </placeWorkers>
+            <comps>
+              <li Class="CompProperties_Power">
+                <compClass>CompPowerPlant</compClass>
+                <basePowerConsumption>-100</basePowerConsumption>
+                <transmitsPower>true</transmitsPower>
+              </li>
+              <li Class="CompProperties_Glower">
+                <glowRadius>5</glowRadius>
+                <glowColor>(0,181,240,0)</glowColor>
+              </li>
+              <li Class="CompProperties_Facility">
+                <showMaxSimultaneous>False</showMaxSimultaneous>
+              </li>
+              <li Class="CompProperties_ThingContainer">
+                <compClass>AlteredCarbon.CompNeuralCache</compClass>
+                <stackLimit>10</stackLimit>
+                <drawContainedThing>false</drawContainedThing>
+              </li>
+              <li Class="CompProperties_AmbientSound">
+                <sound>AC_NeuralMatrix_Ambience</sound>
+              </li>
+            </comps>
+          </ThingDef>
+
+          <ThingDef ParentName="BuildingBase">
+            <defName>RBP_MalfunctioningCastingRelay</defName>
+            <label>malfunctioning casting relay</label>
+            <description>A crude, half-burnt needlecasting amplifier wired into the bunker's neural matrix and its sealed power cell. Whoever built it never finished, or never understood it. It holds a tuning but amplifies nothing: needlecasting range stays pinned to a single tile. It cannot be rebuilt.</description>
+            <tickerType>Normal</tickerType>
+            <drawerType>MapMeshAndRealTime</drawerType>
+            <graphicData>
+              <texPath>Things/Building/Misc/CastingRelay</texPath>
+              <graphicClass>Graphic_Single</graphicClass>
+              <drawSize>(3,3)</drawSize>
+              <shadowData>
+                <volume>(1.5, 0.35, 1.2)</volume>
+                <offset>(0, 0, -0.15)</offset>
+              </shadowData>
+            </graphicData>
+            <size>(2,2)</size>
+            <statBases>
+              <MaxHitPoints>250</MaxHitPoints>
+              <WorkToBuild>8000</WorkToBuild>
+              <Mass>25</Mass>
+              <Flammability>0.5</Flammability>
+            </statBases>
+            <rotatable>false</rotatable>
+            <canOverlapZones>false</canOverlapZones>
+            <fillPercent>0.4</fillPercent>
+            <altitudeLayer>Building</altitudeLayer>
+            <passability>PassThroughOnly</passability>
+            <uiIconPath>Things/Building/Misc/CastingRelay_MenuIcon</uiIconPath>
+            <building>
+              <ai_chillDestination>false</ai_chillDestination>
+              <buildingTags>
+                <li>Neural</li>
+              </buildingTags>
+            </building>
+            <comps>
+              <li Class="CompProperties_Power">
+                <compClass>CompPowerPlant</compClass>
+                <basePowerConsumption>-50</basePowerConsumption>
+                <transmitsPower>true</transmitsPower>
+              </li>
+              <li Class="AlteredCarbon.CompProperties_CastingRelay">
+                <untunedEffect>BandNodeUntuned</untunedEffect>
+                <tuningEffect>BandNodeTuning</tuningEffect>
+                <tunedEffect>AC_CastingRelayTuned</tunedEffect>
+                <retuningEffect>BandNodeRetuning</retuningEffect>
+                <tuningCompleteSound>BandNodeTuning_Complete</tuningCompleteSound>
+                <powerConsumptionIdle>0</powerConsumptionIdle>
+                <tuneSeconds>10</tuneSeconds>
+                <retuneSeconds>10</retuneSeconds>
+              </li>
+            </comps>
+            <modExtensions>
+              <li Class="RebalancePatches.CastingRelayRangeExtension">
+                <tilesPerRelay>0</tilesPerRelay>
+              </li>
+            </modExtensions>
+          </ThingDef>
+
+          <ScenPartDef>
+            <defName>RBP_AC_BunkerRig</defName>
+            <label>needlecasting bunker rig</label>
+            <scenPartClass>RebalancePatches.Mods.AlteredCarbon.ScenPart_BunkerRig</scenPartClass>
+            <category>StartingItem</category>
+            <selectionWeight>0</selectionWeight>
+            <summaryPriority>470</summaryPriority>
+            <maxUses>1</maxUses>
+          </ScenPartDef>
+
+          <ScenarioDef ParentName="ScenarioBase">
+            <defName>RBP_AlteredCarbonDigitized</defName>
+            <label>Altered Carbon: Digitized</label>
+            <description>You do not remember dying. You remember being taken apart.\n\nInside a sealed bunker a derelict neural matrix holds what is left of you, and a half-finished relay is casting that mind into a sleeve it barely controls. The range gauge reads one tile. The people who built this are gone, and you never understood the machine that is keeping you alive.\n\nGuard the rig. If the matrix is torn open, the sleeve you wear goes dark and there is no coming back.\n\nWarning: you start with nothing but the bunker and the sleeve on your back. This is a solo, naked-brutality start built around a single point of failure.</description>
+            <scenario>
+              <summary>A forcibly digitized mind, needlecast into a sleeve from a derelict bunker matrix. Solo, naked, nothing.</summary>
+              <parts>
+
+                <li Class="ScenPart_ConfigPage_ConfigureStartingPawns">
+                  <def>ConfigPage_ConfigureStartingPawns</def>
+                  <pawnCount>1</pawnCount>
+                  <pawnChoiceCount>8</pawnChoiceCount>
+                </li>
+
+                <li Class="ScenPart_PlayerPawnsArriveMethod">
+                  <def>PlayerPawnsArriveMethod</def>
+                  <visible>false</visible>
+                  <method>Standing</method>
+                </li>
+
+                <li Class="ScenPart_Naked">
+                  <def>Naked</def>
+                  <context>PlayerStarter</context>
+                </li>
+
+                <li Class="ScenPart_NoPossessions">
+                  <def>NoPossessions</def>
+                </li>
+
+                <li Class="RebalancePatches.Mods.AlteredCarbon.ScenPart_BunkerRig">
+                  <def>RBP_AC_BunkerRig</def>
+                </li>
+
+                <li Class="ScenPart_GameStartDialog">
+                  <def>GameStartDialog</def>
+                  <text>You do not remember dying. You remember being taken apart - piece by piece, thought by thought - and poured into a machine you never asked to understand.\n\nNow you are awake inside a stranger's body, a sleeve, moving on a signal beamed from a derelict neural matrix sealed in this bunker. A malfunctioning relay holds the thread together. The casting range reads one tile; you cannot go far, and you cannot go back.\n\nThe matrix is your life. Keep it whole. Whatever comes for this place is coming for you.</text>
+                  <closeSound>GameStartSting</closeSound>
+                </li>
+
+              </parts>
+            </scenario>
+          </ScenarioDef>
+
+        </value>
+      </li>
+
+    </operations>
+  </Operation>
+
+</Patch>

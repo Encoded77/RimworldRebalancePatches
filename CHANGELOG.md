@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.14.0 (2026-07-28)
+- **"Altered Carbon: Digitized" scenario** (`altered.scenario`) — a new solo, naked-brutality-tier start. The colonist wakes as an empty sleeve whose digitized mind is held in a derelict neural matrix. A sealed, steel-walled bunker room is built at the map start containing the matrix and a malfunctioning casting relay tuned to it; the matrix runs on its own sealed cell, needing no grid and consuming no power. The mind actively needlecasts into the sleeve through an installed neural receiver, and the malfunctioning relay caps needlecasting range at a single tile. If the matrix is destroyed the cast drops and the sleeve empties, so the whole run hangs on protecting it. Starts naked with no supplies at all - just the bunker and the sleeve. Needs Altered Carbon.
+
 ## 1.13.0 (2026-07-28)
 - **Echo cyberbrains cost eltex** (`cybernetics.echobrains`) — with Vanilla Psycasts Expanded loaded, the custom Echo SEER and ORACLE cyberbrains now cost eltex to craft (7 and 15 respectively), added on top of their inherited materials. No effect without Vanilla Psycasts Expanded.
 - **Sleeve broker orbital trader** (`altered.sleevemarket`) — adds an occasional orbital trader that gives Altered Carbon's transhuman economy a buy-side. It sells empty sleeve bodies (grown adults, blanked ready to cast into), empty neural stacks, a nano storage drive to bootstrap the research if you never unlocked it, and, with Biotech, genepacks. Everything trades at its own high market value. A **stock richness** slider (`altered.sleevemarket.richness`, 1–8, default 3) caps how many sleeves, stacks and genepacks it carries per visit. Needs Altered Carbon; genepacks need Biotech.

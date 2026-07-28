@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using RebalancePatches.Mods.AlteredCarbon;
 using RimTestRedux;
 using RimWorld;
 using Verse;
@@ -132,6 +134,126 @@ namespace RebalancePatches.Tests
                         $"{DescribeGen(g)} countRange.max {g.countRange.max} does not track richness slider {richness}");
             }
 
+            Check.SoftResult();
+        }
+
+        [Test]
+        public static void DigitizedScenarioRelay()
+        {
+            if (!Check.Ready("altered.scenario", Ids.AlteredCarbon))
+                return;
+            ThingDef relay = Check.Def<ThingDef>("RBP_MalfunctioningCastingRelay");
+            CastingRelayRangeExtension extension = relay.GetModExtension<CastingRelayRangeExtension>();
+            Check.Soft(extension != null, "RBP_MalfunctioningCastingRelay has no CastingRelayRangeExtension");
+            if (extension != null)
+                Check.Soft((int)Check.Field(extension, "tilesPerRelay") == 0,
+                    "RBP_MalfunctioningCastingRelay tilesPerRelay is not 0 (needlecast range would exceed 1)");
+            Check.Soft(relay.designationCategory == null,
+                "RBP_MalfunctioningCastingRelay is buildable; it should exist only for the scenario");
+            Check.Soft(relay.comps != null && relay.comps.Any(c => c.GetType().Name == "CompProperties_CastingRelay"),
+                "RBP_MalfunctioningCastingRelay is missing Altered Carbon's CompProperties_CastingRelay");
+            Check.SoftResult();
+        }
+
+        [Test]
+        public static void DigitizedMatrixSelfPowered()
+        {
+            if (!Check.Ready("altered.scenario", Ids.AlteredCarbon))
+                return;
+            ThingDef matrix = Check.Def<ThingDef>("RBP_BunkerNeuralMatrix");
+            CompProperties_Power power = matrix.comps.OfType<CompProperties_Power>().FirstOrDefault();
+            Check.Soft(power != null && power.compClass == typeof(CompPowerPlant),
+                "RBP_BunkerNeuralMatrix is not self-powered via CompPowerPlant");
+            Check.Soft(power != null && (float)Check.Field(power, "basePowerConsumption") < 0f,
+                "RBP_BunkerNeuralMatrix does not generate its own power (basePowerConsumption not negative)");
+            Check.Soft(power != null && power.transmitsPower,
+                "RBP_BunkerNeuralMatrix does not transmit power, so it never forms a net and stays unpowered (the cast would drop)");
+            Check.Soft(matrix.comps.Any(c => c.compClass != null && c.compClass.Name == "CompNeuralCache"),
+                "RBP_BunkerNeuralMatrix has no neural cache to hold the stack");
+            Check.Soft(matrix.thingClass != null && matrix.thingClass.Name == "Building_NeuralMatrix",
+                "RBP_BunkerNeuralMatrix is not a Building_NeuralMatrix (AC would not treat it as a matrix)");
+            Check.SoftResult();
+        }
+
+        [Test]
+        public static void DigitizedNeedlecastRuntime()
+        {
+            if (!Check.Ready("altered.scenario", Ids.AlteredCarbon))
+                return;
+            Check.Soft(NeedlecastStartup.DiagnosticsUsable(),
+                "Altered Carbon needlecasting reflection did not fully resolve (see log)");
+
+            Map map = Find.CurrentMap;
+            if (map == null)
+            {
+                Check.Note("no current map; the runtime cast was not exercised");
+                Check.SoftResult();
+                return;
+            }
+
+            ThingDef matrixDef = Check.Def<ThingDef>("RBP_BunkerNeuralMatrix");
+            HediffDef receiver = Check.Def<HediffDef>("AC_RemoteStack");
+            Thing matrix = null;
+            Pawn pawn = null;
+            try
+            {
+                IntVec3 cell = CellFinder.RandomClosewalkCellNear(map.Center, map, 25, c => c.Standable(map));
+                matrix = ThingMaker.MakeThing(matrixDef);
+                matrix.SetFactionDirect(Faction.OfPlayer);
+                GenSpawn.Spawn(matrix, cell, map, WipeMode.Vanish);
+
+                pawn = PawnGenerator.GeneratePawn(PawnKindDefOf.Colonist, Faction.OfPlayer);
+                GenSpawn.Spawn(pawn, CellFinder.RandomClosewalkCellNear(cell, map, 6, c => c.Standable(map)), map);
+
+                bool ok = NeedlecastStartup.TrySetup(pawn, matrix);
+                Check.Soft(ok, "TrySetup returned false - see the '[Rebalance Patches] Digitized-start needlecast failed at step ...' log line");
+                Check.Soft(pawn.health.hediffSet.HasHediff(receiver),
+                    "pawn did not receive the neural receiver (AC_RemoteStack)");
+                HediffDef emptySleeve = Check.Def<HediffDef>("AC_EmptySleeve");
+                Check.Soft(!pawn.health.hediffSet.HasHediff(emptySleeve),
+                    "pawn is still an empty sleeve after the cast - the needlecast did not animate it");
+
+                // AC re-checks the cast whenever the hediff cache is dirtied; force one to prove the cast survives
+                // maintenance rather than dropping (which would re-empty the sleeve and leave the colonist downed).
+                pawn.health.hediffSet.DirtyCache();
+                Check.Soft(!pawn.health.hediffSet.HasHediff(emptySleeve),
+                    "cast dropped on a hediff refresh - pawn re-emptied (connect status was not Connectable; check trackedToMatrix/power/range)");
+            }
+            catch (Exception ex)
+            {
+                Check.Soft(false, "runtime needlecast threw: " + ex);
+            }
+            finally
+            {
+                if (pawn != null && !pawn.Destroyed)
+                    pawn.Destroy();
+                if (matrix != null && !matrix.Destroyed)
+                    matrix.Destroy();
+            }
+            Check.SoftResult();
+        }
+
+        [Test]
+        public static void DigitizedScenarioParts()
+        {
+            if (!Check.Ready("altered.scenario", Ids.AlteredCarbon))
+                return;
+            ScenPartDef rig = Check.Def<ScenPartDef>("RBP_AC_BunkerRig");
+            Check.Soft(rig.scenPartClass == typeof(RebalancePatches.Mods.AlteredCarbon.ScenPart_BunkerRig),
+                "RBP_AC_BunkerRig scenPartClass is not ScenPart_BunkerRig");
+
+            ScenarioDef scen = Check.Def<ScenarioDef>("RBP_AlteredCarbonDigitized");
+            if (!Check.Soft(scen.scenario != null, "RBP_AlteredCarbonDigitized has no scenario"))
+            {
+                Check.SoftResult();
+                return;
+            }
+            List<ScenPart> parts = scen.scenario.AllParts.ToList();
+            Check.Note("scen parts: " + string.Join(", ", parts.Select(p => p.GetType().Name)));
+            Check.Soft(parts.Any(p => p is RebalancePatches.Mods.AlteredCarbon.ScenPart_BunkerRig),
+                "digitized scenario has no bunker-rig part");
+            Check.Soft(parts.Any(p => p.GetType().Name == "ScenPart_Naked"),
+                "digitized scenario is not a naked start");
             Check.SoftResult();
         }
 

@@ -264,6 +264,7 @@ namespace RebalancePatches
                 new RebalanceToggle("altered.traitblacklist"),
                 new RebalanceToggle("altered.sleevecancer"),
                 new RebalanceToggle("altered.sleevemarket"),
+                new RebalanceToggle("altered.scenario"),
             }, sliders: new List<RebalanceSlider>
             {
                 new RebalanceSlider("altered.relayrange",

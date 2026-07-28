@@ -195,6 +195,8 @@
   <RBP.altered.sleevemarket.desc>Adds an occasional orbital trader that sells the transhumanist trade its buy-side: empty sleeve bodies, empty neural stacks, a nano storage drive to bootstrap the research, and, with Biotech, genepacks. Everything is priced by its own high market value. Needs Altered Carbon; genepacks need Biotech.</RBP.altered.sleevemarket.desc>
   <RBP.altered.sleevemarket.richness.label>Sleeve broker stock richness</RBP.altered.sleevemarket.richness.label>
   <RBP.altered.sleevemarket.richness.desc>Upper bound on how many sleeve bodies, neural stacks and genepacks the sleeve broker carries per visit. Toggling this off leaves the default of 3.</RBP.altered.sleevemarket.richness.desc>
+  <RBP.altered.scenario.label>Add the "Altered Carbon: Digitized" scenario</RBP.altered.scenario.label>
+  <RBP.altered.scenario.desc>Adds a solo, naked-brutality-tier scenario: a forcibly digitized colonist wakes as an empty sleeve needlecast from a pre-built bunker rig (neural matrix, malfunctioning casting relay, neural connector and fuelled generators) placed at the map start. The relay pins needlecasting range to a single tile, and if the rig loses power or is destroyed the connection drops and the sleeve goes empty. Needs Altered Carbon.</RBP.altered.scenario.desc>
   <RBP.bigsmall.label>Big and Small - Genes &amp; More</RBP.bigsmall.label>
   <RBP.bigsmall.madscience.label>Mad science field testing requires gun turrets</RBP.bigsmall.madscience.label>
   <RBP.bigsmall.madscience.desc>The mad science field testing research itself gets the vanilla Gun turrets prerequisite, instead of every turret and ray weapon it unlocks listing Gun turrets separately, which garbles their requirement display.</RBP.bigsmall.madscience.desc>
