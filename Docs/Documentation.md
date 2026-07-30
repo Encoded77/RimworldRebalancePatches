@@ -58,6 +58,12 @@ One change has no toggle because there is no sensible way to want it off: resear
 
 - **Sturdier gravjumper engine** (`vge.gravjumpercapacity`) — The gravjumper engine's structural capacity goes from 100 to 200 tiles, so a single gravjumper can lift a larger gravship.
 
+### Vanilla Achievements Expanded
+
+- **Rebalance the point exchanges** (`achievements.rewardcosts`) — Achievement points buy events from a short list, and a few of them are far stronger than the achievements that pay for them. "Summon a Trade Caravan" is removed outright: being able to conjure a buyer or seller whenever you like turns trading from a logistics problem into a menu. The three exchanges that hand over raw power get more expensive — cargo pods 25 → 40, random quest item 100 → 150, man in black 150 → 200 — while summoning a raid (10) and the random event (25) are left alone, since one is danger you inflict on yourself and the other is a coin flip. Vanilla Weapons Expanded and Vanilla Armour Expanded each ship a duplicate exchange list on their own achievement tab that spends the same shared points, so those get the identical treatment.
+- **Add low-power point exchanges** (`achievements.newrewards`) — With the list trimmed there is little to spend small amounts on, so nine cheaper exchanges are added. Each one creates an opportunity that still has to be worked for rather than dropping goods in the stockpile: sprout an ambrosia patch (10), draw a herd migration (15), call down a meteorite (20), drop ship chunks (25), befriend a wild animal (30), broadcast a psychic soothe (40), lure a thrumbo (50), redirect a refugee pod (75) and attract a wanderer (150). Each is greyed out when the event can't fire — no thrumbo in a biome without thrumbos.
+- **Add Anomaly point exchanges** (`achievements.anomalyrewards`) — Two more for colonies that study entities: harbinger trees take root (30), and request mysterious cargo (40), a quest offer built around the golden cube. Both come with their own danger attached. Needs Anomaly.
+
 ### Gene conflict fixes (`geneconflicts.*`)
 
 Genes whose forced traits fight each other, or whose bonuses stack brokenly across mods, become mutually exclusive:

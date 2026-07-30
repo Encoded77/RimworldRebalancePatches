@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.15.0 (2026-07-29)
+- **Vanilla Achievements Expanded** — new settings group covering the point exchanges, the shop where achievement points are spent.
+  - **Rebalance the point exchanges** (`achievements.rewardcosts`) — "Summon a Trade Caravan" is removed. Cargo pods 25 → 40, random quest item 100 → 150, man in black 150 → 200. Summoning a raid and the random event are unchanged.
+  - **Add low-power point exchanges** (`achievements.newrewards`) — Nine cheaper exchanges that create an opportunity rather than hand over goods: sprout an ambrosia patch (10), draw a herd migration (15), call down a meteorite (20), drop ship chunks (25), befriend a wild animal (30), broadcast a psychic soothe (40), lure a thrumbo (50), redirect a refugee pod (75), attract a wanderer (150). Each greys out when its event can't fire.
+  - **Add Anomaly point exchanges** (`achievements.anomalyrewards`) — Harbinger trees take root (30) and request mysterious cargo (40), a quest offer around the golden cube. Both bring their own danger. Needs Anomaly.
+
 ## 1.14.0 (2026-07-28)
 - **"Altered Carbon: Digitized" scenario** (`altered.scenario`) — a new solo, naked-brutality-tier start. The colonist wakes as an empty sleeve whose digitized mind is held in a derelict neural matrix. A sealed, steel-walled bunker room is built at the map start containing the matrix and a malfunctioning casting relay tuned to it; the matrix runs on its own sealed cell, needing no grid and consuming no power. The mind actively needlecasts into the sleeve through an installed neural receiver, and the malfunctioning relay caps needlecasting range at a single tile. If the matrix is destroyed the cast drops and the sleeve empties, so the whole run hangs on protecting it. Starts naked with no supplies at all - just the bunker and the sleeve. Needs Altered Carbon.
 

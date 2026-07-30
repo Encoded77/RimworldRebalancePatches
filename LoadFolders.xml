@@ -45,6 +45,7 @@
     <li IfModActive="sarg.alphamemes">1.6/AlphaMemes</li>
     <li IfModActive="rimsenal.federation">1.6/RimsenalFederation</li>
     <li IfModActive="vanillaexpanded.vaewaste">1.6/VAEWaste</li>
+    <li IfModActive="vanillaexpanded.achievements">1.6/Achievements</li>
     <li IfModActive="zal.eltexweaponry">1.6/EltexWeaponry</li>
     <li IfModActive="bamba.allbambamelee.tiered">1.6/BambaMelee</li>
     <li IfModActive="vanillaracesexpanded.hussar">1.6/VREHussar</li>

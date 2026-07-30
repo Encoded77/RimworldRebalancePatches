@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>achievements.rewardcosts</settingKey>
+    <operations>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/AchievementsExpanded.Reward_MapIncident[defName="TradeCaravanReward"]</xpath>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/AchievementsExpanded.Reward_MapIncident[defName="CargoPodsReward"]/cost</xpath>
+        <value><cost>40</cost></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/AchievementsExpanded.Reward_RandomQuestItem[defName="RandomRewardQuestItem"]/cost</xpath>
+        <value><cost>150</cost></value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/AchievementsExpanded.Reward_MapIncident[defName="ManInBlackReward"]/cost</xpath>
+        <value><cost>200</cost></value>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>vanillaexpanded.vwe</li></mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/AchievementsExpanded.Reward_MapIncident[defName="TradeCaravanRewardVE_WE"]</xpath>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/AchievementsExpanded.Reward_MapIncident[defName="CargoPodsRewardVE_WE"]/cost</xpath>
+              <value><cost>40</cost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/AchievementsExpanded.Reward_RandomQuestItem[defName="RandomRewardQuestItemVE_WE"]/cost</xpath>
+              <value><cost>150</cost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/AchievementsExpanded.Reward_MapIncident[defName="ManInBlackRewardVE_WE"]/cost</xpath>
+              <value><cost>200</cost></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>vanillaexpanded.varme</li></mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationRemove">
+              <xpath>Defs/AchievementsExpanded.Reward_MapIncident[defName="TradeCaravanRewardVE"]</xpath>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/AchievementsExpanded.Reward_MapIncident[defName="CargoPodsRewardVE"]/cost</xpath>
+              <value><cost>40</cost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/AchievementsExpanded.Reward_RandomQuestItem[defName="RandomRewardQuestItemVE"]/cost</xpath>
+              <value><cost>150</cost></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/AchievementsExpanded.Reward_MapIncident[defName="ManInBlackRewardVE"]/cost</xpath>
+              <value><cost>200</cost></value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>achievements.newrewards</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+          <AchievementsExpanded.Reward_MapIncident>
+            <defName>RBP_AmbrosiaSproutReward</defName>
+            <label>Sprout an Ambrosia Patch</label>
+            <tab>Main</tab>
+            <cost>10</cost>
+            <incident>AmbrosiaSprout</incident>
+          </AchievementsExpanded.Reward_MapIncident>
+
+          <AchievementsExpanded.Reward_MapIncident>
+            <defName>RBP_HerdMigrationReward</defName>
+            <label>Draw a Herd Migration</label>
+            <tab>Main</tab>
+            <cost>15</cost>
+            <incident>HerdMigration</incident>
+          </AchievementsExpanded.Reward_MapIncident>
+
+          <AchievementsExpanded.Reward_MapIncident>
+            <defName>RBP_MeteoriteImpactReward</defName>
+            <label>Call Down a Meteorite</label>
+            <tab>Main</tab>
+            <cost>20</cost>
+            <incident>MeteoriteImpact</incident>
+          </AchievementsExpanded.Reward_MapIncident>
+
+          <AchievementsExpanded.Reward_MapIncident>
+            <defName>RBP_ShipChunkDropReward</defName>
+            <label>Drop Ship Chunks</label>
+            <tab>Main</tab>
+            <cost>25</cost>
+            <incident>ShipChunkDrop</incident>
+          </AchievementsExpanded.Reward_MapIncident>
+
+          <AchievementsExpanded.Reward_MapIncident>
+            <defName>RBP_SelfTameReward</defName>
+            <label>Befriend a Wild Animal</label>
+            <tab>Main</tab>
+            <cost>30</cost>
+            <incident>SelfTame</incident>
+          </AchievementsExpanded.Reward_MapIncident>
+
+          <AchievementsExpanded.Reward_MapIncident>
+            <defName>RBP_PsychicSootheReward</defName>
+            <label>Broadcast a Psychic Soothe</label>
+            <tab>Main</tab>
+            <cost>40</cost>
+            <incident>PsychicSoothe</incident>
+          </AchievementsExpanded.Reward_MapIncident>
+
+          <AchievementsExpanded.Reward_MapIncident>
+            <defName>RBP_ThrumboPassesReward</defName>
+            <label>Lure a Thrumbo</label>
+            <tab>Main</tab>
+            <cost>50</cost>
+            <incident>ThrumboPasses</incident>
+          </AchievementsExpanded.Reward_MapIncident>
+
+          <AchievementsExpanded.Reward_MapIncident>
+            <defName>RBP_RefugeePodCrashReward</defName>
+            <label>Redirect a Refugee Pod</label>
+            <tab>Main</tab>
+            <cost>75</cost>
+            <incident>RefugeePodCrash</incident>
+          </AchievementsExpanded.Reward_MapIncident>
+
+          <AchievementsExpanded.Reward_MapIncident>
+            <defName>RBP_WandererJoinReward</defName>
+            <label>Attract a Wanderer</label>
+            <tab>Main</tab>
+            <cost>150</cost>
+            <incident>WandererJoin</incident>
+          </AchievementsExpanded.Reward_MapIncident>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>achievements.anomalyrewards</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods><li>ludeon.rimworld.anomaly</li></mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <AchievementsExpanded.Reward_MapIncident>
+              <defName>RBP_HarbingerTreeReward</defName>
+              <label>Take Root: Harbinger Trees</label>
+              <tab>Main</tab>
+              <cost>30</cost>
+              <incident>HarbingerTreeSpawn</incident>
+            </AchievementsExpanded.Reward_MapIncident>
+
+            <AchievementsExpanded.Reward_MapIncident>
+              <defName>RBP_MysteriousCargoReward</defName>
+              <label>Request Mysterious Cargo</label>
+              <tab>Main</tab>
+              <cost>40</cost>
+              <incident>MysteriousCargoCube</incident>
+            </AchievementsExpanded.Reward_MapIncident>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

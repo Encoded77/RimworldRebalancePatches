@@ -107,6 +107,8 @@ namespace RebalancePatches.Tests
         public const string NecroaArchovirus = "ushanka.necroaarchovirus";
         public const string ADogSaid2 = "sambucher.adogsaidanimalprosthetics2";
         public const string SmallFurniture = "xercaine.furniture.small";
+        public const string VARME = "vanillaexpanded.varme";
+        public const string VAEAchievements = "vanillaexpanded.achievements";
     }
 
     internal static class Check
@@ -217,6 +219,12 @@ namespace RebalancePatches.Tests
             if (def == null)
                 throw new Exception($"{typeName} '{defName}' not found - target mod renamed or removed it");
             return def;
+        }
+
+        public static Def DefOfTypeOptional(string typeName, string defName)
+        {
+            Type type = GenTypes.GetTypeInAnyAssembly(typeName);
+            return type == null ? null : GenDefDatabase.GetDefSilentFail(type, defName);
         }
 
         private static Exception Fail(string message)

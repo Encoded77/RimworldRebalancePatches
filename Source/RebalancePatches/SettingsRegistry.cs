@@ -466,6 +466,14 @@ namespace RebalancePatches
                 new RebalanceToggle("vge.gravjumpercapacity"),
             }, requiredMods: new[] { "vanillaexpanded.gravship" }),
 
+            new RebalanceGroup("achievements", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("achievements.rewardcosts"),
+                new RebalanceToggle("achievements.newrewards"),
+                new RebalanceToggle("achievements.anomalyrewards",
+                    requiredMods: new[] { "ludeon.rimworld.anomaly" }),
+            }, requiredMods: new[] { "vanillaexpanded.achievements" }),
+
             new RebalanceGroup("dev", new List<RebalanceToggle>
             {
                 new RebalanceToggle("dev.genedump",

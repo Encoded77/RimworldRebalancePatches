@@ -40,6 +40,7 @@
   <RBP.geneconflicts.desc>Makes genes whose forced traits fight each other, or whose bonuses stack brokenly across mods, mutually exclusive. Each fix needs the mods it reconciles.</RBP.geneconflicts.desc>
   <RBP.odyssey.desc>Odyssey tweaks: a long-range passenger shuttle, and trimmed vacuum resistance on modded spacer armor. Needs Odyssey.</RBP.odyssey.desc>
   <RBP.vge.desc>Vanilla Gravship Expanded's gravjumper engine lifts twice the structure, so one engine can carry a larger gravship. Needs VGE - Chapter 1.</RBP.vge.desc>
+  <RBP.achievements.desc>Rebalances Vanilla Achievements Expanded's point exchanges, dropping the on-demand trader and pricing the powerful ones higher, and adds cheaper exchanges that create an opportunity instead of handing over goods. Needs Vanilla Achievements Expanded.</RBP.achievements.desc>
   <RBP.dev.desc>Developer-only tools: def-dump debug actions used to build and check these patches. Shown only in Dev Mode.</RBP.dev.desc>
 
   <RBP.genetics.label>Genetics Overhaul</RBP.genetics.label>
@@ -347,6 +348,13 @@
   <RBP.vge.label>Vanilla Gravship Expanded - Chapter 1</RBP.vge.label>
   <RBP.vge.gravjumpercapacity.label>Sturdier gravjumper engine</RBP.vge.gravjumpercapacity.label>
   <RBP.vge.gravjumpercapacity.desc>Raises the gravjumper engine's structural capacity from 100 to 200 tiles, so a single gravjumper can carry a larger gravship.</RBP.vge.gravjumpercapacity.desc>
+  <RBP.achievements.label>Vanilla Achievements Expanded</RBP.achievements.label>
+  <RBP.achievements.rewardcosts.label>Rebalance the point exchanges</RBP.achievements.rewardcosts.label>
+  <RBP.achievements.rewardcosts.desc>Removes the "Summon a Trade Caravan" exchange, which lets you buy and sell on demand and flattens the trade economy, and raises the price of the three exchanges that hand over raw power: cargo pods 25 to 40, random quest item 100 to 150, man in black 150 to 200. Summoning a raid and the random event are untouched. Also applied to the duplicate exchange sets on Vanilla Weapons Expanded's and Vanilla Armour Expanded's own achievement tabs, which spend the same shared points.</RBP.achievements.rewardcosts.desc>
+  <RBP.achievements.newrewards.label>Add low-power point exchanges</RBP.achievements.newrewards.label>
+  <RBP.achievements.newrewards.desc>Nine cheaper exchanges that create an opportunity rather than hand over goods: sprout an ambrosia patch (10), draw a herd migration (15), call down a meteorite (20), drop ship chunks (25), befriend a wild animal (30), broadcast a psychic soothe (40), lure a thrumbo (50), redirect a refugee pod (75) and attract a wanderer (150). Each is greyed out when the event cannot fire, for instance a thrumbo in a biome without thrumbos.</RBP.achievements.newrewards.desc>
+  <RBP.achievements.anomalyrewards.label>Add Anomaly point exchanges</RBP.achievements.anomalyrewards.label>
+  <RBP.achievements.anomalyrewards.desc>Two exchanges for entity-study colonies: harbinger trees take root (30) and request mysterious cargo (40), a quest offer around the golden cube. Both bring their own danger. Needs Anomaly; does nothing without it.</RBP.achievements.anomalyrewards.desc>
   <RBP.dev.label>Developer</RBP.dev.label>
   <RBP.dev.genedump.label>Auto-refresh gene database dump</RBP.dev.genedump.label>
   <RBP.dev.genedump.desc>With dev mode on, rewrites GeneDump.json at the main menu so the dump always reflects the current modlist.</RBP.dev.genedump.desc>

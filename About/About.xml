@@ -3,7 +3,7 @@
   <packageId>encoded.rebalancepatches</packageId>
   <name>Encoded's Rebalance Patches</name>
   <author>Encoded</author>
-  <modVersion>1.14.0</modVersion>
+  <modVersion>1.15.0</modVersion>
   <url></url>
   <supportedVersions>
     <li>1.6</li>
@@ -99,6 +99,9 @@
     <li>vanillaexpanded.gravship</li>
     <li>bamba.allbambamelee.tiered</li>
     <li>xercaine.furniture.small</li>
+    <li>vanillaexpanded.vwe</li>
+    <li>vanillaexpanded.varme</li>
+    <li>vanillaexpanded.achievements</li>
   </loadAfter>
   <description>Opinionated balance tweaks and cross-mod compatibility patches. Each patch applies only when the mod it targets is loaded, and every tweak can be toggled on or off in the mod settings (changes take effect after a restart). Requires Harmony.</description>
 </ModMetaData>
