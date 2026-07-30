@@ -99,8 +99,14 @@ namespace RebalancePatches.Tests
         {
             if (!Check.Ready("odyssey.vacuumtrims", Ids.AlteredCarbon, Ids.Odyssey, Ids.VGravshipC1))
                 return;
-            Check.Eq(Check.StatModifierValue(Check.Def<ThingDef>("AC_Apparel_ChrysalisHelmet").equippedStatOffsets, "VacuumResistance"),
-                0.62f, "AC_Apparel_ChrysalisHelmet VacuumResistance");
+            Check.Soft(Check.StatModifierValue(Check.Def<ThingDef>("AC_Apparel_ChrysalisHelmet").equippedStatOffsets, "VacuumResistance") == 0.62f,
+                "AC_Apparel_ChrysalisHelmet VacuumResistance is not 0.62");
+            // The enviro suit helmet shipped at 0.97, enough on its own to make a pawn vacuum-proof.
+            Check.Soft(Check.StatModifierValue(Check.Def<ThingDef>("AC_EnviroSuitHelmet").equippedStatOffsets, "VacuumResistance") == 0.65f,
+                "AC_EnviroSuitHelmet VacuumResistance is not 0.65");
+            Check.Soft(Check.StatModifierValue(Check.Def<ThingDef>("AC_EnviroSuit").equippedStatOffsets, "VacuumResistance") == 0.32f,
+                "AC_EnviroSuit VacuumResistance is not 0.32");
+            Check.SoftResult();
         }
 
         [Test]

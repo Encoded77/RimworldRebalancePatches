@@ -22,8 +22,11 @@ namespace RebalancePatches.Tests
         {
             if (!Check.Ready("odyssey.vacuumtrims", Ids.RimsenalFederation, Ids.Odyssey, Ids.VGravshipC1))
                 return;
-            Check.Eq(Check.StatModifierValue(Check.Def<ThingDef>("Apparel_MarksmanGearH").equippedStatOffsets, "VacuumResistance"),
-                0.59f, "Apparel_MarksmanGearH VacuumResistance");
+            Check.Soft(Check.StatModifierValue(Check.Def<ThingDef>("Apparel_MarksmanGearH").equippedStatOffsets, "VacuumResistance") == 0.59f,
+                "Apparel_MarksmanGearH VacuumResistance is not 0.59");
+            Check.Soft(Check.StatModifierValue(Check.Def<ThingDef>("Apparel_JudicatorH").equippedStatOffsets, "VacuumResistance") == 0.62f,
+                "Apparel_JudicatorH VacuumResistance is not 0.62");
+            Check.SoftResult();
         }
     }
 }

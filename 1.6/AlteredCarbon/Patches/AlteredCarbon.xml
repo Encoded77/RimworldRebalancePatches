@@ -116,9 +116,21 @@
         <mods>
           <li>vanillaexpanded.gravship</li>
         </mods>
-        <match Class="PatchOperationReplace">
-          <xpath>Defs/ThingDef[@Name="AC_ApparelArmorHelmetChrysalisMakeableBase"]/equippedStatOffsets/VacuumResistance</xpath>
-          <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.62</VacuumResistance></value>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[@Name="AC_ApparelArmorHelmetChrysalisMakeableBase"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.62</VacuumResistance></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AC_EnviroSuitHelmet"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.65</VacuumResistance></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="AC_EnviroSuit"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.32</VacuumResistance></value>
+            </li>
+          </operations>
         </match>
       </li>
     </operations>

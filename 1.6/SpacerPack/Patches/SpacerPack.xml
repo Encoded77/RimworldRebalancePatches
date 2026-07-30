@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>odyssey.vacuumtrims</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.gravship</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/ThingDef[defName="dvd_VoidsentPulsepack"]/equippedStatOffsets/VacuumResistance</xpath>
+          <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.20</VacuumResistance></value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

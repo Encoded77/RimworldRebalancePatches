@@ -9,6 +9,17 @@ namespace RebalancePatches.Tests
     public static class AlphaGenesTests
     {
         [Test]
+        public static void VacuumTrims()
+        {
+            if (!Check.Ready("odyssey.vacuumtrims", Ids.AlphaGenes, Ids.Odyssey, Ids.VGravshipC1))
+                return;
+            foreach (string helmet in new[] { "AG_ForsakenMarineHelmet", "AG_ForsakenMarineHelmetPsy" })
+                Check.Soft(Check.StatModifierValue(Check.Def<ThingDef>(helmet).equippedStatOffsets, "VacuumResistance") == 0.62f,
+                    $"{helmet} VacuumResistance is not 0.62");
+            Check.SoftResult();
+        }
+
+        [Test]
         public static void SciFiNames()
         {
             if (!Check.Ready("scifinames.alphagenes", Ids.AlphaGenes))

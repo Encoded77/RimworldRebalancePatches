@@ -75,4 +75,20 @@
       </li>
     </operations>
   </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>odyssey.vacuumtrims</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.gravship</li>
+          <li>sarg.alphamechs</li>
+        </mods>
+        <match Class="PatchOperationReplace">
+          <xpath>Defs/VFEPirates.WarcasketDef[defName="VFEP_Warcasket_Helmet_MechController"]/equippedStatOffsets/VacuumResistance</xpath>
+          <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.65</VacuumResistance></value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
 </Patch>

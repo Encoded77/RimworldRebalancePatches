@@ -53,7 +53,14 @@ namespace RebalancePatches.Tests
                 Check.Eq(Check.StatModifierValue(Check.Def<ThingDef>(thing).equippedStatOffsets, "VacuumResistance"), 0.61f, $"{thing} VacuumResistance");
             foreach (string thing in new[] { "Apparel_Strikesuit", "Apparel_Dropsuit" })
                 Check.Eq(Check.StatModifierValue(Check.Def<ThingDef>(thing).equippedStatOffsets, "VacuumResistance"), 0.31f, $"{thing} VacuumResistance");
-            Check.Eq(Check.StatModifierValue(Check.Def<ThingDef>("Apparel_ReflactorArmorH").equippedStatOffsets, "VacuumResistance"), 0.65f, "Apparel_ReflactorArmorH VacuumResistance");
+            Check.Soft(Check.StatModifierValue(Check.Def<ThingDef>("Apparel_ReflactorArmorH").equippedStatOffsets, "VacuumResistance") == 0.65f,
+                "Apparel_ReflactorArmorH VacuumResistance is not 0.65");
+            // The hazard set is the one this patch used to describe as vacuum-proof without trimming it.
+            Check.Soft(Check.StatModifierValue(Check.Def<ThingDef>("Apparel_HazardCarapaceH").equippedStatOffsets, "VacuumResistance") == 0.65f,
+                "Apparel_HazardCarapaceH VacuumResistance is not 0.65");
+            Check.Soft(Check.StatModifierValue(Check.Def<ThingDef>("Apparel_HazardCarapace").equippedStatOffsets, "VacuumResistance") == 0.32f,
+                "Apparel_HazardCarapace VacuumResistance is not 0.32");
+            Check.SoftResult();
         }
 
         [Test]

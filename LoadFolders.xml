@@ -24,6 +24,9 @@
     <li IfModActive="vanillaracesexpanded.highmate">1.6/VREHighmate</li>
     <li IfModActive="vanillaracesexpanded.archon">1.6/VREArchon</li>
     <li IfModActive="rimsenal.harana">1.6/RimsenalHarana</li>
+    <li IfModActive="notdvd.eventide">1.6/Eventide</li>
+    <li IfModActive="notdvd.spacerpack2">1.6/SpacerPack</li>
+    <li IfModActive="vanillaquestsexpanded.cryptoforge">1.6/Cryptoforge</li>
     <li IfModActive="rimsenal.askbarn">1.6/RimsenalAskbarn</li>
     <li IfModActive="det.keshig">1.6/Keshig</li>
     <li IfModActive="elsov.highborn">1.6/Highborn</li>

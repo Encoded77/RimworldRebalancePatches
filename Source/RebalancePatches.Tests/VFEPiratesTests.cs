@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using HarmonyLib;
 using RimTestRedux;
 using RimWorld;
 using Verse;
@@ -7,6 +10,31 @@ namespace RebalancePatches.Tests
     [TestSuite]
     public static class VFEPiratesTests
     {
+        /// <summary>
+        /// Warcasket pieces are VFEPirates.WarcasketDef, not ThingDef, so they are reached by name
+        /// rather than by a compile-time reference to a mod we do not depend on.
+        /// </summary>
+        public static float? WarcasketVacuum(string defName)
+        {
+            Type type = GenTypes.GetTypeInAnyAssembly("VFEPirates.WarcasketDef");
+            if (type == null)
+                return null;
+            Def def = GenDefDatabase.GetDefSilentFail(type, defName);
+            if (def == null)
+                return null;
+            var offsets = AccessTools.Field(type, "equippedStatOffsets")?.GetValue(def) as List<StatModifier>;
+            return Check.StatModifierValue(offsets, "VacuumResistance");
+        }
+
+        [Test]
+        public static void VacuumTrims()
+        {
+            if (!Check.Ready("odyssey.vacuumtrims", Ids.VFEPirates, Ids.Odyssey, Ids.VGravshipC1, Ids.AlphaMechs))
+                return;
+            Check.Eq(WarcasketVacuum("VFEP_Warcasket_Helmet_MechController"), 0.65f,
+                "VFEP_Warcasket_Helmet_MechController VacuumResistance");
+        }
+
         [Test]
         public static void WarcasketChargeWeaponPrereqs()
         {

@@ -72,6 +72,9 @@ namespace RebalancePatches.Tests
         public const string GeneFabrication = "amch.eragon.hcgenefabrication";
         public const string VAEAccessories = "vanillaexpanded.vaeaccessories";
         public const string VGravshipC1 = "vanillaexpanded.gravship";
+        public const string Eventide = "notdvd.eventide";
+        public const string SpacerPack = "notdvd.spacerpack2";
+        public const string Cryptoforge = "vanillaquestsexpanded.cryptoforge";
         public const string AlphaSkills = "sarg.alphaskills";
         public const string HautsFramework = "hautarche.hautsframework";
         public const string VCEF = "vanillaexpanded.vcef";

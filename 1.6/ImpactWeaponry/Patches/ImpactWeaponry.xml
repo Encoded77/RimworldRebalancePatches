@@ -31,7 +31,7 @@
           <operations>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[@Name="DV_ApparelArmorHelmetCrusaderBase"]/equippedStatOffsets/VacuumResistance</xpath>
-              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.67</VacuumResistance></value>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.65</VacuumResistance></value>
             </li>
             <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[@Name="DV_ApparelArmorHelmetCrusaderBase"]/statBases/ArmorRating_Sharp</xpath>

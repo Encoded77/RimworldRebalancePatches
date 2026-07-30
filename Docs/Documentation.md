@@ -52,7 +52,11 @@ One change has no toggle because there is no sensible way to want it off: resear
 ### Odyssey
 
 - **Long-range passenger shuttle** (`odyssey.shuttle`) — Chemfuel capacity 400 → 2000 and cargo capacity 500 → 2000 kg. The stock shuttle barely leaves the neighbourhood and I don't want to install modded shuttles.
-- **Vacuum resistance trims on modded armor** (`odyssey.vacuumtrims`) — Only active with Vanilla Gravship Expanded - Chapter 1, whose balance assumes 100% vacuum resistance is hard to reach — while modded spacer armor hands it out freely. Helmets and suits from Rimsenal (Core and Federation), Altered Carbon 2, Spacer Arsenal and Impact Weaponry - Reloaded get their vacuum resistance trimmed a few points below the cap, with a couple of description fixes so items advertise what they actually do.
+- **Vacuum resistance trims on modded armor** (`odyssey.vacuumtrims`) — Only active with Vanilla Gravship Expanded - Chapter 1, whose balance assumes 100% vacuum resistance is hard to reach. That mod sets a clear ladder for vanilla gear — a helmet is worth at most 65%, a body 32%, so no single suit is enough and surviving vacuum takes a matched set — but modded armor never learned the rule, and some of it handed out full protection from one piece.
+
+  Modded gear is brought onto the same ladder. Helmets and suits from Rimsenal (Core, Federation and Harana), Altered Carbon 2, Spacer Arsenal, Impact Weaponry - Reloaded and Alpha Genes are trimmed to the tier they belong to, and the warcasket helmets from Eventide Warcasket and the Alpha Mechs mech controller get the same value Vanilla Gravship Expanded gives the warcasket lines it covers itself. Two cases were doing far more than the rest: Altered Carbon's enviro suit helmet alone was worth 97%, enough to make a pawn vacuum-proof on its own, and the Spacer Pack pulsepack granted 70% from a *belt*, which covers no body part and stacks with any armor. Both now sit inside the ladder.
+
+  The trims are matched by two buffs at the top end, where the game has nothing left to gate: the Vanilla Races Expanded - Archon archoplate and both Cryptoforge armors are raised so that endgame gear, worn with a helmet, does reach full protection. A couple of description fixes make items advertise what they actually do. Each mod is only touched when it is loaded.
 
 ### Vanilla Gravship Expanded - Chapter 1
 

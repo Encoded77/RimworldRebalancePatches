@@ -24,9 +24,17 @@
         <mods>
           <li>vanillaexpanded.gravship</li>
         </mods>
-        <match Class="PatchOperationReplace">
-          <xpath>Defs/ThingDef[defName="Apparel_MarksmanGearH"]/equippedStatOffsets/VacuumResistance</xpath>
-          <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.59</VacuumResistance></value>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_MarksmanGearH"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.59</VacuumResistance></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_JudicatorH"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.62</VacuumResistance></value>
+            </li>
+          </operations>
         </match>
       </li>
     </operations>

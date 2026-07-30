@@ -22,5 +22,14 @@ namespace RebalancePatches.Tests
                 return;
             Check.XenoGene("Harana", "DV_Aggression_Irascible");
         }
+
+        [Test]
+        public static void VacuumTrims()
+        {
+            if (!Check.Ready("odyssey.vacuumtrims", Ids.RimsenalHarana, Ids.Odyssey, Ids.VGravshipC1))
+                return;
+            Check.Eq(Check.StatModifierValue(Check.Def<ThingDef>("Apparel_Shocksuit").equippedStatOffsets, "VacuumResistance"),
+                0.32f, "Apparel_Shocksuit VacuumResistance");
+        }
     }
 }

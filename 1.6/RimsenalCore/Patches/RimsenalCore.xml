@@ -94,6 +94,14 @@
               <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.65</VacuumResistance></value>
             </li>
             <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_HazardCarapaceH"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.65</VacuumResistance></value>
+            </li>
+            <li Class="PatchOperationReplace">
+              <xpath>Defs/ThingDef[defName="Apparel_HazardCarapace"]/equippedStatOffsets/VacuumResistance</xpath>
+              <value><VacuumResistance MayRequire="Ludeon.RimWorld.Odyssey">0.32</VacuumResistance></value>
+            </li>
+            <li Class="PatchOperationReplace">
               <xpath>Defs/ThingDef[defName="Apparel_DropsuitH"]/description</xpath>
               <value><description>A cutting-edge helmet loaded with flashy gadgets — most of which are completely useless planetside. Fortunately, the targeting-assist pseudo-AI still works.</description></value>
             </li>

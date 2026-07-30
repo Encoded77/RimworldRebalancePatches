@@ -458,7 +458,9 @@ namespace RebalancePatches
                 new RebalanceToggle("odyssey.shuttle"),
                 new RebalanceToggle("odyssey.vacuumtrims",
                     requiredMods: new[] { "vanillaexpanded.gravship" },
-                    anyOfMods: new[] { "rimsenal.core", "rimsenal.federation", "hlx.ultratechalteredcarbon", "det.spacerarsenal", "detvisor.impactweaponryreloaded" }),
+                    anyOfMods: new[] { "rimsenal.core", "rimsenal.federation", "rimsenal.harana", "hlx.ultratechalteredcarbon",
+                        "det.spacerarsenal", "detvisor.impactweaponryreloaded", "oskarpotocki.vfe.pirates", "sarg.alphagenes",
+                        "vanillaracesexpanded.archon", "vanillaquestsexpanded.cryptoforge", "notdvd.eventide", "notdvd.spacerpack2" }),
             }, requiredMods: new[] { "ludeon.rimworld.odyssey" }),
 
             new RebalanceGroup("vge", new List<RebalanceToggle>
