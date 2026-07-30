@@ -494,6 +494,8 @@ namespace RebalancePatches
                     defaultOn: false),
                 new RebalanceToggle("dev.modrulesdump",
                     defaultOn: false),
+                new RebalanceToggle("dev.traitdump",
+                    defaultOn: false),
             }),
         };
 

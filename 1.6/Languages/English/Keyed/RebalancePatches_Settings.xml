@@ -367,12 +367,14 @@
   <RBP.dev.researchdump.label>Auto-refresh research dump</RBP.dev.researchdump.label>
   <RBP.dev.researchdump.desc>With dev mode on, rewrites ResearchDump.json at the main menu: every project and tab, each project's techprint item, and any project whose techprint went missing.</RBP.dev.researchdump.desc>
   <RBP.dev.thingdump.label>Auto-refresh thing dump</RBP.dev.thingdump.label>
-  <RBP.dev.thingdump.desc>With dev mode on, rewrites ThingDump.json at the main menu: every item and building with its resolved market value, work, mass and hit points, and the recipes that produce it.</RBP.dev.thingdump.desc>
+  <RBP.dev.thingdump.desc>With dev mode on, rewrites ThingDump.json at the main menu: every item and building with its resolved market value, work, mass and hit points, and the recipes that produce it. Weapons also get their verbs, projectile damage and armor penetration; apparel its armor ratings, insulation and body coverage.</RBP.dev.thingdump.desc>
   <RBP.dev.bodydump.label>Auto-refresh body dump</RBP.dev.bodydump.label>
   <RBP.dev.bodydump.desc>With dev mode on, rewrites BodyDump.json at the main menu: every body's resolved part tree and every body part def. Finds surgeries that no loaded body can receive.</RBP.dev.bodydump.desc>
   <RBP.dev.acquisitiondump.label>Auto-refresh acquisition dump</RBP.dev.acquisitiondump.label>
   <RBP.dev.acquisitiondump.desc>With dev mode on, rewrites AcquisitionDump.json at the main menu: which traders stock each item, and every reward, quest, scenario and pawn gear table that hands it out.</RBP.dev.acquisitiondump.desc>
   <RBP.dev.modrulesdump.label>Auto-refresh mod rules dump</RBP.dev.modrulesdump.label>
   <RBP.dev.modrulesdump.desc>With dev mode on, rewrites ModRulesDump.json at the main menu: rule defs from other mods that gate which surgeries and hediffs a pawn is allowed to receive.</RBP.dev.modrulesdump.desc>
+  <RBP.dev.traitdump.label>Auto-refresh trait dump</RBP.dev.traitdump.label>
+  <RBP.dev.traitdump.desc>With dev mode on, rewrites TraitDump.json at the main menu: every trait with its degrees, commonality and effects, plus every backstory, gene, xenotype, pawn kind, scenario and precept that hands one out directly.</RBP.dev.traitdump.desc>
 
 </LanguageData>

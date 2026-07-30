@@ -50,6 +50,7 @@ namespace RebalancePatches
                 Run("dev.bodydump", BodyDump.Dump);
                 Run("dev.acquisitiondump", AcquisitionDump.Dump);
                 Run("dev.modrulesdump", ModRulesDump.Dump);
+                Run("dev.traitdump", TraitDump.Dump);
             }
             // One dump throwing must not stop the rest; each already logs its own failure.
             new Harmony("encoded.rebalancepatches.dumpautorun")

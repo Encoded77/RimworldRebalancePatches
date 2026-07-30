@@ -15,6 +15,10 @@ namespace RebalancePatches
     ///
     /// Stat values are resolved rather than left as statBases, because a def's real market value or
     /// work cost often comes from its parent chain or a stat part, and neither survives the dump.
+    ///
+    /// Weapons and apparel carry an extra resolved block from <see cref="CombatFacts"/>: verbs and
+    /// projectile damage for one, armor ratings and body coverage for the other, plus the reasons a
+    /// weapon's damage may not be readable at all.
     /// </summary>
     internal static class ThingDump
     {
@@ -31,7 +35,7 @@ namespace RebalancePatches
         internal static void Dump()
         {
             var walker = new DefWalker(Referenced, bareDefTypes: new[] { typeof(ThingDef) });
-            int total = 0;
+            int total = 0, weapons = 0, apparel = 0;
 
             DumpRunner.Run("ThingDump.json", walker, w =>
             {
@@ -57,6 +61,20 @@ namespace RebalancePatches
                         WriteStat(j, thing, StatDefOf.MaxHitPoints, "MaxHitPoints");
                         j.EndObject();
 
+                        // Combat facts that a reflective field walk cannot reach: verbs are a private
+                        // field, projectile damage sits behind a method, and armor ratings and melee
+                        // DPS are stat workers over the parent chain and the stuff.
+                        if (thing.IsWeapon)
+                        {
+                            CombatFacts.WriteWeapon(j, thing, w);
+                            weapons++;
+                        }
+                        if (thing.IsApparel)
+                        {
+                            CombatFacts.WriteApparel(j, thing);
+                            apparel++;
+                        }
+
                         // Which recipes produce it, so "how do I get one" is answerable without
                         // scanning every recipe in the analyzer.
                         j.Name("producedBy");
@@ -70,7 +88,7 @@ namespace RebalancePatches
                     total++;
                 }
                 j.EndArray();
-            }, () => $"{total} items and buildings");
+            }, () => $"{total} items and buildings, {weapons} weapons, {apparel} apparel");
         }
 
         private static void WriteStat(Json j, ThingDef thing, StatDef stat, string name)

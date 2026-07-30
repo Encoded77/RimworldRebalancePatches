@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+- Dev tooling: the thing dump now records what a weapon or a piece of apparel actually does — a gun's verbs, its projectile damage and armor penetration after the weapon's own multipliers, its accuracy and cycle time, a melee weapon's DPS with its default stuff, and for apparel the armor ratings, insulation and share of a human body covered. None of it was reachable before: a def's verb list is private and projectile damage sits behind a method. Each weapon also carries the reasons its damage cannot be read from data alone (an explosion, a beam, a projectile or verb class from another mod's assembly), so a report can say what it does not know.
+- Dev tooling: new trait dump (`dev.traitdump`, off by default) — every trait with its degrees, commonality and effects, plus every backstory, gene, xenotype, pawn kind, scenario and precept that hands one out without the random roll.
+- Dev tooling: the thing dump also records each verb's beam width and beam damage, and every field a mod's own projectile class declares — the two places where a weapon's real output hides when the stat card shows something else.
+
 ## 1.15.0 (2026-07-29)
 - **Vanilla Achievements Expanded** — new settings group covering the point exchanges, the shop where achievement points are spent.
   - **Rebalance the point exchanges** (`achievements.rewardcosts`) — "Summon a Trade Caravan" is removed. Cargo pods 25 → 40, random quest item 100 → 150, man in black 150 → 200. Summoning a raid and the random event are unchanged.
