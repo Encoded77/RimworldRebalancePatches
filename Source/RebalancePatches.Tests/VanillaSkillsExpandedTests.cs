@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using HarmonyLib;
 using RebalancePatches.Mods.VanillaSkillsExpanded;
 using RimTestRedux;
@@ -365,22 +366,43 @@ namespace RebalancePatches.Tests
             {
                 // Generation may have granted one already; start from a clean slate we control.
                 ClearExpertise(pawn);
-                SkillRecord shooting = pawn.skills.GetSkill(SkillDefOf.Shooting);
-                shooting.Level = 18;
-                shooting.passion = Passion.Major;   // a non-bad passion, so CanApplyOn allows it
+
+                // Everything a generated pawn varies in can sink a skill below the level Vanilla
+                // Skills Expanded demands, however high we set it: a backstory or trait that disables
+                // the skill makes it read back as level 0, and an aptitude gene shifts the level too.
+                // Flatten every skill and raise one this pawn can actually qualify in, so the roll
+                // below depends on nothing generation happened to hand us.
+                SkillDef focus = FocusSkill(pawn);
+                Check.Note(DescribePawn(pawn, focus));
+                if (focus == null)
+                {
+                    Log.Message("[RBP Tests] SKIP vse.expertisegeneration: no skill on the generated pawn can " +
+                        $"reach VSE's LevelToGetExpertise of {LevelToGetExpertise()} and carry a visible expertise");
+                    Discard(pawn);
+                    Check.SoftResult();
+                    return;
+                }
 
                 Check.Soft(ExpertiseGenerationPatches.Grant(pawn, 0f) == null,
                     "a zero chance still granted an expertise");
 
+                // Record what VSE itself accepts and refuses right now, so a failure below reports the
+                // pool it saw rather than sending someone off to read CanApplyOn.
+                List<Def> eligible = ReportCandidates(pawn, focus);
+
                 Def granted = ExpertiseGenerationPatches.Grant(pawn, 1f);
                 if (!Check.Soft(granted != null,
-                        "a full-chance roll on an 18-shooting pawn granted nothing - CanApplyOn or the def pool is wrong"))
+                        $"a full-chance roll granted nothing while {eligible.Count} expertise def(s) passed VSE's " +
+                        $"own CanApplyOn for {focus.defName} at level {pawn.skills.GetSkill(focus).Level} - " +
+                        "the notes list every candidate and why each was refused"))
                 {
                     Discard(pawn);
                     Check.SoftResult();
                     return;
                 }
                 Check.Note($"granted '{granted.defName}'");
+                Check.Soft(eligible.Contains(granted),
+                    $"granted '{granted.defName}', which VSE's own CanApplyOn had just refused");
 
                 int level = LevelOfLastExpertise(pawn);
                 Check.Soft(level >= 1 && level <= 3, $"granted expertise started at level {level}, expected 1 to 3");
@@ -418,6 +440,153 @@ namespace RebalancePatches.Tests
             }
         }
 
+        private static Type ExpertiseDefType() => GenTypes.GetTypeInAnyAssembly("VSE.Expertise.ExpertiseDef");
+
+        private static IEnumerable<Def> AllExpertiseDefs()
+        {
+            Type type = ExpertiseDefType();
+            return type == null ? new List<Def>() : GenDefDatabase.GetAllDefsInDatabaseForDef(type);
+        }
+
+        private static SkillDef SkillOf(Def def) => Check.Field(def, "skill") as SkillDef;
+
+        private static bool Hidden(Def def) => (bool)Check.Field(def, "hide");
+
+        private static bool CanApplyOn(Def def, Pawn pawn, out string reason)
+        {
+            MethodInfo method = ExpertiseDefType()?.GetMethod("CanApplyOn",
+                new[] { typeof(Pawn), typeof(string).MakeByRefType() });
+            if (method == null)
+            {
+                reason = "CanApplyOn(Pawn, out string) not found on VSE.Expertise.ExpertiseDef";
+                return false;
+            }
+            object[] args = { pawn, null };
+            bool ok = (bool)method.Invoke(def, args);
+            reason = args[1] as string;
+            return ok;
+        }
+
+        private static bool HasVisibleExpertise(SkillDef skill)
+        {
+            foreach (Def def in AllExpertiseDefs())
+                if (!Hidden(def) && SkillOf(def) == skill)
+                    return true;
+            return false;
+        }
+
+        /// <summary>Flattens every skill, then raises the one skill this pawn can actually hold an
+        /// expertise in - Shooting where the pawn allows it - to a level Vanilla Skills Expanded
+        /// accepts. Returns that skill, or null when no skill on this pawn can qualify.</summary>
+        private static SkillDef FocusSkill(Pawn pawn)
+        {
+            foreach (SkillRecord record in pawn.skills.skills)
+            {
+                record.Level = 0;
+                record.passion = Passion.None;
+                record.xpSinceLastLevel = 0f;
+            }
+
+            List<SkillDef> order = new List<SkillDef> { SkillDefOf.Shooting };
+            foreach (SkillDef skill in DefDatabase<SkillDef>.AllDefsListForReading)
+                if (skill != SkillDefOf.Shooting)
+                    order.Add(skill);
+
+            int need = LevelToGetExpertise();
+            foreach (SkillDef skill in order)
+            {
+                if (!HasVisibleExpertise(skill))
+                    continue;
+                SkillRecord record = pawn.skills.GetSkill(skill);
+                if (record == null || record.TotallyDisabled)
+                    continue;
+                record.Level = SkillRecord.MaxLevel;   // aptitude genes can still pull the level we read back down
+                record.passion = Passion.Major;        // Major is never a bad passion, so CanApplyOn allows it
+                if (record.Level >= need)
+                    return skill;
+                record.Level = 0;
+                record.passion = Passion.None;
+            }
+            return null;
+        }
+
+        /// <summary>Notes the candidate pool and every refusal, and returns the defs VSE accepts.
+        /// Notes surface only on failure, so a future red run says what it saw.</summary>
+        private static List<Def> ReportCandidates(Pawn pawn, SkillDef focus)
+        {
+            List<Def> eligible = new List<Def>();
+            List<string> eligibleNames = new List<string>();
+            List<string> focusLines = new List<string>();
+            Dictionary<string, int> refusals = new Dictionary<string, int>();
+            int hidden = 0;
+            int refused = 0;
+
+            foreach (Def def in AllExpertiseDefs())
+            {
+                if (Hidden(def))
+                {
+                    hidden++;
+                    continue;
+                }
+                bool ok = CanApplyOn(def, pawn, out string reason);
+                if (string.IsNullOrEmpty(reason))
+                    reason = "no reason given";
+                if (ok)
+                {
+                    eligible.Add(def);
+                    eligibleNames.Add(def.defName);
+                }
+                else
+                {
+                    refused++;
+                    refusals.TryGetValue(reason, out int seen);
+                    refusals[reason] = seen + 1;
+                }
+                if (SkillOf(def) == focus)
+                    focusLines.Add(ok ? $"{def.defName}=eligible" : $"{def.defName}=refused ({reason})");
+            }
+
+            Check.Note($"VSE gate: LevelToGetExpertise={LevelToGetExpertise()}, MaxExpertise={MaxExpertise()}, " +
+                $"AllowExpertiseOverlap={ExpertiseOverlapAllowed()}");
+            Check.Note($"{focus.defName} expertise defs: {Listed(focusLines)}");
+            Check.Note($"pool: {eligible.Count} eligible ({Listed(eligibleNames)}), {refused} refused, {hidden} hidden");
+            foreach (KeyValuePair<string, int> pair in refusals)
+                Check.Note($"refused x{pair.Value}: {pair.Key}");
+            return eligible;
+        }
+
+        private static string Listed(List<string> items, int max = 12)
+        {
+            if (items.Count == 0)
+                return "none";
+            if (items.Count <= max)
+                return string.Join(", ", items.ToArray());
+            return string.Join(", ", items.GetRange(0, max).ToArray()) + $", +{items.Count - max} more";
+        }
+
+        private static string DescribePawn(Pawn pawn, SkillDef focus)
+        {
+            List<string> traits = new List<string>();
+            if (pawn.story?.traits?.allTraits != null)
+                foreach (Trait trait in pawn.story.traits.allTraits)
+                    traits.Add(trait.def.defName + (trait.Degree == 0 ? "" : $"({trait.Degree})"));
+
+            SkillRecord shooting = pawn.skills.GetSkill(SkillDefOf.Shooting);
+            string focusPart = "none qualified";
+            if (focus != null)
+            {
+                SkillRecord record = pawn.skills.GetSkill(focus);
+                focusPart = $"{focus.defName} level={record.Level} passion={record.passion}";
+            }
+            // Grant refuses non-adults and non-humanlikes outright, so name them here too: with a
+            // non-empty pool they are the only other way it can hand back null.
+            return $"pawn '{pawn.LabelShortCap}' {pawn.DevelopmentalStage}, humanlike={pawn.RaceProps?.Humanlike}, " +
+                $"xenotype={pawn.genes?.Xenotype?.defName ?? "none"}, " +
+                $"childhood={pawn.story?.Childhood?.defName ?? "none"}, adulthood={pawn.story?.Adulthood?.defName ?? "none"}, " +
+                $"disabled work tags={pawn.CombinedDisabledWorkTags}, traits=[{Listed(traits)}]; " +
+                $"Shooting disabled={shooting.TotallyDisabled} aptitude={shooting.Aptitude}; focus={focusPart}";
+        }
+
         private static object Tracker(Pawn pawn)
         {
             Type trackers = GenTypes.GetTypeInAnyAssembly("VSE.ExpertiseTrackers");
@@ -438,13 +607,20 @@ namespace RebalancePatches.Tests
 
         private static int ExpertiseCount(Pawn pawn) => Records(pawn)?.Count ?? 0;
 
-        private static int MaxExpertise()
+        /// <summary>Reads one of Vanilla Skills Expanded's own settings, so the test holds whatever
+        /// the player set rather than assuming the shipped default.</summary>
+        private static object Setting(string name)
         {
             object settings = GenTypes.GetTypeInAnyAssembly("VSE.SkillsMod")
                 ?.GetField("Settings")?.GetValue(null);
-            object value = settings?.GetType().GetField("MaxExpertise")?.GetValue(settings);
-            return value is int i ? i : 1;
+            return settings?.GetType().GetField(name)?.GetValue(settings);
         }
+
+        private static int MaxExpertise() => Setting("MaxExpertise") is int i ? i : 1;
+
+        private static int LevelToGetExpertise() => Setting("LevelToGetExpertise") is int i ? i : 15;
+
+        private static bool ExpertiseOverlapAllowed() => !(Setting("AllowExpertiseOverlap") is bool b) || b;
 
         private static int LevelOfLastExpertise(Pawn pawn)
         {
