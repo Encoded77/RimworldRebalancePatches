@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="BS_FrostJotunInBlue"]/genes</xpath>
+              <value>
+                <li>Gene_Frostshaper</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="VU_Gatekeeper"]/genes</xpath>
+              <value>
+                <li>Gene_Protector</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="VU_Hellguard"]/genes</xpath>
+              <value>
+                <li>Gene_Warlord</li>
+                <li>Gene_Conflagrator</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="VU_Imp"]/genes</xpath>
+              <value>
+                <li>Gene_Skipmaster</li>
+                <li>Gene_Technomancer</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="VU_Returned" or defName="VU_Returned_Intact" or defName="VU_ReturnedSkeletal"]/genes</xpath>
+              <value>
+                <li>Gene_Necropath</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="VU_Succubus"]/genes</xpath>
+              <value>
+                <li>Gene_Empath</li>
+                <li>Gene_Puppeteer</li>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

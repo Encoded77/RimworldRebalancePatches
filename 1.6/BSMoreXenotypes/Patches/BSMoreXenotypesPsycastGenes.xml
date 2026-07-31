@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="BS_Devilspider" or defName="BS_Weaver"]/genes</xpath>
+              <value>
+                <li>Gene_Nightstalker</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="BS_Mimic"]/genes</xpath>
+              <value>
+                <li MayRequire="hautarche.hautstraits">HVT_Gene_Mindbender</li>
+                <li>Gene_Nightstalker</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="BS_Parasite"]/genes</xpath>
+              <value>
+                <li>Gene_Puppeteer</li>
+                <li MayRequire="hautarche.hautstraits">HVT_Gene_Mindbender</li>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

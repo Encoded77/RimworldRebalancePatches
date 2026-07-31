@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.pathgenes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <GeneDef ParentName="GenePsycastBase">
+                  <defName>RBP_Gene_Gauranlen</defName>
+                  <label>awoken Gauranlen</label>
+                  <labelShortAdj>Awoken Gauranlen</labelShortAdj>
+                  <description>Carriers of this gene are able to learn the Awoken Gauranlen psycaster path. Gauranlenkin and elder regenerants carry this natural endogene.</description>
+                  <iconPath>RBP/GeneIcons/RBP_Gene_Gauranlen</iconPath>
+                  <displayOrderInCategory>527</displayOrderInCategory>
+                  <marketValueFactor>3</marketValueFactor>
+                </GeneDef>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPE_GauranlenSTNL"]</xpath>
+              <value>
+                <lockedReason>Awoken Gauranlen gene</lockedReason>
+                <requiredGene>RBP_Gene_Gauranlen</requiredGene>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Gauranlen"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li>RBP_Gene_Gauranlen</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Gauranlen"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="BS_TrollOld" or defName="VRE_Gauranlenkin"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Gauranlen</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

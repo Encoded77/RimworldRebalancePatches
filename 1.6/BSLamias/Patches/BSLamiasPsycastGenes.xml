@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="LoS_Gorgon" or defName="LoS_Lamia"]/genes</xpath>
+              <value>
+                <li>Gene_Nightstalker</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="LoS_Silver"]/genes</xpath>
+              <value>
+                <li>Gene_Harmonist</li>
+                <li>Gene_Empath</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="LoS_Siren"]/genes</xpath>
+              <value>
+                <li>Gene_Harmonist</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="Naga"]/genes</xpath>
+              <value>
+                <li>Gene_Warlord</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="Nagaraj"]/genes</xpath>
+              <value>
+                <li>Gene_Archon</li>
+                <li>Gene_Chronopath</li>
+                <li>Gene_Harmonist</li>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

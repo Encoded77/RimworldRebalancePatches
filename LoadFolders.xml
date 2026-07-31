@@ -55,6 +55,23 @@
     <li IfModActive="steve.betterquestrewards">1.6/BetterQuestRewards</li>
     <li IfModActive="zal.eltexweaponry">1.6/EltexWeaponry</li>
     <li IfModActive="zal.valicaes">1.6/ValiCharged</li>
+    <!-- Psycast path-gene folders. Listed above GeneExtractorTiers so they apply after it and can
+         append their genes to the RBP_GN_Psycast node it injects. -->
+    <li IfModActive="chairheir.vperunesmith">1.6/VPERunesmith</li>
+    <li IfModActive="vpe.aeromancer.sentinel">1.6/SentinelAeromancer</li>
+    <li IfModActive="vpe.anima.sentinel">1.6/SentinelAnima</li>
+    <li IfModActive="vpe.biohazard.sentinel">1.6/SentinelBiohazard</li>
+    <li IfModActive="vpe.bugmancer.sentinel">1.6/SentinelBugmancer</li>
+    <li IfModActive="vpe.deadlife.sentinel">1.6/SentinelDeadlife</li>
+    <li IfModActive="vpe.fleshshaper.sentinel">1.6/SentinelFleshshaper</li>
+    <li IfModActive="vpe.gauranlen.sentinel">1.6/SentinelGauranlen</li>
+    <li IfModActive="vpe.geomancer.sentinel">1.6/SentinelGeomancer</li>
+    <li IfModActive="vpe.gravcaster.sentinel">1.6/SentinelGravcaster</li>
+    <li IfModActive="vpe.hydromancer.sentinel">1.6/SentinelHydromancer</li>
+    <li IfModActive="sarg.alphaanimals">1.6/AlphaAnimalsVPE</li>
+    <li IfModActive="edern.combatpsycasts">1.6/CombatPsycasts</li>
+    <li IfModActive="det.venators">1.6/Venators</li>
+    <li IfModActive="vanillaracesexpanded.lycanthrope">1.6/VRELycanthrope</li>
     <li IfModActive="bamba.allbambamelee.tiered">1.6/BambaMelee</li>
     <li IfModActive="vanillaracesexpanded.hussar">1.6/VREHussar</li>
     <li IfModActive="vanillaracesexpanded.saurid">1.6/VRESaurid</li>

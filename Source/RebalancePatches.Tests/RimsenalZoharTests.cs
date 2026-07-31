@@ -1,4 +1,4 @@
-using RimTestRedux;
+﻿using RimTestRedux;
 using RimWorld;
 using Verse;
 
@@ -22,5 +22,11 @@ namespace RebalancePatches.Tests
                 return;
             Check.XenoGene("Zohar", "AG_FrailStomach");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.RimsenalZohar,
+                "", "Zohar", "Gene_Protector",
+                "", "Zohar", "Gene_Chronopath");
     }
 }

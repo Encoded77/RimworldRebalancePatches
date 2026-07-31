@@ -42,6 +42,19 @@ namespace RebalancePatches.Tests
             if (ModsConfig.IsActive(Ids.VREArchon))
                 Check.XenoGene("LoS_ScenarioTiamat", "VRE_ShortPregnancy");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.BSLamias,
+                "", "LoS_Gorgon", "Gene_Nightstalker",
+                "", "LoS_Lamia", "Gene_Nightstalker",
+                "", "LoS_Silver", "Gene_Harmonist",
+                "", "LoS_Silver", "Gene_Empath",
+                "", "LoS_Siren", "Gene_Harmonist",
+                "", "Naga", "Gene_Warlord",
+                "", "Nagaraj", "Gene_Archon",
+                "", "Nagaraj", "Gene_Chronopath",
+                "", "Nagaraj", "Gene_Harmonist");
     }
 }
 

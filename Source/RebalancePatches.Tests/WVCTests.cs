@@ -1,4 +1,4 @@
-using RimTestRedux;
+﻿using RimTestRedux;
 using RimWorld;
 using Verse;
 
@@ -290,5 +290,44 @@ namespace RebalancePatches.Tests
 
             Check.SoftResult();
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.WVC,
+                "", "WVC_Bloodeater", "Gene_Hemosage",
+                Ids.HautsTraits, "WVC_CatDeity", "HVT_Gene_Mindbender",
+                "", "WVC_CatDeity", "Gene_Necropath",
+                "", "WVC_Ferrkind", "Gene_Technomancer",
+                "", "WVC_Mechamata", "Gene_Technomancer",
+                "", "WVC_Nociokin", "Gene_Technomancer",
+                "", "WVC_Rustkind", "Gene_Technomancer",
+                "", "WVC_Lilith", "Gene_Archon",
+                Ids.HautsTraits, "WVC_Lilith", "HVT_Gene_Mindbender",
+                "", "WVC_Lilith", "Gene_Empath",
+                "", "WVC_Mechamata", "Gene_Protector",
+                "", "WVC_Reaperkind", "Gene_Protector",
+                "", "WVC_Ripperkind", "Gene_Protector",
+                "", "WVC_Nociokin", "Gene_Staticlord",
+                "", "WVC_Overrider", "Gene_Chronopath",
+                "", "WVC_Reaperkind", "Gene_Necropath",
+                "", "WVC_Sandycat", "Gene_Necropath",
+                "", "WVC_Ashen", "Gene_Necropath",
+                "", "WVC_Ashen", "Gene_Nightstalker",
+                "", "WVC_Ashen", "Gene_Warlord",
+                "", "WVC_Blank", "Gene_Chronopath",
+                "", "WVC_Featherdust", "Gene_Archotechist",
+                "", "WVC_Featherdust", "Gene_Staticlord",
+                "", "WVC_GeneThrower", "Gene_Archotechist",
+                "", "WVC_GeneThrower", "Gene_Conflagrator",
+                "", "WVC_Golemkind", "Gene_Technomancer",
+                "", "WVC_Golemkind", "Gene_Protector",
+                "", "WVC_Meca", "Gene_Staticlord",
+                "", "WVC_Resurgent", "Gene_Necropath",
+                "", "WVC_Resurgent", "Gene_Archon",
+                "", "WVC_RogueFormer", "Gene_Archotechist",
+                "", "WVC_RogueFormer", "Gene_Frostshaper",
+                "", "WVC_RuneDryad", "Gene_Technomancer",
+                "", "WVC_Undead", "Gene_Necropath",
+                "", "WVC_Undead", "Gene_Warlord");
     }
 }

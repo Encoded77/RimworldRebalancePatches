@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="BS_Corrupterd_Titan"]/genes</xpath>
+              <value>
+                <li>Gene_Necropath</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="BS_GreatOgre" or defName="BS_Surtr" or defName="BS_Ymir"]/genes</xpath>
+              <value>
+                <li>Gene_Warlord</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="BS_Jotun" or defName="BS_Half_Jotun" or defName="BS_BrokenTitan"]/genes</xpath>
+              <value>
+                <li>Gene_Protector</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="BS_FireJotun" or defName="BS_Surtr"]/genes</xpath>
+              <value>
+                <li>Gene_Conflagrator</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="BS_FrostJotun" or defName="BS_Ymir"]/genes</xpath>
+              <value>
+                <li>Gene_Frostshaper</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="BS_Svartalf"]/genes</xpath>
+              <value>
+                <li>Gene_Nightstalker</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="BS_Gnome"]/genes</xpath>
+              <value>
+                <li>Gene_Technomancer</li>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

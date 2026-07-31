@@ -75,52 +75,6 @@
           </match>
         </match>
       </li>
-      <li Class="RebalancePatches.PatchOperationFindModById">
-        <mods>
-          <li>gwibbo.morepsygenes</li>
-        </mods>
-        <match Class="PatchOperationConditional">
-          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
-          <match Class="PatchOperationAdd">
-            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
-            <value>
-              <li MayRequire="edern.combatpsycasts">Gene_CP_Combat</li>
-              <li MayRequire="myf.lightseeker">Gene_LightSeeker</li>
-              <li MayRequire="myf.skyrunner">Gene_Skyrunner</li>
-              <li MayRequire="aranmaho.rangerclass">Gene_Ranger</li>
-              <li MayRequire="rabbit.stuncastervpe2">Gene_Stunskip</li>
-              <li MayRequire="aranmaho.ravenouseye.wildhunter.psycast">Gene_Wildhunter</li>
-              <li MayRequire="aranmaho.ravenouseye.wildhunter.psycast">Gene_Druid</li>
-              <li MayRequire="aranmaho.makai.psycast">Gene_Bond_Intertwined</li>
-              <li MayRequire="aranmaho.makai.psycast">Gene_String_of_Fate</li>
-              <li MayRequire="aranmaho.makai.psycast">Gene_Corrupted_Prophet</li>
-              <li MayRequire="aranmaho.makai.psycast">Gene_Destined_Death</li>
-              <li MayRequire="aranmaho.makai.psycast">Gene_Distorted_Reality</li>
-              <li MayRequire="aranmaho.makai.psycast">Gene_Passioned_Flame</li>
-              <li MayRequire="aranmaho.makai.psycast">Gene_Perfect_Knowledge</li>
-              <li MayRequire="aranmaho.makai.psycast">Gene_Golden_Order</li>
-              <li MayRequire="aranmaho.makai.psycast">Gene_True_Destruction</li>
-            </value>
-          </match>
-        </match>
-      </li>
-      <li Class="RebalancePatches.PatchOperationFindModById">
-        <mods>
-          <li>eclair155.vpebiotechpatches</li>
-        </mods>
-        <match Class="PatchOperationConditional">
-          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
-          <match Class="PatchOperationAdd">
-            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
-            <value>
-              <li>Gene_HeraldOfTheBlackHive</li>
-              <li>Gene_Oculist</li>
-              <li>Gene_Ravager</li>
-              <li>Gene_Xenoseer</li>
-            </value>
-          </match>
-        </match>
-      </li>
     </operations>
   </Operation>
 

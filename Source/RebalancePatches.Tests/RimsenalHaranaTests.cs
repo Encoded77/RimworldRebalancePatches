@@ -1,4 +1,4 @@
-using RimTestRedux;
+﻿using RimTestRedux;
 using RimWorld;
 using Verse;
 
@@ -31,5 +31,10 @@ namespace RebalancePatches.Tests
             Check.Eq(Check.StatModifierValue(Check.Def<ThingDef>("Apparel_Shocksuit").equippedStatOffsets, "VacuumResistance"),
                 0.32f, "Apparel_Shocksuit VacuumResistance");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.RimsenalHarana,
+                "", "Harana", "Gene_Skipmaster");
     }
 }

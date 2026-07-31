@@ -1,4 +1,4 @@
-using RimTestRedux;
+﻿using RimTestRedux;
 using RimWorld;
 using Verse;
 
@@ -22,5 +22,11 @@ namespace RebalancePatches.Tests
                 return;
             Check.XenoGene("DV_Brawnum", "AG_PackMule");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.Brawnum,
+                "", "DV_Brawnum", "Gene_Protector",
+                "", "DV_Brawnum", "Gene_Wildspeaker");
     }
 }

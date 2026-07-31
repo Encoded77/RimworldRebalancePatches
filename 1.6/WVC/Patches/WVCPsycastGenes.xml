@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Bloodeater"]/genes</xpath>
+              <value>
+                <li>Gene_Hemosage</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_CatDeity"]/genes</xpath>
+              <value>
+                <li MayRequire="hautarche.hautstraits">HVT_Gene_Mindbender</li>
+                <li>Gene_Necropath</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Ferrkind" or defName="WVC_Mechamata" or defName="WVC_Nociokin" or defName="WVC_Rustkind"]/genes</xpath>
+              <value>
+                <li>Gene_Technomancer</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Lilith"]/genes</xpath>
+              <value>
+                <li>Gene_Archon</li>
+                <li MayRequire="hautarche.hautstraits">HVT_Gene_Mindbender</li>
+                <li>Gene_Empath</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Mechamata" or defName="WVC_Reaperkind" or defName="WVC_Ripperkind"]/genes</xpath>
+              <value>
+                <li>Gene_Protector</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Nociokin"]/genes</xpath>
+              <value>
+                <li>Gene_Staticlord</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Overrider"]/genes</xpath>
+              <value>
+                <li>Gene_Chronopath</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Reaperkind" or defName="WVC_Sandycat"]/genes</xpath>
+              <value>
+                <li>Gene_Necropath</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Ashen"]/genes</xpath>
+              <value>
+                <li>Gene_Necropath</li>
+                <li>Gene_Nightstalker</li>
+                <li>Gene_Warlord</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Blank"]/genes</xpath>
+              <value>
+                <li>Gene_Chronopath</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Featherdust"]/genes</xpath>
+              <value>
+                <li>Gene_Archotechist</li>
+                <li>Gene_Necropath</li>
+                <li>Gene_Staticlord</li>
+                <li>Gene_Technomancer</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_GeneThrower"]/genes</xpath>
+              <value>
+                <li>Gene_Archotechist</li>
+                <li>Gene_Conflagrator</li>
+                <li>Gene_Frostshaper</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Golemkind"]/genes</xpath>
+              <value>
+                <li>Gene_Technomancer</li>
+                <li>Gene_Protector</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Meca"]/genes</xpath>
+              <value>
+                <li>Gene_Staticlord</li>
+                <li>Gene_Technomancer</li>
+                <li>Gene_Archotechist</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Resurgent"]/genes</xpath>
+              <value>
+                <li>Gene_Necropath</li>
+                <li>Gene_Archon</li>
+                <li>Gene_Nightstalker</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_RogueFormer"]/genes</xpath>
+              <value>
+                <li>Gene_Archotechist</li>
+                <li>Gene_Nightstalker</li>
+                <li>Gene_Conflagrator</li>
+                <li>Gene_Frostshaper</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_RuneDryad"]/genes</xpath>
+              <value>
+                <li>Gene_Technomancer</li>
+                <li>Gene_Staticlord</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="WVC_Undead"]/genes</xpath>
+              <value>
+                <li>Gene_Necropath</li>
+                <li>Gene_Warlord</li>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

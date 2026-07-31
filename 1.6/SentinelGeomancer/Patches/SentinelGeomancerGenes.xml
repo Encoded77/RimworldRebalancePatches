@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.pathgenes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <GeneDef ParentName="GenePsycastBase">
+                  <defName>RBP_Gene_Geomancer</defName>
+                  <label>geomancer</label>
+                  <labelShortAdj>Geomancer</labelShortAdj>
+                  <description>Carriers of this gene are able to learn the Geomancer psycaster path. Dirtmoles, deepkin, gigants and stoneborn carry this natural endogene.</description>
+                  <iconPath>RBP/GeneIcons/RBP_Gene_Geomancer</iconPath>
+                  <displayOrderInCategory>528</displayOrderInCategory>
+                  <marketValueFactor>3</marketValueFactor>
+                </GeneDef>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPE_GeomancerSTNL"]</xpath>
+              <value>
+                <lockedReason>Geomancer gene</lockedReason>
+                <requiredGene>RBP_Gene_Geomancer</requiredGene>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Geomancer"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li>RBP_Gene_Geomancer</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Geomancer"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="Dirtmole" or defName="VU_Gatekeeper" or defName="LoS_Gorgon" or defName="BS_Dwarf" or defName="BS_Jotun" or defName="Stoneborn" or defName="AG_Lapis"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Geomancer</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

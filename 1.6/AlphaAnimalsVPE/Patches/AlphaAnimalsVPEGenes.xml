@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.pathgenes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+            <GeneDef ParentName="GenePsycastBase">
+              <defName>RBP_Gene_HeraldOfTheBlackHive</defName>
+              <label>herald of the black hive</label>
+              <labelShortAdj>Herald</labelShortAdj>
+              <description>Carriers of this gene are able to learn the Herald of the Black Hive psycaster path. Hivelings, hive queens and wasters carry this natural endogene.</description>
+              <iconPath>RBP/GeneIcons/RBP_Gene_HeraldOfTheBlackHive</iconPath>
+              <displayOrderInCategory>532</displayOrderInCategory>
+              <marketValueFactor>3</marketValueFactor>
+            </GeneDef>
+            <GeneDef ParentName="GenePsycastBase">
+              <defName>RBP_Gene_Oculist</defName>
+              <label>oculist</label>
+              <labelShortAdj>Oculist</labelShortAdj>
+              <description>Carriers of this gene are able to learn the Oculist psycaster path. Ocularkins, beholdkind and fleshkind carry this natural endogene.</description>
+              <iconPath>RBP/GeneIcons/RBP_Gene_Oculist</iconPath>
+              <displayOrderInCategory>533</displayOrderInCategory>
+              <marketValueFactor>3</marketValueFactor>
+            </GeneDef>
+            <GeneDef ParentName="GenePsycastBase">
+              <defName>RBP_Gene_Ravager</defName>
+              <label>ravager</label>
+              <labelShortAdj>Ravager</labelShortAdj>
+              <description>Carriers of this gene are able to learn the Ravager psycaster path. Engineered soldiers and savage melee breeds - hussars, uhlans, lycans, hornbrutes and their kin - carry this natural endogene.</description>
+              <iconPath>RBP/GeneIcons/RBP_Gene_Ravager</iconPath>
+              <displayOrderInCategory>534</displayOrderInCategory>
+              <marketValueFactor>3</marketValueFactor>
+            </GeneDef>
+            <GeneDef ParentName="GenePsycastBase">
+              <defName>RBP_Gene_Xenoseer</defName>
+              <label>xeno-seer</label>
+              <labelShortAdj>Xeno-seer</labelShortAdj>
+              <description>Carriers of this gene are able to learn the Xeno-seer psycaster path. Genies, animusen and other far-sensing xenotypes carry this natural endogene.</description>
+              <iconPath>RBP/GeneIcons/RBP_Gene_Xenoseer</iconPath>
+              <displayOrderInCategory>535</displayOrderInCategory>
+              <marketValueFactor>3</marketValueFactor>
+            </GeneDef>
+          </value>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_HeraldOfTheBlackHive"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="AAVPE_HeraldOfTheBlackHive"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="AAVPE_HeraldOfTheBlackHive"]</xpath>
+            <value>
+              <lockedReason>Herald of the Black Hive gene</lockedReason>
+              <requiredGene>RBP_Gene_HeraldOfTheBlackHive</requiredGene>
+            </value>
+          </match>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Oculist"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="AAVPE_Oculist"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="AAVPE_Oculist"]</xpath>
+            <value>
+              <lockedReason>Oculist gene</lockedReason>
+              <requiredGene>RBP_Gene_Oculist</requiredGene>
+            </value>
+          </match>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Ravager"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="AAVPE_Ravager"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="AAVPE_Ravager"]</xpath>
+            <value>
+              <lockedReason>Ravager gene</lockedReason>
+              <requiredGene>RBP_Gene_Ravager</requiredGene>
+            </value>
+          </match>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Xenoseer"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="AAVPE_Xenoseer"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="AAVPE_Xenoseer"]</xpath>
+            <value>
+              <lockedReason>Xeno-seer gene</lockedReason>
+              <requiredGene>RBP_Gene_Xenoseer</requiredGene>
+            </value>
+          </match>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Ravager"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li>RBP_Gene_HeraldOfTheBlackHive</li>
+              <li>RBP_Gene_Oculist</li>
+              <li>RBP_Gene_Ravager</li>
+              <li>RBP_Gene_Xenoseer</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_HeraldOfTheBlackHive"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="AG_Hiveling" or defName="Waster" or defName="BS_HiveQueen"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_HeraldOfTheBlackHive</li>
+          </value>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Oculist"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="VRE_Ocularkin" or defName="WVC_Beholdkind" or defName="WVC_Fleshkind"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Oculist</li>
+          </value>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Ravager"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="Hussar" or defName="VREH_Uhlan" or defName="Yttakin" or defName="VRE_Lycan" or defName="VRE_Wolfman" or defName="AG_Drakonori" or defName="BS_RedOni" or defName="BS_GreatRedOni" or defName="BS_BlueOni" or defName="BS_GreatBlueOni" or defName="BS_LesserOni" or defName="BS_Redcap" or defName="BS_Corrupterd_Titan" or defName="BS_Ogre" or defName="BS_GreatOgre" or defName="LoS_Anacondaman" or defName="LoS_Snakeman" or defName="BS_Abomination" or defName="BS_Glutton" or defName="BS_LilGlutton" or defName="WVC_Ripperkind"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Ravager</li>
+          </value>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Xenoseer"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="Genie" or defName="AG_Animusen" or defName="VRE_Ocularkin" or defName="AG_Fleetkind" or defName="BS_Grigori" or defName="DV_Venator"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Xenoseer</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

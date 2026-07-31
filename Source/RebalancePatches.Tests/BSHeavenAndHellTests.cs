@@ -79,6 +79,23 @@ namespace RebalancePatches.Tests
                 Check.XenoGene("BS_Satan", "VREStarjack_VacuumResistance_Total");
             }
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.BSHeaven,
+                "", "BS_Authority", "Gene_Warlord",
+                "", "BS_Authority", "Gene_Protector",
+                "", "BS_Authority", "Gene_Archon",
+                "", "BS_Malakim", "Gene_Empath",
+                "", "BS_Malakim", "Gene_Harmonist",
+                "", "BS_Malakim", "Gene_Skipmaster",
+                Ids.HautsTraits, "BS_Grigori", "HVT_Gene_Mindbender",
+                "", "BS_Nephilim", "Gene_Warlord",
+                "", "BS_Lilim", "Gene_Nightstalker",
+                "", "BS_Lilim", "Gene_Puppeteer",
+                "", "BS_Satan", "Gene_Conflagrator",
+                "", "BS_Satan", "Gene_Warlord",
+                "", "BS_Satan", "Gene_Archon");
     }
 }
 

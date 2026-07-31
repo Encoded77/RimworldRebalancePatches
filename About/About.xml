@@ -3,7 +3,7 @@
   <packageId>encoded.rebalancepatches</packageId>
   <name>Encoded's Rebalance Patches</name>
   <author>Encoded</author>
-  <modVersion>1.17.0</modVersion>
+  <modVersion>1.18.0</modVersion>
   <url></url>
   <supportedVersions>
     <li>1.6</li>
@@ -92,6 +92,21 @@
     <li>zal.eltexweaponry</li>
     <li>steve.betterquestrewards</li>
     <li>vanillaexpanded.vpsycastse</li>
+    <li>danzen.vpe.biotechintegration</li>
+    <li>hautarche.hautstraits</li>
+    <li>sarg.alphaanimals</li>
+    <li>edern.combatpsycasts</li>
+    <li>chairheir.vperunesmith</li>
+    <li>vpe.aeromancer.sentinel</li>
+    <li>vpe.anima.sentinel</li>
+    <li>vpe.biohazard.sentinel</li>
+    <li>vpe.bugmancer.sentinel</li>
+    <li>vpe.deadlife.sentinel</li>
+    <li>vpe.fleshshaper.sentinel</li>
+    <li>vpe.gauranlen.sentinel</li>
+    <li>vpe.geomancer.sentinel</li>
+    <li>vpe.gravcaster.sentinel</li>
+    <li>vpe.hydromancer.sentinel</li>
     <li>zal.valicaes</li>
     <li>vanillaexpanded.vanillasocialinteractionsexpanded</li>
     <li>vanillaexpanded.vmemese</li>

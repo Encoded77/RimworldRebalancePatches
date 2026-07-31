@@ -54,7 +54,19 @@ namespace RebalancePatches.Tests
         public const string EltexWeaponry = "zal.eltexweaponry";
         public const string BetterQuestRewards = "steve.betterquestrewards";
         public const string VpeBiotechIntegration = "danzen.vpe.biotechintegration";
-        public const string MorePsycasterGenes = "gwibbo.morepsygenes";
+        public const string AlphaAnimals = "sarg.alphaanimals";
+        public const string CombatPsycasts = "edern.combatpsycasts";
+        public const string VPERunesmith = "chairheir.vperunesmith";
+        public const string SentinelAeromancer = "vpe.aeromancer.sentinel";
+        public const string SentinelAnima = "vpe.anima.sentinel";
+        public const string SentinelBiohazard = "vpe.biohazard.sentinel";
+        public const string SentinelBugmancer = "vpe.bugmancer.sentinel";
+        public const string SentinelDeadlife = "vpe.deadlife.sentinel";
+        public const string SentinelFleshshaper = "vpe.fleshshaper.sentinel";
+        public const string SentinelGauranlen = "vpe.gauranlen.sentinel";
+        public const string SentinelGeomancer = "vpe.geomancer.sentinel";
+        public const string SentinelGravcaster = "vpe.gravcaster.sentinel";
+        public const string SentinelHydromancer = "vpe.hydromancer.sentinel";
         public const string ValiEltexSeries = "zal.valicaes";
         public const string BioWarfare = "ushanka.biologicalwarfare";
         public const string FuckPsytrainers = "turkler.ferny.fuckpsytrainerstwo";
@@ -132,9 +144,19 @@ namespace RebalancePatches.Tests
         {
             try
             {
-                var frame = new System.Diagnostics.StackTrace(2, false).GetFrame(0);
-                var method = frame?.GetMethod();
-                return method == null ? "?" : $"{method.DeclaringType?.Name}.{method.Name}";
+                var trace = new System.Diagnostics.StackTrace(2, false);
+                for (int i = 0; i < trace.FrameCount; i++)
+                {
+                    var method = trace.GetFrame(i)?.GetMethod();
+                    string type = method?.DeclaringType?.Name;
+                    if (type == null)
+                        return "?";
+                    // Skip shared helper layers so the recorded name is the [Test] method itself.
+                    if (type == nameof(Check) || type == "PathGenes")
+                        continue;
+                    return $"{type}.{method.Name}";
+                }
+                return "?";
             }
             catch { return "?"; }
         }

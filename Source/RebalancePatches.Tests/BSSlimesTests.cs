@@ -44,6 +44,17 @@ namespace RebalancePatches.Tests
             if (ModsConfig.IsActive(Ids.VREHighmate))
                 Check.XenoGene("BS_PinkSlime", "VRE_Flirty");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.BigSmallSlimes,
+                "", "BS_EmperorSlime", "Gene_Harmonist",
+                "", "BS_FrostSlime", "Gene_Frostshaper",
+                "", "BS_FrostSlimeGiant", "Gene_Frostshaper",
+                "", "BS_BananaSplitSlime", "Gene_Frostshaper",
+                "", "BS_BananaSplitSlimeGiant", "Gene_Frostshaper",
+                "", "BS_LavaSlime", "Gene_Conflagrator",
+                "", "BS_LavaSlimeGiant", "Gene_Conflagrator");
     }
 }
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.pathgenes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <GeneDef ParentName="GenePsycastBase">
+                  <defName>RBP_Gene_Hydromancer</defName>
+                  <label>hydromancer</label>
+                  <labelShortAdj>Hydromancer</labelShortAdj>
+                  <description>Carriers of this gene are able to learn the Hydromancer psycaster path. Abyssids, boglegs and mesmer serpids carry this natural endogene.</description>
+                  <iconPath>RBP/GeneIcons/RBP_Gene_Hydromancer</iconPath>
+                  <displayOrderInCategory>530</displayOrderInCategory>
+                  <marketValueFactor>3</marketValueFactor>
+                </GeneDef>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPE_HydromancerSTNL"]</xpath>
+              <value>
+                <lockedReason>Hydromancer gene</lockedReason>
+                <requiredGene>RBP_Gene_Hydromancer</requiredGene>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Hydromancer"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li>RBP_Gene_Hydromancer</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Hydromancer"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="AG_Nereid" or defName="LoS_ScenarioTiamat" or defName="LoS_Siren" or defName="DV_Bogleg"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Hydromancer</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

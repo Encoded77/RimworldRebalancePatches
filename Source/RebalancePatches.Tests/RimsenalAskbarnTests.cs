@@ -1,4 +1,4 @@
-using RimTestRedux;
+﻿using RimTestRedux;
 using RimWorld;
 using Verse;
 
@@ -31,5 +31,12 @@ namespace RebalancePatches.Tests
             if (ModsConfig.IsActive(Ids.Keshig))
                 Check.XenoGene("Uredd", "DV_DodgeChance_High");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.RimsenalAskbarn,
+                "", "Uredd", "Gene_Staticlord",
+                "", "Askbarn", "Gene_Staticlord",
+                "", "Askbarn", "Gene_Skipmaster");
     }
 }

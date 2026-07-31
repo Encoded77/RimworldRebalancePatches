@@ -45,6 +45,16 @@ namespace RebalancePatches.Tests
                 Check.XenoGene("BS_Weaver", "VRE_Nocturnal");
             }
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.BSMoreXenos,
+                "", "BS_Devilspider", "Gene_Nightstalker",
+                "", "BS_Weaver", "Gene_Nightstalker",
+                Ids.HautsTraits, "BS_Mimic", "HVT_Gene_Mindbender",
+                "", "BS_Mimic", "Gene_Nightstalker",
+                "", "BS_Parasite", "Gene_Puppeteer",
+                Ids.HautsTraits, "BS_Parasite", "HVT_Gene_Mindbender");
     }
 }
 

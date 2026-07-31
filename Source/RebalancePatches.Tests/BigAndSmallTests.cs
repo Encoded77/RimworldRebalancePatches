@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using RimTestRedux;
 using RimWorld;
 using Verse;
@@ -241,5 +241,20 @@ namespace RebalancePatches.Tests
             Check.XenoGene("VU_Returned_Intact", "BS_LesserDeathless");
             Check.XenoGene("VU_ReturnedSkeletal", "BS_LesserDeathless");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.BigSmallCore,
+                "", "BS_FrostJotunInBlue", "Gene_Frostshaper",
+                "", "VU_Gatekeeper", "Gene_Protector",
+                "", "VU_Hellguard", "Gene_Warlord",
+                "", "VU_Hellguard", "Gene_Conflagrator",
+                "", "VU_Imp", "Gene_Skipmaster",
+                "", "VU_Imp", "Gene_Technomancer",
+                "", "VU_Returned", "Gene_Necropath",
+                "", "VU_Returned_Intact", "Gene_Necropath",
+                "", "VU_ReturnedSkeletal", "Gene_Necropath",
+                "", "VU_Succubus", "Gene_Empath",
+                "", "VU_Succubus", "Gene_Puppeteer");
     }
 }

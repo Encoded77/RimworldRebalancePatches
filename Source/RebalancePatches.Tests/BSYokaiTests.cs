@@ -55,6 +55,20 @@ namespace RebalancePatches.Tests
                 return;
             Check.XenoGene("BS_Nekomata", "BS_LesserDeathless");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.BSYokai,
+                Ids.HautsTraits, "BS_Kitsune", "HVT_Gene_Mindbender",
+                "", "BS_Kitsune", "Gene_Conflagrator",
+                "", "BS_Kitsune", "Gene_Puppeteer",
+                "", "BS_Nekomata", "Gene_Necropath",
+                "", "BS_RedOni", "Gene_Conflagrator",
+                "", "BS_GreatRedOni", "Gene_Conflagrator",
+                "", "BS_BlueOni", "Gene_Staticlord",
+                "", "BS_GreatBlueOni", "Gene_Staticlord",
+                "", "BS_GreatRedOni", "Gene_Warlord",
+                "", "BS_GreatBlueOni", "Gene_Warlord");
     }
 }
 

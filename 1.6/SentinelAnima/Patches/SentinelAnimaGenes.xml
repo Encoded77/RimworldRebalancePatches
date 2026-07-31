@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.pathgenes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <GeneDef ParentName="GenePsycastBase">
+                  <defName>RBP_Gene_Animancer</defName>
+                  <label>animancer</label>
+                  <labelShortAdj>Animancer</labelShortAdj>
+                  <description>Carriers of this gene are able to learn the Animancer psycaster path. Animakin carry this natural endogene.</description>
+                  <iconPath>RBP/GeneIcons/RBP_Gene_Animancer</iconPath>
+                  <displayOrderInCategory>521</displayOrderInCategory>
+                  <marketValueFactor>3</marketValueFactor>
+                </GeneDef>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPE_AnimaSTNL"]</xpath>
+              <value>
+                <lockedReason>Animancer gene</lockedReason>
+                <requiredGene>RBP_Gene_Animancer</requiredGene>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Animancer"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li>RBP_Gene_Animancer</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Animancer"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="VRE_Animakin"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Animancer</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

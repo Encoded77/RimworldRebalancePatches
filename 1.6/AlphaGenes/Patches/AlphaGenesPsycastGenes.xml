@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="AG_Nereid"]/genes</xpath>
+              <value>
+                <li>Gene_Skipmaster</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="AG_Animusen"]/genes</xpath>
+              <value>
+                <li>Gene_Wildspeaker</li>
+                <li>Gene_Empath</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="AG_Drakonori"]/genes</xpath>
+              <value>
+                <li>Gene_Archon</li>
+                <li>Gene_Conflagrator</li>
+                <li>Gene_Warlord</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="AG_Efreet"]/genes</xpath>
+              <value>
+                <li>Gene_Conflagrator</li>
+                <li>Gene_Warlord</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="AG_Helixien"]/genes</xpath>
+              <value>
+                <li>Gene_Necropath</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="AG_Lapis"]/genes</xpath>
+              <value>
+                <li>Gene_Technomancer</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="AG_Malachai"]/genes</xpath>
+              <value>
+                <li>Gene_Hemosage</li>
+                <li>Gene_Necropath</li>
+                <li>Gene_Warlord</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="AG_MindDevourer"]/genes</xpath>
+              <value>
+                <li>Gene_Puppeteer</li>
+                <li>Gene_Archon</li>
+                <li>Gene_Harmonist</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="AG_Mycormorph"]/genes</xpath>
+              <value>
+                <li>Gene_Necropath</li>
+                <li>Gene_Puppeteer</li>
+                <li>Gene_Warlord</li>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/XenotypeDef[defName="AG_Taukai"]/genes</xpath>
+              <value>
+                <li>Gene_Conflagrator</li>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

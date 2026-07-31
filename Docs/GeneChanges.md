@@ -199,3 +199,131 @@ VRE - Hussar creates one weapon-aptitude gene per craftable weapon (~300 with a 
 ## Gene conflicts (`geneconflicts.*`)
 
 Cross-mod gene pairs that fight each other or stack brokenly become mutually exclusive: bloodlust vs distressed, psychic UV sensitivity vs psychically dull/deaf, firefoam pop vs fire obsession, hemogen drains, deathless variants, melee dodge genes, claw and talon genes, slow bleeding vs hemophiliac, flirty vs never flirts, and melee speed genes. Details per toggle in `Documentation.md`.
+## Psycast path genes (`vpebiotech.*`)
+
+With VPE - Biotech Integration loaded, psycast paths are gated by psycast genes. Two features complete that coverage across the modlist; both need Biotech, Vanilla Psycasts Expanded and VPE - Biotech Integration.
+
+### New gating genes (`vpebiotech.pathgenes`)
+
+Seventeen new marker genes in the Psycast display category (3 cpx, market value factor 3, original icons), one per path that previously had no gate at all. Mechanitor-only and void-focus paths keep their own gates. Each gene also joins the psycast gene node (`geneticsresearch.psycastnodes`) when that is enabled.
+
+| Gene | Gates path | Path mod |
+| --- | --- | --- |
+| RBP_Gene_HeraldOfTheBlackHive | Herald of the Black Hive | Alpha Animals |
+| RBP_Gene_Oculist | Oculist | Alpha Animals |
+| RBP_Gene_Ravager | Ravager | Alpha Animals |
+| RBP_Gene_Xenoseer | Xeno-seer | Alpha Animals |
+| RBP_Gene_Kinecticist | Kinecticist | Combat Psycasts |
+| RBP_Gene_Runesmith | Runesmith | VPE - Runesmith |
+| RBP_Gene_Aeromancer | Aeromancer | Sentinel - Aeromancer |
+| RBP_Gene_Animancer | Animancer | Sentinel - Anima |
+| RBP_Gene_Biohazard | Biohazard | Sentinel - Biohazard |
+| RBP_Gene_Biosoother | Biosoother | Sentinel - Biohazard |
+| RBP_Gene_Bugmancer | Bugmancer | Sentinel - Bugmancer |
+| RBP_Gene_Deadlife | Deadlife | Sentinel - Deadlife |
+| RBP_Gene_Fleshshaper | Fleshshaper | Sentinel - Fleshshaper |
+| RBP_Gene_Gauranlen | Awoken Gauranlen | Sentinel - Awoken Gauranlen |
+| RBP_Gene_Geomancer | Geomancer | Sentinel - Geomancer |
+| RBP_Gene_Gravcaster | Gravcaster | Sentinel - Gravcaster |
+| RBP_Gene_Hydromancer | Hydromancer | Sentinel - Hydromancer |
+
+### Xenotype assignments (`vpebiotech.xenotypes`)
+
+Every xenotype without a psycast gene receives one to three thematic ones; a few covered xenotypes gain a fitting addition (marked +). Each line applies only when the mods owning the gene and the xenotype are both loaded. Skipped on purpose: baseliners, template xenotypes (random custom, sleeveliners, blankind), pilotable constructs and androids.
+
+| Xenotype(s) | Genes |
+| --- | --- |
+| Dirtmole (+) | Geomancer |
+| Waster (+) | Biohazard, Herald of the Black Hive |
+| Hussar (+) | Ravager, Kinecticist |
+| Starjack (+) | Gravcaster |
+| Genie (+) | Xeno-seer |
+| Yttakin (+), VREH_Uhlan (+) | Ravager |
+| VRE_Lycan (+), VRE_Wolfman (+) | Ravager (+ Warlord on the lycan) |
+| VRE_Ocularkin (+) | Wildspeaker, Xeno-seer, Oculist |
+| Uredd (+), Askbarn | Kinecticist on Uredd; Staticlord + Skipmaster on both |
+| AG_Animusen | Wildspeaker, Empath, Xeno-seer |
+| AG_Drakonori | Archon, Conflagrator, Warlord, Ravager |
+| AG_Efreet | Conflagrator, Warlord |
+| AG_Lapis | Technomancer, Geomancer |
+| AG_Malachai | Hemosage, Necropath, Warlord |
+| AG_MindDevourer | Puppeteer, Archon, Harmonist |
+| WVC_Ashen | Necropath, Nightstalker, Warlord |
+| WVC_Featherdust | Archotechist, Necropath, Staticlord, Technomancer |
+| WVC_GeneThrower | Archotechist, Conflagrator, Frostshaper |
+| WVC_Golemkind | Technomancer, Protector |
+| WVC_Meca | Staticlord, Technomancer, Archotechist |
+| WVC_Resurgent | Necropath, Archon, Nightstalker |
+| WVC_RogueFormer | Archotechist, Nightstalker, Conflagrator, Frostshaper |
+| WVC_RuneDryad | Technomancer, Staticlord, Runesmith |
+| WVC_Undead | Necropath, Warlord |
+| AG_Fleetkind | Gravcaster, Xenoseer |
+| AG_Nereid | Hydromancer, Skipmaster |
+| AG_Wretch | Fleshshaper |
+| AG_Taukai (+), AG_Helixien (+), AG_Hiveling (+), AG_Mycormorph (+) | Fleshshaper / Deadlife / Bugmancer / Biohazard |
+| VU_Gatekeeper | Protector, Geomancer |
+| VU_Hellguard | Warlord, Conflagrator |
+| VU_Imp | Skipmaster, Technomancer |
+| VU_Returned family | Deadlife, Necropath |
+| VU_Succubus | Empath, Puppeteer |
+| BS_FrostJotunInBlue | Frostshaper |
+| BS_Authority | Warlord, Protector, Archon |
+| BS_Malakim | Empath, Harmonist, Skipmaster |
+| BS_Grigori | Mindbender, Xenoseer |
+| BS_Nephilim | Warlord |
+| BS_Lilim | Nightstalker, Puppeteer |
+| BS_Satan | Conflagrator, Warlord, Archon |
+| BS_Glutton, BS_LilGlutton | Ravager (+ Fleshshaper on the greater) |
+| Lamias: Adderman / Anacondaman, Pythonman / Gorgon / Lamia / Tiamat / Argent / Siren / Naga / Nagaraj | Biohazard / Ravager / Geomancer + Nightstalker / Nightstalker / Fleshshaper + Hydromancer / Harmonist + Empath / Harmonist + Hydromancer / Warlord + Biohazard / Archon + Chronopath + Harmonist |
+| BS_Abomination | Fleshshaper, Ravager |
+| BS_Broodmother | Fleshshaper, Bugmancer |
+| BS_Devilspider, BS_Weaver | Bugmancer, Nightstalker |
+| BS_HiveQueen | Bugmancer, Herald of the Black Hive |
+| BS_Mimic | Mindbender, Nightstalker |
+| BS_Parasite | Puppeteer, Mindbender |
+| BS_Dwarf | Geomancer, Runesmith |
+| BS_Svartalf | Nightstalker, Runesmith |
+| BS_Gnome | Technomancer, Runesmith |
+| BS_Redcap | Ravager |
+| BS_Jotun | Geomancer, Protector |
+| BS_Half_Jotun, BS_BrokenTitan | Protector |
+| BS_FireJotun, BS_Surtr | Conflagrator (+ Warlord on Surtr) |
+| BS_FrostJotun, BS_Ymir | Frostshaper (+ Warlord on Ymir) |
+| BS_Corrupterd_Titan | Ravager, Necropath |
+| BS_Ogre, BS_GreatOgre | Ravager (+ Warlord on the great) |
+| BS_Troll family | Fleshshaper (+ Gauranlen on the elder) |
+| Slimes: green / pink / elixir / emperor / frost + banana split / lava | Fleshshaper / Biosoother + Fleshshaper / Biosoother / Harmonist + Fleshshaper / Frostshaper / Conflagrator |
+| BS_ToxicSlduge | Biohazard |
+| BS_Kitsune | Mindbender, Conflagrator, Puppeteer |
+| BS_Nekomata | Necropath, Deadlife |
+| Oni family | Ravager, Conflagrator (red) or Staticlord (cobalt), Warlord on the greats |
+| DV_Avaloi | Empath, Gravcaster, Harmonist |
+| DV_Bogleg | Hydromancer, Biohazard |
+| DV_Brawnum | Protector, Wildspeaker |
+| DV_Buzzer | Bugmancer, Biohazard |
+| DV_Halffoot | Technomancer, Skipmaster |
+| DV_Keshig | Warlord, Protector |
+| Stoneborn | Geomancer, Runesmith |
+| DV_Venator | Nightstalker, Xenoseer |
+| HBX_Highborn | Empath, Harmonist, Warlord |
+| Uredd | Staticlord, kinecticist |
+| Harana | Aeromancer, Skipmaster |
+| Zohar | Protector, Chronopath |
+| VRE_Animakin (+), VRE_Gauranlenkin (+), VRE_Poluxkin (+) | Animancer / Gauranlen / Biosoother |
+| VRE_Insector (+) | Bugmancer |
+| WVC_Beholdkind | Oculist, Fleshshaper |
+| WVC_Bloodeater | Hemosage |
+| WVC_CatDeity | Mindbender, Necropath |
+| WVC_Ferrkind | Technomancer, Runesmith |
+| WVC_Fleshkind | Fleshshaper, Oculist |
+| WVC_Leper | Biohazard |
+| WVC_Lilith | Archon, Mindbender, Empath |
+| WVC_Mechamata | Protector, Technomancer |
+| WVC_Mergekin | Fleshshaper |
+| WVC_Nociokin | Technomancer, Staticlord |
+| WVC_Overrider | Chronopath, Fleshshaper |
+| WVC_Reaperkind | Necropath, Protector |
+| WVC_Ripperkind | Ravager, Protector |
+| WVC_Rustkind | Technomancer, Biohazard |
+| WVC_Sandycat | Deadlife, Necropath |
+| WVC_Shadoweater | Nightstalker, Fleshshaper |

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.pathgenes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <GeneDef ParentName="GenePsycastBase">
+                  <defName>RBP_Gene_Deadlife</defName>
+                  <label>deadlife</label>
+                  <labelShortAdj>Deadlife</labelShortAdj>
+                  <description>Carriers of this gene are able to learn the Deadlife psycaster path. Helixans, reanimates and sandycats carry this natural endogene.</description>
+                  <iconPath>RBP/GeneIcons/RBP_Gene_Deadlife</iconPath>
+                  <displayOrderInCategory>525</displayOrderInCategory>
+                  <marketValueFactor>3</marketValueFactor>
+                </GeneDef>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPE_DeadlifeSTNL"]</xpath>
+              <value>
+                <lockedReason>Deadlife gene</lockedReason>
+                <requiredGene>RBP_Gene_Deadlife</requiredGene>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Deadlife"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li>RBP_Gene_Deadlife</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Deadlife"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="AG_Helixien" or defName="VU_Returned" or defName="VU_Returned_Intact" or defName="VU_ReturnedSkeletal" or defName="BS_Nekomata" or defName="WVC_Sandycat"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Deadlife</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

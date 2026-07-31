@@ -121,6 +121,23 @@ namespace RebalancePatches.Tests
             Check.XenoGene("BS_FleshGolemServant", "BS_LesserDeathless");
             Check.XenoGene("BS_PilotableFleshGolem", "BS_LesserDeathless");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.BSRaces,
+                "", "BS_Corrupterd_Titan", "Gene_Necropath",
+                "", "BS_GreatOgre", "Gene_Warlord",
+                "", "BS_Jotun", "Gene_Protector",
+                "", "BS_Half_Jotun", "Gene_Protector",
+                "", "BS_BrokenTitan", "Gene_Protector",
+                "", "BS_FireJotun", "Gene_Conflagrator",
+                "", "BS_Surtr", "Gene_Conflagrator",
+                "", "BS_Surtr", "Gene_Warlord",
+                "", "BS_FrostJotun", "Gene_Frostshaper",
+                "", "BS_Ymir", "Gene_Frostshaper",
+                "", "BS_Ymir", "Gene_Warlord",
+                "", "BS_Svartalf", "Gene_Nightstalker",
+                "", "BS_Gnome", "Gene_Technomancer");
     }
 }
 

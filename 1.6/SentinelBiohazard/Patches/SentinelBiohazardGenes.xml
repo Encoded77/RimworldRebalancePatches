@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.pathgenes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <GeneDef ParentName="GenePsycastBase">
+                  <defName>RBP_Gene_Biohazard</defName>
+                  <label>biohazard</label>
+                  <labelShortAdj>Biohazard</labelShortAdj>
+                  <description>Carriers of this gene are able to learn the Biohazard psycaster path. Boglegs, mycomorphs, buzzers and other plague-adapted xenotypes carry this natural endogene.</description>
+                  <iconPath>RBP/GeneIcons/RBP_Gene_Biohazard</iconPath>
+                  <displayOrderInCategory>522</displayOrderInCategory>
+                  <marketValueFactor>3</marketValueFactor>
+                </GeneDef>
+                <GeneDef ParentName="GenePsycastBase">
+                  <defName>RBP_Gene_Biosoother</defName>
+                  <label>biosoother</label>
+                  <labelShortAdj>Biosoother</labelShortAdj>
+                  <description>Carriers of this gene are able to learn the Biosoother psycaster path. Poluxkin and healing plasmoids carry this natural endogene.</description>
+                  <iconPath>RBP/GeneIcons/RBP_Gene_Biosoother</iconPath>
+                  <displayOrderInCategory>523</displayOrderInCategory>
+                  <marketValueFactor>3</marketValueFactor>
+                </GeneDef>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPE_BiohazardSTNL"]</xpath>
+              <value>
+                <lockedReason>Biohazard gene</lockedReason>
+                <requiredGene>RBP_Gene_Biohazard</requiredGene>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPE_BiosootherSTNL"]</xpath>
+              <value>
+                <lockedReason>Biosoother gene</lockedReason>
+                <requiredGene>RBP_Gene_Biosoother</requiredGene>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Biohazard"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li>RBP_Gene_Biohazard</li>
+              <li>RBP_Gene_Biosoother</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Biohazard"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="Waster" or defName="AG_Mycormorph" or defName="LoS_Adderman" or defName="Naga" or defName="BS_ToxicSlduge" or defName="DV_Bogleg" or defName="DV_Buzzer" or defName="WVC_Leper" or defName="WVC_Rustkind"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Biohazard</li>
+          </value>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Biosoother"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="BS_PinkSlime" or defName="BS_ElixirSlime" or defName="VRE_Poluxkin"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Biosoother</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

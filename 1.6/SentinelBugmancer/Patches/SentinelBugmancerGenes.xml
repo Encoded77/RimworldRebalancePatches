@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.pathgenes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <GeneDef ParentName="GenePsycastBase">
+                  <defName>RBP_Gene_Bugmancer</defName>
+                  <label>bugmancer</label>
+                  <labelShortAdj>Bugmancer</labelShortAdj>
+                  <description>Carriers of this gene are able to learn the Bugmancer psycaster path. Hivelings, insectors, buzzers and other insect-spliced xenotypes carry this natural endogene.</description>
+                  <iconPath>RBP/GeneIcons/RBP_Gene_Bugmancer</iconPath>
+                  <displayOrderInCategory>524</displayOrderInCategory>
+                  <marketValueFactor>3</marketValueFactor>
+                </GeneDef>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPE_BugmancerSTNL"]</xpath>
+              <value>
+                <lockedReason>Bugmancer gene</lockedReason>
+                <requiredGene>RBP_Gene_Bugmancer</requiredGene>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Bugmancer"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li>RBP_Gene_Bugmancer</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Bugmancer"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="AG_Hiveling" or defName="BS_Broodmother" or defName="BS_Devilspider" or defName="BS_HiveQueen" or defName="BS_Weaver" or defName="DV_Buzzer" or defName="VRE_Insector"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Bugmancer</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

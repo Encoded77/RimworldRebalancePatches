@@ -1,4 +1,4 @@
-using RimTestRedux;
+﻿using RimTestRedux;
 using RimWorld;
 using Verse;
 
@@ -26,5 +26,11 @@ namespace RebalancePatches.Tests
             if (ModsConfig.IsActive(Ids.VREArchon))
                 Check.XenoGene("DV_Halffoot", "VRE_FastMeleeHitter");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.Halffoot,
+                "", "DV_Halffoot", "Gene_Technomancer",
+                "", "DV_Halffoot", "Gene_Skipmaster");
     }
 }

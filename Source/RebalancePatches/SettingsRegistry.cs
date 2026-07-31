@@ -413,6 +413,12 @@ namespace RebalancePatches
                 new RebalanceToggle("vpe.pawngenguard"),
             }, requiredMods: new[] { "vanillaexpanded.vpsycastse" }),
 
+            new RebalanceGroup("vpebiotech", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("vpebiotech.pathgenes"),
+                new RebalanceToggle("vpebiotech.xenotypes"),
+            }, requiredMods: new[] { "ludeon.rimworld.biotech", "vanillaexpanded.vpsycastse", "danzen.vpe.biotechintegration" }),
+
             new RebalanceGroup("valicharged", new List<RebalanceToggle>
             {
                 new RebalanceToggle("valicharged.psyspawns"),

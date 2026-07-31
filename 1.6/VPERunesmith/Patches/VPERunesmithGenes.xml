@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.pathgenes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <GeneDef ParentName="GenePsycastBase">
+                  <defName>RBP_Gene_Runesmith</defName>
+                  <label>runesmith</label>
+                  <labelShortAdj>Runesmith</labelShortAdj>
+                  <description>Carriers of this gene are able to learn the Runesmith psycaster path. Deepkin, minikin, umbrakin and stoneborn smiths often carry this natural endogene.</description>
+                  <iconPath>RBP/GeneIcons/RBP_Gene_Runesmith</iconPath>
+                  <displayOrderInCategory>531</displayOrderInCategory>
+                  <marketValueFactor>3</marketValueFactor>
+                </GeneDef>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPER_Runesmith"]</xpath>
+              <value>
+                <lockedReason>Runesmith gene</lockedReason>
+                <requiredGene>RBP_Gene_Runesmith</requiredGene>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Runesmith"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li>RBP_Gene_Runesmith</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Runesmith"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="BS_Dwarf" or defName="BS_Svartalf" or defName="BS_Gnome" or defName="Stoneborn" or defName="WVC_Ferrkind" or defName="WVC_RuneDryad"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Runesmith</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>

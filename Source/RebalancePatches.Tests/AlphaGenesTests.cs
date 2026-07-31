@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using RimTestRedux;
 using RimWorld;
 using Verse;
@@ -246,5 +246,29 @@ namespace RebalancePatches.Tests
                 return;
             Check.Eq(Check.Def<GeneDef>("AG_Beauty_Angelic").label, "uncanny beauty", "AG_Beauty_Angelic label");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.AlphaGenes,
+                "", "AG_Nereid", "Gene_Skipmaster",
+                "", "AG_Animusen", "Gene_Wildspeaker",
+                "", "AG_Animusen", "Gene_Empath",
+                "", "AG_Drakonori", "Gene_Archon",
+                "", "AG_Drakonori", "Gene_Conflagrator",
+                "", "AG_Drakonori", "Gene_Warlord",
+                "", "AG_Efreet", "Gene_Conflagrator",
+                "", "AG_Efreet", "Gene_Warlord",
+                "", "AG_Helixien", "Gene_Necropath",
+                "", "AG_Lapis", "Gene_Technomancer",
+                "", "AG_Malachai", "Gene_Hemosage",
+                "", "AG_Malachai", "Gene_Necropath",
+                "", "AG_Malachai", "Gene_Warlord",
+                "", "AG_MindDevourer", "Gene_Puppeteer",
+                "", "AG_MindDevourer", "Gene_Archon",
+                "", "AG_MindDevourer", "Gene_Harmonist",
+                "", "AG_Mycormorph", "Gene_Necropath",
+                "", "AG_Mycormorph", "Gene_Puppeteer",
+                "", "AG_Mycormorph", "Gene_Warlord",
+                "", "AG_Taukai", "Gene_Conflagrator");
     }
 }

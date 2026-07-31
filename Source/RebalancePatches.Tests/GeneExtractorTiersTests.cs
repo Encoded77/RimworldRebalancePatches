@@ -40,23 +40,6 @@ namespace RebalancePatches.Tests
                 "Gene_Wildspeaker" })
                 Check.Soft(carried.Contains(gene), $"RBP_GN_Psycast does not carry {gene}");
 
-            // More Psycaster Genes gates each of its genes on its own path mod, so only assert the ones
-            // whose path mod is actually loaded.
-            if (ModsConfig.IsActive(Ids.MorePsycasterGenes))
-                foreach (var pair in new[]
-                {
-                    new[] { "edern.combatpsycasts", "Gene_CP_Combat" },
-                    new[] { "aranmaho.rangerclass", "Gene_Ranger" },
-                    new[] { "myf.lightseeker", "Gene_LightSeeker" },
-                    new[] { "myf.skyrunner", "Gene_Skyrunner" },
-                    new[] { "rabbit.stuncastervpe2", "Gene_Stunskip" },
-                    new[] { "aranmaho.ravenouseye.wildhunter.psycast", "Gene_Druid" },
-                    new[] { "aranmaho.makai.psycast", "Gene_Golden_Order" },
-                })
-                    if (ModsConfig.IsActive(pair[0]))
-                        Check.Soft(carried.Contains(pair[1]),
-                            $"{pair[0]} is loaded but RBP_GN_Psycast does not carry {pair[1]}");
-
             Check.SoftResult();
         }
 

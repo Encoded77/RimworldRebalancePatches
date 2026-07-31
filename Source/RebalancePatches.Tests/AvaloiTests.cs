@@ -1,4 +1,4 @@
-using RimTestRedux;
+﻿using RimTestRedux;
 using RimWorld;
 using Verse;
 
@@ -22,5 +22,11 @@ namespace RebalancePatches.Tests
                 return;
             Check.XenoGene("DV_Avaloi", "AG_ToxResist_Vulnerability");
         }
+
+        [Test]
+        public static void PsycastGenesAssigned() =>
+            PathGenes.RaceRoster(Ids.Avaloi,
+                "", "DV_Avaloi", "Gene_Empath",
+                "", "DV_Avaloi", "Gene_Harmonist");
     }
 }

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.pathgenes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationSequence">
+          <operations>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs</xpath>
+              <value>
+                <GeneDef ParentName="GenePsycastBase">
+                  <defName>RBP_Gene_Fleshshaper</defName>
+                  <label>fleshshaper</label>
+                  <labelShortAdj>Fleshshaper</labelShortAdj>
+                  <description>Carriers of this gene are able to learn the Fleshshaper psycaster path. Regenerants, chimerkin, plasmoids and other flesh-warped xenotypes carry this natural endogene.</description>
+                  <iconPath>RBP/GeneIcons/RBP_Gene_Fleshshaper</iconPath>
+                  <displayOrderInCategory>526</displayOrderInCategory>
+                  <marketValueFactor>3</marketValueFactor>
+                </GeneDef>
+              </value>
+            </li>
+            <li Class="PatchOperationAdd">
+              <xpath>Defs/VanillaPsycastsExpanded.PsycasterPathDef[defName="VPE_FleshmancerSTNL"]</xpath>
+              <value>
+                <lockedReason>Fleshshaper gene</lockedReason>
+                <requiredGene>RBP_Gene_Fleshshaper</requiredGene>
+              </value>
+            </li>
+          </operations>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Fleshshaper"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li>RBP_Gene_Fleshshaper</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>vpebiotech.xenotypes</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/GeneDef[defName="RBP_Gene_Fleshshaper"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/XenotypeDef[defName="AG_Wretch" or defName="AG_Taukai" or defName="BS_Glutton" or defName="LoS_ScenarioTiamat" or defName="BS_Abomination" or defName="BS_Broodmother" or defName="BS_Troll" or defName="BS_TrollAdult" or defName="BS_TrollOld" or defName="BS_GreenSlime" or defName="BS_PinkSlime" or defName="BS_EmperorSlime" or defName="WVC_Beholdkind" or defName="WVC_Fleshkind" or defName="WVC_Mergekin" or defName="WVC_Overrider" or defName="WVC_Shadoweater"]/genes</xpath>
+          <value>
+            <li>RBP_Gene_Fleshshaper</li>
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+</Patch>
