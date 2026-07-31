@@ -274,7 +274,7 @@ namespace RebalancePatches.Tests
             Check.Soft(string.Join(",", seen.ToArray()) == string.Join(",", expected),
                 "the set of stats where the PX-7 trails a cheaper Civis model has changed. It was " +
                 $"[{string.Join(",", expected)}] and is now [{string.Join(",", seen.ToArray())}]. " +
-                "RBP_CybCivisPX7's description is written to that list - it no longer claims the " +
+                "RBP_CybCivisFlagship's description is written to that list - it no longer claims the " +
                 "flagship is best at everything - so a change here means the text needs re-reading");
 
             Check.SoftResult();

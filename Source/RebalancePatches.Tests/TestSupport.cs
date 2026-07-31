@@ -52,6 +52,12 @@ namespace RebalancePatches.Tests
         public const string ImpactWeaponry = "detvisor.impactweaponryreloaded";
         public const string SpacerArsenal = "det.spacerarsenal";
         public const string EltexWeaponry = "zal.eltexweaponry";
+        public const string BetterQuestRewards = "steve.betterquestrewards";
+        public const string VpeBiotechIntegration = "danzen.vpe.biotechintegration";
+        public const string MorePsycasterGenes = "gwibbo.morepsygenes";
+        public const string ValiEltexSeries = "zal.valicaes";
+        public const string BioWarfare = "ushanka.biologicalwarfare";
+        public const string FuckPsytrainers = "turkler.ferny.fuckpsytrainerstwo";
         public const string BambaMelee = "bamba.allbambamelee.tiered";
         public const string BambaBOR = "bambaryla.bor.redux";
         public const string BambaBORLegacy = "bambaryla.bor";

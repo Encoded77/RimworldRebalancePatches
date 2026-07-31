@@ -165,7 +165,7 @@ namespace RebalancePatches.Tests
             {
                 "RBP_CybNeuralInterface", "RBP_CybBasicCyberbrain", "RBP_CybEnhancedCyberbrain",
                 "RBP_CybNeuralCoprocessors", "RBP_CybNeuralWellBeing",
-                "RBP_CybCivisCyberbrains", "RBP_CybCivisAdvanced", "RBP_CybCivisPX7",
+                "RBP_CybCivisCyberbrains", "RBP_CybCivisAdvanced", "RBP_CybCivisFlagship",
                 "RBP_CybAegisCyberbrains", "RBP_CybAegisAdvanced", "RBP_CybAegisHADES",
             })
                 AssertNodeOnTab(node, "cyberbrain trunk");
@@ -200,7 +200,7 @@ namespace RebalancePatches.Tests
 
             foreach (string node in new[]
             {
-                "RBP_CybBasicCyberbrain", "RBP_CybCivisPX7", "RBP_CybAegisHADES",
+                "RBP_CybBasicCyberbrain", "RBP_CybCivisFlagship", "RBP_CybAegisHADES",
                 "RBP_CybEchoCyberbrains",
             })
             {
@@ -607,7 +607,7 @@ namespace RebalancePatches.Tests
 
             var expected = new HashSet<string>
             {
-                "RBP_CybCivisPX7", "RBP_CybAegisHADES", "RBP_CybEchoOracle",
+                "RBP_CybCivisFlagship", "RBP_CybAegisHADES", "RBP_CybEchoOracle",
                 "RBP_CybEchoFusionCore", "RBP_CybEchoSuppression",
                 "RBP_CybUltratechWeaponModules",
             };

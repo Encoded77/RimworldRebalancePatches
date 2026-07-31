@@ -119,6 +119,9 @@ namespace RebalancePatches
                     requiredMods: new[] { "redmattis.geneextractor" }, dependsOn: "geneticsresearch.core"),
                 new RebalanceToggle("geneticsresearch.genenodes",
                     requiredMods: new[] { "redmattis.geneextractor" }, dependsOn: "geneticsresearch.core"),
+                new RebalanceToggle("geneticsresearch.psycastnodes",
+                    requiredMods: new[] { "redmattis.geneextractor", "danzen.vpe.biotechintegration" },
+                    dependsOn: "geneticsresearch.genenodes"),
                 new RebalanceToggle("geneticsresearch.generipper",
                     anyOfMods: new[] { "defi.generipper", "danielwedemeyer.generipper" }, dependsOn: "geneticsresearch.core"),
                 new RebalanceToggle("geneticsresearch.genefab",
@@ -175,17 +178,6 @@ namespace RebalancePatches
                 new RebalanceSlider("vse.expertisegenerationchance", 20, 0, 50),
             }, requiredMods: new[] { "vanillaexpanded.skills" }, isOverhaul: true),
 
-            new RebalanceGroup("worldaugment", new List<RebalanceToggle>
-            {
-                new RebalanceToggle("worldaugment.bionics"),
-                new RebalanceToggle("worldaugment.cyberbrains",
-                    requiredMods: new[] { "moistestwhale.gitscyberbrains" },
-                    dependsOn: "worldaugment.bionics"),
-            }, defaultOn: false, sliders: new List<RebalanceSlider>
-            {
-                new RebalanceSlider("worldaugment.frequency", 100, 0, 200),
-            }, isOverhaul: true),
-
             new RebalanceGroup("cybernetics", new List<RebalanceToggle>
             {
                 new RebalanceToggle("cybernetics.modules",
@@ -232,6 +224,32 @@ namespace RebalancePatches
                 new RebalanceToggle("cyberneticsresearch.retire",
                     dependsOn: "cyberneticsresearch.core"),
             }, defaultOn: false, isOverhaul: true),
+
+            new RebalanceGroup("psycast", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("psycast.research"),
+                new RebalanceToggle("psycast.eltexweaponry",
+                    requiredMods: new[] { "zal.eltexweaponry" }, dependsOn: "psycast.research"),
+                new RebalanceToggle("psycast.prestigegate", dependsOn: "psycast.research"),
+                new RebalanceToggle("psycast.echotie", dependsOn: "psycast.research"),
+                new RebalanceToggle("psycast.eltexbuff",
+                    requiredMods: new[] { "ludeon.rimworld.royalty" }),
+                new RebalanceToggle("psycast.trousers", dependsOn: "psycast.research"),
+                new RebalanceToggle("psycast.vestments", dependsOn: "psycast.research"),
+                new RebalanceToggle("psycast.oraclewaiver",
+                    requiredMods: new[] { "moistestwhale.gitscyberbrains" }),
+            }, defaultOn: false, requiredMods: new[] { "vanillaexpanded.vpsycastse" }, isOverhaul: true),
+
+            new RebalanceGroup("worldaugment", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("worldaugment.bionics"),
+                new RebalanceToggle("worldaugment.cyberbrains",
+                    requiredMods: new[] { "moistestwhale.gitscyberbrains" },
+                    dependsOn: "worldaugment.bionics"),
+            }, defaultOn: false, sliders: new List<RebalanceSlider>
+            {
+                new RebalanceSlider("worldaugment.frequency", 100, 0, 200),
+            }),
 
             new RebalanceGroup("ideology", new List<RebalanceToggle>
             {
@@ -383,6 +401,22 @@ namespace RebalancePatches
                 new RebalanceToggle("eltex.spawns",
                     requiredMods: new[] { "ludeon.rimworld.royalty" }),
             }, requiredMods: new[] { "zal.eltexweaponry" }),
+
+            new RebalanceGroup("questrewards", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("questrewards.psytrainers",
+                    requiredMods: new[] { "vanillaexpanded.vpsycastse", "turkler.ferny.fuckpsytrainerstwo" }),
+            }, requiredMods: new[] { "steve.betterquestrewards" }),
+
+            new RebalanceGroup("vpe", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("vpe.pawngenguard"),
+            }, requiredMods: new[] { "vanillaexpanded.vpsycastse" }),
+
+            new RebalanceGroup("valicharged", new List<RebalanceToggle>
+            {
+                new RebalanceToggle("valicharged.psyspawns"),
+            }, requiredMods: new[] { "zal.valicaes" }),
 
             new RebalanceGroup("smallfurniture", new List<RebalanceToggle>
             {

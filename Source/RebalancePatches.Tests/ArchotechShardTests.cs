@@ -25,7 +25,8 @@ namespace RebalancePatches.Tests
 
         private static readonly string[] OutsideTheLoop =
         {
-            "PsychicAmplifier", "PsychicSensitizer", "PsychicReader", "PsychicHarmonizer",
+            "PsychicAmplifier", "PsychicAmplifierAnimaSTNL",
+            "PsychicSensitizer", "PsychicReader", "PsychicHarmonizer",
             "PsychicLevitator", "PsychicNullifier", "PsychokeneticShield",
         };
 

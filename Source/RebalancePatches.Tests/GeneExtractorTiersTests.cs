@@ -8,6 +8,59 @@ namespace RebalancePatches.Tests
     public static class GeneExtractorTiersTests
     {
         [Test]
+        public static void PsycastGeneNodeEndsTheTree()
+        {
+            if (!Check.Ready("geneticsresearch.psycastnodes", Ids.GeneExtractorTiers, Ids.VpeBiotechIntegration, Ids.Biotech)
+                || !Check.GeneticsTabLoaded("geneticsresearch.psycastnodes"))
+                return;
+
+            ResearchProjectDef project = Check.Def<ResearchProjectDef>("RBP_PsycastGeneNodes");
+            Check.Soft(project.baseCost == 8000f, $"RBP_PsycastGeneNodes.baseCost is {project.baseCost}, expected 8000");
+            Check.PrereqsAre(project.prerequisites, "RBP_PsycastGeneNodes.prerequisites", "RBP_ArchiteGeneNodes");
+
+            ThingDef node = Check.Def<ThingDef>("RBP_GN_Psycast");
+            Check.Soft(Check.ContainsResearch(node.researchPrerequisites, "RBP_PsycastGeneNodes"),
+                "RBP_GN_Psycast does not unlock from RBP_PsycastGeneNodes");
+            Check.Soft(Check.CostOf(node, "VPE_Eltex") == 10,
+                $"RBP_GN_Psycast costs {Check.CostOf(node, "VPE_Eltex")} eltex, expected 10");
+
+            // The node is only worth building if it actually carries the path genes the mod gates on.
+            var carried = new System.Collections.Generic.List<string>();
+            foreach (CompProperties comp in node.comps)
+            {
+                if (comp.GetType().Name != "CompProperties_GeneNode")
+                    continue;
+                if (Check.Field(comp, "geneList") is System.Collections.IEnumerable genes)
+                    foreach (object gene in genes)
+                        carried.Add(gene is Def def ? def.defName : gene?.ToString());
+            }
+            Check.Note($"node carries {carried.Count} gene(s): " + string.Join(", ", carried.ToArray()));
+
+            foreach (string gene in new[] { "Gene_Archon", "Gene_Archotechist", "Gene_Hemosage", "Gene_Puppeteer",
+                "Gene_Wildspeaker" })
+                Check.Soft(carried.Contains(gene), $"RBP_GN_Psycast does not carry {gene}");
+
+            // More Psycaster Genes gates each of its genes on its own path mod, so only assert the ones
+            // whose path mod is actually loaded.
+            if (ModsConfig.IsActive(Ids.MorePsycasterGenes))
+                foreach (var pair in new[]
+                {
+                    new[] { "edern.combatpsycasts", "Gene_CP_Combat" },
+                    new[] { "aranmaho.rangerclass", "Gene_Ranger" },
+                    new[] { "myf.lightseeker", "Gene_LightSeeker" },
+                    new[] { "myf.skyrunner", "Gene_Skyrunner" },
+                    new[] { "rabbit.stuncastervpe2", "Gene_Stunskip" },
+                    new[] { "aranmaho.ravenouseye.wildhunter.psycast", "Gene_Druid" },
+                    new[] { "aranmaho.makai.psycast", "Gene_Golden_Order" },
+                })
+                    if (ModsConfig.IsActive(pair[0]))
+                        Check.Soft(carried.Contains(pair[1]),
+                            $"{pair[0]} is loaded but RBP_GN_Psycast does not carry {pair[1]}");
+
+            Check.SoftResult();
+        }
+
+        [Test]
         public static void ExtractionVatsViaDedicatedResearch()
         {
             if (!Check.Ready("geneticsresearch.extractortiers", Ids.GeneExtractorTiers, Ids.Biotech) || !Check.GeneticsTabLoaded("geneticsresearch.extractortiers"))

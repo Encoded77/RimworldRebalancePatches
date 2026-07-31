@@ -6,6 +6,9 @@
     <!-- Folders apply in reverse of this list. Listed first so Anomaly's creepjoiner sweep applies
          last, after every folder that injects recipes. -->
     <li IfModActive="ludeon.rimworld.anomaly">1.6/Anomaly</li>
+    <!-- Above CyberneticsResearch so it applies after it: the psycast overhaul adds an eltex-working
+         prerequisite onto the Echo lane's entry node, which that folder injects. -->
+    <li IfModActive="vanillaexpanded.vpsycastse">1.6/VPE</li>
     <!-- Listed high so it applies near-last: repoints craft gates onto defs the Cybernetics,
          EPOEForked and GiTS folders below inject, so those must apply first. Own folder because
          files apply in filename order within a folder. -->
@@ -49,7 +52,9 @@
     <li IfModActive="rimsenal.federation">1.6/RimsenalFederation</li>
     <li IfModActive="vanillaexpanded.vaewaste">1.6/VAEWaste</li>
     <li IfModActive="vanillaexpanded.achievements">1.6/Achievements</li>
+    <li IfModActive="steve.betterquestrewards">1.6/BetterQuestRewards</li>
     <li IfModActive="zal.eltexweaponry">1.6/EltexWeaponry</li>
+    <li IfModActive="zal.valicaes">1.6/ValiCharged</li>
     <li IfModActive="bamba.allbambamelee.tiered">1.6/BambaMelee</li>
     <li IfModActive="vanillaracesexpanded.hussar">1.6/VREHussar</li>
     <li IfModActive="vanillaracesexpanded.saurid">1.6/VRESaurid</li>

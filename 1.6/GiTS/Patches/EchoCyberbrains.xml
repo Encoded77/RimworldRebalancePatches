@@ -407,35 +407,31 @@
         <match Class="PatchOperationSequence">
           <operations>
             <li Class="PatchOperationAdd">
-              <xpath>Defs/HediffDef[defName="RBP_EchoSeerHediff"]</xpath>
+              <xpath>Defs/HediffDef[defName="RBP_EchoSeerHediff"]/comps</xpath>
               <value>
-                <comps>
-                  <li Class="EBSGFramework.HediffCompProperties_Modular">
-                    <slots>
-                      <li>
-                        <slotID>RBP_CortexSlot</slotID>
-                        <slotName>cortex module slot</slotName>
-                        <capacity>3</capacity>
-                      </li>
-                    </slots>
-                  </li>
-                </comps>
+                <li Class="EBSGFramework.HediffCompProperties_Modular">
+                  <slots>
+                    <li>
+                      <slotID>RBP_CortexSlot</slotID>
+                      <slotName>cortex module slot</slotName>
+                      <capacity>3</capacity>
+                    </li>
+                  </slots>
+                </li>
               </value>
             </li>
             <li Class="PatchOperationAdd">
-              <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]</xpath>
+              <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]/comps</xpath>
               <value>
-                <comps>
-                  <li Class="EBSGFramework.HediffCompProperties_Modular">
-                    <slots>
-                      <li>
-                        <slotID>RBP_CortexSlot</slotID>
-                        <slotName>cortex module slot</slotName>
-                        <capacity>6</capacity>
-                      </li>
-                    </slots>
-                  </li>
-                </comps>
+                <li Class="EBSGFramework.HediffCompProperties_Modular">
+                  <slots>
+                    <li>
+                      <slotID>RBP_CortexSlot</slotID>
+                      <slotName>cortex module slot</slotName>
+                      <capacity>6</capacity>
+                    </li>
+                  </slots>
+                </li>
               </value>
             </li>
           </operations>

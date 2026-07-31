@@ -25,5 +25,6 @@
   <RBP.GeneDivergence.Tip>Gene divergence: {0} (from the baseline for this pawn's xenotype)</RBP.GeneDivergence.Tip>
   <RBP.Module.GenericName>module</RBP.Module.GenericName>
   <RebalancePatches.NoOpenModuleSlot>{0} has no host with an open module slot for {1}.</RebalancePatches.NoOpenModuleSlot>
+  <RBP.WearGate>needs {0} psychic sensitivity</RBP.WearGate>
 
 </LanguageData>

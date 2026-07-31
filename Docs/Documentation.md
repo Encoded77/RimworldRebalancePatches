@@ -27,7 +27,7 @@ One change has no toggle because there is no sensible way to want it off: resear
 
 ### Ushanka's Biological Warfare
 
-- **Staged research tree** (`biowarfare.researchtree`) — The mod's biological warfare research is a flat fan: every disease's weapons and vaccine hang off one root at the same cost. This rebuilds it into a staged progression on its own tab. The weapons climb through two tiers — *advanced pathogens* then *lethal pathogens* — with cost rising as the diseases get deadlier (Flu and sleeping sickness first, then malaria, scaria and plague, then necroa and flesh breaker). Every vaccine now branches from a single *antigen analysis* node, which also unlocks the antigens analyzer, instead of each vaccine requiring its matching weapon — so a colony can research defence without researching offence, and the two read as separate lanes. Needs Ushanka's Biological Warfare.
+- **Two-node research tree** (`biowarfare.researchtree`) — Biological warfare ships fifteen research projects: one per disease for its weapons, another per disease for its vaccine. Committing to the mod therefore costs far more research than the content behind it is worth, and specialising in one disease means paying for the ladder that leads to it. This replaces the lot with two projects. **Pathogen weaponisation** unlocks every disease's barrels, shells, grenades, missiles and vent systems at once. **Broad-spectrum antibodies** unlocks every vaccine and antiserum; it is still studied at the antigens analyzer with a disease sample loaded, but any sample now serves rather than each disease needing its own. Total cost drops from roughly 19,000 research points to 3,500. Needs Ushanka's Biological Warfare.
 
 ### Altered Carbon
 
@@ -141,6 +141,14 @@ Genes whose forced traits fight each other, or whose bonuses stack brokenly acro
 - **`vanilla.hideemptyresearchtabs`** — A research tab that no research project is assigned to is left out of the research window's tab row instead of opening onto blank space. Works for any tab from any mod, and the tab comes back on its own if a project is ever assigned to it again. The tab you are currently on and the Main tab are always shown.
 - **Gene complexity sliders** (`vanilla.genecomplexitybase`, `vanilla.genecomplexityprocessor`) — Two sliders: extra base gene complexity for the gene assembler (default +10), and complexity per gene processor (default 3, vanilla 2). Toggling either off keeps the vanilla value.
 
+### Better Quest Rewards
+
+- **`questrewards.psytrainers`** — Better Quest Rewards offers Vanilla Psycasts Expanded psytrainers as quest rewards, while Fuck Psytrainers 2 removes every psytrainer from the game. With both loaded that reward option names 148 items that never exist, so it can never pay out and logs an unresolved reference for each one every time the game loads. The dead option is dropped and the rest of the reward table is left alone. Needs all three mods; does nothing without them.
+
+### Vanilla Psycasts Expanded
+
+- **`vpe.pawngenguard`** — Vanilla Psycasts Expanded can turn a randomly generated pawn into a psycaster by picking any path that pawn is allowed to unlock. Mods that gate paths behind genes can leave an ordinary pawn with no allowed path at all, and the pick then fails and takes the pawn's whole generation down with it, which shows up as raids, quests or caravans erroring instead of arriving. Pawns who could not have become a psycaster anyway now skip that roll and generate normally.
+
 ### Small Furniture
 
 - **`smallfurniture.hitechbenchresearch`** — Small Furniture's medium and small hi-tech research benches count as a Hi-Tech Research Bench, so research projects that require the vanilla bench can be selected and researched at them, and the "need research bench" alert clears once one is built. A linked small multi-analyzer stands in for a multi-analyzer, and the bench's power and facility requirements are still honoured. Without this fix those benches only qualify while Small Furniture's own small multi-analyzer option is enabled.
@@ -230,6 +238,10 @@ The gene centrifuge and xenogerm duplicator become deliberate unlocks behind new
 
 The gene extraction vat becomes a mid-tree unlock and the two archite vats a late-tree one, so extraction stops being trivialised the moment basic xenogenetics finishes.
 
+### Psycast gene node (`geneticsresearch.psycastnodes`)
+
+With VPE - Biotech Integration, each psycast path is locked behind a xenotype gene that otherwise only arrives on a pawn born with it. A **psycast gene nodes** project sits at the far end of the tree past archite gene nodes, and unlocks an archite gene node carrying every one of those path genes, so a colony can grow psycasters of any school instead of waiting for the right pawn to show up. It is priced as an endgame build: archite capsules, spacer components, silver and eltex. The node also carries the path genes from VPE - Biotech Integration for Alpha Animals and More, and from More Psycaster Genes for whichever psycast mods that one supports and you actually run, so adding a new gated path later extends the node on its own.
+
 ### Gene nodes (`geneticsresearch.genenodes`)
 
 Base gene nodes get their own project after xenogerm assembly. Archite node libraries are effectively free archite genepacks, so every archite node — including the premium Ageless and Sanguophage tiers — moves behind *archite gene nodes* with real prices (more components, archite capsules, silver); nodes that shipped their own bargain prices now use the tier prices.
@@ -302,6 +314,19 @@ Consolidates the implant research of every mod into one Cybernetics tab with a c
 - **Psychic and mind-transfer lanes** (`cyberneticsresearch.mind`) — Psychic implants spread across researches by strength, with mind transfer kept as distinct steps. Needs Psychic Implants or Altered Carbon.
 - **Two capstones** (`cyberneticsresearch.capstones`) — Two final researches that share a prerequisite and pull opposite ways: synthetic ascension and symbiotic integration.
 - **Retire the old research** (`cyberneticsresearch.retire`) — Deletes the original projects the tab took over so old mod tabs empty out instead of duplicating unlocks. Best with all four lanes on.
+
+## Psycast Overhaul
+
+Off by default. Gives psycasters their own research identity: one Psychic tab carrying the whole eltex gear progression, instead of caster clothing, eltex crafting and eltex weapons sitting on three unrelated tabs with no order between them. Needs Vanilla Psycasts Expanded.
+
+- **Psychic research tab and gear chain** (`psycast.research`) — A Psychic tab with three projects in a chain: **psychic attunement** (Medieval, takes over Vanilla Psycasts Expanded's caster gear: the eltex mask, cape and eltex melee weapons), **eltex working** (Spacer, takes over its eltex gear project and gates all eltex apparel; requires two techprints, sold by the Empire — and with Vanilla Factions Expanded - Deserters, extractable through the deserter network), and **psychic armorweave** (Ultra). The two absorbed projects are removed so nothing is researchable twice.
+- **Eltex Weaponry joins the psychic tab** (`psycast.eltexweaponry`) — Eltex Weaponry's research moves onto the Psychic tab and additionally requires eltex working, so the guns cap the eltex chain rather than floating free. Its own two Empire techprints are kept. Needs Eltex Weaponry.
+- **Prestige armor needs psychic armorweave** (`psycast.prestigegate`) — Every craftable prestige combat armor that grants psychic sensitivity or is built from eltex, from any mod, additionally requires psychic armorweave before it can be made. The base armor's own research still applies: a prestige suit needs both the armor and the weave that laces eltex through it. Armor that merely carries the prestige tag so nobles will wear it, with no psychic thread in it, is left alone.
+- **Psychic implants need eltex working** (`psycast.echotie`) — With the Cybernetics Research Overhaul's psychic hardware lane on, its entry project additionally requires eltex working, since every psychic implant is built from eltex. Does nothing while that lane is off.
+- **The Echo ORACLE opens one locked path** (`psycast.oraclewaiver`) — A pawn carrying the Cybernetics Overhaul's Echo ORACLE cyberbrain may unlock one psycast path they are otherwise locked out of, whatever gene, backstory or belief normally guards it. The brain remembers which path it opened and opens no second one; a path once unlocked stays learned even if the brain is later removed, and a replacement ORACLE carries a fresh waiver. Needs GiTS Cyberbrains with the Echo cyberbrains feature.
+- **Eltex robe and skullcap reward dedication** (`psycast.eltexbuff`) — The robe and skullcap sit in the two apparel slots where a psycaster gives up real armor, so they now pay for that choice: the robe gains +30% psychic sensitivity, faster neural heat recovery, +20% meditation psyfocus and 10% cheaper psycasts; the skullcap +50% sensitivity, faster recovery, +10% meditation and 5% cheaper casts. Prestige armor is untouched — an armored caster keeps everything they had, a robed one is simply better at the craft.
+- **Eltex trousers** (`psycast.trousers`) — Closes the one hole in the eltex wardrobe: craftable trousers with +10% psychic sensitivity and faster neural heat recovery on the legs slot, fitting under any armor. Fabrication bench, behind eltex working.
+- **Psychic vestments, gated by sensitivity** (`psycast.vestments`) — A psychic vestments project past eltex working unlocks two endgame garments for dedicated casters: the eltex vestment (+65% sensitivity, faster recovery, +40% meditation psyfocus, 20% cheaper casts, +25 neural heat capacity, almost no armor) and the eltex diadem (+55%, +25% meditation, 15% cheaper casts, +20 heat, no armor). Both are heavy eltex builds, appear rarely as quest rewards, are never sold by traders — and refuse any wearer below 175% and 150% psychic sensitivity respectively. The check happens when dressing; a caster who later fades keeps what they wear.
 
 ## Pawn Augmentation
 

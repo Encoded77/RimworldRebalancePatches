@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>geneticsresearch.psycastnodes</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>danzen.vpe.biotechintegration</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_ArchiteGeneNodes"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs</xpath>
+            <value>
+
+              <ResearchProjectDef>
+                <defName>RBP_PsycastGeneNodes</defName>
+                <label>psycast gene nodes</label>
+                <description>Read the archotech gene sequences that decide whether a mind can carry a psylink at all, and build a gene node that holds them. The templates are the rarest the colony can assemble: each one is a whole psycaster discipline, extracted from the xenotypes born to it.</description>
+                <baseCost>8000</baseCost>
+                <techLevel>Ultra</techLevel>
+                <tab>RBP_GeneticsTab</tab>
+                <prerequisites>
+                  <li>RBP_ArchiteGeneNodes</li>
+                </prerequisites>
+                <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+                <requiredResearchFacilities>
+                  <li>MultiAnalyzer</li>
+                </requiredResearchFacilities>
+                <researchViewX>5</researchViewX>
+                <researchViewY>3.60</researchViewY>
+              </ResearchProjectDef>
+
+              <ThingDef ParentName="GET_GeneNodeBaseArchite">
+                <defName>RBP_GN_Psycast</defName>
+                <label>Gene Node - Psycast</label>
+                <description>An archotech gene node holding the psycaster disciplines. Each template carries the sequence one xenotype was born with, so a colony that can afford the node can grow a psycaster of any school rather than waiting for one to walk in.</description>
+                <researchPrerequisites Inherit="False">
+                  <li>RBP_PsycastGeneNodes</li>
+                </researchPrerequisites>
+                <costList Inherit="False">
+                  <Steel>150</Steel>
+                  <ComponentSpacer>4</ComponentSpacer>
+                  <ArchiteCapsule>4</ArchiteCapsule>
+                  <Silver>1500</Silver>
+                  <VPE_Eltex>10</VPE_Eltex>
+                </costList>
+                <comps>
+                  <li Class="GeneExtractorTiers.CompProperties_GeneNode">
+                    <geneList>
+                      <li>Gene_Archon</li>
+                      <li>Gene_Archotechist</li>
+                      <li>Gene_Chronopath</li>
+                      <li>Gene_Conflagrator</li>
+                      <li>Gene_Empath</li>
+                      <li>Gene_Frostshaper</li>
+                      <li>Gene_Harmonist</li>
+                      <li>Gene_Hemosage</li>
+                      <li>Gene_Necropath</li>
+                      <li>Gene_Nightstalker</li>
+                      <li>Gene_Protector</li>
+                      <li>Gene_Puppeteer</li>
+                      <li>Gene_Skipmaster</li>
+                      <li>Gene_Staticlord</li>
+                      <li>Gene_Technomancer</li>
+                      <li>Gene_Warlord</li>
+                      <li>Gene_Wildspeaker</li>
+                    </geneList>
+                  </li>
+                </comps>
+              </ThingDef>
+
+            </value>
+          </match>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>gwibbo.morepsygenes</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li MayRequire="edern.combatpsycasts">Gene_CP_Combat</li>
+              <li MayRequire="myf.lightseeker">Gene_LightSeeker</li>
+              <li MayRequire="myf.skyrunner">Gene_Skyrunner</li>
+              <li MayRequire="aranmaho.rangerclass">Gene_Ranger</li>
+              <li MayRequire="rabbit.stuncastervpe2">Gene_Stunskip</li>
+              <li MayRequire="aranmaho.ravenouseye.wildhunter.psycast">Gene_Wildhunter</li>
+              <li MayRequire="aranmaho.ravenouseye.wildhunter.psycast">Gene_Druid</li>
+              <li MayRequire="aranmaho.makai.psycast">Gene_Bond_Intertwined</li>
+              <li MayRequire="aranmaho.makai.psycast">Gene_String_of_Fate</li>
+              <li MayRequire="aranmaho.makai.psycast">Gene_Corrupted_Prophet</li>
+              <li MayRequire="aranmaho.makai.psycast">Gene_Destined_Death</li>
+              <li MayRequire="aranmaho.makai.psycast">Gene_Distorted_Reality</li>
+              <li MayRequire="aranmaho.makai.psycast">Gene_Passioned_Flame</li>
+              <li MayRequire="aranmaho.makai.psycast">Gene_Perfect_Knowledge</li>
+              <li MayRequire="aranmaho.makai.psycast">Gene_Golden_Order</li>
+              <li MayRequire="aranmaho.makai.psycast">Gene_True_Destruction</li>
+            </value>
+          </match>
+        </match>
+      </li>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>eclair155.vpebiotechpatches</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="RBP_GN_Psycast"]/comps/li[@Class="GeneExtractorTiers.CompProperties_GeneNode"]/geneList</xpath>
+            <value>
+              <li>Gene_HeraldOfTheBlackHive</li>
+              <li>Gene_Oculist</li>
+              <li>Gene_Ravager</li>
+              <li>Gene_Xenoseer</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

@@ -120,7 +120,7 @@
               </ResearchProjectDef>
 
               <ResearchProjectDef>
-                <defName>RBP_CybCivisPX7</defName>
+                <defName>RBP_CybCivisFlagship</defName>
                 <label>Civis PX-7</label>
                 <description>The Civis flagship, and the furthest a mind has been taken toward pure competence. A PX-7 carries every trade the house ever built a brain for at once, a generalist with no dead spots, though a dedicated specialist still edges it in its own trade.\n\nThere is no combat capability anywhere in it. Civis has never sold one and does not intend to start.</description>
                 <baseCost>6000</baseCost>
@@ -251,7 +251,7 @@
                   <xpath>Defs/ThingDef[defName="gitsPX7Cyberbrain"]</xpath>
                   <value>
                     <recipeMaker>
-                      <researchPrerequisite>RBP_CybCivisPX7</researchPrerequisite>
+                      <researchPrerequisite>RBP_CybCivisFlagship</researchPrerequisite>
                     </recipeMaker>
                   </value>
                 </li>
@@ -338,7 +338,7 @@
           <li>ludeon.rimworld.royalty</li>
         </mods>
         <match Class="PatchOperationAdd">
-          <xpath>Defs/ResearchProjectDef[defName="RBP_CybCivisPX7" or defName="RBP_CybAegisHADES"]</xpath>
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybCivisFlagship" or defName="RBP_CybAegisHADES"]</xpath>
           <value>
             <techprintCount>1</techprintCount>
             <techprintCommonality>1</techprintCommonality>

@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>psycast.research</settingKey>
+    <operations>
+      <li Class="PatchOperationAdd">
+        <xpath>Defs</xpath>
+        <value>
+
+          <ResearchTabDef>
+            <defName>RBP_PsychicTab</defName>
+            <label>psychic</label>
+            <generalTitle>Psychic research projects</generalTitle>
+            <generalDescription>Attuning minds and materials to the psychic: eltex clothing, eltex working, weapons and armor woven for psycasters. Research at a hi-tech research bench; you can only have one active project at a time.</generalDescription>
+          </ResearchTabDef>
+
+          <ResearchProjectDef>
+            <defName>RBP_PsyAttunement</defName>
+            <label>psychic attunement</label>
+            <description>Weave and shape materials that answer to a sensitive mind. Unlocks the first psychic clothing and simple eltex-laced melee weapons.</description>
+            <baseCost>1000</baseCost>
+            <techLevel>Medieval</techLevel>
+            <tab>RBP_PsychicTab</tab>
+            <prerequisites>
+              <li>NobleApparel</li>
+            </prerequisites>
+            <researchViewX>0</researchViewX>
+            <researchViewY>0.80</researchViewY>
+          </ResearchProjectDef>
+
+          <ResearchProjectDef>
+            <defName>RBP_EltexWorking</defName>
+            <label>eltex working</label>
+            <description>The techniques for cutting, weaving and bonding eltex without deadening its psychic resonance. Unlocks crafting of eltex apparel, and underlies every workshop that builds with the material.</description>
+            <baseCost>3000</baseCost>
+            <techLevel>Spacer</techLevel>
+            <tab>RBP_PsychicTab</tab>
+            <prerequisites>
+              <li>RBP_PsyAttunement</li>
+              <li>ComplexClothing</li>
+            </prerequisites>
+            <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+            <requiredResearchFacilities>
+              <li>MultiAnalyzer</li>
+            </requiredResearchFacilities>
+            <techprintCount>2</techprintCount>
+            <techprintCommonality>2</techprintCommonality>
+            <techprintMarketValue>2000</techprintMarketValue>
+            <heldByFactionCategoryTags>
+              <li>Empire</li>
+            </heldByFactionCategoryTags>
+            <researchViewX>1</researchViewX>
+            <researchViewY>0.80</researchViewY>
+          </ResearchProjectDef>
+
+          <ResearchProjectDef>
+            <defName>RBP_PsyArmorweave</defName>
+            <label>psychic armorweave</label>
+            <description>Run eltex thread through armor plate without breaking either: the weave behind prestige combat gear, which protects like the armor it is built on while amplifying the wearer's psychic sensitivity.</description>
+            <baseCost>5000</baseCost>
+            <techLevel>Ultra</techLevel>
+            <tab>RBP_PsychicTab</tab>
+            <prerequisites>
+              <li>RBP_EltexWorking</li>
+            </prerequisites>
+            <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+            <requiredResearchFacilities>
+              <li>MultiAnalyzer</li>
+            </requiredResearchFacilities>
+            <researchViewX>2</researchViewX>
+            <researchViewY>1.60</researchViewY>
+          </ResearchProjectDef>
+
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/RecipeDef[@Name="VPE_CraftEltexGear"]/researchPrerequisite</xpath>
+        <value>
+          <researchPrerequisite>RBP_EltexWorking</researchPrerequisite>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/RecipeDef[defName="VPE_Make_EltexMask"]/researchPrerequisite</xpath>
+        <value>
+          <researchPrerequisite>RBP_PsyAttunement</researchPrerequisite>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/RecipeDef[defName="VPE_Make_EltexCape"]/researchPrerequisite</xpath>
+        <value>
+          <researchPrerequisite>RBP_PsyAttunement</researchPrerequisite>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="VPE_BaseMeleeWeapon_Eltex_Sharp"]/recipeMaker/researchPrerequisite</xpath>
+        <value>
+          <researchPrerequisite>RBP_PsyAttunement</researchPrerequisite>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[@Name="VPE_BaseMeleeWeapon_Eltex_Blunt"]/recipeMaker/researchPrerequisite</xpath>
+        <value>
+          <researchPrerequisite>RBP_PsyAttunement</researchPrerequisite>
+        </value>
+      </li>
+      <li Class="PatchOperationRemove">
+        <xpath>Defs/ResearchProjectDef[defName="VPE_CasterGear" or defName="VPE_EltexGear"]</xpath>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>psycast.eltexweaponry</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>zal.eltexweaponry</li>
+        </mods>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_EltexWorking"]</xpath>
+          <match Class="PatchOperationSequence">
+            <operations>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="EW_EltexWeaponry"]/prerequisites</xpath>
+                <value>
+                  <prerequisites>
+                    <li>RBP_EltexWorking</li>
+                    <li>Fabrication</li>
+                  </prerequisites>
+                </value>
+              </li>
+              <li Class="PatchOperationAdd">
+                <xpath>Defs/ResearchProjectDef[defName="EW_EltexWeaponry"]</xpath>
+                <value>
+                  <tab>RBP_PsychicTab</tab>
+                </value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="EW_EltexWeaponry"]/researchViewX</xpath>
+                <value>
+                  <researchViewX>2</researchViewX>
+                </value>
+              </li>
+              <li Class="PatchOperationReplace">
+                <xpath>Defs/ResearchProjectDef[defName="EW_EltexWeaponry"]/researchViewY</xpath>
+                <value>
+                  <researchViewY>0.00</researchViewY>
+                </value>
+              </li>
+            </operations>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>psycast.prestigegate</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_PsyArmorweave"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[apparel/tags/li="PrestigeCombatGear" and (equippedStatOffsets/PsychicSensitivity[number(.)>0] or equippedStatOffsets/PsychicSensitivityOffset[number(.)>0] or costList/VPE_Eltex) and recipeMaker and not(recipeMaker/researchPrerequisites)]/recipeMaker</xpath>
+          <value>
+            <researchPrerequisites>
+              <li>RBP_PsyArmorweave</li>
+            </researchPrerequisites>
+          </value>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_PsyArmorweave"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/ThingDef[apparel/tags/li="PrestigeCombatGear" and (equippedStatOffsets/PsychicSensitivity[number(.)>0] or equippedStatOffsets/PsychicSensitivityOffset[number(.)>0] or costList/VPE_Eltex) and recipeMaker/researchPrerequisites and not(recipeMaker/researchPrerequisites/li="RBP_PsyArmorweave")]/recipeMaker/researchPrerequisites</xpath>
+          <value>
+            <li>RBP_PsyArmorweave</li>
+          </value>
+        </match>
+      </li>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_PsyArmorweave"]</xpath>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods>
+            <li>sarg.alphagenes</li>
+          </mods>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ThingDef[defName="AG_ForsakenMarineHelmetPsy"]/recipeMaker</xpath>
+            <value>
+              <researchPrerequisites>
+                <li>RBP_PsyArmorweave</li>
+              </researchPrerequisites>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>psycast.eltexbuff</settingKey>
+    <operations>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="Apparel_PsyfocusRobe"]/equippedStatOffsets</xpath>
+        <value>
+          <equippedStatOffsets>
+            <PsychicSensitivityOffset>0.3</PsychicSensitivityOffset>
+            <PsychicEntropyRecoveryRate>0.1</PsychicEntropyRecoveryRate>
+            <MeditationFocusGain>0.2</MeditationFocusGain>
+            <VPE_PsyfocusCostFactor>-0.1</VPE_PsyfocusCostFactor>
+          </equippedStatOffsets>
+        </value>
+      </li>
+      <li Class="PatchOperationReplace">
+        <xpath>Defs/ThingDef[defName="Apparel_EltexSkullcap"]/equippedStatOffsets</xpath>
+        <value>
+          <equippedStatOffsets>
+            <PsychicSensitivityOffset>0.5</PsychicSensitivityOffset>
+            <PsychicEntropyRecoveryRate>0.1</PsychicEntropyRecoveryRate>
+            <MeditationFocusGain>0.1</MeditationFocusGain>
+            <VPE_PsyfocusCostFactor>-0.05</VPE_PsyfocusCostFactor>
+          </equippedStatOffsets>
+        </value>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>psycast.trousers</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_EltexWorking"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+
+            <ThingDef ParentName="ApparelBase">
+              <defName>RBP_Apparel_EltexTrousers</defName>
+              <label>eltex trousers</label>
+              <description>Trousers woven with psychic focusing threads. They enhance psychic sensitivity and help dissipate neural heat, and fit under any armor.</description>
+              <techLevel>Ultra</techLevel>
+              <graphicData>
+                <texPath>RBP/Apparel/EltexTrousers</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <thingCategories>
+                <li>ApparelMisc</li>
+              </thingCategories>
+              <statBases>
+                <MarketValue>420</MarketValue>
+                <MaxHitPoints>100</MaxHitPoints>
+                <Mass>0.3</Mass>
+                <WorkToMake>9000</WorkToMake>
+                <ArmorRating_Sharp>0.07</ArmorRating_Sharp>
+                <ArmorRating_Blunt>0</ArmorRating_Blunt>
+                <ArmorRating_Heat>0.04</ArmorRating_Heat>
+                <Insulation_Cold>5</Insulation_Cold>
+                <Insulation_Heat>1</Insulation_Heat>
+                <EquipDelay>1.5</EquipDelay>
+              </statBases>
+              <equippedStatOffsets>
+                <PsychicSensitivityOffset>0.10</PsychicSensitivityOffset>
+                <PsychicEntropyRecoveryRate>0.033</PsychicEntropyRecoveryRate>
+              </equippedStatOffsets>
+              <costList>
+                <Cloth>40</Cloth>
+                <VPE_Eltex>2</VPE_Eltex>
+              </costList>
+              <recipeMaker>
+                <researchPrerequisite>RBP_EltexWorking</researchPrerequisite>
+                <recipeUsers>
+                  <li>FabricationBench</li>
+                </recipeUsers>
+                <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+                <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                <workSkill>Crafting</workSkill>
+                <effectWorking>Tailor</effectWorking>
+                <soundWorking>Recipe_Tailor</soundWorking>
+              </recipeMaker>
+              <apparel>
+                <bodyPartGroups>
+                  <li>Legs</li>
+                </bodyPartGroups>
+                <layers>
+                  <li>OnSkin</li>
+                </layers>
+                <countsAsClothingForNudity>false</countsAsClothingForNudity>
+              </apparel>
+              <thingSetMakerTags Inherit="False">
+                <li>RewardStandardLowFreq</li>
+              </thingSetMakerTags>
+            </ThingDef>
+
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>psycast.vestments</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_EltexWorking"]</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs</xpath>
+          <value>
+
+            <ResearchProjectDef>
+              <defName>RBP_PsyVestments</defName>
+              <label>psychic vestments</label>
+              <description>The pinnacle of unarmored psychic clothing: whole-garment eltex weaves so dense they only settle around a mind that can hold them. Vestments woven this way refuse any wearer without real psychic sensitivity.</description>
+              <baseCost>6000</baseCost>
+              <techLevel>Ultra</techLevel>
+              <tab>RBP_PsychicTab</tab>
+              <prerequisites>
+                <li>RBP_EltexWorking</li>
+              </prerequisites>
+              <requiredResearchBuilding>HiTechResearchBench</requiredResearchBuilding>
+              <requiredResearchFacilities>
+                <li>MultiAnalyzer</li>
+              </requiredResearchFacilities>
+              <researchViewX>3</researchViewX>
+              <researchViewY>0.80</researchViewY>
+            </ResearchProjectDef>
+
+            <ThingDef ParentName="ApparelBase">
+              <defName>RBP_Apparel_EltexVestment</defName>
+              <label>eltex vestment</label>
+              <description>A floor-length ceremonial vestment woven throughout with eltex thread. The weave amplifies a psycaster's sensitivity, steadies neural heat, deepens meditation and eases the cost of casting - but it gives almost no protection, and its lattice only settles around a genuinely sensitive mind. A wearer without strong psychic sensitivity cannot put it on.</description>
+              <techLevel>Ultra</techLevel>
+              <graphicData>
+                <texPath>RBP/Apparel/EltexVestment</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <thingCategories>
+                <li>ApparelMisc</li>
+              </thingCategories>
+              <statBases>
+                <MarketValue>3200</MarketValue>
+                <MaxHitPoints>200</MaxHitPoints>
+                <Mass>1.6</Mass>
+                <WorkToMake>42000</WorkToMake>
+                <ArmorRating_Sharp>0.10</ArmorRating_Sharp>
+                <ArmorRating_Blunt>0</ArmorRating_Blunt>
+                <ArmorRating_Heat>0.10</ArmorRating_Heat>
+                <Insulation_Cold>14</Insulation_Cold>
+                <Insulation_Heat>6</Insulation_Heat>
+                <EquipDelay>3</EquipDelay>
+              </statBases>
+              <equippedStatOffsets>
+                <PsychicSensitivityOffset>0.65</PsychicSensitivityOffset>
+                <PsychicEntropyRecoveryRate>0.18</PsychicEntropyRecoveryRate>
+                <MeditationFocusGain>0.40</MeditationFocusGain>
+                <VPE_PsyfocusCostFactor>-0.20</VPE_PsyfocusCostFactor>
+                <PsychicEntropyMax>25</PsychicEntropyMax>
+              </equippedStatOffsets>
+              <costList>
+                <Cloth>100</Cloth>
+                <Gold>10</Gold>
+                <VPE_Eltex>15</VPE_Eltex>
+              </costList>
+              <recipeMaker>
+                <researchPrerequisite>RBP_PsyVestments</researchPrerequisite>
+                <recipeUsers>
+                  <li>FabricationBench</li>
+                </recipeUsers>
+                <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+                <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                <workSkill>Crafting</workSkill>
+                <skillRequirements>
+                  <Crafting>8</Crafting>
+                </skillRequirements>
+                <effectWorking>Tailor</effectWorking>
+                <soundWorking>Recipe_Tailor</soundWorking>
+              </recipeMaker>
+              <apparel>
+                <bodyPartGroups>
+                  <li>Torso</li>
+                  <li>Neck</li>
+                  <li>Shoulders</li>
+                  <li>Arms</li>
+                  <li>Legs</li>
+                </bodyPartGroups>
+                <wornGraphicPath>RBP/Apparel/EltexVestmentWorn/EltexVestmentWorn</wornGraphicPath>
+                <layers>
+                  <li>Shell</li>
+                </layers>
+              </apparel>
+              <tradeability>Sellable</tradeability>
+              <thingSetMakerTags Inherit="False">
+                <li>RewardStandardLowFreq</li>
+              </thingSetMakerTags>
+              <modExtensions>
+                <li Class="RebalancePatches.RequiredPsychicSensitivityExtension">
+                  <minSensitivity>1.75</minSensitivity>
+                </li>
+              </modExtensions>
+            </ThingDef>
+
+            <ThingDef ParentName="ApparelBase">
+              <defName>RBP_Apparel_EltexDiadem</defName>
+              <label>eltex diadem</label>
+              <description>A circlet of eltex and gold bearing a focusing shard at the brow. It sharpens psychic sensitivity, hastens meditation and eases the cost of casting, but offers no protection at all, and it refuses any brow without real psychic sensitivity.</description>
+              <techLevel>Ultra</techLevel>
+              <graphicData>
+                <texPath>RBP/Apparel/EltexDiadem</texPath>
+                <graphicClass>Graphic_Single</graphicClass>
+              </graphicData>
+              <thingCategories>
+                <li>ApparelMisc</li>
+              </thingCategories>
+              <statBases>
+                <MarketValue>2400</MarketValue>
+                <MaxHitPoints>80</MaxHitPoints>
+                <Mass>0.3</Mass>
+                <WorkToMake>30000</WorkToMake>
+                <EquipDelay>1</EquipDelay>
+              </statBases>
+              <equippedStatOffsets>
+                <PsychicSensitivityOffset>0.55</PsychicSensitivityOffset>
+                <PsychicEntropyRecoveryRate>0.15</PsychicEntropyRecoveryRate>
+                <MeditationFocusGain>0.25</MeditationFocusGain>
+                <VPE_PsyfocusCostFactor>-0.15</VPE_PsyfocusCostFactor>
+                <PsychicEntropyMax>20</PsychicEntropyMax>
+              </equippedStatOffsets>
+              <costList>
+                <Gold>15</Gold>
+                <VPE_Eltex>10</VPE_Eltex>
+              </costList>
+              <recipeMaker>
+                <researchPrerequisite>RBP_PsyVestments</researchPrerequisite>
+                <recipeUsers>
+                  <li>FabricationBench</li>
+                </recipeUsers>
+                <unfinishedThingDef>UnfinishedApparel</unfinishedThingDef>
+                <workSpeedStat>GeneralLaborSpeed</workSpeedStat>
+                <workSkill>Crafting</workSkill>
+                <skillRequirements>
+                  <Crafting>8</Crafting>
+                </skillRequirements>
+                <effectWorking>Smith</effectWorking>
+                <soundWorking>Recipe_Smith</soundWorking>
+              </recipeMaker>
+              <apparel>
+                <bodyPartGroups>
+                  <li>UpperHead</li>
+                </bodyPartGroups>
+                <wornGraphicPath>RBP/Apparel/EltexDiademWorn/EltexDiademWorn</wornGraphicPath>
+                <layers>
+                  <li>Overhead</li>
+                </layers>
+                <renderSkipFlags>
+                  <li>None</li>
+                </renderSkipFlags>
+              </apparel>
+              <tradeability>Sellable</tradeability>
+              <thingSetMakerTags Inherit="False">
+                <li>RewardStandardLowFreq</li>
+              </thingSetMakerTags>
+              <modExtensions>
+                <li Class="RebalancePatches.RequiredPsychicSensitivityExtension">
+                  <minSensitivity>1.5</minSensitivity>
+                </li>
+              </modExtensions>
+            </ThingDef>
+
+          </value>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>psycast.oraclewaiver</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]/comps</xpath>
+        <match Class="PatchOperationAdd">
+          <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]/comps</xpath>
+          <value>
+            <li Class="RebalancePatches.HediffCompProperties_OracleWaiver" />
+          </value>
+        </match>
+        <nomatch Class="PatchOperationConditional">
+          <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/HediffDef[defName="RBP_EchoOracleHediff"]</xpath>
+            <value>
+              <comps>
+                <li Class="RebalancePatches.HediffCompProperties_OracleWaiver" />
+              </comps>
+            </value>
+          </match>
+        </nomatch>
+      </li>
+    </operations>
+  </Operation>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>psycast.echotie</settingKey>
+    <operations>
+      <li Class="PatchOperationConditional">
+        <xpath>Defs/ResearchProjectDef[defName="RBP_EltexWorking"]</xpath>
+        <match Class="PatchOperationConditional">
+          <xpath>Defs/ResearchProjectDef[defName="RBP_CybEchoNeuralRegulation"]</xpath>
+          <match Class="PatchOperationAdd">
+            <xpath>Defs/ResearchProjectDef[defName="RBP_CybEchoNeuralRegulation"]/prerequisites</xpath>
+            <value>
+              <li>RBP_EltexWorking</li>
+            </value>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

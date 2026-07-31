@@ -1,6 +1,7 @@
 using HarmonyLib;
 using RebalancePatches.Mods.AlteredCarbon;
 using RebalancePatches.Mods.Biotech;
+using RebalancePatches.Mods.CyberneticsResearch;
 using RebalancePatches.Mods.GeneFabrication;
 using RebalancePatches.Mods.Inspirations;
 using RebalancePatches.Mods.IntegratedImplants;
@@ -9,6 +10,7 @@ using RebalancePatches.Mods.ResearchDisplay;
 using RebalancePatches.Mods.ResearchUI;
 using RebalancePatches.Mods.SmallFurniture;
 using RebalancePatches.Mods.VanillaSkillsExpanded;
+using RebalancePatches.Mods.VPE;
 using RebalancePatches.Mods.VQEAncients;
 using RebalancePatches.Mods.VREAndroid;
 using Verse;
@@ -51,6 +53,10 @@ namespace RebalancePatches
             ModuleQuality.TryApply(harmony);
             CyberbrainQualityPatches.TryApply(harmony);
             AndroidPsylinkPatches.TryApply(harmony);
+            VpePawnGenGuard.TryApply(harmony);
+            VpeWearGatePatches.TryApply(harmony);
+            VpeOracleWaiverPatches.TryApply(harmony);
+            DefRenamePatches.TryApply(harmony);
             AndroidHardwareResearchGate.TryApply(harmony);
             EmptyResearchTabPatches.TryApply(harmony);
             SmallFurnitureResearchBench.TryApply(harmony);

@@ -345,6 +345,73 @@ foreach (var x in wearable)
 
 File.WriteAllText(Path.Combine(outDir, "armor.md"), ab.ToString());
 
+// ---- psygear.md ---------------------------------------------------------------------------------
+// The psycaster-gear audit: everything that grants a psychic stat while worn or wielded, plus the
+// prestige family, enumerated by relationship (offsets, tags) rather than by name.
+
+var psyApparel = apparel.Where(x => x.AnyPsychic || x.Prestige || x.PsyTradeTag)
+    .OrderByDescending(x => x.PsySens).ThenByDescending(x => x.Value).ToList();
+var psyWeapons = weapons.Where(x => x.AnyPsychic || x.PsyTradeTag)
+    .OrderByDescending(x => x.PsySens).ThenByDescending(x => x.Value).ToList();
+
+var pb = new StringBuilder();
+pb.AppendLine("# Psycaster gear");
+pb.AppendLine();
+pb.AppendLine($"{psyApparel.Count} apparel and {psyWeapons.Count} weapons carry a psychic stat, the " +
+              "PrestigeCombatGear tag or a psychic trade tag.");
+pb.AppendLine();
+pb.AppendLine("`sens (q)` is the quality-scaled PsychicSensitivityOffset stat (0.5x awful to 1.5x " +
+              "legendary); `sens (flat)` is a plain PsychicSensitivity equipped offset, untouched by " +
+              "quality. `conflict` marks the layers where armor and psychic clothing compete for the " +
+              "slot (Shell, Overhead) - the slots where the robed and armored archetypes actually " +
+              "differ; OnSkin and Middle pieces stack under power armor.");
+pb.AppendLine();
+pb.AppendLine("## Apparel");
+pb.AppendLine();
+pb.AppendLine("| Def | Mod | Tech | Layer | Conflict | Sharp | Sens (q) | Sens (flat) | Heat rec | " +
+              "Heat max | Medit | Focus cost | Prestige | Value | Craft | Trade | Reward |");
+pb.AppendLine("|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|");
+foreach (var x in psyApparel)
+{
+    bool conflict = x.Layer is "Shell" or "Overhead";
+    pb.AppendLine($"| `{x.DefName}` {Escape(x.Label)} | {Escape(x.Mod)} | {x.Tech} | {x.Layer} | " +
+                  $"{(conflict ? "yes" : "")} | {x.Sharp:P0} | {Off(x.PsySensQ)} | {Off(x.PsySensFlat)} | " +
+                  $"{Off(x.PsyHeatRecovery)} | {Off(x.PsyHeatMax)} | {Off(x.PsyMeditation)} | " +
+                  $"{Off(x.PsyFocusCost)} | {(x.Prestige ? "yes" : "")} | {x.Value:0} | " +
+                  $"{(x.Craftable ? "yes" : "")} | {x.Traders} | {x.Rewards} |");
+}
+pb.AppendLine();
+pb.AppendLine("## Weapons");
+pb.AppendLine();
+pb.AppendLine("| Def | Mod | Tech | Sens (q) | Sens (flat) | Heat rec | Medit | Focus cost | " +
+              "Mechanism | Value | Craft |");
+pb.AppendLine("|---|---|---|---|---|---|---|---|---|---|---|");
+foreach (var x in psyWeapons)
+    pb.AppendLine($"| `{x.DefName}` {Escape(x.Label)} | {Escape(x.Mod)} | {x.Tech} | {Off(x.PsySensQ)} | " +
+                  $"{Off(x.PsySensFlat)} | {Off(x.PsyHeatRecovery)} | {Off(x.PsyMeditation)} | " +
+                  $"{Off(x.PsyFocusCost)} | {Escape(string.Join("; ", x.Estimates))} | {x.Value:0} | " +
+                  $"{(x.Craftable ? "yes" : "")} |");
+pb.AppendLine();
+pb.AppendLine("## Sensitivity by slot");
+pb.AppendLine();
+pb.AppendLine("What one pawn can stack: the best sensitivity total per layer, armored build vs robed " +
+              "build. Belts and packs are listed but rarely psychic.");
+pb.AppendLine();
+pb.AppendLine("| Layer | Best piece | Sens | Best armored alternative (sharp >= 20%) | Sens | Sharp |");
+pb.AppendLine("|---|---|---|---|---|---|");
+foreach (var group in psyApparel.GroupBy(x => x.Layer).OrderBy(g => g.Key))
+{
+    var best = group.OrderByDescending(x => x.PsySens).First();
+    var armored = group.Where(x => x.Sharp >= 0.2f).OrderByDescending(x => x.PsySens).FirstOrDefault();
+    pb.AppendLine($"| {group.Key} | `{best.DefName}` | {Off(best.PsySens)} | " +
+                  $"{(armored == null ? "-" : $"`{armored.DefName}`")} | " +
+                  $"{(armored == null ? "-" : Off(armored.PsySens))} | " +
+                  $"{(armored == null ? "-" : armored.Sharp.ToString("P0"))} |");
+}
+File.WriteAllText(Path.Combine(outDir, "psygear.md"), pb.ToString());
+
+static string Off(float v) => v == 0f ? "" : v.ToString("+0.###;-0.###");
+
 Console.WriteLine($"{weapons.Count} weapons ({ranged.Count} ranged, {melee.Count} melee measured, " +
                   $"{unmeasured.Count} unmeasured, {partial.Count} partial), {apparel.Count} apparel -> {outDir}");
 if (noCombatBlock > 0)
@@ -480,6 +547,12 @@ Weapon ReadWeapon(JsonElement t, JsonElement w, string defName, string mod, bool
         Rewards = rewardCount.TryGetValue(defName, out int rw) ? rw : 0,
         Craftable = t.TryGetProperty("producedBy", out var made) && made.ValueKind == JsonValueKind.Array
                     && made.GetArrayLength() > 0,
+        PsySensQ = EquippedOffset(t, "PsychicSensitivityOffset"),
+        PsySensFlat = EquippedOffset(t, "PsychicSensitivity"),
+        PsyHeatRecovery = EquippedOffset(t, "PsychicEntropyRecoveryRate"),
+        PsyMeditation = EquippedOffset(t, "MeditationFocusGain"),
+        PsyFocusCost = EquippedOffset(t, "VPE_PsyfocusCostFactor"),
+        PsyTradeTag = Strings(t, "tradeTags").Any(tag => tag.Contains("Psychic", StringComparison.OrdinalIgnoreCase)),
     };
 
     if (w.TryGetProperty("unmeasured", out var un) && un.ValueKind == JsonValueKind.Array)
@@ -627,6 +700,14 @@ Armor ReadArmor(JsonElement t, JsonElement a, string defName, string mod, bool v
         Rewards = rewardCount.TryGetValue(defName, out int rw) ? rw : 0,
         Craftable = t.TryGetProperty("producedBy", out var made) && made.ValueKind == JsonValueKind.Array
                     && made.GetArrayLength() > 0,
+        PsySensQ = EquippedOffset(t, "PsychicSensitivityOffset"),
+        PsySensFlat = EquippedOffset(t, "PsychicSensitivity"),
+        PsyHeatRecovery = EquippedOffset(t, "PsychicEntropyRecoveryRate"),
+        PsyHeatMax = EquippedOffset(t, "PsychicEntropyMax"),
+        PsyMeditation = EquippedOffset(t, "MeditationFocusGain"),
+        PsyFocusCost = EquippedOffset(t, "VPE_PsyfocusCostFactor"),
+        Prestige = Strings(props, "tags").Contains("PrestigeCombatGear"),
+        PsyTradeTag = Strings(t, "tradeTags").Any(tag => tag.Contains("Psychic", StringComparison.OrdinalIgnoreCase)),
     };
 }
 
@@ -842,6 +923,13 @@ sealed class Weapon
     public float Damage, ArmorPen, Range, Cycle, Dps, Accuracy = 1f;
     public int Burst = 1, Traders, Rewards;
 
+    public float PsySensQ, PsySensFlat, PsyHeatRecovery, PsyMeditation, PsyFocusCost;
+    public bool PsyTradeTag;
+
+    public float PsySens => PsySensQ + PsySensFlat;
+    public bool AnyPsychic => PsySensQ != 0f || PsySensFlat != 0f || PsyHeatRecovery != 0f
+        || PsyMeditation != 0f || PsyFocusCost != 0f;
+
     /// <summary>Reasons there is no readable damage at all. Any of these keeps it out of the rankings.</summary>
     public List<string> Hard = new();
 
@@ -889,6 +977,16 @@ sealed class Armor
     public float Value, Work, Mass;
     public float Coverage, Sharp, Blunt, Heat, Cold, HeatIns, Vacuum, ToxicEnv;
     public int Traders, Rewards;
+
+    // The two sensitivity grants are different mechanics: the Offset stat is quality-scaled
+    // 0.5x-1.5x on the item, the plain stat is flat. A rebalance moving value between them changes
+    // how much quality matters, so the report keeps them apart.
+    public float PsySensQ, PsySensFlat, PsyHeatRecovery, PsyHeatMax, PsyMeditation, PsyFocusCost;
+    public bool Prestige, PsyTradeTag;
+
+    public float PsySens => PsySensQ + PsySensFlat;
+    public bool AnyPsychic => PsySensQ != 0f || PsySensFlat != 0f || PsyHeatRecovery != 0f
+        || PsyHeatMax != 0f || PsyMeditation != 0f || PsyFocusCost != 0f;
 
     public float Shielding => Coverage * (0.6f * Sharp + 0.4f * Blunt);
 }

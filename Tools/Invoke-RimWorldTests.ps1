@@ -518,5 +518,18 @@ if ($report.runnerStatus -eq 'ERROR') {
     exit $EXIT['tests-failed']
 }
 
+# A green suite over a log that carries config errors on our own defs is how four defects once
+# shipped in one evening: the tests asserted what they were written to assert while the game was
+# rejecting our XML next to them. Any error naming one of our defs or our XML fields fails the run.
+$ourErrors = @($errorEntries | Where-Object {
+        $_.text -match 'Config error in (RBP_|Techprint_RBP_)' -or
+        ($_.text -match "doesn't correspond to any field" -and $_.text -match 'RBP') })
+if ($ourErrors.Count -gt 0) {
+    Write-Head "Errors on this mod's own defs"
+    $ourErrors | ForEach-Object { Write-Host "  [$($_.level) x$($_.count)] $($_.text)" -ForegroundColor Red }
+    Write-Verdict 'tests-failed' "$($ourErrors.Count) config error(s) name this mod's defs; the suites passed around them."
+    exit $EXIT['tests-failed']
+}
+
 Write-Verdict 'pass' "All $($counts.seen) tests that ran passed. Skipped work is listed above."
 exit $EXIT['pass']

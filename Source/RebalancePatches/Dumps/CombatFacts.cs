@@ -24,6 +24,10 @@ namespace RebalancePatches
         /// <summary>The core assembly. A verb, projectile or comp class from anywhere else is a mod's.</summary>
         private static readonly System.Reflection.Assembly CoreAssembly = typeof(Verb).Assembly;
 
+        private static readonly System.Reflection.FieldInfo DamageAmountBase =
+            typeof(ProjectileProperties).GetField("damageAmountBase",
+                System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+
         // ---- weapons ------------------------------------------------------------------------
 
         public static void WriteWeapon(Json j, ThingDef thing, DefWalker walker)
@@ -173,12 +177,20 @@ namespace RebalancePatches
             j.Name("damageDef"); j.Value(props.damageDef?.defName);
 
             // Resolved, not the raw field: damageAmountBase is private and the weapon's damage
-            // multiplier is applied on top of it.
-            try
+            // multiplier is applied on top of it. A projectile with no base amount and no default
+            // on its damage def makes GetDamageAmount log a red error, so ask first.
+            int baseAmount = DamageAmountBase == null ? 0 : (int)DamageAmountBase.GetValue(props);
+            if (baseAmount == -1 && (props.damageDef == null || props.damageDef.defaultDamage < 0))
             {
-                j.Name("damage"); j.Number(props.GetDamageAmount(thing, stuff));
+                j.Name("damage"); j.Null();
+                unmeasured.Add($"noSaneDamage ({projectile.defName})");
             }
-            catch { j.Null(); }
+            else
+                try
+                {
+                    j.Name("damage"); j.Number(props.GetDamageAmount(thing, stuff));
+                }
+                catch { j.Null(); }
 
             try
             {

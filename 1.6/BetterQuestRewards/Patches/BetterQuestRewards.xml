@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+  <Operation Class="RebalancePatches.PatchOperationIfEnabled">
+    <settingKey>questrewards.psytrainers</settingKey>
+    <operations>
+      <li Class="RebalancePatches.PatchOperationFindModById">
+        <mods>
+          <li>vanillaexpanded.vpsycastse</li>
+        </mods>
+        <match Class="RebalancePatches.PatchOperationFindModById">
+          <mods>
+            <li>turkler.ferny.fuckpsytrainerstwo</li>
+          </mods>
+          <match Class="PatchOperationRemove">
+            <xpath>Defs/ThingSetMakerDef[defName="Reward_ItemsStandard"]/root/options/li[thingSetMaker/options/li/thingSetMaker/fixedParams/filter/thingDefs/li="Psytrainer_VPE_AdrenalineRush"]</xpath>
+          </match>
+        </match>
+      </li>
+    </operations>
+  </Operation>
+
+</Patch>

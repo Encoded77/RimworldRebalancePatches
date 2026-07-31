@@ -182,7 +182,10 @@ namespace RebalancePatches.Tests
             foreach (RebalanceGroup group in SettingsRegistry.Groups)
             {
                 CheckTranslates($"RBP.{group.key}.label", group.label, ref checkedKeys);
-                CheckTranslates($"RBP.{group.key}.desc", group.description, ref checkedKeys);
+                // Only overhaul groups render a hover description; a plain mod-named group needs none,
+                // so requiring the key would force dead text nothing ever shows.
+                if (group.isOverhaul)
+                    CheckTranslates($"RBP.{group.key}.desc", group.description, ref checkedKeys);
                 foreach (RebalanceToggle child in group.children)
                 {
                     CheckTranslates($"RBP.{child.key}.label", child.label, ref checkedKeys);
@@ -204,6 +207,7 @@ namespace RebalancePatches.Tests
                 "RBP.UI.ResetToDefault", "RBP.UI.Needs", "RBP.UI.NeedsOneOf", "RBP.UI.RequiredModsHeader",
                 "RBP.UI.AnyOfHeader", "RBP.UI.Loaded", "RBP.UI.Missing",
                 "RBP.GeneDivergence.Tip", "RBP.Module.GenericName", "RebalancePatches.NoOpenModuleSlot",
+                "RBP.WearGate",
             };
             foreach (string key in loose)
                 CheckTranslates(key, null, ref checkedKeys);
